@@ -1,9 +1,9 @@
 openapi: 3.0.0
 info:
-  title: divar_interface/open_platform/chatapi/chatapi.proto
-  version: version not set
+  title: Kenar API
+  version: "1.0"
 servers:
-- url: /
+- url: https://open-api.divar.ir
 tags:
 - name: ChatAPI
 - name: Events
@@ -42,7 +42,8 @@ paths:
         Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
       operationId: ChatAPI_ChatBotSendMessage3
       parameters:
-      - explode: false
+      - description: Unique identifier for the conversation
+        explode: false
         in: path
         name: conversation_id
         required: true
@@ -74,7 +75,9 @@ paths:
         Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
       operationId: ChatAPI_ChatBotSendMessage2
       parameters:
-      - explode: false
+      - description: Unique identifier for the user to start or continue a conversation
+          with
+        explode: false
         in: path
         name: user_id
         required: true
@@ -133,7 +136,8 @@ paths:
         Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
       operationId: ChatAPI_ChatBotSendMessage
       parameters:
-      - explode: false
+      - description: Unique identifier for the conversation
+        explode: false
         in: path
         name: conversation_id
         required: true
@@ -677,7 +681,8 @@ paths:
         by it's ID.This API expects access token with `CHAT_CONVERSATION_READ` scope.
       operationId: ChatAPI_GetConversation
       parameters:
-      - explode: false
+      - description: Unique identifier for the conversation
+        explode: false
         in: path
         name: conversation_id
         required: true
@@ -737,9 +742,8 @@ paths:
       - Events
   /v1/open-platform/finder/post/{token}:
     get:
-      description: |
-        This API allows you to get details about Divar post by its token.
-        You can use the token to get the post data and its state in order to implement your service.
+      description: "This API allows you to get details about Divar post by its token.\n\
+        You can use the token to get the post data and its state "
       operationId: Finder_GetPost
       parameters:
       - explode: false
@@ -1245,7 +1249,8 @@ paths:
         - CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{post_token}
       operationId: ChatAPI_ConversationSendMessage
       parameters:
-      - explode: false
+      - description: Unique identifier for the conversation
+        explode: false
         in: path
         name: conversation_id
         required: true
@@ -1364,11 +1369,6 @@ components:
       - OWNERSHIP_CONFIRMED
       - OWNERSHIP_DELEGATION_CONFIRMED
       type: string
-    AddonSemanticPaymentMethod:
-      enum:
-      - SECURE
-      title: "- SECURE: this value results in badge in matching"
-      type: string
     AddonSemanticPostVerificationResult:
       enum:
       - POST_INFORMATION_MATCHED
@@ -1403,10 +1403,12 @@ components:
           button_bar:
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
           score_row:
             percentage_score: 0
@@ -1415,10 +1417,12 @@ components:
             score_color: WARNING_SECONDARY
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
             icon_name: null
           title_row:
@@ -1431,10 +1435,12 @@ components:
             has_divider: true
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
             image_id: image_id
             icon_name: null
@@ -1481,10 +1487,12 @@ components:
           button_bar:
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
           score_row:
             percentage_score: 0
@@ -1493,10 +1501,12 @@ components:
             score_color: WARNING_SECONDARY
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
             icon_name: null
           title_row:
@@ -1509,10 +1519,12 @@ components:
             has_divider: true
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
             image_id: image_id
             icon_name: null
@@ -1582,10 +1594,12 @@ components:
           button_bar:
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
           score_row:
             percentage_score: 0
@@ -1594,10 +1608,12 @@ components:
             score_color: WARNING_SECONDARY
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
             icon_name: null
           title_row:
@@ -1610,10 +1626,12 @@ components:
             has_divider: true
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
             image_id: image_id
             icon_name: null
@@ -1660,10 +1678,12 @@ components:
           button_bar:
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
           score_row:
             percentage_score: 0
@@ -1672,10 +1692,12 @@ components:
             score_color: WARNING_SECONDARY
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
             icon_name: null
           title_row:
@@ -1688,10 +1710,12 @@ components:
             has_divider: true
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             title: title
             image_id: image_id
             icon_name: null
@@ -1743,52 +1767,69 @@ components:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
-        user_id: user_id
-        text_message: text_message
-        media_token: media_token
+        user_id: user_789012
+        text_message: Thank you for your inquiry. How can I help you?
+        media_token: media_token_12345
       properties:
         user_id:
+          description: Unique identifier for the user to start or continue a conversation
+            with
+          example: user_789012
           type: string
         text_message:
+          description: Text message content to be sent by the bot
+          example: Thank you for your inquiry. How can I help you?
           type: string
         media_token:
+          description: Token for attached media (if any)
+          example: media_token_12345
           type: string
         buttons:
           $ref: '#/components/schemas/chatapiChatButtonGrid'
+      required:
+      - text_message
       type: object
     ChatAPIConversationSendMessageBody:
       example:
@@ -1798,38 +1839,46 @@ components:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
         receiver_buttons:
@@ -1838,51 +1887,65 @@ components:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
                 get_dynamic_action:
-                  data: "{}"
+                  data:
+                    your-internal-id: something
                 open_server_link:
-                  data: "{}"
-                open_direct_link: open_direct_link
+                  data:
+                    your-internal-id: something
+                open_direct_link: https://your-site.com/some-path
               caption: caption
               icon_name: icon_name
-        message: message
-        media_token: media_token
+        message: "Hello, I'm interested in your product"
+        media_token: media_token_12345
       properties:
         message:
+          description: Text message content to be sent
+          example: "Hello, I'm interested in your product"
           type: string
         media_token:
+          description: Token for attached media (if any)
+          example: media_token_12345
           type: string
         sender_buttons:
           $ref: '#/components/schemas/chatapiChatButtonGrid'
         receiver_buttons:
           $ref: '#/components/schemas/chatapiChatButtonGrid'
+      required:
+      - message
       type: object
     DivarIconsIconName:
       enum:
@@ -2995,19 +3058,26 @@ components:
           type: integer
       type: object
     addonsAction:
+      description: Represents an action that can be performed
       example:
         get_dynamic_action:
-          data: "{}"
+          data:
+            your-internal-id: something
         open_server_link:
-          data: "{}"
-        open_direct_link: open_direct_link
+          data:
+            your-internal-id: something
+        open_direct_link: https://your-site.com/some-path
       properties:
         open_direct_link:
+          description: An action to send user to your URL directly with just a resource
+            id (if applicable)
+          example: https://your-site.com/some-path
           type: string
         open_server_link:
           $ref: '#/components/schemas/addonsOpenServerLink'
         get_dynamic_action:
           $ref: '#/components/schemas/addonsGetDynamicAction'
+      title: Action
       type: object
     addonsAddonLinkage:
       enum:
@@ -3090,7 +3160,8 @@ components:
           items:
             type: string
           type: array
-      title: (AND) post is selected by this selector if all of the following conditions
+      title: |-
+        (AND) post is selected by this selector if all of the following conditions
         matches
       type: object
     addonsAddonSemantic:
@@ -3116,7 +3187,7 @@ components:
         status: SUCCEEDED
       properties:
         payment_method:
-          $ref: '#/components/schemas/AddonSemanticPaymentMethod'
+          $ref: '#/components/schemas/addonsAddonSemanticPaymentMethod'
         identity_verification_result:
           $ref: '#/components/schemas/AddonSemanticIdentityVerificationResult'
         post_verification_result:
@@ -3138,6 +3209,11 @@ components:
         new_face_verification_result:
           $ref: '#/components/schemas/AddonSemanticNewFaceVerificationResult'
       type: object
+    addonsAddonSemanticPaymentMethod:
+      enum:
+      - SECURE
+      title: "- SECURE: this value results in badge in matching"
+      type: string
     addonsAddonSemanticStatus:
       enum:
       - SUCCEEDED
@@ -3160,10 +3236,12 @@ components:
       example:
         action:
           get_dynamic_action:
-            data: "{}"
+            data:
+              your-internal-id: something
           open_server_link:
-            data: "{}"
-          open_direct_link: open_direct_link
+            data:
+              your-internal-id: something
+          open_direct_link: https://your-site.com/some-path
         title: title
       properties:
         title:
@@ -3284,11 +3362,19 @@ components:
           type: array
       type: object
     addonsGetDynamicAction:
+      description: Represents a dynamic action that can be fetched and invoked on
+        user's device
       example:
-        data: "{}"
+        data:
+          your-internal-id: something
       properties:
         data:
+          description: A data that you can set and will be returned to you upon user
+            click to recognize the action
+          example:
+            your-internal-id: something
           type: object
+      title: Get Dynamic Action
       type: object
     addonsGetPostAddonsResponse:
       properties:
@@ -3442,11 +3528,19 @@ components:
           type: boolean
       type: object
     addonsOpenServerLink:
+      description: An action to pass complete session data and retrieve redirect location
+        from your server on each user action
       example:
-        data: "{}"
+        data:
+          your-internal-id: something
       properties:
         data:
+          description: A data that you can set and will be returned to you upon user
+            click to recognize the action
+          example:
+            your-internal-id: something
           type: object
+      title: Open Server Link
       type: object
     addonsPostAddon:
       properties:
@@ -3494,10 +3588,12 @@ components:
         score_color: WARNING_SECONDARY
         action:
           get_dynamic_action:
-            data: "{}"
+            data:
+              your-internal-id: something
           open_server_link:
-            data: "{}"
-          open_direct_link: open_direct_link
+            data:
+              your-internal-id: something
+          open_direct_link: https://your-site.com/some-path
         title: title
         icon_name: null
       properties:
@@ -3522,10 +3618,12 @@ components:
         has_divider: true
         action:
           get_dynamic_action:
-            data: "{}"
+            data:
+              your-internal-id: something
           open_server_link:
-            data: "{}"
-          open_direct_link: open_direct_link
+            data:
+              your-internal-id: something
+          open_direct_link: https://your-site.com/some-path
         title: title
         image_id: image_id
         icon_name: null
@@ -3678,10 +3776,12 @@ components:
         button_bar:
           action:
             get_dynamic_action:
-              data: "{}"
+              data:
+                your-internal-id: something
             open_server_link:
-              data: "{}"
-            open_direct_link: open_direct_link
+              data:
+                your-internal-id: something
+            open_direct_link: https://your-site.com/some-path
           title: title
         score_row:
           percentage_score: 0
@@ -3690,10 +3790,12 @@ components:
           score_color: WARNING_SECONDARY
           action:
             get_dynamic_action:
-              data: "{}"
+              data:
+                your-internal-id: something
             open_server_link:
-              data: "{}"
-            open_direct_link: open_direct_link
+              data:
+                your-internal-id: something
+            open_direct_link: https://your-site.com/some-path
           title: title
           icon_name: null
         title_row:
@@ -3706,10 +3808,12 @@ components:
           has_divider: true
           action:
             get_dynamic_action:
-              data: "{}"
+              data:
+                your-internal-id: something
             open_server_link:
-              data: "{}"
-            open_direct_link: open_direct_link
+              data:
+                your-internal-id: something
+            open_direct_link: https://your-site.com/some-path
           title: title
           image_id: image_id
           icon_name: null
@@ -4091,9 +4195,12 @@ components:
       type: object
     chatapiChatBotSendMessageResponse:
       example:
-        conversation_id: conversation_id
+        conversation_id: conv_123456
       properties:
         conversation_id:
+          description: ID of the conversation created or updated
+          example: conv_123456
+          readOnly: true
           type: string
       type: object
     chatapiChatButton:
@@ -4101,10 +4208,12 @@ components:
         icon: KEYBOARD_ARROW_RIGHT
         action:
           get_dynamic_action:
-            data: "{}"
+            data:
+              your-internal-id: something
           open_server_link:
-            data: "{}"
-          open_direct_link: open_direct_link
+            data:
+              your-internal-id: something
+          open_direct_link: https://your-site.com/some-path
         caption: caption
         icon_name: icon_name
       properties:
@@ -4125,38 +4234,46 @@ components:
           - icon: KEYBOARD_ARROW_RIGHT
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             caption: caption
             icon_name: icon_name
           - icon: KEYBOARD_ARROW_RIGHT
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             caption: caption
             icon_name: icon_name
         - buttons:
           - icon: KEYBOARD_ARROW_RIGHT
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             caption: caption
             icon_name: icon_name
           - icon: KEYBOARD_ARROW_RIGHT
             action:
               get_dynamic_action:
-                data: "{}"
+                data:
+                  your-internal-id: something
               open_server_link:
-                data: "{}"
-              open_direct_link: open_direct_link
+                data:
+                  your-internal-id: something
+              open_direct_link: https://your-site.com/some-path
             caption: caption
             icon_name: icon_name
       properties:
@@ -4171,19 +4288,23 @@ components:
         - icon: KEYBOARD_ARROW_RIGHT
           action:
             get_dynamic_action:
-              data: "{}"
+              data:
+                your-internal-id: something
             open_server_link:
-              data: "{}"
-            open_direct_link: open_direct_link
+              data:
+                your-internal-id: something
+            open_direct_link: https://your-site.com/some-path
           caption: caption
           icon_name: icon_name
         - icon: KEYBOARD_ARROW_RIGHT
           action:
             get_dynamic_action:
-              data: "{}"
+              data:
+                your-internal-id: something
             open_server_link:
-              data: "{}"
-            open_direct_link: open_direct_link
+              data:
+                your-internal-id: something
+            open_direct_link: https://your-site.com/some-path
           caption: caption
           icon_name: icon_name
       properties:
@@ -4225,9 +4346,13 @@ components:
       type: object
     chatapiGenerateUploadTokenResponse:
       example:
-        token: token
+        token: some_random_base64
       properties:
         token:
+          description: A url safe base64 encoded token that can be used in the upload
+            endpoint
+          example: some_random_base64
+          readOnly: true
           type: string
       type: object
     chatapiGetConversationResponse:
@@ -4301,9 +4426,13 @@ components:
         conversation:
           $ref: '#/components/schemas/chatapiConversation'
         messages:
+          description: List of messages in the conversation
           items:
             $ref: '#/components/schemas/chatapiMessage'
           type: array
+      required:
+      - conversation
+      - messages
       type: object
     chatapiMessage:
       example:

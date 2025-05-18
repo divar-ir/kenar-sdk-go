@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConversationId** | Pointer to **string** |  | [optional] 
+**ConversationId** | Pointer to **string** | ID of the conversation created or updated | [optional] [readonly] 
 
 ## Methods
 

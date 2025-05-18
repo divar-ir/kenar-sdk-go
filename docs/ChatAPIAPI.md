@@ -1,6 +1,6 @@
 # \ChatAPIAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,8 +34,8 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
-	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody() // ChatAPIChatBotSendMessageBody | 
+	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | Unique identifier for the conversation | 
 
 ### Other Parameters
 
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-	userId := "userId_example" // string | 
-	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody() // ChatAPIChatBotSendMessageBody | 
+	userId := "userId_example" // string | Unique identifier for the user to start or continue a conversation with
+	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -127,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | **string** |  | 
+**userId** | **string** | Unique identifier for the user to start or continue a conversation with | 
 
 ### Other Parameters
 
@@ -178,8 +178,8 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
-	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody() // ChatAPIChatBotSendMessageBody | 
+	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -199,7 +199,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | Unique identifier for the conversation | 
 
 ### Other Parameters
 
@@ -250,8 +250,8 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
-	chatAPIConversationSendMessageBody := *openapiclient.NewChatAPIConversationSendMessageBody() // ChatAPIConversationSendMessageBody | 
+	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	chatAPIConversationSendMessageBody := *openapiclient.NewChatAPIConversationSendMessageBody("Hello, I'm interested in your product") // ChatAPIConversationSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -271,7 +271,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | Unique identifier for the conversation | 
 
 ### Other Parameters
 
@@ -388,7 +388,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
+	conversationId := "conversationId_example" // string | Unique identifier for the conversation
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -408,7 +408,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | Unique identifier for the conversation | 
 
 ### Other Parameters
 

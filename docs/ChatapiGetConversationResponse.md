@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Conversation** | Pointer to [**ChatapiConversation**](ChatapiConversation.md) |  | [optional] 
-**Messages** | Pointer to [**[]ChatapiMessage**](ChatapiMessage.md) |  | [optional] 
+**Conversation** | [**ChatapiConversation**](ChatapiConversation.md) |  | 
+**Messages** | [**[]ChatapiMessage**](ChatapiMessage.md) | List of messages in the conversation | 
 
 ## Methods
 
 ### NewChatapiGetConversationResponse
 
-`func NewChatapiGetConversationResponse() *ChatapiGetConversationResponse`
+`func NewChatapiGetConversationResponse(conversation ChatapiConversation, messages []ChatapiMessage, ) *ChatapiGetConversationResponse`
 
 NewChatapiGetConversationResponse instantiates a new ChatapiGetConversationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetConversation sets Conversation field to given value.
 
-### HasConversation
-
-`func (o *ChatapiGetConversationResponse) HasConversation() bool`
-
-HasConversation returns a boolean if a field has been set.
 
 ### GetMessages
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetMessages sets Messages field to given value.
 
-### HasMessages
-
-`func (o *ChatapiGetConversationResponse) HasMessages() bool`
-
-HasMessages returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

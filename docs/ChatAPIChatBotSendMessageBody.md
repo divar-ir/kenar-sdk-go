@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserId** | Pointer to **string** |  | [optional] 
-**TextMessage** | Pointer to **string** |  | [optional] 
-**MediaToken** | Pointer to **string** |  | [optional] 
+**UserId** | Pointer to **string** | Unique identifier for the user to start or continue a conversation with | [optional] 
+**TextMessage** | **string** | Text message content to be sent by the bot | 
+**MediaToken** | Pointer to **string** | Token for attached media (if any) | [optional] 
 **Buttons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
 
 ## Methods
 
 ### NewChatAPIChatBotSendMessageBody
 
-`func NewChatAPIChatBotSendMessageBody() *ChatAPIChatBotSendMessageBody`
+`func NewChatAPIChatBotSendMessageBody(textMessage string, ) *ChatAPIChatBotSendMessageBody`
 
 NewChatAPIChatBotSendMessageBody instantiates a new ChatAPIChatBotSendMessageBody object
 This constructor will assign default values to properties that have it defined,
@@ -72,11 +72,6 @@ and a boolean to check if the value has been set.
 
 SetTextMessage sets TextMessage field to given value.
 
-### HasTextMessage
-
-`func (o *ChatAPIChatBotSendMessageBody) HasTextMessage() bool`
-
-HasTextMessage returns a boolean if a field has been set.
 
 ### GetMediaToken
 

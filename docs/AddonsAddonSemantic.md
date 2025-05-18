@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PaymentMethod** | Pointer to [**AddonSemanticPaymentMethod**](AddonSemanticPaymentMethod.md) |  | [optional] 
+**PaymentMethod** | Pointer to [**AddonsAddonSemanticPaymentMethod**](AddonsAddonSemanticPaymentMethod.md) |  | [optional] 
 **IdentityVerificationResult** | Pointer to [**AddonSemanticIdentityVerificationResult**](AddonSemanticIdentityVerificationResult.md) |  | [optional] 
 **PostVerificationResult** | Pointer to [**AddonSemanticPostVerificationResult**](AddonSemanticPostVerificationResult.md) |  | [optional] 
 **Status** | Pointer to [**AddonsAddonSemanticStatus**](AddonsAddonSemanticStatus.md) |  | [optional] 
@@ -37,20 +37,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPaymentMethod
 
-`func (o *AddonsAddonSemantic) GetPaymentMethod() AddonSemanticPaymentMethod`
+`func (o *AddonsAddonSemantic) GetPaymentMethod() AddonsAddonSemanticPaymentMethod`
 
 GetPaymentMethod returns the PaymentMethod field if non-nil, zero value otherwise.
 
 ### GetPaymentMethodOk
 
-`func (o *AddonsAddonSemantic) GetPaymentMethodOk() (*AddonSemanticPaymentMethod, bool)`
+`func (o *AddonsAddonSemantic) GetPaymentMethodOk() (*AddonsAddonSemanticPaymentMethod, bool)`
 
 GetPaymentMethodOk returns a tuple with the PaymentMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaymentMethod
 
-`func (o *AddonsAddonSemantic) SetPaymentMethod(v AddonSemanticPaymentMethod)`
+`func (o *AddonsAddonSemantic) SetPaymentMethod(v AddonsAddonSemanticPaymentMethod)`
 
 SetPaymentMethod sets PaymentMethod field to given value.
 

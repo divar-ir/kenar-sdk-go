@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OpenDirectLink** | Pointer to **string** |  | [optional] 
+**OpenDirectLink** | Pointer to **string** | An action to send user to your URL directly with just a resource id (if applicable) | [optional] 
 **OpenServerLink** | Pointer to [**AddonsOpenServerLink**](AddonsOpenServerLink.md) |  | [optional] 
 **GetDynamicAction** | Pointer to [**AddonsGetDynamicAction**](AddonsGetDynamicAction.md) |  | [optional] 
 

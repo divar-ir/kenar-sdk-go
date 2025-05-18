@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to **map[string]interface{}** |  | [optional] 
+**Data** | Pointer to **map[string]interface{}** | A data that you can set and will be returned to you upon user click to recognize the action | [optional] 
 
 ## Methods
 

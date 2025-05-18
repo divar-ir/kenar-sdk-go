@@ -1,5 +1,5 @@
 /*
-divar_interface/open_platform/chatapi/chatapi.proto
+Kenar API
 
 Testing AssetsAPIService
 
