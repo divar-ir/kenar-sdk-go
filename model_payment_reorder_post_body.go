@@ -19,10 +19,10 @@ var _ MappedNullable = &PaymentReorderPostBody{}
 
 // PaymentReorderPostBody struct for PaymentReorderPostBody
 type PaymentReorderPostBody struct {
-	// A Version 4 uuid that must be unique for each payment. This uuid must be generated on your side and sent in the request. If an id is sent that has a successful or semi-successful transaction on the Kenar side, you will receive an error.
-	Id *string `json:"id,omitempty"`
 	// Additional details that you want to send to the Kenar side. This field is optional and can be used to solve inconsistencies in the transaction.
 	ExtraDetails *string `json:"extra_details,omitempty"`
+	// A Version 4 uuid that must be unique for each payment. This uuid must be generated on your side and sent in the request. If an id is sent that has a successful or semi-successful transaction on the Kenar side, you will receive an error.
+	Id *string `json:"id,omitempty"`
 }
 
 // NewPaymentReorderPostBody instantiates a new PaymentReorderPostBody object
@@ -40,38 +40,6 @@ func NewPaymentReorderPostBody() *PaymentReorderPostBody {
 func NewPaymentReorderPostBodyWithDefaults() *PaymentReorderPostBody {
 	this := PaymentReorderPostBody{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *PaymentReorderPostBody) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PaymentReorderPostBody) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *PaymentReorderPostBody) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *PaymentReorderPostBody) SetId(v string) {
-	o.Id = &v
 }
 
 // GetExtraDetails returns the ExtraDetails field value if set, zero value otherwise.
@@ -106,6 +74,38 @@ func (o *PaymentReorderPostBody) SetExtraDetails(v string) {
 	o.ExtraDetails = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *PaymentReorderPostBody) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentReorderPostBody) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *PaymentReorderPostBody) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *PaymentReorderPostBody) SetId(v string) {
+	o.Id = &v
+}
+
 func (o PaymentReorderPostBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,11 +116,11 @@ func (o PaymentReorderPostBody) MarshalJSON() ([]byte, error) {
 
 func (o PaymentReorderPostBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !IsNil(o.ExtraDetails) {
 		toSerialize["extra_details"] = o.ExtraDetails
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	return toSerialize, nil
 }

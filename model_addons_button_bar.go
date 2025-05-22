@@ -19,8 +19,8 @@ var _ MappedNullable = &AddonsButtonBar{}
 
 // AddonsButtonBar struct for AddonsButtonBar
 type AddonsButtonBar struct {
-	Title *string `json:"title,omitempty"`
 	Action *AddonsAction `json:"action,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewAddonsButtonBar instantiates a new AddonsButtonBar object
@@ -38,38 +38,6 @@ func NewAddonsButtonBar() *AddonsButtonBar {
 func NewAddonsButtonBarWithDefaults() *AddonsButtonBar {
 	this := AddonsButtonBar{}
 	return &this
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *AddonsButtonBar) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsButtonBar) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *AddonsButtonBar) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *AddonsButtonBar) SetTitle(v string) {
-	o.Title = &v
 }
 
 // GetAction returns the Action field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *AddonsButtonBar) SetAction(v AddonsAction) {
 	o.Action = &v
 }
 
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *AddonsButtonBar) GetTitle() string {
+	if o == nil || IsNil(o.Title) {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsButtonBar) GetTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Title) {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *AddonsButtonBar) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *AddonsButtonBar) SetTitle(v string) {
+	o.Title = &v
+}
+
 func (o AddonsButtonBar) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o AddonsButtonBar) MarshalJSON() ([]byte, error) {
 
 func (o AddonsButtonBar) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
 	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
 	}
 	return toSerialize, nil
 }

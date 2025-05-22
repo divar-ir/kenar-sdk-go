@@ -19,9 +19,9 @@ var _ MappedNullable = &SemanticCreatePostSemanticBody{}
 
 // SemanticCreatePostSemanticBody struct for SemanticCreatePostSemanticBody
 type SemanticCreatePostSemanticBody struct {
+	Cost *int32 `json:"cost,omitempty"`
 	Semantic *map[string]string `json:"semantic,omitempty"`
 	TicketUuid *string `json:"ticket_uuid,omitempty"`
-	Cost *int32 `json:"cost,omitempty"`
 }
 
 // NewSemanticCreatePostSemanticBody instantiates a new SemanticCreatePostSemanticBody object
@@ -39,6 +39,38 @@ func NewSemanticCreatePostSemanticBody() *SemanticCreatePostSemanticBody {
 func NewSemanticCreatePostSemanticBodyWithDefaults() *SemanticCreatePostSemanticBody {
 	this := SemanticCreatePostSemanticBody{}
 	return &this
+}
+
+// GetCost returns the Cost field value if set, zero value otherwise.
+func (o *SemanticCreatePostSemanticBody) GetCost() int32 {
+	if o == nil || IsNil(o.Cost) {
+		var ret int32
+		return ret
+	}
+	return *o.Cost
+}
+
+// GetCostOk returns a tuple with the Cost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SemanticCreatePostSemanticBody) GetCostOk() (*int32, bool) {
+	if o == nil || IsNil(o.Cost) {
+		return nil, false
+	}
+	return o.Cost, true
+}
+
+// HasCost returns a boolean if a field has been set.
+func (o *SemanticCreatePostSemanticBody) HasCost() bool {
+	if o != nil && !IsNil(o.Cost) {
+		return true
+	}
+
+	return false
+}
+
+// SetCost gets a reference to the given int32 and assigns it to the Cost field.
+func (o *SemanticCreatePostSemanticBody) SetCost(v int32) {
+	o.Cost = &v
 }
 
 // GetSemantic returns the Semantic field value if set, zero value otherwise.
@@ -105,38 +137,6 @@ func (o *SemanticCreatePostSemanticBody) SetTicketUuid(v string) {
 	o.TicketUuid = &v
 }
 
-// GetCost returns the Cost field value if set, zero value otherwise.
-func (o *SemanticCreatePostSemanticBody) GetCost() int32 {
-	if o == nil || IsNil(o.Cost) {
-		var ret int32
-		return ret
-	}
-	return *o.Cost
-}
-
-// GetCostOk returns a tuple with the Cost field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SemanticCreatePostSemanticBody) GetCostOk() (*int32, bool) {
-	if o == nil || IsNil(o.Cost) {
-		return nil, false
-	}
-	return o.Cost, true
-}
-
-// HasCost returns a boolean if a field has been set.
-func (o *SemanticCreatePostSemanticBody) HasCost() bool {
-	if o != nil && !IsNil(o.Cost) {
-		return true
-	}
-
-	return false
-}
-
-// SetCost gets a reference to the given int32 and assigns it to the Cost field.
-func (o *SemanticCreatePostSemanticBody) SetCost(v int32) {
-	o.Cost = &v
-}
-
 func (o SemanticCreatePostSemanticBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -147,14 +147,14 @@ func (o SemanticCreatePostSemanticBody) MarshalJSON() ([]byte, error) {
 
 func (o SemanticCreatePostSemanticBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Cost) {
+		toSerialize["cost"] = o.Cost
+	}
 	if !IsNil(o.Semantic) {
 		toSerialize["semantic"] = o.Semantic
 	}
 	if !IsNil(o.TicketUuid) {
 		toSerialize["ticket_uuid"] = o.TicketUuid
-	}
-	if !IsNil(o.Cost) {
-		toSerialize["cost"] = o.Cost
 	}
 	return toSerialize, nil
 }

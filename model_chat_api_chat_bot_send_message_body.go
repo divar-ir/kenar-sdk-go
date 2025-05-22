@@ -21,13 +21,13 @@ var _ MappedNullable = &ChatAPIChatBotSendMessageBody{}
 
 // ChatAPIChatBotSendMessageBody struct for ChatAPIChatBotSendMessageBody
 type ChatAPIChatBotSendMessageBody struct {
-	// Unique identifier for the user to start or continue a conversation with
-	UserId *string `json:"user_id,omitempty"`
-	// Text message content to be sent by the bot
-	TextMessage string `json:"text_message"`
+	Buttons *ChatapiChatButtonGrid `json:"buttons,omitempty"`
 	// Token for attached media (if any)
 	MediaToken *string `json:"media_token,omitempty"`
-	Buttons *ChatapiChatButtonGrid `json:"buttons,omitempty"`
+	// Text message content to be sent by the bot
+	TextMessage string `json:"text_message"`
+	// Unique identifier for the user to start or continue a conversation with
+	UserId *string `json:"user_id,omitempty"`
 }
 
 type _ChatAPIChatBotSendMessageBody ChatAPIChatBotSendMessageBody
@@ -48,94 +48,6 @@ func NewChatAPIChatBotSendMessageBody(textMessage string) *ChatAPIChatBotSendMes
 func NewChatAPIChatBotSendMessageBodyWithDefaults() *ChatAPIChatBotSendMessageBody {
 	this := ChatAPIChatBotSendMessageBody{}
 	return &this
-}
-
-// GetUserId returns the UserId field value if set, zero value otherwise.
-func (o *ChatAPIChatBotSendMessageBody) GetUserId() string {
-	if o == nil || IsNil(o.UserId) {
-		var ret string
-		return ret
-	}
-	return *o.UserId
-}
-
-// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatAPIChatBotSendMessageBody) GetUserIdOk() (*string, bool) {
-	if o == nil || IsNil(o.UserId) {
-		return nil, false
-	}
-	return o.UserId, true
-}
-
-// HasUserId returns a boolean if a field has been set.
-func (o *ChatAPIChatBotSendMessageBody) HasUserId() bool {
-	if o != nil && !IsNil(o.UserId) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserId gets a reference to the given string and assigns it to the UserId field.
-func (o *ChatAPIChatBotSendMessageBody) SetUserId(v string) {
-	o.UserId = &v
-}
-
-// GetTextMessage returns the TextMessage field value
-func (o *ChatAPIChatBotSendMessageBody) GetTextMessage() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.TextMessage
-}
-
-// GetTextMessageOk returns a tuple with the TextMessage field value
-// and a boolean to check if the value has been set.
-func (o *ChatAPIChatBotSendMessageBody) GetTextMessageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TextMessage, true
-}
-
-// SetTextMessage sets field value
-func (o *ChatAPIChatBotSendMessageBody) SetTextMessage(v string) {
-	o.TextMessage = v
-}
-
-// GetMediaToken returns the MediaToken field value if set, zero value otherwise.
-func (o *ChatAPIChatBotSendMessageBody) GetMediaToken() string {
-	if o == nil || IsNil(o.MediaToken) {
-		var ret string
-		return ret
-	}
-	return *o.MediaToken
-}
-
-// GetMediaTokenOk returns a tuple with the MediaToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatAPIChatBotSendMessageBody) GetMediaTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.MediaToken) {
-		return nil, false
-	}
-	return o.MediaToken, true
-}
-
-// HasMediaToken returns a boolean if a field has been set.
-func (o *ChatAPIChatBotSendMessageBody) HasMediaToken() bool {
-	if o != nil && !IsNil(o.MediaToken) {
-		return true
-	}
-
-	return false
-}
-
-// SetMediaToken gets a reference to the given string and assigns it to the MediaToken field.
-func (o *ChatAPIChatBotSendMessageBody) SetMediaToken(v string) {
-	o.MediaToken = &v
 }
 
 // GetButtons returns the Buttons field value if set, zero value otherwise.
@@ -170,6 +82,94 @@ func (o *ChatAPIChatBotSendMessageBody) SetButtons(v ChatapiChatButtonGrid) {
 	o.Buttons = &v
 }
 
+// GetMediaToken returns the MediaToken field value if set, zero value otherwise.
+func (o *ChatAPIChatBotSendMessageBody) GetMediaToken() string {
+	if o == nil || IsNil(o.MediaToken) {
+		var ret string
+		return ret
+	}
+	return *o.MediaToken
+}
+
+// GetMediaTokenOk returns a tuple with the MediaToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatAPIChatBotSendMessageBody) GetMediaTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.MediaToken) {
+		return nil, false
+	}
+	return o.MediaToken, true
+}
+
+// HasMediaToken returns a boolean if a field has been set.
+func (o *ChatAPIChatBotSendMessageBody) HasMediaToken() bool {
+	if o != nil && !IsNil(o.MediaToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetMediaToken gets a reference to the given string and assigns it to the MediaToken field.
+func (o *ChatAPIChatBotSendMessageBody) SetMediaToken(v string) {
+	o.MediaToken = &v
+}
+
+// GetTextMessage returns the TextMessage field value
+func (o *ChatAPIChatBotSendMessageBody) GetTextMessage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TextMessage
+}
+
+// GetTextMessageOk returns a tuple with the TextMessage field value
+// and a boolean to check if the value has been set.
+func (o *ChatAPIChatBotSendMessageBody) GetTextMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TextMessage, true
+}
+
+// SetTextMessage sets field value
+func (o *ChatAPIChatBotSendMessageBody) SetTextMessage(v string) {
+	o.TextMessage = v
+}
+
+// GetUserId returns the UserId field value if set, zero value otherwise.
+func (o *ChatAPIChatBotSendMessageBody) GetUserId() string {
+	if o == nil || IsNil(o.UserId) {
+		var ret string
+		return ret
+	}
+	return *o.UserId
+}
+
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatAPIChatBotSendMessageBody) GetUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UserId) {
+		return nil, false
+	}
+	return o.UserId, true
+}
+
+// HasUserId returns a boolean if a field has been set.
+func (o *ChatAPIChatBotSendMessageBody) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
+func (o *ChatAPIChatBotSendMessageBody) SetUserId(v string) {
+	o.UserId = &v
+}
+
 func (o ChatAPIChatBotSendMessageBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -180,15 +180,15 @@ func (o ChatAPIChatBotSendMessageBody) MarshalJSON() ([]byte, error) {
 
 func (o ChatAPIChatBotSendMessageBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.UserId) {
-		toSerialize["user_id"] = o.UserId
+	if !IsNil(o.Buttons) {
+		toSerialize["buttons"] = o.Buttons
 	}
-	toSerialize["text_message"] = o.TextMessage
 	if !IsNil(o.MediaToken) {
 		toSerialize["media_token"] = o.MediaToken
 	}
-	if !IsNil(o.Buttons) {
-		toSerialize["buttons"] = o.Buttons
+	toSerialize["text_message"] = o.TextMessage
+	if !IsNil(o.UserId) {
+		toSerialize["user_id"] = o.UserId
 	}
 	return toSerialize, nil
 }

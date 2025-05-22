@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PhoneNumbers** | Pointer to **[]string** | deprecated | [optional] 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
+**PhoneNumbers** | Pointer to **[]string** | deprecated | [optional] 
 **UserId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewFinderUserWithDefaults instantiates a new FinderUser object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetPhoneNumbers
-
-`func (o *FinderUser) GetPhoneNumbers() []string`
-
-GetPhoneNumbers returns the PhoneNumbers field if non-nil, zero value otherwise.
-
-### GetPhoneNumbersOk
-
-`func (o *FinderUser) GetPhoneNumbersOk() (*[]string, bool)`
-
-GetPhoneNumbersOk returns a tuple with the PhoneNumbers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPhoneNumbers
-
-`func (o *FinderUser) SetPhoneNumbers(v []string)`
-
-SetPhoneNumbers sets PhoneNumbers field to given value.
-
-### HasPhoneNumbers
-
-`func (o *FinderUser) HasPhoneNumbers() bool`
-
-HasPhoneNumbers returns a boolean if a field has been set.
 
 ### GetPhoneNumber
 
@@ -76,6 +51,31 @@ SetPhoneNumber sets PhoneNumber field to given value.
 `func (o *FinderUser) HasPhoneNumber() bool`
 
 HasPhoneNumber returns a boolean if a field has been set.
+
+### GetPhoneNumbers
+
+`func (o *FinderUser) GetPhoneNumbers() []string`
+
+GetPhoneNumbers returns the PhoneNumbers field if non-nil, zero value otherwise.
+
+### GetPhoneNumbersOk
+
+`func (o *FinderUser) GetPhoneNumbersOk() (*[]string, bool)`
+
+GetPhoneNumbersOk returns a tuple with the PhoneNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhoneNumbers
+
+`func (o *FinderUser) SetPhoneNumbers(v []string)`
+
+SetPhoneNumbers sets PhoneNumbers field to given value.
+
+### HasPhoneNumbers
+
+`func (o *FinderUser) HasPhoneNumbers() bool`
+
+HasPhoneNumbers returns a boolean if a field has been set.
 
 ### GetUserId
 

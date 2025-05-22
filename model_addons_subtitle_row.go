@@ -19,8 +19,8 @@ var _ MappedNullable = &AddonsSubtitleRow{}
 
 // AddonsSubtitleRow struct for AddonsSubtitleRow
 type AddonsSubtitleRow struct {
-	Text *string `json:"text,omitempty"`
 	HasDivider *bool `json:"has_divider,omitempty"`
+	Text *string `json:"text,omitempty"`
 }
 
 // NewAddonsSubtitleRow instantiates a new AddonsSubtitleRow object
@@ -38,38 +38,6 @@ func NewAddonsSubtitleRow() *AddonsSubtitleRow {
 func NewAddonsSubtitleRowWithDefaults() *AddonsSubtitleRow {
 	this := AddonsSubtitleRow{}
 	return &this
-}
-
-// GetText returns the Text field value if set, zero value otherwise.
-func (o *AddonsSubtitleRow) GetText() string {
-	if o == nil || IsNil(o.Text) {
-		var ret string
-		return ret
-	}
-	return *o.Text
-}
-
-// GetTextOk returns a tuple with the Text field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsSubtitleRow) GetTextOk() (*string, bool) {
-	if o == nil || IsNil(o.Text) {
-		return nil, false
-	}
-	return o.Text, true
-}
-
-// HasText returns a boolean if a field has been set.
-func (o *AddonsSubtitleRow) HasText() bool {
-	if o != nil && !IsNil(o.Text) {
-		return true
-	}
-
-	return false
-}
-
-// SetText gets a reference to the given string and assigns it to the Text field.
-func (o *AddonsSubtitleRow) SetText(v string) {
-	o.Text = &v
 }
 
 // GetHasDivider returns the HasDivider field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *AddonsSubtitleRow) SetHasDivider(v bool) {
 	o.HasDivider = &v
 }
 
+// GetText returns the Text field value if set, zero value otherwise.
+func (o *AddonsSubtitleRow) GetText() string {
+	if o == nil || IsNil(o.Text) {
+		var ret string
+		return ret
+	}
+	return *o.Text
+}
+
+// GetTextOk returns a tuple with the Text field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsSubtitleRow) GetTextOk() (*string, bool) {
+	if o == nil || IsNil(o.Text) {
+		return nil, false
+	}
+	return o.Text, true
+}
+
+// HasText returns a boolean if a field has been set.
+func (o *AddonsSubtitleRow) HasText() bool {
+	if o != nil && !IsNil(o.Text) {
+		return true
+	}
+
+	return false
+}
+
+// SetText gets a reference to the given string and assigns it to the Text field.
+func (o *AddonsSubtitleRow) SetText(v string) {
+	o.Text = &v
+}
+
 func (o AddonsSubtitleRow) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o AddonsSubtitleRow) MarshalJSON() ([]byte, error) {
 
 func (o AddonsSubtitleRow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Text) {
-		toSerialize["text"] = o.Text
-	}
 	if !IsNil(o.HasDivider) {
 		toSerialize["has_divider"] = o.HasDivider
+	}
+	if !IsNil(o.Text) {
+		toSerialize["text"] = o.Text
 	}
 	return toSerialize, nil
 }

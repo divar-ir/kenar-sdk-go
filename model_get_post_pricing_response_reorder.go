@@ -19,10 +19,10 @@ var _ MappedNullable = &GetPostPricingResponseReorder{}
 
 // GetPostPricingResponseReorder struct for GetPostPricingResponseReorder
 type GetPostPricingResponseReorder struct {
-	// The cost of reordering in rials
-	CostRials *string `json:"cost_rials,omitempty"`
 	// Indicates if the post can be reordered. If false, the reorder API will return an error
 	Available *bool `json:"available,omitempty"`
+	// The cost of reordering in rials
+	CostRials *string `json:"cost_rials,omitempty"`
 }
 
 // NewGetPostPricingResponseReorder instantiates a new GetPostPricingResponseReorder object
@@ -40,38 +40,6 @@ func NewGetPostPricingResponseReorder() *GetPostPricingResponseReorder {
 func NewGetPostPricingResponseReorderWithDefaults() *GetPostPricingResponseReorder {
 	this := GetPostPricingResponseReorder{}
 	return &this
-}
-
-// GetCostRials returns the CostRials field value if set, zero value otherwise.
-func (o *GetPostPricingResponseReorder) GetCostRials() string {
-	if o == nil || IsNil(o.CostRials) {
-		var ret string
-		return ret
-	}
-	return *o.CostRials
-}
-
-// GetCostRialsOk returns a tuple with the CostRials field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetPostPricingResponseReorder) GetCostRialsOk() (*string, bool) {
-	if o == nil || IsNil(o.CostRials) {
-		return nil, false
-	}
-	return o.CostRials, true
-}
-
-// HasCostRials returns a boolean if a field has been set.
-func (o *GetPostPricingResponseReorder) HasCostRials() bool {
-	if o != nil && !IsNil(o.CostRials) {
-		return true
-	}
-
-	return false
-}
-
-// SetCostRials gets a reference to the given string and assigns it to the CostRials field.
-func (o *GetPostPricingResponseReorder) SetCostRials(v string) {
-	o.CostRials = &v
 }
 
 // GetAvailable returns the Available field value if set, zero value otherwise.
@@ -106,6 +74,38 @@ func (o *GetPostPricingResponseReorder) SetAvailable(v bool) {
 	o.Available = &v
 }
 
+// GetCostRials returns the CostRials field value if set, zero value otherwise.
+func (o *GetPostPricingResponseReorder) GetCostRials() string {
+	if o == nil || IsNil(o.CostRials) {
+		var ret string
+		return ret
+	}
+	return *o.CostRials
+}
+
+// GetCostRialsOk returns a tuple with the CostRials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPostPricingResponseReorder) GetCostRialsOk() (*string, bool) {
+	if o == nil || IsNil(o.CostRials) {
+		return nil, false
+	}
+	return o.CostRials, true
+}
+
+// HasCostRials returns a boolean if a field has been set.
+func (o *GetPostPricingResponseReorder) HasCostRials() bool {
+	if o != nil && !IsNil(o.CostRials) {
+		return true
+	}
+
+	return false
+}
+
+// SetCostRials gets a reference to the given string and assigns it to the CostRials field.
+func (o *GetPostPricingResponseReorder) SetCostRials(v string) {
+	o.CostRials = &v
+}
+
 func (o GetPostPricingResponseReorder) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,11 +116,11 @@ func (o GetPostPricingResponseReorder) MarshalJSON() ([]byte, error) {
 
 func (o GetPostPricingResponseReorder) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CostRials) {
-		toSerialize["cost_rials"] = o.CostRials
-	}
 	if !IsNil(o.Available) {
 		toSerialize["available"] = o.Available
+	}
+	if !IsNil(o.CostRials) {
+		toSerialize["cost_rials"] = o.CostRials
 	}
 	return toSerialize, nil
 }

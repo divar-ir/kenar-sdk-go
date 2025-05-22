@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**GetDynamicAction** | Pointer to [**AddonsGetDynamicAction**](AddonsGetDynamicAction.md) |  | [optional] 
 **OpenDirectLink** | Pointer to **string** | An action to send user to your URL directly with just a resource id (if applicable) | [optional] 
 **OpenServerLink** | Pointer to [**AddonsOpenServerLink**](AddonsOpenServerLink.md) |  | [optional] 
-**GetDynamicAction** | Pointer to [**AddonsGetDynamicAction**](AddonsGetDynamicAction.md) |  | [optional] 
 
 ## Methods
 
@@ -26,6 +26,31 @@ will change when the set of required properties is changed
 NewAddonsActionWithDefaults instantiates a new AddonsAction object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetGetDynamicAction
+
+`func (o *AddonsAction) GetGetDynamicAction() AddonsGetDynamicAction`
+
+GetGetDynamicAction returns the GetDynamicAction field if non-nil, zero value otherwise.
+
+### GetGetDynamicActionOk
+
+`func (o *AddonsAction) GetGetDynamicActionOk() (*AddonsGetDynamicAction, bool)`
+
+GetGetDynamicActionOk returns a tuple with the GetDynamicAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGetDynamicAction
+
+`func (o *AddonsAction) SetGetDynamicAction(v AddonsGetDynamicAction)`
+
+SetGetDynamicAction sets GetDynamicAction field to given value.
+
+### HasGetDynamicAction
+
+`func (o *AddonsAction) HasGetDynamicAction() bool`
+
+HasGetDynamicAction returns a boolean if a field has been set.
 
 ### GetOpenDirectLink
 
@@ -76,31 +101,6 @@ SetOpenServerLink sets OpenServerLink field to given value.
 `func (o *AddonsAction) HasOpenServerLink() bool`
 
 HasOpenServerLink returns a boolean if a field has been set.
-
-### GetGetDynamicAction
-
-`func (o *AddonsAction) GetGetDynamicAction() AddonsGetDynamicAction`
-
-GetGetDynamicAction returns the GetDynamicAction field if non-nil, zero value otherwise.
-
-### GetGetDynamicActionOk
-
-`func (o *AddonsAction) GetGetDynamicActionOk() (*AddonsGetDynamicAction, bool)`
-
-GetGetDynamicActionOk returns a tuple with the GetDynamicAction field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGetDynamicAction
-
-`func (o *AddonsAction) SetGetDynamicAction(v AddonsGetDynamicAction)`
-
-SetGetDynamicAction sets GetDynamicAction field to given value.
-
-### HasGetDynamicAction
-
-`func (o *AddonsAction) HasGetDynamicAction() bool`
-
-HasGetDynamicAction returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

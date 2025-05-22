@@ -19,12 +19,12 @@ var _ MappedNullable = &AddonsCreateUserAddonV2Body{}
 
 // AddonsCreateUserAddonV2Body struct for AddonsCreateUserAddonV2Body
 type AddonsCreateUserAddonV2Body struct {
-	Widgets []AddonsWidget `json:"widgets,omitempty"`
-	Semantic *map[string]string `json:"semantic,omitempty"`
-	Phone *string `json:"phone,omitempty"`
 	Categories []string `json:"categories,omitempty"`
-	TicketUuid *string `json:"ticket_uuid,omitempty"`
 	Cost *int32 `json:"cost,omitempty"`
+	Phone *string `json:"phone,omitempty"`
+	Semantic *map[string]string `json:"semantic,omitempty"`
+	TicketUuid *string `json:"ticket_uuid,omitempty"`
+	Widgets []AddonsWidget `json:"widgets,omitempty"`
 }
 
 // NewAddonsCreateUserAddonV2Body instantiates a new AddonsCreateUserAddonV2Body object
@@ -42,102 +42,6 @@ func NewAddonsCreateUserAddonV2Body() *AddonsCreateUserAddonV2Body {
 func NewAddonsCreateUserAddonV2BodyWithDefaults() *AddonsCreateUserAddonV2Body {
 	this := AddonsCreateUserAddonV2Body{}
 	return &this
-}
-
-// GetWidgets returns the Widgets field value if set, zero value otherwise.
-func (o *AddonsCreateUserAddonV2Body) GetWidgets() []AddonsWidget {
-	if o == nil || IsNil(o.Widgets) {
-		var ret []AddonsWidget
-		return ret
-	}
-	return o.Widgets
-}
-
-// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreateUserAddonV2Body) GetWidgetsOk() ([]AddonsWidget, bool) {
-	if o == nil || IsNil(o.Widgets) {
-		return nil, false
-	}
-	return o.Widgets, true
-}
-
-// HasWidgets returns a boolean if a field has been set.
-func (o *AddonsCreateUserAddonV2Body) HasWidgets() bool {
-	if o != nil && !IsNil(o.Widgets) {
-		return true
-	}
-
-	return false
-}
-
-// SetWidgets gets a reference to the given []AddonsWidget and assigns it to the Widgets field.
-func (o *AddonsCreateUserAddonV2Body) SetWidgets(v []AddonsWidget) {
-	o.Widgets = v
-}
-
-// GetSemantic returns the Semantic field value if set, zero value otherwise.
-func (o *AddonsCreateUserAddonV2Body) GetSemantic() map[string]string {
-	if o == nil || IsNil(o.Semantic) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Semantic
-}
-
-// GetSemanticOk returns a tuple with the Semantic field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreateUserAddonV2Body) GetSemanticOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.Semantic) {
-		return nil, false
-	}
-	return o.Semantic, true
-}
-
-// HasSemantic returns a boolean if a field has been set.
-func (o *AddonsCreateUserAddonV2Body) HasSemantic() bool {
-	if o != nil && !IsNil(o.Semantic) {
-		return true
-	}
-
-	return false
-}
-
-// SetSemantic gets a reference to the given map[string]string and assigns it to the Semantic field.
-func (o *AddonsCreateUserAddonV2Body) SetSemantic(v map[string]string) {
-	o.Semantic = &v
-}
-
-// GetPhone returns the Phone field value if set, zero value otherwise.
-func (o *AddonsCreateUserAddonV2Body) GetPhone() string {
-	if o == nil || IsNil(o.Phone) {
-		var ret string
-		return ret
-	}
-	return *o.Phone
-}
-
-// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreateUserAddonV2Body) GetPhoneOk() (*string, bool) {
-	if o == nil || IsNil(o.Phone) {
-		return nil, false
-	}
-	return o.Phone, true
-}
-
-// HasPhone returns a boolean if a field has been set.
-func (o *AddonsCreateUserAddonV2Body) HasPhone() bool {
-	if o != nil && !IsNil(o.Phone) {
-		return true
-	}
-
-	return false
-}
-
-// SetPhone gets a reference to the given string and assigns it to the Phone field.
-func (o *AddonsCreateUserAddonV2Body) SetPhone(v string) {
-	o.Phone = &v
 }
 
 // GetCategories returns the Categories field value if set, zero value otherwise.
@@ -172,38 +76,6 @@ func (o *AddonsCreateUserAddonV2Body) SetCategories(v []string) {
 	o.Categories = v
 }
 
-// GetTicketUuid returns the TicketUuid field value if set, zero value otherwise.
-func (o *AddonsCreateUserAddonV2Body) GetTicketUuid() string {
-	if o == nil || IsNil(o.TicketUuid) {
-		var ret string
-		return ret
-	}
-	return *o.TicketUuid
-}
-
-// GetTicketUuidOk returns a tuple with the TicketUuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreateUserAddonV2Body) GetTicketUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.TicketUuid) {
-		return nil, false
-	}
-	return o.TicketUuid, true
-}
-
-// HasTicketUuid returns a boolean if a field has been set.
-func (o *AddonsCreateUserAddonV2Body) HasTicketUuid() bool {
-	if o != nil && !IsNil(o.TicketUuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetTicketUuid gets a reference to the given string and assigns it to the TicketUuid field.
-func (o *AddonsCreateUserAddonV2Body) SetTicketUuid(v string) {
-	o.TicketUuid = &v
-}
-
 // GetCost returns the Cost field value if set, zero value otherwise.
 func (o *AddonsCreateUserAddonV2Body) GetCost() int32 {
 	if o == nil || IsNil(o.Cost) {
@@ -236,6 +108,134 @@ func (o *AddonsCreateUserAddonV2Body) SetCost(v int32) {
 	o.Cost = &v
 }
 
+// GetPhone returns the Phone field value if set, zero value otherwise.
+func (o *AddonsCreateUserAddonV2Body) GetPhone() string {
+	if o == nil || IsNil(o.Phone) {
+		var ret string
+		return ret
+	}
+	return *o.Phone
+}
+
+// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreateUserAddonV2Body) GetPhoneOk() (*string, bool) {
+	if o == nil || IsNil(o.Phone) {
+		return nil, false
+	}
+	return o.Phone, true
+}
+
+// HasPhone returns a boolean if a field has been set.
+func (o *AddonsCreateUserAddonV2Body) HasPhone() bool {
+	if o != nil && !IsNil(o.Phone) {
+		return true
+	}
+
+	return false
+}
+
+// SetPhone gets a reference to the given string and assigns it to the Phone field.
+func (o *AddonsCreateUserAddonV2Body) SetPhone(v string) {
+	o.Phone = &v
+}
+
+// GetSemantic returns the Semantic field value if set, zero value otherwise.
+func (o *AddonsCreateUserAddonV2Body) GetSemantic() map[string]string {
+	if o == nil || IsNil(o.Semantic) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Semantic
+}
+
+// GetSemanticOk returns a tuple with the Semantic field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreateUserAddonV2Body) GetSemanticOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.Semantic) {
+		return nil, false
+	}
+	return o.Semantic, true
+}
+
+// HasSemantic returns a boolean if a field has been set.
+func (o *AddonsCreateUserAddonV2Body) HasSemantic() bool {
+	if o != nil && !IsNil(o.Semantic) {
+		return true
+	}
+
+	return false
+}
+
+// SetSemantic gets a reference to the given map[string]string and assigns it to the Semantic field.
+func (o *AddonsCreateUserAddonV2Body) SetSemantic(v map[string]string) {
+	o.Semantic = &v
+}
+
+// GetTicketUuid returns the TicketUuid field value if set, zero value otherwise.
+func (o *AddonsCreateUserAddonV2Body) GetTicketUuid() string {
+	if o == nil || IsNil(o.TicketUuid) {
+		var ret string
+		return ret
+	}
+	return *o.TicketUuid
+}
+
+// GetTicketUuidOk returns a tuple with the TicketUuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreateUserAddonV2Body) GetTicketUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.TicketUuid) {
+		return nil, false
+	}
+	return o.TicketUuid, true
+}
+
+// HasTicketUuid returns a boolean if a field has been set.
+func (o *AddonsCreateUserAddonV2Body) HasTicketUuid() bool {
+	if o != nil && !IsNil(o.TicketUuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetTicketUuid gets a reference to the given string and assigns it to the TicketUuid field.
+func (o *AddonsCreateUserAddonV2Body) SetTicketUuid(v string) {
+	o.TicketUuid = &v
+}
+
+// GetWidgets returns the Widgets field value if set, zero value otherwise.
+func (o *AddonsCreateUserAddonV2Body) GetWidgets() []AddonsWidget {
+	if o == nil || IsNil(o.Widgets) {
+		var ret []AddonsWidget
+		return ret
+	}
+	return o.Widgets
+}
+
+// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreateUserAddonV2Body) GetWidgetsOk() ([]AddonsWidget, bool) {
+	if o == nil || IsNil(o.Widgets) {
+		return nil, false
+	}
+	return o.Widgets, true
+}
+
+// HasWidgets returns a boolean if a field has been set.
+func (o *AddonsCreateUserAddonV2Body) HasWidgets() bool {
+	if o != nil && !IsNil(o.Widgets) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidgets gets a reference to the given []AddonsWidget and assigns it to the Widgets field.
+func (o *AddonsCreateUserAddonV2Body) SetWidgets(v []AddonsWidget) {
+	o.Widgets = v
+}
+
 func (o AddonsCreateUserAddonV2Body) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -246,23 +246,23 @@ func (o AddonsCreateUserAddonV2Body) MarshalJSON() ([]byte, error) {
 
 func (o AddonsCreateUserAddonV2Body) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Widgets) {
-		toSerialize["widgets"] = o.Widgets
+	if !IsNil(o.Categories) {
+		toSerialize["categories"] = o.Categories
 	}
-	if !IsNil(o.Semantic) {
-		toSerialize["semantic"] = o.Semantic
+	if !IsNil(o.Cost) {
+		toSerialize["cost"] = o.Cost
 	}
 	if !IsNil(o.Phone) {
 		toSerialize["phone"] = o.Phone
 	}
-	if !IsNil(o.Categories) {
-		toSerialize["categories"] = o.Categories
+	if !IsNil(o.Semantic) {
+		toSerialize["semantic"] = o.Semantic
 	}
 	if !IsNil(o.TicketUuid) {
 		toSerialize["ticket_uuid"] = o.TicketUuid
 	}
-	if !IsNil(o.Cost) {
-		toSerialize["cost"] = o.Cost
+	if !IsNil(o.Widgets) {
+		toSerialize["widgets"] = o.Widgets
 	}
 	return toSerialize, nil
 }

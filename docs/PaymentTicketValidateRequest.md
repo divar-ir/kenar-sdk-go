@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TicketUuid** | Pointer to **string** |  | [optional] 
 **PhoneNumber** | Pointer to **string** | Deprecated. Use divar_user_id. | [optional] 
-**UserId** | Pointer to **string** |  | [optional] 
 **ServiceCost** | Pointer to **int32** |  | [optional] 
+**TicketUuid** | Pointer to **string** |  | [optional] 
+**UserId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewPaymentTicketValidateRequestWithDefaults instantiates a new PaymentTicketValidateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetTicketUuid
-
-`func (o *PaymentTicketValidateRequest) GetTicketUuid() string`
-
-GetTicketUuid returns the TicketUuid field if non-nil, zero value otherwise.
-
-### GetTicketUuidOk
-
-`func (o *PaymentTicketValidateRequest) GetTicketUuidOk() (*string, bool)`
-
-GetTicketUuidOk returns a tuple with the TicketUuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTicketUuid
-
-`func (o *PaymentTicketValidateRequest) SetTicketUuid(v string)`
-
-SetTicketUuid sets TicketUuid field to given value.
-
-### HasTicketUuid
-
-`func (o *PaymentTicketValidateRequest) HasTicketUuid() bool`
-
-HasTicketUuid returns a boolean if a field has been set.
 
 ### GetPhoneNumber
 
@@ -78,31 +53,6 @@ SetPhoneNumber sets PhoneNumber field to given value.
 
 HasPhoneNumber returns a boolean if a field has been set.
 
-### GetUserId
-
-`func (o *PaymentTicketValidateRequest) GetUserId() string`
-
-GetUserId returns the UserId field if non-nil, zero value otherwise.
-
-### GetUserIdOk
-
-`func (o *PaymentTicketValidateRequest) GetUserIdOk() (*string, bool)`
-
-GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserId
-
-`func (o *PaymentTicketValidateRequest) SetUserId(v string)`
-
-SetUserId sets UserId field to given value.
-
-### HasUserId
-
-`func (o *PaymentTicketValidateRequest) HasUserId() bool`
-
-HasUserId returns a boolean if a field has been set.
-
 ### GetServiceCost
 
 `func (o *PaymentTicketValidateRequest) GetServiceCost() int32`
@@ -127,6 +77,56 @@ SetServiceCost sets ServiceCost field to given value.
 `func (o *PaymentTicketValidateRequest) HasServiceCost() bool`
 
 HasServiceCost returns a boolean if a field has been set.
+
+### GetTicketUuid
+
+`func (o *PaymentTicketValidateRequest) GetTicketUuid() string`
+
+GetTicketUuid returns the TicketUuid field if non-nil, zero value otherwise.
+
+### GetTicketUuidOk
+
+`func (o *PaymentTicketValidateRequest) GetTicketUuidOk() (*string, bool)`
+
+GetTicketUuidOk returns a tuple with the TicketUuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTicketUuid
+
+`func (o *PaymentTicketValidateRequest) SetTicketUuid(v string)`
+
+SetTicketUuid sets TicketUuid field to given value.
+
+### HasTicketUuid
+
+`func (o *PaymentTicketValidateRequest) HasTicketUuid() bool`
+
+HasTicketUuid returns a boolean if a field has been set.
+
+### GetUserId
+
+`func (o *PaymentTicketValidateRequest) GetUserId() string`
+
+GetUserId returns the UserId field if non-nil, zero value otherwise.
+
+### GetUserIdOk
+
+`func (o *PaymentTicketValidateRequest) GetUserIdOk() (*string, bool)`
+
+GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserId
+
+`func (o *PaymentTicketValidateRequest) SetUserId(v string)`
+
+SetUserId sets UserId field to given value.
+
+### HasUserId
+
+`func (o *PaymentTicketValidateRequest) HasUserId() bool`
+
+HasUserId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

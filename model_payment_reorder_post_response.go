@@ -19,10 +19,10 @@ var _ MappedNullable = &PaymentReorderPostResponse{}
 
 // PaymentReorderPostResponse struct for PaymentReorderPostResponse
 type PaymentReorderPostResponse struct {
-	// Same uuid when creating transaction
-	Id *string `json:"id,omitempty"`
 	// The cost of the transaction in rials for your application
 	CostRials *string `json:"cost_rials,omitempty"`
+	// Same uuid when creating transaction
+	Id *string `json:"id,omitempty"`
 }
 
 // NewPaymentReorderPostResponse instantiates a new PaymentReorderPostResponse object
@@ -40,38 +40,6 @@ func NewPaymentReorderPostResponse() *PaymentReorderPostResponse {
 func NewPaymentReorderPostResponseWithDefaults() *PaymentReorderPostResponse {
 	this := PaymentReorderPostResponse{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *PaymentReorderPostResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PaymentReorderPostResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *PaymentReorderPostResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *PaymentReorderPostResponse) SetId(v string) {
-	o.Id = &v
 }
 
 // GetCostRials returns the CostRials field value if set, zero value otherwise.
@@ -106,6 +74,38 @@ func (o *PaymentReorderPostResponse) SetCostRials(v string) {
 	o.CostRials = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *PaymentReorderPostResponse) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentReorderPostResponse) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *PaymentReorderPostResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *PaymentReorderPostResponse) SetId(v string) {
+	o.Id = &v
+}
+
 func (o PaymentReorderPostResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,11 +116,11 @@ func (o PaymentReorderPostResponse) MarshalJSON() ([]byte, error) {
 
 func (o PaymentReorderPostResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !IsNil(o.CostRials) {
 		toSerialize["cost_rials"] = o.CostRials
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	return toSerialize, nil
 }

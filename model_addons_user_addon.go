@@ -19,15 +19,15 @@ var _ MappedNullable = &AddonsUserAddon{}
 
 // AddonsUserAddon struct for AddonsUserAddon
 type AddonsUserAddon struct {
+	DivarUserId *string `json:"divar_user_id,omitempty"`
+	Filters *AddonsUserAddonFilters `json:"filters,omitempty"`
 	MetaData *AddonsAddonMetaData `json:"meta_data,omitempty"`
 	Phone *string `json:"phone,omitempty"`
-	DivarUserId *string `json:"divar_user_id,omitempty"`
-	Widgets map[string]interface{} `json:"widgets,omitempty"`
 	Semantic *map[string]string `json:"semantic,omitempty"`
 	SemanticData *AddonsAddonSemantic `json:"semantic_data,omitempty"`
 	SensitiveSemantic *map[string]string `json:"sensitive_semantic,omitempty"`
+	Widgets map[string]interface{} `json:"widgets,omitempty"`
 	WidgetsSemantic map[string]interface{} `json:"widgets_semantic,omitempty"`
-	Filters *AddonsUserAddonFilters `json:"filters,omitempty"`
 }
 
 // NewAddonsUserAddon instantiates a new AddonsUserAddon object
@@ -45,6 +45,70 @@ func NewAddonsUserAddon() *AddonsUserAddon {
 func NewAddonsUserAddonWithDefaults() *AddonsUserAddon {
 	this := AddonsUserAddon{}
 	return &this
+}
+
+// GetDivarUserId returns the DivarUserId field value if set, zero value otherwise.
+func (o *AddonsUserAddon) GetDivarUserId() string {
+	if o == nil || IsNil(o.DivarUserId) {
+		var ret string
+		return ret
+	}
+	return *o.DivarUserId
+}
+
+// GetDivarUserIdOk returns a tuple with the DivarUserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsUserAddon) GetDivarUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DivarUserId) {
+		return nil, false
+	}
+	return o.DivarUserId, true
+}
+
+// HasDivarUserId returns a boolean if a field has been set.
+func (o *AddonsUserAddon) HasDivarUserId() bool {
+	if o != nil && !IsNil(o.DivarUserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDivarUserId gets a reference to the given string and assigns it to the DivarUserId field.
+func (o *AddonsUserAddon) SetDivarUserId(v string) {
+	o.DivarUserId = &v
+}
+
+// GetFilters returns the Filters field value if set, zero value otherwise.
+func (o *AddonsUserAddon) GetFilters() AddonsUserAddonFilters {
+	if o == nil || IsNil(o.Filters) {
+		var ret AddonsUserAddonFilters
+		return ret
+	}
+	return *o.Filters
+}
+
+// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsUserAddon) GetFiltersOk() (*AddonsUserAddonFilters, bool) {
+	if o == nil || IsNil(o.Filters) {
+		return nil, false
+	}
+	return o.Filters, true
+}
+
+// HasFilters returns a boolean if a field has been set.
+func (o *AddonsUserAddon) HasFilters() bool {
+	if o != nil && !IsNil(o.Filters) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilters gets a reference to the given AddonsUserAddonFilters and assigns it to the Filters field.
+func (o *AddonsUserAddon) SetFilters(v AddonsUserAddonFilters) {
+	o.Filters = &v
 }
 
 // GetMetaData returns the MetaData field value if set, zero value otherwise.
@@ -109,70 +173,6 @@ func (o *AddonsUserAddon) HasPhone() bool {
 // SetPhone gets a reference to the given string and assigns it to the Phone field.
 func (o *AddonsUserAddon) SetPhone(v string) {
 	o.Phone = &v
-}
-
-// GetDivarUserId returns the DivarUserId field value if set, zero value otherwise.
-func (o *AddonsUserAddon) GetDivarUserId() string {
-	if o == nil || IsNil(o.DivarUserId) {
-		var ret string
-		return ret
-	}
-	return *o.DivarUserId
-}
-
-// GetDivarUserIdOk returns a tuple with the DivarUserId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsUserAddon) GetDivarUserIdOk() (*string, bool) {
-	if o == nil || IsNil(o.DivarUserId) {
-		return nil, false
-	}
-	return o.DivarUserId, true
-}
-
-// HasDivarUserId returns a boolean if a field has been set.
-func (o *AddonsUserAddon) HasDivarUserId() bool {
-	if o != nil && !IsNil(o.DivarUserId) {
-		return true
-	}
-
-	return false
-}
-
-// SetDivarUserId gets a reference to the given string and assigns it to the DivarUserId field.
-func (o *AddonsUserAddon) SetDivarUserId(v string) {
-	o.DivarUserId = &v
-}
-
-// GetWidgets returns the Widgets field value if set, zero value otherwise.
-func (o *AddonsUserAddon) GetWidgets() map[string]interface{} {
-	if o == nil || IsNil(o.Widgets) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Widgets
-}
-
-// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsUserAddon) GetWidgetsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Widgets) {
-		return map[string]interface{}{}, false
-	}
-	return o.Widgets, true
-}
-
-// HasWidgets returns a boolean if a field has been set.
-func (o *AddonsUserAddon) HasWidgets() bool {
-	if o != nil && !IsNil(o.Widgets) {
-		return true
-	}
-
-	return false
-}
-
-// SetWidgets gets a reference to the given map[string]interface{} and assigns it to the Widgets field.
-func (o *AddonsUserAddon) SetWidgets(v map[string]interface{}) {
-	o.Widgets = v
 }
 
 // GetSemantic returns the Semantic field value if set, zero value otherwise.
@@ -271,6 +271,38 @@ func (o *AddonsUserAddon) SetSensitiveSemantic(v map[string]string) {
 	o.SensitiveSemantic = &v
 }
 
+// GetWidgets returns the Widgets field value if set, zero value otherwise.
+func (o *AddonsUserAddon) GetWidgets() map[string]interface{} {
+	if o == nil || IsNil(o.Widgets) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Widgets
+}
+
+// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsUserAddon) GetWidgetsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Widgets) {
+		return map[string]interface{}{}, false
+	}
+	return o.Widgets, true
+}
+
+// HasWidgets returns a boolean if a field has been set.
+func (o *AddonsUserAddon) HasWidgets() bool {
+	if o != nil && !IsNil(o.Widgets) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidgets gets a reference to the given map[string]interface{} and assigns it to the Widgets field.
+func (o *AddonsUserAddon) SetWidgets(v map[string]interface{}) {
+	o.Widgets = v
+}
+
 // GetWidgetsSemantic returns the WidgetsSemantic field value if set, zero value otherwise.
 func (o *AddonsUserAddon) GetWidgetsSemantic() map[string]interface{} {
 	if o == nil || IsNil(o.WidgetsSemantic) {
@@ -303,38 +335,6 @@ func (o *AddonsUserAddon) SetWidgetsSemantic(v map[string]interface{}) {
 	o.WidgetsSemantic = v
 }
 
-// GetFilters returns the Filters field value if set, zero value otherwise.
-func (o *AddonsUserAddon) GetFilters() AddonsUserAddonFilters {
-	if o == nil || IsNil(o.Filters) {
-		var ret AddonsUserAddonFilters
-		return ret
-	}
-	return *o.Filters
-}
-
-// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsUserAddon) GetFiltersOk() (*AddonsUserAddonFilters, bool) {
-	if o == nil || IsNil(o.Filters) {
-		return nil, false
-	}
-	return o.Filters, true
-}
-
-// HasFilters returns a boolean if a field has been set.
-func (o *AddonsUserAddon) HasFilters() bool {
-	if o != nil && !IsNil(o.Filters) {
-		return true
-	}
-
-	return false
-}
-
-// SetFilters gets a reference to the given AddonsUserAddonFilters and assigns it to the Filters field.
-func (o *AddonsUserAddon) SetFilters(v AddonsUserAddonFilters) {
-	o.Filters = &v
-}
-
 func (o AddonsUserAddon) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -345,17 +345,17 @@ func (o AddonsUserAddon) MarshalJSON() ([]byte, error) {
 
 func (o AddonsUserAddon) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DivarUserId) {
+		toSerialize["divar_user_id"] = o.DivarUserId
+	}
+	if !IsNil(o.Filters) {
+		toSerialize["filters"] = o.Filters
+	}
 	if !IsNil(o.MetaData) {
 		toSerialize["meta_data"] = o.MetaData
 	}
 	if !IsNil(o.Phone) {
 		toSerialize["phone"] = o.Phone
-	}
-	if !IsNil(o.DivarUserId) {
-		toSerialize["divar_user_id"] = o.DivarUserId
-	}
-	if !IsNil(o.Widgets) {
-		toSerialize["widgets"] = o.Widgets
 	}
 	if !IsNil(o.Semantic) {
 		toSerialize["semantic"] = o.Semantic
@@ -366,11 +366,11 @@ func (o AddonsUserAddon) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SensitiveSemantic) {
 		toSerialize["sensitive_semantic"] = o.SensitiveSemantic
 	}
+	if !IsNil(o.Widgets) {
+		toSerialize["widgets"] = o.Widgets
+	}
 	if !IsNil(o.WidgetsSemantic) {
 		toSerialize["widgets_semantic"] = o.WidgetsSemantic
-	}
-	if !IsNil(o.Filters) {
-		toSerialize["filters"] = o.Filters
 	}
 	return toSerialize, nil
 }

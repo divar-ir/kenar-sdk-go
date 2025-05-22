@@ -19,8 +19,8 @@ var _ MappedNullable = &GetServiceTypesResponseServiceTypeData{}
 
 // GetServiceTypesResponseServiceTypeData struct for GetServiceTypesResponseServiceTypeData
 type GetServiceTypesResponseServiceTypeData struct {
-	Slug *AppsServiceType `json:"slug,omitempty"`
 	Display *string `json:"display,omitempty"`
+	Slug *AppsServiceType `json:"slug,omitempty"`
 }
 
 // NewGetServiceTypesResponseServiceTypeData instantiates a new GetServiceTypesResponseServiceTypeData object
@@ -38,38 +38,6 @@ func NewGetServiceTypesResponseServiceTypeData() *GetServiceTypesResponseService
 func NewGetServiceTypesResponseServiceTypeDataWithDefaults() *GetServiceTypesResponseServiceTypeData {
 	this := GetServiceTypesResponseServiceTypeData{}
 	return &this
-}
-
-// GetSlug returns the Slug field value if set, zero value otherwise.
-func (o *GetServiceTypesResponseServiceTypeData) GetSlug() AppsServiceType {
-	if o == nil || IsNil(o.Slug) {
-		var ret AppsServiceType
-		return ret
-	}
-	return *o.Slug
-}
-
-// GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetServiceTypesResponseServiceTypeData) GetSlugOk() (*AppsServiceType, bool) {
-	if o == nil || IsNil(o.Slug) {
-		return nil, false
-	}
-	return o.Slug, true
-}
-
-// HasSlug returns a boolean if a field has been set.
-func (o *GetServiceTypesResponseServiceTypeData) HasSlug() bool {
-	if o != nil && !IsNil(o.Slug) {
-		return true
-	}
-
-	return false
-}
-
-// SetSlug gets a reference to the given AppsServiceType and assigns it to the Slug field.
-func (o *GetServiceTypesResponseServiceTypeData) SetSlug(v AppsServiceType) {
-	o.Slug = &v
 }
 
 // GetDisplay returns the Display field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *GetServiceTypesResponseServiceTypeData) SetDisplay(v string) {
 	o.Display = &v
 }
 
+// GetSlug returns the Slug field value if set, zero value otherwise.
+func (o *GetServiceTypesResponseServiceTypeData) GetSlug() AppsServiceType {
+	if o == nil || IsNil(o.Slug) {
+		var ret AppsServiceType
+		return ret
+	}
+	return *o.Slug
+}
+
+// GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetServiceTypesResponseServiceTypeData) GetSlugOk() (*AppsServiceType, bool) {
+	if o == nil || IsNil(o.Slug) {
+		return nil, false
+	}
+	return o.Slug, true
+}
+
+// HasSlug returns a boolean if a field has been set.
+func (o *GetServiceTypesResponseServiceTypeData) HasSlug() bool {
+	if o != nil && !IsNil(o.Slug) {
+		return true
+	}
+
+	return false
+}
+
+// SetSlug gets a reference to the given AppsServiceType and assigns it to the Slug field.
+func (o *GetServiceTypesResponseServiceTypeData) SetSlug(v AppsServiceType) {
+	o.Slug = &v
+}
+
 func (o GetServiceTypesResponseServiceTypeData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o GetServiceTypesResponseServiceTypeData) MarshalJSON() ([]byte, error) {
 
 func (o GetServiceTypesResponseServiceTypeData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Slug) {
-		toSerialize["slug"] = o.Slug
-	}
 	if !IsNil(o.Display) {
 		toSerialize["display"] = o.Display
+	}
+	if !IsNil(o.Slug) {
+		toSerialize["slug"] = o.Slug
 	}
 	return toSerialize, nil
 }

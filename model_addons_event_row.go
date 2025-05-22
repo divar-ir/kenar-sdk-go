@@ -19,12 +19,12 @@ var _ MappedNullable = &AddonsEventRow{}
 
 // AddonsEventRow struct for AddonsEventRow
 type AddonsEventRow struct {
-	Title *string `json:"title,omitempty"`
-	Subtitle *string `json:"subtitle,omitempty"`
-	Label *string `json:"label,omitempty"`
-	ImageId *string `json:"image_id,omitempty"`
 	HasDivider *bool `json:"has_divider,omitempty"`
 	IconName *DivarIconsIconName `json:"icon_name,omitempty"`
+	ImageId *string `json:"image_id,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Subtitle *string `json:"subtitle,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewAddonsEventRow instantiates a new AddonsEventRow object
@@ -42,134 +42,6 @@ func NewAddonsEventRow() *AddonsEventRow {
 func NewAddonsEventRowWithDefaults() *AddonsEventRow {
 	this := AddonsEventRow{}
 	return &this
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *AddonsEventRow) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsEventRow) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *AddonsEventRow) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *AddonsEventRow) SetTitle(v string) {
-	o.Title = &v
-}
-
-// GetSubtitle returns the Subtitle field value if set, zero value otherwise.
-func (o *AddonsEventRow) GetSubtitle() string {
-	if o == nil || IsNil(o.Subtitle) {
-		var ret string
-		return ret
-	}
-	return *o.Subtitle
-}
-
-// GetSubtitleOk returns a tuple with the Subtitle field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsEventRow) GetSubtitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Subtitle) {
-		return nil, false
-	}
-	return o.Subtitle, true
-}
-
-// HasSubtitle returns a boolean if a field has been set.
-func (o *AddonsEventRow) HasSubtitle() bool {
-	if o != nil && !IsNil(o.Subtitle) {
-		return true
-	}
-
-	return false
-}
-
-// SetSubtitle gets a reference to the given string and assigns it to the Subtitle field.
-func (o *AddonsEventRow) SetSubtitle(v string) {
-	o.Subtitle = &v
-}
-
-// GetLabel returns the Label field value if set, zero value otherwise.
-func (o *AddonsEventRow) GetLabel() string {
-	if o == nil || IsNil(o.Label) {
-		var ret string
-		return ret
-	}
-	return *o.Label
-}
-
-// GetLabelOk returns a tuple with the Label field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsEventRow) GetLabelOk() (*string, bool) {
-	if o == nil || IsNil(o.Label) {
-		return nil, false
-	}
-	return o.Label, true
-}
-
-// HasLabel returns a boolean if a field has been set.
-func (o *AddonsEventRow) HasLabel() bool {
-	if o != nil && !IsNil(o.Label) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabel gets a reference to the given string and assigns it to the Label field.
-func (o *AddonsEventRow) SetLabel(v string) {
-	o.Label = &v
-}
-
-// GetImageId returns the ImageId field value if set, zero value otherwise.
-func (o *AddonsEventRow) GetImageId() string {
-	if o == nil || IsNil(o.ImageId) {
-		var ret string
-		return ret
-	}
-	return *o.ImageId
-}
-
-// GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsEventRow) GetImageIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageId) {
-		return nil, false
-	}
-	return o.ImageId, true
-}
-
-// HasImageId returns a boolean if a field has been set.
-func (o *AddonsEventRow) HasImageId() bool {
-	if o != nil && !IsNil(o.ImageId) {
-		return true
-	}
-
-	return false
-}
-
-// SetImageId gets a reference to the given string and assigns it to the ImageId field.
-func (o *AddonsEventRow) SetImageId(v string) {
-	o.ImageId = &v
 }
 
 // GetHasDivider returns the HasDivider field value if set, zero value otherwise.
@@ -236,6 +108,134 @@ func (o *AddonsEventRow) SetIconName(v DivarIconsIconName) {
 	o.IconName = &v
 }
 
+// GetImageId returns the ImageId field value if set, zero value otherwise.
+func (o *AddonsEventRow) GetImageId() string {
+	if o == nil || IsNil(o.ImageId) {
+		var ret string
+		return ret
+	}
+	return *o.ImageId
+}
+
+// GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsEventRow) GetImageIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ImageId) {
+		return nil, false
+	}
+	return o.ImageId, true
+}
+
+// HasImageId returns a boolean if a field has been set.
+func (o *AddonsEventRow) HasImageId() bool {
+	if o != nil && !IsNil(o.ImageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetImageId gets a reference to the given string and assigns it to the ImageId field.
+func (o *AddonsEventRow) SetImageId(v string) {
+	o.ImageId = &v
+}
+
+// GetLabel returns the Label field value if set, zero value otherwise.
+func (o *AddonsEventRow) GetLabel() string {
+	if o == nil || IsNil(o.Label) {
+		var ret string
+		return ret
+	}
+	return *o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsEventRow) GetLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.Label) {
+		return nil, false
+	}
+	return o.Label, true
+}
+
+// HasLabel returns a boolean if a field has been set.
+func (o *AddonsEventRow) HasLabel() bool {
+	if o != nil && !IsNil(o.Label) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabel gets a reference to the given string and assigns it to the Label field.
+func (o *AddonsEventRow) SetLabel(v string) {
+	o.Label = &v
+}
+
+// GetSubtitle returns the Subtitle field value if set, zero value otherwise.
+func (o *AddonsEventRow) GetSubtitle() string {
+	if o == nil || IsNil(o.Subtitle) {
+		var ret string
+		return ret
+	}
+	return *o.Subtitle
+}
+
+// GetSubtitleOk returns a tuple with the Subtitle field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsEventRow) GetSubtitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Subtitle) {
+		return nil, false
+	}
+	return o.Subtitle, true
+}
+
+// HasSubtitle returns a boolean if a field has been set.
+func (o *AddonsEventRow) HasSubtitle() bool {
+	if o != nil && !IsNil(o.Subtitle) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubtitle gets a reference to the given string and assigns it to the Subtitle field.
+func (o *AddonsEventRow) SetSubtitle(v string) {
+	o.Subtitle = &v
+}
+
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *AddonsEventRow) GetTitle() string {
+	if o == nil || IsNil(o.Title) {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsEventRow) GetTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Title) {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *AddonsEventRow) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *AddonsEventRow) SetTitle(v string) {
+	o.Title = &v
+}
+
 func (o AddonsEventRow) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -246,23 +246,23 @@ func (o AddonsEventRow) MarshalJSON() ([]byte, error) {
 
 func (o AddonsEventRow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
-	if !IsNil(o.Subtitle) {
-		toSerialize["subtitle"] = o.Subtitle
-	}
-	if !IsNil(o.Label) {
-		toSerialize["label"] = o.Label
-	}
-	if !IsNil(o.ImageId) {
-		toSerialize["image_id"] = o.ImageId
-	}
 	if !IsNil(o.HasDivider) {
 		toSerialize["has_divider"] = o.HasDivider
 	}
 	if !IsNil(o.IconName) {
 		toSerialize["icon_name"] = o.IconName
+	}
+	if !IsNil(o.ImageId) {
+		toSerialize["image_id"] = o.ImageId
+	}
+	if !IsNil(o.Label) {
+		toSerialize["label"] = o.Label
+	}
+	if !IsNil(o.Subtitle) {
+		toSerialize["subtitle"] = o.Subtitle
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
 	}
 	return toSerialize, nil
 }

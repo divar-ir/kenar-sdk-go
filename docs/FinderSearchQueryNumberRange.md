@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Min** | Pointer to **string** |  | [optional] 
 **Max** | Pointer to **string** |  | [optional] 
+**Min** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewFinderSearchQueryNumberRangeWithDefaults instantiates a new FinderSearchQueryNumberRange object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetMin
-
-`func (o *FinderSearchQueryNumberRange) GetMin() string`
-
-GetMin returns the Min field if non-nil, zero value otherwise.
-
-### GetMinOk
-
-`func (o *FinderSearchQueryNumberRange) GetMinOk() (*string, bool)`
-
-GetMinOk returns a tuple with the Min field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMin
-
-`func (o *FinderSearchQueryNumberRange) SetMin(v string)`
-
-SetMin sets Min field to given value.
-
-### HasMin
-
-`func (o *FinderSearchQueryNumberRange) HasMin() bool`
-
-HasMin returns a boolean if a field has been set.
 
 ### GetMax
 
@@ -75,6 +50,31 @@ SetMax sets Max field to given value.
 `func (o *FinderSearchQueryNumberRange) HasMax() bool`
 
 HasMax returns a boolean if a field has been set.
+
+### GetMin
+
+`func (o *FinderSearchQueryNumberRange) GetMin() string`
+
+GetMin returns the Min field if non-nil, zero value otherwise.
+
+### GetMinOk
+
+`func (o *FinderSearchQueryNumberRange) GetMinOk() (*string, bool)`
+
+GetMinOk returns a tuple with the Min field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMin
+
+`func (o *FinderSearchQueryNumberRange) SetMin(v string)`
+
+SetMin sets Min field to given value.
+
+### HasMin
+
+`func (o *FinderSearchQueryNumberRange) HasMin() bool`
+
+HasMin returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

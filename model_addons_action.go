@@ -19,10 +19,10 @@ var _ MappedNullable = &AddonsAction{}
 
 // AddonsAction Represents an action that can be performed
 type AddonsAction struct {
+	GetDynamicAction *AddonsGetDynamicAction `json:"get_dynamic_action,omitempty"`
 	// An action to send user to your URL directly with just a resource id (if applicable)
 	OpenDirectLink *string `json:"open_direct_link,omitempty"`
 	OpenServerLink *AddonsOpenServerLink `json:"open_server_link,omitempty"`
-	GetDynamicAction *AddonsGetDynamicAction `json:"get_dynamic_action,omitempty"`
 }
 
 // NewAddonsAction instantiates a new AddonsAction object
@@ -40,6 +40,38 @@ func NewAddonsAction() *AddonsAction {
 func NewAddonsActionWithDefaults() *AddonsAction {
 	this := AddonsAction{}
 	return &this
+}
+
+// GetGetDynamicAction returns the GetDynamicAction field value if set, zero value otherwise.
+func (o *AddonsAction) GetGetDynamicAction() AddonsGetDynamicAction {
+	if o == nil || IsNil(o.GetDynamicAction) {
+		var ret AddonsGetDynamicAction
+		return ret
+	}
+	return *o.GetDynamicAction
+}
+
+// GetGetDynamicActionOk returns a tuple with the GetDynamicAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAction) GetGetDynamicActionOk() (*AddonsGetDynamicAction, bool) {
+	if o == nil || IsNil(o.GetDynamicAction) {
+		return nil, false
+	}
+	return o.GetDynamicAction, true
+}
+
+// HasGetDynamicAction returns a boolean if a field has been set.
+func (o *AddonsAction) HasGetDynamicAction() bool {
+	if o != nil && !IsNil(o.GetDynamicAction) {
+		return true
+	}
+
+	return false
+}
+
+// SetGetDynamicAction gets a reference to the given AddonsGetDynamicAction and assigns it to the GetDynamicAction field.
+func (o *AddonsAction) SetGetDynamicAction(v AddonsGetDynamicAction) {
+	o.GetDynamicAction = &v
 }
 
 // GetOpenDirectLink returns the OpenDirectLink field value if set, zero value otherwise.
@@ -106,38 +138,6 @@ func (o *AddonsAction) SetOpenServerLink(v AddonsOpenServerLink) {
 	o.OpenServerLink = &v
 }
 
-// GetGetDynamicAction returns the GetDynamicAction field value if set, zero value otherwise.
-func (o *AddonsAction) GetGetDynamicAction() AddonsGetDynamicAction {
-	if o == nil || IsNil(o.GetDynamicAction) {
-		var ret AddonsGetDynamicAction
-		return ret
-	}
-	return *o.GetDynamicAction
-}
-
-// GetGetDynamicActionOk returns a tuple with the GetDynamicAction field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAction) GetGetDynamicActionOk() (*AddonsGetDynamicAction, bool) {
-	if o == nil || IsNil(o.GetDynamicAction) {
-		return nil, false
-	}
-	return o.GetDynamicAction, true
-}
-
-// HasGetDynamicAction returns a boolean if a field has been set.
-func (o *AddonsAction) HasGetDynamicAction() bool {
-	if o != nil && !IsNil(o.GetDynamicAction) {
-		return true
-	}
-
-	return false
-}
-
-// SetGetDynamicAction gets a reference to the given AddonsGetDynamicAction and assigns it to the GetDynamicAction field.
-func (o *AddonsAction) SetGetDynamicAction(v AddonsGetDynamicAction) {
-	o.GetDynamicAction = &v
-}
-
 func (o AddonsAction) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -148,14 +148,14 @@ func (o AddonsAction) MarshalJSON() ([]byte, error) {
 
 func (o AddonsAction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GetDynamicAction) {
+		toSerialize["get_dynamic_action"] = o.GetDynamicAction
+	}
 	if !IsNil(o.OpenDirectLink) {
 		toSerialize["open_direct_link"] = o.OpenDirectLink
 	}
 	if !IsNil(o.OpenServerLink) {
 		toSerialize["open_server_link"] = o.OpenServerLink
-	}
-	if !IsNil(o.GetDynamicAction) {
-		toSerialize["get_dynamic_action"] = o.GetDynamicAction
 	}
 	return toSerialize, nil
 }

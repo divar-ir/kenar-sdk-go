@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Widgets** | Pointer to [**[]AddonsWidget**](AddonsWidget.md) |  | [optional] 
-**Semantic** | Pointer to **map[string]string** |  | [optional] 
 **Notes** | Pointer to **string** |  | [optional] 
+**Semantic** | Pointer to **map[string]string** |  | [optional] 
+**Widgets** | Pointer to [**[]AddonsWidget**](AddonsWidget.md) |  | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewAddonsCreatePostAddonV2BodyWithDefaults instantiates a new AddonsCreatePostAd
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetWidgets
+### GetNotes
 
-`func (o *AddonsCreatePostAddonV2Body) GetWidgets() []AddonsWidget`
+`func (o *AddonsCreatePostAddonV2Body) GetNotes() string`
 
-GetWidgets returns the Widgets field if non-nil, zero value otherwise.
+GetNotes returns the Notes field if non-nil, zero value otherwise.
 
-### GetWidgetsOk
+### GetNotesOk
 
-`func (o *AddonsCreatePostAddonV2Body) GetWidgetsOk() (*[]AddonsWidget, bool)`
+`func (o *AddonsCreatePostAddonV2Body) GetNotesOk() (*string, bool)`
 
-GetWidgetsOk returns a tuple with the Widgets field if it's non-nil, zero value otherwise
+GetNotesOk returns a tuple with the Notes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWidgets
+### SetNotes
 
-`func (o *AddonsCreatePostAddonV2Body) SetWidgets(v []AddonsWidget)`
+`func (o *AddonsCreatePostAddonV2Body) SetNotes(v string)`
 
-SetWidgets sets Widgets field to given value.
+SetNotes sets Notes field to given value.
 
-### HasWidgets
+### HasNotes
 
-`func (o *AddonsCreatePostAddonV2Body) HasWidgets() bool`
+`func (o *AddonsCreatePostAddonV2Body) HasNotes() bool`
 
-HasWidgets returns a boolean if a field has been set.
+HasNotes returns a boolean if a field has been set.
 
 ### GetSemantic
 
@@ -77,30 +77,30 @@ SetSemantic sets Semantic field to given value.
 
 HasSemantic returns a boolean if a field has been set.
 
-### GetNotes
+### GetWidgets
 
-`func (o *AddonsCreatePostAddonV2Body) GetNotes() string`
+`func (o *AddonsCreatePostAddonV2Body) GetWidgets() []AddonsWidget`
 
-GetNotes returns the Notes field if non-nil, zero value otherwise.
+GetWidgets returns the Widgets field if non-nil, zero value otherwise.
 
-### GetNotesOk
+### GetWidgetsOk
 
-`func (o *AddonsCreatePostAddonV2Body) GetNotesOk() (*string, bool)`
+`func (o *AddonsCreatePostAddonV2Body) GetWidgetsOk() (*[]AddonsWidget, bool)`
 
-GetNotesOk returns a tuple with the Notes field if it's non-nil, zero value otherwise
+GetWidgetsOk returns a tuple with the Widgets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNotes
+### SetWidgets
 
-`func (o *AddonsCreatePostAddonV2Body) SetNotes(v string)`
+`func (o *AddonsCreatePostAddonV2Body) SetWidgets(v []AddonsWidget)`
 
-SetNotes sets Notes field to given value.
+SetWidgets sets Widgets field to given value.
 
-### HasNotes
+### HasWidgets
 
-`func (o *AddonsCreatePostAddonV2Body) HasNotes() bool`
+`func (o *AddonsCreatePostAddonV2Body) HasWidgets() bool`
 
-HasNotes returns a boolean if a field has been set.
+HasWidgets returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

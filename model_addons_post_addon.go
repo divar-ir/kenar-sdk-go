@@ -19,19 +19,19 @@ var _ MappedNullable = &AddonsPostAddon{}
 
 // AddonsPostAddon struct for AddonsPostAddon
 type AddonsPostAddon struct {
-	MetaData *AddonsAddonMetaData `json:"meta_data,omitempty"`
-	Token *string `json:"token,omitempty"`
 	App *AppsApp `json:"app,omitempty"`
-	Widgets map[string]interface{} `json:"widgets,omitempty"`
-	Score *string `json:"score,omitempty"`
-	Selector *AddonsAddonSelector `json:"selector,omitempty"`
 	Linkage *AddonsAddonLinkage `json:"linkage,omitempty"`
+	MetaData *AddonsAddonMetaData `json:"meta_data,omitempty"`
+	Score *string `json:"score,omitempty"`
 	SecondaryLinks *AddonsAddonSecondaryLinks `json:"secondary_links,omitempty"`
+	Selector *AddonsAddonSelector `json:"selector,omitempty"`
 	Semantic *map[string]string `json:"semantic,omitempty"`
 	SemanticData *AddonsAddonSemantic `json:"semantic_data,omitempty"`
-	SensitiveSemantic *map[string]string `json:"sensitive_semantic,omitempty"`
-	WidgetsSemantic map[string]interface{} `json:"widgets_semantic,omitempty"`
 	SemanticSensitives []string `json:"semantic_sensitives,omitempty"`
+	SensitiveSemantic *map[string]string `json:"sensitive_semantic,omitempty"`
+	Token *string `json:"token,omitempty"`
+	Widgets map[string]interface{} `json:"widgets,omitempty"`
+	WidgetsSemantic map[string]interface{} `json:"widgets_semantic,omitempty"`
 }
 
 // NewAddonsPostAddon instantiates a new AddonsPostAddon object
@@ -49,70 +49,6 @@ func NewAddonsPostAddon() *AddonsPostAddon {
 func NewAddonsPostAddonWithDefaults() *AddonsPostAddon {
 	this := AddonsPostAddon{}
 	return &this
-}
-
-// GetMetaData returns the MetaData field value if set, zero value otherwise.
-func (o *AddonsPostAddon) GetMetaData() AddonsAddonMetaData {
-	if o == nil || IsNil(o.MetaData) {
-		var ret AddonsAddonMetaData
-		return ret
-	}
-	return *o.MetaData
-}
-
-// GetMetaDataOk returns a tuple with the MetaData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsPostAddon) GetMetaDataOk() (*AddonsAddonMetaData, bool) {
-	if o == nil || IsNil(o.MetaData) {
-		return nil, false
-	}
-	return o.MetaData, true
-}
-
-// HasMetaData returns a boolean if a field has been set.
-func (o *AddonsPostAddon) HasMetaData() bool {
-	if o != nil && !IsNil(o.MetaData) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetaData gets a reference to the given AddonsAddonMetaData and assigns it to the MetaData field.
-func (o *AddonsPostAddon) SetMetaData(v AddonsAddonMetaData) {
-	o.MetaData = &v
-}
-
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *AddonsPostAddon) GetToken() string {
-	if o == nil || IsNil(o.Token) {
-		var ret string
-		return ret
-	}
-	return *o.Token
-}
-
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsPostAddon) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *AddonsPostAddon) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *AddonsPostAddon) SetToken(v string) {
-	o.Token = &v
 }
 
 // GetApp returns the App field value if set, zero value otherwise.
@@ -147,36 +83,68 @@ func (o *AddonsPostAddon) SetApp(v AppsApp) {
 	o.App = &v
 }
 
-// GetWidgets returns the Widgets field value if set, zero value otherwise.
-func (o *AddonsPostAddon) GetWidgets() map[string]interface{} {
-	if o == nil || IsNil(o.Widgets) {
-		var ret map[string]interface{}
+// GetLinkage returns the Linkage field value if set, zero value otherwise.
+func (o *AddonsPostAddon) GetLinkage() AddonsAddonLinkage {
+	if o == nil || IsNil(o.Linkage) {
+		var ret AddonsAddonLinkage
 		return ret
 	}
-	return o.Widgets
+	return *o.Linkage
 }
 
-// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
+// GetLinkageOk returns a tuple with the Linkage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsPostAddon) GetWidgetsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Widgets) {
-		return map[string]interface{}{}, false
+func (o *AddonsPostAddon) GetLinkageOk() (*AddonsAddonLinkage, bool) {
+	if o == nil || IsNil(o.Linkage) {
+		return nil, false
 	}
-	return o.Widgets, true
+	return o.Linkage, true
 }
 
-// HasWidgets returns a boolean if a field has been set.
-func (o *AddonsPostAddon) HasWidgets() bool {
-	if o != nil && !IsNil(o.Widgets) {
+// HasLinkage returns a boolean if a field has been set.
+func (o *AddonsPostAddon) HasLinkage() bool {
+	if o != nil && !IsNil(o.Linkage) {
 		return true
 	}
 
 	return false
 }
 
-// SetWidgets gets a reference to the given map[string]interface{} and assigns it to the Widgets field.
-func (o *AddonsPostAddon) SetWidgets(v map[string]interface{}) {
-	o.Widgets = v
+// SetLinkage gets a reference to the given AddonsAddonLinkage and assigns it to the Linkage field.
+func (o *AddonsPostAddon) SetLinkage(v AddonsAddonLinkage) {
+	o.Linkage = &v
+}
+
+// GetMetaData returns the MetaData field value if set, zero value otherwise.
+func (o *AddonsPostAddon) GetMetaData() AddonsAddonMetaData {
+	if o == nil || IsNil(o.MetaData) {
+		var ret AddonsAddonMetaData
+		return ret
+	}
+	return *o.MetaData
+}
+
+// GetMetaDataOk returns a tuple with the MetaData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsPostAddon) GetMetaDataOk() (*AddonsAddonMetaData, bool) {
+	if o == nil || IsNil(o.MetaData) {
+		return nil, false
+	}
+	return o.MetaData, true
+}
+
+// HasMetaData returns a boolean if a field has been set.
+func (o *AddonsPostAddon) HasMetaData() bool {
+	if o != nil && !IsNil(o.MetaData) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetaData gets a reference to the given AddonsAddonMetaData and assigns it to the MetaData field.
+func (o *AddonsPostAddon) SetMetaData(v AddonsAddonMetaData) {
+	o.MetaData = &v
 }
 
 // GetScore returns the Score field value if set, zero value otherwise.
@@ -211,70 +179,6 @@ func (o *AddonsPostAddon) SetScore(v string) {
 	o.Score = &v
 }
 
-// GetSelector returns the Selector field value if set, zero value otherwise.
-func (o *AddonsPostAddon) GetSelector() AddonsAddonSelector {
-	if o == nil || IsNil(o.Selector) {
-		var ret AddonsAddonSelector
-		return ret
-	}
-	return *o.Selector
-}
-
-// GetSelectorOk returns a tuple with the Selector field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsPostAddon) GetSelectorOk() (*AddonsAddonSelector, bool) {
-	if o == nil || IsNil(o.Selector) {
-		return nil, false
-	}
-	return o.Selector, true
-}
-
-// HasSelector returns a boolean if a field has been set.
-func (o *AddonsPostAddon) HasSelector() bool {
-	if o != nil && !IsNil(o.Selector) {
-		return true
-	}
-
-	return false
-}
-
-// SetSelector gets a reference to the given AddonsAddonSelector and assigns it to the Selector field.
-func (o *AddonsPostAddon) SetSelector(v AddonsAddonSelector) {
-	o.Selector = &v
-}
-
-// GetLinkage returns the Linkage field value if set, zero value otherwise.
-func (o *AddonsPostAddon) GetLinkage() AddonsAddonLinkage {
-	if o == nil || IsNil(o.Linkage) {
-		var ret AddonsAddonLinkage
-		return ret
-	}
-	return *o.Linkage
-}
-
-// GetLinkageOk returns a tuple with the Linkage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsPostAddon) GetLinkageOk() (*AddonsAddonLinkage, bool) {
-	if o == nil || IsNil(o.Linkage) {
-		return nil, false
-	}
-	return o.Linkage, true
-}
-
-// HasLinkage returns a boolean if a field has been set.
-func (o *AddonsPostAddon) HasLinkage() bool {
-	if o != nil && !IsNil(o.Linkage) {
-		return true
-	}
-
-	return false
-}
-
-// SetLinkage gets a reference to the given AddonsAddonLinkage and assigns it to the Linkage field.
-func (o *AddonsPostAddon) SetLinkage(v AddonsAddonLinkage) {
-	o.Linkage = &v
-}
-
 // GetSecondaryLinks returns the SecondaryLinks field value if set, zero value otherwise.
 func (o *AddonsPostAddon) GetSecondaryLinks() AddonsAddonSecondaryLinks {
 	if o == nil || IsNil(o.SecondaryLinks) {
@@ -305,6 +209,38 @@ func (o *AddonsPostAddon) HasSecondaryLinks() bool {
 // SetSecondaryLinks gets a reference to the given AddonsAddonSecondaryLinks and assigns it to the SecondaryLinks field.
 func (o *AddonsPostAddon) SetSecondaryLinks(v AddonsAddonSecondaryLinks) {
 	o.SecondaryLinks = &v
+}
+
+// GetSelector returns the Selector field value if set, zero value otherwise.
+func (o *AddonsPostAddon) GetSelector() AddonsAddonSelector {
+	if o == nil || IsNil(o.Selector) {
+		var ret AddonsAddonSelector
+		return ret
+	}
+	return *o.Selector
+}
+
+// GetSelectorOk returns a tuple with the Selector field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsPostAddon) GetSelectorOk() (*AddonsAddonSelector, bool) {
+	if o == nil || IsNil(o.Selector) {
+		return nil, false
+	}
+	return o.Selector, true
+}
+
+// HasSelector returns a boolean if a field has been set.
+func (o *AddonsPostAddon) HasSelector() bool {
+	if o != nil && !IsNil(o.Selector) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelector gets a reference to the given AddonsAddonSelector and assigns it to the Selector field.
+func (o *AddonsPostAddon) SetSelector(v AddonsAddonSelector) {
+	o.Selector = &v
 }
 
 // GetSemantic returns the Semantic field value if set, zero value otherwise.
@@ -371,6 +307,38 @@ func (o *AddonsPostAddon) SetSemanticData(v AddonsAddonSemantic) {
 	o.SemanticData = &v
 }
 
+// GetSemanticSensitives returns the SemanticSensitives field value if set, zero value otherwise.
+func (o *AddonsPostAddon) GetSemanticSensitives() []string {
+	if o == nil || IsNil(o.SemanticSensitives) {
+		var ret []string
+		return ret
+	}
+	return o.SemanticSensitives
+}
+
+// GetSemanticSensitivesOk returns a tuple with the SemanticSensitives field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsPostAddon) GetSemanticSensitivesOk() ([]string, bool) {
+	if o == nil || IsNil(o.SemanticSensitives) {
+		return nil, false
+	}
+	return o.SemanticSensitives, true
+}
+
+// HasSemanticSensitives returns a boolean if a field has been set.
+func (o *AddonsPostAddon) HasSemanticSensitives() bool {
+	if o != nil && !IsNil(o.SemanticSensitives) {
+		return true
+	}
+
+	return false
+}
+
+// SetSemanticSensitives gets a reference to the given []string and assigns it to the SemanticSensitives field.
+func (o *AddonsPostAddon) SetSemanticSensitives(v []string) {
+	o.SemanticSensitives = v
+}
+
 // GetSensitiveSemantic returns the SensitiveSemantic field value if set, zero value otherwise.
 func (o *AddonsPostAddon) GetSensitiveSemantic() map[string]string {
 	if o == nil || IsNil(o.SensitiveSemantic) {
@@ -401,6 +369,70 @@ func (o *AddonsPostAddon) HasSensitiveSemantic() bool {
 // SetSensitiveSemantic gets a reference to the given map[string]string and assigns it to the SensitiveSemantic field.
 func (o *AddonsPostAddon) SetSensitiveSemantic(v map[string]string) {
 	o.SensitiveSemantic = &v
+}
+
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *AddonsPostAddon) GetToken() string {
+	if o == nil || IsNil(o.Token) {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsPostAddon) GetTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.Token) {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *AddonsPostAddon) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *AddonsPostAddon) SetToken(v string) {
+	o.Token = &v
+}
+
+// GetWidgets returns the Widgets field value if set, zero value otherwise.
+func (o *AddonsPostAddon) GetWidgets() map[string]interface{} {
+	if o == nil || IsNil(o.Widgets) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Widgets
+}
+
+// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsPostAddon) GetWidgetsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Widgets) {
+		return map[string]interface{}{}, false
+	}
+	return o.Widgets, true
+}
+
+// HasWidgets returns a boolean if a field has been set.
+func (o *AddonsPostAddon) HasWidgets() bool {
+	if o != nil && !IsNil(o.Widgets) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidgets gets a reference to the given map[string]interface{} and assigns it to the Widgets field.
+func (o *AddonsPostAddon) SetWidgets(v map[string]interface{}) {
+	o.Widgets = v
 }
 
 // GetWidgetsSemantic returns the WidgetsSemantic field value if set, zero value otherwise.
@@ -435,38 +467,6 @@ func (o *AddonsPostAddon) SetWidgetsSemantic(v map[string]interface{}) {
 	o.WidgetsSemantic = v
 }
 
-// GetSemanticSensitives returns the SemanticSensitives field value if set, zero value otherwise.
-func (o *AddonsPostAddon) GetSemanticSensitives() []string {
-	if o == nil || IsNil(o.SemanticSensitives) {
-		var ret []string
-		return ret
-	}
-	return o.SemanticSensitives
-}
-
-// GetSemanticSensitivesOk returns a tuple with the SemanticSensitives field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsPostAddon) GetSemanticSensitivesOk() ([]string, bool) {
-	if o == nil || IsNil(o.SemanticSensitives) {
-		return nil, false
-	}
-	return o.SemanticSensitives, true
-}
-
-// HasSemanticSensitives returns a boolean if a field has been set.
-func (o *AddonsPostAddon) HasSemanticSensitives() bool {
-	if o != nil && !IsNil(o.SemanticSensitives) {
-		return true
-	}
-
-	return false
-}
-
-// SetSemanticSensitives gets a reference to the given []string and assigns it to the SemanticSensitives field.
-func (o *AddonsPostAddon) SetSemanticSensitives(v []string) {
-	o.SemanticSensitives = v
-}
-
 func (o AddonsPostAddon) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -477,29 +477,23 @@ func (o AddonsPostAddon) MarshalJSON() ([]byte, error) {
 
 func (o AddonsPostAddon) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MetaData) {
-		toSerialize["meta_data"] = o.MetaData
-	}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
 	if !IsNil(o.App) {
 		toSerialize["app"] = o.App
-	}
-	if !IsNil(o.Widgets) {
-		toSerialize["widgets"] = o.Widgets
-	}
-	if !IsNil(o.Score) {
-		toSerialize["score"] = o.Score
-	}
-	if !IsNil(o.Selector) {
-		toSerialize["selector"] = o.Selector
 	}
 	if !IsNil(o.Linkage) {
 		toSerialize["linkage"] = o.Linkage
 	}
+	if !IsNil(o.MetaData) {
+		toSerialize["meta_data"] = o.MetaData
+	}
+	if !IsNil(o.Score) {
+		toSerialize["score"] = o.Score
+	}
 	if !IsNil(o.SecondaryLinks) {
 		toSerialize["secondary_links"] = o.SecondaryLinks
+	}
+	if !IsNil(o.Selector) {
+		toSerialize["selector"] = o.Selector
 	}
 	if !IsNil(o.Semantic) {
 		toSerialize["semantic"] = o.Semantic
@@ -507,14 +501,20 @@ func (o AddonsPostAddon) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SemanticData) {
 		toSerialize["semantic_data"] = o.SemanticData
 	}
+	if !IsNil(o.SemanticSensitives) {
+		toSerialize["semantic_sensitives"] = o.SemanticSensitives
+	}
 	if !IsNil(o.SensitiveSemantic) {
 		toSerialize["sensitive_semantic"] = o.SensitiveSemantic
 	}
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.Widgets) {
+		toSerialize["widgets"] = o.Widgets
+	}
 	if !IsNil(o.WidgetsSemantic) {
 		toSerialize["widgets_semantic"] = o.WidgetsSemantic
-	}
-	if !IsNil(o.SemanticSensitives) {
-		toSerialize["semantic_sensitives"] = o.SemanticSensitives
 	}
 	return toSerialize, nil
 }

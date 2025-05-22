@@ -20,9 +20,9 @@ var _ MappedNullable = &AuthorizationAPICallerInfo{}
 // AuthorizationAPICallerInfo struct for AuthorizationAPICallerInfo
 type AuthorizationAPICallerInfo struct {
 	ApiKeyId *int32 `json:"api_key_id,omitempty"`
+	ApiKeyIdV2 *string `json:"api_key_id_v2,omitempty"`
 	App *AppsApp `json:"app,omitempty"`
 	Scopes []AuthorizationOAuthScope `json:"scopes,omitempty"`
-	ApiKeyIdV2 *string `json:"api_key_id_v2,omitempty"`
 }
 
 // NewAuthorizationAPICallerInfo instantiates a new AuthorizationAPICallerInfo object
@@ -72,6 +72,38 @@ func (o *AuthorizationAPICallerInfo) HasApiKeyId() bool {
 // SetApiKeyId gets a reference to the given int32 and assigns it to the ApiKeyId field.
 func (o *AuthorizationAPICallerInfo) SetApiKeyId(v int32) {
 	o.ApiKeyId = &v
+}
+
+// GetApiKeyIdV2 returns the ApiKeyIdV2 field value if set, zero value otherwise.
+func (o *AuthorizationAPICallerInfo) GetApiKeyIdV2() string {
+	if o == nil || IsNil(o.ApiKeyIdV2) {
+		var ret string
+		return ret
+	}
+	return *o.ApiKeyIdV2
+}
+
+// GetApiKeyIdV2Ok returns a tuple with the ApiKeyIdV2 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizationAPICallerInfo) GetApiKeyIdV2Ok() (*string, bool) {
+	if o == nil || IsNil(o.ApiKeyIdV2) {
+		return nil, false
+	}
+	return o.ApiKeyIdV2, true
+}
+
+// HasApiKeyIdV2 returns a boolean if a field has been set.
+func (o *AuthorizationAPICallerInfo) HasApiKeyIdV2() bool {
+	if o != nil && !IsNil(o.ApiKeyIdV2) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKeyIdV2 gets a reference to the given string and assigns it to the ApiKeyIdV2 field.
+func (o *AuthorizationAPICallerInfo) SetApiKeyIdV2(v string) {
+	o.ApiKeyIdV2 = &v
 }
 
 // GetApp returns the App field value if set, zero value otherwise.
@@ -138,38 +170,6 @@ func (o *AuthorizationAPICallerInfo) SetScopes(v []AuthorizationOAuthScope) {
 	o.Scopes = v
 }
 
-// GetApiKeyIdV2 returns the ApiKeyIdV2 field value if set, zero value otherwise.
-func (o *AuthorizationAPICallerInfo) GetApiKeyIdV2() string {
-	if o == nil || IsNil(o.ApiKeyIdV2) {
-		var ret string
-		return ret
-	}
-	return *o.ApiKeyIdV2
-}
-
-// GetApiKeyIdV2Ok returns a tuple with the ApiKeyIdV2 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizationAPICallerInfo) GetApiKeyIdV2Ok() (*string, bool) {
-	if o == nil || IsNil(o.ApiKeyIdV2) {
-		return nil, false
-	}
-	return o.ApiKeyIdV2, true
-}
-
-// HasApiKeyIdV2 returns a boolean if a field has been set.
-func (o *AuthorizationAPICallerInfo) HasApiKeyIdV2() bool {
-	if o != nil && !IsNil(o.ApiKeyIdV2) {
-		return true
-	}
-
-	return false
-}
-
-// SetApiKeyIdV2 gets a reference to the given string and assigns it to the ApiKeyIdV2 field.
-func (o *AuthorizationAPICallerInfo) SetApiKeyIdV2(v string) {
-	o.ApiKeyIdV2 = &v
-}
-
 func (o AuthorizationAPICallerInfo) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -183,14 +183,14 @@ func (o AuthorizationAPICallerInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApiKeyId) {
 		toSerialize["api_key_id"] = o.ApiKeyId
 	}
+	if !IsNil(o.ApiKeyIdV2) {
+		toSerialize["api_key_id_v2"] = o.ApiKeyIdV2
+	}
 	if !IsNil(o.App) {
 		toSerialize["app"] = o.App
 	}
 	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
-	}
-	if !IsNil(o.ApiKeyIdV2) {
-		toSerialize["api_key_id_v2"] = o.ApiKeyIdV2
 	}
 	return toSerialize, nil
 }

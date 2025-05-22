@@ -19,8 +19,8 @@ var _ MappedNullable = &GetPostResponseBusinessData{}
 
 // GetPostResponseBusinessData struct for GetPostResponseBusinessData
 type GetPostResponseBusinessData struct {
-	BusinessType *PremiumPanelBusinessDataSubBusinessType `json:"business_type,omitempty"`
 	BusinessName *string `json:"business_name,omitempty"`
+	BusinessType *PremiumPanelBusinessDataSubBusinessType `json:"business_type,omitempty"`
 }
 
 // NewGetPostResponseBusinessData instantiates a new GetPostResponseBusinessData object
@@ -38,38 +38,6 @@ func NewGetPostResponseBusinessData() *GetPostResponseBusinessData {
 func NewGetPostResponseBusinessDataWithDefaults() *GetPostResponseBusinessData {
 	this := GetPostResponseBusinessData{}
 	return &this
-}
-
-// GetBusinessType returns the BusinessType field value if set, zero value otherwise.
-func (o *GetPostResponseBusinessData) GetBusinessType() PremiumPanelBusinessDataSubBusinessType {
-	if o == nil || IsNil(o.BusinessType) {
-		var ret PremiumPanelBusinessDataSubBusinessType
-		return ret
-	}
-	return *o.BusinessType
-}
-
-// GetBusinessTypeOk returns a tuple with the BusinessType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetPostResponseBusinessData) GetBusinessTypeOk() (*PremiumPanelBusinessDataSubBusinessType, bool) {
-	if o == nil || IsNil(o.BusinessType) {
-		return nil, false
-	}
-	return o.BusinessType, true
-}
-
-// HasBusinessType returns a boolean if a field has been set.
-func (o *GetPostResponseBusinessData) HasBusinessType() bool {
-	if o != nil && !IsNil(o.BusinessType) {
-		return true
-	}
-
-	return false
-}
-
-// SetBusinessType gets a reference to the given PremiumPanelBusinessDataSubBusinessType and assigns it to the BusinessType field.
-func (o *GetPostResponseBusinessData) SetBusinessType(v PremiumPanelBusinessDataSubBusinessType) {
-	o.BusinessType = &v
 }
 
 // GetBusinessName returns the BusinessName field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *GetPostResponseBusinessData) SetBusinessName(v string) {
 	o.BusinessName = &v
 }
 
+// GetBusinessType returns the BusinessType field value if set, zero value otherwise.
+func (o *GetPostResponseBusinessData) GetBusinessType() PremiumPanelBusinessDataSubBusinessType {
+	if o == nil || IsNil(o.BusinessType) {
+		var ret PremiumPanelBusinessDataSubBusinessType
+		return ret
+	}
+	return *o.BusinessType
+}
+
+// GetBusinessTypeOk returns a tuple with the BusinessType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetPostResponseBusinessData) GetBusinessTypeOk() (*PremiumPanelBusinessDataSubBusinessType, bool) {
+	if o == nil || IsNil(o.BusinessType) {
+		return nil, false
+	}
+	return o.BusinessType, true
+}
+
+// HasBusinessType returns a boolean if a field has been set.
+func (o *GetPostResponseBusinessData) HasBusinessType() bool {
+	if o != nil && !IsNil(o.BusinessType) {
+		return true
+	}
+
+	return false
+}
+
+// SetBusinessType gets a reference to the given PremiumPanelBusinessDataSubBusinessType and assigns it to the BusinessType field.
+func (o *GetPostResponseBusinessData) SetBusinessType(v PremiumPanelBusinessDataSubBusinessType) {
+	o.BusinessType = &v
+}
+
 func (o GetPostResponseBusinessData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o GetPostResponseBusinessData) MarshalJSON() ([]byte, error) {
 
 func (o GetPostResponseBusinessData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BusinessType) {
-		toSerialize["business_type"] = o.BusinessType
-	}
 	if !IsNil(o.BusinessName) {
 		toSerialize["business_name"] = o.BusinessName
+	}
+	if !IsNil(o.BusinessType) {
+		toSerialize["business_type"] = o.BusinessType
 	}
 	return toSerialize, nil
 }

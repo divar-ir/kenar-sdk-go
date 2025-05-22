@@ -19,9 +19,9 @@ var _ MappedNullable = &AddonsEvaluationRow{}
 
 // AddonsEvaluationRow struct for AddonsEvaluationRow
 type AddonsEvaluationRow struct {
-	IndicatorText *string `json:"indicator_text,omitempty"`
-	IndicatorPercentage *int32 `json:"indicator_percentage,omitempty"`
 	IconName *DivarIconsIconName `json:"icon_name,omitempty"`
+	IndicatorPercentage *int32 `json:"indicator_percentage,omitempty"`
+	IndicatorText *string `json:"indicator_text,omitempty"`
 	Left *AddonsEvaluationRowSection `json:"left,omitempty"`
 	Middle *AddonsEvaluationRowSection `json:"middle,omitempty"`
 	Right *AddonsEvaluationRowSection `json:"right,omitempty"`
@@ -44,36 +44,36 @@ func NewAddonsEvaluationRowWithDefaults() *AddonsEvaluationRow {
 	return &this
 }
 
-// GetIndicatorText returns the IndicatorText field value if set, zero value otherwise.
-func (o *AddonsEvaluationRow) GetIndicatorText() string {
-	if o == nil || IsNil(o.IndicatorText) {
-		var ret string
+// GetIconName returns the IconName field value if set, zero value otherwise.
+func (o *AddonsEvaluationRow) GetIconName() DivarIconsIconName {
+	if o == nil || IsNil(o.IconName) {
+		var ret DivarIconsIconName
 		return ret
 	}
-	return *o.IndicatorText
+	return *o.IconName
 }
 
-// GetIndicatorTextOk returns a tuple with the IndicatorText field value if set, nil otherwise
+// GetIconNameOk returns a tuple with the IconName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsEvaluationRow) GetIndicatorTextOk() (*string, bool) {
-	if o == nil || IsNil(o.IndicatorText) {
+func (o *AddonsEvaluationRow) GetIconNameOk() (*DivarIconsIconName, bool) {
+	if o == nil || IsNil(o.IconName) {
 		return nil, false
 	}
-	return o.IndicatorText, true
+	return o.IconName, true
 }
 
-// HasIndicatorText returns a boolean if a field has been set.
-func (o *AddonsEvaluationRow) HasIndicatorText() bool {
-	if o != nil && !IsNil(o.IndicatorText) {
+// HasIconName returns a boolean if a field has been set.
+func (o *AddonsEvaluationRow) HasIconName() bool {
+	if o != nil && !IsNil(o.IconName) {
 		return true
 	}
 
 	return false
 }
 
-// SetIndicatorText gets a reference to the given string and assigns it to the IndicatorText field.
-func (o *AddonsEvaluationRow) SetIndicatorText(v string) {
-	o.IndicatorText = &v
+// SetIconName gets a reference to the given DivarIconsIconName and assigns it to the IconName field.
+func (o *AddonsEvaluationRow) SetIconName(v DivarIconsIconName) {
+	o.IconName = &v
 }
 
 // GetIndicatorPercentage returns the IndicatorPercentage field value if set, zero value otherwise.
@@ -108,36 +108,36 @@ func (o *AddonsEvaluationRow) SetIndicatorPercentage(v int32) {
 	o.IndicatorPercentage = &v
 }
 
-// GetIconName returns the IconName field value if set, zero value otherwise.
-func (o *AddonsEvaluationRow) GetIconName() DivarIconsIconName {
-	if o == nil || IsNil(o.IconName) {
-		var ret DivarIconsIconName
+// GetIndicatorText returns the IndicatorText field value if set, zero value otherwise.
+func (o *AddonsEvaluationRow) GetIndicatorText() string {
+	if o == nil || IsNil(o.IndicatorText) {
+		var ret string
 		return ret
 	}
-	return *o.IconName
+	return *o.IndicatorText
 }
 
-// GetIconNameOk returns a tuple with the IconName field value if set, nil otherwise
+// GetIndicatorTextOk returns a tuple with the IndicatorText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsEvaluationRow) GetIconNameOk() (*DivarIconsIconName, bool) {
-	if o == nil || IsNil(o.IconName) {
+func (o *AddonsEvaluationRow) GetIndicatorTextOk() (*string, bool) {
+	if o == nil || IsNil(o.IndicatorText) {
 		return nil, false
 	}
-	return o.IconName, true
+	return o.IndicatorText, true
 }
 
-// HasIconName returns a boolean if a field has been set.
-func (o *AddonsEvaluationRow) HasIconName() bool {
-	if o != nil && !IsNil(o.IconName) {
+// HasIndicatorText returns a boolean if a field has been set.
+func (o *AddonsEvaluationRow) HasIndicatorText() bool {
+	if o != nil && !IsNil(o.IndicatorText) {
 		return true
 	}
 
 	return false
 }
 
-// SetIconName gets a reference to the given DivarIconsIconName and assigns it to the IconName field.
-func (o *AddonsEvaluationRow) SetIconName(v DivarIconsIconName) {
-	o.IconName = &v
+// SetIndicatorText gets a reference to the given string and assigns it to the IndicatorText field.
+func (o *AddonsEvaluationRow) SetIndicatorText(v string) {
+	o.IndicatorText = &v
 }
 
 // GetLeft returns the Left field value if set, zero value otherwise.
@@ -246,14 +246,14 @@ func (o AddonsEvaluationRow) MarshalJSON() ([]byte, error) {
 
 func (o AddonsEvaluationRow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.IndicatorText) {
-		toSerialize["indicator_text"] = o.IndicatorText
+	if !IsNil(o.IconName) {
+		toSerialize["icon_name"] = o.IconName
 	}
 	if !IsNil(o.IndicatorPercentage) {
 		toSerialize["indicator_percentage"] = o.IndicatorPercentage
 	}
-	if !IsNil(o.IconName) {
-		toSerialize["icon_name"] = o.IconName
+	if !IsNil(o.IndicatorText) {
+		toSerialize["indicator_text"] = o.IndicatorText
 	}
 	if !IsNil(o.Left) {
 		toSerialize["left"] = o.Left

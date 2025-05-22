@@ -20,14 +20,14 @@ var _ MappedNullable = &SearchPostItemRealEstateFields{}
 // SearchPostItemRealEstateFields struct for SearchPostItemRealEstateFields
 type SearchPostItemRealEstateFields struct {
 	Credit *SearchPostItemPrice `json:"credit,omitempty"`
-	Rent *SearchPostItemPrice `json:"rent,omitempty"`
 	DailyRent *string `json:"daily_rent,omitempty"`
+	Floor *int32 `json:"floor,omitempty"`
+	HasElevator *bool `json:"has_elevator,omitempty"`
+	HasParking *bool `json:"has_parking,omitempty"`
+	Rent *SearchPostItemPrice `json:"rent,omitempty"`
+	Rooms *string `json:"rooms,omitempty"`
 	Size *int32 `json:"size,omitempty"`
 	Year *int64 `json:"year,omitempty"`
-	HasParking *bool `json:"has_parking,omitempty"`
-	HasElevator *bool `json:"has_elevator,omitempty"`
-	Rooms *string `json:"rooms,omitempty"`
-	Floor *int32 `json:"floor,omitempty"`
 }
 
 // NewSearchPostItemRealEstateFields instantiates a new SearchPostItemRealEstateFields object
@@ -79,6 +79,134 @@ func (o *SearchPostItemRealEstateFields) SetCredit(v SearchPostItemPrice) {
 	o.Credit = &v
 }
 
+// GetDailyRent returns the DailyRent field value if set, zero value otherwise.
+func (o *SearchPostItemRealEstateFields) GetDailyRent() string {
+	if o == nil || IsNil(o.DailyRent) {
+		var ret string
+		return ret
+	}
+	return *o.DailyRent
+}
+
+// GetDailyRentOk returns a tuple with the DailyRent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchPostItemRealEstateFields) GetDailyRentOk() (*string, bool) {
+	if o == nil || IsNil(o.DailyRent) {
+		return nil, false
+	}
+	return o.DailyRent, true
+}
+
+// HasDailyRent returns a boolean if a field has been set.
+func (o *SearchPostItemRealEstateFields) HasDailyRent() bool {
+	if o != nil && !IsNil(o.DailyRent) {
+		return true
+	}
+
+	return false
+}
+
+// SetDailyRent gets a reference to the given string and assigns it to the DailyRent field.
+func (o *SearchPostItemRealEstateFields) SetDailyRent(v string) {
+	o.DailyRent = &v
+}
+
+// GetFloor returns the Floor field value if set, zero value otherwise.
+func (o *SearchPostItemRealEstateFields) GetFloor() int32 {
+	if o == nil || IsNil(o.Floor) {
+		var ret int32
+		return ret
+	}
+	return *o.Floor
+}
+
+// GetFloorOk returns a tuple with the Floor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchPostItemRealEstateFields) GetFloorOk() (*int32, bool) {
+	if o == nil || IsNil(o.Floor) {
+		return nil, false
+	}
+	return o.Floor, true
+}
+
+// HasFloor returns a boolean if a field has been set.
+func (o *SearchPostItemRealEstateFields) HasFloor() bool {
+	if o != nil && !IsNil(o.Floor) {
+		return true
+	}
+
+	return false
+}
+
+// SetFloor gets a reference to the given int32 and assigns it to the Floor field.
+func (o *SearchPostItemRealEstateFields) SetFloor(v int32) {
+	o.Floor = &v
+}
+
+// GetHasElevator returns the HasElevator field value if set, zero value otherwise.
+func (o *SearchPostItemRealEstateFields) GetHasElevator() bool {
+	if o == nil || IsNil(o.HasElevator) {
+		var ret bool
+		return ret
+	}
+	return *o.HasElevator
+}
+
+// GetHasElevatorOk returns a tuple with the HasElevator field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchPostItemRealEstateFields) GetHasElevatorOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasElevator) {
+		return nil, false
+	}
+	return o.HasElevator, true
+}
+
+// HasHasElevator returns a boolean if a field has been set.
+func (o *SearchPostItemRealEstateFields) HasHasElevator() bool {
+	if o != nil && !IsNil(o.HasElevator) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasElevator gets a reference to the given bool and assigns it to the HasElevator field.
+func (o *SearchPostItemRealEstateFields) SetHasElevator(v bool) {
+	o.HasElevator = &v
+}
+
+// GetHasParking returns the HasParking field value if set, zero value otherwise.
+func (o *SearchPostItemRealEstateFields) GetHasParking() bool {
+	if o == nil || IsNil(o.HasParking) {
+		var ret bool
+		return ret
+	}
+	return *o.HasParking
+}
+
+// GetHasParkingOk returns a tuple with the HasParking field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchPostItemRealEstateFields) GetHasParkingOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasParking) {
+		return nil, false
+	}
+	return o.HasParking, true
+}
+
+// HasHasParking returns a boolean if a field has been set.
+func (o *SearchPostItemRealEstateFields) HasHasParking() bool {
+	if o != nil && !IsNil(o.HasParking) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasParking gets a reference to the given bool and assigns it to the HasParking field.
+func (o *SearchPostItemRealEstateFields) SetHasParking(v bool) {
+	o.HasParking = &v
+}
+
 // GetRent returns the Rent field value if set, zero value otherwise.
 func (o *SearchPostItemRealEstateFields) GetRent() SearchPostItemPrice {
 	if o == nil || IsNil(o.Rent) {
@@ -111,36 +239,36 @@ func (o *SearchPostItemRealEstateFields) SetRent(v SearchPostItemPrice) {
 	o.Rent = &v
 }
 
-// GetDailyRent returns the DailyRent field value if set, zero value otherwise.
-func (o *SearchPostItemRealEstateFields) GetDailyRent() string {
-	if o == nil || IsNil(o.DailyRent) {
+// GetRooms returns the Rooms field value if set, zero value otherwise.
+func (o *SearchPostItemRealEstateFields) GetRooms() string {
+	if o == nil || IsNil(o.Rooms) {
 		var ret string
 		return ret
 	}
-	return *o.DailyRent
+	return *o.Rooms
 }
 
-// GetDailyRentOk returns a tuple with the DailyRent field value if set, nil otherwise
+// GetRoomsOk returns a tuple with the Rooms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchPostItemRealEstateFields) GetDailyRentOk() (*string, bool) {
-	if o == nil || IsNil(o.DailyRent) {
+func (o *SearchPostItemRealEstateFields) GetRoomsOk() (*string, bool) {
+	if o == nil || IsNil(o.Rooms) {
 		return nil, false
 	}
-	return o.DailyRent, true
+	return o.Rooms, true
 }
 
-// HasDailyRent returns a boolean if a field has been set.
-func (o *SearchPostItemRealEstateFields) HasDailyRent() bool {
-	if o != nil && !IsNil(o.DailyRent) {
+// HasRooms returns a boolean if a field has been set.
+func (o *SearchPostItemRealEstateFields) HasRooms() bool {
+	if o != nil && !IsNil(o.Rooms) {
 		return true
 	}
 
 	return false
 }
 
-// SetDailyRent gets a reference to the given string and assigns it to the DailyRent field.
-func (o *SearchPostItemRealEstateFields) SetDailyRent(v string) {
-	o.DailyRent = &v
+// SetRooms gets a reference to the given string and assigns it to the Rooms field.
+func (o *SearchPostItemRealEstateFields) SetRooms(v string) {
+	o.Rooms = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
@@ -207,134 +335,6 @@ func (o *SearchPostItemRealEstateFields) SetYear(v int64) {
 	o.Year = &v
 }
 
-// GetHasParking returns the HasParking field value if set, zero value otherwise.
-func (o *SearchPostItemRealEstateFields) GetHasParking() bool {
-	if o == nil || IsNil(o.HasParking) {
-		var ret bool
-		return ret
-	}
-	return *o.HasParking
-}
-
-// GetHasParkingOk returns a tuple with the HasParking field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SearchPostItemRealEstateFields) GetHasParkingOk() (*bool, bool) {
-	if o == nil || IsNil(o.HasParking) {
-		return nil, false
-	}
-	return o.HasParking, true
-}
-
-// HasHasParking returns a boolean if a field has been set.
-func (o *SearchPostItemRealEstateFields) HasHasParking() bool {
-	if o != nil && !IsNil(o.HasParking) {
-		return true
-	}
-
-	return false
-}
-
-// SetHasParking gets a reference to the given bool and assigns it to the HasParking field.
-func (o *SearchPostItemRealEstateFields) SetHasParking(v bool) {
-	o.HasParking = &v
-}
-
-// GetHasElevator returns the HasElevator field value if set, zero value otherwise.
-func (o *SearchPostItemRealEstateFields) GetHasElevator() bool {
-	if o == nil || IsNil(o.HasElevator) {
-		var ret bool
-		return ret
-	}
-	return *o.HasElevator
-}
-
-// GetHasElevatorOk returns a tuple with the HasElevator field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SearchPostItemRealEstateFields) GetHasElevatorOk() (*bool, bool) {
-	if o == nil || IsNil(o.HasElevator) {
-		return nil, false
-	}
-	return o.HasElevator, true
-}
-
-// HasHasElevator returns a boolean if a field has been set.
-func (o *SearchPostItemRealEstateFields) HasHasElevator() bool {
-	if o != nil && !IsNil(o.HasElevator) {
-		return true
-	}
-
-	return false
-}
-
-// SetHasElevator gets a reference to the given bool and assigns it to the HasElevator field.
-func (o *SearchPostItemRealEstateFields) SetHasElevator(v bool) {
-	o.HasElevator = &v
-}
-
-// GetRooms returns the Rooms field value if set, zero value otherwise.
-func (o *SearchPostItemRealEstateFields) GetRooms() string {
-	if o == nil || IsNil(o.Rooms) {
-		var ret string
-		return ret
-	}
-	return *o.Rooms
-}
-
-// GetRoomsOk returns a tuple with the Rooms field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SearchPostItemRealEstateFields) GetRoomsOk() (*string, bool) {
-	if o == nil || IsNil(o.Rooms) {
-		return nil, false
-	}
-	return o.Rooms, true
-}
-
-// HasRooms returns a boolean if a field has been set.
-func (o *SearchPostItemRealEstateFields) HasRooms() bool {
-	if o != nil && !IsNil(o.Rooms) {
-		return true
-	}
-
-	return false
-}
-
-// SetRooms gets a reference to the given string and assigns it to the Rooms field.
-func (o *SearchPostItemRealEstateFields) SetRooms(v string) {
-	o.Rooms = &v
-}
-
-// GetFloor returns the Floor field value if set, zero value otherwise.
-func (o *SearchPostItemRealEstateFields) GetFloor() int32 {
-	if o == nil || IsNil(o.Floor) {
-		var ret int32
-		return ret
-	}
-	return *o.Floor
-}
-
-// GetFloorOk returns a tuple with the Floor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SearchPostItemRealEstateFields) GetFloorOk() (*int32, bool) {
-	if o == nil || IsNil(o.Floor) {
-		return nil, false
-	}
-	return o.Floor, true
-}
-
-// HasFloor returns a boolean if a field has been set.
-func (o *SearchPostItemRealEstateFields) HasFloor() bool {
-	if o != nil && !IsNil(o.Floor) {
-		return true
-	}
-
-	return false
-}
-
-// SetFloor gets a reference to the given int32 and assigns it to the Floor field.
-func (o *SearchPostItemRealEstateFields) SetFloor(v int32) {
-	o.Floor = &v
-}
-
 func (o SearchPostItemRealEstateFields) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -348,29 +348,29 @@ func (o SearchPostItemRealEstateFields) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Credit) {
 		toSerialize["credit"] = o.Credit
 	}
+	if !IsNil(o.DailyRent) {
+		toSerialize["daily_rent"] = o.DailyRent
+	}
+	if !IsNil(o.Floor) {
+		toSerialize["floor"] = o.Floor
+	}
+	if !IsNil(o.HasElevator) {
+		toSerialize["has_elevator"] = o.HasElevator
+	}
+	if !IsNil(o.HasParking) {
+		toSerialize["has_parking"] = o.HasParking
+	}
 	if !IsNil(o.Rent) {
 		toSerialize["rent"] = o.Rent
 	}
-	if !IsNil(o.DailyRent) {
-		toSerialize["daily_rent"] = o.DailyRent
+	if !IsNil(o.Rooms) {
+		toSerialize["rooms"] = o.Rooms
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
 	if !IsNil(o.Year) {
 		toSerialize["year"] = o.Year
-	}
-	if !IsNil(o.HasParking) {
-		toSerialize["has_parking"] = o.HasParking
-	}
-	if !IsNil(o.HasElevator) {
-		toSerialize["has_elevator"] = o.HasElevator
-	}
-	if !IsNil(o.Rooms) {
-		toSerialize["rooms"] = o.Rooms
-	}
-	if !IsNil(o.Floor) {
-		toSerialize["floor"] = o.Floor
 	}
 	return toSerialize, nil
 }

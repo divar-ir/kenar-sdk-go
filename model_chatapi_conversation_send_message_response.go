@@ -19,8 +19,8 @@ var _ MappedNullable = &ChatapiConversationSendMessageResponse{}
 
 // ChatapiConversationSendMessageResponse struct for ChatapiConversationSendMessageResponse
 type ChatapiConversationSendMessageResponse struct {
-	Status *int32 `json:"status,omitempty"`
 	Message *string `json:"message,omitempty"`
+	Status *int32 `json:"status,omitempty"`
 }
 
 // NewChatapiConversationSendMessageResponse instantiates a new ChatapiConversationSendMessageResponse object
@@ -38,38 +38,6 @@ func NewChatapiConversationSendMessageResponse() *ChatapiConversationSendMessage
 func NewChatapiConversationSendMessageResponseWithDefaults() *ChatapiConversationSendMessageResponse {
 	this := ChatapiConversationSendMessageResponse{}
 	return &this
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ChatapiConversationSendMessageResponse) GetStatus() int32 {
-	if o == nil || IsNil(o.Status) {
-		var ret int32
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatapiConversationSendMessageResponse) GetStatusOk() (*int32, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *ChatapiConversationSendMessageResponse) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given int32 and assigns it to the Status field.
-func (o *ChatapiConversationSendMessageResponse) SetStatus(v int32) {
-	o.Status = &v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *ChatapiConversationSendMessageResponse) SetMessage(v string) {
 	o.Message = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ChatapiConversationSendMessageResponse) GetStatus() int32 {
+	if o == nil || IsNil(o.Status) {
+		var ret int32
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiConversationSendMessageResponse) GetStatusOk() (*int32, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ChatapiConversationSendMessageResponse) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given int32 and assigns it to the Status field.
+func (o *ChatapiConversationSendMessageResponse) SetStatus(v int32) {
+	o.Status = &v
+}
+
 func (o ChatapiConversationSendMessageResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o ChatapiConversationSendMessageResponse) MarshalJSON() ([]byte, error) {
 
 func (o ChatapiConversationSendMessageResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

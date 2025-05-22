@@ -19,9 +19,9 @@ var _ MappedNullable = &FinderUser{}
 
 // FinderUser struct for FinderUser
 type FinderUser struct {
+	PhoneNumber *string `json:"phone_number,omitempty"`
 	// deprecated
 	PhoneNumbers []string `json:"phone_numbers,omitempty"`
-	PhoneNumber *string `json:"phone_number,omitempty"`
 	UserId *string `json:"user_id,omitempty"`
 }
 
@@ -40,38 +40,6 @@ func NewFinderUser() *FinderUser {
 func NewFinderUserWithDefaults() *FinderUser {
 	this := FinderUser{}
 	return &this
-}
-
-// GetPhoneNumbers returns the PhoneNumbers field value if set, zero value otherwise.
-func (o *FinderUser) GetPhoneNumbers() []string {
-	if o == nil || IsNil(o.PhoneNumbers) {
-		var ret []string
-		return ret
-	}
-	return o.PhoneNumbers
-}
-
-// GetPhoneNumbersOk returns a tuple with the PhoneNumbers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderUser) GetPhoneNumbersOk() ([]string, bool) {
-	if o == nil || IsNil(o.PhoneNumbers) {
-		return nil, false
-	}
-	return o.PhoneNumbers, true
-}
-
-// HasPhoneNumbers returns a boolean if a field has been set.
-func (o *FinderUser) HasPhoneNumbers() bool {
-	if o != nil && !IsNil(o.PhoneNumbers) {
-		return true
-	}
-
-	return false
-}
-
-// SetPhoneNumbers gets a reference to the given []string and assigns it to the PhoneNumbers field.
-func (o *FinderUser) SetPhoneNumbers(v []string) {
-	o.PhoneNumbers = v
 }
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *FinderUser) HasPhoneNumber() bool {
 // SetPhoneNumber gets a reference to the given string and assigns it to the PhoneNumber field.
 func (o *FinderUser) SetPhoneNumber(v string) {
 	o.PhoneNumber = &v
+}
+
+// GetPhoneNumbers returns the PhoneNumbers field value if set, zero value otherwise.
+func (o *FinderUser) GetPhoneNumbers() []string {
+	if o == nil || IsNil(o.PhoneNumbers) {
+		var ret []string
+		return ret
+	}
+	return o.PhoneNumbers
+}
+
+// GetPhoneNumbersOk returns a tuple with the PhoneNumbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderUser) GetPhoneNumbersOk() ([]string, bool) {
+	if o == nil || IsNil(o.PhoneNumbers) {
+		return nil, false
+	}
+	return o.PhoneNumbers, true
+}
+
+// HasPhoneNumbers returns a boolean if a field has been set.
+func (o *FinderUser) HasPhoneNumbers() bool {
+	if o != nil && !IsNil(o.PhoneNumbers) {
+		return true
+	}
+
+	return false
+}
+
+// SetPhoneNumbers gets a reference to the given []string and assigns it to the PhoneNumbers field.
+func (o *FinderUser) SetPhoneNumbers(v []string) {
+	o.PhoneNumbers = v
 }
 
 // GetUserId returns the UserId field value if set, zero value otherwise.
@@ -148,11 +148,11 @@ func (o FinderUser) MarshalJSON() ([]byte, error) {
 
 func (o FinderUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PhoneNumbers) {
-		toSerialize["phone_numbers"] = o.PhoneNumbers
-	}
 	if !IsNil(o.PhoneNumber) {
 		toSerialize["phone_number"] = o.PhoneNumber
+	}
+	if !IsNil(o.PhoneNumbers) {
+		toSerialize["phone_numbers"] = o.PhoneNumbers
 	}
 	if !IsNil(o.UserId) {
 		toSerialize["user_id"] = o.UserId

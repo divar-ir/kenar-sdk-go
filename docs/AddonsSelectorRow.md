@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Title** | Pointer to **string** |  | [optional] 
-**ImageId** | Pointer to **string** |  | [optional] 
+**Action** | Pointer to [**AddonsAction**](AddonsAction.md) |  | [optional] 
 **HasDivider** | Pointer to **bool** |  | [optional] 
 **IconName** | Pointer to [**DivarIconsIconName**](DivarIconsIconName.md) |  | [optional] 
-**Action** | Pointer to [**AddonsAction**](AddonsAction.md) |  | [optional] 
+**ImageId** | Pointer to **string** |  | [optional] 
+**Title** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -29,55 +29,30 @@ NewAddonsSelectorRowWithDefaults instantiates a new AddonsSelectorRow object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTitle
+### GetAction
 
-`func (o *AddonsSelectorRow) GetTitle() string`
+`func (o *AddonsSelectorRow) GetAction() AddonsAction`
 
-GetTitle returns the Title field if non-nil, zero value otherwise.
+GetAction returns the Action field if non-nil, zero value otherwise.
 
-### GetTitleOk
+### GetActionOk
 
-`func (o *AddonsSelectorRow) GetTitleOk() (*string, bool)`
+`func (o *AddonsSelectorRow) GetActionOk() (*AddonsAction, bool)`
 
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+GetActionOk returns a tuple with the Action field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTitle
+### SetAction
 
-`func (o *AddonsSelectorRow) SetTitle(v string)`
+`func (o *AddonsSelectorRow) SetAction(v AddonsAction)`
 
-SetTitle sets Title field to given value.
+SetAction sets Action field to given value.
 
-### HasTitle
+### HasAction
 
-`func (o *AddonsSelectorRow) HasTitle() bool`
+`func (o *AddonsSelectorRow) HasAction() bool`
 
-HasTitle returns a boolean if a field has been set.
-
-### GetImageId
-
-`func (o *AddonsSelectorRow) GetImageId() string`
-
-GetImageId returns the ImageId field if non-nil, zero value otherwise.
-
-### GetImageIdOk
-
-`func (o *AddonsSelectorRow) GetImageIdOk() (*string, bool)`
-
-GetImageIdOk returns a tuple with the ImageId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImageId
-
-`func (o *AddonsSelectorRow) SetImageId(v string)`
-
-SetImageId sets ImageId field to given value.
-
-### HasImageId
-
-`func (o *AddonsSelectorRow) HasImageId() bool`
-
-HasImageId returns a boolean if a field has been set.
+HasAction returns a boolean if a field has been set.
 
 ### GetHasDivider
 
@@ -129,30 +104,55 @@ SetIconName sets IconName field to given value.
 
 HasIconName returns a boolean if a field has been set.
 
-### GetAction
+### GetImageId
 
-`func (o *AddonsSelectorRow) GetAction() AddonsAction`
+`func (o *AddonsSelectorRow) GetImageId() string`
 
-GetAction returns the Action field if non-nil, zero value otherwise.
+GetImageId returns the ImageId field if non-nil, zero value otherwise.
 
-### GetActionOk
+### GetImageIdOk
 
-`func (o *AddonsSelectorRow) GetActionOk() (*AddonsAction, bool)`
+`func (o *AddonsSelectorRow) GetImageIdOk() (*string, bool)`
 
-GetActionOk returns a tuple with the Action field if it's non-nil, zero value otherwise
+GetImageIdOk returns a tuple with the ImageId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAction
+### SetImageId
 
-`func (o *AddonsSelectorRow) SetAction(v AddonsAction)`
+`func (o *AddonsSelectorRow) SetImageId(v string)`
 
-SetAction sets Action field to given value.
+SetImageId sets ImageId field to given value.
 
-### HasAction
+### HasImageId
 
-`func (o *AddonsSelectorRow) HasAction() bool`
+`func (o *AddonsSelectorRow) HasImageId() bool`
 
-HasAction returns a boolean if a field has been set.
+HasImageId returns a boolean if a field has been set.
+
+### GetTitle
+
+`func (o *AddonsSelectorRow) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *AddonsSelectorRow) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *AddonsSelectorRow) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *AddonsSelectorRow) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

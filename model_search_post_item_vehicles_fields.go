@@ -19,9 +19,9 @@ var _ MappedNullable = &SearchPostItemVehiclesFields{}
 
 // SearchPostItemVehiclesFields struct for SearchPostItemVehiclesFields
 type SearchPostItemVehiclesFields struct {
-	Usage *string `json:"usage,omitempty"`
-	InstallmentSale *string `json:"installment_sale,omitempty"`
 	CustomPostSubtitle *string `json:"custom_post_subtitle,omitempty"`
+	InstallmentSale *string `json:"installment_sale,omitempty"`
+	Usage *string `json:"usage,omitempty"`
 }
 
 // NewSearchPostItemVehiclesFields instantiates a new SearchPostItemVehiclesFields object
@@ -39,70 +39,6 @@ func NewSearchPostItemVehiclesFields() *SearchPostItemVehiclesFields {
 func NewSearchPostItemVehiclesFieldsWithDefaults() *SearchPostItemVehiclesFields {
 	this := SearchPostItemVehiclesFields{}
 	return &this
-}
-
-// GetUsage returns the Usage field value if set, zero value otherwise.
-func (o *SearchPostItemVehiclesFields) GetUsage() string {
-	if o == nil || IsNil(o.Usage) {
-		var ret string
-		return ret
-	}
-	return *o.Usage
-}
-
-// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SearchPostItemVehiclesFields) GetUsageOk() (*string, bool) {
-	if o == nil || IsNil(o.Usage) {
-		return nil, false
-	}
-	return o.Usage, true
-}
-
-// HasUsage returns a boolean if a field has been set.
-func (o *SearchPostItemVehiclesFields) HasUsage() bool {
-	if o != nil && !IsNil(o.Usage) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsage gets a reference to the given string and assigns it to the Usage field.
-func (o *SearchPostItemVehiclesFields) SetUsage(v string) {
-	o.Usage = &v
-}
-
-// GetInstallmentSale returns the InstallmentSale field value if set, zero value otherwise.
-func (o *SearchPostItemVehiclesFields) GetInstallmentSale() string {
-	if o == nil || IsNil(o.InstallmentSale) {
-		var ret string
-		return ret
-	}
-	return *o.InstallmentSale
-}
-
-// GetInstallmentSaleOk returns a tuple with the InstallmentSale field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SearchPostItemVehiclesFields) GetInstallmentSaleOk() (*string, bool) {
-	if o == nil || IsNil(o.InstallmentSale) {
-		return nil, false
-	}
-	return o.InstallmentSale, true
-}
-
-// HasInstallmentSale returns a boolean if a field has been set.
-func (o *SearchPostItemVehiclesFields) HasInstallmentSale() bool {
-	if o != nil && !IsNil(o.InstallmentSale) {
-		return true
-	}
-
-	return false
-}
-
-// SetInstallmentSale gets a reference to the given string and assigns it to the InstallmentSale field.
-func (o *SearchPostItemVehiclesFields) SetInstallmentSale(v string) {
-	o.InstallmentSale = &v
 }
 
 // GetCustomPostSubtitle returns the CustomPostSubtitle field value if set, zero value otherwise.
@@ -137,6 +73,70 @@ func (o *SearchPostItemVehiclesFields) SetCustomPostSubtitle(v string) {
 	o.CustomPostSubtitle = &v
 }
 
+// GetInstallmentSale returns the InstallmentSale field value if set, zero value otherwise.
+func (o *SearchPostItemVehiclesFields) GetInstallmentSale() string {
+	if o == nil || IsNil(o.InstallmentSale) {
+		var ret string
+		return ret
+	}
+	return *o.InstallmentSale
+}
+
+// GetInstallmentSaleOk returns a tuple with the InstallmentSale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchPostItemVehiclesFields) GetInstallmentSaleOk() (*string, bool) {
+	if o == nil || IsNil(o.InstallmentSale) {
+		return nil, false
+	}
+	return o.InstallmentSale, true
+}
+
+// HasInstallmentSale returns a boolean if a field has been set.
+func (o *SearchPostItemVehiclesFields) HasInstallmentSale() bool {
+	if o != nil && !IsNil(o.InstallmentSale) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallmentSale gets a reference to the given string and assigns it to the InstallmentSale field.
+func (o *SearchPostItemVehiclesFields) SetInstallmentSale(v string) {
+	o.InstallmentSale = &v
+}
+
+// GetUsage returns the Usage field value if set, zero value otherwise.
+func (o *SearchPostItemVehiclesFields) GetUsage() string {
+	if o == nil || IsNil(o.Usage) {
+		var ret string
+		return ret
+	}
+	return *o.Usage
+}
+
+// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchPostItemVehiclesFields) GetUsageOk() (*string, bool) {
+	if o == nil || IsNil(o.Usage) {
+		return nil, false
+	}
+	return o.Usage, true
+}
+
+// HasUsage returns a boolean if a field has been set.
+func (o *SearchPostItemVehiclesFields) HasUsage() bool {
+	if o != nil && !IsNil(o.Usage) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsage gets a reference to the given string and assigns it to the Usage field.
+func (o *SearchPostItemVehiclesFields) SetUsage(v string) {
+	o.Usage = &v
+}
+
 func (o SearchPostItemVehiclesFields) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -147,14 +147,14 @@ func (o SearchPostItemVehiclesFields) MarshalJSON() ([]byte, error) {
 
 func (o SearchPostItemVehiclesFields) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Usage) {
-		toSerialize["usage"] = o.Usage
+	if !IsNil(o.CustomPostSubtitle) {
+		toSerialize["custom_post_subtitle"] = o.CustomPostSubtitle
 	}
 	if !IsNil(o.InstallmentSale) {
 		toSerialize["installment_sale"] = o.InstallmentSale
 	}
-	if !IsNil(o.CustomPostSubtitle) {
-		toSerialize["custom_post_subtitle"] = o.CustomPostSubtitle
+	if !IsNil(o.Usage) {
+		toSerialize["usage"] = o.Usage
 	}
 	return toSerialize, nil
 }

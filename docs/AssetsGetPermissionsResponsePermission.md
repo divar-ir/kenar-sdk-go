@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Slug** | Pointer to **string** |  | [optional] 
-**Display** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**Display** | Pointer to **string** |  | [optional] 
 **LifecycleState** | Pointer to [**AssetsGetPermissionsResponseLifeCycleState**](AssetsGetPermissionsResponseLifeCycleState.md) |  | [optional] 
+**Slug** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,56 +27,6 @@ will change when the set of required properties is changed
 NewAssetsGetPermissionsResponsePermissionWithDefaults instantiates a new AssetsGetPermissionsResponsePermission object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSlug
-
-`func (o *AssetsGetPermissionsResponsePermission) GetSlug() string`
-
-GetSlug returns the Slug field if non-nil, zero value otherwise.
-
-### GetSlugOk
-
-`func (o *AssetsGetPermissionsResponsePermission) GetSlugOk() (*string, bool)`
-
-GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlug
-
-`func (o *AssetsGetPermissionsResponsePermission) SetSlug(v string)`
-
-SetSlug sets Slug field to given value.
-
-### HasSlug
-
-`func (o *AssetsGetPermissionsResponsePermission) HasSlug() bool`
-
-HasSlug returns a boolean if a field has been set.
-
-### GetDisplay
-
-`func (o *AssetsGetPermissionsResponsePermission) GetDisplay() string`
-
-GetDisplay returns the Display field if non-nil, zero value otherwise.
-
-### GetDisplayOk
-
-`func (o *AssetsGetPermissionsResponsePermission) GetDisplayOk() (*string, bool)`
-
-GetDisplayOk returns a tuple with the Display field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDisplay
-
-`func (o *AssetsGetPermissionsResponsePermission) SetDisplay(v string)`
-
-SetDisplay sets Display field to given value.
-
-### HasDisplay
-
-`func (o *AssetsGetPermissionsResponsePermission) HasDisplay() bool`
-
-HasDisplay returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -103,6 +53,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetDisplay
+
+`func (o *AssetsGetPermissionsResponsePermission) GetDisplay() string`
+
+GetDisplay returns the Display field if non-nil, zero value otherwise.
+
+### GetDisplayOk
+
+`func (o *AssetsGetPermissionsResponsePermission) GetDisplayOk() (*string, bool)`
+
+GetDisplayOk returns a tuple with the Display field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplay
+
+`func (o *AssetsGetPermissionsResponsePermission) SetDisplay(v string)`
+
+SetDisplay sets Display field to given value.
+
+### HasDisplay
+
+`func (o *AssetsGetPermissionsResponsePermission) HasDisplay() bool`
+
+HasDisplay returns a boolean if a field has been set.
+
 ### GetLifecycleState
 
 `func (o *AssetsGetPermissionsResponsePermission) GetLifecycleState() AssetsGetPermissionsResponseLifeCycleState`
@@ -127,6 +102,31 @@ SetLifecycleState sets LifecycleState field to given value.
 `func (o *AssetsGetPermissionsResponsePermission) HasLifecycleState() bool`
 
 HasLifecycleState returns a boolean if a field has been set.
+
+### GetSlug
+
+`func (o *AssetsGetPermissionsResponsePermission) GetSlug() string`
+
+GetSlug returns the Slug field if non-nil, zero value otherwise.
+
+### GetSlugOk
+
+`func (o *AssetsGetPermissionsResponsePermission) GetSlugOk() (*string, bool)`
+
+GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlug
+
+`func (o *AssetsGetPermissionsResponsePermission) SetSlug(v string)`
+
+SetSlug sets Slug field to given value.
+
+### HasSlug
+
+`func (o *AssetsGetPermissionsResponsePermission) HasSlug() bool`
+
+HasSlug returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

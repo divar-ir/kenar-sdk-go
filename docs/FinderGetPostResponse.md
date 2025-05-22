@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to [**FinderPostExtState**](FinderPostExtState.md) |  | [optional] 
-**FirstPublishedAt** | Pointer to **time.Time** |  | [optional] 
-**Token** | Pointer to **string** |  | [optional] 
-**Category** | Pointer to **string** |  | [optional] 
-**City** | Pointer to **string** |  | [optional] 
-**District** | Pointer to **string** |  | [optional] 
-**Data** | Pointer to **map[string]interface{}** |  | [optional] 
-**ChatEnabled** | Pointer to **bool** |  | [optional] 
 **BusinessData** | Pointer to [**GetPostResponseBusinessData**](GetPostResponseBusinessData.md) |  | [optional] 
+**Category** | Pointer to **string** |  | [optional] 
+**ChatEnabled** | Pointer to **bool** |  | [optional] 
+**City** | Pointer to **string** |  | [optional] 
+**Data** | Pointer to **map[string]interface{}** |  | [optional] 
+**District** | Pointer to **string** |  | [optional] 
+**FirstPublishedAt** | Pointer to **time.Time** |  | [optional] 
+**State** | Pointer to [**FinderPostExtState**](FinderPostExtState.md) |  | [optional] 
+**Token** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -33,80 +33,30 @@ NewFinderGetPostResponseWithDefaults instantiates a new FinderGetPostResponse ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetState
+### GetBusinessData
 
-`func (o *FinderGetPostResponse) GetState() FinderPostExtState`
+`func (o *FinderGetPostResponse) GetBusinessData() GetPostResponseBusinessData`
 
-GetState returns the State field if non-nil, zero value otherwise.
+GetBusinessData returns the BusinessData field if non-nil, zero value otherwise.
 
-### GetStateOk
+### GetBusinessDataOk
 
-`func (o *FinderGetPostResponse) GetStateOk() (*FinderPostExtState, bool)`
+`func (o *FinderGetPostResponse) GetBusinessDataOk() (*GetPostResponseBusinessData, bool)`
 
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+GetBusinessDataOk returns a tuple with the BusinessData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetState
+### SetBusinessData
 
-`func (o *FinderGetPostResponse) SetState(v FinderPostExtState)`
+`func (o *FinderGetPostResponse) SetBusinessData(v GetPostResponseBusinessData)`
 
-SetState sets State field to given value.
+SetBusinessData sets BusinessData field to given value.
 
-### HasState
+### HasBusinessData
 
-`func (o *FinderGetPostResponse) HasState() bool`
+`func (o *FinderGetPostResponse) HasBusinessData() bool`
 
-HasState returns a boolean if a field has been set.
-
-### GetFirstPublishedAt
-
-`func (o *FinderGetPostResponse) GetFirstPublishedAt() time.Time`
-
-GetFirstPublishedAt returns the FirstPublishedAt field if non-nil, zero value otherwise.
-
-### GetFirstPublishedAtOk
-
-`func (o *FinderGetPostResponse) GetFirstPublishedAtOk() (*time.Time, bool)`
-
-GetFirstPublishedAtOk returns a tuple with the FirstPublishedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFirstPublishedAt
-
-`func (o *FinderGetPostResponse) SetFirstPublishedAt(v time.Time)`
-
-SetFirstPublishedAt sets FirstPublishedAt field to given value.
-
-### HasFirstPublishedAt
-
-`func (o *FinderGetPostResponse) HasFirstPublishedAt() bool`
-
-HasFirstPublishedAt returns a boolean if a field has been set.
-
-### GetToken
-
-`func (o *FinderGetPostResponse) GetToken() string`
-
-GetToken returns the Token field if non-nil, zero value otherwise.
-
-### GetTokenOk
-
-`func (o *FinderGetPostResponse) GetTokenOk() (*string, bool)`
-
-GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetToken
-
-`func (o *FinderGetPostResponse) SetToken(v string)`
-
-SetToken sets Token field to given value.
-
-### HasToken
-
-`func (o *FinderGetPostResponse) HasToken() bool`
-
-HasToken returns a boolean if a field has been set.
+HasBusinessData returns a boolean if a field has been set.
 
 ### GetCategory
 
@@ -133,6 +83,31 @@ SetCategory sets Category field to given value.
 
 HasCategory returns a boolean if a field has been set.
 
+### GetChatEnabled
+
+`func (o *FinderGetPostResponse) GetChatEnabled() bool`
+
+GetChatEnabled returns the ChatEnabled field if non-nil, zero value otherwise.
+
+### GetChatEnabledOk
+
+`func (o *FinderGetPostResponse) GetChatEnabledOk() (*bool, bool)`
+
+GetChatEnabledOk returns a tuple with the ChatEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChatEnabled
+
+`func (o *FinderGetPostResponse) SetChatEnabled(v bool)`
+
+SetChatEnabled sets ChatEnabled field to given value.
+
+### HasChatEnabled
+
+`func (o *FinderGetPostResponse) HasChatEnabled() bool`
+
+HasChatEnabled returns a boolean if a field has been set.
+
 ### GetCity
 
 `func (o *FinderGetPostResponse) GetCity() string`
@@ -157,31 +132,6 @@ SetCity sets City field to given value.
 `func (o *FinderGetPostResponse) HasCity() bool`
 
 HasCity returns a boolean if a field has been set.
-
-### GetDistrict
-
-`func (o *FinderGetPostResponse) GetDistrict() string`
-
-GetDistrict returns the District field if non-nil, zero value otherwise.
-
-### GetDistrictOk
-
-`func (o *FinderGetPostResponse) GetDistrictOk() (*string, bool)`
-
-GetDistrictOk returns a tuple with the District field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDistrict
-
-`func (o *FinderGetPostResponse) SetDistrict(v string)`
-
-SetDistrict sets District field to given value.
-
-### HasDistrict
-
-`func (o *FinderGetPostResponse) HasDistrict() bool`
-
-HasDistrict returns a boolean if a field has been set.
 
 ### GetData
 
@@ -208,55 +158,105 @@ SetData sets Data field to given value.
 
 HasData returns a boolean if a field has been set.
 
-### GetChatEnabled
+### GetDistrict
 
-`func (o *FinderGetPostResponse) GetChatEnabled() bool`
+`func (o *FinderGetPostResponse) GetDistrict() string`
 
-GetChatEnabled returns the ChatEnabled field if non-nil, zero value otherwise.
+GetDistrict returns the District field if non-nil, zero value otherwise.
 
-### GetChatEnabledOk
+### GetDistrictOk
 
-`func (o *FinderGetPostResponse) GetChatEnabledOk() (*bool, bool)`
+`func (o *FinderGetPostResponse) GetDistrictOk() (*string, bool)`
 
-GetChatEnabledOk returns a tuple with the ChatEnabled field if it's non-nil, zero value otherwise
+GetDistrictOk returns a tuple with the District field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetChatEnabled
+### SetDistrict
 
-`func (o *FinderGetPostResponse) SetChatEnabled(v bool)`
+`func (o *FinderGetPostResponse) SetDistrict(v string)`
 
-SetChatEnabled sets ChatEnabled field to given value.
+SetDistrict sets District field to given value.
 
-### HasChatEnabled
+### HasDistrict
 
-`func (o *FinderGetPostResponse) HasChatEnabled() bool`
+`func (o *FinderGetPostResponse) HasDistrict() bool`
 
-HasChatEnabled returns a boolean if a field has been set.
+HasDistrict returns a boolean if a field has been set.
 
-### GetBusinessData
+### GetFirstPublishedAt
 
-`func (o *FinderGetPostResponse) GetBusinessData() GetPostResponseBusinessData`
+`func (o *FinderGetPostResponse) GetFirstPublishedAt() time.Time`
 
-GetBusinessData returns the BusinessData field if non-nil, zero value otherwise.
+GetFirstPublishedAt returns the FirstPublishedAt field if non-nil, zero value otherwise.
 
-### GetBusinessDataOk
+### GetFirstPublishedAtOk
 
-`func (o *FinderGetPostResponse) GetBusinessDataOk() (*GetPostResponseBusinessData, bool)`
+`func (o *FinderGetPostResponse) GetFirstPublishedAtOk() (*time.Time, bool)`
 
-GetBusinessDataOk returns a tuple with the BusinessData field if it's non-nil, zero value otherwise
+GetFirstPublishedAtOk returns a tuple with the FirstPublishedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBusinessData
+### SetFirstPublishedAt
 
-`func (o *FinderGetPostResponse) SetBusinessData(v GetPostResponseBusinessData)`
+`func (o *FinderGetPostResponse) SetFirstPublishedAt(v time.Time)`
 
-SetBusinessData sets BusinessData field to given value.
+SetFirstPublishedAt sets FirstPublishedAt field to given value.
 
-### HasBusinessData
+### HasFirstPublishedAt
 
-`func (o *FinderGetPostResponse) HasBusinessData() bool`
+`func (o *FinderGetPostResponse) HasFirstPublishedAt() bool`
 
-HasBusinessData returns a boolean if a field has been set.
+HasFirstPublishedAt returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *FinderGetPostResponse) GetState() FinderPostExtState`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *FinderGetPostResponse) GetStateOk() (*FinderPostExtState, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *FinderGetPostResponse) SetState(v FinderPostExtState)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *FinderGetPostResponse) HasState() bool`
+
+HasState returns a boolean if a field has been set.
+
+### GetToken
+
+`func (o *FinderGetPostResponse) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *FinderGetPostResponse) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *FinderGetPostResponse) SetToken(v string)`
+
+SetToken sets Token field to given value.
+
+### HasToken
+
+`func (o *FinderGetPostResponse) HasToken() bool`
+
+HasToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

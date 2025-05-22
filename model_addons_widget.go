@@ -19,17 +19,17 @@ var _ MappedNullable = &AddonsWidget{}
 
 // AddonsWidget struct for AddonsWidget
 type AddonsWidget struct {
-	EventRow *AddonsEventRow `json:"event_row,omitempty"`
 	ButtonBar *AddonsButtonBar `json:"button_bar,omitempty"`
-	TitleRow *AddonsTitleRow `json:"title_row,omitempty"`
-	SubtitleRow *AddonsSubtitleRow `json:"subtitle_row,omitempty"`
-	SelectorRow *AddonsSelectorRow `json:"selector_row,omitempty"`
-	ScoreRow *AddonsScoreRow `json:"score_row,omitempty"`
-	ImageCarouselRow *AddonsImageCarouselRow `json:"image_carousel_row,omitempty"`
-	GroupInfoRow *AddonsGroupInfoRow `json:"group_info_row,omitempty"`
-	EvaluationRow *AddonsEvaluationRow `json:"evaluation_row,omitempty"`
 	DescriptionRow *AddonsDescriptionRow `json:"description_row,omitempty"`
+	EvaluationRow *AddonsEvaluationRow `json:"evaluation_row,omitempty"`
+	EventRow *AddonsEventRow `json:"event_row,omitempty"`
+	GroupInfoRow *AddonsGroupInfoRow `json:"group_info_row,omitempty"`
+	ImageCarouselRow *AddonsImageCarouselRow `json:"image_carousel_row,omitempty"`
+	ScoreRow *AddonsScoreRow `json:"score_row,omitempty"`
+	SelectorRow *AddonsSelectorRow `json:"selector_row,omitempty"`
 	SemanticPaths *map[string]string `json:"semantic_paths,omitempty"`
+	SubtitleRow *AddonsSubtitleRow `json:"subtitle_row,omitempty"`
+	TitleRow *AddonsTitleRow `json:"title_row,omitempty"`
 }
 
 // NewAddonsWidget instantiates a new AddonsWidget object
@@ -47,38 +47,6 @@ func NewAddonsWidget() *AddonsWidget {
 func NewAddonsWidgetWithDefaults() *AddonsWidget {
 	this := AddonsWidget{}
 	return &this
-}
-
-// GetEventRow returns the EventRow field value if set, zero value otherwise.
-func (o *AddonsWidget) GetEventRow() AddonsEventRow {
-	if o == nil || IsNil(o.EventRow) {
-		var ret AddonsEventRow
-		return ret
-	}
-	return *o.EventRow
-}
-
-// GetEventRowOk returns a tuple with the EventRow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsWidget) GetEventRowOk() (*AddonsEventRow, bool) {
-	if o == nil || IsNil(o.EventRow) {
-		return nil, false
-	}
-	return o.EventRow, true
-}
-
-// HasEventRow returns a boolean if a field has been set.
-func (o *AddonsWidget) HasEventRow() bool {
-	if o != nil && !IsNil(o.EventRow) {
-		return true
-	}
-
-	return false
-}
-
-// SetEventRow gets a reference to the given AddonsEventRow and assigns it to the EventRow field.
-func (o *AddonsWidget) SetEventRow(v AddonsEventRow) {
-	o.EventRow = &v
 }
 
 // GetButtonBar returns the ButtonBar field value if set, zero value otherwise.
@@ -113,196 +81,36 @@ func (o *AddonsWidget) SetButtonBar(v AddonsButtonBar) {
 	o.ButtonBar = &v
 }
 
-// GetTitleRow returns the TitleRow field value if set, zero value otherwise.
-func (o *AddonsWidget) GetTitleRow() AddonsTitleRow {
-	if o == nil || IsNil(o.TitleRow) {
-		var ret AddonsTitleRow
+// GetDescriptionRow returns the DescriptionRow field value if set, zero value otherwise.
+func (o *AddonsWidget) GetDescriptionRow() AddonsDescriptionRow {
+	if o == nil || IsNil(o.DescriptionRow) {
+		var ret AddonsDescriptionRow
 		return ret
 	}
-	return *o.TitleRow
+	return *o.DescriptionRow
 }
 
-// GetTitleRowOk returns a tuple with the TitleRow field value if set, nil otherwise
+// GetDescriptionRowOk returns a tuple with the DescriptionRow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsWidget) GetTitleRowOk() (*AddonsTitleRow, bool) {
-	if o == nil || IsNil(o.TitleRow) {
+func (o *AddonsWidget) GetDescriptionRowOk() (*AddonsDescriptionRow, bool) {
+	if o == nil || IsNil(o.DescriptionRow) {
 		return nil, false
 	}
-	return o.TitleRow, true
+	return o.DescriptionRow, true
 }
 
-// HasTitleRow returns a boolean if a field has been set.
-func (o *AddonsWidget) HasTitleRow() bool {
-	if o != nil && !IsNil(o.TitleRow) {
+// HasDescriptionRow returns a boolean if a field has been set.
+func (o *AddonsWidget) HasDescriptionRow() bool {
+	if o != nil && !IsNil(o.DescriptionRow) {
 		return true
 	}
 
 	return false
 }
 
-// SetTitleRow gets a reference to the given AddonsTitleRow and assigns it to the TitleRow field.
-func (o *AddonsWidget) SetTitleRow(v AddonsTitleRow) {
-	o.TitleRow = &v
-}
-
-// GetSubtitleRow returns the SubtitleRow field value if set, zero value otherwise.
-func (o *AddonsWidget) GetSubtitleRow() AddonsSubtitleRow {
-	if o == nil || IsNil(o.SubtitleRow) {
-		var ret AddonsSubtitleRow
-		return ret
-	}
-	return *o.SubtitleRow
-}
-
-// GetSubtitleRowOk returns a tuple with the SubtitleRow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsWidget) GetSubtitleRowOk() (*AddonsSubtitleRow, bool) {
-	if o == nil || IsNil(o.SubtitleRow) {
-		return nil, false
-	}
-	return o.SubtitleRow, true
-}
-
-// HasSubtitleRow returns a boolean if a field has been set.
-func (o *AddonsWidget) HasSubtitleRow() bool {
-	if o != nil && !IsNil(o.SubtitleRow) {
-		return true
-	}
-
-	return false
-}
-
-// SetSubtitleRow gets a reference to the given AddonsSubtitleRow and assigns it to the SubtitleRow field.
-func (o *AddonsWidget) SetSubtitleRow(v AddonsSubtitleRow) {
-	o.SubtitleRow = &v
-}
-
-// GetSelectorRow returns the SelectorRow field value if set, zero value otherwise.
-func (o *AddonsWidget) GetSelectorRow() AddonsSelectorRow {
-	if o == nil || IsNil(o.SelectorRow) {
-		var ret AddonsSelectorRow
-		return ret
-	}
-	return *o.SelectorRow
-}
-
-// GetSelectorRowOk returns a tuple with the SelectorRow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsWidget) GetSelectorRowOk() (*AddonsSelectorRow, bool) {
-	if o == nil || IsNil(o.SelectorRow) {
-		return nil, false
-	}
-	return o.SelectorRow, true
-}
-
-// HasSelectorRow returns a boolean if a field has been set.
-func (o *AddonsWidget) HasSelectorRow() bool {
-	if o != nil && !IsNil(o.SelectorRow) {
-		return true
-	}
-
-	return false
-}
-
-// SetSelectorRow gets a reference to the given AddonsSelectorRow and assigns it to the SelectorRow field.
-func (o *AddonsWidget) SetSelectorRow(v AddonsSelectorRow) {
-	o.SelectorRow = &v
-}
-
-// GetScoreRow returns the ScoreRow field value if set, zero value otherwise.
-func (o *AddonsWidget) GetScoreRow() AddonsScoreRow {
-	if o == nil || IsNil(o.ScoreRow) {
-		var ret AddonsScoreRow
-		return ret
-	}
-	return *o.ScoreRow
-}
-
-// GetScoreRowOk returns a tuple with the ScoreRow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsWidget) GetScoreRowOk() (*AddonsScoreRow, bool) {
-	if o == nil || IsNil(o.ScoreRow) {
-		return nil, false
-	}
-	return o.ScoreRow, true
-}
-
-// HasScoreRow returns a boolean if a field has been set.
-func (o *AddonsWidget) HasScoreRow() bool {
-	if o != nil && !IsNil(o.ScoreRow) {
-		return true
-	}
-
-	return false
-}
-
-// SetScoreRow gets a reference to the given AddonsScoreRow and assigns it to the ScoreRow field.
-func (o *AddonsWidget) SetScoreRow(v AddonsScoreRow) {
-	o.ScoreRow = &v
-}
-
-// GetImageCarouselRow returns the ImageCarouselRow field value if set, zero value otherwise.
-func (o *AddonsWidget) GetImageCarouselRow() AddonsImageCarouselRow {
-	if o == nil || IsNil(o.ImageCarouselRow) {
-		var ret AddonsImageCarouselRow
-		return ret
-	}
-	return *o.ImageCarouselRow
-}
-
-// GetImageCarouselRowOk returns a tuple with the ImageCarouselRow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsWidget) GetImageCarouselRowOk() (*AddonsImageCarouselRow, bool) {
-	if o == nil || IsNil(o.ImageCarouselRow) {
-		return nil, false
-	}
-	return o.ImageCarouselRow, true
-}
-
-// HasImageCarouselRow returns a boolean if a field has been set.
-func (o *AddonsWidget) HasImageCarouselRow() bool {
-	if o != nil && !IsNil(o.ImageCarouselRow) {
-		return true
-	}
-
-	return false
-}
-
-// SetImageCarouselRow gets a reference to the given AddonsImageCarouselRow and assigns it to the ImageCarouselRow field.
-func (o *AddonsWidget) SetImageCarouselRow(v AddonsImageCarouselRow) {
-	o.ImageCarouselRow = &v
-}
-
-// GetGroupInfoRow returns the GroupInfoRow field value if set, zero value otherwise.
-func (o *AddonsWidget) GetGroupInfoRow() AddonsGroupInfoRow {
-	if o == nil || IsNil(o.GroupInfoRow) {
-		var ret AddonsGroupInfoRow
-		return ret
-	}
-	return *o.GroupInfoRow
-}
-
-// GetGroupInfoRowOk returns a tuple with the GroupInfoRow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsWidget) GetGroupInfoRowOk() (*AddonsGroupInfoRow, bool) {
-	if o == nil || IsNil(o.GroupInfoRow) {
-		return nil, false
-	}
-	return o.GroupInfoRow, true
-}
-
-// HasGroupInfoRow returns a boolean if a field has been set.
-func (o *AddonsWidget) HasGroupInfoRow() bool {
-	if o != nil && !IsNil(o.GroupInfoRow) {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupInfoRow gets a reference to the given AddonsGroupInfoRow and assigns it to the GroupInfoRow field.
-func (o *AddonsWidget) SetGroupInfoRow(v AddonsGroupInfoRow) {
-	o.GroupInfoRow = &v
+// SetDescriptionRow gets a reference to the given AddonsDescriptionRow and assigns it to the DescriptionRow field.
+func (o *AddonsWidget) SetDescriptionRow(v AddonsDescriptionRow) {
+	o.DescriptionRow = &v
 }
 
 // GetEvaluationRow returns the EvaluationRow field value if set, zero value otherwise.
@@ -337,36 +145,164 @@ func (o *AddonsWidget) SetEvaluationRow(v AddonsEvaluationRow) {
 	o.EvaluationRow = &v
 }
 
-// GetDescriptionRow returns the DescriptionRow field value if set, zero value otherwise.
-func (o *AddonsWidget) GetDescriptionRow() AddonsDescriptionRow {
-	if o == nil || IsNil(o.DescriptionRow) {
-		var ret AddonsDescriptionRow
+// GetEventRow returns the EventRow field value if set, zero value otherwise.
+func (o *AddonsWidget) GetEventRow() AddonsEventRow {
+	if o == nil || IsNil(o.EventRow) {
+		var ret AddonsEventRow
 		return ret
 	}
-	return *o.DescriptionRow
+	return *o.EventRow
 }
 
-// GetDescriptionRowOk returns a tuple with the DescriptionRow field value if set, nil otherwise
+// GetEventRowOk returns a tuple with the EventRow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsWidget) GetDescriptionRowOk() (*AddonsDescriptionRow, bool) {
-	if o == nil || IsNil(o.DescriptionRow) {
+func (o *AddonsWidget) GetEventRowOk() (*AddonsEventRow, bool) {
+	if o == nil || IsNil(o.EventRow) {
 		return nil, false
 	}
-	return o.DescriptionRow, true
+	return o.EventRow, true
 }
 
-// HasDescriptionRow returns a boolean if a field has been set.
-func (o *AddonsWidget) HasDescriptionRow() bool {
-	if o != nil && !IsNil(o.DescriptionRow) {
+// HasEventRow returns a boolean if a field has been set.
+func (o *AddonsWidget) HasEventRow() bool {
+	if o != nil && !IsNil(o.EventRow) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescriptionRow gets a reference to the given AddonsDescriptionRow and assigns it to the DescriptionRow field.
-func (o *AddonsWidget) SetDescriptionRow(v AddonsDescriptionRow) {
-	o.DescriptionRow = &v
+// SetEventRow gets a reference to the given AddonsEventRow and assigns it to the EventRow field.
+func (o *AddonsWidget) SetEventRow(v AddonsEventRow) {
+	o.EventRow = &v
+}
+
+// GetGroupInfoRow returns the GroupInfoRow field value if set, zero value otherwise.
+func (o *AddonsWidget) GetGroupInfoRow() AddonsGroupInfoRow {
+	if o == nil || IsNil(o.GroupInfoRow) {
+		var ret AddonsGroupInfoRow
+		return ret
+	}
+	return *o.GroupInfoRow
+}
+
+// GetGroupInfoRowOk returns a tuple with the GroupInfoRow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsWidget) GetGroupInfoRowOk() (*AddonsGroupInfoRow, bool) {
+	if o == nil || IsNil(o.GroupInfoRow) {
+		return nil, false
+	}
+	return o.GroupInfoRow, true
+}
+
+// HasGroupInfoRow returns a boolean if a field has been set.
+func (o *AddonsWidget) HasGroupInfoRow() bool {
+	if o != nil && !IsNil(o.GroupInfoRow) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupInfoRow gets a reference to the given AddonsGroupInfoRow and assigns it to the GroupInfoRow field.
+func (o *AddonsWidget) SetGroupInfoRow(v AddonsGroupInfoRow) {
+	o.GroupInfoRow = &v
+}
+
+// GetImageCarouselRow returns the ImageCarouselRow field value if set, zero value otherwise.
+func (o *AddonsWidget) GetImageCarouselRow() AddonsImageCarouselRow {
+	if o == nil || IsNil(o.ImageCarouselRow) {
+		var ret AddonsImageCarouselRow
+		return ret
+	}
+	return *o.ImageCarouselRow
+}
+
+// GetImageCarouselRowOk returns a tuple with the ImageCarouselRow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsWidget) GetImageCarouselRowOk() (*AddonsImageCarouselRow, bool) {
+	if o == nil || IsNil(o.ImageCarouselRow) {
+		return nil, false
+	}
+	return o.ImageCarouselRow, true
+}
+
+// HasImageCarouselRow returns a boolean if a field has been set.
+func (o *AddonsWidget) HasImageCarouselRow() bool {
+	if o != nil && !IsNil(o.ImageCarouselRow) {
+		return true
+	}
+
+	return false
+}
+
+// SetImageCarouselRow gets a reference to the given AddonsImageCarouselRow and assigns it to the ImageCarouselRow field.
+func (o *AddonsWidget) SetImageCarouselRow(v AddonsImageCarouselRow) {
+	o.ImageCarouselRow = &v
+}
+
+// GetScoreRow returns the ScoreRow field value if set, zero value otherwise.
+func (o *AddonsWidget) GetScoreRow() AddonsScoreRow {
+	if o == nil || IsNil(o.ScoreRow) {
+		var ret AddonsScoreRow
+		return ret
+	}
+	return *o.ScoreRow
+}
+
+// GetScoreRowOk returns a tuple with the ScoreRow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsWidget) GetScoreRowOk() (*AddonsScoreRow, bool) {
+	if o == nil || IsNil(o.ScoreRow) {
+		return nil, false
+	}
+	return o.ScoreRow, true
+}
+
+// HasScoreRow returns a boolean if a field has been set.
+func (o *AddonsWidget) HasScoreRow() bool {
+	if o != nil && !IsNil(o.ScoreRow) {
+		return true
+	}
+
+	return false
+}
+
+// SetScoreRow gets a reference to the given AddonsScoreRow and assigns it to the ScoreRow field.
+func (o *AddonsWidget) SetScoreRow(v AddonsScoreRow) {
+	o.ScoreRow = &v
+}
+
+// GetSelectorRow returns the SelectorRow field value if set, zero value otherwise.
+func (o *AddonsWidget) GetSelectorRow() AddonsSelectorRow {
+	if o == nil || IsNil(o.SelectorRow) {
+		var ret AddonsSelectorRow
+		return ret
+	}
+	return *o.SelectorRow
+}
+
+// GetSelectorRowOk returns a tuple with the SelectorRow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsWidget) GetSelectorRowOk() (*AddonsSelectorRow, bool) {
+	if o == nil || IsNil(o.SelectorRow) {
+		return nil, false
+	}
+	return o.SelectorRow, true
+}
+
+// HasSelectorRow returns a boolean if a field has been set.
+func (o *AddonsWidget) HasSelectorRow() bool {
+	if o != nil && !IsNil(o.SelectorRow) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectorRow gets a reference to the given AddonsSelectorRow and assigns it to the SelectorRow field.
+func (o *AddonsWidget) SetSelectorRow(v AddonsSelectorRow) {
+	o.SelectorRow = &v
 }
 
 // GetSemanticPaths returns the SemanticPaths field value if set, zero value otherwise.
@@ -401,6 +337,70 @@ func (o *AddonsWidget) SetSemanticPaths(v map[string]string) {
 	o.SemanticPaths = &v
 }
 
+// GetSubtitleRow returns the SubtitleRow field value if set, zero value otherwise.
+func (o *AddonsWidget) GetSubtitleRow() AddonsSubtitleRow {
+	if o == nil || IsNil(o.SubtitleRow) {
+		var ret AddonsSubtitleRow
+		return ret
+	}
+	return *o.SubtitleRow
+}
+
+// GetSubtitleRowOk returns a tuple with the SubtitleRow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsWidget) GetSubtitleRowOk() (*AddonsSubtitleRow, bool) {
+	if o == nil || IsNil(o.SubtitleRow) {
+		return nil, false
+	}
+	return o.SubtitleRow, true
+}
+
+// HasSubtitleRow returns a boolean if a field has been set.
+func (o *AddonsWidget) HasSubtitleRow() bool {
+	if o != nil && !IsNil(o.SubtitleRow) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubtitleRow gets a reference to the given AddonsSubtitleRow and assigns it to the SubtitleRow field.
+func (o *AddonsWidget) SetSubtitleRow(v AddonsSubtitleRow) {
+	o.SubtitleRow = &v
+}
+
+// GetTitleRow returns the TitleRow field value if set, zero value otherwise.
+func (o *AddonsWidget) GetTitleRow() AddonsTitleRow {
+	if o == nil || IsNil(o.TitleRow) {
+		var ret AddonsTitleRow
+		return ret
+	}
+	return *o.TitleRow
+}
+
+// GetTitleRowOk returns a tuple with the TitleRow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsWidget) GetTitleRowOk() (*AddonsTitleRow, bool) {
+	if o == nil || IsNil(o.TitleRow) {
+		return nil, false
+	}
+	return o.TitleRow, true
+}
+
+// HasTitleRow returns a boolean if a field has been set.
+func (o *AddonsWidget) HasTitleRow() bool {
+	if o != nil && !IsNil(o.TitleRow) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitleRow gets a reference to the given AddonsTitleRow and assigns it to the TitleRow field.
+func (o *AddonsWidget) SetTitleRow(v AddonsTitleRow) {
+	o.TitleRow = &v
+}
+
 func (o AddonsWidget) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -411,38 +411,38 @@ func (o AddonsWidget) MarshalJSON() ([]byte, error) {
 
 func (o AddonsWidget) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EventRow) {
-		toSerialize["event_row"] = o.EventRow
-	}
 	if !IsNil(o.ButtonBar) {
 		toSerialize["button_bar"] = o.ButtonBar
-	}
-	if !IsNil(o.TitleRow) {
-		toSerialize["title_row"] = o.TitleRow
-	}
-	if !IsNil(o.SubtitleRow) {
-		toSerialize["subtitle_row"] = o.SubtitleRow
-	}
-	if !IsNil(o.SelectorRow) {
-		toSerialize["selector_row"] = o.SelectorRow
-	}
-	if !IsNil(o.ScoreRow) {
-		toSerialize["score_row"] = o.ScoreRow
-	}
-	if !IsNil(o.ImageCarouselRow) {
-		toSerialize["image_carousel_row"] = o.ImageCarouselRow
-	}
-	if !IsNil(o.GroupInfoRow) {
-		toSerialize["group_info_row"] = o.GroupInfoRow
-	}
-	if !IsNil(o.EvaluationRow) {
-		toSerialize["evaluation_row"] = o.EvaluationRow
 	}
 	if !IsNil(o.DescriptionRow) {
 		toSerialize["description_row"] = o.DescriptionRow
 	}
+	if !IsNil(o.EvaluationRow) {
+		toSerialize["evaluation_row"] = o.EvaluationRow
+	}
+	if !IsNil(o.EventRow) {
+		toSerialize["event_row"] = o.EventRow
+	}
+	if !IsNil(o.GroupInfoRow) {
+		toSerialize["group_info_row"] = o.GroupInfoRow
+	}
+	if !IsNil(o.ImageCarouselRow) {
+		toSerialize["image_carousel_row"] = o.ImageCarouselRow
+	}
+	if !IsNil(o.ScoreRow) {
+		toSerialize["score_row"] = o.ScoreRow
+	}
+	if !IsNil(o.SelectorRow) {
+		toSerialize["selector_row"] = o.SelectorRow
+	}
 	if !IsNil(o.SemanticPaths) {
 		toSerialize["semantic_paths"] = o.SemanticPaths
+	}
+	if !IsNil(o.SubtitleRow) {
+		toSerialize["subtitle_row"] = o.SubtitleRow
+	}
+	if !IsNil(o.TitleRow) {
+		toSerialize["title_row"] = o.TitleRow
 	}
 	return toSerialize, nil
 }

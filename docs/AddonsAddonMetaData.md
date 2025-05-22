@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
 **App** | Pointer to [**AppsApp**](AppsApp.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
 **LastModified** | Pointer to **time.Time** |  | [optional] 
-**Status** | Pointer to [**AddonsStatus**](AddonsStatus.md) |  | [optional] 
 **ServiceTags** | Pointer to [**[]AppsServiceTag**](AppsServiceTag.md) |  | [optional] 
+**Status** | Pointer to [**AddonsStatus**](AddonsStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -29,31 +29,6 @@ will change when the set of required properties is changed
 NewAddonsAddonMetaDataWithDefaults instantiates a new AddonsAddonMetaData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *AddonsAddonMetaData) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *AddonsAddonMetaData) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *AddonsAddonMetaData) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *AddonsAddonMetaData) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetApp
 
@@ -105,6 +80,31 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### GetId
+
+`func (o *AddonsAddonMetaData) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AddonsAddonMetaData) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AddonsAddonMetaData) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *AddonsAddonMetaData) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
 ### GetLastModified
 
 `func (o *AddonsAddonMetaData) GetLastModified() time.Time`
@@ -130,31 +130,6 @@ SetLastModified sets LastModified field to given value.
 
 HasLastModified returns a boolean if a field has been set.
 
-### GetStatus
-
-`func (o *AddonsAddonMetaData) GetStatus() AddonsStatus`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *AddonsAddonMetaData) GetStatusOk() (*AddonsStatus, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *AddonsAddonMetaData) SetStatus(v AddonsStatus)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *AddonsAddonMetaData) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
 ### GetServiceTags
 
 `func (o *AddonsAddonMetaData) GetServiceTags() []AppsServiceTag`
@@ -179,6 +154,31 @@ SetServiceTags sets ServiceTags field to given value.
 `func (o *AddonsAddonMetaData) HasServiceTags() bool`
 
 HasServiceTags returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *AddonsAddonMetaData) GetStatus() AddonsStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *AddonsAddonMetaData) GetStatusOk() (*AddonsStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *AddonsAddonMetaData) SetStatus(v AddonsStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *AddonsAddonMetaData) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

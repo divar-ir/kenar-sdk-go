@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Title** | Pointer to **string** |  | [optional] 
+**Action** | Pointer to [**AddonsAction**](AddonsAction.md) |  | [optional] 
 **DescriptiveScore** | Pointer to **string** |  | [optional] 
-**PercentageScore** | Pointer to **int32** |  | [optional] 
-**ScoreColor** | Pointer to [**AddonsWidgetColor**](AddonsWidgetColor.md) |  | [optional] 
 **HasDivider** | Pointer to **bool** |  | [optional] 
 **IconName** | Pointer to [**DivarIconsIconName**](DivarIconsIconName.md) |  | [optional] 
-**Action** | Pointer to [**AddonsAction**](AddonsAction.md) |  | [optional] 
+**PercentageScore** | Pointer to **int32** |  | [optional] 
+**ScoreColor** | Pointer to [**AddonsWidgetColor**](AddonsWidgetColor.md) |  | [optional] 
+**Title** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -31,30 +31,30 @@ NewAddonsScoreRowWithDefaults instantiates a new AddonsScoreRow object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTitle
+### GetAction
 
-`func (o *AddonsScoreRow) GetTitle() string`
+`func (o *AddonsScoreRow) GetAction() AddonsAction`
 
-GetTitle returns the Title field if non-nil, zero value otherwise.
+GetAction returns the Action field if non-nil, zero value otherwise.
 
-### GetTitleOk
+### GetActionOk
 
-`func (o *AddonsScoreRow) GetTitleOk() (*string, bool)`
+`func (o *AddonsScoreRow) GetActionOk() (*AddonsAction, bool)`
 
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+GetActionOk returns a tuple with the Action field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTitle
+### SetAction
 
-`func (o *AddonsScoreRow) SetTitle(v string)`
+`func (o *AddonsScoreRow) SetAction(v AddonsAction)`
 
-SetTitle sets Title field to given value.
+SetAction sets Action field to given value.
 
-### HasTitle
+### HasAction
 
-`func (o *AddonsScoreRow) HasTitle() bool`
+`func (o *AddonsScoreRow) HasAction() bool`
 
-HasTitle returns a boolean if a field has been set.
+HasAction returns a boolean if a field has been set.
 
 ### GetDescriptiveScore
 
@@ -80,56 +80,6 @@ SetDescriptiveScore sets DescriptiveScore field to given value.
 `func (o *AddonsScoreRow) HasDescriptiveScore() bool`
 
 HasDescriptiveScore returns a boolean if a field has been set.
-
-### GetPercentageScore
-
-`func (o *AddonsScoreRow) GetPercentageScore() int32`
-
-GetPercentageScore returns the PercentageScore field if non-nil, zero value otherwise.
-
-### GetPercentageScoreOk
-
-`func (o *AddonsScoreRow) GetPercentageScoreOk() (*int32, bool)`
-
-GetPercentageScoreOk returns a tuple with the PercentageScore field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPercentageScore
-
-`func (o *AddonsScoreRow) SetPercentageScore(v int32)`
-
-SetPercentageScore sets PercentageScore field to given value.
-
-### HasPercentageScore
-
-`func (o *AddonsScoreRow) HasPercentageScore() bool`
-
-HasPercentageScore returns a boolean if a field has been set.
-
-### GetScoreColor
-
-`func (o *AddonsScoreRow) GetScoreColor() AddonsWidgetColor`
-
-GetScoreColor returns the ScoreColor field if non-nil, zero value otherwise.
-
-### GetScoreColorOk
-
-`func (o *AddonsScoreRow) GetScoreColorOk() (*AddonsWidgetColor, bool)`
-
-GetScoreColorOk returns a tuple with the ScoreColor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetScoreColor
-
-`func (o *AddonsScoreRow) SetScoreColor(v AddonsWidgetColor)`
-
-SetScoreColor sets ScoreColor field to given value.
-
-### HasScoreColor
-
-`func (o *AddonsScoreRow) HasScoreColor() bool`
-
-HasScoreColor returns a boolean if a field has been set.
 
 ### GetHasDivider
 
@@ -181,30 +131,80 @@ SetIconName sets IconName field to given value.
 
 HasIconName returns a boolean if a field has been set.
 
-### GetAction
+### GetPercentageScore
 
-`func (o *AddonsScoreRow) GetAction() AddonsAction`
+`func (o *AddonsScoreRow) GetPercentageScore() int32`
 
-GetAction returns the Action field if non-nil, zero value otherwise.
+GetPercentageScore returns the PercentageScore field if non-nil, zero value otherwise.
 
-### GetActionOk
+### GetPercentageScoreOk
 
-`func (o *AddonsScoreRow) GetActionOk() (*AddonsAction, bool)`
+`func (o *AddonsScoreRow) GetPercentageScoreOk() (*int32, bool)`
 
-GetActionOk returns a tuple with the Action field if it's non-nil, zero value otherwise
+GetPercentageScoreOk returns a tuple with the PercentageScore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAction
+### SetPercentageScore
 
-`func (o *AddonsScoreRow) SetAction(v AddonsAction)`
+`func (o *AddonsScoreRow) SetPercentageScore(v int32)`
 
-SetAction sets Action field to given value.
+SetPercentageScore sets PercentageScore field to given value.
 
-### HasAction
+### HasPercentageScore
 
-`func (o *AddonsScoreRow) HasAction() bool`
+`func (o *AddonsScoreRow) HasPercentageScore() bool`
 
-HasAction returns a boolean if a field has been set.
+HasPercentageScore returns a boolean if a field has been set.
+
+### GetScoreColor
+
+`func (o *AddonsScoreRow) GetScoreColor() AddonsWidgetColor`
+
+GetScoreColor returns the ScoreColor field if non-nil, zero value otherwise.
+
+### GetScoreColorOk
+
+`func (o *AddonsScoreRow) GetScoreColorOk() (*AddonsWidgetColor, bool)`
+
+GetScoreColorOk returns a tuple with the ScoreColor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScoreColor
+
+`func (o *AddonsScoreRow) SetScoreColor(v AddonsWidgetColor)`
+
+SetScoreColor sets ScoreColor field to given value.
+
+### HasScoreColor
+
+`func (o *AddonsScoreRow) HasScoreColor() bool`
+
+HasScoreColor returns a boolean if a field has been set.
+
+### GetTitle
+
+`func (o *AddonsScoreRow) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *AddonsScoreRow) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *AddonsScoreRow) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *AddonsScoreRow) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

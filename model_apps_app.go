@@ -19,13 +19,13 @@ var _ MappedNullable = &AppsApp{}
 
 // AppsApp struct for AppsApp
 type AppsApp struct {
-	Slug *string `json:"slug,omitempty"`
-	Display *string `json:"display,omitempty"`
 	Avatar *string `json:"avatar,omitempty"`
+	Display *string `json:"display,omitempty"`
 	DivarIdentificationKey *string `json:"divar_identification_key,omitempty"`
-	Status *AppsAppStatus `json:"status,omitempty"`
-	ServiceType *AppsServiceType `json:"service_type,omitempty"`
 	ServiceTags []AppsServiceTag `json:"service_tags,omitempty"`
+	ServiceType *AppsServiceType `json:"service_type,omitempty"`
+	Slug *string `json:"slug,omitempty"`
+	Status *AppsAppStatus `json:"status,omitempty"`
 }
 
 // NewAppsApp instantiates a new AppsApp object
@@ -43,70 +43,6 @@ func NewAppsApp() *AppsApp {
 func NewAppsAppWithDefaults() *AppsApp {
 	this := AppsApp{}
 	return &this
-}
-
-// GetSlug returns the Slug field value if set, zero value otherwise.
-func (o *AppsApp) GetSlug() string {
-	if o == nil || IsNil(o.Slug) {
-		var ret string
-		return ret
-	}
-	return *o.Slug
-}
-
-// GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AppsApp) GetSlugOk() (*string, bool) {
-	if o == nil || IsNil(o.Slug) {
-		return nil, false
-	}
-	return o.Slug, true
-}
-
-// HasSlug returns a boolean if a field has been set.
-func (o *AppsApp) HasSlug() bool {
-	if o != nil && !IsNil(o.Slug) {
-		return true
-	}
-
-	return false
-}
-
-// SetSlug gets a reference to the given string and assigns it to the Slug field.
-func (o *AppsApp) SetSlug(v string) {
-	o.Slug = &v
-}
-
-// GetDisplay returns the Display field value if set, zero value otherwise.
-func (o *AppsApp) GetDisplay() string {
-	if o == nil || IsNil(o.Display) {
-		var ret string
-		return ret
-	}
-	return *o.Display
-}
-
-// GetDisplayOk returns a tuple with the Display field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AppsApp) GetDisplayOk() (*string, bool) {
-	if o == nil || IsNil(o.Display) {
-		return nil, false
-	}
-	return o.Display, true
-}
-
-// HasDisplay returns a boolean if a field has been set.
-func (o *AppsApp) HasDisplay() bool {
-	if o != nil && !IsNil(o.Display) {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplay gets a reference to the given string and assigns it to the Display field.
-func (o *AppsApp) SetDisplay(v string) {
-	o.Display = &v
 }
 
 // GetAvatar returns the Avatar field value if set, zero value otherwise.
@@ -141,6 +77,38 @@ func (o *AppsApp) SetAvatar(v string) {
 	o.Avatar = &v
 }
 
+// GetDisplay returns the Display field value if set, zero value otherwise.
+func (o *AppsApp) GetDisplay() string {
+	if o == nil || IsNil(o.Display) {
+		var ret string
+		return ret
+	}
+	return *o.Display
+}
+
+// GetDisplayOk returns a tuple with the Display field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppsApp) GetDisplayOk() (*string, bool) {
+	if o == nil || IsNil(o.Display) {
+		return nil, false
+	}
+	return o.Display, true
+}
+
+// HasDisplay returns a boolean if a field has been set.
+func (o *AppsApp) HasDisplay() bool {
+	if o != nil && !IsNil(o.Display) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplay gets a reference to the given string and assigns it to the Display field.
+func (o *AppsApp) SetDisplay(v string) {
+	o.Display = &v
+}
+
 // GetDivarIdentificationKey returns the DivarIdentificationKey field value if set, zero value otherwise.
 func (o *AppsApp) GetDivarIdentificationKey() string {
 	if o == nil || IsNil(o.DivarIdentificationKey) {
@@ -171,70 +139,6 @@ func (o *AppsApp) HasDivarIdentificationKey() bool {
 // SetDivarIdentificationKey gets a reference to the given string and assigns it to the DivarIdentificationKey field.
 func (o *AppsApp) SetDivarIdentificationKey(v string) {
 	o.DivarIdentificationKey = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *AppsApp) GetStatus() AppsAppStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret AppsAppStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AppsApp) GetStatusOk() (*AppsAppStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *AppsApp) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given AppsAppStatus and assigns it to the Status field.
-func (o *AppsApp) SetStatus(v AppsAppStatus) {
-	o.Status = &v
-}
-
-// GetServiceType returns the ServiceType field value if set, zero value otherwise.
-func (o *AppsApp) GetServiceType() AppsServiceType {
-	if o == nil || IsNil(o.ServiceType) {
-		var ret AppsServiceType
-		return ret
-	}
-	return *o.ServiceType
-}
-
-// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AppsApp) GetServiceTypeOk() (*AppsServiceType, bool) {
-	if o == nil || IsNil(o.ServiceType) {
-		return nil, false
-	}
-	return o.ServiceType, true
-}
-
-// HasServiceType returns a boolean if a field has been set.
-func (o *AppsApp) HasServiceType() bool {
-	if o != nil && !IsNil(o.ServiceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceType gets a reference to the given AppsServiceType and assigns it to the ServiceType field.
-func (o *AppsApp) SetServiceType(v AppsServiceType) {
-	o.ServiceType = &v
 }
 
 // GetServiceTags returns the ServiceTags field value if set, zero value otherwise.
@@ -269,6 +173,102 @@ func (o *AppsApp) SetServiceTags(v []AppsServiceTag) {
 	o.ServiceTags = v
 }
 
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *AppsApp) GetServiceType() AppsServiceType {
+	if o == nil || IsNil(o.ServiceType) {
+		var ret AppsServiceType
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppsApp) GetServiceTypeOk() (*AppsServiceType, bool) {
+	if o == nil || IsNil(o.ServiceType) {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *AppsApp) HasServiceType() bool {
+	if o != nil && !IsNil(o.ServiceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given AppsServiceType and assigns it to the ServiceType field.
+func (o *AppsApp) SetServiceType(v AppsServiceType) {
+	o.ServiceType = &v
+}
+
+// GetSlug returns the Slug field value if set, zero value otherwise.
+func (o *AppsApp) GetSlug() string {
+	if o == nil || IsNil(o.Slug) {
+		var ret string
+		return ret
+	}
+	return *o.Slug
+}
+
+// GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppsApp) GetSlugOk() (*string, bool) {
+	if o == nil || IsNil(o.Slug) {
+		return nil, false
+	}
+	return o.Slug, true
+}
+
+// HasSlug returns a boolean if a field has been set.
+func (o *AppsApp) HasSlug() bool {
+	if o != nil && !IsNil(o.Slug) {
+		return true
+	}
+
+	return false
+}
+
+// SetSlug gets a reference to the given string and assigns it to the Slug field.
+func (o *AppsApp) SetSlug(v string) {
+	o.Slug = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *AppsApp) GetStatus() AppsAppStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret AppsAppStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppsApp) GetStatusOk() (*AppsAppStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *AppsApp) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given AppsAppStatus and assigns it to the Status field.
+func (o *AppsApp) SetStatus(v AppsAppStatus) {
+	o.Status = &v
+}
+
 func (o AppsApp) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -279,26 +279,26 @@ func (o AppsApp) MarshalJSON() ([]byte, error) {
 
 func (o AppsApp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Slug) {
-		toSerialize["slug"] = o.Slug
+	if !IsNil(o.Avatar) {
+		toSerialize["avatar"] = o.Avatar
 	}
 	if !IsNil(o.Display) {
 		toSerialize["display"] = o.Display
 	}
-	if !IsNil(o.Avatar) {
-		toSerialize["avatar"] = o.Avatar
-	}
 	if !IsNil(o.DivarIdentificationKey) {
 		toSerialize["divar_identification_key"] = o.DivarIdentificationKey
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if !IsNil(o.ServiceTags) {
+		toSerialize["service_tags"] = o.ServiceTags
 	}
 	if !IsNil(o.ServiceType) {
 		toSerialize["service_type"] = o.ServiceType
 	}
-	if !IsNil(o.ServiceTags) {
-		toSerialize["service_tags"] = o.ServiceTags
+	if !IsNil(o.Slug) {
+		toSerialize["slug"] = o.Slug
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

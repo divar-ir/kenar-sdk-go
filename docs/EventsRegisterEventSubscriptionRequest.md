@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EventType** | Pointer to [**EventsRegisterEventSubscriptionRequestEventType**](EventsRegisterEventSubscriptionRequestEventType.md) |  | [optional] 
 **EventResourceId** | Pointer to **string** |  | [optional] 
+**EventType** | Pointer to [**EventsRegisterEventSubscriptionRequestEventType**](EventsRegisterEventSubscriptionRequestEventType.md) |  | [optional] 
 **Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewEventsRegisterEventSubscriptionRequestWithDefaults instantiates a new EventsRegisterEventSubscriptionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEventType
-
-`func (o *EventsRegisterEventSubscriptionRequest) GetEventType() EventsRegisterEventSubscriptionRequestEventType`
-
-GetEventType returns the EventType field if non-nil, zero value otherwise.
-
-### GetEventTypeOk
-
-`func (o *EventsRegisterEventSubscriptionRequest) GetEventTypeOk() (*EventsRegisterEventSubscriptionRequestEventType, bool)`
-
-GetEventTypeOk returns a tuple with the EventType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEventType
-
-`func (o *EventsRegisterEventSubscriptionRequest) SetEventType(v EventsRegisterEventSubscriptionRequestEventType)`
-
-SetEventType sets EventType field to given value.
-
-### HasEventType
-
-`func (o *EventsRegisterEventSubscriptionRequest) HasEventType() bool`
-
-HasEventType returns a boolean if a field has been set.
 
 ### GetEventResourceId
 
@@ -76,6 +51,31 @@ SetEventResourceId sets EventResourceId field to given value.
 `func (o *EventsRegisterEventSubscriptionRequest) HasEventResourceId() bool`
 
 HasEventResourceId returns a boolean if a field has been set.
+
+### GetEventType
+
+`func (o *EventsRegisterEventSubscriptionRequest) GetEventType() EventsRegisterEventSubscriptionRequestEventType`
+
+GetEventType returns the EventType field if non-nil, zero value otherwise.
+
+### GetEventTypeOk
+
+`func (o *EventsRegisterEventSubscriptionRequest) GetEventTypeOk() (*EventsRegisterEventSubscriptionRequestEventType, bool)`
+
+GetEventTypeOk returns a tuple with the EventType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventType
+
+`func (o *EventsRegisterEventSubscriptionRequest) SetEventType(v EventsRegisterEventSubscriptionRequestEventType)`
+
+SetEventType sets EventType field to given value.
+
+### HasEventType
+
+`func (o *EventsRegisterEventSubscriptionRequest) HasEventType() bool`
+
+HasEventType returns a boolean if a field has been set.
 
 ### GetMetadata
 

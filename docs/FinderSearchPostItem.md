@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Token** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
-**LastModifiedAt** | Pointer to **time.Time** |  | [optional] 
 **City** | Pointer to **string** |  | [optional] 
-**Title** | Pointer to **string** |  | [optional] 
-**Price** | Pointer to [**SearchPostItemPrice**](SearchPostItemPrice.md) |  | [optional] 
-**RealEstateFields** | Pointer to [**SearchPostItemRealEstateFields**](SearchPostItemRealEstateFields.md) |  | [optional] 
-**VehiclesFields** | Pointer to [**SearchPostItemVehiclesFields**](SearchPostItemVehiclesFields.md) |  | [optional] 
+**CommunityFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **ElectronicDevicesFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **HomeKitchenFields** | Pointer to **map[string]interface{}** |  | [optional] 
-**ServicesFields** | Pointer to **map[string]interface{}** |  | [optional] 
-**PersonalGoodsFields** | Pointer to **map[string]interface{}** |  | [optional] 
-**LeisureHobbiesFields** | Pointer to **map[string]interface{}** |  | [optional] 
-**CommunityFields** | Pointer to **map[string]interface{}** |  | [optional] 
-**ToolsMaterialsEquipmentFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **JobsFields** | Pointer to **map[string]interface{}** |  | [optional] 
+**LastModifiedAt** | Pointer to **time.Time** |  | [optional] 
+**LeisureHobbiesFields** | Pointer to **map[string]interface{}** |  | [optional] 
+**PersonalGoodsFields** | Pointer to **map[string]interface{}** |  | [optional] 
+**Price** | Pointer to [**SearchPostItemPrice**](SearchPostItemPrice.md) |  | [optional] 
+**RealEstateFields** | Pointer to [**SearchPostItemRealEstateFields**](SearchPostItemRealEstateFields.md) |  | [optional] 
+**ServicesFields** | Pointer to **map[string]interface{}** |  | [optional] 
+**Title** | Pointer to **string** |  | [optional] 
+**Token** | Pointer to **string** |  | [optional] 
+**ToolsMaterialsEquipmentFields** | Pointer to **map[string]interface{}** |  | [optional] 
+**VehiclesFields** | Pointer to [**SearchPostItemVehiclesFields**](SearchPostItemVehiclesFields.md) |  | [optional] 
 
 ## Methods
 
@@ -39,31 +39,6 @@ will change when the set of required properties is changed
 NewFinderSearchPostItemWithDefaults instantiates a new FinderSearchPostItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetToken
-
-`func (o *FinderSearchPostItem) GetToken() string`
-
-GetToken returns the Token field if non-nil, zero value otherwise.
-
-### GetTokenOk
-
-`func (o *FinderSearchPostItem) GetTokenOk() (*string, bool)`
-
-GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetToken
-
-`func (o *FinderSearchPostItem) SetToken(v string)`
-
-SetToken sets Token field to given value.
-
-### HasToken
-
-`func (o *FinderSearchPostItem) HasToken() bool`
-
-HasToken returns a boolean if a field has been set.
 
 ### GetCategory
 
@@ -90,31 +65,6 @@ SetCategory sets Category field to given value.
 
 HasCategory returns a boolean if a field has been set.
 
-### GetLastModifiedAt
-
-`func (o *FinderSearchPostItem) GetLastModifiedAt() time.Time`
-
-GetLastModifiedAt returns the LastModifiedAt field if non-nil, zero value otherwise.
-
-### GetLastModifiedAtOk
-
-`func (o *FinderSearchPostItem) GetLastModifiedAtOk() (*time.Time, bool)`
-
-GetLastModifiedAtOk returns a tuple with the LastModifiedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastModifiedAt
-
-`func (o *FinderSearchPostItem) SetLastModifiedAt(v time.Time)`
-
-SetLastModifiedAt sets LastModifiedAt field to given value.
-
-### HasLastModifiedAt
-
-`func (o *FinderSearchPostItem) HasLastModifiedAt() bool`
-
-HasLastModifiedAt returns a boolean if a field has been set.
-
 ### GetCity
 
 `func (o *FinderSearchPostItem) GetCity() string`
@@ -140,105 +90,30 @@ SetCity sets City field to given value.
 
 HasCity returns a boolean if a field has been set.
 
-### GetTitle
+### GetCommunityFields
 
-`func (o *FinderSearchPostItem) GetTitle() string`
+`func (o *FinderSearchPostItem) GetCommunityFields() map[string]interface{}`
 
-GetTitle returns the Title field if non-nil, zero value otherwise.
+GetCommunityFields returns the CommunityFields field if non-nil, zero value otherwise.
 
-### GetTitleOk
+### GetCommunityFieldsOk
 
-`func (o *FinderSearchPostItem) GetTitleOk() (*string, bool)`
+`func (o *FinderSearchPostItem) GetCommunityFieldsOk() (*map[string]interface{}, bool)`
 
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+GetCommunityFieldsOk returns a tuple with the CommunityFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTitle
+### SetCommunityFields
 
-`func (o *FinderSearchPostItem) SetTitle(v string)`
+`func (o *FinderSearchPostItem) SetCommunityFields(v map[string]interface{})`
 
-SetTitle sets Title field to given value.
+SetCommunityFields sets CommunityFields field to given value.
 
-### HasTitle
+### HasCommunityFields
 
-`func (o *FinderSearchPostItem) HasTitle() bool`
+`func (o *FinderSearchPostItem) HasCommunityFields() bool`
 
-HasTitle returns a boolean if a field has been set.
-
-### GetPrice
-
-`func (o *FinderSearchPostItem) GetPrice() SearchPostItemPrice`
-
-GetPrice returns the Price field if non-nil, zero value otherwise.
-
-### GetPriceOk
-
-`func (o *FinderSearchPostItem) GetPriceOk() (*SearchPostItemPrice, bool)`
-
-GetPriceOk returns a tuple with the Price field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrice
-
-`func (o *FinderSearchPostItem) SetPrice(v SearchPostItemPrice)`
-
-SetPrice sets Price field to given value.
-
-### HasPrice
-
-`func (o *FinderSearchPostItem) HasPrice() bool`
-
-HasPrice returns a boolean if a field has been set.
-
-### GetRealEstateFields
-
-`func (o *FinderSearchPostItem) GetRealEstateFields() SearchPostItemRealEstateFields`
-
-GetRealEstateFields returns the RealEstateFields field if non-nil, zero value otherwise.
-
-### GetRealEstateFieldsOk
-
-`func (o *FinderSearchPostItem) GetRealEstateFieldsOk() (*SearchPostItemRealEstateFields, bool)`
-
-GetRealEstateFieldsOk returns a tuple with the RealEstateFields field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRealEstateFields
-
-`func (o *FinderSearchPostItem) SetRealEstateFields(v SearchPostItemRealEstateFields)`
-
-SetRealEstateFields sets RealEstateFields field to given value.
-
-### HasRealEstateFields
-
-`func (o *FinderSearchPostItem) HasRealEstateFields() bool`
-
-HasRealEstateFields returns a boolean if a field has been set.
-
-### GetVehiclesFields
-
-`func (o *FinderSearchPostItem) GetVehiclesFields() SearchPostItemVehiclesFields`
-
-GetVehiclesFields returns the VehiclesFields field if non-nil, zero value otherwise.
-
-### GetVehiclesFieldsOk
-
-`func (o *FinderSearchPostItem) GetVehiclesFieldsOk() (*SearchPostItemVehiclesFields, bool)`
-
-GetVehiclesFieldsOk returns a tuple with the VehiclesFields field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVehiclesFields
-
-`func (o *FinderSearchPostItem) SetVehiclesFields(v SearchPostItemVehiclesFields)`
-
-SetVehiclesFields sets VehiclesFields field to given value.
-
-### HasVehiclesFields
-
-`func (o *FinderSearchPostItem) HasVehiclesFields() bool`
-
-HasVehiclesFields returns a boolean if a field has been set.
+HasCommunityFields returns a boolean if a field has been set.
 
 ### GetElectronicDevicesFields
 
@@ -290,55 +165,55 @@ SetHomeKitchenFields sets HomeKitchenFields field to given value.
 
 HasHomeKitchenFields returns a boolean if a field has been set.
 
-### GetServicesFields
+### GetJobsFields
 
-`func (o *FinderSearchPostItem) GetServicesFields() map[string]interface{}`
+`func (o *FinderSearchPostItem) GetJobsFields() map[string]interface{}`
 
-GetServicesFields returns the ServicesFields field if non-nil, zero value otherwise.
+GetJobsFields returns the JobsFields field if non-nil, zero value otherwise.
 
-### GetServicesFieldsOk
+### GetJobsFieldsOk
 
-`func (o *FinderSearchPostItem) GetServicesFieldsOk() (*map[string]interface{}, bool)`
+`func (o *FinderSearchPostItem) GetJobsFieldsOk() (*map[string]interface{}, bool)`
 
-GetServicesFieldsOk returns a tuple with the ServicesFields field if it's non-nil, zero value otherwise
+GetJobsFieldsOk returns a tuple with the JobsFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetServicesFields
+### SetJobsFields
 
-`func (o *FinderSearchPostItem) SetServicesFields(v map[string]interface{})`
+`func (o *FinderSearchPostItem) SetJobsFields(v map[string]interface{})`
 
-SetServicesFields sets ServicesFields field to given value.
+SetJobsFields sets JobsFields field to given value.
 
-### HasServicesFields
+### HasJobsFields
 
-`func (o *FinderSearchPostItem) HasServicesFields() bool`
+`func (o *FinderSearchPostItem) HasJobsFields() bool`
 
-HasServicesFields returns a boolean if a field has been set.
+HasJobsFields returns a boolean if a field has been set.
 
-### GetPersonalGoodsFields
+### GetLastModifiedAt
 
-`func (o *FinderSearchPostItem) GetPersonalGoodsFields() map[string]interface{}`
+`func (o *FinderSearchPostItem) GetLastModifiedAt() time.Time`
 
-GetPersonalGoodsFields returns the PersonalGoodsFields field if non-nil, zero value otherwise.
+GetLastModifiedAt returns the LastModifiedAt field if non-nil, zero value otherwise.
 
-### GetPersonalGoodsFieldsOk
+### GetLastModifiedAtOk
 
-`func (o *FinderSearchPostItem) GetPersonalGoodsFieldsOk() (*map[string]interface{}, bool)`
+`func (o *FinderSearchPostItem) GetLastModifiedAtOk() (*time.Time, bool)`
 
-GetPersonalGoodsFieldsOk returns a tuple with the PersonalGoodsFields field if it's non-nil, zero value otherwise
+GetLastModifiedAtOk returns a tuple with the LastModifiedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPersonalGoodsFields
+### SetLastModifiedAt
 
-`func (o *FinderSearchPostItem) SetPersonalGoodsFields(v map[string]interface{})`
+`func (o *FinderSearchPostItem) SetLastModifiedAt(v time.Time)`
 
-SetPersonalGoodsFields sets PersonalGoodsFields field to given value.
+SetLastModifiedAt sets LastModifiedAt field to given value.
 
-### HasPersonalGoodsFields
+### HasLastModifiedAt
 
-`func (o *FinderSearchPostItem) HasPersonalGoodsFields() bool`
+`func (o *FinderSearchPostItem) HasLastModifiedAt() bool`
 
-HasPersonalGoodsFields returns a boolean if a field has been set.
+HasLastModifiedAt returns a boolean if a field has been set.
 
 ### GetLeisureHobbiesFields
 
@@ -365,30 +240,155 @@ SetLeisureHobbiesFields sets LeisureHobbiesFields field to given value.
 
 HasLeisureHobbiesFields returns a boolean if a field has been set.
 
-### GetCommunityFields
+### GetPersonalGoodsFields
 
-`func (o *FinderSearchPostItem) GetCommunityFields() map[string]interface{}`
+`func (o *FinderSearchPostItem) GetPersonalGoodsFields() map[string]interface{}`
 
-GetCommunityFields returns the CommunityFields field if non-nil, zero value otherwise.
+GetPersonalGoodsFields returns the PersonalGoodsFields field if non-nil, zero value otherwise.
 
-### GetCommunityFieldsOk
+### GetPersonalGoodsFieldsOk
 
-`func (o *FinderSearchPostItem) GetCommunityFieldsOk() (*map[string]interface{}, bool)`
+`func (o *FinderSearchPostItem) GetPersonalGoodsFieldsOk() (*map[string]interface{}, bool)`
 
-GetCommunityFieldsOk returns a tuple with the CommunityFields field if it's non-nil, zero value otherwise
+GetPersonalGoodsFieldsOk returns a tuple with the PersonalGoodsFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCommunityFields
+### SetPersonalGoodsFields
 
-`func (o *FinderSearchPostItem) SetCommunityFields(v map[string]interface{})`
+`func (o *FinderSearchPostItem) SetPersonalGoodsFields(v map[string]interface{})`
 
-SetCommunityFields sets CommunityFields field to given value.
+SetPersonalGoodsFields sets PersonalGoodsFields field to given value.
 
-### HasCommunityFields
+### HasPersonalGoodsFields
 
-`func (o *FinderSearchPostItem) HasCommunityFields() bool`
+`func (o *FinderSearchPostItem) HasPersonalGoodsFields() bool`
 
-HasCommunityFields returns a boolean if a field has been set.
+HasPersonalGoodsFields returns a boolean if a field has been set.
+
+### GetPrice
+
+`func (o *FinderSearchPostItem) GetPrice() SearchPostItemPrice`
+
+GetPrice returns the Price field if non-nil, zero value otherwise.
+
+### GetPriceOk
+
+`func (o *FinderSearchPostItem) GetPriceOk() (*SearchPostItemPrice, bool)`
+
+GetPriceOk returns a tuple with the Price field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrice
+
+`func (o *FinderSearchPostItem) SetPrice(v SearchPostItemPrice)`
+
+SetPrice sets Price field to given value.
+
+### HasPrice
+
+`func (o *FinderSearchPostItem) HasPrice() bool`
+
+HasPrice returns a boolean if a field has been set.
+
+### GetRealEstateFields
+
+`func (o *FinderSearchPostItem) GetRealEstateFields() SearchPostItemRealEstateFields`
+
+GetRealEstateFields returns the RealEstateFields field if non-nil, zero value otherwise.
+
+### GetRealEstateFieldsOk
+
+`func (o *FinderSearchPostItem) GetRealEstateFieldsOk() (*SearchPostItemRealEstateFields, bool)`
+
+GetRealEstateFieldsOk returns a tuple with the RealEstateFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRealEstateFields
+
+`func (o *FinderSearchPostItem) SetRealEstateFields(v SearchPostItemRealEstateFields)`
+
+SetRealEstateFields sets RealEstateFields field to given value.
+
+### HasRealEstateFields
+
+`func (o *FinderSearchPostItem) HasRealEstateFields() bool`
+
+HasRealEstateFields returns a boolean if a field has been set.
+
+### GetServicesFields
+
+`func (o *FinderSearchPostItem) GetServicesFields() map[string]interface{}`
+
+GetServicesFields returns the ServicesFields field if non-nil, zero value otherwise.
+
+### GetServicesFieldsOk
+
+`func (o *FinderSearchPostItem) GetServicesFieldsOk() (*map[string]interface{}, bool)`
+
+GetServicesFieldsOk returns a tuple with the ServicesFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServicesFields
+
+`func (o *FinderSearchPostItem) SetServicesFields(v map[string]interface{})`
+
+SetServicesFields sets ServicesFields field to given value.
+
+### HasServicesFields
+
+`func (o *FinderSearchPostItem) HasServicesFields() bool`
+
+HasServicesFields returns a boolean if a field has been set.
+
+### GetTitle
+
+`func (o *FinderSearchPostItem) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *FinderSearchPostItem) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *FinderSearchPostItem) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *FinderSearchPostItem) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
+
+### GetToken
+
+`func (o *FinderSearchPostItem) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *FinderSearchPostItem) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *FinderSearchPostItem) SetToken(v string)`
+
+SetToken sets Token field to given value.
+
+### HasToken
+
+`func (o *FinderSearchPostItem) HasToken() bool`
+
+HasToken returns a boolean if a field has been set.
 
 ### GetToolsMaterialsEquipmentFields
 
@@ -415,30 +415,30 @@ SetToolsMaterialsEquipmentFields sets ToolsMaterialsEquipmentFields field to giv
 
 HasToolsMaterialsEquipmentFields returns a boolean if a field has been set.
 
-### GetJobsFields
+### GetVehiclesFields
 
-`func (o *FinderSearchPostItem) GetJobsFields() map[string]interface{}`
+`func (o *FinderSearchPostItem) GetVehiclesFields() SearchPostItemVehiclesFields`
 
-GetJobsFields returns the JobsFields field if non-nil, zero value otherwise.
+GetVehiclesFields returns the VehiclesFields field if non-nil, zero value otherwise.
 
-### GetJobsFieldsOk
+### GetVehiclesFieldsOk
 
-`func (o *FinderSearchPostItem) GetJobsFieldsOk() (*map[string]interface{}, bool)`
+`func (o *FinderSearchPostItem) GetVehiclesFieldsOk() (*SearchPostItemVehiclesFields, bool)`
 
-GetJobsFieldsOk returns a tuple with the JobsFields field if it's non-nil, zero value otherwise
+GetVehiclesFieldsOk returns a tuple with the VehiclesFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJobsFields
+### SetVehiclesFields
 
-`func (o *FinderSearchPostItem) SetJobsFields(v map[string]interface{})`
+`func (o *FinderSearchPostItem) SetVehiclesFields(v SearchPostItemVehiclesFields)`
 
-SetJobsFields sets JobsFields field to given value.
+SetVehiclesFields sets VehiclesFields field to given value.
 
-### HasJobsFields
+### HasVehiclesFields
 
-`func (o *FinderSearchPostItem) HasJobsFields() bool`
+`func (o *FinderSearchPostItem) HasVehiclesFields() bool`
 
-HasJobsFields returns a boolean if a field has been set.
+HasVehiclesFields returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

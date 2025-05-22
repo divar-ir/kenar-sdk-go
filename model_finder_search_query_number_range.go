@@ -19,8 +19,8 @@ var _ MappedNullable = &FinderSearchQueryNumberRange{}
 
 // FinderSearchQueryNumberRange struct for FinderSearchQueryNumberRange
 type FinderSearchQueryNumberRange struct {
-	Min *string `json:"min,omitempty"`
 	Max *string `json:"max,omitempty"`
+	Min *string `json:"min,omitempty"`
 }
 
 // NewFinderSearchQueryNumberRange instantiates a new FinderSearchQueryNumberRange object
@@ -38,38 +38,6 @@ func NewFinderSearchQueryNumberRange() *FinderSearchQueryNumberRange {
 func NewFinderSearchQueryNumberRangeWithDefaults() *FinderSearchQueryNumberRange {
 	this := FinderSearchQueryNumberRange{}
 	return &this
-}
-
-// GetMin returns the Min field value if set, zero value otherwise.
-func (o *FinderSearchQueryNumberRange) GetMin() string {
-	if o == nil || IsNil(o.Min) {
-		var ret string
-		return ret
-	}
-	return *o.Min
-}
-
-// GetMinOk returns a tuple with the Min field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchQueryNumberRange) GetMinOk() (*string, bool) {
-	if o == nil || IsNil(o.Min) {
-		return nil, false
-	}
-	return o.Min, true
-}
-
-// HasMin returns a boolean if a field has been set.
-func (o *FinderSearchQueryNumberRange) HasMin() bool {
-	if o != nil && !IsNil(o.Min) {
-		return true
-	}
-
-	return false
-}
-
-// SetMin gets a reference to the given string and assigns it to the Min field.
-func (o *FinderSearchQueryNumberRange) SetMin(v string) {
-	o.Min = &v
 }
 
 // GetMax returns the Max field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *FinderSearchQueryNumberRange) SetMax(v string) {
 	o.Max = &v
 }
 
+// GetMin returns the Min field value if set, zero value otherwise.
+func (o *FinderSearchQueryNumberRange) GetMin() string {
+	if o == nil || IsNil(o.Min) {
+		var ret string
+		return ret
+	}
+	return *o.Min
+}
+
+// GetMinOk returns a tuple with the Min field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchQueryNumberRange) GetMinOk() (*string, bool) {
+	if o == nil || IsNil(o.Min) {
+		return nil, false
+	}
+	return o.Min, true
+}
+
+// HasMin returns a boolean if a field has been set.
+func (o *FinderSearchQueryNumberRange) HasMin() bool {
+	if o != nil && !IsNil(o.Min) {
+		return true
+	}
+
+	return false
+}
+
+// SetMin gets a reference to the given string and assigns it to the Min field.
+func (o *FinderSearchQueryNumberRange) SetMin(v string) {
+	o.Min = &v
+}
+
 func (o FinderSearchQueryNumberRange) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o FinderSearchQueryNumberRange) MarshalJSON() ([]byte, error) {
 
 func (o FinderSearchQueryNumberRange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Min) {
-		toSerialize["min"] = o.Min
-	}
 	if !IsNil(o.Max) {
 		toSerialize["max"] = o.Max
+	}
+	if !IsNil(o.Min) {
+		toSerialize["min"] = o.Min
 	}
 	return toSerialize, nil
 }

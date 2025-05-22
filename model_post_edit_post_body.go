@@ -19,9 +19,9 @@ var _ MappedNullable = &PostEditPostBody{}
 
 // PostEditPostBody struct for PostEditPostBody
 type PostEditPostBody struct {
-	Title *string `json:"title,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ImagePaths []string `json:"image_paths,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewPostEditPostBody instantiates a new PostEditPostBody object
@@ -39,38 +39,6 @@ func NewPostEditPostBody() *PostEditPostBody {
 func NewPostEditPostBodyWithDefaults() *PostEditPostBody {
 	this := PostEditPostBody{}
 	return &this
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *PostEditPostBody) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostEditPostBody) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *PostEditPostBody) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *PostEditPostBody) SetTitle(v string) {
-	o.Title = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -137,6 +105,38 @@ func (o *PostEditPostBody) SetImagePaths(v []string) {
 	o.ImagePaths = v
 }
 
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *PostEditPostBody) GetTitle() string {
+	if o == nil || IsNil(o.Title) {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostEditPostBody) GetTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Title) {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *PostEditPostBody) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *PostEditPostBody) SetTitle(v string) {
+	o.Title = &v
+}
+
 func (o PostEditPostBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -147,14 +147,14 @@ func (o PostEditPostBody) MarshalJSON() ([]byte, error) {
 
 func (o PostEditPostBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.ImagePaths) {
 		toSerialize["image_paths"] = o.ImagePaths
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
 	}
 	return toSerialize, nil
 }

@@ -19,9 +19,9 @@ var _ MappedNullable = &AddonsDescriptionRow{}
 
 // AddonsDescriptionRow struct for AddonsDescriptionRow
 type AddonsDescriptionRow struct {
-	Text *string `json:"text,omitempty"`
-	HasDivider *bool `json:"has_divider,omitempty"`
 	Expandable *bool `json:"expandable,omitempty"`
+	HasDivider *bool `json:"has_divider,omitempty"`
+	Text *string `json:"text,omitempty"`
 }
 
 // NewAddonsDescriptionRow instantiates a new AddonsDescriptionRow object
@@ -39,70 +39,6 @@ func NewAddonsDescriptionRow() *AddonsDescriptionRow {
 func NewAddonsDescriptionRowWithDefaults() *AddonsDescriptionRow {
 	this := AddonsDescriptionRow{}
 	return &this
-}
-
-// GetText returns the Text field value if set, zero value otherwise.
-func (o *AddonsDescriptionRow) GetText() string {
-	if o == nil || IsNil(o.Text) {
-		var ret string
-		return ret
-	}
-	return *o.Text
-}
-
-// GetTextOk returns a tuple with the Text field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsDescriptionRow) GetTextOk() (*string, bool) {
-	if o == nil || IsNil(o.Text) {
-		return nil, false
-	}
-	return o.Text, true
-}
-
-// HasText returns a boolean if a field has been set.
-func (o *AddonsDescriptionRow) HasText() bool {
-	if o != nil && !IsNil(o.Text) {
-		return true
-	}
-
-	return false
-}
-
-// SetText gets a reference to the given string and assigns it to the Text field.
-func (o *AddonsDescriptionRow) SetText(v string) {
-	o.Text = &v
-}
-
-// GetHasDivider returns the HasDivider field value if set, zero value otherwise.
-func (o *AddonsDescriptionRow) GetHasDivider() bool {
-	if o == nil || IsNil(o.HasDivider) {
-		var ret bool
-		return ret
-	}
-	return *o.HasDivider
-}
-
-// GetHasDividerOk returns a tuple with the HasDivider field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsDescriptionRow) GetHasDividerOk() (*bool, bool) {
-	if o == nil || IsNil(o.HasDivider) {
-		return nil, false
-	}
-	return o.HasDivider, true
-}
-
-// HasHasDivider returns a boolean if a field has been set.
-func (o *AddonsDescriptionRow) HasHasDivider() bool {
-	if o != nil && !IsNil(o.HasDivider) {
-		return true
-	}
-
-	return false
-}
-
-// SetHasDivider gets a reference to the given bool and assigns it to the HasDivider field.
-func (o *AddonsDescriptionRow) SetHasDivider(v bool) {
-	o.HasDivider = &v
 }
 
 // GetExpandable returns the Expandable field value if set, zero value otherwise.
@@ -137,6 +73,70 @@ func (o *AddonsDescriptionRow) SetExpandable(v bool) {
 	o.Expandable = &v
 }
 
+// GetHasDivider returns the HasDivider field value if set, zero value otherwise.
+func (o *AddonsDescriptionRow) GetHasDivider() bool {
+	if o == nil || IsNil(o.HasDivider) {
+		var ret bool
+		return ret
+	}
+	return *o.HasDivider
+}
+
+// GetHasDividerOk returns a tuple with the HasDivider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsDescriptionRow) GetHasDividerOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasDivider) {
+		return nil, false
+	}
+	return o.HasDivider, true
+}
+
+// HasHasDivider returns a boolean if a field has been set.
+func (o *AddonsDescriptionRow) HasHasDivider() bool {
+	if o != nil && !IsNil(o.HasDivider) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasDivider gets a reference to the given bool and assigns it to the HasDivider field.
+func (o *AddonsDescriptionRow) SetHasDivider(v bool) {
+	o.HasDivider = &v
+}
+
+// GetText returns the Text field value if set, zero value otherwise.
+func (o *AddonsDescriptionRow) GetText() string {
+	if o == nil || IsNil(o.Text) {
+		var ret string
+		return ret
+	}
+	return *o.Text
+}
+
+// GetTextOk returns a tuple with the Text field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsDescriptionRow) GetTextOk() (*string, bool) {
+	if o == nil || IsNil(o.Text) {
+		return nil, false
+	}
+	return o.Text, true
+}
+
+// HasText returns a boolean if a field has been set.
+func (o *AddonsDescriptionRow) HasText() bool {
+	if o != nil && !IsNil(o.Text) {
+		return true
+	}
+
+	return false
+}
+
+// SetText gets a reference to the given string and assigns it to the Text field.
+func (o *AddonsDescriptionRow) SetText(v string) {
+	o.Text = &v
+}
+
 func (o AddonsDescriptionRow) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -147,14 +147,14 @@ func (o AddonsDescriptionRow) MarshalJSON() ([]byte, error) {
 
 func (o AddonsDescriptionRow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Text) {
-		toSerialize["text"] = o.Text
+	if !IsNil(o.Expandable) {
+		toSerialize["expandable"] = o.Expandable
 	}
 	if !IsNil(o.HasDivider) {
 		toSerialize["has_divider"] = o.HasDivider
 	}
-	if !IsNil(o.Expandable) {
-		toSerialize["expandable"] = o.Expandable
+	if !IsNil(o.Text) {
+		toSerialize["text"] = o.Text
 	}
 	return toSerialize, nil
 }

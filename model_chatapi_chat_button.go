@@ -20,9 +20,9 @@ var _ MappedNullable = &ChatapiChatButton{}
 // ChatapiChatButton struct for ChatapiChatButton
 type ChatapiChatButton struct {
 	Action *AddonsAction `json:"action,omitempty"`
-	IconName *string `json:"icon_name,omitempty"`
 	Caption *string `json:"caption,omitempty"`
 	Icon *DivarIconsIconName `json:"icon,omitempty"`
+	IconName *string `json:"icon_name,omitempty"`
 }
 
 // NewChatapiChatButton instantiates a new ChatapiChatButton object
@@ -72,38 +72,6 @@ func (o *ChatapiChatButton) HasAction() bool {
 // SetAction gets a reference to the given AddonsAction and assigns it to the Action field.
 func (o *ChatapiChatButton) SetAction(v AddonsAction) {
 	o.Action = &v
-}
-
-// GetIconName returns the IconName field value if set, zero value otherwise.
-func (o *ChatapiChatButton) GetIconName() string {
-	if o == nil || IsNil(o.IconName) {
-		var ret string
-		return ret
-	}
-	return *o.IconName
-}
-
-// GetIconNameOk returns a tuple with the IconName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatapiChatButton) GetIconNameOk() (*string, bool) {
-	if o == nil || IsNil(o.IconName) {
-		return nil, false
-	}
-	return o.IconName, true
-}
-
-// HasIconName returns a boolean if a field has been set.
-func (o *ChatapiChatButton) HasIconName() bool {
-	if o != nil && !IsNil(o.IconName) {
-		return true
-	}
-
-	return false
-}
-
-// SetIconName gets a reference to the given string and assigns it to the IconName field.
-func (o *ChatapiChatButton) SetIconName(v string) {
-	o.IconName = &v
 }
 
 // GetCaption returns the Caption field value if set, zero value otherwise.
@@ -170,6 +138,38 @@ func (o *ChatapiChatButton) SetIcon(v DivarIconsIconName) {
 	o.Icon = &v
 }
 
+// GetIconName returns the IconName field value if set, zero value otherwise.
+func (o *ChatapiChatButton) GetIconName() string {
+	if o == nil || IsNil(o.IconName) {
+		var ret string
+		return ret
+	}
+	return *o.IconName
+}
+
+// GetIconNameOk returns a tuple with the IconName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiChatButton) GetIconNameOk() (*string, bool) {
+	if o == nil || IsNil(o.IconName) {
+		return nil, false
+	}
+	return o.IconName, true
+}
+
+// HasIconName returns a boolean if a field has been set.
+func (o *ChatapiChatButton) HasIconName() bool {
+	if o != nil && !IsNil(o.IconName) {
+		return true
+	}
+
+	return false
+}
+
+// SetIconName gets a reference to the given string and assigns it to the IconName field.
+func (o *ChatapiChatButton) SetIconName(v string) {
+	o.IconName = &v
+}
+
 func (o ChatapiChatButton) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -183,14 +183,14 @@ func (o ChatapiChatButton) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	if !IsNil(o.IconName) {
-		toSerialize["icon_name"] = o.IconName
-	}
 	if !IsNil(o.Caption) {
 		toSerialize["caption"] = o.Caption
 	}
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
+	}
+	if !IsNil(o.IconName) {
+		toSerialize["icon_name"] = o.IconName
 	}
 	return toSerialize, nil
 }

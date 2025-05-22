@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Text** | Pointer to **string** |  | [optional] 
-**HasDivider** | Pointer to **bool** |  | [optional] 
 **Expandable** | Pointer to **bool** |  | [optional] 
+**HasDivider** | Pointer to **bool** |  | [optional] 
+**Text** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewAddonsDescriptionRowWithDefaults instantiates a new AddonsDescriptionRow obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetText
+### GetExpandable
 
-`func (o *AddonsDescriptionRow) GetText() string`
+`func (o *AddonsDescriptionRow) GetExpandable() bool`
 
-GetText returns the Text field if non-nil, zero value otherwise.
+GetExpandable returns the Expandable field if non-nil, zero value otherwise.
 
-### GetTextOk
+### GetExpandableOk
 
-`func (o *AddonsDescriptionRow) GetTextOk() (*string, bool)`
+`func (o *AddonsDescriptionRow) GetExpandableOk() (*bool, bool)`
 
-GetTextOk returns a tuple with the Text field if it's non-nil, zero value otherwise
+GetExpandableOk returns a tuple with the Expandable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetText
+### SetExpandable
 
-`func (o *AddonsDescriptionRow) SetText(v string)`
+`func (o *AddonsDescriptionRow) SetExpandable(v bool)`
 
-SetText sets Text field to given value.
+SetExpandable sets Expandable field to given value.
 
-### HasText
+### HasExpandable
 
-`func (o *AddonsDescriptionRow) HasText() bool`
+`func (o *AddonsDescriptionRow) HasExpandable() bool`
 
-HasText returns a boolean if a field has been set.
+HasExpandable returns a boolean if a field has been set.
 
 ### GetHasDivider
 
@@ -77,30 +77,30 @@ SetHasDivider sets HasDivider field to given value.
 
 HasHasDivider returns a boolean if a field has been set.
 
-### GetExpandable
+### GetText
 
-`func (o *AddonsDescriptionRow) GetExpandable() bool`
+`func (o *AddonsDescriptionRow) GetText() string`
 
-GetExpandable returns the Expandable field if non-nil, zero value otherwise.
+GetText returns the Text field if non-nil, zero value otherwise.
 
-### GetExpandableOk
+### GetTextOk
 
-`func (o *AddonsDescriptionRow) GetExpandableOk() (*bool, bool)`
+`func (o *AddonsDescriptionRow) GetTextOk() (*string, bool)`
 
-GetExpandableOk returns a tuple with the Expandable field if it's non-nil, zero value otherwise
+GetTextOk returns a tuple with the Text field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExpandable
+### SetText
 
-`func (o *AddonsDescriptionRow) SetExpandable(v bool)`
+`func (o *AddonsDescriptionRow) SetText(v string)`
 
-SetExpandable sets Expandable field to given value.
+SetText sets Text field to given value.
 
-### HasExpandable
+### HasText
 
-`func (o *AddonsDescriptionRow) HasExpandable() bool`
+`func (o *AddonsDescriptionRow) HasText() bool`
 
-HasExpandable returns a boolean if a field has been set.
+HasText returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

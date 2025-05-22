@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to [**AddonsAction**](AddonsAction.md) |  | [optional] 
-**IconName** | Pointer to **string** |  | [optional] 
 **Caption** | Pointer to **string** |  | [optional] 
 **Icon** | Pointer to [**DivarIconsIconName**](DivarIconsIconName.md) |  | [optional] 
+**IconName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -52,31 +52,6 @@ SetAction sets Action field to given value.
 `func (o *ChatapiChatButton) HasAction() bool`
 
 HasAction returns a boolean if a field has been set.
-
-### GetIconName
-
-`func (o *ChatapiChatButton) GetIconName() string`
-
-GetIconName returns the IconName field if non-nil, zero value otherwise.
-
-### GetIconNameOk
-
-`func (o *ChatapiChatButton) GetIconNameOk() (*string, bool)`
-
-GetIconNameOk returns a tuple with the IconName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIconName
-
-`func (o *ChatapiChatButton) SetIconName(v string)`
-
-SetIconName sets IconName field to given value.
-
-### HasIconName
-
-`func (o *ChatapiChatButton) HasIconName() bool`
-
-HasIconName returns a boolean if a field has been set.
 
 ### GetCaption
 
@@ -127,6 +102,31 @@ SetIcon sets Icon field to given value.
 `func (o *ChatapiChatButton) HasIcon() bool`
 
 HasIcon returns a boolean if a field has been set.
+
+### GetIconName
+
+`func (o *ChatapiChatButton) GetIconName() string`
+
+GetIconName returns the IconName field if non-nil, zero value otherwise.
+
+### GetIconNameOk
+
+`func (o *ChatapiChatButton) GetIconNameOk() (*string, bool)`
+
+GetIconNameOk returns a tuple with the IconName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconName
+
+`func (o *ChatapiChatButton) SetIconName(v string)`
+
+SetIconName sets IconName field to given value.
+
+### HasIconName
+
+`func (o *ChatapiChatButton) HasIconName() bool`
+
+HasIconName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

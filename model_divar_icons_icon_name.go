@@ -812,6 +812,7 @@ const (
 	DIVARICONSICONNAME_SPARKLES_F DivarIconsIconName = "SPARKLES_F"
 	DIVARICONSICONNAME_HAND_CLICK DivarIconsIconName = "HAND_CLICK"
 	DIVARICONSICONNAME_WHATS_APP DivarIconsIconName = "WHATS_APP"
+	DIVARICONSICONNAME_CHAT_SPARKLES DivarIconsIconName = "CHAT_SPARKLES"
 )
 
 // All allowed values of DivarIconsIconName enum
@@ -1608,6 +1609,7 @@ var AllowedDivarIconsIconNameEnumValues = []DivarIconsIconName{
 	"SPARKLES_F",
 	"HAND_CLICK",
 	"WHATS_APP",
+	"CHAT_SPARKLES",
 }
 
 func (v *DivarIconsIconName) UnmarshalJSON(src []byte) error {

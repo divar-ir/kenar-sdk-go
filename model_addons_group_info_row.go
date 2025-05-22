@@ -19,8 +19,8 @@ var _ MappedNullable = &AddonsGroupInfoRow{}
 
 // AddonsGroupInfoRow struct for AddonsGroupInfoRow
 type AddonsGroupInfoRow struct {
-	Items []AddonsGroupInfoRowGroupInfoItem `json:"items,omitempty"`
 	HasDivider *bool `json:"has_divider,omitempty"`
+	Items []AddonsGroupInfoRowGroupInfoItem `json:"items,omitempty"`
 }
 
 // NewAddonsGroupInfoRow instantiates a new AddonsGroupInfoRow object
@@ -38,38 +38,6 @@ func NewAddonsGroupInfoRow() *AddonsGroupInfoRow {
 func NewAddonsGroupInfoRowWithDefaults() *AddonsGroupInfoRow {
 	this := AddonsGroupInfoRow{}
 	return &this
-}
-
-// GetItems returns the Items field value if set, zero value otherwise.
-func (o *AddonsGroupInfoRow) GetItems() []AddonsGroupInfoRowGroupInfoItem {
-	if o == nil || IsNil(o.Items) {
-		var ret []AddonsGroupInfoRowGroupInfoItem
-		return ret
-	}
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsGroupInfoRow) GetItemsOk() ([]AddonsGroupInfoRowGroupInfoItem, bool) {
-	if o == nil || IsNil(o.Items) {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// HasItems returns a boolean if a field has been set.
-func (o *AddonsGroupInfoRow) HasItems() bool {
-	if o != nil && !IsNil(o.Items) {
-		return true
-	}
-
-	return false
-}
-
-// SetItems gets a reference to the given []AddonsGroupInfoRowGroupInfoItem and assigns it to the Items field.
-func (o *AddonsGroupInfoRow) SetItems(v []AddonsGroupInfoRowGroupInfoItem) {
-	o.Items = v
 }
 
 // GetHasDivider returns the HasDivider field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *AddonsGroupInfoRow) SetHasDivider(v bool) {
 	o.HasDivider = &v
 }
 
+// GetItems returns the Items field value if set, zero value otherwise.
+func (o *AddonsGroupInfoRow) GetItems() []AddonsGroupInfoRowGroupInfoItem {
+	if o == nil || IsNil(o.Items) {
+		var ret []AddonsGroupInfoRowGroupInfoItem
+		return ret
+	}
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsGroupInfoRow) GetItemsOk() ([]AddonsGroupInfoRowGroupInfoItem, bool) {
+	if o == nil || IsNil(o.Items) {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// HasItems returns a boolean if a field has been set.
+func (o *AddonsGroupInfoRow) HasItems() bool {
+	if o != nil && !IsNil(o.Items) {
+		return true
+	}
+
+	return false
+}
+
+// SetItems gets a reference to the given []AddonsGroupInfoRowGroupInfoItem and assigns it to the Items field.
+func (o *AddonsGroupInfoRow) SetItems(v []AddonsGroupInfoRowGroupInfoItem) {
+	o.Items = v
+}
+
 func (o AddonsGroupInfoRow) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o AddonsGroupInfoRow) MarshalJSON() ([]byte, error) {
 
 func (o AddonsGroupInfoRow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Items) {
-		toSerialize["items"] = o.Items
-	}
 	if !IsNil(o.HasDivider) {
 		toSerialize["has_divider"] = o.HasDivider
+	}
+	if !IsNil(o.Items) {
+		toSerialize["items"] = o.Items
 	}
 	return toSerialize, nil
 }

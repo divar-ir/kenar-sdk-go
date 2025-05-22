@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Slug** | Pointer to **string** |  | [optional] 
-**Display** | Pointer to **string** |  | [optional] 
 **Avatar** | Pointer to **string** |  | [optional] 
+**Display** | Pointer to **string** |  | [optional] 
 **DivarIdentificationKey** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to [**AppsAppStatus**](AppsAppStatus.md) |  | [optional] 
-**ServiceType** | Pointer to [**AppsServiceType**](AppsServiceType.md) |  | [optional] 
 **ServiceTags** | Pointer to [**[]AppsServiceTag**](AppsServiceTag.md) |  | [optional] 
+**ServiceType** | Pointer to [**AppsServiceType**](AppsServiceType.md) |  | [optional] 
+**Slug** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**AppsAppStatus**](AppsAppStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -30,56 +30,6 @@ will change when the set of required properties is changed
 NewAppsAppWithDefaults instantiates a new AppsApp object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSlug
-
-`func (o *AppsApp) GetSlug() string`
-
-GetSlug returns the Slug field if non-nil, zero value otherwise.
-
-### GetSlugOk
-
-`func (o *AppsApp) GetSlugOk() (*string, bool)`
-
-GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlug
-
-`func (o *AppsApp) SetSlug(v string)`
-
-SetSlug sets Slug field to given value.
-
-### HasSlug
-
-`func (o *AppsApp) HasSlug() bool`
-
-HasSlug returns a boolean if a field has been set.
-
-### GetDisplay
-
-`func (o *AppsApp) GetDisplay() string`
-
-GetDisplay returns the Display field if non-nil, zero value otherwise.
-
-### GetDisplayOk
-
-`func (o *AppsApp) GetDisplayOk() (*string, bool)`
-
-GetDisplayOk returns a tuple with the Display field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDisplay
-
-`func (o *AppsApp) SetDisplay(v string)`
-
-SetDisplay sets Display field to given value.
-
-### HasDisplay
-
-`func (o *AppsApp) HasDisplay() bool`
-
-HasDisplay returns a boolean if a field has been set.
 
 ### GetAvatar
 
@@ -106,6 +56,31 @@ SetAvatar sets Avatar field to given value.
 
 HasAvatar returns a boolean if a field has been set.
 
+### GetDisplay
+
+`func (o *AppsApp) GetDisplay() string`
+
+GetDisplay returns the Display field if non-nil, zero value otherwise.
+
+### GetDisplayOk
+
+`func (o *AppsApp) GetDisplayOk() (*string, bool)`
+
+GetDisplayOk returns a tuple with the Display field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplay
+
+`func (o *AppsApp) SetDisplay(v string)`
+
+SetDisplay sets Display field to given value.
+
+### HasDisplay
+
+`func (o *AppsApp) HasDisplay() bool`
+
+HasDisplay returns a boolean if a field has been set.
+
 ### GetDivarIdentificationKey
 
 `func (o *AppsApp) GetDivarIdentificationKey() string`
@@ -131,30 +106,30 @@ SetDivarIdentificationKey sets DivarIdentificationKey field to given value.
 
 HasDivarIdentificationKey returns a boolean if a field has been set.
 
-### GetStatus
+### GetServiceTags
 
-`func (o *AppsApp) GetStatus() AppsAppStatus`
+`func (o *AppsApp) GetServiceTags() []AppsServiceTag`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetServiceTags returns the ServiceTags field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetServiceTagsOk
 
-`func (o *AppsApp) GetStatusOk() (*AppsAppStatus, bool)`
+`func (o *AppsApp) GetServiceTagsOk() (*[]AppsServiceTag, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetServiceTagsOk returns a tuple with the ServiceTags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetServiceTags
 
-`func (o *AppsApp) SetStatus(v AppsAppStatus)`
+`func (o *AppsApp) SetServiceTags(v []AppsServiceTag)`
 
-SetStatus sets Status field to given value.
+SetServiceTags sets ServiceTags field to given value.
 
-### HasStatus
+### HasServiceTags
 
-`func (o *AppsApp) HasStatus() bool`
+`func (o *AppsApp) HasServiceTags() bool`
 
-HasStatus returns a boolean if a field has been set.
+HasServiceTags returns a boolean if a field has been set.
 
 ### GetServiceType
 
@@ -181,30 +156,55 @@ SetServiceType sets ServiceType field to given value.
 
 HasServiceType returns a boolean if a field has been set.
 
-### GetServiceTags
+### GetSlug
 
-`func (o *AppsApp) GetServiceTags() []AppsServiceTag`
+`func (o *AppsApp) GetSlug() string`
 
-GetServiceTags returns the ServiceTags field if non-nil, zero value otherwise.
+GetSlug returns the Slug field if non-nil, zero value otherwise.
 
-### GetServiceTagsOk
+### GetSlugOk
 
-`func (o *AppsApp) GetServiceTagsOk() (*[]AppsServiceTag, bool)`
+`func (o *AppsApp) GetSlugOk() (*string, bool)`
 
-GetServiceTagsOk returns a tuple with the ServiceTags field if it's non-nil, zero value otherwise
+GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetServiceTags
+### SetSlug
 
-`func (o *AppsApp) SetServiceTags(v []AppsServiceTag)`
+`func (o *AppsApp) SetSlug(v string)`
 
-SetServiceTags sets ServiceTags field to given value.
+SetSlug sets Slug field to given value.
 
-### HasServiceTags
+### HasSlug
 
-`func (o *AppsApp) HasServiceTags() bool`
+`func (o *AppsApp) HasSlug() bool`
 
-HasServiceTags returns a boolean if a field has been set.
+HasSlug returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *AppsApp) GetStatus() AppsAppStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *AppsApp) GetStatusOk() (*AppsAppStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *AppsApp) SetStatus(v AppsAppStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *AppsApp) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

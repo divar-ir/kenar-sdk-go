@@ -20,17 +20,17 @@ var _ MappedNullable = &ChatapiMessage{}
 
 // ChatapiMessage struct for ChatapiMessage
 type ChatapiMessage struct {
-	Id *string `json:"id,omitempty"`
 	Conversation *ChatapiConversation `json:"conversation,omitempty"`
+	FileData *MessageFileData `json:"file_data,omitempty"`
+	Id *string `json:"id,omitempty"`
+	ImageData *MessageImageData `json:"image_data,omitempty"`
+	LocationData *MessageLocationData `json:"location_data,omitempty"`
 	Sender *MessageSender `json:"sender,omitempty"`
-	Type *ChatapiMessageType `json:"type,omitempty"`
 	SentAt *time.Time `json:"sent_at,omitempty"`
 	Text *string `json:"text,omitempty"`
-	ImageData *MessageImageData `json:"image_data,omitempty"`
-	FileData *MessageFileData `json:"file_data,omitempty"`
-	VoiceData *MessageVoiceData `json:"voice_data,omitempty"`
-	LocationData *MessageLocationData `json:"location_data,omitempty"`
+	Type *ChatapiMessageType `json:"type,omitempty"`
 	VideoData *MessageVideoData `json:"video_data,omitempty"`
+	VoiceData *MessageVoiceData `json:"voice_data,omitempty"`
 }
 
 // NewChatapiMessage instantiates a new ChatapiMessage object
@@ -48,38 +48,6 @@ func NewChatapiMessage() *ChatapiMessage {
 func NewChatapiMessageWithDefaults() *ChatapiMessage {
 	this := ChatapiMessage{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *ChatapiMessage) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatapiMessage) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *ChatapiMessage) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ChatapiMessage) SetId(v string) {
-	o.Id = &v
 }
 
 // GetConversation returns the Conversation field value if set, zero value otherwise.
@@ -114,6 +82,134 @@ func (o *ChatapiMessage) SetConversation(v ChatapiConversation) {
 	o.Conversation = &v
 }
 
+// GetFileData returns the FileData field value if set, zero value otherwise.
+func (o *ChatapiMessage) GetFileData() MessageFileData {
+	if o == nil || IsNil(o.FileData) {
+		var ret MessageFileData
+		return ret
+	}
+	return *o.FileData
+}
+
+// GetFileDataOk returns a tuple with the FileData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiMessage) GetFileDataOk() (*MessageFileData, bool) {
+	if o == nil || IsNil(o.FileData) {
+		return nil, false
+	}
+	return o.FileData, true
+}
+
+// HasFileData returns a boolean if a field has been set.
+func (o *ChatapiMessage) HasFileData() bool {
+	if o != nil && !IsNil(o.FileData) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileData gets a reference to the given MessageFileData and assigns it to the FileData field.
+func (o *ChatapiMessage) SetFileData(v MessageFileData) {
+	o.FileData = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ChatapiMessage) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiMessage) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *ChatapiMessage) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ChatapiMessage) SetId(v string) {
+	o.Id = &v
+}
+
+// GetImageData returns the ImageData field value if set, zero value otherwise.
+func (o *ChatapiMessage) GetImageData() MessageImageData {
+	if o == nil || IsNil(o.ImageData) {
+		var ret MessageImageData
+		return ret
+	}
+	return *o.ImageData
+}
+
+// GetImageDataOk returns a tuple with the ImageData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiMessage) GetImageDataOk() (*MessageImageData, bool) {
+	if o == nil || IsNil(o.ImageData) {
+		return nil, false
+	}
+	return o.ImageData, true
+}
+
+// HasImageData returns a boolean if a field has been set.
+func (o *ChatapiMessage) HasImageData() bool {
+	if o != nil && !IsNil(o.ImageData) {
+		return true
+	}
+
+	return false
+}
+
+// SetImageData gets a reference to the given MessageImageData and assigns it to the ImageData field.
+func (o *ChatapiMessage) SetImageData(v MessageImageData) {
+	o.ImageData = &v
+}
+
+// GetLocationData returns the LocationData field value if set, zero value otherwise.
+func (o *ChatapiMessage) GetLocationData() MessageLocationData {
+	if o == nil || IsNil(o.LocationData) {
+		var ret MessageLocationData
+		return ret
+	}
+	return *o.LocationData
+}
+
+// GetLocationDataOk returns a tuple with the LocationData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiMessage) GetLocationDataOk() (*MessageLocationData, bool) {
+	if o == nil || IsNil(o.LocationData) {
+		return nil, false
+	}
+	return o.LocationData, true
+}
+
+// HasLocationData returns a boolean if a field has been set.
+func (o *ChatapiMessage) HasLocationData() bool {
+	if o != nil && !IsNil(o.LocationData) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocationData gets a reference to the given MessageLocationData and assigns it to the LocationData field.
+func (o *ChatapiMessage) SetLocationData(v MessageLocationData) {
+	o.LocationData = &v
+}
+
 // GetSender returns the Sender field value if set, zero value otherwise.
 func (o *ChatapiMessage) GetSender() MessageSender {
 	if o == nil || IsNil(o.Sender) {
@@ -144,38 +240,6 @@ func (o *ChatapiMessage) HasSender() bool {
 // SetSender gets a reference to the given MessageSender and assigns it to the Sender field.
 func (o *ChatapiMessage) SetSender(v MessageSender) {
 	o.Sender = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ChatapiMessage) GetType() ChatapiMessageType {
-	if o == nil || IsNil(o.Type) {
-		var ret ChatapiMessageType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatapiMessage) GetTypeOk() (*ChatapiMessageType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *ChatapiMessage) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given ChatapiMessageType and assigns it to the Type field.
-func (o *ChatapiMessage) SetType(v ChatapiMessageType) {
-	o.Type = &v
 }
 
 // GetSentAt returns the SentAt field value if set, zero value otherwise.
@@ -242,132 +306,36 @@ func (o *ChatapiMessage) SetText(v string) {
 	o.Text = &v
 }
 
-// GetImageData returns the ImageData field value if set, zero value otherwise.
-func (o *ChatapiMessage) GetImageData() MessageImageData {
-	if o == nil || IsNil(o.ImageData) {
-		var ret MessageImageData
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ChatapiMessage) GetType() ChatapiMessageType {
+	if o == nil || IsNil(o.Type) {
+		var ret ChatapiMessageType
 		return ret
 	}
-	return *o.ImageData
+	return *o.Type
 }
 
-// GetImageDataOk returns a tuple with the ImageData field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChatapiMessage) GetImageDataOk() (*MessageImageData, bool) {
-	if o == nil || IsNil(o.ImageData) {
+func (o *ChatapiMessage) GetTypeOk() (*ChatapiMessageType, bool) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return o.ImageData, true
+	return o.Type, true
 }
 
-// HasImageData returns a boolean if a field has been set.
-func (o *ChatapiMessage) HasImageData() bool {
-	if o != nil && !IsNil(o.ImageData) {
+// HasType returns a boolean if a field has been set.
+func (o *ChatapiMessage) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
 	return false
 }
 
-// SetImageData gets a reference to the given MessageImageData and assigns it to the ImageData field.
-func (o *ChatapiMessage) SetImageData(v MessageImageData) {
-	o.ImageData = &v
-}
-
-// GetFileData returns the FileData field value if set, zero value otherwise.
-func (o *ChatapiMessage) GetFileData() MessageFileData {
-	if o == nil || IsNil(o.FileData) {
-		var ret MessageFileData
-		return ret
-	}
-	return *o.FileData
-}
-
-// GetFileDataOk returns a tuple with the FileData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatapiMessage) GetFileDataOk() (*MessageFileData, bool) {
-	if o == nil || IsNil(o.FileData) {
-		return nil, false
-	}
-	return o.FileData, true
-}
-
-// HasFileData returns a boolean if a field has been set.
-func (o *ChatapiMessage) HasFileData() bool {
-	if o != nil && !IsNil(o.FileData) {
-		return true
-	}
-
-	return false
-}
-
-// SetFileData gets a reference to the given MessageFileData and assigns it to the FileData field.
-func (o *ChatapiMessage) SetFileData(v MessageFileData) {
-	o.FileData = &v
-}
-
-// GetVoiceData returns the VoiceData field value if set, zero value otherwise.
-func (o *ChatapiMessage) GetVoiceData() MessageVoiceData {
-	if o == nil || IsNil(o.VoiceData) {
-		var ret MessageVoiceData
-		return ret
-	}
-	return *o.VoiceData
-}
-
-// GetVoiceDataOk returns a tuple with the VoiceData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatapiMessage) GetVoiceDataOk() (*MessageVoiceData, bool) {
-	if o == nil || IsNil(o.VoiceData) {
-		return nil, false
-	}
-	return o.VoiceData, true
-}
-
-// HasVoiceData returns a boolean if a field has been set.
-func (o *ChatapiMessage) HasVoiceData() bool {
-	if o != nil && !IsNil(o.VoiceData) {
-		return true
-	}
-
-	return false
-}
-
-// SetVoiceData gets a reference to the given MessageVoiceData and assigns it to the VoiceData field.
-func (o *ChatapiMessage) SetVoiceData(v MessageVoiceData) {
-	o.VoiceData = &v
-}
-
-// GetLocationData returns the LocationData field value if set, zero value otherwise.
-func (o *ChatapiMessage) GetLocationData() MessageLocationData {
-	if o == nil || IsNil(o.LocationData) {
-		var ret MessageLocationData
-		return ret
-	}
-	return *o.LocationData
-}
-
-// GetLocationDataOk returns a tuple with the LocationData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatapiMessage) GetLocationDataOk() (*MessageLocationData, bool) {
-	if o == nil || IsNil(o.LocationData) {
-		return nil, false
-	}
-	return o.LocationData, true
-}
-
-// HasLocationData returns a boolean if a field has been set.
-func (o *ChatapiMessage) HasLocationData() bool {
-	if o != nil && !IsNil(o.LocationData) {
-		return true
-	}
-
-	return false
-}
-
-// SetLocationData gets a reference to the given MessageLocationData and assigns it to the LocationData field.
-func (o *ChatapiMessage) SetLocationData(v MessageLocationData) {
-	o.LocationData = &v
+// SetType gets a reference to the given ChatapiMessageType and assigns it to the Type field.
+func (o *ChatapiMessage) SetType(v ChatapiMessageType) {
+	o.Type = &v
 }
 
 // GetVideoData returns the VideoData field value if set, zero value otherwise.
@@ -402,6 +370,38 @@ func (o *ChatapiMessage) SetVideoData(v MessageVideoData) {
 	o.VideoData = &v
 }
 
+// GetVoiceData returns the VoiceData field value if set, zero value otherwise.
+func (o *ChatapiMessage) GetVoiceData() MessageVoiceData {
+	if o == nil || IsNil(o.VoiceData) {
+		var ret MessageVoiceData
+		return ret
+	}
+	return *o.VoiceData
+}
+
+// GetVoiceDataOk returns a tuple with the VoiceData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiMessage) GetVoiceDataOk() (*MessageVoiceData, bool) {
+	if o == nil || IsNil(o.VoiceData) {
+		return nil, false
+	}
+	return o.VoiceData, true
+}
+
+// HasVoiceData returns a boolean if a field has been set.
+func (o *ChatapiMessage) HasVoiceData() bool {
+	if o != nil && !IsNil(o.VoiceData) {
+		return true
+	}
+
+	return false
+}
+
+// SetVoiceData gets a reference to the given MessageVoiceData and assigns it to the VoiceData field.
+func (o *ChatapiMessage) SetVoiceData(v MessageVoiceData) {
+	o.VoiceData = &v
+}
+
 func (o ChatapiMessage) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -412,17 +412,23 @@ func (o ChatapiMessage) MarshalJSON() ([]byte, error) {
 
 func (o ChatapiMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !IsNil(o.Conversation) {
 		toSerialize["conversation"] = o.Conversation
 	}
+	if !IsNil(o.FileData) {
+		toSerialize["file_data"] = o.FileData
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ImageData) {
+		toSerialize["image_data"] = o.ImageData
+	}
+	if !IsNil(o.LocationData) {
+		toSerialize["location_data"] = o.LocationData
+	}
 	if !IsNil(o.Sender) {
 		toSerialize["sender"] = o.Sender
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.SentAt) {
 		toSerialize["sent_at"] = o.SentAt
@@ -430,20 +436,14 @@ func (o ChatapiMessage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text
 	}
-	if !IsNil(o.ImageData) {
-		toSerialize["image_data"] = o.ImageData
-	}
-	if !IsNil(o.FileData) {
-		toSerialize["file_data"] = o.FileData
-	}
-	if !IsNil(o.VoiceData) {
-		toSerialize["voice_data"] = o.VoiceData
-	}
-	if !IsNil(o.LocationData) {
-		toSerialize["location_data"] = o.LocationData
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.VideoData) {
 		toSerialize["video_data"] = o.VideoData
+	}
+	if !IsNil(o.VoiceData) {
+		toSerialize["voice_data"] = o.VoiceData
 	}
 	return toSerialize, nil
 }

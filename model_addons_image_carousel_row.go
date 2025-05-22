@@ -19,8 +19,8 @@ var _ MappedNullable = &AddonsImageCarouselRow{}
 
 // AddonsImageCarouselRow struct for AddonsImageCarouselRow
 type AddonsImageCarouselRow struct {
-	Items []ImageCarouselRowImageItem `json:"items,omitempty"`
 	HasDivider *bool `json:"has_divider,omitempty"`
+	Items []ImageCarouselRowImageItem `json:"items,omitempty"`
 }
 
 // NewAddonsImageCarouselRow instantiates a new AddonsImageCarouselRow object
@@ -38,38 +38,6 @@ func NewAddonsImageCarouselRow() *AddonsImageCarouselRow {
 func NewAddonsImageCarouselRowWithDefaults() *AddonsImageCarouselRow {
 	this := AddonsImageCarouselRow{}
 	return &this
-}
-
-// GetItems returns the Items field value if set, zero value otherwise.
-func (o *AddonsImageCarouselRow) GetItems() []ImageCarouselRowImageItem {
-	if o == nil || IsNil(o.Items) {
-		var ret []ImageCarouselRowImageItem
-		return ret
-	}
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsImageCarouselRow) GetItemsOk() ([]ImageCarouselRowImageItem, bool) {
-	if o == nil || IsNil(o.Items) {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// HasItems returns a boolean if a field has been set.
-func (o *AddonsImageCarouselRow) HasItems() bool {
-	if o != nil && !IsNil(o.Items) {
-		return true
-	}
-
-	return false
-}
-
-// SetItems gets a reference to the given []ImageCarouselRowImageItem and assigns it to the Items field.
-func (o *AddonsImageCarouselRow) SetItems(v []ImageCarouselRowImageItem) {
-	o.Items = v
 }
 
 // GetHasDivider returns the HasDivider field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *AddonsImageCarouselRow) SetHasDivider(v bool) {
 	o.HasDivider = &v
 }
 
+// GetItems returns the Items field value if set, zero value otherwise.
+func (o *AddonsImageCarouselRow) GetItems() []ImageCarouselRowImageItem {
+	if o == nil || IsNil(o.Items) {
+		var ret []ImageCarouselRowImageItem
+		return ret
+	}
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsImageCarouselRow) GetItemsOk() ([]ImageCarouselRowImageItem, bool) {
+	if o == nil || IsNil(o.Items) {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// HasItems returns a boolean if a field has been set.
+func (o *AddonsImageCarouselRow) HasItems() bool {
+	if o != nil && !IsNil(o.Items) {
+		return true
+	}
+
+	return false
+}
+
+// SetItems gets a reference to the given []ImageCarouselRowImageItem and assigns it to the Items field.
+func (o *AddonsImageCarouselRow) SetItems(v []ImageCarouselRowImageItem) {
+	o.Items = v
+}
+
 func (o AddonsImageCarouselRow) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o AddonsImageCarouselRow) MarshalJSON() ([]byte, error) {
 
 func (o AddonsImageCarouselRow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Items) {
-		toSerialize["items"] = o.Items
-	}
 	if !IsNil(o.HasDivider) {
 		toSerialize["has_divider"] = o.HasDivider
+	}
+	if !IsNil(o.Items) {
+		toSerialize["items"] = o.Items
 	}
 	return toSerialize, nil
 }

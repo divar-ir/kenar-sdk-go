@@ -19,11 +19,11 @@ var _ MappedNullable = &AddonsAddonSelector{}
 
 // AddonsAddonSelector struct for AddonsAddonSelector
 type AddonsAddonSelector struct {
-	Tokens []string `json:"tokens,omitempty"`
+	BrandModels []string `json:"brand_models,omitempty"`
 	Categories []string `json:"categories,omitempty"`
 	Cities []string `json:"cities,omitempty"`
 	Districts []string `json:"districts,omitempty"`
-	BrandModels []string `json:"brand_models,omitempty"`
+	Tokens []string `json:"tokens,omitempty"`
 }
 
 // NewAddonsAddonSelector instantiates a new AddonsAddonSelector object
@@ -43,36 +43,36 @@ func NewAddonsAddonSelectorWithDefaults() *AddonsAddonSelector {
 	return &this
 }
 
-// GetTokens returns the Tokens field value if set, zero value otherwise.
-func (o *AddonsAddonSelector) GetTokens() []string {
-	if o == nil || IsNil(o.Tokens) {
+// GetBrandModels returns the BrandModels field value if set, zero value otherwise.
+func (o *AddonsAddonSelector) GetBrandModels() []string {
+	if o == nil || IsNil(o.BrandModels) {
 		var ret []string
 		return ret
 	}
-	return o.Tokens
+	return o.BrandModels
 }
 
-// GetTokensOk returns a tuple with the Tokens field value if set, nil otherwise
+// GetBrandModelsOk returns a tuple with the BrandModels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsAddonSelector) GetTokensOk() ([]string, bool) {
-	if o == nil || IsNil(o.Tokens) {
+func (o *AddonsAddonSelector) GetBrandModelsOk() ([]string, bool) {
+	if o == nil || IsNil(o.BrandModels) {
 		return nil, false
 	}
-	return o.Tokens, true
+	return o.BrandModels, true
 }
 
-// HasTokens returns a boolean if a field has been set.
-func (o *AddonsAddonSelector) HasTokens() bool {
-	if o != nil && !IsNil(o.Tokens) {
+// HasBrandModels returns a boolean if a field has been set.
+func (o *AddonsAddonSelector) HasBrandModels() bool {
+	if o != nil && !IsNil(o.BrandModels) {
 		return true
 	}
 
 	return false
 }
 
-// SetTokens gets a reference to the given []string and assigns it to the Tokens field.
-func (o *AddonsAddonSelector) SetTokens(v []string) {
-	o.Tokens = v
+// SetBrandModels gets a reference to the given []string and assigns it to the BrandModels field.
+func (o *AddonsAddonSelector) SetBrandModels(v []string) {
+	o.BrandModels = v
 }
 
 // GetCategories returns the Categories field value if set, zero value otherwise.
@@ -171,36 +171,36 @@ func (o *AddonsAddonSelector) SetDistricts(v []string) {
 	o.Districts = v
 }
 
-// GetBrandModels returns the BrandModels field value if set, zero value otherwise.
-func (o *AddonsAddonSelector) GetBrandModels() []string {
-	if o == nil || IsNil(o.BrandModels) {
+// GetTokens returns the Tokens field value if set, zero value otherwise.
+func (o *AddonsAddonSelector) GetTokens() []string {
+	if o == nil || IsNil(o.Tokens) {
 		var ret []string
 		return ret
 	}
-	return o.BrandModels
+	return o.Tokens
 }
 
-// GetBrandModelsOk returns a tuple with the BrandModels field value if set, nil otherwise
+// GetTokensOk returns a tuple with the Tokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsAddonSelector) GetBrandModelsOk() ([]string, bool) {
-	if o == nil || IsNil(o.BrandModels) {
+func (o *AddonsAddonSelector) GetTokensOk() ([]string, bool) {
+	if o == nil || IsNil(o.Tokens) {
 		return nil, false
 	}
-	return o.BrandModels, true
+	return o.Tokens, true
 }
 
-// HasBrandModels returns a boolean if a field has been set.
-func (o *AddonsAddonSelector) HasBrandModels() bool {
-	if o != nil && !IsNil(o.BrandModels) {
+// HasTokens returns a boolean if a field has been set.
+func (o *AddonsAddonSelector) HasTokens() bool {
+	if o != nil && !IsNil(o.Tokens) {
 		return true
 	}
 
 	return false
 }
 
-// SetBrandModels gets a reference to the given []string and assigns it to the BrandModels field.
-func (o *AddonsAddonSelector) SetBrandModels(v []string) {
-	o.BrandModels = v
+// SetTokens gets a reference to the given []string and assigns it to the Tokens field.
+func (o *AddonsAddonSelector) SetTokens(v []string) {
+	o.Tokens = v
 }
 
 func (o AddonsAddonSelector) MarshalJSON() ([]byte, error) {
@@ -213,8 +213,8 @@ func (o AddonsAddonSelector) MarshalJSON() ([]byte, error) {
 
 func (o AddonsAddonSelector) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Tokens) {
-		toSerialize["tokens"] = o.Tokens
+	if !IsNil(o.BrandModels) {
+		toSerialize["brand_models"] = o.BrandModels
 	}
 	if !IsNil(o.Categories) {
 		toSerialize["categories"] = o.Categories
@@ -225,8 +225,8 @@ func (o AddonsAddonSelector) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Districts) {
 		toSerialize["districts"] = o.Districts
 	}
-	if !IsNil(o.BrandModels) {
-		toSerialize["brand_models"] = o.BrandModels
+	if !IsNil(o.Tokens) {
+		toSerialize["tokens"] = o.Tokens
 	}
 	return toSerialize, nil
 }

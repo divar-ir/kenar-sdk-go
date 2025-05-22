@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**HeightPx** | Pointer to **int64** |  | [optional] 
 **Link** | Pointer to **string** |  | [optional] 
 **SizeBytes** | Pointer to **string** |  | [optional] 
-**HeightPx** | Pointer to **int64** |  | [optional] 
 **WidthPx** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewMessageImageDataWithDefaults instantiates a new MessageImageData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHeightPx
+
+`func (o *MessageImageData) GetHeightPx() int64`
+
+GetHeightPx returns the HeightPx field if non-nil, zero value otherwise.
+
+### GetHeightPxOk
+
+`func (o *MessageImageData) GetHeightPxOk() (*int64, bool)`
+
+GetHeightPxOk returns a tuple with the HeightPx field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeightPx
+
+`func (o *MessageImageData) SetHeightPx(v int64)`
+
+SetHeightPx sets HeightPx field to given value.
+
+### HasHeightPx
+
+`func (o *MessageImageData) HasHeightPx() bool`
+
+HasHeightPx returns a boolean if a field has been set.
 
 ### GetLink
 
@@ -77,31 +102,6 @@ SetSizeBytes sets SizeBytes field to given value.
 `func (o *MessageImageData) HasSizeBytes() bool`
 
 HasSizeBytes returns a boolean if a field has been set.
-
-### GetHeightPx
-
-`func (o *MessageImageData) GetHeightPx() int64`
-
-GetHeightPx returns the HeightPx field if non-nil, zero value otherwise.
-
-### GetHeightPxOk
-
-`func (o *MessageImageData) GetHeightPxOk() (*int64, bool)`
-
-GetHeightPxOk returns a tuple with the HeightPx field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHeightPx
-
-`func (o *MessageImageData) SetHeightPx(v int64)`
-
-SetHeightPx sets HeightPx field to given value.
-
-### HasHeightPx
-
-`func (o *MessageImageData) HasHeightPx() bool`
-
-HasHeightPx returns a boolean if a field has been set.
 
 ### GetWidthPx
 

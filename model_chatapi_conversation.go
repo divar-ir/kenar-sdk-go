@@ -20,8 +20,8 @@ var _ MappedNullable = &ChatapiConversation{}
 // ChatapiConversation struct for ChatapiConversation
 type ChatapiConversation struct {
 	Id *string `json:"id,omitempty"`
-	Type *ChatapiConversationType `json:"type,omitempty"`
 	PostToken *string `json:"post_token,omitempty"`
+	Type *ChatapiConversationType `json:"type,omitempty"`
 }
 
 // NewChatapiConversation instantiates a new ChatapiConversation object
@@ -73,38 +73,6 @@ func (o *ChatapiConversation) SetId(v string) {
 	o.Id = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ChatapiConversation) GetType() ChatapiConversationType {
-	if o == nil || IsNil(o.Type) {
-		var ret ChatapiConversationType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ChatapiConversation) GetTypeOk() (*ChatapiConversationType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *ChatapiConversation) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given ChatapiConversationType and assigns it to the Type field.
-func (o *ChatapiConversation) SetType(v ChatapiConversationType) {
-	o.Type = &v
-}
-
 // GetPostToken returns the PostToken field value if set, zero value otherwise.
 func (o *ChatapiConversation) GetPostToken() string {
 	if o == nil || IsNil(o.PostToken) {
@@ -137,6 +105,38 @@ func (o *ChatapiConversation) SetPostToken(v string) {
 	o.PostToken = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ChatapiConversation) GetType() ChatapiConversationType {
+	if o == nil || IsNil(o.Type) {
+		var ret ChatapiConversationType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiConversation) GetTypeOk() (*ChatapiConversationType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ChatapiConversation) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given ChatapiConversationType and assigns it to the Type field.
+func (o *ChatapiConversation) SetType(v ChatapiConversationType) {
+	o.Type = &v
+}
+
 func (o ChatapiConversation) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -150,11 +150,11 @@ func (o ChatapiConversation) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if !IsNil(o.PostToken) {
 		toSerialize["post_token"] = o.PostToken
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

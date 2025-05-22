@@ -20,12 +20,12 @@ var _ MappedNullable = &AddonsAddonMetaData{}
 
 // AddonsAddonMetaData struct for AddonsAddonMetaData
 type AddonsAddonMetaData struct {
-	Id *string `json:"id,omitempty"`
 	App *AppsApp `json:"app,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Id *string `json:"id,omitempty"`
 	LastModified *time.Time `json:"last_modified,omitempty"`
-	Status *AddonsStatus `json:"status,omitempty"`
 	ServiceTags []AppsServiceTag `json:"service_tags,omitempty"`
+	Status *AddonsStatus `json:"status,omitempty"`
 }
 
 // NewAddonsAddonMetaData instantiates a new AddonsAddonMetaData object
@@ -43,38 +43,6 @@ func NewAddonsAddonMetaData() *AddonsAddonMetaData {
 func NewAddonsAddonMetaDataWithDefaults() *AddonsAddonMetaData {
 	this := AddonsAddonMetaData{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *AddonsAddonMetaData) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonMetaData) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *AddonsAddonMetaData) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AddonsAddonMetaData) SetId(v string) {
-	o.Id = &v
 }
 
 // GetApp returns the App field value if set, zero value otherwise.
@@ -141,6 +109,38 @@ func (o *AddonsAddonMetaData) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AddonsAddonMetaData) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonMetaData) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AddonsAddonMetaData) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AddonsAddonMetaData) SetId(v string) {
+	o.Id = &v
+}
+
 // GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *AddonsAddonMetaData) GetLastModified() time.Time {
 	if o == nil || IsNil(o.LastModified) {
@@ -171,38 +171,6 @@ func (o *AddonsAddonMetaData) HasLastModified() bool {
 // SetLastModified gets a reference to the given time.Time and assigns it to the LastModified field.
 func (o *AddonsAddonMetaData) SetLastModified(v time.Time) {
 	o.LastModified = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *AddonsAddonMetaData) GetStatus() AddonsStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret AddonsStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonMetaData) GetStatusOk() (*AddonsStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *AddonsAddonMetaData) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given AddonsStatus and assigns it to the Status field.
-func (o *AddonsAddonMetaData) SetStatus(v AddonsStatus) {
-	o.Status = &v
 }
 
 // GetServiceTags returns the ServiceTags field value if set, zero value otherwise.
@@ -237,6 +205,38 @@ func (o *AddonsAddonMetaData) SetServiceTags(v []AppsServiceTag) {
 	o.ServiceTags = v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *AddonsAddonMetaData) GetStatus() AddonsStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret AddonsStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonMetaData) GetStatusOk() (*AddonsStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *AddonsAddonMetaData) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given AddonsStatus and assigns it to the Status field.
+func (o *AddonsAddonMetaData) SetStatus(v AddonsStatus) {
+	o.Status = &v
+}
+
 func (o AddonsAddonMetaData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -247,23 +247,23 @@ func (o AddonsAddonMetaData) MarshalJSON() ([]byte, error) {
 
 func (o AddonsAddonMetaData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !IsNil(o.App) {
 		toSerialize["app"] = o.App
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LastModified) {
 		toSerialize["last_modified"] = o.LastModified
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
 	if !IsNil(o.ServiceTags) {
 		toSerialize["service_tags"] = o.ServiceTags
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

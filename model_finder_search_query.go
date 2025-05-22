@@ -20,13 +20,13 @@ var _ MappedNullable = &FinderSearchQuery{}
 // FinderSearchQuery struct for FinderSearchQuery
 type FinderSearchQuery struct {
 	BrandModel []string `json:"brand_model,omitempty"`
-	ProductionYear *FinderSearchQueryNumberRange `json:"production_year,omitempty"`
-	Usage *FinderSearchQueryNumberRange `json:"usage,omitempty"`
-	Rooms []string `json:"rooms,omitempty"`
-	Rent *FinderSearchQueryNumberRange `json:"rent,omitempty"`
 	Credit *FinderSearchQueryNumberRange `json:"credit,omitempty"`
-	Size *FinderSearchQueryNumberRange `json:"size,omitempty"`
 	OnlyWithParking *bool `json:"only_with_parking,omitempty"`
+	ProductionYear *FinderSearchQueryNumberRange `json:"production_year,omitempty"`
+	Rent *FinderSearchQueryNumberRange `json:"rent,omitempty"`
+	Rooms []string `json:"rooms,omitempty"`
+	Size *FinderSearchQueryNumberRange `json:"size,omitempty"`
+	Usage *FinderSearchQueryNumberRange `json:"usage,omitempty"`
 }
 
 // NewFinderSearchQuery instantiates a new FinderSearchQuery object
@@ -78,134 +78,6 @@ func (o *FinderSearchQuery) SetBrandModel(v []string) {
 	o.BrandModel = v
 }
 
-// GetProductionYear returns the ProductionYear field value if set, zero value otherwise.
-func (o *FinderSearchQuery) GetProductionYear() FinderSearchQueryNumberRange {
-	if o == nil || IsNil(o.ProductionYear) {
-		var ret FinderSearchQueryNumberRange
-		return ret
-	}
-	return *o.ProductionYear
-}
-
-// GetProductionYearOk returns a tuple with the ProductionYear field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchQuery) GetProductionYearOk() (*FinderSearchQueryNumberRange, bool) {
-	if o == nil || IsNil(o.ProductionYear) {
-		return nil, false
-	}
-	return o.ProductionYear, true
-}
-
-// HasProductionYear returns a boolean if a field has been set.
-func (o *FinderSearchQuery) HasProductionYear() bool {
-	if o != nil && !IsNil(o.ProductionYear) {
-		return true
-	}
-
-	return false
-}
-
-// SetProductionYear gets a reference to the given FinderSearchQueryNumberRange and assigns it to the ProductionYear field.
-func (o *FinderSearchQuery) SetProductionYear(v FinderSearchQueryNumberRange) {
-	o.ProductionYear = &v
-}
-
-// GetUsage returns the Usage field value if set, zero value otherwise.
-func (o *FinderSearchQuery) GetUsage() FinderSearchQueryNumberRange {
-	if o == nil || IsNil(o.Usage) {
-		var ret FinderSearchQueryNumberRange
-		return ret
-	}
-	return *o.Usage
-}
-
-// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchQuery) GetUsageOk() (*FinderSearchQueryNumberRange, bool) {
-	if o == nil || IsNil(o.Usage) {
-		return nil, false
-	}
-	return o.Usage, true
-}
-
-// HasUsage returns a boolean if a field has been set.
-func (o *FinderSearchQuery) HasUsage() bool {
-	if o != nil && !IsNil(o.Usage) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsage gets a reference to the given FinderSearchQueryNumberRange and assigns it to the Usage field.
-func (o *FinderSearchQuery) SetUsage(v FinderSearchQueryNumberRange) {
-	o.Usage = &v
-}
-
-// GetRooms returns the Rooms field value if set, zero value otherwise.
-func (o *FinderSearchQuery) GetRooms() []string {
-	if o == nil || IsNil(o.Rooms) {
-		var ret []string
-		return ret
-	}
-	return o.Rooms
-}
-
-// GetRoomsOk returns a tuple with the Rooms field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchQuery) GetRoomsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Rooms) {
-		return nil, false
-	}
-	return o.Rooms, true
-}
-
-// HasRooms returns a boolean if a field has been set.
-func (o *FinderSearchQuery) HasRooms() bool {
-	if o != nil && !IsNil(o.Rooms) {
-		return true
-	}
-
-	return false
-}
-
-// SetRooms gets a reference to the given []string and assigns it to the Rooms field.
-func (o *FinderSearchQuery) SetRooms(v []string) {
-	o.Rooms = v
-}
-
-// GetRent returns the Rent field value if set, zero value otherwise.
-func (o *FinderSearchQuery) GetRent() FinderSearchQueryNumberRange {
-	if o == nil || IsNil(o.Rent) {
-		var ret FinderSearchQueryNumberRange
-		return ret
-	}
-	return *o.Rent
-}
-
-// GetRentOk returns a tuple with the Rent field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchQuery) GetRentOk() (*FinderSearchQueryNumberRange, bool) {
-	if o == nil || IsNil(o.Rent) {
-		return nil, false
-	}
-	return o.Rent, true
-}
-
-// HasRent returns a boolean if a field has been set.
-func (o *FinderSearchQuery) HasRent() bool {
-	if o != nil && !IsNil(o.Rent) {
-		return true
-	}
-
-	return false
-}
-
-// SetRent gets a reference to the given FinderSearchQueryNumberRange and assigns it to the Rent field.
-func (o *FinderSearchQuery) SetRent(v FinderSearchQueryNumberRange) {
-	o.Rent = &v
-}
-
 // GetCredit returns the Credit field value if set, zero value otherwise.
 func (o *FinderSearchQuery) GetCredit() FinderSearchQueryNumberRange {
 	if o == nil || IsNil(o.Credit) {
@@ -236,38 +108,6 @@ func (o *FinderSearchQuery) HasCredit() bool {
 // SetCredit gets a reference to the given FinderSearchQueryNumberRange and assigns it to the Credit field.
 func (o *FinderSearchQuery) SetCredit(v FinderSearchQueryNumberRange) {
 	o.Credit = &v
-}
-
-// GetSize returns the Size field value if set, zero value otherwise.
-func (o *FinderSearchQuery) GetSize() FinderSearchQueryNumberRange {
-	if o == nil || IsNil(o.Size) {
-		var ret FinderSearchQueryNumberRange
-		return ret
-	}
-	return *o.Size
-}
-
-// GetSizeOk returns a tuple with the Size field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchQuery) GetSizeOk() (*FinderSearchQueryNumberRange, bool) {
-	if o == nil || IsNil(o.Size) {
-		return nil, false
-	}
-	return o.Size, true
-}
-
-// HasSize returns a boolean if a field has been set.
-func (o *FinderSearchQuery) HasSize() bool {
-	if o != nil && !IsNil(o.Size) {
-		return true
-	}
-
-	return false
-}
-
-// SetSize gets a reference to the given FinderSearchQueryNumberRange and assigns it to the Size field.
-func (o *FinderSearchQuery) SetSize(v FinderSearchQueryNumberRange) {
-	o.Size = &v
 }
 
 // GetOnlyWithParking returns the OnlyWithParking field value if set, zero value otherwise.
@@ -302,6 +142,166 @@ func (o *FinderSearchQuery) SetOnlyWithParking(v bool) {
 	o.OnlyWithParking = &v
 }
 
+// GetProductionYear returns the ProductionYear field value if set, zero value otherwise.
+func (o *FinderSearchQuery) GetProductionYear() FinderSearchQueryNumberRange {
+	if o == nil || IsNil(o.ProductionYear) {
+		var ret FinderSearchQueryNumberRange
+		return ret
+	}
+	return *o.ProductionYear
+}
+
+// GetProductionYearOk returns a tuple with the ProductionYear field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchQuery) GetProductionYearOk() (*FinderSearchQueryNumberRange, bool) {
+	if o == nil || IsNil(o.ProductionYear) {
+		return nil, false
+	}
+	return o.ProductionYear, true
+}
+
+// HasProductionYear returns a boolean if a field has been set.
+func (o *FinderSearchQuery) HasProductionYear() bool {
+	if o != nil && !IsNil(o.ProductionYear) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductionYear gets a reference to the given FinderSearchQueryNumberRange and assigns it to the ProductionYear field.
+func (o *FinderSearchQuery) SetProductionYear(v FinderSearchQueryNumberRange) {
+	o.ProductionYear = &v
+}
+
+// GetRent returns the Rent field value if set, zero value otherwise.
+func (o *FinderSearchQuery) GetRent() FinderSearchQueryNumberRange {
+	if o == nil || IsNil(o.Rent) {
+		var ret FinderSearchQueryNumberRange
+		return ret
+	}
+	return *o.Rent
+}
+
+// GetRentOk returns a tuple with the Rent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchQuery) GetRentOk() (*FinderSearchQueryNumberRange, bool) {
+	if o == nil || IsNil(o.Rent) {
+		return nil, false
+	}
+	return o.Rent, true
+}
+
+// HasRent returns a boolean if a field has been set.
+func (o *FinderSearchQuery) HasRent() bool {
+	if o != nil && !IsNil(o.Rent) {
+		return true
+	}
+
+	return false
+}
+
+// SetRent gets a reference to the given FinderSearchQueryNumberRange and assigns it to the Rent field.
+func (o *FinderSearchQuery) SetRent(v FinderSearchQueryNumberRange) {
+	o.Rent = &v
+}
+
+// GetRooms returns the Rooms field value if set, zero value otherwise.
+func (o *FinderSearchQuery) GetRooms() []string {
+	if o == nil || IsNil(o.Rooms) {
+		var ret []string
+		return ret
+	}
+	return o.Rooms
+}
+
+// GetRoomsOk returns a tuple with the Rooms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchQuery) GetRoomsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Rooms) {
+		return nil, false
+	}
+	return o.Rooms, true
+}
+
+// HasRooms returns a boolean if a field has been set.
+func (o *FinderSearchQuery) HasRooms() bool {
+	if o != nil && !IsNil(o.Rooms) {
+		return true
+	}
+
+	return false
+}
+
+// SetRooms gets a reference to the given []string and assigns it to the Rooms field.
+func (o *FinderSearchQuery) SetRooms(v []string) {
+	o.Rooms = v
+}
+
+// GetSize returns the Size field value if set, zero value otherwise.
+func (o *FinderSearchQuery) GetSize() FinderSearchQueryNumberRange {
+	if o == nil || IsNil(o.Size) {
+		var ret FinderSearchQueryNumberRange
+		return ret
+	}
+	return *o.Size
+}
+
+// GetSizeOk returns a tuple with the Size field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchQuery) GetSizeOk() (*FinderSearchQueryNumberRange, bool) {
+	if o == nil || IsNil(o.Size) {
+		return nil, false
+	}
+	return o.Size, true
+}
+
+// HasSize returns a boolean if a field has been set.
+func (o *FinderSearchQuery) HasSize() bool {
+	if o != nil && !IsNil(o.Size) {
+		return true
+	}
+
+	return false
+}
+
+// SetSize gets a reference to the given FinderSearchQueryNumberRange and assigns it to the Size field.
+func (o *FinderSearchQuery) SetSize(v FinderSearchQueryNumberRange) {
+	o.Size = &v
+}
+
+// GetUsage returns the Usage field value if set, zero value otherwise.
+func (o *FinderSearchQuery) GetUsage() FinderSearchQueryNumberRange {
+	if o == nil || IsNil(o.Usage) {
+		var ret FinderSearchQueryNumberRange
+		return ret
+	}
+	return *o.Usage
+}
+
+// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchQuery) GetUsageOk() (*FinderSearchQueryNumberRange, bool) {
+	if o == nil || IsNil(o.Usage) {
+		return nil, false
+	}
+	return o.Usage, true
+}
+
+// HasUsage returns a boolean if a field has been set.
+func (o *FinderSearchQuery) HasUsage() bool {
+	if o != nil && !IsNil(o.Usage) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsage gets a reference to the given FinderSearchQueryNumberRange and assigns it to the Usage field.
+func (o *FinderSearchQuery) SetUsage(v FinderSearchQueryNumberRange) {
+	o.Usage = &v
+}
+
 func (o FinderSearchQuery) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -315,26 +315,26 @@ func (o FinderSearchQuery) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BrandModel) {
 		toSerialize["brand_model"] = o.BrandModel
 	}
+	if !IsNil(o.Credit) {
+		toSerialize["credit"] = o.Credit
+	}
+	if !IsNil(o.OnlyWithParking) {
+		toSerialize["only_with_parking"] = o.OnlyWithParking
+	}
 	if !IsNil(o.ProductionYear) {
 		toSerialize["production_year"] = o.ProductionYear
-	}
-	if !IsNil(o.Usage) {
-		toSerialize["usage"] = o.Usage
-	}
-	if !IsNil(o.Rooms) {
-		toSerialize["rooms"] = o.Rooms
 	}
 	if !IsNil(o.Rent) {
 		toSerialize["rent"] = o.Rent
 	}
-	if !IsNil(o.Credit) {
-		toSerialize["credit"] = o.Credit
+	if !IsNil(o.Rooms) {
+		toSerialize["rooms"] = o.Rooms
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
-	if !IsNil(o.OnlyWithParking) {
-		toSerialize["only_with_parking"] = o.OnlyWithParking
+	if !IsNil(o.Usage) {
+		toSerialize["usage"] = o.Usage
 	}
 	return toSerialize, nil
 }

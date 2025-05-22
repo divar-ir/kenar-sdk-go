@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tokens** | Pointer to **[]string** |  | [optional] 
+**BrandModels** | Pointer to **[]string** |  | [optional] 
 **Categories** | Pointer to **[]string** |  | [optional] 
 **Cities** | Pointer to **[]string** |  | [optional] 
 **Districts** | Pointer to **[]string** |  | [optional] 
-**BrandModels** | Pointer to **[]string** |  | [optional] 
+**Tokens** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -29,30 +29,30 @@ NewAddonsAddonSelectorWithDefaults instantiates a new AddonsAddonSelector object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTokens
+### GetBrandModels
 
-`func (o *AddonsAddonSelector) GetTokens() []string`
+`func (o *AddonsAddonSelector) GetBrandModels() []string`
 
-GetTokens returns the Tokens field if non-nil, zero value otherwise.
+GetBrandModels returns the BrandModels field if non-nil, zero value otherwise.
 
-### GetTokensOk
+### GetBrandModelsOk
 
-`func (o *AddonsAddonSelector) GetTokensOk() (*[]string, bool)`
+`func (o *AddonsAddonSelector) GetBrandModelsOk() (*[]string, bool)`
 
-GetTokensOk returns a tuple with the Tokens field if it's non-nil, zero value otherwise
+GetBrandModelsOk returns a tuple with the BrandModels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTokens
+### SetBrandModels
 
-`func (o *AddonsAddonSelector) SetTokens(v []string)`
+`func (o *AddonsAddonSelector) SetBrandModels(v []string)`
 
-SetTokens sets Tokens field to given value.
+SetBrandModels sets BrandModels field to given value.
 
-### HasTokens
+### HasBrandModels
 
-`func (o *AddonsAddonSelector) HasTokens() bool`
+`func (o *AddonsAddonSelector) HasBrandModels() bool`
 
-HasTokens returns a boolean if a field has been set.
+HasBrandModels returns a boolean if a field has been set.
 
 ### GetCategories
 
@@ -129,30 +129,30 @@ SetDistricts sets Districts field to given value.
 
 HasDistricts returns a boolean if a field has been set.
 
-### GetBrandModels
+### GetTokens
 
-`func (o *AddonsAddonSelector) GetBrandModels() []string`
+`func (o *AddonsAddonSelector) GetTokens() []string`
 
-GetBrandModels returns the BrandModels field if non-nil, zero value otherwise.
+GetTokens returns the Tokens field if non-nil, zero value otherwise.
 
-### GetBrandModelsOk
+### GetTokensOk
 
-`func (o *AddonsAddonSelector) GetBrandModelsOk() (*[]string, bool)`
+`func (o *AddonsAddonSelector) GetTokensOk() (*[]string, bool)`
 
-GetBrandModelsOk returns a tuple with the BrandModels field if it's non-nil, zero value otherwise
+GetTokensOk returns a tuple with the Tokens field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBrandModels
+### SetTokens
 
-`func (o *AddonsAddonSelector) SetBrandModels(v []string)`
+`func (o *AddonsAddonSelector) SetTokens(v []string)`
 
-SetBrandModels sets BrandModels field to given value.
+SetTokens sets Tokens field to given value.
 
-### HasBrandModels
+### HasTokens
 
-`func (o *AddonsAddonSelector) HasBrandModels() bool`
+`func (o *AddonsAddonSelector) HasTokens() bool`
 
-HasBrandModels returns a boolean if a field has been set.
+HasTokens returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

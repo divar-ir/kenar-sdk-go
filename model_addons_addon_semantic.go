@@ -19,17 +19,17 @@ var _ MappedNullable = &AddonsAddonSemantic{}
 
 // AddonsAddonSemantic This is the message extracted by OpenPlatform from service provider semantics. Guidelines:  - Always check to see if an appropriate enum field or value exists before  adding one.  - Zero value of every enum should be {ENUM_NAME}_UNSPECIFIED.  - Enum values should not correspond to any specific post or person  attribute.
 type AddonsAddonSemantic struct {
-	PaymentMethod *AddonsAddonSemanticPaymentMethod `json:"payment_method,omitempty"`
-	IdentityVerificationResult *AddonSemanticIdentityVerificationResult `json:"identity_verification_result,omitempty"`
-	PostVerificationResult *AddonSemanticPostVerificationResult `json:"post_verification_result,omitempty"`
-	Status *AddonsAddonSemanticStatus `json:"status,omitempty"`
-	IdentityVerificationLastSuccessfulStage *AddonSemanticIdentityVerificationStage `json:"identity_verification_last_successful_stage,omitempty"`
-	IdentityVerificationFailureReason *AddonSemanticIdentityVerificationStage `json:"identity_verification_failure_reason,omitempty"`
-	CarVerificationLastSuccessfulStage *AddonSemanticCarVerificationStage `json:"car_verification_last_successful_stage,omitempty"`
 	CarVerificationFailureReason *AddonSemanticCarVerificationStage `json:"car_verification_failure_reason,omitempty"`
-	OwnershipResult *AddonSemanticOwnershipResult `json:"ownership_result,omitempty"`
+	CarVerificationLastSuccessfulStage *AddonSemanticCarVerificationStage `json:"car_verification_last_successful_stage,omitempty"`
+	IdentityVerificationFailureReason *AddonSemanticIdentityVerificationStage `json:"identity_verification_failure_reason,omitempty"`
+	IdentityVerificationLastSuccessfulStage *AddonSemanticIdentityVerificationStage `json:"identity_verification_last_successful_stage,omitempty"`
+	IdentityVerificationResult *AddonSemanticIdentityVerificationResult `json:"identity_verification_result,omitempty"`
 	InspectionResult *AddonSemanticInspectionResult `json:"inspection_result,omitempty"`
 	NewFaceVerificationResult *AddonSemanticNewFaceVerificationResult `json:"new_face_verification_result,omitempty"`
+	OwnershipResult *AddonSemanticOwnershipResult `json:"ownership_result,omitempty"`
+	PaymentMethod *AddonsAddonSemanticPaymentMethod `json:"payment_method,omitempty"`
+	PostVerificationResult *AddonSemanticPostVerificationResult `json:"post_verification_result,omitempty"`
+	Status *AddonsAddonSemanticStatus `json:"status,omitempty"`
 }
 
 // NewAddonsAddonSemantic instantiates a new AddonsAddonSemantic object
@@ -47,230 +47,6 @@ func NewAddonsAddonSemantic() *AddonsAddonSemantic {
 func NewAddonsAddonSemanticWithDefaults() *AddonsAddonSemantic {
 	this := AddonsAddonSemantic{}
 	return &this
-}
-
-// GetPaymentMethod returns the PaymentMethod field value if set, zero value otherwise.
-func (o *AddonsAddonSemantic) GetPaymentMethod() AddonsAddonSemanticPaymentMethod {
-	if o == nil || IsNil(o.PaymentMethod) {
-		var ret AddonsAddonSemanticPaymentMethod
-		return ret
-	}
-	return *o.PaymentMethod
-}
-
-// GetPaymentMethodOk returns a tuple with the PaymentMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonSemantic) GetPaymentMethodOk() (*AddonsAddonSemanticPaymentMethod, bool) {
-	if o == nil || IsNil(o.PaymentMethod) {
-		return nil, false
-	}
-	return o.PaymentMethod, true
-}
-
-// HasPaymentMethod returns a boolean if a field has been set.
-func (o *AddonsAddonSemantic) HasPaymentMethod() bool {
-	if o != nil && !IsNil(o.PaymentMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaymentMethod gets a reference to the given AddonsAddonSemanticPaymentMethod and assigns it to the PaymentMethod field.
-func (o *AddonsAddonSemantic) SetPaymentMethod(v AddonsAddonSemanticPaymentMethod) {
-	o.PaymentMethod = &v
-}
-
-// GetIdentityVerificationResult returns the IdentityVerificationResult field value if set, zero value otherwise.
-func (o *AddonsAddonSemantic) GetIdentityVerificationResult() AddonSemanticIdentityVerificationResult {
-	if o == nil || IsNil(o.IdentityVerificationResult) {
-		var ret AddonSemanticIdentityVerificationResult
-		return ret
-	}
-	return *o.IdentityVerificationResult
-}
-
-// GetIdentityVerificationResultOk returns a tuple with the IdentityVerificationResult field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonSemantic) GetIdentityVerificationResultOk() (*AddonSemanticIdentityVerificationResult, bool) {
-	if o == nil || IsNil(o.IdentityVerificationResult) {
-		return nil, false
-	}
-	return o.IdentityVerificationResult, true
-}
-
-// HasIdentityVerificationResult returns a boolean if a field has been set.
-func (o *AddonsAddonSemantic) HasIdentityVerificationResult() bool {
-	if o != nil && !IsNil(o.IdentityVerificationResult) {
-		return true
-	}
-
-	return false
-}
-
-// SetIdentityVerificationResult gets a reference to the given AddonSemanticIdentityVerificationResult and assigns it to the IdentityVerificationResult field.
-func (o *AddonsAddonSemantic) SetIdentityVerificationResult(v AddonSemanticIdentityVerificationResult) {
-	o.IdentityVerificationResult = &v
-}
-
-// GetPostVerificationResult returns the PostVerificationResult field value if set, zero value otherwise.
-func (o *AddonsAddonSemantic) GetPostVerificationResult() AddonSemanticPostVerificationResult {
-	if o == nil || IsNil(o.PostVerificationResult) {
-		var ret AddonSemanticPostVerificationResult
-		return ret
-	}
-	return *o.PostVerificationResult
-}
-
-// GetPostVerificationResultOk returns a tuple with the PostVerificationResult field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonSemantic) GetPostVerificationResultOk() (*AddonSemanticPostVerificationResult, bool) {
-	if o == nil || IsNil(o.PostVerificationResult) {
-		return nil, false
-	}
-	return o.PostVerificationResult, true
-}
-
-// HasPostVerificationResult returns a boolean if a field has been set.
-func (o *AddonsAddonSemantic) HasPostVerificationResult() bool {
-	if o != nil && !IsNil(o.PostVerificationResult) {
-		return true
-	}
-
-	return false
-}
-
-// SetPostVerificationResult gets a reference to the given AddonSemanticPostVerificationResult and assigns it to the PostVerificationResult field.
-func (o *AddonsAddonSemantic) SetPostVerificationResult(v AddonSemanticPostVerificationResult) {
-	o.PostVerificationResult = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *AddonsAddonSemantic) GetStatus() AddonsAddonSemanticStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret AddonsAddonSemanticStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonSemantic) GetStatusOk() (*AddonsAddonSemanticStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *AddonsAddonSemantic) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given AddonsAddonSemanticStatus and assigns it to the Status field.
-func (o *AddonsAddonSemantic) SetStatus(v AddonsAddonSemanticStatus) {
-	o.Status = &v
-}
-
-// GetIdentityVerificationLastSuccessfulStage returns the IdentityVerificationLastSuccessfulStage field value if set, zero value otherwise.
-func (o *AddonsAddonSemantic) GetIdentityVerificationLastSuccessfulStage() AddonSemanticIdentityVerificationStage {
-	if o == nil || IsNil(o.IdentityVerificationLastSuccessfulStage) {
-		var ret AddonSemanticIdentityVerificationStage
-		return ret
-	}
-	return *o.IdentityVerificationLastSuccessfulStage
-}
-
-// GetIdentityVerificationLastSuccessfulStageOk returns a tuple with the IdentityVerificationLastSuccessfulStage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonSemantic) GetIdentityVerificationLastSuccessfulStageOk() (*AddonSemanticIdentityVerificationStage, bool) {
-	if o == nil || IsNil(o.IdentityVerificationLastSuccessfulStage) {
-		return nil, false
-	}
-	return o.IdentityVerificationLastSuccessfulStage, true
-}
-
-// HasIdentityVerificationLastSuccessfulStage returns a boolean if a field has been set.
-func (o *AddonsAddonSemantic) HasIdentityVerificationLastSuccessfulStage() bool {
-	if o != nil && !IsNil(o.IdentityVerificationLastSuccessfulStage) {
-		return true
-	}
-
-	return false
-}
-
-// SetIdentityVerificationLastSuccessfulStage gets a reference to the given AddonSemanticIdentityVerificationStage and assigns it to the IdentityVerificationLastSuccessfulStage field.
-func (o *AddonsAddonSemantic) SetIdentityVerificationLastSuccessfulStage(v AddonSemanticIdentityVerificationStage) {
-	o.IdentityVerificationLastSuccessfulStage = &v
-}
-
-// GetIdentityVerificationFailureReason returns the IdentityVerificationFailureReason field value if set, zero value otherwise.
-func (o *AddonsAddonSemantic) GetIdentityVerificationFailureReason() AddonSemanticIdentityVerificationStage {
-	if o == nil || IsNil(o.IdentityVerificationFailureReason) {
-		var ret AddonSemanticIdentityVerificationStage
-		return ret
-	}
-	return *o.IdentityVerificationFailureReason
-}
-
-// GetIdentityVerificationFailureReasonOk returns a tuple with the IdentityVerificationFailureReason field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonSemantic) GetIdentityVerificationFailureReasonOk() (*AddonSemanticIdentityVerificationStage, bool) {
-	if o == nil || IsNil(o.IdentityVerificationFailureReason) {
-		return nil, false
-	}
-	return o.IdentityVerificationFailureReason, true
-}
-
-// HasIdentityVerificationFailureReason returns a boolean if a field has been set.
-func (o *AddonsAddonSemantic) HasIdentityVerificationFailureReason() bool {
-	if o != nil && !IsNil(o.IdentityVerificationFailureReason) {
-		return true
-	}
-
-	return false
-}
-
-// SetIdentityVerificationFailureReason gets a reference to the given AddonSemanticIdentityVerificationStage and assigns it to the IdentityVerificationFailureReason field.
-func (o *AddonsAddonSemantic) SetIdentityVerificationFailureReason(v AddonSemanticIdentityVerificationStage) {
-	o.IdentityVerificationFailureReason = &v
-}
-
-// GetCarVerificationLastSuccessfulStage returns the CarVerificationLastSuccessfulStage field value if set, zero value otherwise.
-func (o *AddonsAddonSemantic) GetCarVerificationLastSuccessfulStage() AddonSemanticCarVerificationStage {
-	if o == nil || IsNil(o.CarVerificationLastSuccessfulStage) {
-		var ret AddonSemanticCarVerificationStage
-		return ret
-	}
-	return *o.CarVerificationLastSuccessfulStage
-}
-
-// GetCarVerificationLastSuccessfulStageOk returns a tuple with the CarVerificationLastSuccessfulStage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsAddonSemantic) GetCarVerificationLastSuccessfulStageOk() (*AddonSemanticCarVerificationStage, bool) {
-	if o == nil || IsNil(o.CarVerificationLastSuccessfulStage) {
-		return nil, false
-	}
-	return o.CarVerificationLastSuccessfulStage, true
-}
-
-// HasCarVerificationLastSuccessfulStage returns a boolean if a field has been set.
-func (o *AddonsAddonSemantic) HasCarVerificationLastSuccessfulStage() bool {
-	if o != nil && !IsNil(o.CarVerificationLastSuccessfulStage) {
-		return true
-	}
-
-	return false
-}
-
-// SetCarVerificationLastSuccessfulStage gets a reference to the given AddonSemanticCarVerificationStage and assigns it to the CarVerificationLastSuccessfulStage field.
-func (o *AddonsAddonSemantic) SetCarVerificationLastSuccessfulStage(v AddonSemanticCarVerificationStage) {
-	o.CarVerificationLastSuccessfulStage = &v
 }
 
 // GetCarVerificationFailureReason returns the CarVerificationFailureReason field value if set, zero value otherwise.
@@ -305,36 +81,132 @@ func (o *AddonsAddonSemantic) SetCarVerificationFailureReason(v AddonSemanticCar
 	o.CarVerificationFailureReason = &v
 }
 
-// GetOwnershipResult returns the OwnershipResult field value if set, zero value otherwise.
-func (o *AddonsAddonSemantic) GetOwnershipResult() AddonSemanticOwnershipResult {
-	if o == nil || IsNil(o.OwnershipResult) {
-		var ret AddonSemanticOwnershipResult
+// GetCarVerificationLastSuccessfulStage returns the CarVerificationLastSuccessfulStage field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetCarVerificationLastSuccessfulStage() AddonSemanticCarVerificationStage {
+	if o == nil || IsNil(o.CarVerificationLastSuccessfulStage) {
+		var ret AddonSemanticCarVerificationStage
 		return ret
 	}
-	return *o.OwnershipResult
+	return *o.CarVerificationLastSuccessfulStage
 }
 
-// GetOwnershipResultOk returns a tuple with the OwnershipResult field value if set, nil otherwise
+// GetCarVerificationLastSuccessfulStageOk returns a tuple with the CarVerificationLastSuccessfulStage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsAddonSemantic) GetOwnershipResultOk() (*AddonSemanticOwnershipResult, bool) {
-	if o == nil || IsNil(o.OwnershipResult) {
+func (o *AddonsAddonSemantic) GetCarVerificationLastSuccessfulStageOk() (*AddonSemanticCarVerificationStage, bool) {
+	if o == nil || IsNil(o.CarVerificationLastSuccessfulStage) {
 		return nil, false
 	}
-	return o.OwnershipResult, true
+	return o.CarVerificationLastSuccessfulStage, true
 }
 
-// HasOwnershipResult returns a boolean if a field has been set.
-func (o *AddonsAddonSemantic) HasOwnershipResult() bool {
-	if o != nil && !IsNil(o.OwnershipResult) {
+// HasCarVerificationLastSuccessfulStage returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasCarVerificationLastSuccessfulStage() bool {
+	if o != nil && !IsNil(o.CarVerificationLastSuccessfulStage) {
 		return true
 	}
 
 	return false
 }
 
-// SetOwnershipResult gets a reference to the given AddonSemanticOwnershipResult and assigns it to the OwnershipResult field.
-func (o *AddonsAddonSemantic) SetOwnershipResult(v AddonSemanticOwnershipResult) {
-	o.OwnershipResult = &v
+// SetCarVerificationLastSuccessfulStage gets a reference to the given AddonSemanticCarVerificationStage and assigns it to the CarVerificationLastSuccessfulStage field.
+func (o *AddonsAddonSemantic) SetCarVerificationLastSuccessfulStage(v AddonSemanticCarVerificationStage) {
+	o.CarVerificationLastSuccessfulStage = &v
+}
+
+// GetIdentityVerificationFailureReason returns the IdentityVerificationFailureReason field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetIdentityVerificationFailureReason() AddonSemanticIdentityVerificationStage {
+	if o == nil || IsNil(o.IdentityVerificationFailureReason) {
+		var ret AddonSemanticIdentityVerificationStage
+		return ret
+	}
+	return *o.IdentityVerificationFailureReason
+}
+
+// GetIdentityVerificationFailureReasonOk returns a tuple with the IdentityVerificationFailureReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonSemantic) GetIdentityVerificationFailureReasonOk() (*AddonSemanticIdentityVerificationStage, bool) {
+	if o == nil || IsNil(o.IdentityVerificationFailureReason) {
+		return nil, false
+	}
+	return o.IdentityVerificationFailureReason, true
+}
+
+// HasIdentityVerificationFailureReason returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasIdentityVerificationFailureReason() bool {
+	if o != nil && !IsNil(o.IdentityVerificationFailureReason) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityVerificationFailureReason gets a reference to the given AddonSemanticIdentityVerificationStage and assigns it to the IdentityVerificationFailureReason field.
+func (o *AddonsAddonSemantic) SetIdentityVerificationFailureReason(v AddonSemanticIdentityVerificationStage) {
+	o.IdentityVerificationFailureReason = &v
+}
+
+// GetIdentityVerificationLastSuccessfulStage returns the IdentityVerificationLastSuccessfulStage field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetIdentityVerificationLastSuccessfulStage() AddonSemanticIdentityVerificationStage {
+	if o == nil || IsNil(o.IdentityVerificationLastSuccessfulStage) {
+		var ret AddonSemanticIdentityVerificationStage
+		return ret
+	}
+	return *o.IdentityVerificationLastSuccessfulStage
+}
+
+// GetIdentityVerificationLastSuccessfulStageOk returns a tuple with the IdentityVerificationLastSuccessfulStage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonSemantic) GetIdentityVerificationLastSuccessfulStageOk() (*AddonSemanticIdentityVerificationStage, bool) {
+	if o == nil || IsNil(o.IdentityVerificationLastSuccessfulStage) {
+		return nil, false
+	}
+	return o.IdentityVerificationLastSuccessfulStage, true
+}
+
+// HasIdentityVerificationLastSuccessfulStage returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasIdentityVerificationLastSuccessfulStage() bool {
+	if o != nil && !IsNil(o.IdentityVerificationLastSuccessfulStage) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityVerificationLastSuccessfulStage gets a reference to the given AddonSemanticIdentityVerificationStage and assigns it to the IdentityVerificationLastSuccessfulStage field.
+func (o *AddonsAddonSemantic) SetIdentityVerificationLastSuccessfulStage(v AddonSemanticIdentityVerificationStage) {
+	o.IdentityVerificationLastSuccessfulStage = &v
+}
+
+// GetIdentityVerificationResult returns the IdentityVerificationResult field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetIdentityVerificationResult() AddonSemanticIdentityVerificationResult {
+	if o == nil || IsNil(o.IdentityVerificationResult) {
+		var ret AddonSemanticIdentityVerificationResult
+		return ret
+	}
+	return *o.IdentityVerificationResult
+}
+
+// GetIdentityVerificationResultOk returns a tuple with the IdentityVerificationResult field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonSemantic) GetIdentityVerificationResultOk() (*AddonSemanticIdentityVerificationResult, bool) {
+	if o == nil || IsNil(o.IdentityVerificationResult) {
+		return nil, false
+	}
+	return o.IdentityVerificationResult, true
+}
+
+// HasIdentityVerificationResult returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasIdentityVerificationResult() bool {
+	if o != nil && !IsNil(o.IdentityVerificationResult) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityVerificationResult gets a reference to the given AddonSemanticIdentityVerificationResult and assigns it to the IdentityVerificationResult field.
+func (o *AddonsAddonSemantic) SetIdentityVerificationResult(v AddonSemanticIdentityVerificationResult) {
+	o.IdentityVerificationResult = &v
 }
 
 // GetInspectionResult returns the InspectionResult field value if set, zero value otherwise.
@@ -401,6 +273,134 @@ func (o *AddonsAddonSemantic) SetNewFaceVerificationResult(v AddonSemanticNewFac
 	o.NewFaceVerificationResult = &v
 }
 
+// GetOwnershipResult returns the OwnershipResult field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetOwnershipResult() AddonSemanticOwnershipResult {
+	if o == nil || IsNil(o.OwnershipResult) {
+		var ret AddonSemanticOwnershipResult
+		return ret
+	}
+	return *o.OwnershipResult
+}
+
+// GetOwnershipResultOk returns a tuple with the OwnershipResult field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonSemantic) GetOwnershipResultOk() (*AddonSemanticOwnershipResult, bool) {
+	if o == nil || IsNil(o.OwnershipResult) {
+		return nil, false
+	}
+	return o.OwnershipResult, true
+}
+
+// HasOwnershipResult returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasOwnershipResult() bool {
+	if o != nil && !IsNil(o.OwnershipResult) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnershipResult gets a reference to the given AddonSemanticOwnershipResult and assigns it to the OwnershipResult field.
+func (o *AddonsAddonSemantic) SetOwnershipResult(v AddonSemanticOwnershipResult) {
+	o.OwnershipResult = &v
+}
+
+// GetPaymentMethod returns the PaymentMethod field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetPaymentMethod() AddonsAddonSemanticPaymentMethod {
+	if o == nil || IsNil(o.PaymentMethod) {
+		var ret AddonsAddonSemanticPaymentMethod
+		return ret
+	}
+	return *o.PaymentMethod
+}
+
+// GetPaymentMethodOk returns a tuple with the PaymentMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonSemantic) GetPaymentMethodOk() (*AddonsAddonSemanticPaymentMethod, bool) {
+	if o == nil || IsNil(o.PaymentMethod) {
+		return nil, false
+	}
+	return o.PaymentMethod, true
+}
+
+// HasPaymentMethod returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasPaymentMethod() bool {
+	if o != nil && !IsNil(o.PaymentMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentMethod gets a reference to the given AddonsAddonSemanticPaymentMethod and assigns it to the PaymentMethod field.
+func (o *AddonsAddonSemantic) SetPaymentMethod(v AddonsAddonSemanticPaymentMethod) {
+	o.PaymentMethod = &v
+}
+
+// GetPostVerificationResult returns the PostVerificationResult field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetPostVerificationResult() AddonSemanticPostVerificationResult {
+	if o == nil || IsNil(o.PostVerificationResult) {
+		var ret AddonSemanticPostVerificationResult
+		return ret
+	}
+	return *o.PostVerificationResult
+}
+
+// GetPostVerificationResultOk returns a tuple with the PostVerificationResult field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonSemantic) GetPostVerificationResultOk() (*AddonSemanticPostVerificationResult, bool) {
+	if o == nil || IsNil(o.PostVerificationResult) {
+		return nil, false
+	}
+	return o.PostVerificationResult, true
+}
+
+// HasPostVerificationResult returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasPostVerificationResult() bool {
+	if o != nil && !IsNil(o.PostVerificationResult) {
+		return true
+	}
+
+	return false
+}
+
+// SetPostVerificationResult gets a reference to the given AddonSemanticPostVerificationResult and assigns it to the PostVerificationResult field.
+func (o *AddonsAddonSemantic) SetPostVerificationResult(v AddonSemanticPostVerificationResult) {
+	o.PostVerificationResult = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetStatus() AddonsAddonSemanticStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret AddonsAddonSemanticStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonSemantic) GetStatusOk() (*AddonsAddonSemanticStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given AddonsAddonSemanticStatus and assigns it to the Status field.
+func (o *AddonsAddonSemantic) SetStatus(v AddonsAddonSemanticStatus) {
+	o.Status = &v
+}
+
 func (o AddonsAddonSemantic) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -411,38 +411,38 @@ func (o AddonsAddonSemantic) MarshalJSON() ([]byte, error) {
 
 func (o AddonsAddonSemantic) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PaymentMethod) {
-		toSerialize["payment_method"] = o.PaymentMethod
-	}
-	if !IsNil(o.IdentityVerificationResult) {
-		toSerialize["identity_verification_result"] = o.IdentityVerificationResult
-	}
-	if !IsNil(o.PostVerificationResult) {
-		toSerialize["post_verification_result"] = o.PostVerificationResult
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.IdentityVerificationLastSuccessfulStage) {
-		toSerialize["identity_verification_last_successful_stage"] = o.IdentityVerificationLastSuccessfulStage
-	}
-	if !IsNil(o.IdentityVerificationFailureReason) {
-		toSerialize["identity_verification_failure_reason"] = o.IdentityVerificationFailureReason
+	if !IsNil(o.CarVerificationFailureReason) {
+		toSerialize["car_verification_failure_reason"] = o.CarVerificationFailureReason
 	}
 	if !IsNil(o.CarVerificationLastSuccessfulStage) {
 		toSerialize["car_verification_last_successful_stage"] = o.CarVerificationLastSuccessfulStage
 	}
-	if !IsNil(o.CarVerificationFailureReason) {
-		toSerialize["car_verification_failure_reason"] = o.CarVerificationFailureReason
+	if !IsNil(o.IdentityVerificationFailureReason) {
+		toSerialize["identity_verification_failure_reason"] = o.IdentityVerificationFailureReason
 	}
-	if !IsNil(o.OwnershipResult) {
-		toSerialize["ownership_result"] = o.OwnershipResult
+	if !IsNil(o.IdentityVerificationLastSuccessfulStage) {
+		toSerialize["identity_verification_last_successful_stage"] = o.IdentityVerificationLastSuccessfulStage
+	}
+	if !IsNil(o.IdentityVerificationResult) {
+		toSerialize["identity_verification_result"] = o.IdentityVerificationResult
 	}
 	if !IsNil(o.InspectionResult) {
 		toSerialize["inspection_result"] = o.InspectionResult
 	}
 	if !IsNil(o.NewFaceVerificationResult) {
 		toSerialize["new_face_verification_result"] = o.NewFaceVerificationResult
+	}
+	if !IsNil(o.OwnershipResult) {
+		toSerialize["ownership_result"] = o.OwnershipResult
+	}
+	if !IsNil(o.PaymentMethod) {
+		toSerialize["payment_method"] = o.PaymentMethod
+	}
+	if !IsNil(o.PostVerificationResult) {
+		toSerialize["post_verification_result"] = o.PostVerificationResult
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

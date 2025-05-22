@@ -20,8 +20,8 @@ var _ MappedNullable = &MessageVideoData{}
 // MessageVideoData struct for MessageVideoData
 type MessageVideoData struct {
 	Link *string `json:"link,omitempty"`
-	ThumbnailLink *string `json:"thumbnail_link,omitempty"`
 	SizeBytes *string `json:"size_bytes,omitempty"`
+	ThumbnailLink *string `json:"thumbnail_link,omitempty"`
 }
 
 // NewMessageVideoData instantiates a new MessageVideoData object
@@ -73,38 +73,6 @@ func (o *MessageVideoData) SetLink(v string) {
 	o.Link = &v
 }
 
-// GetThumbnailLink returns the ThumbnailLink field value if set, zero value otherwise.
-func (o *MessageVideoData) GetThumbnailLink() string {
-	if o == nil || IsNil(o.ThumbnailLink) {
-		var ret string
-		return ret
-	}
-	return *o.ThumbnailLink
-}
-
-// GetThumbnailLinkOk returns a tuple with the ThumbnailLink field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MessageVideoData) GetThumbnailLinkOk() (*string, bool) {
-	if o == nil || IsNil(o.ThumbnailLink) {
-		return nil, false
-	}
-	return o.ThumbnailLink, true
-}
-
-// HasThumbnailLink returns a boolean if a field has been set.
-func (o *MessageVideoData) HasThumbnailLink() bool {
-	if o != nil && !IsNil(o.ThumbnailLink) {
-		return true
-	}
-
-	return false
-}
-
-// SetThumbnailLink gets a reference to the given string and assigns it to the ThumbnailLink field.
-func (o *MessageVideoData) SetThumbnailLink(v string) {
-	o.ThumbnailLink = &v
-}
-
 // GetSizeBytes returns the SizeBytes field value if set, zero value otherwise.
 func (o *MessageVideoData) GetSizeBytes() string {
 	if o == nil || IsNil(o.SizeBytes) {
@@ -137,6 +105,38 @@ func (o *MessageVideoData) SetSizeBytes(v string) {
 	o.SizeBytes = &v
 }
 
+// GetThumbnailLink returns the ThumbnailLink field value if set, zero value otherwise.
+func (o *MessageVideoData) GetThumbnailLink() string {
+	if o == nil || IsNil(o.ThumbnailLink) {
+		var ret string
+		return ret
+	}
+	return *o.ThumbnailLink
+}
+
+// GetThumbnailLinkOk returns a tuple with the ThumbnailLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MessageVideoData) GetThumbnailLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.ThumbnailLink) {
+		return nil, false
+	}
+	return o.ThumbnailLink, true
+}
+
+// HasThumbnailLink returns a boolean if a field has been set.
+func (o *MessageVideoData) HasThumbnailLink() bool {
+	if o != nil && !IsNil(o.ThumbnailLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetThumbnailLink gets a reference to the given string and assigns it to the ThumbnailLink field.
+func (o *MessageVideoData) SetThumbnailLink(v string) {
+	o.ThumbnailLink = &v
+}
+
 func (o MessageVideoData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -150,11 +150,11 @@ func (o MessageVideoData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Link) {
 		toSerialize["link"] = o.Link
 	}
-	if !IsNil(o.ThumbnailLink) {
-		toSerialize["thumbnail_link"] = o.ThumbnailLink
-	}
 	if !IsNil(o.SizeBytes) {
 		toSerialize["size_bytes"] = o.SizeBytes
+	}
+	if !IsNil(o.ThumbnailLink) {
+		toSerialize["thumbnail_link"] = o.ThumbnailLink
 	}
 	return toSerialize, nil
 }

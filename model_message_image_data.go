@@ -19,9 +19,9 @@ var _ MappedNullable = &MessageImageData{}
 
 // MessageImageData struct for MessageImageData
 type MessageImageData struct {
+	HeightPx *int64 `json:"height_px,omitempty"`
 	Link *string `json:"link,omitempty"`
 	SizeBytes *string `json:"size_bytes,omitempty"`
-	HeightPx *int64 `json:"height_px,omitempty"`
 	WidthPx *int64 `json:"width_px,omitempty"`
 }
 
@@ -40,6 +40,38 @@ func NewMessageImageData() *MessageImageData {
 func NewMessageImageDataWithDefaults() *MessageImageData {
 	this := MessageImageData{}
 	return &this
+}
+
+// GetHeightPx returns the HeightPx field value if set, zero value otherwise.
+func (o *MessageImageData) GetHeightPx() int64 {
+	if o == nil || IsNil(o.HeightPx) {
+		var ret int64
+		return ret
+	}
+	return *o.HeightPx
+}
+
+// GetHeightPxOk returns a tuple with the HeightPx field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MessageImageData) GetHeightPxOk() (*int64, bool) {
+	if o == nil || IsNil(o.HeightPx) {
+		return nil, false
+	}
+	return o.HeightPx, true
+}
+
+// HasHeightPx returns a boolean if a field has been set.
+func (o *MessageImageData) HasHeightPx() bool {
+	if o != nil && !IsNil(o.HeightPx) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeightPx gets a reference to the given int64 and assigns it to the HeightPx field.
+func (o *MessageImageData) SetHeightPx(v int64) {
+	o.HeightPx = &v
 }
 
 // GetLink returns the Link field value if set, zero value otherwise.
@@ -106,38 +138,6 @@ func (o *MessageImageData) SetSizeBytes(v string) {
 	o.SizeBytes = &v
 }
 
-// GetHeightPx returns the HeightPx field value if set, zero value otherwise.
-func (o *MessageImageData) GetHeightPx() int64 {
-	if o == nil || IsNil(o.HeightPx) {
-		var ret int64
-		return ret
-	}
-	return *o.HeightPx
-}
-
-// GetHeightPxOk returns a tuple with the HeightPx field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MessageImageData) GetHeightPxOk() (*int64, bool) {
-	if o == nil || IsNil(o.HeightPx) {
-		return nil, false
-	}
-	return o.HeightPx, true
-}
-
-// HasHeightPx returns a boolean if a field has been set.
-func (o *MessageImageData) HasHeightPx() bool {
-	if o != nil && !IsNil(o.HeightPx) {
-		return true
-	}
-
-	return false
-}
-
-// SetHeightPx gets a reference to the given int64 and assigns it to the HeightPx field.
-func (o *MessageImageData) SetHeightPx(v int64) {
-	o.HeightPx = &v
-}
-
 // GetWidthPx returns the WidthPx field value if set, zero value otherwise.
 func (o *MessageImageData) GetWidthPx() int64 {
 	if o == nil || IsNil(o.WidthPx) {
@@ -180,14 +180,14 @@ func (o MessageImageData) MarshalJSON() ([]byte, error) {
 
 func (o MessageImageData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.HeightPx) {
+		toSerialize["height_px"] = o.HeightPx
+	}
 	if !IsNil(o.Link) {
 		toSerialize["link"] = o.Link
 	}
 	if !IsNil(o.SizeBytes) {
 		toSerialize["size_bytes"] = o.SizeBytes
-	}
-	if !IsNil(o.HeightPx) {
-		toSerialize["height_px"] = o.HeightPx
 	}
 	if !IsNil(o.WidthPx) {
 		toSerialize["width_px"] = o.WidthPx

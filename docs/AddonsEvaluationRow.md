@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IndicatorText** | Pointer to **string** |  | [optional] 
-**IndicatorPercentage** | Pointer to **int32** |  | [optional] 
 **IconName** | Pointer to [**DivarIconsIconName**](DivarIconsIconName.md) |  | [optional] 
+**IndicatorPercentage** | Pointer to **int32** |  | [optional] 
+**IndicatorText** | Pointer to **string** |  | [optional] 
 **Left** | Pointer to [**AddonsEvaluationRowSection**](AddonsEvaluationRowSection.md) |  | [optional] 
 **Middle** | Pointer to [**AddonsEvaluationRowSection**](AddonsEvaluationRowSection.md) |  | [optional] 
 **Right** | Pointer to [**AddonsEvaluationRowSection**](AddonsEvaluationRowSection.md) |  | [optional] 
@@ -30,30 +30,30 @@ NewAddonsEvaluationRowWithDefaults instantiates a new AddonsEvaluationRow object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetIndicatorText
+### GetIconName
 
-`func (o *AddonsEvaluationRow) GetIndicatorText() string`
+`func (o *AddonsEvaluationRow) GetIconName() DivarIconsIconName`
 
-GetIndicatorText returns the IndicatorText field if non-nil, zero value otherwise.
+GetIconName returns the IconName field if non-nil, zero value otherwise.
 
-### GetIndicatorTextOk
+### GetIconNameOk
 
-`func (o *AddonsEvaluationRow) GetIndicatorTextOk() (*string, bool)`
+`func (o *AddonsEvaluationRow) GetIconNameOk() (*DivarIconsIconName, bool)`
 
-GetIndicatorTextOk returns a tuple with the IndicatorText field if it's non-nil, zero value otherwise
+GetIconNameOk returns a tuple with the IconName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIndicatorText
+### SetIconName
 
-`func (o *AddonsEvaluationRow) SetIndicatorText(v string)`
+`func (o *AddonsEvaluationRow) SetIconName(v DivarIconsIconName)`
 
-SetIndicatorText sets IndicatorText field to given value.
+SetIconName sets IconName field to given value.
 
-### HasIndicatorText
+### HasIconName
 
-`func (o *AddonsEvaluationRow) HasIndicatorText() bool`
+`func (o *AddonsEvaluationRow) HasIconName() bool`
 
-HasIndicatorText returns a boolean if a field has been set.
+HasIconName returns a boolean if a field has been set.
 
 ### GetIndicatorPercentage
 
@@ -80,30 +80,30 @@ SetIndicatorPercentage sets IndicatorPercentage field to given value.
 
 HasIndicatorPercentage returns a boolean if a field has been set.
 
-### GetIconName
+### GetIndicatorText
 
-`func (o *AddonsEvaluationRow) GetIconName() DivarIconsIconName`
+`func (o *AddonsEvaluationRow) GetIndicatorText() string`
 
-GetIconName returns the IconName field if non-nil, zero value otherwise.
+GetIndicatorText returns the IndicatorText field if non-nil, zero value otherwise.
 
-### GetIconNameOk
+### GetIndicatorTextOk
 
-`func (o *AddonsEvaluationRow) GetIconNameOk() (*DivarIconsIconName, bool)`
+`func (o *AddonsEvaluationRow) GetIndicatorTextOk() (*string, bool)`
 
-GetIconNameOk returns a tuple with the IconName field if it's non-nil, zero value otherwise
+GetIndicatorTextOk returns a tuple with the IndicatorText field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIconName
+### SetIndicatorText
 
-`func (o *AddonsEvaluationRow) SetIconName(v DivarIconsIconName)`
+`func (o *AddonsEvaluationRow) SetIndicatorText(v string)`
 
-SetIconName sets IconName field to given value.
+SetIndicatorText sets IndicatorText field to given value.
 
-### HasIconName
+### HasIndicatorText
 
-`func (o *AddonsEvaluationRow) HasIconName() bool`
+`func (o *AddonsEvaluationRow) HasIndicatorText() bool`
 
-HasIconName returns a boolean if a field has been set.
+HasIndicatorText returns a boolean if a field has been set.
 
 ### GetLeft
 

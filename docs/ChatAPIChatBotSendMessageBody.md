@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserId** | Pointer to **string** | Unique identifier for the user to start or continue a conversation with | [optional] 
-**TextMessage** | **string** | Text message content to be sent by the bot | 
-**MediaToken** | Pointer to **string** | Token for attached media (if any) | [optional] 
 **Buttons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
+**MediaToken** | Pointer to **string** | Token for attached media (if any) | [optional] 
+**TextMessage** | **string** | Text message content to be sent by the bot | 
+**UserId** | Pointer to **string** | Unique identifier for the user to start or continue a conversation with | [optional] 
 
 ## Methods
 
@@ -28,50 +28,30 @@ NewChatAPIChatBotSendMessageBodyWithDefaults instantiates a new ChatAPIChatBotSe
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetUserId
+### GetButtons
 
-`func (o *ChatAPIChatBotSendMessageBody) GetUserId() string`
+`func (o *ChatAPIChatBotSendMessageBody) GetButtons() ChatapiChatButtonGrid`
 
-GetUserId returns the UserId field if non-nil, zero value otherwise.
+GetButtons returns the Buttons field if non-nil, zero value otherwise.
 
-### GetUserIdOk
+### GetButtonsOk
 
-`func (o *ChatAPIChatBotSendMessageBody) GetUserIdOk() (*string, bool)`
+`func (o *ChatAPIChatBotSendMessageBody) GetButtonsOk() (*ChatapiChatButtonGrid, bool)`
 
-GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
+GetButtonsOk returns a tuple with the Buttons field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUserId
+### SetButtons
 
-`func (o *ChatAPIChatBotSendMessageBody) SetUserId(v string)`
+`func (o *ChatAPIChatBotSendMessageBody) SetButtons(v ChatapiChatButtonGrid)`
 
-SetUserId sets UserId field to given value.
+SetButtons sets Buttons field to given value.
 
-### HasUserId
+### HasButtons
 
-`func (o *ChatAPIChatBotSendMessageBody) HasUserId() bool`
+`func (o *ChatAPIChatBotSendMessageBody) HasButtons() bool`
 
-HasUserId returns a boolean if a field has been set.
-
-### GetTextMessage
-
-`func (o *ChatAPIChatBotSendMessageBody) GetTextMessage() string`
-
-GetTextMessage returns the TextMessage field if non-nil, zero value otherwise.
-
-### GetTextMessageOk
-
-`func (o *ChatAPIChatBotSendMessageBody) GetTextMessageOk() (*string, bool)`
-
-GetTextMessageOk returns a tuple with the TextMessage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTextMessage
-
-`func (o *ChatAPIChatBotSendMessageBody) SetTextMessage(v string)`
-
-SetTextMessage sets TextMessage field to given value.
-
+HasButtons returns a boolean if a field has been set.
 
 ### GetMediaToken
 
@@ -98,30 +78,50 @@ SetMediaToken sets MediaToken field to given value.
 
 HasMediaToken returns a boolean if a field has been set.
 
-### GetButtons
+### GetTextMessage
 
-`func (o *ChatAPIChatBotSendMessageBody) GetButtons() ChatapiChatButtonGrid`
+`func (o *ChatAPIChatBotSendMessageBody) GetTextMessage() string`
 
-GetButtons returns the Buttons field if non-nil, zero value otherwise.
+GetTextMessage returns the TextMessage field if non-nil, zero value otherwise.
 
-### GetButtonsOk
+### GetTextMessageOk
 
-`func (o *ChatAPIChatBotSendMessageBody) GetButtonsOk() (*ChatapiChatButtonGrid, bool)`
+`func (o *ChatAPIChatBotSendMessageBody) GetTextMessageOk() (*string, bool)`
 
-GetButtonsOk returns a tuple with the Buttons field if it's non-nil, zero value otherwise
+GetTextMessageOk returns a tuple with the TextMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetButtons
+### SetTextMessage
 
-`func (o *ChatAPIChatBotSendMessageBody) SetButtons(v ChatapiChatButtonGrid)`
+`func (o *ChatAPIChatBotSendMessageBody) SetTextMessage(v string)`
 
-SetButtons sets Buttons field to given value.
+SetTextMessage sets TextMessage field to given value.
 
-### HasButtons
 
-`func (o *ChatAPIChatBotSendMessageBody) HasButtons() bool`
+### GetUserId
 
-HasButtons returns a boolean if a field has been set.
+`func (o *ChatAPIChatBotSendMessageBody) GetUserId() string`
+
+GetUserId returns the UserId field if non-nil, zero value otherwise.
+
+### GetUserIdOk
+
+`func (o *ChatAPIChatBotSendMessageBody) GetUserIdOk() (*string, bool)`
+
+GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserId
+
+`func (o *ChatAPIChatBotSendMessageBody) SetUserId(v string)`
+
+SetUserId sets UserId field to given value.
+
+### HasUserId
+
+`func (o *ChatAPIChatBotSendMessageBody) HasUserId() bool`
+
+HasUserId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

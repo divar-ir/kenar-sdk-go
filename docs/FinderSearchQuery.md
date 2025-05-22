@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BrandModel** | Pointer to **[]string** |  | [optional] 
-**ProductionYear** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
-**Usage** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
-**Rooms** | Pointer to **[]string** |  | [optional] 
-**Rent** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
 **Credit** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
-**Size** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
 **OnlyWithParking** | Pointer to **bool** |  | [optional] 
+**ProductionYear** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
+**Rent** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
+**Rooms** | Pointer to **[]string** |  | [optional] 
+**Size** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
+**Usage** | Pointer to [**FinderSearchQueryNumberRange**](FinderSearchQueryNumberRange.md) |  | [optional] 
 
 ## Methods
 
@@ -57,6 +57,56 @@ SetBrandModel sets BrandModel field to given value.
 
 HasBrandModel returns a boolean if a field has been set.
 
+### GetCredit
+
+`func (o *FinderSearchQuery) GetCredit() FinderSearchQueryNumberRange`
+
+GetCredit returns the Credit field if non-nil, zero value otherwise.
+
+### GetCreditOk
+
+`func (o *FinderSearchQuery) GetCreditOk() (*FinderSearchQueryNumberRange, bool)`
+
+GetCreditOk returns a tuple with the Credit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredit
+
+`func (o *FinderSearchQuery) SetCredit(v FinderSearchQueryNumberRange)`
+
+SetCredit sets Credit field to given value.
+
+### HasCredit
+
+`func (o *FinderSearchQuery) HasCredit() bool`
+
+HasCredit returns a boolean if a field has been set.
+
+### GetOnlyWithParking
+
+`func (o *FinderSearchQuery) GetOnlyWithParking() bool`
+
+GetOnlyWithParking returns the OnlyWithParking field if non-nil, zero value otherwise.
+
+### GetOnlyWithParkingOk
+
+`func (o *FinderSearchQuery) GetOnlyWithParkingOk() (*bool, bool)`
+
+GetOnlyWithParkingOk returns a tuple with the OnlyWithParking field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnlyWithParking
+
+`func (o *FinderSearchQuery) SetOnlyWithParking(v bool)`
+
+SetOnlyWithParking sets OnlyWithParking field to given value.
+
+### HasOnlyWithParking
+
+`func (o *FinderSearchQuery) HasOnlyWithParking() bool`
+
+HasOnlyWithParking returns a boolean if a field has been set.
+
 ### GetProductionYear
 
 `func (o *FinderSearchQuery) GetProductionYear() FinderSearchQueryNumberRange`
@@ -81,56 +131,6 @@ SetProductionYear sets ProductionYear field to given value.
 `func (o *FinderSearchQuery) HasProductionYear() bool`
 
 HasProductionYear returns a boolean if a field has been set.
-
-### GetUsage
-
-`func (o *FinderSearchQuery) GetUsage() FinderSearchQueryNumberRange`
-
-GetUsage returns the Usage field if non-nil, zero value otherwise.
-
-### GetUsageOk
-
-`func (o *FinderSearchQuery) GetUsageOk() (*FinderSearchQueryNumberRange, bool)`
-
-GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsage
-
-`func (o *FinderSearchQuery) SetUsage(v FinderSearchQueryNumberRange)`
-
-SetUsage sets Usage field to given value.
-
-### HasUsage
-
-`func (o *FinderSearchQuery) HasUsage() bool`
-
-HasUsage returns a boolean if a field has been set.
-
-### GetRooms
-
-`func (o *FinderSearchQuery) GetRooms() []string`
-
-GetRooms returns the Rooms field if non-nil, zero value otherwise.
-
-### GetRoomsOk
-
-`func (o *FinderSearchQuery) GetRoomsOk() (*[]string, bool)`
-
-GetRoomsOk returns a tuple with the Rooms field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRooms
-
-`func (o *FinderSearchQuery) SetRooms(v []string)`
-
-SetRooms sets Rooms field to given value.
-
-### HasRooms
-
-`func (o *FinderSearchQuery) HasRooms() bool`
-
-HasRooms returns a boolean if a field has been set.
 
 ### GetRent
 
@@ -157,30 +157,30 @@ SetRent sets Rent field to given value.
 
 HasRent returns a boolean if a field has been set.
 
-### GetCredit
+### GetRooms
 
-`func (o *FinderSearchQuery) GetCredit() FinderSearchQueryNumberRange`
+`func (o *FinderSearchQuery) GetRooms() []string`
 
-GetCredit returns the Credit field if non-nil, zero value otherwise.
+GetRooms returns the Rooms field if non-nil, zero value otherwise.
 
-### GetCreditOk
+### GetRoomsOk
 
-`func (o *FinderSearchQuery) GetCreditOk() (*FinderSearchQueryNumberRange, bool)`
+`func (o *FinderSearchQuery) GetRoomsOk() (*[]string, bool)`
 
-GetCreditOk returns a tuple with the Credit field if it's non-nil, zero value otherwise
+GetRoomsOk returns a tuple with the Rooms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCredit
+### SetRooms
 
-`func (o *FinderSearchQuery) SetCredit(v FinderSearchQueryNumberRange)`
+`func (o *FinderSearchQuery) SetRooms(v []string)`
 
-SetCredit sets Credit field to given value.
+SetRooms sets Rooms field to given value.
 
-### HasCredit
+### HasRooms
 
-`func (o *FinderSearchQuery) HasCredit() bool`
+`func (o *FinderSearchQuery) HasRooms() bool`
 
-HasCredit returns a boolean if a field has been set.
+HasRooms returns a boolean if a field has been set.
 
 ### GetSize
 
@@ -207,30 +207,30 @@ SetSize sets Size field to given value.
 
 HasSize returns a boolean if a field has been set.
 
-### GetOnlyWithParking
+### GetUsage
 
-`func (o *FinderSearchQuery) GetOnlyWithParking() bool`
+`func (o *FinderSearchQuery) GetUsage() FinderSearchQueryNumberRange`
 
-GetOnlyWithParking returns the OnlyWithParking field if non-nil, zero value otherwise.
+GetUsage returns the Usage field if non-nil, zero value otherwise.
 
-### GetOnlyWithParkingOk
+### GetUsageOk
 
-`func (o *FinderSearchQuery) GetOnlyWithParkingOk() (*bool, bool)`
+`func (o *FinderSearchQuery) GetUsageOk() (*FinderSearchQueryNumberRange, bool)`
 
-GetOnlyWithParkingOk returns a tuple with the OnlyWithParking field if it's non-nil, zero value otherwise
+GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOnlyWithParking
+### SetUsage
 
-`func (o *FinderSearchQuery) SetOnlyWithParking(v bool)`
+`func (o *FinderSearchQuery) SetUsage(v FinderSearchQueryNumberRange)`
 
-SetOnlyWithParking sets OnlyWithParking field to given value.
+SetUsage sets Usage field to given value.
 
-### HasOnlyWithParking
+### HasUsage
 
-`func (o *FinderSearchQuery) HasOnlyWithParking() bool`
+`func (o *FinderSearchQuery) HasUsage() bool`
 
-HasOnlyWithParking returns a boolean if a field has been set.
+HasUsage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

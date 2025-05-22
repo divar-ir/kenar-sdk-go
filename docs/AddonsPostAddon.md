@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MetaData** | Pointer to [**AddonsAddonMetaData**](AddonsAddonMetaData.md) |  | [optional] 
-**Token** | Pointer to **string** |  | [optional] 
 **App** | Pointer to [**AppsApp**](AppsApp.md) |  | [optional] 
-**Widgets** | Pointer to **map[string]interface{}** |  | [optional] 
-**Score** | Pointer to **string** |  | [optional] 
-**Selector** | Pointer to [**AddonsAddonSelector**](AddonsAddonSelector.md) |  | [optional] 
 **Linkage** | Pointer to [**AddonsAddonLinkage**](AddonsAddonLinkage.md) |  | [optional] 
+**MetaData** | Pointer to [**AddonsAddonMetaData**](AddonsAddonMetaData.md) |  | [optional] 
+**Score** | Pointer to **string** |  | [optional] 
 **SecondaryLinks** | Pointer to [**AddonsAddonSecondaryLinks**](AddonsAddonSecondaryLinks.md) |  | [optional] 
+**Selector** | Pointer to [**AddonsAddonSelector**](AddonsAddonSelector.md) |  | [optional] 
 **Semantic** | Pointer to **map[string]string** |  | [optional] 
 **SemanticData** | Pointer to [**AddonsAddonSemantic**](AddonsAddonSemantic.md) |  | [optional] 
-**SensitiveSemantic** | Pointer to **map[string]string** |  | [optional] 
-**WidgetsSemantic** | Pointer to **map[string]interface{}** |  | [optional] 
 **SemanticSensitives** | Pointer to **[]string** |  | [optional] 
+**SensitiveSemantic** | Pointer to **map[string]string** |  | [optional] 
+**Token** | Pointer to **string** |  | [optional] 
+**Widgets** | Pointer to **map[string]interface{}** |  | [optional] 
+**WidgetsSemantic** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -36,56 +36,6 @@ will change when the set of required properties is changed
 NewAddonsPostAddonWithDefaults instantiates a new AddonsPostAddon object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetMetaData
-
-`func (o *AddonsPostAddon) GetMetaData() AddonsAddonMetaData`
-
-GetMetaData returns the MetaData field if non-nil, zero value otherwise.
-
-### GetMetaDataOk
-
-`func (o *AddonsPostAddon) GetMetaDataOk() (*AddonsAddonMetaData, bool)`
-
-GetMetaDataOk returns a tuple with the MetaData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetaData
-
-`func (o *AddonsPostAddon) SetMetaData(v AddonsAddonMetaData)`
-
-SetMetaData sets MetaData field to given value.
-
-### HasMetaData
-
-`func (o *AddonsPostAddon) HasMetaData() bool`
-
-HasMetaData returns a boolean if a field has been set.
-
-### GetToken
-
-`func (o *AddonsPostAddon) GetToken() string`
-
-GetToken returns the Token field if non-nil, zero value otherwise.
-
-### GetTokenOk
-
-`func (o *AddonsPostAddon) GetTokenOk() (*string, bool)`
-
-GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetToken
-
-`func (o *AddonsPostAddon) SetToken(v string)`
-
-SetToken sets Token field to given value.
-
-### HasToken
-
-`func (o *AddonsPostAddon) HasToken() bool`
-
-HasToken returns a boolean if a field has been set.
 
 ### GetApp
 
@@ -112,30 +62,55 @@ SetApp sets App field to given value.
 
 HasApp returns a boolean if a field has been set.
 
-### GetWidgets
+### GetLinkage
 
-`func (o *AddonsPostAddon) GetWidgets() map[string]interface{}`
+`func (o *AddonsPostAddon) GetLinkage() AddonsAddonLinkage`
 
-GetWidgets returns the Widgets field if non-nil, zero value otherwise.
+GetLinkage returns the Linkage field if non-nil, zero value otherwise.
 
-### GetWidgetsOk
+### GetLinkageOk
 
-`func (o *AddonsPostAddon) GetWidgetsOk() (*map[string]interface{}, bool)`
+`func (o *AddonsPostAddon) GetLinkageOk() (*AddonsAddonLinkage, bool)`
 
-GetWidgetsOk returns a tuple with the Widgets field if it's non-nil, zero value otherwise
+GetLinkageOk returns a tuple with the Linkage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWidgets
+### SetLinkage
 
-`func (o *AddonsPostAddon) SetWidgets(v map[string]interface{})`
+`func (o *AddonsPostAddon) SetLinkage(v AddonsAddonLinkage)`
 
-SetWidgets sets Widgets field to given value.
+SetLinkage sets Linkage field to given value.
 
-### HasWidgets
+### HasLinkage
 
-`func (o *AddonsPostAddon) HasWidgets() bool`
+`func (o *AddonsPostAddon) HasLinkage() bool`
 
-HasWidgets returns a boolean if a field has been set.
+HasLinkage returns a boolean if a field has been set.
+
+### GetMetaData
+
+`func (o *AddonsPostAddon) GetMetaData() AddonsAddonMetaData`
+
+GetMetaData returns the MetaData field if non-nil, zero value otherwise.
+
+### GetMetaDataOk
+
+`func (o *AddonsPostAddon) GetMetaDataOk() (*AddonsAddonMetaData, bool)`
+
+GetMetaDataOk returns a tuple with the MetaData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaData
+
+`func (o *AddonsPostAddon) SetMetaData(v AddonsAddonMetaData)`
+
+SetMetaData sets MetaData field to given value.
+
+### HasMetaData
+
+`func (o *AddonsPostAddon) HasMetaData() bool`
+
+HasMetaData returns a boolean if a field has been set.
 
 ### GetScore
 
@@ -162,56 +137,6 @@ SetScore sets Score field to given value.
 
 HasScore returns a boolean if a field has been set.
 
-### GetSelector
-
-`func (o *AddonsPostAddon) GetSelector() AddonsAddonSelector`
-
-GetSelector returns the Selector field if non-nil, zero value otherwise.
-
-### GetSelectorOk
-
-`func (o *AddonsPostAddon) GetSelectorOk() (*AddonsAddonSelector, bool)`
-
-GetSelectorOk returns a tuple with the Selector field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSelector
-
-`func (o *AddonsPostAddon) SetSelector(v AddonsAddonSelector)`
-
-SetSelector sets Selector field to given value.
-
-### HasSelector
-
-`func (o *AddonsPostAddon) HasSelector() bool`
-
-HasSelector returns a boolean if a field has been set.
-
-### GetLinkage
-
-`func (o *AddonsPostAddon) GetLinkage() AddonsAddonLinkage`
-
-GetLinkage returns the Linkage field if non-nil, zero value otherwise.
-
-### GetLinkageOk
-
-`func (o *AddonsPostAddon) GetLinkageOk() (*AddonsAddonLinkage, bool)`
-
-GetLinkageOk returns a tuple with the Linkage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLinkage
-
-`func (o *AddonsPostAddon) SetLinkage(v AddonsAddonLinkage)`
-
-SetLinkage sets Linkage field to given value.
-
-### HasLinkage
-
-`func (o *AddonsPostAddon) HasLinkage() bool`
-
-HasLinkage returns a boolean if a field has been set.
-
 ### GetSecondaryLinks
 
 `func (o *AddonsPostAddon) GetSecondaryLinks() AddonsAddonSecondaryLinks`
@@ -236,6 +161,31 @@ SetSecondaryLinks sets SecondaryLinks field to given value.
 `func (o *AddonsPostAddon) HasSecondaryLinks() bool`
 
 HasSecondaryLinks returns a boolean if a field has been set.
+
+### GetSelector
+
+`func (o *AddonsPostAddon) GetSelector() AddonsAddonSelector`
+
+GetSelector returns the Selector field if non-nil, zero value otherwise.
+
+### GetSelectorOk
+
+`func (o *AddonsPostAddon) GetSelectorOk() (*AddonsAddonSelector, bool)`
+
+GetSelectorOk returns a tuple with the Selector field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelector
+
+`func (o *AddonsPostAddon) SetSelector(v AddonsAddonSelector)`
+
+SetSelector sets Selector field to given value.
+
+### HasSelector
+
+`func (o *AddonsPostAddon) HasSelector() bool`
+
+HasSelector returns a boolean if a field has been set.
 
 ### GetSemantic
 
@@ -287,6 +237,31 @@ SetSemanticData sets SemanticData field to given value.
 
 HasSemanticData returns a boolean if a field has been set.
 
+### GetSemanticSensitives
+
+`func (o *AddonsPostAddon) GetSemanticSensitives() []string`
+
+GetSemanticSensitives returns the SemanticSensitives field if non-nil, zero value otherwise.
+
+### GetSemanticSensitivesOk
+
+`func (o *AddonsPostAddon) GetSemanticSensitivesOk() (*[]string, bool)`
+
+GetSemanticSensitivesOk returns a tuple with the SemanticSensitives field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSemanticSensitives
+
+`func (o *AddonsPostAddon) SetSemanticSensitives(v []string)`
+
+SetSemanticSensitives sets SemanticSensitives field to given value.
+
+### HasSemanticSensitives
+
+`func (o *AddonsPostAddon) HasSemanticSensitives() bool`
+
+HasSemanticSensitives returns a boolean if a field has been set.
+
 ### GetSensitiveSemantic
 
 `func (o *AddonsPostAddon) GetSensitiveSemantic() map[string]string`
@@ -312,6 +287,56 @@ SetSensitiveSemantic sets SensitiveSemantic field to given value.
 
 HasSensitiveSemantic returns a boolean if a field has been set.
 
+### GetToken
+
+`func (o *AddonsPostAddon) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *AddonsPostAddon) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *AddonsPostAddon) SetToken(v string)`
+
+SetToken sets Token field to given value.
+
+### HasToken
+
+`func (o *AddonsPostAddon) HasToken() bool`
+
+HasToken returns a boolean if a field has been set.
+
+### GetWidgets
+
+`func (o *AddonsPostAddon) GetWidgets() map[string]interface{}`
+
+GetWidgets returns the Widgets field if non-nil, zero value otherwise.
+
+### GetWidgetsOk
+
+`func (o *AddonsPostAddon) GetWidgetsOk() (*map[string]interface{}, bool)`
+
+GetWidgetsOk returns a tuple with the Widgets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWidgets
+
+`func (o *AddonsPostAddon) SetWidgets(v map[string]interface{})`
+
+SetWidgets sets Widgets field to given value.
+
+### HasWidgets
+
+`func (o *AddonsPostAddon) HasWidgets() bool`
+
+HasWidgets returns a boolean if a field has been set.
+
 ### GetWidgetsSemantic
 
 `func (o *AddonsPostAddon) GetWidgetsSemantic() map[string]interface{}`
@@ -336,31 +361,6 @@ SetWidgetsSemantic sets WidgetsSemantic field to given value.
 `func (o *AddonsPostAddon) HasWidgetsSemantic() bool`
 
 HasWidgetsSemantic returns a boolean if a field has been set.
-
-### GetSemanticSensitives
-
-`func (o *AddonsPostAddon) GetSemanticSensitives() []string`
-
-GetSemanticSensitives returns the SemanticSensitives field if non-nil, zero value otherwise.
-
-### GetSemanticSensitivesOk
-
-`func (o *AddonsPostAddon) GetSemanticSensitivesOk() (*[]string, bool)`
-
-GetSemanticSensitivesOk returns a tuple with the SemanticSensitives field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSemanticSensitives
-
-`func (o *AddonsPostAddon) SetSemanticSensitives(v []string)`
-
-SetSemanticSensitives sets SemanticSensitives field to given value.
-
-### HasSemanticSensitives
-
-`func (o *AddonsPostAddon) HasSemanticSensitives() bool`
-
-HasSemanticSensitives returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

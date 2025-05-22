@@ -16,6 +16,7 @@ Install the following dependencies:
 
 ```sh
 go get github.com/stretchr/testify/assert
+go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
@@ -263,7 +264,81 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
-Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+### APIKey
+
+- **Type**: API key
+- **API key parameter name**: X-API-Key
+- **Location**: HTTP header
+
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: APIKey and passed in as the auth context for each request.
+
+Example
+
+```go
+auth := context.WithValue(
+		context.Background(),
+		kenarapi.ContextAPIKeys,
+		map[string]kenarapi.APIKey{
+			"APIKey": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
+
+### OAuth
+
+
+- **Type**: OAuth
+- **Flow**: accessCode
+- **Authorization URL**: oauth.divar.ir/oauth2/auth
+- **Scopes**: 
+ - **BUSINESS_ADDON_CREATE.{resource_id}**: BUSINESS_ADDON_CREATE.{resource_id}
+ - **CHAT_BOT_USER_MESSAGE_SEND**: CHAT_BOT_USER_MESSAGE_SEND
+ - **CHAT_CONVERSATION_READ.{resource_id}**: CHAT_CONVERSATION_READ.{resource_id}
+ - **CHAT_MESSAGE_SEND.{resource_id}**: CHAT_MESSAGE_SEND.{resource_id}
+ - **CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{resource_id}**: CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{resource_id}
+ - **CHAT_POST_CONVERSATIONS_READ.{resource_id}**: CHAT_POST_CONVERSATIONS_READ.{resource_id}
+ - **CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND**: CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND
+ - **CHAT_SUPPLIER_ALL_CONVERSATIONS_READ**: CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
+ - **CONVERSATION_SEND_MESSAGE.{resource_id}**: CONVERSATION_SEND_MESSAGE.{resource_id}
+ - **MANAGEMENT_APPS_READ.{resource_id}**: MANAGEMENT_APPS_READ.{resource_id}
+ - **MANAGEMENT_APPS_WRITE.{resource_id}**: MANAGEMENT_APPS_WRITE.{resource_id}
+ - **NOTIFICATION_ACCESS_REVOCATION**: NOTIFICATION_ACCESS_REVOCATION
+ - **PAYMENT_ALL_POSTS_PRICING_READ**: PAYMENT_ALL_POSTS_PRICING_READ
+ - **PAYMENT_ALL_POSTS_REORDER**: PAYMENT_ALL_POSTS_REORDER
+ - **POST_ADDON_CREATE.{resource_id}**: POST_ADDON_CREATE.{resource_id}
+ - **POST_EDIT.{resource_id}**: POST_EDIT.{resource_id}
+ - **POST_ONGOING_IMAGES_GET.{resource_id}**: POST_ONGOING_IMAGES_GET.{resource_id}
+ - **POST_SEMANTIC_CREATE.{resource_id}**: POST_SEMANTIC_CREATE.{resource_id}
+ - **USER_ADDON_CREATE**: USER_ADDON_CREATE
+ - **USER_ID**: USER_ID
+ - **USER_PHONE**: USER_PHONE
+ - **USER_POSTS_ADDON_CREATE**: USER_POSTS_ADDON_CREATE
+ - **USER_POSTS_GET**: USER_POSTS_GET
+ - **USER_VERIFICATION_CREATE**: USER_VERIFICATION_CREATE
+ - **offline_access**: offline_access
+ - **openid**: openid
+
+Example
+
+```go
+auth := context.WithValue(context.Background(), kenarapi.ContextAccessToken, "ACCESSTOKENSTRING")
+r, err := client.Service.Operation(auth, args)
+```
+
+Or via OAuth2 module to automatically refresh tokens and perform user authentication.
+
+```go
+import "golang.org/x/oauth2"
+
+/* Perform OAuth2 round trip request and obtain a token */
+
+tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
+auth := context.WithValue(oauth2.NoContext, kenarapi.ContextOAuth2, tokenSource)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods

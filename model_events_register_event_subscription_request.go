@@ -19,8 +19,8 @@ var _ MappedNullable = &EventsRegisterEventSubscriptionRequest{}
 
 // EventsRegisterEventSubscriptionRequest struct for EventsRegisterEventSubscriptionRequest
 type EventsRegisterEventSubscriptionRequest struct {
-	EventType *EventsRegisterEventSubscriptionRequestEventType `json:"event_type,omitempty"`
 	EventResourceId *string `json:"event_resource_id,omitempty"`
+	EventType *EventsRegisterEventSubscriptionRequestEventType `json:"event_type,omitempty"`
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
 }
 
@@ -39,38 +39,6 @@ func NewEventsRegisterEventSubscriptionRequest() *EventsRegisterEventSubscriptio
 func NewEventsRegisterEventSubscriptionRequestWithDefaults() *EventsRegisterEventSubscriptionRequest {
 	this := EventsRegisterEventSubscriptionRequest{}
 	return &this
-}
-
-// GetEventType returns the EventType field value if set, zero value otherwise.
-func (o *EventsRegisterEventSubscriptionRequest) GetEventType() EventsRegisterEventSubscriptionRequestEventType {
-	if o == nil || IsNil(o.EventType) {
-		var ret EventsRegisterEventSubscriptionRequestEventType
-		return ret
-	}
-	return *o.EventType
-}
-
-// GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EventsRegisterEventSubscriptionRequest) GetEventTypeOk() (*EventsRegisterEventSubscriptionRequestEventType, bool) {
-	if o == nil || IsNil(o.EventType) {
-		return nil, false
-	}
-	return o.EventType, true
-}
-
-// HasEventType returns a boolean if a field has been set.
-func (o *EventsRegisterEventSubscriptionRequest) HasEventType() bool {
-	if o != nil && !IsNil(o.EventType) {
-		return true
-	}
-
-	return false
-}
-
-// SetEventType gets a reference to the given EventsRegisterEventSubscriptionRequestEventType and assigns it to the EventType field.
-func (o *EventsRegisterEventSubscriptionRequest) SetEventType(v EventsRegisterEventSubscriptionRequestEventType) {
-	o.EventType = &v
 }
 
 // GetEventResourceId returns the EventResourceId field value if set, zero value otherwise.
@@ -103,6 +71,38 @@ func (o *EventsRegisterEventSubscriptionRequest) HasEventResourceId() bool {
 // SetEventResourceId gets a reference to the given string and assigns it to the EventResourceId field.
 func (o *EventsRegisterEventSubscriptionRequest) SetEventResourceId(v string) {
 	o.EventResourceId = &v
+}
+
+// GetEventType returns the EventType field value if set, zero value otherwise.
+func (o *EventsRegisterEventSubscriptionRequest) GetEventType() EventsRegisterEventSubscriptionRequestEventType {
+	if o == nil || IsNil(o.EventType) {
+		var ret EventsRegisterEventSubscriptionRequestEventType
+		return ret
+	}
+	return *o.EventType
+}
+
+// GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventsRegisterEventSubscriptionRequest) GetEventTypeOk() (*EventsRegisterEventSubscriptionRequestEventType, bool) {
+	if o == nil || IsNil(o.EventType) {
+		return nil, false
+	}
+	return o.EventType, true
+}
+
+// HasEventType returns a boolean if a field has been set.
+func (o *EventsRegisterEventSubscriptionRequest) HasEventType() bool {
+	if o != nil && !IsNil(o.EventType) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventType gets a reference to the given EventsRegisterEventSubscriptionRequestEventType and assigns it to the EventType field.
+func (o *EventsRegisterEventSubscriptionRequest) SetEventType(v EventsRegisterEventSubscriptionRequestEventType) {
+	o.EventType = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -147,11 +147,11 @@ func (o EventsRegisterEventSubscriptionRequest) MarshalJSON() ([]byte, error) {
 
 func (o EventsRegisterEventSubscriptionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EventType) {
-		toSerialize["event_type"] = o.EventType
-	}
 	if !IsNil(o.EventResourceId) {
 		toSerialize["event_resource_id"] = o.EventResourceId
+	}
+	if !IsNil(o.EventType) {
+		toSerialize["event_type"] = o.EventType
 	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata

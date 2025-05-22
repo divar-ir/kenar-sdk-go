@@ -20,22 +20,22 @@ var _ MappedNullable = &FinderSearchPostItem{}
 
 // FinderSearchPostItem struct for FinderSearchPostItem
 type FinderSearchPostItem struct {
-	Token *string `json:"token,omitempty"`
 	Category *string `json:"category,omitempty"`
-	LastModifiedAt *time.Time `json:"last_modified_at,omitempty"`
 	City *string `json:"city,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Price *SearchPostItemPrice `json:"price,omitempty"`
-	RealEstateFields *SearchPostItemRealEstateFields `json:"real_estate_fields,omitempty"`
-	VehiclesFields *SearchPostItemVehiclesFields `json:"vehicles_fields,omitempty"`
+	CommunityFields map[string]interface{} `json:"community_fields,omitempty"`
 	ElectronicDevicesFields map[string]interface{} `json:"electronic_devices_fields,omitempty"`
 	HomeKitchenFields map[string]interface{} `json:"home_kitchen_fields,omitempty"`
-	ServicesFields map[string]interface{} `json:"services_fields,omitempty"`
-	PersonalGoodsFields map[string]interface{} `json:"personal_goods_fields,omitempty"`
-	LeisureHobbiesFields map[string]interface{} `json:"leisure_hobbies_fields,omitempty"`
-	CommunityFields map[string]interface{} `json:"community_fields,omitempty"`
-	ToolsMaterialsEquipmentFields map[string]interface{} `json:"tools_materials_equipment_fields,omitempty"`
 	JobsFields map[string]interface{} `json:"jobs_fields,omitempty"`
+	LastModifiedAt *time.Time `json:"last_modified_at,omitempty"`
+	LeisureHobbiesFields map[string]interface{} `json:"leisure_hobbies_fields,omitempty"`
+	PersonalGoodsFields map[string]interface{} `json:"personal_goods_fields,omitempty"`
+	Price *SearchPostItemPrice `json:"price,omitempty"`
+	RealEstateFields *SearchPostItemRealEstateFields `json:"real_estate_fields,omitempty"`
+	ServicesFields map[string]interface{} `json:"services_fields,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Token *string `json:"token,omitempty"`
+	ToolsMaterialsEquipmentFields map[string]interface{} `json:"tools_materials_equipment_fields,omitempty"`
+	VehiclesFields *SearchPostItemVehiclesFields `json:"vehicles_fields,omitempty"`
 }
 
 // NewFinderSearchPostItem instantiates a new FinderSearchPostItem object
@@ -53,38 +53,6 @@ func NewFinderSearchPostItem() *FinderSearchPostItem {
 func NewFinderSearchPostItemWithDefaults() *FinderSearchPostItem {
 	this := FinderSearchPostItem{}
 	return &this
-}
-
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetToken() string {
-	if o == nil || IsNil(o.Token) {
-		var ret string
-		return ret
-	}
-	return *o.Token
-}
-
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *FinderSearchPostItem) SetToken(v string) {
-	o.Token = &v
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise.
@@ -119,38 +87,6 @@ func (o *FinderSearchPostItem) SetCategory(v string) {
 	o.Category = &v
 }
 
-// GetLastModifiedAt returns the LastModifiedAt field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetLastModifiedAt() time.Time {
-	if o == nil || IsNil(o.LastModifiedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastModifiedAt
-}
-
-// GetLastModifiedAtOk returns a tuple with the LastModifiedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetLastModifiedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.LastModifiedAt) {
-		return nil, false
-	}
-	return o.LastModifiedAt, true
-}
-
-// HasLastModifiedAt returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasLastModifiedAt() bool {
-	if o != nil && !IsNil(o.LastModifiedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedAt gets a reference to the given time.Time and assigns it to the LastModifiedAt field.
-func (o *FinderSearchPostItem) SetLastModifiedAt(v time.Time) {
-	o.LastModifiedAt = &v
-}
-
 // GetCity returns the City field value if set, zero value otherwise.
 func (o *FinderSearchPostItem) GetCity() string {
 	if o == nil || IsNil(o.City) {
@@ -183,132 +119,36 @@ func (o *FinderSearchPostItem) SetCity(v string) {
 	o.City = &v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
+// GetCommunityFields returns the CommunityFields field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetCommunityFields() map[string]interface{} {
+	if o == nil || IsNil(o.CommunityFields) {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Title
+	return o.CommunityFields
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetCommunityFieldsOk returns a tuple with the CommunityFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
+func (o *FinderSearchPostItem) GetCommunityFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.CommunityFields) {
+		return map[string]interface{}{}, false
 	}
-	return o.Title, true
+	return o.CommunityFields, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+// HasCommunityFields returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasCommunityFields() bool {
+	if o != nil && !IsNil(o.CommunityFields) {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *FinderSearchPostItem) SetTitle(v string) {
-	o.Title = &v
-}
-
-// GetPrice returns the Price field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetPrice() SearchPostItemPrice {
-	if o == nil || IsNil(o.Price) {
-		var ret SearchPostItemPrice
-		return ret
-	}
-	return *o.Price
-}
-
-// GetPriceOk returns a tuple with the Price field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetPriceOk() (*SearchPostItemPrice, bool) {
-	if o == nil || IsNil(o.Price) {
-		return nil, false
-	}
-	return o.Price, true
-}
-
-// HasPrice returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasPrice() bool {
-	if o != nil && !IsNil(o.Price) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrice gets a reference to the given SearchPostItemPrice and assigns it to the Price field.
-func (o *FinderSearchPostItem) SetPrice(v SearchPostItemPrice) {
-	o.Price = &v
-}
-
-// GetRealEstateFields returns the RealEstateFields field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetRealEstateFields() SearchPostItemRealEstateFields {
-	if o == nil || IsNil(o.RealEstateFields) {
-		var ret SearchPostItemRealEstateFields
-		return ret
-	}
-	return *o.RealEstateFields
-}
-
-// GetRealEstateFieldsOk returns a tuple with the RealEstateFields field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetRealEstateFieldsOk() (*SearchPostItemRealEstateFields, bool) {
-	if o == nil || IsNil(o.RealEstateFields) {
-		return nil, false
-	}
-	return o.RealEstateFields, true
-}
-
-// HasRealEstateFields returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasRealEstateFields() bool {
-	if o != nil && !IsNil(o.RealEstateFields) {
-		return true
-	}
-
-	return false
-}
-
-// SetRealEstateFields gets a reference to the given SearchPostItemRealEstateFields and assigns it to the RealEstateFields field.
-func (o *FinderSearchPostItem) SetRealEstateFields(v SearchPostItemRealEstateFields) {
-	o.RealEstateFields = &v
-}
-
-// GetVehiclesFields returns the VehiclesFields field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetVehiclesFields() SearchPostItemVehiclesFields {
-	if o == nil || IsNil(o.VehiclesFields) {
-		var ret SearchPostItemVehiclesFields
-		return ret
-	}
-	return *o.VehiclesFields
-}
-
-// GetVehiclesFieldsOk returns a tuple with the VehiclesFields field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetVehiclesFieldsOk() (*SearchPostItemVehiclesFields, bool) {
-	if o == nil || IsNil(o.VehiclesFields) {
-		return nil, false
-	}
-	return o.VehiclesFields, true
-}
-
-// HasVehiclesFields returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasVehiclesFields() bool {
-	if o != nil && !IsNil(o.VehiclesFields) {
-		return true
-	}
-
-	return false
-}
-
-// SetVehiclesFields gets a reference to the given SearchPostItemVehiclesFields and assigns it to the VehiclesFields field.
-func (o *FinderSearchPostItem) SetVehiclesFields(v SearchPostItemVehiclesFields) {
-	o.VehiclesFields = &v
+// SetCommunityFields gets a reference to the given map[string]interface{} and assigns it to the CommunityFields field.
+func (o *FinderSearchPostItem) SetCommunityFields(v map[string]interface{}) {
+	o.CommunityFields = v
 }
 
 // GetElectronicDevicesFields returns the ElectronicDevicesFields field value if set, zero value otherwise.
@@ -375,68 +215,68 @@ func (o *FinderSearchPostItem) SetHomeKitchenFields(v map[string]interface{}) {
 	o.HomeKitchenFields = v
 }
 
-// GetServicesFields returns the ServicesFields field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetServicesFields() map[string]interface{} {
-	if o == nil || IsNil(o.ServicesFields) {
+// GetJobsFields returns the JobsFields field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetJobsFields() map[string]interface{} {
+	if o == nil || IsNil(o.JobsFields) {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.ServicesFields
+	return o.JobsFields
 }
 
-// GetServicesFieldsOk returns a tuple with the ServicesFields field value if set, nil otherwise
+// GetJobsFieldsOk returns a tuple with the JobsFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetServicesFieldsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.ServicesFields) {
+func (o *FinderSearchPostItem) GetJobsFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.JobsFields) {
 		return map[string]interface{}{}, false
 	}
-	return o.ServicesFields, true
+	return o.JobsFields, true
 }
 
-// HasServicesFields returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasServicesFields() bool {
-	if o != nil && !IsNil(o.ServicesFields) {
+// HasJobsFields returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasJobsFields() bool {
+	if o != nil && !IsNil(o.JobsFields) {
 		return true
 	}
 
 	return false
 }
 
-// SetServicesFields gets a reference to the given map[string]interface{} and assigns it to the ServicesFields field.
-func (o *FinderSearchPostItem) SetServicesFields(v map[string]interface{}) {
-	o.ServicesFields = v
+// SetJobsFields gets a reference to the given map[string]interface{} and assigns it to the JobsFields field.
+func (o *FinderSearchPostItem) SetJobsFields(v map[string]interface{}) {
+	o.JobsFields = v
 }
 
-// GetPersonalGoodsFields returns the PersonalGoodsFields field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetPersonalGoodsFields() map[string]interface{} {
-	if o == nil || IsNil(o.PersonalGoodsFields) {
-		var ret map[string]interface{}
+// GetLastModifiedAt returns the LastModifiedAt field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetLastModifiedAt() time.Time {
+	if o == nil || IsNil(o.LastModifiedAt) {
+		var ret time.Time
 		return ret
 	}
-	return o.PersonalGoodsFields
+	return *o.LastModifiedAt
 }
 
-// GetPersonalGoodsFieldsOk returns a tuple with the PersonalGoodsFields field value if set, nil otherwise
+// GetLastModifiedAtOk returns a tuple with the LastModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetPersonalGoodsFieldsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.PersonalGoodsFields) {
-		return map[string]interface{}{}, false
+func (o *FinderSearchPostItem) GetLastModifiedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastModifiedAt) {
+		return nil, false
 	}
-	return o.PersonalGoodsFields, true
+	return o.LastModifiedAt, true
 }
 
-// HasPersonalGoodsFields returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasPersonalGoodsFields() bool {
-	if o != nil && !IsNil(o.PersonalGoodsFields) {
+// HasLastModifiedAt returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasLastModifiedAt() bool {
+	if o != nil && !IsNil(o.LastModifiedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetPersonalGoodsFields gets a reference to the given map[string]interface{} and assigns it to the PersonalGoodsFields field.
-func (o *FinderSearchPostItem) SetPersonalGoodsFields(v map[string]interface{}) {
-	o.PersonalGoodsFields = v
+// SetLastModifiedAt gets a reference to the given time.Time and assigns it to the LastModifiedAt field.
+func (o *FinderSearchPostItem) SetLastModifiedAt(v time.Time) {
+	o.LastModifiedAt = &v
 }
 
 // GetLeisureHobbiesFields returns the LeisureHobbiesFields field value if set, zero value otherwise.
@@ -471,36 +311,196 @@ func (o *FinderSearchPostItem) SetLeisureHobbiesFields(v map[string]interface{})
 	o.LeisureHobbiesFields = v
 }
 
-// GetCommunityFields returns the CommunityFields field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetCommunityFields() map[string]interface{} {
-	if o == nil || IsNil(o.CommunityFields) {
+// GetPersonalGoodsFields returns the PersonalGoodsFields field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetPersonalGoodsFields() map[string]interface{} {
+	if o == nil || IsNil(o.PersonalGoodsFields) {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.CommunityFields
+	return o.PersonalGoodsFields
 }
 
-// GetCommunityFieldsOk returns a tuple with the CommunityFields field value if set, nil otherwise
+// GetPersonalGoodsFieldsOk returns a tuple with the PersonalGoodsFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetCommunityFieldsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CommunityFields) {
+func (o *FinderSearchPostItem) GetPersonalGoodsFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.PersonalGoodsFields) {
 		return map[string]interface{}{}, false
 	}
-	return o.CommunityFields, true
+	return o.PersonalGoodsFields, true
 }
 
-// HasCommunityFields returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasCommunityFields() bool {
-	if o != nil && !IsNil(o.CommunityFields) {
+// HasPersonalGoodsFields returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasPersonalGoodsFields() bool {
+	if o != nil && !IsNil(o.PersonalGoodsFields) {
 		return true
 	}
 
 	return false
 }
 
-// SetCommunityFields gets a reference to the given map[string]interface{} and assigns it to the CommunityFields field.
-func (o *FinderSearchPostItem) SetCommunityFields(v map[string]interface{}) {
-	o.CommunityFields = v
+// SetPersonalGoodsFields gets a reference to the given map[string]interface{} and assigns it to the PersonalGoodsFields field.
+func (o *FinderSearchPostItem) SetPersonalGoodsFields(v map[string]interface{}) {
+	o.PersonalGoodsFields = v
+}
+
+// GetPrice returns the Price field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetPrice() SearchPostItemPrice {
+	if o == nil || IsNil(o.Price) {
+		var ret SearchPostItemPrice
+		return ret
+	}
+	return *o.Price
+}
+
+// GetPriceOk returns a tuple with the Price field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchPostItem) GetPriceOk() (*SearchPostItemPrice, bool) {
+	if o == nil || IsNil(o.Price) {
+		return nil, false
+	}
+	return o.Price, true
+}
+
+// HasPrice returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasPrice() bool {
+	if o != nil && !IsNil(o.Price) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrice gets a reference to the given SearchPostItemPrice and assigns it to the Price field.
+func (o *FinderSearchPostItem) SetPrice(v SearchPostItemPrice) {
+	o.Price = &v
+}
+
+// GetRealEstateFields returns the RealEstateFields field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetRealEstateFields() SearchPostItemRealEstateFields {
+	if o == nil || IsNil(o.RealEstateFields) {
+		var ret SearchPostItemRealEstateFields
+		return ret
+	}
+	return *o.RealEstateFields
+}
+
+// GetRealEstateFieldsOk returns a tuple with the RealEstateFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchPostItem) GetRealEstateFieldsOk() (*SearchPostItemRealEstateFields, bool) {
+	if o == nil || IsNil(o.RealEstateFields) {
+		return nil, false
+	}
+	return o.RealEstateFields, true
+}
+
+// HasRealEstateFields returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasRealEstateFields() bool {
+	if o != nil && !IsNil(o.RealEstateFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetRealEstateFields gets a reference to the given SearchPostItemRealEstateFields and assigns it to the RealEstateFields field.
+func (o *FinderSearchPostItem) SetRealEstateFields(v SearchPostItemRealEstateFields) {
+	o.RealEstateFields = &v
+}
+
+// GetServicesFields returns the ServicesFields field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetServicesFields() map[string]interface{} {
+	if o == nil || IsNil(o.ServicesFields) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.ServicesFields
+}
+
+// GetServicesFieldsOk returns a tuple with the ServicesFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchPostItem) GetServicesFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.ServicesFields) {
+		return map[string]interface{}{}, false
+	}
+	return o.ServicesFields, true
+}
+
+// HasServicesFields returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasServicesFields() bool {
+	if o != nil && !IsNil(o.ServicesFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetServicesFields gets a reference to the given map[string]interface{} and assigns it to the ServicesFields field.
+func (o *FinderSearchPostItem) SetServicesFields(v map[string]interface{}) {
+	o.ServicesFields = v
+}
+
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetTitle() string {
+	if o == nil || IsNil(o.Title) {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchPostItem) GetTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Title) {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *FinderSearchPostItem) SetTitle(v string) {
+	o.Title = &v
+}
+
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetToken() string {
+	if o == nil || IsNil(o.Token) {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderSearchPostItem) GetTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.Token) {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *FinderSearchPostItem) SetToken(v string) {
+	o.Token = &v
 }
 
 // GetToolsMaterialsEquipmentFields returns the ToolsMaterialsEquipmentFields field value if set, zero value otherwise.
@@ -535,36 +535,36 @@ func (o *FinderSearchPostItem) SetToolsMaterialsEquipmentFields(v map[string]int
 	o.ToolsMaterialsEquipmentFields = v
 }
 
-// GetJobsFields returns the JobsFields field value if set, zero value otherwise.
-func (o *FinderSearchPostItem) GetJobsFields() map[string]interface{} {
-	if o == nil || IsNil(o.JobsFields) {
-		var ret map[string]interface{}
+// GetVehiclesFields returns the VehiclesFields field value if set, zero value otherwise.
+func (o *FinderSearchPostItem) GetVehiclesFields() SearchPostItemVehiclesFields {
+	if o == nil || IsNil(o.VehiclesFields) {
+		var ret SearchPostItemVehiclesFields
 		return ret
 	}
-	return o.JobsFields
+	return *o.VehiclesFields
 }
 
-// GetJobsFieldsOk returns a tuple with the JobsFields field value if set, nil otherwise
+// GetVehiclesFieldsOk returns a tuple with the VehiclesFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FinderSearchPostItem) GetJobsFieldsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.JobsFields) {
-		return map[string]interface{}{}, false
+func (o *FinderSearchPostItem) GetVehiclesFieldsOk() (*SearchPostItemVehiclesFields, bool) {
+	if o == nil || IsNil(o.VehiclesFields) {
+		return nil, false
 	}
-	return o.JobsFields, true
+	return o.VehiclesFields, true
 }
 
-// HasJobsFields returns a boolean if a field has been set.
-func (o *FinderSearchPostItem) HasJobsFields() bool {
-	if o != nil && !IsNil(o.JobsFields) {
+// HasVehiclesFields returns a boolean if a field has been set.
+func (o *FinderSearchPostItem) HasVehiclesFields() bool {
+	if o != nil && !IsNil(o.VehiclesFields) {
 		return true
 	}
 
 	return false
 }
 
-// SetJobsFields gets a reference to the given map[string]interface{} and assigns it to the JobsFields field.
-func (o *FinderSearchPostItem) SetJobsFields(v map[string]interface{}) {
-	o.JobsFields = v
+// SetVehiclesFields gets a reference to the given SearchPostItemVehiclesFields and assigns it to the VehiclesFields field.
+func (o *FinderSearchPostItem) SetVehiclesFields(v SearchPostItemVehiclesFields) {
+	o.VehiclesFields = &v
 }
 
 func (o FinderSearchPostItem) MarshalJSON() ([]byte, error) {
@@ -577,29 +577,14 @@ func (o FinderSearchPostItem) MarshalJSON() ([]byte, error) {
 
 func (o FinderSearchPostItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
 	if !IsNil(o.Category) {
 		toSerialize["category"] = o.Category
-	}
-	if !IsNil(o.LastModifiedAt) {
-		toSerialize["last_modified_at"] = o.LastModifiedAt
 	}
 	if !IsNil(o.City) {
 		toSerialize["city"] = o.City
 	}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
-	if !IsNil(o.Price) {
-		toSerialize["price"] = o.Price
-	}
-	if !IsNil(o.RealEstateFields) {
-		toSerialize["real_estate_fields"] = o.RealEstateFields
-	}
-	if !IsNil(o.VehiclesFields) {
-		toSerialize["vehicles_fields"] = o.VehiclesFields
+	if !IsNil(o.CommunityFields) {
+		toSerialize["community_fields"] = o.CommunityFields
 	}
 	if !IsNil(o.ElectronicDevicesFields) {
 		toSerialize["electronic_devices_fields"] = o.ElectronicDevicesFields
@@ -607,23 +592,38 @@ func (o FinderSearchPostItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HomeKitchenFields) {
 		toSerialize["home_kitchen_fields"] = o.HomeKitchenFields
 	}
-	if !IsNil(o.ServicesFields) {
-		toSerialize["services_fields"] = o.ServicesFields
+	if !IsNil(o.JobsFields) {
+		toSerialize["jobs_fields"] = o.JobsFields
 	}
-	if !IsNil(o.PersonalGoodsFields) {
-		toSerialize["personal_goods_fields"] = o.PersonalGoodsFields
+	if !IsNil(o.LastModifiedAt) {
+		toSerialize["last_modified_at"] = o.LastModifiedAt
 	}
 	if !IsNil(o.LeisureHobbiesFields) {
 		toSerialize["leisure_hobbies_fields"] = o.LeisureHobbiesFields
 	}
-	if !IsNil(o.CommunityFields) {
-		toSerialize["community_fields"] = o.CommunityFields
+	if !IsNil(o.PersonalGoodsFields) {
+		toSerialize["personal_goods_fields"] = o.PersonalGoodsFields
+	}
+	if !IsNil(o.Price) {
+		toSerialize["price"] = o.Price
+	}
+	if !IsNil(o.RealEstateFields) {
+		toSerialize["real_estate_fields"] = o.RealEstateFields
+	}
+	if !IsNil(o.ServicesFields) {
+		toSerialize["services_fields"] = o.ServicesFields
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
 	if !IsNil(o.ToolsMaterialsEquipmentFields) {
 		toSerialize["tools_materials_equipment_fields"] = o.ToolsMaterialsEquipmentFields
 	}
-	if !IsNil(o.JobsFields) {
-		toSerialize["jobs_fields"] = o.JobsFields
+	if !IsNil(o.VehiclesFields) {
+		toSerialize["vehicles_fields"] = o.VehiclesFields
 	}
 	return toSerialize, nil
 }

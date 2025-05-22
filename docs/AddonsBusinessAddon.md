@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MetaData** | Pointer to [**AddonsAddonMetaData**](AddonsAddonMetaData.md) |  | [optional] 
 **BusinessRef** | Pointer to **string** |  | [optional] 
+**MetaData** | Pointer to [**AddonsAddonMetaData**](AddonsAddonMetaData.md) |  | [optional] 
 **Widgets** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewAddonsBusinessAddonWithDefaults instantiates a new AddonsBusinessAddon object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetMetaData
-
-`func (o *AddonsBusinessAddon) GetMetaData() AddonsAddonMetaData`
-
-GetMetaData returns the MetaData field if non-nil, zero value otherwise.
-
-### GetMetaDataOk
-
-`func (o *AddonsBusinessAddon) GetMetaDataOk() (*AddonsAddonMetaData, bool)`
-
-GetMetaDataOk returns a tuple with the MetaData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetaData
-
-`func (o *AddonsBusinessAddon) SetMetaData(v AddonsAddonMetaData)`
-
-SetMetaData sets MetaData field to given value.
-
-### HasMetaData
-
-`func (o *AddonsBusinessAddon) HasMetaData() bool`
-
-HasMetaData returns a boolean if a field has been set.
 
 ### GetBusinessRef
 
@@ -76,6 +51,31 @@ SetBusinessRef sets BusinessRef field to given value.
 `func (o *AddonsBusinessAddon) HasBusinessRef() bool`
 
 HasBusinessRef returns a boolean if a field has been set.
+
+### GetMetaData
+
+`func (o *AddonsBusinessAddon) GetMetaData() AddonsAddonMetaData`
+
+GetMetaData returns the MetaData field if non-nil, zero value otherwise.
+
+### GetMetaDataOk
+
+`func (o *AddonsBusinessAddon) GetMetaDataOk() (*AddonsAddonMetaData, bool)`
+
+GetMetaDataOk returns a tuple with the MetaData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaData
+
+`func (o *AddonsBusinessAddon) SetMetaData(v AddonsAddonMetaData)`
+
+SetMetaData sets MetaData field to given value.
+
+### HasMetaData
+
+`func (o *AddonsBusinessAddon) HasMetaData() bool`
+
+HasMetaData returns a boolean if a field has been set.
 
 ### GetWidgets
 

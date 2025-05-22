@@ -21,12 +21,12 @@ var _ MappedNullable = &ChatAPIConversationSendMessageBody{}
 
 // ChatAPIConversationSendMessageBody struct for ChatAPIConversationSendMessageBody
 type ChatAPIConversationSendMessageBody struct {
-	// Text message content to be sent
-	Message string `json:"message"`
 	// Token for attached media (if any)
 	MediaToken *string `json:"media_token,omitempty"`
-	SenderButtons *ChatapiChatButtonGrid `json:"sender_buttons,omitempty"`
+	// Text message content to be sent
+	Message string `json:"message"`
 	ReceiverButtons *ChatapiChatButtonGrid `json:"receiver_buttons,omitempty"`
+	SenderButtons *ChatapiChatButtonGrid `json:"sender_buttons,omitempty"`
 }
 
 type _ChatAPIConversationSendMessageBody ChatAPIConversationSendMessageBody
@@ -47,30 +47,6 @@ func NewChatAPIConversationSendMessageBody(message string) *ChatAPIConversationS
 func NewChatAPIConversationSendMessageBodyWithDefaults() *ChatAPIConversationSendMessageBody {
 	this := ChatAPIConversationSendMessageBody{}
 	return &this
-}
-
-// GetMessage returns the Message field value
-func (o *ChatAPIConversationSendMessageBody) GetMessage() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Message
-}
-
-// GetMessageOk returns a tuple with the Message field value
-// and a boolean to check if the value has been set.
-func (o *ChatAPIConversationSendMessageBody) GetMessageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Message, true
-}
-
-// SetMessage sets field value
-func (o *ChatAPIConversationSendMessageBody) SetMessage(v string) {
-	o.Message = v
 }
 
 // GetMediaToken returns the MediaToken field value if set, zero value otherwise.
@@ -105,36 +81,28 @@ func (o *ChatAPIConversationSendMessageBody) SetMediaToken(v string) {
 	o.MediaToken = &v
 }
 
-// GetSenderButtons returns the SenderButtons field value if set, zero value otherwise.
-func (o *ChatAPIConversationSendMessageBody) GetSenderButtons() ChatapiChatButtonGrid {
-	if o == nil || IsNil(o.SenderButtons) {
-		var ret ChatapiChatButtonGrid
+// GetMessage returns the Message field value
+func (o *ChatAPIConversationSendMessageBody) GetMessage() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.SenderButtons
+
+	return o.Message
 }
 
-// GetSenderButtonsOk returns a tuple with the SenderButtons field value if set, nil otherwise
+// GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
-func (o *ChatAPIConversationSendMessageBody) GetSenderButtonsOk() (*ChatapiChatButtonGrid, bool) {
-	if o == nil || IsNil(o.SenderButtons) {
+func (o *ChatAPIConversationSendMessageBody) GetMessageOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SenderButtons, true
+	return &o.Message, true
 }
 
-// HasSenderButtons returns a boolean if a field has been set.
-func (o *ChatAPIConversationSendMessageBody) HasSenderButtons() bool {
-	if o != nil && !IsNil(o.SenderButtons) {
-		return true
-	}
-
-	return false
-}
-
-// SetSenderButtons gets a reference to the given ChatapiChatButtonGrid and assigns it to the SenderButtons field.
-func (o *ChatAPIConversationSendMessageBody) SetSenderButtons(v ChatapiChatButtonGrid) {
-	o.SenderButtons = &v
+// SetMessage sets field value
+func (o *ChatAPIConversationSendMessageBody) SetMessage(v string) {
+	o.Message = v
 }
 
 // GetReceiverButtons returns the ReceiverButtons field value if set, zero value otherwise.
@@ -169,6 +137,38 @@ func (o *ChatAPIConversationSendMessageBody) SetReceiverButtons(v ChatapiChatBut
 	o.ReceiverButtons = &v
 }
 
+// GetSenderButtons returns the SenderButtons field value if set, zero value otherwise.
+func (o *ChatAPIConversationSendMessageBody) GetSenderButtons() ChatapiChatButtonGrid {
+	if o == nil || IsNil(o.SenderButtons) {
+		var ret ChatapiChatButtonGrid
+		return ret
+	}
+	return *o.SenderButtons
+}
+
+// GetSenderButtonsOk returns a tuple with the SenderButtons field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatAPIConversationSendMessageBody) GetSenderButtonsOk() (*ChatapiChatButtonGrid, bool) {
+	if o == nil || IsNil(o.SenderButtons) {
+		return nil, false
+	}
+	return o.SenderButtons, true
+}
+
+// HasSenderButtons returns a boolean if a field has been set.
+func (o *ChatAPIConversationSendMessageBody) HasSenderButtons() bool {
+	if o != nil && !IsNil(o.SenderButtons) {
+		return true
+	}
+
+	return false
+}
+
+// SetSenderButtons gets a reference to the given ChatapiChatButtonGrid and assigns it to the SenderButtons field.
+func (o *ChatAPIConversationSendMessageBody) SetSenderButtons(v ChatapiChatButtonGrid) {
+	o.SenderButtons = &v
+}
+
 func (o ChatAPIConversationSendMessageBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -179,15 +179,15 @@ func (o ChatAPIConversationSendMessageBody) MarshalJSON() ([]byte, error) {
 
 func (o ChatAPIConversationSendMessageBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["message"] = o.Message
 	if !IsNil(o.MediaToken) {
 		toSerialize["media_token"] = o.MediaToken
 	}
-	if !IsNil(o.SenderButtons) {
-		toSerialize["sender_buttons"] = o.SenderButtons
-	}
+	toSerialize["message"] = o.Message
 	if !IsNil(o.ReceiverButtons) {
 		toSerialize["receiver_buttons"] = o.ReceiverButtons
+	}
+	if !IsNil(o.SenderButtons) {
+		toSerialize["sender_buttons"] = o.SenderButtons
 	}
 	return toSerialize, nil
 }

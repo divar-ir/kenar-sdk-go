@@ -19,10 +19,10 @@ var _ MappedNullable = &AssetsGetPermissionsResponsePermission{}
 
 // AssetsGetPermissionsResponsePermission struct for AssetsGetPermissionsResponsePermission
 type AssetsGetPermissionsResponsePermission struct {
-	Slug *string `json:"slug,omitempty"`
-	Display *string `json:"display,omitempty"`
 	Description *string `json:"description,omitempty"`
+	Display *string `json:"display,omitempty"`
 	LifecycleState *AssetsGetPermissionsResponseLifeCycleState `json:"lifecycle_state,omitempty"`
+	Slug *string `json:"slug,omitempty"`
 }
 
 // NewAssetsGetPermissionsResponsePermission instantiates a new AssetsGetPermissionsResponsePermission object
@@ -40,70 +40,6 @@ func NewAssetsGetPermissionsResponsePermission() *AssetsGetPermissionsResponsePe
 func NewAssetsGetPermissionsResponsePermissionWithDefaults() *AssetsGetPermissionsResponsePermission {
 	this := AssetsGetPermissionsResponsePermission{}
 	return &this
-}
-
-// GetSlug returns the Slug field value if set, zero value otherwise.
-func (o *AssetsGetPermissionsResponsePermission) GetSlug() string {
-	if o == nil || IsNil(o.Slug) {
-		var ret string
-		return ret
-	}
-	return *o.Slug
-}
-
-// GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AssetsGetPermissionsResponsePermission) GetSlugOk() (*string, bool) {
-	if o == nil || IsNil(o.Slug) {
-		return nil, false
-	}
-	return o.Slug, true
-}
-
-// HasSlug returns a boolean if a field has been set.
-func (o *AssetsGetPermissionsResponsePermission) HasSlug() bool {
-	if o != nil && !IsNil(o.Slug) {
-		return true
-	}
-
-	return false
-}
-
-// SetSlug gets a reference to the given string and assigns it to the Slug field.
-func (o *AssetsGetPermissionsResponsePermission) SetSlug(v string) {
-	o.Slug = &v
-}
-
-// GetDisplay returns the Display field value if set, zero value otherwise.
-func (o *AssetsGetPermissionsResponsePermission) GetDisplay() string {
-	if o == nil || IsNil(o.Display) {
-		var ret string
-		return ret
-	}
-	return *o.Display
-}
-
-// GetDisplayOk returns a tuple with the Display field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AssetsGetPermissionsResponsePermission) GetDisplayOk() (*string, bool) {
-	if o == nil || IsNil(o.Display) {
-		return nil, false
-	}
-	return o.Display, true
-}
-
-// HasDisplay returns a boolean if a field has been set.
-func (o *AssetsGetPermissionsResponsePermission) HasDisplay() bool {
-	if o != nil && !IsNil(o.Display) {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplay gets a reference to the given string and assigns it to the Display field.
-func (o *AssetsGetPermissionsResponsePermission) SetDisplay(v string) {
-	o.Display = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -138,6 +74,38 @@ func (o *AssetsGetPermissionsResponsePermission) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetDisplay returns the Display field value if set, zero value otherwise.
+func (o *AssetsGetPermissionsResponsePermission) GetDisplay() string {
+	if o == nil || IsNil(o.Display) {
+		var ret string
+		return ret
+	}
+	return *o.Display
+}
+
+// GetDisplayOk returns a tuple with the Display field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssetsGetPermissionsResponsePermission) GetDisplayOk() (*string, bool) {
+	if o == nil || IsNil(o.Display) {
+		return nil, false
+	}
+	return o.Display, true
+}
+
+// HasDisplay returns a boolean if a field has been set.
+func (o *AssetsGetPermissionsResponsePermission) HasDisplay() bool {
+	if o != nil && !IsNil(o.Display) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplay gets a reference to the given string and assigns it to the Display field.
+func (o *AssetsGetPermissionsResponsePermission) SetDisplay(v string) {
+	o.Display = &v
+}
+
 // GetLifecycleState returns the LifecycleState field value if set, zero value otherwise.
 func (o *AssetsGetPermissionsResponsePermission) GetLifecycleState() AssetsGetPermissionsResponseLifeCycleState {
 	if o == nil || IsNil(o.LifecycleState) {
@@ -170,6 +138,38 @@ func (o *AssetsGetPermissionsResponsePermission) SetLifecycleState(v AssetsGetPe
 	o.LifecycleState = &v
 }
 
+// GetSlug returns the Slug field value if set, zero value otherwise.
+func (o *AssetsGetPermissionsResponsePermission) GetSlug() string {
+	if o == nil || IsNil(o.Slug) {
+		var ret string
+		return ret
+	}
+	return *o.Slug
+}
+
+// GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssetsGetPermissionsResponsePermission) GetSlugOk() (*string, bool) {
+	if o == nil || IsNil(o.Slug) {
+		return nil, false
+	}
+	return o.Slug, true
+}
+
+// HasSlug returns a boolean if a field has been set.
+func (o *AssetsGetPermissionsResponsePermission) HasSlug() bool {
+	if o != nil && !IsNil(o.Slug) {
+		return true
+	}
+
+	return false
+}
+
+// SetSlug gets a reference to the given string and assigns it to the Slug field.
+func (o *AssetsGetPermissionsResponsePermission) SetSlug(v string) {
+	o.Slug = &v
+}
+
 func (o AssetsGetPermissionsResponsePermission) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -180,17 +180,17 @@ func (o AssetsGetPermissionsResponsePermission) MarshalJSON() ([]byte, error) {
 
 func (o AssetsGetPermissionsResponsePermission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Slug) {
-		toSerialize["slug"] = o.Slug
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.Display) {
 		toSerialize["display"] = o.Display
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
 	if !IsNil(o.LifecycleState) {
 		toSerialize["lifecycle_state"] = o.LifecycleState
+	}
+	if !IsNil(o.Slug) {
+		toSerialize["slug"] = o.Slug
 	}
 	return toSerialize, nil
 }

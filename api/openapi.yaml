@@ -4,6 +4,8 @@ info:
   version: "1.0"
 servers:
 - url: https://open-api.divar.ir
+security:
+- APIKey: []
 tags:
 - name: ChatAPI
 - name: Events
@@ -278,7 +280,6 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
                 type: object
           description: A successful response.
         default:
@@ -307,7 +308,6 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
                 type: object
           description: A successful response.
         default:
@@ -338,7 +338,6 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
                 type: object
           description: A successful response.
         default:
@@ -1310,11 +1309,11 @@ paths:
       - Finder
 components:
   requestBodies:
-    SemanticCreateUserSemanticBody:
+    AddonsCreateUserAddonV2Body:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SemanticCreateUserSemanticBody'
+            $ref: '#/components/schemas/AddonsCreateUserAddonV2Body'
       required: true
     ChatAPIChatBotSendMessageBody:
       content:
@@ -1322,11 +1321,11 @@ components:
           schema:
             $ref: '#/components/schemas/ChatAPIChatBotSendMessageBody'
       required: true
-    AddonsCreateUserAddonV2Body:
+    SemanticCreateUserSemanticBody:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/AddonsCreateUserAddonV2Body'
+            $ref: '#/components/schemas/SemanticCreateUserSemanticBody'
       required: true
   schemas:
     AddonSecondaryLinkagePosition:
@@ -1390,9 +1389,9 @@ components:
             has_divider: true
             subtitle: subtitle
             label: label
-            title: title
             image_id: image_id
-            icon_name: KEYBOARD_ARROW_RIGHT
+            title: title
+            icon_name: null
           group_info_row:
             has_divider: true
             items:
@@ -1411,10 +1410,10 @@ components:
               open_direct_link: https://your-site.com/some-path
             title: title
           score_row:
-            percentage_score: 0
             has_divider: true
+            percentage_score: 6
             descriptive_score: descriptive_score
-            score_color: WARNING_SECONDARY
+            score_color: null
             action:
               get_dynamic_action:
                 data:
@@ -1425,12 +1424,25 @@ components:
               open_direct_link: https://your-site.com/some-path
             title: title
             icon_name: null
-          title_row:
-            has_divider: true
-            text: text
           subtitle_row:
             has_divider: true
             text: text
+          title_row:
+            has_divider: true
+            text: text
+          evaluation_row:
+            middle:
+              section_color: WARNING_SECONDARY
+              text: text
+            left:
+              section_color: WARNING_SECONDARY
+              text: text
+            indicator_percentage: 0
+            right:
+              section_color: WARNING_SECONDARY
+              text: text
+            icon_name: KEYBOARD_ARROW_RIGHT
+            indicator_text: indicator_text
           selector_row:
             has_divider: true
             action:
@@ -1441,21 +1453,8 @@ components:
                 data:
                   your-internal-id: something
               open_direct_link: https://your-site.com/some-path
-            title: title
             image_id: image_id
-            icon_name: null
-          evaluation_row:
-            middle:
-              section_color: null
-              text: text
-            left:
-              section_color: null
-              text: text
-            indicator_percentage: 6
-            right:
-              section_color: null
-              text: text
-            indicator_text: indicator_text
+            title: title
             icon_name: null
           semantic_paths:
             key: semantic_paths
@@ -1474,9 +1473,9 @@ components:
             has_divider: true
             subtitle: subtitle
             label: label
-            title: title
             image_id: image_id
-            icon_name: KEYBOARD_ARROW_RIGHT
+            title: title
+            icon_name: null
           group_info_row:
             has_divider: true
             items:
@@ -1495,10 +1494,10 @@ components:
               open_direct_link: https://your-site.com/some-path
             title: title
           score_row:
-            percentage_score: 0
             has_divider: true
+            percentage_score: 6
             descriptive_score: descriptive_score
-            score_color: WARNING_SECONDARY
+            score_color: null
             action:
               get_dynamic_action:
                 data:
@@ -1509,12 +1508,25 @@ components:
               open_direct_link: https://your-site.com/some-path
             title: title
             icon_name: null
-          title_row:
-            has_divider: true
-            text: text
           subtitle_row:
             has_divider: true
             text: text
+          title_row:
+            has_divider: true
+            text: text
+          evaluation_row:
+            middle:
+              section_color: WARNING_SECONDARY
+              text: text
+            left:
+              section_color: WARNING_SECONDARY
+              text: text
+            indicator_percentage: 0
+            right:
+              section_color: WARNING_SECONDARY
+              text: text
+            icon_name: KEYBOARD_ARROW_RIGHT
+            indicator_text: indicator_text
           selector_row:
             has_divider: true
             action:
@@ -1525,21 +1537,8 @@ components:
                 data:
                   your-internal-id: something
               open_direct_link: https://your-site.com/some-path
-            title: title
             image_id: image_id
-            icon_name: null
-          evaluation_row:
-            middle:
-              section_color: null
-              text: text
-            left:
-              section_color: null
-              text: text
-            indicator_percentage: 6
-            right:
-              section_color: null
-              text: text
-            indicator_text: indicator_text
+            title: title
             icon_name: null
           semantic_paths:
             key: semantic_paths
@@ -1548,16 +1547,16 @@ components:
             expandable: true
             text: text
       properties:
-        widgets:
-          items:
-            $ref: '#/components/schemas/addonsWidget'
-          type: array
+        notes:
+          type: string
         semantic:
           additionalProperties:
             type: string
           type: object
-        notes:
-          type: string
+        widgets:
+          items:
+            $ref: '#/components/schemas/addonsWidget'
+          type: array
       type: object
     AddonsCreateUserAddonV2Body:
       example:
@@ -1581,9 +1580,9 @@ components:
             has_divider: true
             subtitle: subtitle
             label: label
-            title: title
             image_id: image_id
-            icon_name: KEYBOARD_ARROW_RIGHT
+            title: title
+            icon_name: null
           group_info_row:
             has_divider: true
             items:
@@ -1602,10 +1601,10 @@ components:
               open_direct_link: https://your-site.com/some-path
             title: title
           score_row:
-            percentage_score: 0
             has_divider: true
+            percentage_score: 6
             descriptive_score: descriptive_score
-            score_color: WARNING_SECONDARY
+            score_color: null
             action:
               get_dynamic_action:
                 data:
@@ -1616,12 +1615,25 @@ components:
               open_direct_link: https://your-site.com/some-path
             title: title
             icon_name: null
-          title_row:
-            has_divider: true
-            text: text
           subtitle_row:
             has_divider: true
             text: text
+          title_row:
+            has_divider: true
+            text: text
+          evaluation_row:
+            middle:
+              section_color: WARNING_SECONDARY
+              text: text
+            left:
+              section_color: WARNING_SECONDARY
+              text: text
+            indicator_percentage: 0
+            right:
+              section_color: WARNING_SECONDARY
+              text: text
+            icon_name: KEYBOARD_ARROW_RIGHT
+            indicator_text: indicator_text
           selector_row:
             has_divider: true
             action:
@@ -1632,21 +1644,8 @@ components:
                 data:
                   your-internal-id: something
               open_direct_link: https://your-site.com/some-path
-            title: title
             image_id: image_id
-            icon_name: null
-          evaluation_row:
-            middle:
-              section_color: null
-              text: text
-            left:
-              section_color: null
-              text: text
-            indicator_percentage: 6
-            right:
-              section_color: null
-              text: text
-            indicator_text: indicator_text
+            title: title
             icon_name: null
           semantic_paths:
             key: semantic_paths
@@ -1665,9 +1664,9 @@ components:
             has_divider: true
             subtitle: subtitle
             label: label
-            title: title
             image_id: image_id
-            icon_name: KEYBOARD_ARROW_RIGHT
+            title: title
+            icon_name: null
           group_info_row:
             has_divider: true
             items:
@@ -1686,10 +1685,10 @@ components:
               open_direct_link: https://your-site.com/some-path
             title: title
           score_row:
-            percentage_score: 0
             has_divider: true
+            percentage_score: 6
             descriptive_score: descriptive_score
-            score_color: WARNING_SECONDARY
+            score_color: null
             action:
               get_dynamic_action:
                 data:
@@ -1700,12 +1699,25 @@ components:
               open_direct_link: https://your-site.com/some-path
             title: title
             icon_name: null
-          title_row:
-            has_divider: true
-            text: text
           subtitle_row:
             has_divider: true
             text: text
+          title_row:
+            has_divider: true
+            text: text
+          evaluation_row:
+            middle:
+              section_color: WARNING_SECONDARY
+              text: text
+            left:
+              section_color: WARNING_SECONDARY
+              text: text
+            indicator_percentage: 0
+            right:
+              section_color: WARNING_SECONDARY
+              text: text
+            icon_name: KEYBOARD_ARROW_RIGHT
+            indicator_text: indicator_text
           selector_row:
             has_divider: true
             action:
@@ -1716,21 +1728,8 @@ components:
                 data:
                   your-internal-id: something
               open_direct_link: https://your-site.com/some-path
-            title: title
             image_id: image_id
-            icon_name: null
-          evaluation_row:
-            middle:
-              section_color: null
-              text: text
-            left:
-              section_color: null
-              text: text
-            indicator_percentage: 6
-            right:
-              section_color: null
-              text: text
-            indicator_text: indicator_text
+            title: title
             icon_name: null
           semantic_paths:
             key: semantic_paths
@@ -1739,25 +1738,25 @@ components:
             expandable: true
             text: text
       properties:
-        widgets:
-          items:
-            $ref: '#/components/schemas/addonsWidget'
-          type: array
-        semantic:
-          additionalProperties:
-            type: string
-          type: object
-        phone:
-          type: string
         categories:
           items:
             type: string
           type: array
-        ticket_uuid:
-          type: string
         cost:
           format: int32
           type: integer
+        phone:
+          type: string
+        semantic:
+          additionalProperties:
+            type: string
+          type: object
+        ticket_uuid:
+          type: string
+        widgets:
+          items:
+            $ref: '#/components/schemas/addonsWidget'
+          type: array
       type: object
     ChatAPIChatBotSendMessageBody:
       example:
@@ -1813,21 +1812,21 @@ components:
         text_message: Thank you for your inquiry. How can I help you?
         media_token: media_token_12345
       properties:
-        user_id:
-          description: Unique identifier for the user to start or continue a conversation
-            with
-          example: user_789012
+        buttons:
+          $ref: '#/components/schemas/chatapiChatButtonGrid'
+        media_token:
+          description: Token for attached media (if any)
+          example: media_token_12345
           type: string
         text_message:
           description: Text message content to be sent by the bot
           example: Thank you for your inquiry. How can I help you?
           type: string
-        media_token:
-          description: Token for attached media (if any)
-          example: media_token_12345
+        user_id:
+          description: Unique identifier for the user to start or continue a conversation
+            with
+          example: user_789012
           type: string
-        buttons:
-          $ref: '#/components/schemas/chatapiChatButtonGrid'
       required:
       - text_message
       type: object
@@ -1932,17 +1931,17 @@ components:
         message: "Hello, I'm interested in your product"
         media_token: media_token_12345
       properties:
-        message:
-          description: Text message content to be sent
-          example: "Hello, I'm interested in your product"
-          type: string
         media_token:
           description: Token for attached media (if any)
           example: media_token_12345
           type: string
-        sender_buttons:
-          $ref: '#/components/schemas/chatapiChatButtonGrid'
+        message:
+          description: Text message content to be sent
+          example: "Hello, I'm interested in your product"
+          type: string
         receiver_buttons:
+          $ref: '#/components/schemas/chatapiChatButtonGrid'
+        sender_buttons:
           $ref: '#/components/schemas/chatapiChatButtonGrid'
       required:
       - message
@@ -2741,49 +2740,50 @@ components:
       - SPARKLES_F
       - HAND_CLICK
       - WHATS_APP
+      - CHAT_SPARKLES
       type: string
     GetPostPricingResponseReorder:
       example:
         available: true
         cost_rials: cost_rials
       properties:
-        cost_rials:
-          description: The cost of reordering in rials
-          format: int64
-          type: string
         available:
           description: "Indicates if the post can be reordered. If false, the reorder\
             \ API will return an error"
           type: boolean
+        cost_rials:
+          description: The cost of reordering in rials
+          format: int64
+          type: string
       type: object
     GetPostResponseBusinessData:
       example:
         business_name: business_name
         business_type: CAR
       properties:
-        business_type:
-          $ref: '#/components/schemas/PremiumPanelBusinessDataSubBusinessType'
         business_name:
           type: string
+        business_type:
+          $ref: '#/components/schemas/PremiumPanelBusinessDataSubBusinessType'
       type: object
     GetServiceTypesResponseServiceTypeData:
       example:
         display: display
         slug: FUNC_CLICK_AND_COLLECT
       properties:
-        slug:
-          $ref: '#/components/schemas/appsServiceType'
         display:
           type: string
+        slug:
+          $ref: '#/components/schemas/appsServiceType'
       type: object
     ImageCarouselRowImageItem:
       example:
         description: description
         image_id: image_id
       properties:
-        image_id:
-          type: string
         description:
+          type: string
+        image_id:
           type: string
       type: object
     MessageFileData:
@@ -2807,14 +2807,14 @@ components:
         height_px: 0
         link: link
       properties:
+        height_px:
+          format: int64
+          type: integer
         link:
           type: string
         size_bytes:
           format: uint64
           type: string
-        height_px:
-          format: int64
-          type: integer
         width_px:
           format: int64
           type: integer
@@ -2852,10 +2852,10 @@ components:
       properties:
         link:
           type: string
-        thumbnail_link:
-          type: string
         size_bytes:
           format: uint64
+          type: string
+        thumbnail_link:
           type: string
       type: object
     MessageVoiceData:
@@ -2903,16 +2903,16 @@ components:
         extra_details: extra_details
         id: id
       properties:
+        extra_details:
+          description: Additional details that you want to send to the Kenar side.
+            This field is optional and can be used to solve inconsistencies in the
+            transaction.
+          type: string
         id:
           description: "A Version 4 uuid that must be unique for each payment. This\
             \ uuid must be generated on your side and sent in the request. If an id\
             \ is sent that has a successful or semi-successful transaction on the\
             \ Kenar side, you will receive an error."
-          type: string
-        extra_details:
-          description: Additional details that you want to send to the Kenar side.
-            This field is optional and can be used to solve inconsistencies in the
-            transaction.
           type: string
       type: object
     PostEditPostBody:
@@ -2923,14 +2923,14 @@ components:
         - image_paths
         title: title
       properties:
-        title:
-          type: string
         description:
           type: string
         image_paths:
           items:
             type: string
           type: array
+        title:
+          type: string
       type: object
     PremiumPanelBusinessDataSubBusinessType:
       enum:
@@ -2968,38 +2968,38 @@ components:
         has_elevator: true
         has_parking: true
         rooms: rooms
-        size: 0
-        year: 6
+        size: 6
+        year: 1
         daily_rent: daily_rent
         credit:
           mode: mode
           value: value
+        floor: 0
         rent:
           mode: mode
           value: value
-        floor: 1
       properties:
         credit:
           $ref: '#/components/schemas/SearchPostItemPrice'
-        rent:
-          $ref: '#/components/schemas/SearchPostItemPrice'
         daily_rent:
           format: uint64
+          type: string
+        floor:
+          format: int32
+          type: integer
+        has_elevator:
+          type: boolean
+        has_parking:
+          type: boolean
+        rent:
+          $ref: '#/components/schemas/SearchPostItemPrice'
+        rooms:
           type: string
         size:
           format: int32
           type: integer
         year:
           format: int64
-          type: integer
-        has_parking:
-          type: boolean
-        has_elevator:
-          type: boolean
-        rooms:
-          type: string
-        floor:
-          format: int32
           type: integer
       type: object
     SearchPostItemServicesFields:
@@ -3012,12 +3012,12 @@ components:
         usage: usage
         custom_post_subtitle: custom_post_subtitle
       properties:
-        usage:
-          format: uint64
+        custom_post_subtitle:
           type: string
         installment_sale:
           type: string
-        custom_post_subtitle:
+        usage:
+          format: uint64
           type: string
       type: object
     SemanticCreatePostSemanticBody:
@@ -3027,15 +3027,15 @@ components:
           key: semantic
         cost: 0
       properties:
+        cost:
+          format: int32
+          type: integer
         semantic:
           additionalProperties:
             type: string
           type: object
         ticket_uuid:
           type: string
-        cost:
-          format: int32
-          type: integer
       type: object
     SemanticCreateUserSemanticBody:
       example:
@@ -3045,6 +3045,9 @@ components:
         cost: 0
         phone: phone
       properties:
+        cost:
+          format: int32
+          type: integer
         phone:
           type: string
         semantic:
@@ -3053,9 +3056,6 @@ components:
           type: object
         ticket_uuid:
           type: string
-        cost:
-          format: int32
-          type: integer
       type: object
     addonsAction:
       description: Represents an action that can be performed
@@ -3068,6 +3068,8 @@ components:
             your-internal-id: something
         open_direct_link: https://your-site.com/some-path
       properties:
+        get_dynamic_action:
+          $ref: '#/components/schemas/addonsGetDynamicAction'
         open_direct_link:
           description: An action to send user to your URL directly with just a resource
             id (if applicable)
@@ -3075,8 +3077,6 @@ components:
           type: string
         open_server_link:
           $ref: '#/components/schemas/addonsOpenServerLink'
-        get_dynamic_action:
-          $ref: '#/components/schemas/addonsGetDynamicAction'
       title: Action
       type: object
     addonsAddonLinkage:
@@ -3105,22 +3105,22 @@ components:
         last_modified: 2000-01-23T04:56:07.000+00:00
         status: ACTIVE
       properties:
-        id:
-          type: string
         app:
           $ref: '#/components/schemas/appsApp'
         created_at:
           format: date-time
           type: string
+        id:
+          type: string
         last_modified:
           format: date-time
           type: string
-        status:
-          $ref: '#/components/schemas/addonsStatus'
         service_tags:
           items:
             $ref: '#/components/schemas/appsServiceTag'
           type: array
+        status:
+          $ref: '#/components/schemas/addonsStatus'
       type: object
     addonsAddonSecondaryLinkage:
       properties:
@@ -3138,11 +3138,9 @@ components:
       type: object
     addonsAddonSelector:
       properties:
-        tokens:
+        brand_models:
           items:
             type: string
-          title: (OR) post is selected if the following array contains corresponding
-            field
           type: array
         categories:
           items:
@@ -3156,9 +3154,11 @@ components:
           items:
             type: string
           type: array
-        brand_models:
+        tokens:
           items:
             type: string
+          title: (OR) post is selected if the following array contains corresponding
+            field
           type: array
       title: |-
         (AND) post is selected by this selector if all of the following conditions
@@ -3174,40 +3174,40 @@ components:
          - Enum values should not correspond to any specific post or person
          attribute.
       example:
+        car_verification_last_successful_stage: null
         identity_verification_result: FACE_AND_ID_MATCHED
-        car_verification_last_successful_stage: CARVERIFICATIONSTAGE_NOT_STARTED
         ownership_result: OWNERSHIP_CONFIRMED
         post_verification_result: POST_INFORMATION_MATCHED
-        identity_verification_last_successful_stage: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
+        identity_verification_last_successful_stage: null
         inspection_result: INSPECTION_APPROVED
         new_face_verification_result: NEW_FACE_VERIFICATION_FAILED
+        car_verification_failure_reason: CARVERIFICATIONSTAGE_NOT_STARTED
+        identity_verification_failure_reason: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
         payment_method: SECURE
-        identity_verification_failure_reason: null
-        car_verification_failure_reason: null
         status: SUCCEEDED
       properties:
-        payment_method:
-          $ref: '#/components/schemas/addonsAddonSemanticPaymentMethod'
-        identity_verification_result:
-          $ref: '#/components/schemas/AddonSemanticIdentityVerificationResult'
-        post_verification_result:
-          $ref: '#/components/schemas/AddonSemanticPostVerificationResult'
-        status:
-          $ref: '#/components/schemas/addonsAddonSemanticStatus'
-        identity_verification_last_successful_stage:
-          $ref: '#/components/schemas/AddonSemanticIdentityVerificationStage'
-        identity_verification_failure_reason:
-          $ref: '#/components/schemas/AddonSemanticIdentityVerificationStage'
-        car_verification_last_successful_stage:
-          $ref: '#/components/schemas/AddonSemanticCarVerificationStage'
         car_verification_failure_reason:
           $ref: '#/components/schemas/AddonSemanticCarVerificationStage'
-        ownership_result:
-          $ref: '#/components/schemas/AddonSemanticOwnershipResult'
+        car_verification_last_successful_stage:
+          $ref: '#/components/schemas/AddonSemanticCarVerificationStage'
+        identity_verification_failure_reason:
+          $ref: '#/components/schemas/AddonSemanticIdentityVerificationStage'
+        identity_verification_last_successful_stage:
+          $ref: '#/components/schemas/AddonSemanticIdentityVerificationStage'
+        identity_verification_result:
+          $ref: '#/components/schemas/AddonSemanticIdentityVerificationResult'
         inspection_result:
           $ref: '#/components/schemas/AddonSemanticInspectionResult'
         new_face_verification_result:
           $ref: '#/components/schemas/AddonSemanticNewFaceVerificationResult'
+        ownership_result:
+          $ref: '#/components/schemas/AddonSemanticOwnershipResult'
+        payment_method:
+          $ref: '#/components/schemas/addonsAddonSemanticPaymentMethod'
+        post_verification_result:
+          $ref: '#/components/schemas/AddonSemanticPostVerificationResult'
+        status:
+          $ref: '#/components/schemas/addonsAddonSemanticStatus'
       type: object
     addonsAddonSemanticPaymentMethod:
       enum:
@@ -3225,10 +3225,10 @@ components:
       type: object
     addonsBusinessAddon:
       properties:
-        meta_data:
-          $ref: '#/components/schemas/addonsAddonMetaData'
         business_ref:
           type: string
+        meta_data:
+          $ref: '#/components/schemas/addonsAddonMetaData'
         widgets:
           type: object
       type: object
@@ -3244,24 +3244,20 @@ components:
           open_direct_link: https://your-site.com/some-path
         title: title
       properties:
-        title:
-          type: string
         action:
           $ref: '#/components/schemas/addonsAction'
+        title:
+          type: string
       type: object
     addonsCreatePostAddonRequest:
       properties:
-        token:
-          type: string
-        widgets:
-          type: object
-        selector:
-          $ref: '#/components/schemas/addonsAddonSelector'
         link_in_spec:
           type: string
         notes:
           title: arbitrary data provided by addon creator
           type: string
+        selector:
+          $ref: '#/components/schemas/addonsAddonSelector'
         semantic:
           additionalProperties:
             type: string
@@ -3270,6 +3266,10 @@ components:
           items:
             type: string
           type: array
+        token:
+          type: string
+        widgets:
+          type: object
       type: object
     addonsCreatePostAddonResponseV2:
       type: object
@@ -3286,35 +3286,35 @@ components:
         expandable: true
         text: text
       properties:
-        text:
-          type: string
-        has_divider:
-          type: boolean
         expandable:
           type: boolean
+        has_divider:
+          type: boolean
+        text:
+          type: string
       type: object
     addonsEvaluationRow:
       example:
         middle:
-          section_color: null
+          section_color: WARNING_SECONDARY
           text: text
         left:
-          section_color: null
+          section_color: WARNING_SECONDARY
           text: text
-        indicator_percentage: 6
+        indicator_percentage: 0
         right:
-          section_color: null
+          section_color: WARNING_SECONDARY
           text: text
+        icon_name: KEYBOARD_ARROW_RIGHT
         indicator_text: indicator_text
-        icon_name: null
       properties:
-        indicator_text:
-          type: string
+        icon_name:
+          $ref: '#/components/schemas/DivarIconsIconName'
         indicator_percentage:
           format: int32
           type: integer
-        icon_name:
-          $ref: '#/components/schemas/DivarIconsIconName'
+        indicator_text:
+          type: string
         left:
           $ref: '#/components/schemas/addonsEvaluationRowSection'
         middle:
@@ -3324,35 +3324,35 @@ components:
       type: object
     addonsEvaluationRowSection:
       example:
-        section_color: null
+        section_color: WARNING_SECONDARY
         text: text
       properties:
-        text:
-          type: string
         section_color:
           $ref: '#/components/schemas/addonsWidgetColor'
+        text:
+          type: string
       type: object
     addonsEventRow:
       example:
         has_divider: true
         subtitle: subtitle
         label: label
-        title: title
         image_id: image_id
-        icon_name: KEYBOARD_ARROW_RIGHT
+        title: title
+        icon_name: null
       properties:
-        title:
-          type: string
-        subtitle:
-          type: string
-        label:
-          type: string
-        image_id:
-          type: string
         has_divider:
           type: boolean
         icon_name:
           $ref: '#/components/schemas/DivarIconsIconName'
+        image_id:
+          type: string
+        label:
+          type: string
+        subtitle:
+          type: string
+        title:
+          type: string
       type: object
     addonsGetBusinessAddonsResponse:
       properties:
@@ -3416,16 +3416,16 @@ components:
             - categories
           widgets: "{}"
           semantic_data:
+            car_verification_last_successful_stage: null
             identity_verification_result: FACE_AND_ID_MATCHED
-            car_verification_last_successful_stage: CARVERIFICATIONSTAGE_NOT_STARTED
             ownership_result: OWNERSHIP_CONFIRMED
             post_verification_result: POST_INFORMATION_MATCHED
-            identity_verification_last_successful_stage: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
+            identity_verification_last_successful_stage: null
             inspection_result: INSPECTION_APPROVED
             new_face_verification_result: NEW_FACE_VERIFICATION_FAILED
+            car_verification_failure_reason: CARVERIFICATIONSTAGE_NOT_STARTED
+            identity_verification_failure_reason: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
             payment_method: SECURE
-            identity_verification_failure_reason: null
-            car_verification_failure_reason: null
             status: SUCCEEDED
           widgets_semantic: "{}"
           divar_user_id: divar_user_id
@@ -3459,16 +3459,16 @@ components:
             - categories
           widgets: "{}"
           semantic_data:
+            car_verification_last_successful_stage: null
             identity_verification_result: FACE_AND_ID_MATCHED
-            car_verification_last_successful_stage: CARVERIFICATIONSTAGE_NOT_STARTED
             ownership_result: OWNERSHIP_CONFIRMED
             post_verification_result: POST_INFORMATION_MATCHED
-            identity_verification_last_successful_stage: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
+            identity_verification_last_successful_stage: null
             inspection_result: INSPECTION_APPROVED
             new_face_verification_result: NEW_FACE_VERIFICATION_FAILED
+            car_verification_failure_reason: CARVERIFICATIONSTAGE_NOT_STARTED
+            identity_verification_failure_reason: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
             payment_method: SECURE
-            identity_verification_failure_reason: null
-            car_verification_failure_reason: null
             status: SUCCEEDED
           widgets_semantic: "{}"
           divar_user_id: divar_user_id
@@ -3494,12 +3494,12 @@ components:
         - title: title
           value: value
       properties:
+        has_divider:
+          type: boolean
         items:
           items:
             $ref: '#/components/schemas/addonsGroupInfoRowGroupInfoItem'
           type: array
-        has_divider:
-          type: boolean
       type: object
     addonsGroupInfoRowGroupInfoItem:
       example:
@@ -3520,12 +3520,12 @@ components:
         - description: description
           image_id: image_id
       properties:
+        has_divider:
+          type: boolean
         items:
           items:
             $ref: '#/components/schemas/ImageCarouselRowImageItem'
           type: array
-        has_divider:
-          type: boolean
       type: object
     addonsOpenServerLink:
       description: An action to pass complete session data and retrieve redirect location
@@ -3544,23 +3544,19 @@ components:
       type: object
     addonsPostAddon:
       properties:
-        meta_data:
-          $ref: '#/components/schemas/addonsAddonMetaData'
-        token:
-          type: string
         app:
           $ref: '#/components/schemas/appsApp'
-        widgets:
-          type: object
+        linkage:
+          $ref: '#/components/schemas/addonsAddonLinkage'
+        meta_data:
+          $ref: '#/components/schemas/addonsAddonMetaData'
         score:
           format: int64
           type: string
-        selector:
-          $ref: '#/components/schemas/addonsAddonSelector'
-        linkage:
-          $ref: '#/components/schemas/addonsAddonLinkage'
         secondary_links:
           $ref: '#/components/schemas/addonsAddonSecondaryLinks'
+        selector:
+          $ref: '#/components/schemas/addonsAddonSelector'
         semantic:
           additionalProperties:
             type: string
@@ -3568,24 +3564,28 @@ components:
           type: object
         semantic_data:
           $ref: '#/components/schemas/addonsAddonSemantic'
-        sensitive_semantic:
-          additionalProperties:
-            type: string
-          type: object
-        widgets_semantic:
-          type: object
         semantic_sensitives:
           items:
             type: string
           title: deprecated
           type: array
+        sensitive_semantic:
+          additionalProperties:
+            type: string
+          type: object
+        token:
+          type: string
+        widgets:
+          type: object
+        widgets_semantic:
+          type: object
       type: object
     addonsScoreRow:
       example:
-        percentage_score: 0
         has_divider: true
+        percentage_score: 6
         descriptive_score: descriptive_score
-        score_color: WARNING_SECONDARY
+        score_color: null
         action:
           get_dynamic_action:
             data:
@@ -3597,21 +3597,21 @@ components:
         title: title
         icon_name: null
       properties:
-        title:
-          type: string
+        action:
+          $ref: '#/components/schemas/addonsAction'
         descriptive_score:
           type: string
+        has_divider:
+          type: boolean
+        icon_name:
+          $ref: '#/components/schemas/DivarIconsIconName'
         percentage_score:
           format: int32
           type: integer
         score_color:
           $ref: '#/components/schemas/addonsWidgetColor'
-        has_divider:
-          type: boolean
-        icon_name:
-          $ref: '#/components/schemas/DivarIconsIconName'
-        action:
-          $ref: '#/components/schemas/addonsAction'
+        title:
+          type: string
       type: object
     addonsSelectorRow:
       example:
@@ -3624,20 +3624,20 @@ components:
             data:
               your-internal-id: something
           open_direct_link: https://your-site.com/some-path
-        title: title
         image_id: image_id
+        title: title
         icon_name: null
       properties:
-        title:
-          type: string
-        image_id:
-          type: string
+        action:
+          $ref: '#/components/schemas/addonsAction'
         has_divider:
           type: boolean
         icon_name:
           $ref: '#/components/schemas/DivarIconsIconName'
-        action:
-          $ref: '#/components/schemas/addonsAction'
+        image_id:
+          type: string
+        title:
+          type: string
       type: object
     addonsSendAddonDeletionEventsResponse:
       type: object
@@ -3652,20 +3652,20 @@ components:
         has_divider: true
         text: text
       properties:
-        text:
-          type: string
         has_divider:
           type: boolean
+        text:
+          type: string
       type: object
     addonsTitleRow:
       example:
         has_divider: true
         text: text
       properties:
-        text:
-          type: string
         has_divider:
           type: boolean
+        text:
+          type: string
       type: object
     addonsUserAddon:
       example:
@@ -3699,30 +3699,30 @@ components:
           - categories
         widgets: "{}"
         semantic_data:
+          car_verification_last_successful_stage: null
           identity_verification_result: FACE_AND_ID_MATCHED
-          car_verification_last_successful_stage: CARVERIFICATIONSTAGE_NOT_STARTED
           ownership_result: OWNERSHIP_CONFIRMED
           post_verification_result: POST_INFORMATION_MATCHED
-          identity_verification_last_successful_stage: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
+          identity_verification_last_successful_stage: null
           inspection_result: INSPECTION_APPROVED
           new_face_verification_result: NEW_FACE_VERIFICATION_FAILED
+          car_verification_failure_reason: CARVERIFICATIONSTAGE_NOT_STARTED
+          identity_verification_failure_reason: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
           payment_method: SECURE
-          identity_verification_failure_reason: null
-          car_verification_failure_reason: null
           status: SUCCEEDED
         widgets_semantic: "{}"
         divar_user_id: divar_user_id
       properties:
+        divar_user_id:
+          title: new field
+          type: string
+        filters:
+          $ref: '#/components/schemas/addonsUserAddonFilters'
         meta_data:
           $ref: '#/components/schemas/addonsAddonMetaData'
         phone:
           title: will be deprecated
           type: string
-        divar_user_id:
-          title: new field
-          type: string
-        widgets:
-          type: object
         semantic:
           additionalProperties:
             type: string
@@ -3734,10 +3734,10 @@ components:
           additionalProperties:
             type: string
           type: object
+        widgets:
+          type: object
         widgets_semantic:
           type: object
-        filters:
-          $ref: '#/components/schemas/addonsUserAddonFilters'
       type: object
     addonsUserAddonFilters:
       example:
@@ -3763,9 +3763,9 @@ components:
           has_divider: true
           subtitle: subtitle
           label: label
-          title: title
           image_id: image_id
-          icon_name: KEYBOARD_ARROW_RIGHT
+          title: title
+          icon_name: null
         group_info_row:
           has_divider: true
           items:
@@ -3784,10 +3784,10 @@ components:
             open_direct_link: https://your-site.com/some-path
           title: title
         score_row:
-          percentage_score: 0
           has_divider: true
+          percentage_score: 6
           descriptive_score: descriptive_score
-          score_color: WARNING_SECONDARY
+          score_color: null
           action:
             get_dynamic_action:
               data:
@@ -3798,12 +3798,25 @@ components:
             open_direct_link: https://your-site.com/some-path
           title: title
           icon_name: null
-        title_row:
-          has_divider: true
-          text: text
         subtitle_row:
           has_divider: true
           text: text
+        title_row:
+          has_divider: true
+          text: text
+        evaluation_row:
+          middle:
+            section_color: WARNING_SECONDARY
+            text: text
+          left:
+            section_color: WARNING_SECONDARY
+            text: text
+          indicator_percentage: 0
+          right:
+            section_color: WARNING_SECONDARY
+            text: text
+          icon_name: KEYBOARD_ARROW_RIGHT
+          indicator_text: indicator_text
         selector_row:
           has_divider: true
           action:
@@ -3814,21 +3827,8 @@ components:
               data:
                 your-internal-id: something
             open_direct_link: https://your-site.com/some-path
-          title: title
           image_id: image_id
-          icon_name: null
-        evaluation_row:
-          middle:
-            section_color: null
-            text: text
-          left:
-            section_color: null
-            text: text
-          indicator_percentage: 6
-          right:
-            section_color: null
-            text: text
-          indicator_text: indicator_text
+          title: title
           icon_name: null
         semantic_paths:
           key: semantic_paths
@@ -3837,30 +3837,30 @@ components:
           expandable: true
           text: text
       properties:
-        event_row:
-          $ref: '#/components/schemas/addonsEventRow'
         button_bar:
           $ref: '#/components/schemas/addonsButtonBar'
-        title_row:
-          $ref: '#/components/schemas/addonsTitleRow'
-        subtitle_row:
-          $ref: '#/components/schemas/addonsSubtitleRow'
-        selector_row:
-          $ref: '#/components/schemas/addonsSelectorRow'
-        score_row:
-          $ref: '#/components/schemas/addonsScoreRow'
-        image_carousel_row:
-          $ref: '#/components/schemas/addonsImageCarouselRow'
-        group_info_row:
-          $ref: '#/components/schemas/addonsGroupInfoRow'
-        evaluation_row:
-          $ref: '#/components/schemas/addonsEvaluationRow'
         description_row:
           $ref: '#/components/schemas/addonsDescriptionRow'
+        evaluation_row:
+          $ref: '#/components/schemas/addonsEvaluationRow'
+        event_row:
+          $ref: '#/components/schemas/addonsEventRow'
+        group_info_row:
+          $ref: '#/components/schemas/addonsGroupInfoRow'
+        image_carousel_row:
+          $ref: '#/components/schemas/addonsImageCarouselRow'
+        score_row:
+          $ref: '#/components/schemas/addonsScoreRow'
+        selector_row:
+          $ref: '#/components/schemas/addonsSelectorRow'
         semantic_paths:
           additionalProperties:
             type: string
           type: object
+        subtitle_row:
+          $ref: '#/components/schemas/addonsSubtitleRow'
+        title_row:
+          $ref: '#/components/schemas/addonsTitleRow'
       type: object
     addonsWidgetColor:
       enum:
@@ -3885,23 +3885,23 @@ components:
         status:
           status: ACTIVE
       properties:
-        slug:
+        avatar:
           type: string
         display:
           type: string
-        avatar:
-          type: string
         divar_identification_key:
           type: string
-        status:
-          $ref: '#/components/schemas/appsAppStatus'
-        service_type:
-          $ref: '#/components/schemas/appsServiceType'
         service_tags:
           items:
             $ref: '#/components/schemas/appsServiceTag'
           title: deprecated - use AddonMetaData.service_tags
           type: array
+        service_type:
+          $ref: '#/components/schemas/appsServiceType'
+        slug:
+          type: string
+        status:
+          $ref: '#/components/schemas/appsAppStatus'
       type: object
     appsAppStatus:
       example:
@@ -4087,14 +4087,14 @@ components:
         description: description
         slug: POST_ADDON_CREATE
       properties:
-        slug:
-          $ref: '#/components/schemas/OAuthScopeScope'
-        display:
-          type: string
         description:
+          type: string
+        display:
           type: string
         lifecycle_state:
           $ref: '#/components/schemas/assetsGetOAuthScopesResponseLifeCycleState'
+        slug:
+          $ref: '#/components/schemas/OAuthScopeScope'
       type: object
     assetsGetOAuthScopesResponseLifeCycleState:
       enum:
@@ -4134,14 +4134,14 @@ components:
         description: description
         slug: slug
       properties:
-        slug:
+        description:
           type: string
         display:
           type: string
-        description:
-          type: string
         lifecycle_state:
           $ref: '#/components/schemas/assetsGetPermissionsResponseLifeCycleState'
+        slug:
+          type: string
       type: object
     assetsGetRamMemoriesResponse:
       example:
@@ -4174,14 +4174,14 @@ components:
         api_key_id:
           format: int32
           type: integer
+        api_key_id_v2:
+          type: string
         app:
           $ref: '#/components/schemas/appsApp'
         scopes:
           items:
             $ref: '#/components/schemas/authorizationOAuthScope'
           type: array
-        api_key_id_v2:
-          type: string
       type: object
     authorizationOAuthScope:
       properties:
@@ -4219,13 +4219,13 @@ components:
       properties:
         action:
           $ref: '#/components/schemas/addonsAction'
-        icon_name:
-          title: deprecated
-          type: string
         caption:
           type: string
         icon:
           $ref: '#/components/schemas/DivarIconsIconName'
+        icon_name:
+          title: deprecated
+          type: string
       type: object
     chatapiChatButtonGrid:
       example:
@@ -4321,21 +4321,21 @@ components:
       properties:
         id:
           type: string
-        type:
-          $ref: '#/components/schemas/chatapiConversationType'
         post_token:
           type: string
+        type:
+          $ref: '#/components/schemas/chatapiConversationType'
       type: object
     chatapiConversationSendMessageResponse:
       example:
         message: message
         status: 0
       properties:
+        message:
+          type: string
         status:
           format: int32
           type: integer
-        message:
-          type: string
       type: object
     chatapiConversationType:
       enum:
@@ -4467,29 +4467,29 @@ components:
           link: link
           name: name
       properties:
-        id:
-          type: string
         conversation:
           $ref: '#/components/schemas/chatapiConversation'
+        file_data:
+          $ref: '#/components/schemas/MessageFileData'
+        id:
+          type: string
+        image_data:
+          $ref: '#/components/schemas/MessageImageData'
+        location_data:
+          $ref: '#/components/schemas/MessageLocationData'
         sender:
           $ref: '#/components/schemas/MessageSender'
-        type:
-          $ref: '#/components/schemas/chatapiMessageType'
         sent_at:
           format: date-time
           type: string
         text:
           type: string
-        image_data:
-          $ref: '#/components/schemas/MessageImageData'
-        file_data:
-          $ref: '#/components/schemas/MessageFileData'
-        voice_data:
-          $ref: '#/components/schemas/MessageVoiceData'
-        location_data:
-          $ref: '#/components/schemas/MessageLocationData'
+        type:
+          $ref: '#/components/schemas/chatapiMessageType'
         video_data:
           $ref: '#/components/schemas/MessageVideoData'
+        voice_data:
+          $ref: '#/components/schemas/MessageVoiceData'
       type: object
     chatapiMessageSenderSide:
       enum:
@@ -4512,10 +4512,10 @@ components:
       type: string
     eventsRegisterEventSubscriptionRequest:
       properties:
-        event_type:
-          $ref: '#/components/schemas/eventsRegisterEventSubscriptionRequestEventType'
         event_resource_id:
           type: string
+        event_type:
+          $ref: '#/components/schemas/eventsRegisterEventSubscriptionRequestEventType'
         metadata:
           type: object
       type: object
@@ -4539,33 +4539,33 @@ components:
         city: city
         district: district
         chat_enabled: true
-        state: PUBLISHED
         first_published_at: 2000-01-23T04:56:07.000+00:00
+        state: PUBLISHED
         category: category
-        token: token
         business_data:
           business_name: business_name
           business_type: CAR
+        token: token
       properties:
-        state:
-          $ref: '#/components/schemas/finderPostExtState'
-        first_published_at:
-          format: date-time
-          type: string
-        token:
-          type: string
+        business_data:
+          $ref: '#/components/schemas/GetPostResponseBusinessData'
         category:
           type: string
+        chat_enabled:
+          type: boolean
         city:
-          type: string
-        district:
           type: string
         data:
           type: object
-        chat_enabled:
-          type: boolean
-        business_data:
-          $ref: '#/components/schemas/GetPostResponseBusinessData'
+        district:
+          type: string
+        first_published_at:
+          format: date-time
+          type: string
+        state:
+          $ref: '#/components/schemas/finderPostExtState'
+        token:
+          type: string
       type: object
     finderGetUserPostsResponse:
       example:
@@ -4573,14 +4573,14 @@ components:
         - images:
           - images
           - images
-          title: title
           category: category
+          title: title
           token: token
         - images:
           - images
           - images
-          title: title
           category: category
+          title: title
           token: token
       properties:
         posts:
@@ -4593,19 +4593,19 @@ components:
         images:
         - images
         - images
-        title: title
         category: category
+        title: title
         token: token
       properties:
-        token:
-          type: string
-        title:
+        category:
           type: string
         images:
           items:
             type: string
           type: array
-        category:
+        title:
+          type: string
+        token:
           type: string
       type: object
     finderGetUserRequest:
@@ -4623,25 +4623,25 @@ components:
         home_kitchen_fields: "{}"
         services_fields: "{}"
         electronic_devices_fields: "{}"
-        personal_goods_fields: "{}"
         leisure_hobbies_fields: "{}"
+        personal_goods_fields: "{}"
         real_estate_fields:
           has_elevator: true
           has_parking: true
           rooms: rooms
-          size: 0
-          year: 6
+          size: 6
+          year: 1
           daily_rent: daily_rent
           credit:
             mode: mode
             value: value
+          floor: 0
           rent:
             mode: mode
             value: value
-          floor: 1
         title: title
-        token: token
         last_modified_at: 2000-01-23T04:56:07.000+00:00
+        token: token
         community_fields: "{}"
         vehicles_fields:
           installment_sale: installment_sale
@@ -4654,39 +4654,39 @@ components:
         category: category
         tools_materials_equipment_fields: "{}"
       properties:
-        token:
-          type: string
         category:
-          type: string
-        last_modified_at:
-          format: date-time
           type: string
         city:
           type: string
-        title:
-          type: string
-        price:
-          $ref: '#/components/schemas/SearchPostItemPrice'
-        real_estate_fields:
-          $ref: '#/components/schemas/SearchPostItemRealEstateFields'
-        vehicles_fields:
-          $ref: '#/components/schemas/SearchPostItemVehiclesFields'
+        community_fields:
+          type: object
         electronic_devices_fields:
           type: object
         home_kitchen_fields:
           type: object
-        services_fields:
+        jobs_fields:
+          type: object
+        last_modified_at:
+          format: date-time
+          type: string
+        leisure_hobbies_fields:
           type: object
         personal_goods_fields:
           type: object
-        leisure_hobbies_fields:
+        price:
+          $ref: '#/components/schemas/SearchPostItemPrice'
+        real_estate_fields:
+          $ref: '#/components/schemas/SearchPostItemRealEstateFields'
+        services_fields:
           type: object
-        community_fields:
-          type: object
+        title:
+          type: string
+        token:
+          type: string
         tools_materials_equipment_fields:
           type: object
-        jobs_fields:
-          type: object
+        vehicles_fields:
+          $ref: '#/components/schemas/SearchPostItemVehiclesFields'
       type: object
     finderSearchPostV2Response:
       example:
@@ -4695,25 +4695,25 @@ components:
           home_kitchen_fields: "{}"
           services_fields: "{}"
           electronic_devices_fields: "{}"
-          personal_goods_fields: "{}"
           leisure_hobbies_fields: "{}"
+          personal_goods_fields: "{}"
           real_estate_fields:
             has_elevator: true
             has_parking: true
             rooms: rooms
-            size: 0
-            year: 6
+            size: 6
+            year: 1
             daily_rent: daily_rent
             credit:
               mode: mode
               value: value
+            floor: 0
             rent:
               mode: mode
               value: value
-            floor: 1
           title: title
-          token: token
           last_modified_at: 2000-01-23T04:56:07.000+00:00
+          token: token
           community_fields: "{}"
           vehicles_fields:
             installment_sale: installment_sale
@@ -4729,25 +4729,25 @@ components:
           home_kitchen_fields: "{}"
           services_fields: "{}"
           electronic_devices_fields: "{}"
-          personal_goods_fields: "{}"
           leisure_hobbies_fields: "{}"
+          personal_goods_fields: "{}"
           real_estate_fields:
             has_elevator: true
             has_parking: true
             rooms: rooms
-            size: 0
-            year: 6
+            size: 6
+            year: 1
             daily_rent: daily_rent
             credit:
               mode: mode
               value: value
+            floor: 0
             rent:
               mode: mode
               value: value
-            floor: 1
           title: title
-          token: token
           last_modified_at: 2000-01-23T04:56:07.000+00:00
+          token: token
           community_fields: "{}"
           vehicles_fields:
             installment_sale: installment_sale
@@ -4784,29 +4784,29 @@ components:
           items:
             type: string
           type: array
+        credit:
+          $ref: '#/components/schemas/finderSearchQueryNumberRange'
+        only_with_parking:
+          type: boolean
         production_year:
           $ref: '#/components/schemas/finderSearchQueryNumberRange'
-        usage:
+        rent:
           $ref: '#/components/schemas/finderSearchQueryNumberRange'
         rooms:
           items:
             type: string
           type: array
-        rent:
-          $ref: '#/components/schemas/finderSearchQueryNumberRange'
-        credit:
-          $ref: '#/components/schemas/finderSearchQueryNumberRange'
         size:
           $ref: '#/components/schemas/finderSearchQueryNumberRange'
-        only_with_parking:
-          type: boolean
+        usage:
+          $ref: '#/components/schemas/finderSearchQueryNumberRange'
       type: object
     finderSearchQueryNumberRange:
       properties:
-        min:
+        max:
           format: int64
           type: string
-        max:
+        min:
           format: int64
           type: string
       type: object
@@ -4818,14 +4818,14 @@ components:
         user_id: user_id
         phone_number: phone_number
       properties:
+        phone_number:
+          type: string
         phone_numbers:
           description: deprecated
           items:
             type: string
           title: "requires OAuth scope: USER_PHONE"
           type: array
-        phone_number:
-          type: string
         user_id:
           type: string
       type: object
@@ -4840,23 +4840,23 @@ components:
         code:
           format: int32
           type: integer
-        message:
-          type: string
         details:
           items:
             $ref: '#/components/schemas/protobufAny'
           type: array
+        message:
+          type: string
       type: object
     managementDevelopmentPost:
       properties:
-        preset:
-          $ref: '#/components/schemas/managementPreset'
         created_at:
           format: date-time
           type: string
-        token:
-          type: string
         mng_token:
+          type: string
+        preset:
+          $ref: '#/components/schemas/managementPreset'
+        token:
           type: string
       type: object
     managementPreset:
@@ -4902,12 +4902,12 @@ components:
         id: id
         cost_rials: cost_rials
       properties:
-        id:
-          description: Same uuid when creating transaction
-          type: string
         cost_rials:
           description: The cost of the transaction in rials for your application
           format: int64
+          type: string
+        id:
+          description: Same uuid when creating transaction
           type: string
       type: object
     paymentTransaction:
@@ -4918,15 +4918,15 @@ components:
         type: TRANSACTION_TYPE_REORDER
         cost_rials: cost_rials
       properties:
-        id:
-          description: Same uuid when creating transaction
-          type: string
         cost_rials:
           description: The cost of the transaction in rials for your application
           format: int64
           type: string
         extra_details:
           description: Same Additional details which you sent in the request
+          type: string
+        id:
+          description: Same uuid when creating transaction
           type: string
         state:
           $ref: '#/components/schemas/paymentTransactionState'
@@ -4951,16 +4951,16 @@ components:
       type: object
     payment_ticketValidateRequest:
       properties:
-        ticket_uuid:
-          type: string
         phone_number:
           description: Deprecated. Use divar_user_id.
-          type: string
-        user_id:
           type: string
         service_cost:
           format: int32
           type: integer
+        ticket_uuid:
+          type: string
+        user_id:
+          type: string
       type: object
     payment_ticketValidateResponse:
       example:
@@ -5115,3 +5115,44 @@ components:
       type: object
     semanticDeleteUserSemanticResponse:
       type: object
+  securitySchemes:
+    APIKey:
+      description: API Key retrieved from kenar management panel
+      in: header
+      name: X-API-Key
+      type: apiKey
+    OAuth:
+      description: OAuth2 access token retrieved from user
+      flows:
+        authorizationCode:
+          authorizationUrl: oauth.divar.ir/oauth2/auth
+          refreshUrl: oauth.divar.ir/oauth2/token
+          scopes:
+            BUSINESS_ADDON_CREATE.{resource_id}: "BUSINESS_ADDON_CREATE.{resource_id}"
+            CHAT_BOT_USER_MESSAGE_SEND: CHAT_BOT_USER_MESSAGE_SEND
+            CHAT_CONVERSATION_READ.{resource_id}: "CHAT_CONVERSATION_READ.{resource_id}"
+            CHAT_MESSAGE_SEND.{resource_id}: "CHAT_MESSAGE_SEND.{resource_id}"
+            CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{resource_id}: "CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{resource_id}"
+            CHAT_POST_CONVERSATIONS_READ.{resource_id}: "CHAT_POST_CONVERSATIONS_READ.{resource_id}"
+            CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND: CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND
+            CHAT_SUPPLIER_ALL_CONVERSATIONS_READ: CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
+            CONVERSATION_SEND_MESSAGE.{resource_id}: "CONVERSATION_SEND_MESSAGE.{resource_id}"
+            MANAGEMENT_APPS_READ.{resource_id}: "MANAGEMENT_APPS_READ.{resource_id}"
+            MANAGEMENT_APPS_WRITE.{resource_id}: "MANAGEMENT_APPS_WRITE.{resource_id}"
+            NOTIFICATION_ACCESS_REVOCATION: NOTIFICATION_ACCESS_REVOCATION
+            PAYMENT_ALL_POSTS_PRICING_READ: PAYMENT_ALL_POSTS_PRICING_READ
+            PAYMENT_ALL_POSTS_REORDER: PAYMENT_ALL_POSTS_REORDER
+            POST_ADDON_CREATE.{resource_id}: "POST_ADDON_CREATE.{resource_id}"
+            POST_EDIT.{resource_id}: "POST_EDIT.{resource_id}"
+            POST_ONGOING_IMAGES_GET.{resource_id}: "POST_ONGOING_IMAGES_GET.{resource_id}"
+            POST_SEMANTIC_CREATE.{resource_id}: "POST_SEMANTIC_CREATE.{resource_id}"
+            USER_ADDON_CREATE: USER_ADDON_CREATE
+            USER_ID: USER_ID
+            USER_PHONE: USER_PHONE
+            USER_POSTS_ADDON_CREATE: USER_POSTS_ADDON_CREATE
+            USER_POSTS_GET: USER_POSTS_GET
+            USER_VERIFICATION_CREATE: USER_VERIFICATION_CREATE
+            offline_access: offline_access
+            openid: openid
+          tokenUrl: oauth.divar.ir/oauth2/token
+      type: oauth2

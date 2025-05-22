@@ -19,11 +19,11 @@ var _ MappedNullable = &PaymentTicketValidateRequest{}
 
 // PaymentTicketValidateRequest struct for PaymentTicketValidateRequest
 type PaymentTicketValidateRequest struct {
-	TicketUuid *string `json:"ticket_uuid,omitempty"`
 	// Deprecated. Use divar_user_id.
 	PhoneNumber *string `json:"phone_number,omitempty"`
-	UserId *string `json:"user_id,omitempty"`
 	ServiceCost *int32 `json:"service_cost,omitempty"`
+	TicketUuid *string `json:"ticket_uuid,omitempty"`
+	UserId *string `json:"user_id,omitempty"`
 }
 
 // NewPaymentTicketValidateRequest instantiates a new PaymentTicketValidateRequest object
@@ -41,38 +41,6 @@ func NewPaymentTicketValidateRequest() *PaymentTicketValidateRequest {
 func NewPaymentTicketValidateRequestWithDefaults() *PaymentTicketValidateRequest {
 	this := PaymentTicketValidateRequest{}
 	return &this
-}
-
-// GetTicketUuid returns the TicketUuid field value if set, zero value otherwise.
-func (o *PaymentTicketValidateRequest) GetTicketUuid() string {
-	if o == nil || IsNil(o.TicketUuid) {
-		var ret string
-		return ret
-	}
-	return *o.TicketUuid
-}
-
-// GetTicketUuidOk returns a tuple with the TicketUuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PaymentTicketValidateRequest) GetTicketUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.TicketUuid) {
-		return nil, false
-	}
-	return o.TicketUuid, true
-}
-
-// HasTicketUuid returns a boolean if a field has been set.
-func (o *PaymentTicketValidateRequest) HasTicketUuid() bool {
-	if o != nil && !IsNil(o.TicketUuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetTicketUuid gets a reference to the given string and assigns it to the TicketUuid field.
-func (o *PaymentTicketValidateRequest) SetTicketUuid(v string) {
-	o.TicketUuid = &v
 }
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
@@ -107,38 +75,6 @@ func (o *PaymentTicketValidateRequest) SetPhoneNumber(v string) {
 	o.PhoneNumber = &v
 }
 
-// GetUserId returns the UserId field value if set, zero value otherwise.
-func (o *PaymentTicketValidateRequest) GetUserId() string {
-	if o == nil || IsNil(o.UserId) {
-		var ret string
-		return ret
-	}
-	return *o.UserId
-}
-
-// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PaymentTicketValidateRequest) GetUserIdOk() (*string, bool) {
-	if o == nil || IsNil(o.UserId) {
-		return nil, false
-	}
-	return o.UserId, true
-}
-
-// HasUserId returns a boolean if a field has been set.
-func (o *PaymentTicketValidateRequest) HasUserId() bool {
-	if o != nil && !IsNil(o.UserId) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserId gets a reference to the given string and assigns it to the UserId field.
-func (o *PaymentTicketValidateRequest) SetUserId(v string) {
-	o.UserId = &v
-}
-
 // GetServiceCost returns the ServiceCost field value if set, zero value otherwise.
 func (o *PaymentTicketValidateRequest) GetServiceCost() int32 {
 	if o == nil || IsNil(o.ServiceCost) {
@@ -171,6 +107,70 @@ func (o *PaymentTicketValidateRequest) SetServiceCost(v int32) {
 	o.ServiceCost = &v
 }
 
+// GetTicketUuid returns the TicketUuid field value if set, zero value otherwise.
+func (o *PaymentTicketValidateRequest) GetTicketUuid() string {
+	if o == nil || IsNil(o.TicketUuid) {
+		var ret string
+		return ret
+	}
+	return *o.TicketUuid
+}
+
+// GetTicketUuidOk returns a tuple with the TicketUuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentTicketValidateRequest) GetTicketUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.TicketUuid) {
+		return nil, false
+	}
+	return o.TicketUuid, true
+}
+
+// HasTicketUuid returns a boolean if a field has been set.
+func (o *PaymentTicketValidateRequest) HasTicketUuid() bool {
+	if o != nil && !IsNil(o.TicketUuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetTicketUuid gets a reference to the given string and assigns it to the TicketUuid field.
+func (o *PaymentTicketValidateRequest) SetTicketUuid(v string) {
+	o.TicketUuid = &v
+}
+
+// GetUserId returns the UserId field value if set, zero value otherwise.
+func (o *PaymentTicketValidateRequest) GetUserId() string {
+	if o == nil || IsNil(o.UserId) {
+		var ret string
+		return ret
+	}
+	return *o.UserId
+}
+
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentTicketValidateRequest) GetUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UserId) {
+		return nil, false
+	}
+	return o.UserId, true
+}
+
+// HasUserId returns a boolean if a field has been set.
+func (o *PaymentTicketValidateRequest) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
+func (o *PaymentTicketValidateRequest) SetUserId(v string) {
+	o.UserId = &v
+}
+
 func (o PaymentTicketValidateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -181,17 +181,17 @@ func (o PaymentTicketValidateRequest) MarshalJSON() ([]byte, error) {
 
 func (o PaymentTicketValidateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TicketUuid) {
-		toSerialize["ticket_uuid"] = o.TicketUuid
-	}
 	if !IsNil(o.PhoneNumber) {
 		toSerialize["phone_number"] = o.PhoneNumber
 	}
-	if !IsNil(o.UserId) {
-		toSerialize["user_id"] = o.UserId
-	}
 	if !IsNil(o.ServiceCost) {
 		toSerialize["service_cost"] = o.ServiceCost
+	}
+	if !IsNil(o.TicketUuid) {
+		toSerialize["ticket_uuid"] = o.TicketUuid
+	}
+	if !IsNil(o.UserId) {
+		toSerialize["user_id"] = o.UserId
 	}
 	return toSerialize, nil
 }

@@ -19,11 +19,11 @@ var _ MappedNullable = &AddonsSelectorRow{}
 
 // AddonsSelectorRow struct for AddonsSelectorRow
 type AddonsSelectorRow struct {
-	Title *string `json:"title,omitempty"`
-	ImageId *string `json:"image_id,omitempty"`
+	Action *AddonsAction `json:"action,omitempty"`
 	HasDivider *bool `json:"has_divider,omitempty"`
 	IconName *DivarIconsIconName `json:"icon_name,omitempty"`
-	Action *AddonsAction `json:"action,omitempty"`
+	ImageId *string `json:"image_id,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewAddonsSelectorRow instantiates a new AddonsSelectorRow object
@@ -43,68 +43,36 @@ func NewAddonsSelectorRowWithDefaults() *AddonsSelectorRow {
 	return &this
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *AddonsSelectorRow) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
+// GetAction returns the Action field value if set, zero value otherwise.
+func (o *AddonsSelectorRow) GetAction() AddonsAction {
+	if o == nil || IsNil(o.Action) {
+		var ret AddonsAction
 		return ret
 	}
-	return *o.Title
+	return *o.Action
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsSelectorRow) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+func (o *AddonsSelectorRow) GetActionOk() (*AddonsAction, bool) {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Action, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *AddonsSelectorRow) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+// HasAction returns a boolean if a field has been set.
+func (o *AddonsSelectorRow) HasAction() bool {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *AddonsSelectorRow) SetTitle(v string) {
-	o.Title = &v
-}
-
-// GetImageId returns the ImageId field value if set, zero value otherwise.
-func (o *AddonsSelectorRow) GetImageId() string {
-	if o == nil || IsNil(o.ImageId) {
-		var ret string
-		return ret
-	}
-	return *o.ImageId
-}
-
-// GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsSelectorRow) GetImageIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageId) {
-		return nil, false
-	}
-	return o.ImageId, true
-}
-
-// HasImageId returns a boolean if a field has been set.
-func (o *AddonsSelectorRow) HasImageId() bool {
-	if o != nil && !IsNil(o.ImageId) {
-		return true
-	}
-
-	return false
-}
-
-// SetImageId gets a reference to the given string and assigns it to the ImageId field.
-func (o *AddonsSelectorRow) SetImageId(v string) {
-	o.ImageId = &v
+// SetAction gets a reference to the given AddonsAction and assigns it to the Action field.
+func (o *AddonsSelectorRow) SetAction(v AddonsAction) {
+	o.Action = &v
 }
 
 // GetHasDivider returns the HasDivider field value if set, zero value otherwise.
@@ -171,36 +139,68 @@ func (o *AddonsSelectorRow) SetIconName(v DivarIconsIconName) {
 	o.IconName = &v
 }
 
-// GetAction returns the Action field value if set, zero value otherwise.
-func (o *AddonsSelectorRow) GetAction() AddonsAction {
-	if o == nil || IsNil(o.Action) {
-		var ret AddonsAction
+// GetImageId returns the ImageId field value if set, zero value otherwise.
+func (o *AddonsSelectorRow) GetImageId() string {
+	if o == nil || IsNil(o.ImageId) {
+		var ret string
 		return ret
 	}
-	return *o.Action
+	return *o.ImageId
 }
 
-// GetActionOk returns a tuple with the Action field value if set, nil otherwise
+// GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsSelectorRow) GetActionOk() (*AddonsAction, bool) {
-	if o == nil || IsNil(o.Action) {
+func (o *AddonsSelectorRow) GetImageIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ImageId) {
 		return nil, false
 	}
-	return o.Action, true
+	return o.ImageId, true
 }
 
-// HasAction returns a boolean if a field has been set.
-func (o *AddonsSelectorRow) HasAction() bool {
-	if o != nil && !IsNil(o.Action) {
+// HasImageId returns a boolean if a field has been set.
+func (o *AddonsSelectorRow) HasImageId() bool {
+	if o != nil && !IsNil(o.ImageId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAction gets a reference to the given AddonsAction and assigns it to the Action field.
-func (o *AddonsSelectorRow) SetAction(v AddonsAction) {
-	o.Action = &v
+// SetImageId gets a reference to the given string and assigns it to the ImageId field.
+func (o *AddonsSelectorRow) SetImageId(v string) {
+	o.ImageId = &v
+}
+
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *AddonsSelectorRow) GetTitle() string {
+	if o == nil || IsNil(o.Title) {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsSelectorRow) GetTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Title) {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *AddonsSelectorRow) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *AddonsSelectorRow) SetTitle(v string) {
+	o.Title = &v
 }
 
 func (o AddonsSelectorRow) MarshalJSON() ([]byte, error) {
@@ -213,11 +213,8 @@ func (o AddonsSelectorRow) MarshalJSON() ([]byte, error) {
 
 func (o AddonsSelectorRow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
-	if !IsNil(o.ImageId) {
-		toSerialize["image_id"] = o.ImageId
+	if !IsNil(o.Action) {
+		toSerialize["action"] = o.Action
 	}
 	if !IsNil(o.HasDivider) {
 		toSerialize["has_divider"] = o.HasDivider
@@ -225,8 +222,11 @@ func (o AddonsSelectorRow) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IconName) {
 		toSerialize["icon_name"] = o.IconName
 	}
-	if !IsNil(o.Action) {
-		toSerialize["action"] = o.Action
+	if !IsNil(o.ImageId) {
+		toSerialize["image_id"] = o.ImageId
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
 	}
 	return toSerialize, nil
 }

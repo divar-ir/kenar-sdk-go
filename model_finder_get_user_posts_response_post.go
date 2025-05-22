@@ -19,10 +19,10 @@ var _ MappedNullable = &FinderGetUserPostsResponsePost{}
 
 // FinderGetUserPostsResponsePost struct for FinderGetUserPostsResponsePost
 type FinderGetUserPostsResponsePost struct {
-	Token *string `json:"token,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Images []string `json:"images,omitempty"`
 	Category *string `json:"category,omitempty"`
+	Images []string `json:"images,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Token *string `json:"token,omitempty"`
 }
 
 // NewFinderGetUserPostsResponsePost instantiates a new FinderGetUserPostsResponsePost object
@@ -40,102 +40,6 @@ func NewFinderGetUserPostsResponsePost() *FinderGetUserPostsResponsePost {
 func NewFinderGetUserPostsResponsePostWithDefaults() *FinderGetUserPostsResponsePost {
 	this := FinderGetUserPostsResponsePost{}
 	return &this
-}
-
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *FinderGetUserPostsResponsePost) GetToken() string {
-	if o == nil || IsNil(o.Token) {
-		var ret string
-		return ret
-	}
-	return *o.Token
-}
-
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderGetUserPostsResponsePost) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *FinderGetUserPostsResponsePost) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *FinderGetUserPostsResponsePost) SetToken(v string) {
-	o.Token = &v
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *FinderGetUserPostsResponsePost) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderGetUserPostsResponsePost) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *FinderGetUserPostsResponsePost) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *FinderGetUserPostsResponsePost) SetTitle(v string) {
-	o.Title = &v
-}
-
-// GetImages returns the Images field value if set, zero value otherwise.
-func (o *FinderGetUserPostsResponsePost) GetImages() []string {
-	if o == nil || IsNil(o.Images) {
-		var ret []string
-		return ret
-	}
-	return o.Images
-}
-
-// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FinderGetUserPostsResponsePost) GetImagesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Images) {
-		return nil, false
-	}
-	return o.Images, true
-}
-
-// HasImages returns a boolean if a field has been set.
-func (o *FinderGetUserPostsResponsePost) HasImages() bool {
-	if o != nil && !IsNil(o.Images) {
-		return true
-	}
-
-	return false
-}
-
-// SetImages gets a reference to the given []string and assigns it to the Images field.
-func (o *FinderGetUserPostsResponsePost) SetImages(v []string) {
-	o.Images = v
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise.
@@ -170,6 +74,102 @@ func (o *FinderGetUserPostsResponsePost) SetCategory(v string) {
 	o.Category = &v
 }
 
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *FinderGetUserPostsResponsePost) GetImages() []string {
+	if o == nil || IsNil(o.Images) {
+		var ret []string
+		return ret
+	}
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderGetUserPostsResponsePost) GetImagesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *FinderGetUserPostsResponsePost) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []string and assigns it to the Images field.
+func (o *FinderGetUserPostsResponsePost) SetImages(v []string) {
+	o.Images = v
+}
+
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *FinderGetUserPostsResponsePost) GetTitle() string {
+	if o == nil || IsNil(o.Title) {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderGetUserPostsResponsePost) GetTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Title) {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *FinderGetUserPostsResponsePost) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *FinderGetUserPostsResponsePost) SetTitle(v string) {
+	o.Title = &v
+}
+
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *FinderGetUserPostsResponsePost) GetToken() string {
+	if o == nil || IsNil(o.Token) {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderGetUserPostsResponsePost) GetTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.Token) {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *FinderGetUserPostsResponsePost) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *FinderGetUserPostsResponsePost) SetToken(v string) {
+	o.Token = &v
+}
+
 func (o FinderGetUserPostsResponsePost) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -180,17 +180,17 @@ func (o FinderGetUserPostsResponsePost) MarshalJSON() ([]byte, error) {
 
 func (o FinderGetUserPostsResponsePost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
+	if !IsNil(o.Category) {
+		toSerialize["category"] = o.Category
 	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}
-	if !IsNil(o.Category) {
-		toSerialize["category"] = o.Category
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
 	return toSerialize, nil
 }

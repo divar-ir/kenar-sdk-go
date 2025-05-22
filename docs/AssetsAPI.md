@@ -68,7 +68,7 @@ Other parameters are passed through a pointer to a apiAssetsGetBodyStatusesReque
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -199,7 +199,7 @@ Other parameters are passed through a pointer to a apiAssetsGetCategoriesRequest
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -260,7 +260,7 @@ Other parameters are passed through a pointer to a apiAssetsGetCitiesRequest str
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -527,7 +527,7 @@ Other parameters are passed through a pointer to a apiAssetsGetInternalStoragesR
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -588,7 +588,7 @@ Other parameters are passed through a pointer to a apiAssetsGetOAuthScopesReques
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -649,7 +649,7 @@ Other parameters are passed through a pointer to a apiAssetsGetPermissionsReques
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -710,7 +710,7 @@ Other parameters are passed through a pointer to a apiAssetsGetRamMemoriesReques
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -771,7 +771,7 @@ Other parameters are passed through a pointer to a apiAssetsGetServiceTypesReque
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 

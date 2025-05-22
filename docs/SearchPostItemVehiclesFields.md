@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Usage** | Pointer to **string** |  | [optional] 
-**InstallmentSale** | Pointer to **string** |  | [optional] 
 **CustomPostSubtitle** | Pointer to **string** |  | [optional] 
+**InstallmentSale** | Pointer to **string** |  | [optional] 
+**Usage** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewSearchPostItemVehiclesFieldsWithDefaults instantiates a new SearchPostItemVeh
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetUsage
+### GetCustomPostSubtitle
 
-`func (o *SearchPostItemVehiclesFields) GetUsage() string`
+`func (o *SearchPostItemVehiclesFields) GetCustomPostSubtitle() string`
 
-GetUsage returns the Usage field if non-nil, zero value otherwise.
+GetCustomPostSubtitle returns the CustomPostSubtitle field if non-nil, zero value otherwise.
 
-### GetUsageOk
+### GetCustomPostSubtitleOk
 
-`func (o *SearchPostItemVehiclesFields) GetUsageOk() (*string, bool)`
+`func (o *SearchPostItemVehiclesFields) GetCustomPostSubtitleOk() (*string, bool)`
 
-GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
+GetCustomPostSubtitleOk returns a tuple with the CustomPostSubtitle field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUsage
+### SetCustomPostSubtitle
 
-`func (o *SearchPostItemVehiclesFields) SetUsage(v string)`
+`func (o *SearchPostItemVehiclesFields) SetCustomPostSubtitle(v string)`
 
-SetUsage sets Usage field to given value.
+SetCustomPostSubtitle sets CustomPostSubtitle field to given value.
 
-### HasUsage
+### HasCustomPostSubtitle
 
-`func (o *SearchPostItemVehiclesFields) HasUsage() bool`
+`func (o *SearchPostItemVehiclesFields) HasCustomPostSubtitle() bool`
 
-HasUsage returns a boolean if a field has been set.
+HasCustomPostSubtitle returns a boolean if a field has been set.
 
 ### GetInstallmentSale
 
@@ -77,30 +77,30 @@ SetInstallmentSale sets InstallmentSale field to given value.
 
 HasInstallmentSale returns a boolean if a field has been set.
 
-### GetCustomPostSubtitle
+### GetUsage
 
-`func (o *SearchPostItemVehiclesFields) GetCustomPostSubtitle() string`
+`func (o *SearchPostItemVehiclesFields) GetUsage() string`
 
-GetCustomPostSubtitle returns the CustomPostSubtitle field if non-nil, zero value otherwise.
+GetUsage returns the Usage field if non-nil, zero value otherwise.
 
-### GetCustomPostSubtitleOk
+### GetUsageOk
 
-`func (o *SearchPostItemVehiclesFields) GetCustomPostSubtitleOk() (*string, bool)`
+`func (o *SearchPostItemVehiclesFields) GetUsageOk() (*string, bool)`
 
-GetCustomPostSubtitleOk returns a tuple with the CustomPostSubtitle field if it's non-nil, zero value otherwise
+GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCustomPostSubtitle
+### SetUsage
 
-`func (o *SearchPostItemVehiclesFields) SetCustomPostSubtitle(v string)`
+`func (o *SearchPostItemVehiclesFields) SetUsage(v string)`
 
-SetCustomPostSubtitle sets CustomPostSubtitle field to given value.
+SetUsage sets Usage field to given value.
 
-### HasCustomPostSubtitle
+### HasUsage
 
-`func (o *SearchPostItemVehiclesFields) HasCustomPostSubtitle() bool`
+`func (o *SearchPostItemVehiclesFields) HasUsage() bool`
 
-HasCustomPostSubtitle returns a boolean if a field has been set.
+HasUsage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

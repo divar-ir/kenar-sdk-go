@@ -19,8 +19,8 @@ var _ MappedNullable = &ImageCarouselRowImageItem{}
 
 // ImageCarouselRowImageItem struct for ImageCarouselRowImageItem
 type ImageCarouselRowImageItem struct {
-	ImageId *string `json:"image_id,omitempty"`
 	Description *string `json:"description,omitempty"`
+	ImageId *string `json:"image_id,omitempty"`
 }
 
 // NewImageCarouselRowImageItem instantiates a new ImageCarouselRowImageItem object
@@ -38,38 +38,6 @@ func NewImageCarouselRowImageItem() *ImageCarouselRowImageItem {
 func NewImageCarouselRowImageItemWithDefaults() *ImageCarouselRowImageItem {
 	this := ImageCarouselRowImageItem{}
 	return &this
-}
-
-// GetImageId returns the ImageId field value if set, zero value otherwise.
-func (o *ImageCarouselRowImageItem) GetImageId() string {
-	if o == nil || IsNil(o.ImageId) {
-		var ret string
-		return ret
-	}
-	return *o.ImageId
-}
-
-// GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ImageCarouselRowImageItem) GetImageIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageId) {
-		return nil, false
-	}
-	return o.ImageId, true
-}
-
-// HasImageId returns a boolean if a field has been set.
-func (o *ImageCarouselRowImageItem) HasImageId() bool {
-	if o != nil && !IsNil(o.ImageId) {
-		return true
-	}
-
-	return false
-}
-
-// SetImageId gets a reference to the given string and assigns it to the ImageId field.
-func (o *ImageCarouselRowImageItem) SetImageId(v string) {
-	o.ImageId = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *ImageCarouselRowImageItem) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetImageId returns the ImageId field value if set, zero value otherwise.
+func (o *ImageCarouselRowImageItem) GetImageId() string {
+	if o == nil || IsNil(o.ImageId) {
+		var ret string
+		return ret
+	}
+	return *o.ImageId
+}
+
+// GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ImageCarouselRowImageItem) GetImageIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ImageId) {
+		return nil, false
+	}
+	return o.ImageId, true
+}
+
+// HasImageId returns a boolean if a field has been set.
+func (o *ImageCarouselRowImageItem) HasImageId() bool {
+	if o != nil && !IsNil(o.ImageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetImageId gets a reference to the given string and assigns it to the ImageId field.
+func (o *ImageCarouselRowImageItem) SetImageId(v string) {
+	o.ImageId = &v
+}
+
 func (o ImageCarouselRowImageItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o ImageCarouselRowImageItem) MarshalJSON() ([]byte, error) {
 
 func (o ImageCarouselRowImageItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ImageId) {
-		toSerialize["image_id"] = o.ImageId
-	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.ImageId) {
+		toSerialize["image_id"] = o.ImageId
 	}
 	return toSerialize, nil
 }

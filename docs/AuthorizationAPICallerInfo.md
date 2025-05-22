@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKeyId** | Pointer to **int32** |  | [optional] 
+**ApiKeyIdV2** | Pointer to **string** |  | [optional] 
 **App** | Pointer to [**AppsApp**](AppsApp.md) |  | [optional] 
 **Scopes** | Pointer to [**[]AuthorizationOAuthScope**](AuthorizationOAuthScope.md) |  | [optional] 
-**ApiKeyIdV2** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -52,6 +52,31 @@ SetApiKeyId sets ApiKeyId field to given value.
 `func (o *AuthorizationAPICallerInfo) HasApiKeyId() bool`
 
 HasApiKeyId returns a boolean if a field has been set.
+
+### GetApiKeyIdV2
+
+`func (o *AuthorizationAPICallerInfo) GetApiKeyIdV2() string`
+
+GetApiKeyIdV2 returns the ApiKeyIdV2 field if non-nil, zero value otherwise.
+
+### GetApiKeyIdV2Ok
+
+`func (o *AuthorizationAPICallerInfo) GetApiKeyIdV2Ok() (*string, bool)`
+
+GetApiKeyIdV2Ok returns a tuple with the ApiKeyIdV2 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiKeyIdV2
+
+`func (o *AuthorizationAPICallerInfo) SetApiKeyIdV2(v string)`
+
+SetApiKeyIdV2 sets ApiKeyIdV2 field to given value.
+
+### HasApiKeyIdV2
+
+`func (o *AuthorizationAPICallerInfo) HasApiKeyIdV2() bool`
+
+HasApiKeyIdV2 returns a boolean if a field has been set.
 
 ### GetApp
 
@@ -102,31 +127,6 @@ SetScopes sets Scopes field to given value.
 `func (o *AuthorizationAPICallerInfo) HasScopes() bool`
 
 HasScopes returns a boolean if a field has been set.
-
-### GetApiKeyIdV2
-
-`func (o *AuthorizationAPICallerInfo) GetApiKeyIdV2() string`
-
-GetApiKeyIdV2 returns the ApiKeyIdV2 field if non-nil, zero value otherwise.
-
-### GetApiKeyIdV2Ok
-
-`func (o *AuthorizationAPICallerInfo) GetApiKeyIdV2Ok() (*string, bool)`
-
-GetApiKeyIdV2Ok returns a tuple with the ApiKeyIdV2 field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApiKeyIdV2
-
-`func (o *AuthorizationAPICallerInfo) SetApiKeyIdV2(v string)`
-
-SetApiKeyIdV2 sets ApiKeyIdV2 field to given value.
-
-### HasApiKeyIdV2
-
-`func (o *AuthorizationAPICallerInfo) HasApiKeyIdV2() bool`
-
-HasApiKeyIdV2 returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

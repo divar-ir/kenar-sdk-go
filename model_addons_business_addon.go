@@ -19,8 +19,8 @@ var _ MappedNullable = &AddonsBusinessAddon{}
 
 // AddonsBusinessAddon struct for AddonsBusinessAddon
 type AddonsBusinessAddon struct {
-	MetaData *AddonsAddonMetaData `json:"meta_data,omitempty"`
 	BusinessRef *string `json:"business_ref,omitempty"`
+	MetaData *AddonsAddonMetaData `json:"meta_data,omitempty"`
 	Widgets map[string]interface{} `json:"widgets,omitempty"`
 }
 
@@ -39,38 +39,6 @@ func NewAddonsBusinessAddon() *AddonsBusinessAddon {
 func NewAddonsBusinessAddonWithDefaults() *AddonsBusinessAddon {
 	this := AddonsBusinessAddon{}
 	return &this
-}
-
-// GetMetaData returns the MetaData field value if set, zero value otherwise.
-func (o *AddonsBusinessAddon) GetMetaData() AddonsAddonMetaData {
-	if o == nil || IsNil(o.MetaData) {
-		var ret AddonsAddonMetaData
-		return ret
-	}
-	return *o.MetaData
-}
-
-// GetMetaDataOk returns a tuple with the MetaData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsBusinessAddon) GetMetaDataOk() (*AddonsAddonMetaData, bool) {
-	if o == nil || IsNil(o.MetaData) {
-		return nil, false
-	}
-	return o.MetaData, true
-}
-
-// HasMetaData returns a boolean if a field has been set.
-func (o *AddonsBusinessAddon) HasMetaData() bool {
-	if o != nil && !IsNil(o.MetaData) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetaData gets a reference to the given AddonsAddonMetaData and assigns it to the MetaData field.
-func (o *AddonsBusinessAddon) SetMetaData(v AddonsAddonMetaData) {
-	o.MetaData = &v
 }
 
 // GetBusinessRef returns the BusinessRef field value if set, zero value otherwise.
@@ -103,6 +71,38 @@ func (o *AddonsBusinessAddon) HasBusinessRef() bool {
 // SetBusinessRef gets a reference to the given string and assigns it to the BusinessRef field.
 func (o *AddonsBusinessAddon) SetBusinessRef(v string) {
 	o.BusinessRef = &v
+}
+
+// GetMetaData returns the MetaData field value if set, zero value otherwise.
+func (o *AddonsBusinessAddon) GetMetaData() AddonsAddonMetaData {
+	if o == nil || IsNil(o.MetaData) {
+		var ret AddonsAddonMetaData
+		return ret
+	}
+	return *o.MetaData
+}
+
+// GetMetaDataOk returns a tuple with the MetaData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsBusinessAddon) GetMetaDataOk() (*AddonsAddonMetaData, bool) {
+	if o == nil || IsNil(o.MetaData) {
+		return nil, false
+	}
+	return o.MetaData, true
+}
+
+// HasMetaData returns a boolean if a field has been set.
+func (o *AddonsBusinessAddon) HasMetaData() bool {
+	if o != nil && !IsNil(o.MetaData) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetaData gets a reference to the given AddonsAddonMetaData and assigns it to the MetaData field.
+func (o *AddonsBusinessAddon) SetMetaData(v AddonsAddonMetaData) {
+	o.MetaData = &v
 }
 
 // GetWidgets returns the Widgets field value if set, zero value otherwise.
@@ -147,11 +147,11 @@ func (o AddonsBusinessAddon) MarshalJSON() ([]byte, error) {
 
 func (o AddonsBusinessAddon) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MetaData) {
-		toSerialize["meta_data"] = o.MetaData
-	}
 	if !IsNil(o.BusinessRef) {
 		toSerialize["business_ref"] = o.BusinessRef
+	}
+	if !IsNil(o.MetaData) {
+		toSerialize["meta_data"] = o.MetaData
 	}
 	if !IsNil(o.Widgets) {
 		toSerialize["widgets"] = o.Widgets

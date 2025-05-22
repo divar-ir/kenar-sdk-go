@@ -19,8 +19,8 @@ var _ MappedNullable = &AddonsEvaluationRowSection{}
 
 // AddonsEvaluationRowSection struct for AddonsEvaluationRowSection
 type AddonsEvaluationRowSection struct {
-	Text *string `json:"text,omitempty"`
 	SectionColor *AddonsWidgetColor `json:"section_color,omitempty"`
+	Text *string `json:"text,omitempty"`
 }
 
 // NewAddonsEvaluationRowSection instantiates a new AddonsEvaluationRowSection object
@@ -38,38 +38,6 @@ func NewAddonsEvaluationRowSection() *AddonsEvaluationRowSection {
 func NewAddonsEvaluationRowSectionWithDefaults() *AddonsEvaluationRowSection {
 	this := AddonsEvaluationRowSection{}
 	return &this
-}
-
-// GetText returns the Text field value if set, zero value otherwise.
-func (o *AddonsEvaluationRowSection) GetText() string {
-	if o == nil || IsNil(o.Text) {
-		var ret string
-		return ret
-	}
-	return *o.Text
-}
-
-// GetTextOk returns a tuple with the Text field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsEvaluationRowSection) GetTextOk() (*string, bool) {
-	if o == nil || IsNil(o.Text) {
-		return nil, false
-	}
-	return o.Text, true
-}
-
-// HasText returns a boolean if a field has been set.
-func (o *AddonsEvaluationRowSection) HasText() bool {
-	if o != nil && !IsNil(o.Text) {
-		return true
-	}
-
-	return false
-}
-
-// SetText gets a reference to the given string and assigns it to the Text field.
-func (o *AddonsEvaluationRowSection) SetText(v string) {
-	o.Text = &v
 }
 
 // GetSectionColor returns the SectionColor field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *AddonsEvaluationRowSection) SetSectionColor(v AddonsWidgetColor) {
 	o.SectionColor = &v
 }
 
+// GetText returns the Text field value if set, zero value otherwise.
+func (o *AddonsEvaluationRowSection) GetText() string {
+	if o == nil || IsNil(o.Text) {
+		var ret string
+		return ret
+	}
+	return *o.Text
+}
+
+// GetTextOk returns a tuple with the Text field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsEvaluationRowSection) GetTextOk() (*string, bool) {
+	if o == nil || IsNil(o.Text) {
+		return nil, false
+	}
+	return o.Text, true
+}
+
+// HasText returns a boolean if a field has been set.
+func (o *AddonsEvaluationRowSection) HasText() bool {
+	if o != nil && !IsNil(o.Text) {
+		return true
+	}
+
+	return false
+}
+
+// SetText gets a reference to the given string and assigns it to the Text field.
+func (o *AddonsEvaluationRowSection) SetText(v string) {
+	o.Text = &v
+}
+
 func (o AddonsEvaluationRowSection) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +114,11 @@ func (o AddonsEvaluationRowSection) MarshalJSON() ([]byte, error) {
 
 func (o AddonsEvaluationRowSection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Text) {
-		toSerialize["text"] = o.Text
-	}
 	if !IsNil(o.SectionColor) {
 		toSerialize["section_color"] = o.SectionColor
+	}
+	if !IsNil(o.Text) {
+		toSerialize["text"] = o.Text
 	}
 	return toSerialize, nil
 }

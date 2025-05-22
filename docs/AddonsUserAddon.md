@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DivarUserId** | Pointer to **string** |  | [optional] 
+**Filters** | Pointer to [**AddonsUserAddonFilters**](AddonsUserAddonFilters.md) |  | [optional] 
 **MetaData** | Pointer to [**AddonsAddonMetaData**](AddonsAddonMetaData.md) |  | [optional] 
 **Phone** | Pointer to **string** |  | [optional] 
-**DivarUserId** | Pointer to **string** |  | [optional] 
-**Widgets** | Pointer to **map[string]interface{}** |  | [optional] 
 **Semantic** | Pointer to **map[string]string** |  | [optional] 
 **SemanticData** | Pointer to [**AddonsAddonSemantic**](AddonsAddonSemantic.md) |  | [optional] 
 **SensitiveSemantic** | Pointer to **map[string]string** |  | [optional] 
+**Widgets** | Pointer to **map[string]interface{}** |  | [optional] 
 **WidgetsSemantic** | Pointer to **map[string]interface{}** |  | [optional] 
-**Filters** | Pointer to [**AddonsUserAddonFilters**](AddonsUserAddonFilters.md) |  | [optional] 
 
 ## Methods
 
@@ -32,6 +32,56 @@ will change when the set of required properties is changed
 NewAddonsUserAddonWithDefaults instantiates a new AddonsUserAddon object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDivarUserId
+
+`func (o *AddonsUserAddon) GetDivarUserId() string`
+
+GetDivarUserId returns the DivarUserId field if non-nil, zero value otherwise.
+
+### GetDivarUserIdOk
+
+`func (o *AddonsUserAddon) GetDivarUserIdOk() (*string, bool)`
+
+GetDivarUserIdOk returns a tuple with the DivarUserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDivarUserId
+
+`func (o *AddonsUserAddon) SetDivarUserId(v string)`
+
+SetDivarUserId sets DivarUserId field to given value.
+
+### HasDivarUserId
+
+`func (o *AddonsUserAddon) HasDivarUserId() bool`
+
+HasDivarUserId returns a boolean if a field has been set.
+
+### GetFilters
+
+`func (o *AddonsUserAddon) GetFilters() AddonsUserAddonFilters`
+
+GetFilters returns the Filters field if non-nil, zero value otherwise.
+
+### GetFiltersOk
+
+`func (o *AddonsUserAddon) GetFiltersOk() (*AddonsUserAddonFilters, bool)`
+
+GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilters
+
+`func (o *AddonsUserAddon) SetFilters(v AddonsUserAddonFilters)`
+
+SetFilters sets Filters field to given value.
+
+### HasFilters
+
+`func (o *AddonsUserAddon) HasFilters() bool`
+
+HasFilters returns a boolean if a field has been set.
 
 ### GetMetaData
 
@@ -82,56 +132,6 @@ SetPhone sets Phone field to given value.
 `func (o *AddonsUserAddon) HasPhone() bool`
 
 HasPhone returns a boolean if a field has been set.
-
-### GetDivarUserId
-
-`func (o *AddonsUserAddon) GetDivarUserId() string`
-
-GetDivarUserId returns the DivarUserId field if non-nil, zero value otherwise.
-
-### GetDivarUserIdOk
-
-`func (o *AddonsUserAddon) GetDivarUserIdOk() (*string, bool)`
-
-GetDivarUserIdOk returns a tuple with the DivarUserId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDivarUserId
-
-`func (o *AddonsUserAddon) SetDivarUserId(v string)`
-
-SetDivarUserId sets DivarUserId field to given value.
-
-### HasDivarUserId
-
-`func (o *AddonsUserAddon) HasDivarUserId() bool`
-
-HasDivarUserId returns a boolean if a field has been set.
-
-### GetWidgets
-
-`func (o *AddonsUserAddon) GetWidgets() map[string]interface{}`
-
-GetWidgets returns the Widgets field if non-nil, zero value otherwise.
-
-### GetWidgetsOk
-
-`func (o *AddonsUserAddon) GetWidgetsOk() (*map[string]interface{}, bool)`
-
-GetWidgetsOk returns a tuple with the Widgets field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWidgets
-
-`func (o *AddonsUserAddon) SetWidgets(v map[string]interface{})`
-
-SetWidgets sets Widgets field to given value.
-
-### HasWidgets
-
-`func (o *AddonsUserAddon) HasWidgets() bool`
-
-HasWidgets returns a boolean if a field has been set.
 
 ### GetSemantic
 
@@ -208,6 +208,31 @@ SetSensitiveSemantic sets SensitiveSemantic field to given value.
 
 HasSensitiveSemantic returns a boolean if a field has been set.
 
+### GetWidgets
+
+`func (o *AddonsUserAddon) GetWidgets() map[string]interface{}`
+
+GetWidgets returns the Widgets field if non-nil, zero value otherwise.
+
+### GetWidgetsOk
+
+`func (o *AddonsUserAddon) GetWidgetsOk() (*map[string]interface{}, bool)`
+
+GetWidgetsOk returns a tuple with the Widgets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWidgets
+
+`func (o *AddonsUserAddon) SetWidgets(v map[string]interface{})`
+
+SetWidgets sets Widgets field to given value.
+
+### HasWidgets
+
+`func (o *AddonsUserAddon) HasWidgets() bool`
+
+HasWidgets returns a boolean if a field has been set.
+
 ### GetWidgetsSemantic
 
 `func (o *AddonsUserAddon) GetWidgetsSemantic() map[string]interface{}`
@@ -232,31 +257,6 @@ SetWidgetsSemantic sets WidgetsSemantic field to given value.
 `func (o *AddonsUserAddon) HasWidgetsSemantic() bool`
 
 HasWidgetsSemantic returns a boolean if a field has been set.
-
-### GetFilters
-
-`func (o *AddonsUserAddon) GetFilters() AddonsUserAddonFilters`
-
-GetFilters returns the Filters field if non-nil, zero value otherwise.
-
-### GetFiltersOk
-
-`func (o *AddonsUserAddon) GetFiltersOk() (*AddonsUserAddonFilters, bool)`
-
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilters
-
-`func (o *AddonsUserAddon) SetFilters(v AddonsUserAddonFilters)`
-
-SetFilters sets Filters field to given value.
-
-### HasFilters
-
-`func (o *AddonsUserAddon) HasFilters() bool`
-
-HasFilters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

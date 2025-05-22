@@ -19,9 +19,9 @@ var _ MappedNullable = &AddonsCreatePostAddonV2Body{}
 
 // AddonsCreatePostAddonV2Body struct for AddonsCreatePostAddonV2Body
 type AddonsCreatePostAddonV2Body struct {
-	Widgets []AddonsWidget `json:"widgets,omitempty"`
-	Semantic *map[string]string `json:"semantic,omitempty"`
 	Notes *string `json:"notes,omitempty"`
+	Semantic *map[string]string `json:"semantic,omitempty"`
+	Widgets []AddonsWidget `json:"widgets,omitempty"`
 }
 
 // NewAddonsCreatePostAddonV2Body instantiates a new AddonsCreatePostAddonV2Body object
@@ -39,70 +39,6 @@ func NewAddonsCreatePostAddonV2Body() *AddonsCreatePostAddonV2Body {
 func NewAddonsCreatePostAddonV2BodyWithDefaults() *AddonsCreatePostAddonV2Body {
 	this := AddonsCreatePostAddonV2Body{}
 	return &this
-}
-
-// GetWidgets returns the Widgets field value if set, zero value otherwise.
-func (o *AddonsCreatePostAddonV2Body) GetWidgets() []AddonsWidget {
-	if o == nil || IsNil(o.Widgets) {
-		var ret []AddonsWidget
-		return ret
-	}
-	return o.Widgets
-}
-
-// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreatePostAddonV2Body) GetWidgetsOk() ([]AddonsWidget, bool) {
-	if o == nil || IsNil(o.Widgets) {
-		return nil, false
-	}
-	return o.Widgets, true
-}
-
-// HasWidgets returns a boolean if a field has been set.
-func (o *AddonsCreatePostAddonV2Body) HasWidgets() bool {
-	if o != nil && !IsNil(o.Widgets) {
-		return true
-	}
-
-	return false
-}
-
-// SetWidgets gets a reference to the given []AddonsWidget and assigns it to the Widgets field.
-func (o *AddonsCreatePostAddonV2Body) SetWidgets(v []AddonsWidget) {
-	o.Widgets = v
-}
-
-// GetSemantic returns the Semantic field value if set, zero value otherwise.
-func (o *AddonsCreatePostAddonV2Body) GetSemantic() map[string]string {
-	if o == nil || IsNil(o.Semantic) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Semantic
-}
-
-// GetSemanticOk returns a tuple with the Semantic field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreatePostAddonV2Body) GetSemanticOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.Semantic) {
-		return nil, false
-	}
-	return o.Semantic, true
-}
-
-// HasSemantic returns a boolean if a field has been set.
-func (o *AddonsCreatePostAddonV2Body) HasSemantic() bool {
-	if o != nil && !IsNil(o.Semantic) {
-		return true
-	}
-
-	return false
-}
-
-// SetSemantic gets a reference to the given map[string]string and assigns it to the Semantic field.
-func (o *AddonsCreatePostAddonV2Body) SetSemantic(v map[string]string) {
-	o.Semantic = &v
 }
 
 // GetNotes returns the Notes field value if set, zero value otherwise.
@@ -137,6 +73,70 @@ func (o *AddonsCreatePostAddonV2Body) SetNotes(v string) {
 	o.Notes = &v
 }
 
+// GetSemantic returns the Semantic field value if set, zero value otherwise.
+func (o *AddonsCreatePostAddonV2Body) GetSemantic() map[string]string {
+	if o == nil || IsNil(o.Semantic) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Semantic
+}
+
+// GetSemanticOk returns a tuple with the Semantic field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreatePostAddonV2Body) GetSemanticOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.Semantic) {
+		return nil, false
+	}
+	return o.Semantic, true
+}
+
+// HasSemantic returns a boolean if a field has been set.
+func (o *AddonsCreatePostAddonV2Body) HasSemantic() bool {
+	if o != nil && !IsNil(o.Semantic) {
+		return true
+	}
+
+	return false
+}
+
+// SetSemantic gets a reference to the given map[string]string and assigns it to the Semantic field.
+func (o *AddonsCreatePostAddonV2Body) SetSemantic(v map[string]string) {
+	o.Semantic = &v
+}
+
+// GetWidgets returns the Widgets field value if set, zero value otherwise.
+func (o *AddonsCreatePostAddonV2Body) GetWidgets() []AddonsWidget {
+	if o == nil || IsNil(o.Widgets) {
+		var ret []AddonsWidget
+		return ret
+	}
+	return o.Widgets
+}
+
+// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreatePostAddonV2Body) GetWidgetsOk() ([]AddonsWidget, bool) {
+	if o == nil || IsNil(o.Widgets) {
+		return nil, false
+	}
+	return o.Widgets, true
+}
+
+// HasWidgets returns a boolean if a field has been set.
+func (o *AddonsCreatePostAddonV2Body) HasWidgets() bool {
+	if o != nil && !IsNil(o.Widgets) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidgets gets a reference to the given []AddonsWidget and assigns it to the Widgets field.
+func (o *AddonsCreatePostAddonV2Body) SetWidgets(v []AddonsWidget) {
+	o.Widgets = v
+}
+
 func (o AddonsCreatePostAddonV2Body) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -147,14 +147,14 @@ func (o AddonsCreatePostAddonV2Body) MarshalJSON() ([]byte, error) {
 
 func (o AddonsCreatePostAddonV2Body) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Widgets) {
-		toSerialize["widgets"] = o.Widgets
+	if !IsNil(o.Notes) {
+		toSerialize["notes"] = o.Notes
 	}
 	if !IsNil(o.Semantic) {
 		toSerialize["semantic"] = o.Semantic
 	}
-	if !IsNil(o.Notes) {
-		toSerialize["notes"] = o.Notes
+	if !IsNil(o.Widgets) {
+		toSerialize["widgets"] = o.Widgets
 	}
 	return toSerialize, nil
 }

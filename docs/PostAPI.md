@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 
@@ -130,7 +130,7 @@ Other parameters are passed through a pointer to a apiPostGetImageUploadURLReque
 
 ### Authorization
 
-No authorization required
+[APIKey](../README.md#APIKey)
 
 ### HTTP request headers
 

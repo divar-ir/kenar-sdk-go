@@ -19,13 +19,13 @@ var _ MappedNullable = &AddonsCreatePostAddonRequest{}
 
 // AddonsCreatePostAddonRequest struct for AddonsCreatePostAddonRequest
 type AddonsCreatePostAddonRequest struct {
-	Token *string `json:"token,omitempty"`
-	Widgets map[string]interface{} `json:"widgets,omitempty"`
-	Selector *AddonsAddonSelector `json:"selector,omitempty"`
 	LinkInSpec *string `json:"link_in_spec,omitempty"`
 	Notes *string `json:"notes,omitempty"`
+	Selector *AddonsAddonSelector `json:"selector,omitempty"`
 	Semantic *map[string]string `json:"semantic,omitempty"`
 	SemanticSensitives []string `json:"semantic_sensitives,omitempty"`
+	Token *string `json:"token,omitempty"`
+	Widgets map[string]interface{} `json:"widgets,omitempty"`
 }
 
 // NewAddonsCreatePostAddonRequest instantiates a new AddonsCreatePostAddonRequest object
@@ -43,102 +43,6 @@ func NewAddonsCreatePostAddonRequest() *AddonsCreatePostAddonRequest {
 func NewAddonsCreatePostAddonRequestWithDefaults() *AddonsCreatePostAddonRequest {
 	this := AddonsCreatePostAddonRequest{}
 	return &this
-}
-
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *AddonsCreatePostAddonRequest) GetToken() string {
-	if o == nil || IsNil(o.Token) {
-		var ret string
-		return ret
-	}
-	return *o.Token
-}
-
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreatePostAddonRequest) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *AddonsCreatePostAddonRequest) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *AddonsCreatePostAddonRequest) SetToken(v string) {
-	o.Token = &v
-}
-
-// GetWidgets returns the Widgets field value if set, zero value otherwise.
-func (o *AddonsCreatePostAddonRequest) GetWidgets() map[string]interface{} {
-	if o == nil || IsNil(o.Widgets) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Widgets
-}
-
-// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreatePostAddonRequest) GetWidgetsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Widgets) {
-		return map[string]interface{}{}, false
-	}
-	return o.Widgets, true
-}
-
-// HasWidgets returns a boolean if a field has been set.
-func (o *AddonsCreatePostAddonRequest) HasWidgets() bool {
-	if o != nil && !IsNil(o.Widgets) {
-		return true
-	}
-
-	return false
-}
-
-// SetWidgets gets a reference to the given map[string]interface{} and assigns it to the Widgets field.
-func (o *AddonsCreatePostAddonRequest) SetWidgets(v map[string]interface{}) {
-	o.Widgets = v
-}
-
-// GetSelector returns the Selector field value if set, zero value otherwise.
-func (o *AddonsCreatePostAddonRequest) GetSelector() AddonsAddonSelector {
-	if o == nil || IsNil(o.Selector) {
-		var ret AddonsAddonSelector
-		return ret
-	}
-	return *o.Selector
-}
-
-// GetSelectorOk returns a tuple with the Selector field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsCreatePostAddonRequest) GetSelectorOk() (*AddonsAddonSelector, bool) {
-	if o == nil || IsNil(o.Selector) {
-		return nil, false
-	}
-	return o.Selector, true
-}
-
-// HasSelector returns a boolean if a field has been set.
-func (o *AddonsCreatePostAddonRequest) HasSelector() bool {
-	if o != nil && !IsNil(o.Selector) {
-		return true
-	}
-
-	return false
-}
-
-// SetSelector gets a reference to the given AddonsAddonSelector and assigns it to the Selector field.
-func (o *AddonsCreatePostAddonRequest) SetSelector(v AddonsAddonSelector) {
-	o.Selector = &v
 }
 
 // GetLinkInSpec returns the LinkInSpec field value if set, zero value otherwise.
@@ -205,6 +109,38 @@ func (o *AddonsCreatePostAddonRequest) SetNotes(v string) {
 	o.Notes = &v
 }
 
+// GetSelector returns the Selector field value if set, zero value otherwise.
+func (o *AddonsCreatePostAddonRequest) GetSelector() AddonsAddonSelector {
+	if o == nil || IsNil(o.Selector) {
+		var ret AddonsAddonSelector
+		return ret
+	}
+	return *o.Selector
+}
+
+// GetSelectorOk returns a tuple with the Selector field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreatePostAddonRequest) GetSelectorOk() (*AddonsAddonSelector, bool) {
+	if o == nil || IsNil(o.Selector) {
+		return nil, false
+	}
+	return o.Selector, true
+}
+
+// HasSelector returns a boolean if a field has been set.
+func (o *AddonsCreatePostAddonRequest) HasSelector() bool {
+	if o != nil && !IsNil(o.Selector) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelector gets a reference to the given AddonsAddonSelector and assigns it to the Selector field.
+func (o *AddonsCreatePostAddonRequest) SetSelector(v AddonsAddonSelector) {
+	o.Selector = &v
+}
+
 // GetSemantic returns the Semantic field value if set, zero value otherwise.
 func (o *AddonsCreatePostAddonRequest) GetSemantic() map[string]string {
 	if o == nil || IsNil(o.Semantic) {
@@ -269,6 +205,70 @@ func (o *AddonsCreatePostAddonRequest) SetSemanticSensitives(v []string) {
 	o.SemanticSensitives = v
 }
 
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *AddonsCreatePostAddonRequest) GetToken() string {
+	if o == nil || IsNil(o.Token) {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreatePostAddonRequest) GetTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.Token) {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *AddonsCreatePostAddonRequest) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *AddonsCreatePostAddonRequest) SetToken(v string) {
+	o.Token = &v
+}
+
+// GetWidgets returns the Widgets field value if set, zero value otherwise.
+func (o *AddonsCreatePostAddonRequest) GetWidgets() map[string]interface{} {
+	if o == nil || IsNil(o.Widgets) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Widgets
+}
+
+// GetWidgetsOk returns a tuple with the Widgets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsCreatePostAddonRequest) GetWidgetsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Widgets) {
+		return map[string]interface{}{}, false
+	}
+	return o.Widgets, true
+}
+
+// HasWidgets returns a boolean if a field has been set.
+func (o *AddonsCreatePostAddonRequest) HasWidgets() bool {
+	if o != nil && !IsNil(o.Widgets) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidgets gets a reference to the given map[string]interface{} and assigns it to the Widgets field.
+func (o *AddonsCreatePostAddonRequest) SetWidgets(v map[string]interface{}) {
+	o.Widgets = v
+}
+
 func (o AddonsCreatePostAddonRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -279,26 +279,26 @@ func (o AddonsCreatePostAddonRequest) MarshalJSON() ([]byte, error) {
 
 func (o AddonsCreatePostAddonRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
-	if !IsNil(o.Widgets) {
-		toSerialize["widgets"] = o.Widgets
-	}
-	if !IsNil(o.Selector) {
-		toSerialize["selector"] = o.Selector
-	}
 	if !IsNil(o.LinkInSpec) {
 		toSerialize["link_in_spec"] = o.LinkInSpec
 	}
 	if !IsNil(o.Notes) {
 		toSerialize["notes"] = o.Notes
 	}
+	if !IsNil(o.Selector) {
+		toSerialize["selector"] = o.Selector
+	}
 	if !IsNil(o.Semantic) {
 		toSerialize["semantic"] = o.Semantic
 	}
 	if !IsNil(o.SemanticSensitives) {
 		toSerialize["semantic_sensitives"] = o.SemanticSensitives
+	}
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.Widgets) {
+		toSerialize["widgets"] = o.Widgets
 	}
 	return toSerialize, nil
 }

@@ -19,13 +19,13 @@ var _ MappedNullable = &AddonsScoreRow{}
 
 // AddonsScoreRow struct for AddonsScoreRow
 type AddonsScoreRow struct {
-	Title *string `json:"title,omitempty"`
+	Action *AddonsAction `json:"action,omitempty"`
 	DescriptiveScore *string `json:"descriptive_score,omitempty"`
-	PercentageScore *int32 `json:"percentage_score,omitempty"`
-	ScoreColor *AddonsWidgetColor `json:"score_color,omitempty"`
 	HasDivider *bool `json:"has_divider,omitempty"`
 	IconName *DivarIconsIconName `json:"icon_name,omitempty"`
-	Action *AddonsAction `json:"action,omitempty"`
+	PercentageScore *int32 `json:"percentage_score,omitempty"`
+	ScoreColor *AddonsWidgetColor `json:"score_color,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewAddonsScoreRow instantiates a new AddonsScoreRow object
@@ -45,36 +45,36 @@ func NewAddonsScoreRowWithDefaults() *AddonsScoreRow {
 	return &this
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *AddonsScoreRow) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
+// GetAction returns the Action field value if set, zero value otherwise.
+func (o *AddonsScoreRow) GetAction() AddonsAction {
+	if o == nil || IsNil(o.Action) {
+		var ret AddonsAction
 		return ret
 	}
-	return *o.Title
+	return *o.Action
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsScoreRow) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+func (o *AddonsScoreRow) GetActionOk() (*AddonsAction, bool) {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Action, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *AddonsScoreRow) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+// HasAction returns a boolean if a field has been set.
+func (o *AddonsScoreRow) HasAction() bool {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *AddonsScoreRow) SetTitle(v string) {
-	o.Title = &v
+// SetAction gets a reference to the given AddonsAction and assigns it to the Action field.
+func (o *AddonsScoreRow) SetAction(v AddonsAction) {
+	o.Action = &v
 }
 
 // GetDescriptiveScore returns the DescriptiveScore field value if set, zero value otherwise.
@@ -107,70 +107,6 @@ func (o *AddonsScoreRow) HasDescriptiveScore() bool {
 // SetDescriptiveScore gets a reference to the given string and assigns it to the DescriptiveScore field.
 func (o *AddonsScoreRow) SetDescriptiveScore(v string) {
 	o.DescriptiveScore = &v
-}
-
-// GetPercentageScore returns the PercentageScore field value if set, zero value otherwise.
-func (o *AddonsScoreRow) GetPercentageScore() int32 {
-	if o == nil || IsNil(o.PercentageScore) {
-		var ret int32
-		return ret
-	}
-	return *o.PercentageScore
-}
-
-// GetPercentageScoreOk returns a tuple with the PercentageScore field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsScoreRow) GetPercentageScoreOk() (*int32, bool) {
-	if o == nil || IsNil(o.PercentageScore) {
-		return nil, false
-	}
-	return o.PercentageScore, true
-}
-
-// HasPercentageScore returns a boolean if a field has been set.
-func (o *AddonsScoreRow) HasPercentageScore() bool {
-	if o != nil && !IsNil(o.PercentageScore) {
-		return true
-	}
-
-	return false
-}
-
-// SetPercentageScore gets a reference to the given int32 and assigns it to the PercentageScore field.
-func (o *AddonsScoreRow) SetPercentageScore(v int32) {
-	o.PercentageScore = &v
-}
-
-// GetScoreColor returns the ScoreColor field value if set, zero value otherwise.
-func (o *AddonsScoreRow) GetScoreColor() AddonsWidgetColor {
-	if o == nil || IsNil(o.ScoreColor) {
-		var ret AddonsWidgetColor
-		return ret
-	}
-	return *o.ScoreColor
-}
-
-// GetScoreColorOk returns a tuple with the ScoreColor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddonsScoreRow) GetScoreColorOk() (*AddonsWidgetColor, bool) {
-	if o == nil || IsNil(o.ScoreColor) {
-		return nil, false
-	}
-	return o.ScoreColor, true
-}
-
-// HasScoreColor returns a boolean if a field has been set.
-func (o *AddonsScoreRow) HasScoreColor() bool {
-	if o != nil && !IsNil(o.ScoreColor) {
-		return true
-	}
-
-	return false
-}
-
-// SetScoreColor gets a reference to the given AddonsWidgetColor and assigns it to the ScoreColor field.
-func (o *AddonsScoreRow) SetScoreColor(v AddonsWidgetColor) {
-	o.ScoreColor = &v
 }
 
 // GetHasDivider returns the HasDivider field value if set, zero value otherwise.
@@ -237,36 +173,100 @@ func (o *AddonsScoreRow) SetIconName(v DivarIconsIconName) {
 	o.IconName = &v
 }
 
-// GetAction returns the Action field value if set, zero value otherwise.
-func (o *AddonsScoreRow) GetAction() AddonsAction {
-	if o == nil || IsNil(o.Action) {
-		var ret AddonsAction
+// GetPercentageScore returns the PercentageScore field value if set, zero value otherwise.
+func (o *AddonsScoreRow) GetPercentageScore() int32 {
+	if o == nil || IsNil(o.PercentageScore) {
+		var ret int32
 		return ret
 	}
-	return *o.Action
+	return *o.PercentageScore
 }
 
-// GetActionOk returns a tuple with the Action field value if set, nil otherwise
+// GetPercentageScoreOk returns a tuple with the PercentageScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsScoreRow) GetActionOk() (*AddonsAction, bool) {
-	if o == nil || IsNil(o.Action) {
+func (o *AddonsScoreRow) GetPercentageScoreOk() (*int32, bool) {
+	if o == nil || IsNil(o.PercentageScore) {
 		return nil, false
 	}
-	return o.Action, true
+	return o.PercentageScore, true
 }
 
-// HasAction returns a boolean if a field has been set.
-func (o *AddonsScoreRow) HasAction() bool {
-	if o != nil && !IsNil(o.Action) {
+// HasPercentageScore returns a boolean if a field has been set.
+func (o *AddonsScoreRow) HasPercentageScore() bool {
+	if o != nil && !IsNil(o.PercentageScore) {
 		return true
 	}
 
 	return false
 }
 
-// SetAction gets a reference to the given AddonsAction and assigns it to the Action field.
-func (o *AddonsScoreRow) SetAction(v AddonsAction) {
-	o.Action = &v
+// SetPercentageScore gets a reference to the given int32 and assigns it to the PercentageScore field.
+func (o *AddonsScoreRow) SetPercentageScore(v int32) {
+	o.PercentageScore = &v
+}
+
+// GetScoreColor returns the ScoreColor field value if set, zero value otherwise.
+func (o *AddonsScoreRow) GetScoreColor() AddonsWidgetColor {
+	if o == nil || IsNil(o.ScoreColor) {
+		var ret AddonsWidgetColor
+		return ret
+	}
+	return *o.ScoreColor
+}
+
+// GetScoreColorOk returns a tuple with the ScoreColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsScoreRow) GetScoreColorOk() (*AddonsWidgetColor, bool) {
+	if o == nil || IsNil(o.ScoreColor) {
+		return nil, false
+	}
+	return o.ScoreColor, true
+}
+
+// HasScoreColor returns a boolean if a field has been set.
+func (o *AddonsScoreRow) HasScoreColor() bool {
+	if o != nil && !IsNil(o.ScoreColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetScoreColor gets a reference to the given AddonsWidgetColor and assigns it to the ScoreColor field.
+func (o *AddonsScoreRow) SetScoreColor(v AddonsWidgetColor) {
+	o.ScoreColor = &v
+}
+
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *AddonsScoreRow) GetTitle() string {
+	if o == nil || IsNil(o.Title) {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsScoreRow) GetTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.Title) {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *AddonsScoreRow) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *AddonsScoreRow) SetTitle(v string) {
+	o.Title = &v
 }
 
 func (o AddonsScoreRow) MarshalJSON() ([]byte, error) {
@@ -279,17 +279,11 @@ func (o AddonsScoreRow) MarshalJSON() ([]byte, error) {
 
 func (o AddonsScoreRow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
+	if !IsNil(o.Action) {
+		toSerialize["action"] = o.Action
 	}
 	if !IsNil(o.DescriptiveScore) {
 		toSerialize["descriptive_score"] = o.DescriptiveScore
-	}
-	if !IsNil(o.PercentageScore) {
-		toSerialize["percentage_score"] = o.PercentageScore
-	}
-	if !IsNil(o.ScoreColor) {
-		toSerialize["score_color"] = o.ScoreColor
 	}
 	if !IsNil(o.HasDivider) {
 		toSerialize["has_divider"] = o.HasDivider
@@ -297,8 +291,14 @@ func (o AddonsScoreRow) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IconName) {
 		toSerialize["icon_name"] = o.IconName
 	}
-	if !IsNil(o.Action) {
-		toSerialize["action"] = o.Action
+	if !IsNil(o.PercentageScore) {
+		toSerialize["percentage_score"] = o.PercentageScore
+	}
+	if !IsNil(o.ScoreColor) {
+		toSerialize["score_color"] = o.ScoreColor
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
 	}
 	return toSerialize, nil
 }
