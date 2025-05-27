@@ -40,10 +40,10 @@ func (r ApiPostEditPostRequest) Execute() (map[string]interface{}, *http.Respons
 }
 
 /*
-PostEditPost Edit a post
+PostEditPost ویرایش آگهی
 
-This API allows you to edit a post. This needs `POST_EDIT.{post_token}` OAuth scope.
-By now you can only edit title, description, and images of a post.
+این API به شما امکان ویرایش آگهی را می‌دهد. این نیاز به دامنه OAuth `POST_EDIT.{post_token}` دارد.
+در حال حاضر فقط می‌توانید عنوان، توضیحات و تصاویر آگهی را ویرایش کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -170,10 +170,10 @@ func (r ApiPostGetImageUploadURLRequest) Execute() (*PostGetImageUploadURLRespon
 }
 
 /*
-PostGetImageUploadURL Get image upload URL
+PostGetImageUploadURL دریافت URL آپلود تصویر
 
-This API allows you to get an upload URL for uploading images of a post.
-You can upload images to the returned URL using a POST request with binary encoding.
+این API به شما امکان دریافت URL آپلود برای آپلود تصاویر آگهی را می‌دهد.
+می‌توانید تصاویر را با استفاده از درخواست POST با کدگذاری باینری به URL برگشتی آپلود کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostGetImageUploadURLRequest

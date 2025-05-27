@@ -20,7 +20,7 @@ var _ MappedNullable = &FinderUser{}
 // FinderUser struct for FinderUser
 type FinderUser struct {
 	PhoneNumber *string `json:"phone_number,omitempty"`
-	// deprecated
+	// منسوخ شده
 	PhoneNumbers []string `json:"phone_numbers,omitempty"`
 	UserId *string `json:"user_id,omitempty"`
 }

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PhoneNumber** | Pointer to **string** |  | [optional] 
-**PhoneNumbers** | Pointer to **[]string** | deprecated | [optional] 
+**PhoneNumbers** | Pointer to **[]string** | منسوخ شده | [optional] 
 **UserId** | Pointer to **string** |  | [optional] 
 
 ## Methods

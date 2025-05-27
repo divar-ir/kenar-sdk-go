@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **District** | Pointer to **string** |  | [optional] 
 **FirstPublishedAt** | Pointer to **time.Time** |  | [optional] 
 **State** | Pointer to [**FinderPostExtState**](FinderPostExtState.md) |  | [optional] 
+**SupplierChatAssistantEnabled** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -232,6 +233,31 @@ SetState sets State field to given value.
 `func (o *FinderGetPostResponse) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### GetSupplierChatAssistantEnabled
+
+`func (o *FinderGetPostResponse) GetSupplierChatAssistantEnabled() bool`
+
+GetSupplierChatAssistantEnabled returns the SupplierChatAssistantEnabled field if non-nil, zero value otherwise.
+
+### GetSupplierChatAssistantEnabledOk
+
+`func (o *FinderGetPostResponse) GetSupplierChatAssistantEnabledOk() (*bool, bool)`
+
+GetSupplierChatAssistantEnabledOk returns a tuple with the SupplierChatAssistantEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupplierChatAssistantEnabled
+
+`func (o *FinderGetPostResponse) SetSupplierChatAssistantEnabled(v bool)`
+
+SetSupplierChatAssistantEnabled sets SupplierChatAssistantEnabled field to given value.
+
+### HasSupplierChatAssistantEnabled
+
+`func (o *FinderGetPostResponse) HasSupplierChatAssistantEnabled() bool`
+
+HasSupplierChatAssistantEnabled returns a boolean if a field has been set.
 
 ### GetToken
 

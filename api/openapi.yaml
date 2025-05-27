@@ -7,20 +7,21 @@ servers:
 security:
 - APIKey: []
 tags:
+- name: Addons
+- name: Assets
 - name: ChatAPI
 - name: Events
 - name: Finder
-- name: Assets
-- name: PaymentTicket
 - name: Post
-- name: Semantic
-- name: Addons
 - description: "Limited APIs, Create tickets if you need to use them."
   name: limited
+- name: PaymentTicket
+- name: Semantic
 paths:
   /experimental/open-platform/balance:
     get:
-      description: Using this API you can retrieve current balance of your app.
+      description: با استفاده از این API می‌توانید موجودی فعلی اپلیکیشن خود را دریافت
+        کنید.
       operationId: Payment_GetBalance
       responses:
         "200":
@@ -28,20 +29,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/paymentGetBalanceResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
+          description: پاسخ خطای غیرمنتظره.
       tags:
       - limited
   /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages:
     post:
       description: |-
-        You can call this API with either conversation_id or user_id.
-        Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
+        می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+        فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
       operationId: ChatAPI_ChatBotSendMessage3
       parameters:
       - description: Unique identifier for the conversation
@@ -60,21 +61,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/chatapiChatBotSendMessageResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Send a message to a ChatBot conversation
+          description: پاسخ خطای غیرمنتظره.
+      summary: ارسال پیام به مکالمه ChatBot
       tags:
       - ChatAPI
   /experimental/open-platform/chat/bot/users/{user_id}/messages:
     post:
       description: |-
-        You can call this API with either conversation_id or user_id.
-        Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
+        می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+        فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
       operationId: ChatAPI_ChatBotSendMessage2
       parameters:
       - description: Unique identifier for the user to start or continue a conversation
@@ -94,20 +95,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/chatapiChatBotSendMessageResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Send a message to a ChatBot conversation
+          description: پاسخ خطای غیرمنتظره.
+      summary: ارسال پیام به مکالمه ChatBot
       tags:
       - ChatAPI
   /experimental/open-platform/chat/upload:
     post:
-      description: This API is used to generate an upload token for uploading media
-        files.
+      description: این API برای تولید توکن آپلود برای آپلود فایل‌های رسانه‌ای استفاده
+        می‌شود.
       operationId: ChatAPI_GenerateUploadToken
       requestBody:
         content:
@@ -121,21 +122,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/chatapiGenerateUploadTokenResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Generate an upload token
+          description: پاسخ خطای غیرمنتظره.
+      summary: تولید توکن آپلود
       tags:
       - ChatAPI
   /experimental/open-platform/chatbot-conversations/{conversation_id}/messages:
     post:
       description: |-
-        You can call this API with either conversation_id or user_id.
-        Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
+        می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+        فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
       operationId: ChatAPI_ChatBotSendMessage
       parameters:
       - description: Unique identifier for the conversation
@@ -154,20 +155,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/chatapiChatBotSendMessageResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Send a message to a ChatBot conversation
+          description: پاسخ خطای غیرمنتظره.
+      summary: ارسال پیام به مکالمه ChatBot
       tags:
       - ChatAPI
   /experimental/open-platform/post/{post_token}/reorder:
     post:
-      description: Use GetPostPricing API to get the cost of the service before calling
-        this API.
+      description: قبل از فراخوانی این API، از API GetPostPricing برای دریافت هزینه
+        سرویس استفاده کنید.
       operationId: Payment_ReorderPost
       parameters:
       - explode: false
@@ -189,20 +190,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/paymentReorderPostResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
+          description: پاسخ خطای غیرمنتظره.
       tags:
       - limited
   /experimental/open-platform/semantic/post/{token}:
     post:
       description: |
-        In some cases, it is necessary to store information about the post in Divar without adding an addon.
-        This API expects access token having `POST_SEMANTIC_CREATE` scope.
+        در برخی موارد، ذخیره اطلاعات مربوط به آگهی در دیوار بدون افزودن افزونه ضروری است.
+        این API توکن دسترسی با دامنه `POST_SEMANTIC_CREATE` را انتظار دارد.
       operationId: Semantic_CreatePostSemantic
       parameters:
       - explode: false
@@ -224,23 +225,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/semanticCreatePostSemanticResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Create Post Semantic
+          description: پاسخ خطای غیرمنتظره.
+      summary: ایجاد اطلاعات معنایی آگهی
       tags:
       - Semantic
+  /experimental/open-platform/transactions:
+    get:
+      description: Using this API you can retrieve a list of transactions. Follow
+        pages till you get an empty list.
+      operationId: Payment_ListTransactions
+      parameters:
+      - description: Number of transactions to return per page
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: Token for the next page of results
+        explode: true
+        in: query
+        name: page_token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/paymentListTransactionsResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      tags:
+      - limited
   /experimental/open-platform/transactions/{id}:
     get:
-      description: Using this API you can retrieve transaction details.
+      description: با استفاده از این API می‌توانید جزئیات تراکنش را دریافت کنید.
       operationId: Payment_GetTransaction
       parameters:
-      - description: "The unique identifier for the transaction, same as the id in\
-          \ the request"
+      - description: شناسه منحصر به فرد برای تراکنش، همان id در درخواست
         explode: false
         in: path
         name: id
@@ -254,18 +292,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/paymentGetTransactionResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
+          description: پاسخ خطای غیرمنتظره.
       tags:
       - limited
   /v1/open-platform/add-ons/post/{token}:
     delete:
-      description: You can only delete addons which are created by your app.
+      description: فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد
+        شده‌اند.
       operationId: Addons_DeletePostAddon
       parameters:
       - explode: false
@@ -281,19 +320,20 @@ paths:
             application/json:
               schema:
                 type: object
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Delete an Addon from a post
+          description: پاسخ خطای غیرمنتظره.
+      summary: حذف افزونه از آگهی
       tags:
       - Addons
   /v1/open-platform/addons/post/{token}:
     delete:
-      description: You can only delete addons which are created by your app.
+      description: فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد
+        شده‌اند.
       operationId: Addons_DeletePostAddon2
       parameters:
       - explode: false
@@ -309,21 +349,21 @@ paths:
             application/json:
               schema:
                 type: object
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Delete an Addon from a post
+          description: پاسخ خطای غیرمنتظره.
+      summary: حذف افزونه از آگهی
       tags:
       - Addons
   /v1/open-platform/addons/user/{id}:
     delete:
       description: |-
-        This will delete all correlated Addons to all user posts.
-        You can only delete Addons which are created by your app.
+        این تمام افزونه‌های مرتبط با تمام آگهی‌های کاربر را حذف می‌کند.
+        فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
       operationId: Addons_DeleteUserAddon
       parameters:
       - explode: false
@@ -339,19 +379,19 @@ paths:
             application/json:
               schema:
                 type: object
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Delete an UserAddon
+          description: پاسخ خطای غیرمنتظره.
+      summary: حذف افزونه کاربر
       tags:
       - Addons
   /v1/open-platform/addons/user/{phone}:
     get:
-      description: Retrieve all UserAddons of a user.
+      description: دریافت تمام افزونه‌های کاربر یک کاربر.
       operationId: Addons_GetUserAddons
       parameters:
       - explode: false
@@ -374,20 +414,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/addonsGetUserAddonsResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Retrieve all UserAddons
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت تمام افزونه‌های کاربر
       tags:
       - Addons
   /v1/open-platform/assets/body-status:
     get:
-      description: Get all available body-status options in Divar vehicle categories.This
-        provides persian translations for each body-status options which used in posts.
+      description: دریافت تمام گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار.
+        این ترجمه فارسی برای هر گزینه وضعیت بدنه که در آگهی‌ها استفاده می‌شود، ارائه
+        می‌دهد.
       operationId: Assets_GetBodyStatuses
       responses:
         "200":
@@ -395,20 +436,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetBodyStatusesResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get available body-status options in Divar vehicle categories
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
       tags:
       - Assets
   /v1/open-platform/assets/brand-model/{category}:
     get:
-      description: Get all Divar brand models in specified category.This provides
-        persian translations for each brand models which used in posts.
+      description: دریافت تمام مدل‌های برند دیوار در دسته‌بندی مشخص شده. این ترجمه
+        فارسی برای هر مدل برند که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
       operationId: Assets_GetBrandModels
       parameters:
       - explode: false
@@ -424,20 +465,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetBrandModelsResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get brand models in a Divar category
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت مدل‌های برند در دسته‌بندی دیوار
       tags:
       - Assets
   /v1/open-platform/assets/category:
     get:
-      description: Get all Divar categories. This provides persian translations for
-        each category which used in posts.
+      description: دریافت تمام دسته‌بندی‌های دیوار. این ترجمه فارسی برای هر دسته‌بندی
+        که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
       operationId: Assets_GetCategories
       responses:
         "200":
@@ -445,20 +486,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetCategoriesResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get Divar categories
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت دسته‌بندی‌های دیوار
       tags:
       - Assets
   /v1/open-platform/assets/city:
     get:
-      description: Get all Divar cities. This provides persian translations for each
-        city which used in posts.
+      description: دریافت تمام شهرهای دیوار. این ترجمه فارسی برای هر شهر که در آگهی‌ها
+        استفاده می‌شود، ارائه می‌دهد.
       operationId: Assets_GetCities
       responses:
         "200":
@@ -466,20 +507,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetCitiesResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get Divar cities
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت شهرهای دیوار
       tags:
       - Assets
   /v1/open-platform/assets/color/{category}:
     get:
-      description: Get all Divar colors in specified category.This provides persian
-        translations for each color which used in posts.
+      description: دریافت تمام رنگ‌های دیوار در دسته‌بندی مشخص شده. این ترجمه فارسی
+        برای هر رنگ که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
       operationId: Assets_GetColors
       parameters:
       - explode: false
@@ -495,20 +536,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetColorsResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get colors in a Divar category
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت رنگ‌ها در دسته‌بندی دیوار
       tags:
       - Assets
   /v1/open-platform/assets/district:
     get:
-      description: Get all Divar districts. This provides persian translations for
-        each district which used in posts.
+      description: دریافت تمام مناطق دیوار. این ترجمه فارسی برای هر منطقه که در آگهی‌ها
+        استفاده می‌شود، ارائه می‌دهد.
       operationId: Assets_GetDistricts
       parameters:
       - explode: true
@@ -524,20 +565,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetDistrictsResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get Divar districts
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت مناطق دیوار
       tags:
       - Assets
   /v1/open-platform/assets/district/{city_slug}:
     get:
-      description: Get all Divar districts. This provides persian translations for
-        each district which used in posts.
+      description: دریافت تمام مناطق دیوار. این ترجمه فارسی برای هر منطقه که در آگهی‌ها
+        استفاده می‌شود، ارائه می‌دهد.
       operationId: Assets_GetDistricts2
       parameters:
       - explode: false
@@ -553,21 +594,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetDistrictsResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get Divar districts
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت مناطق دیوار
       tags:
       - Assets
   /v1/open-platform/assets/internal-storage:
     get:
-      description: Get all available internal-storage options in Divar mobile categories.This
-        provides persian translations for each internal-storage options which used
-        in posts.
+      description: دریافت تمام گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل
+        دیوار. این ترجمه فارسی برای هر گزینه حافظه داخلی که در آگهی‌ها استفاده می‌شود،
+        ارائه می‌دهد.
       operationId: Assets_GetInternalStorages
       responses:
         "200":
@@ -575,22 +616,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetInternalStoragesResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get available internal-storage options in Divar mobile/tablet/laptop
-        categories
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ
+        دیوار
       tags:
       - Assets
   /v1/open-platform/assets/oauth-scope:
     get:
       description: |-
-        These are available scopes for KenarDivar OAuth2.0.
-        Use scopes in OAuth flow to request access to user data or perform actions on their behalf.
+        اینها دامنه‌های موجود برای OAuth2.0 کنار دیوار هستند.
+        از دامنه‌ها در جریان OAuth برای درخواست دسترسی به داده‌های کاربر یا انجام اقدامات از طرف آنها استفاده کنید.
       operationId: Assets_GetOAuthScopes
       responses:
         "200":
@@ -598,21 +639,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetOAuthScopesResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get KenarDivar OAuth scopes
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت دامنه‌های OAuth کنار دیوار
       tags:
       - Assets
   /v1/open-platform/assets/permission:
     get:
       description: |-
-        These permission are used to control access in KenarDivar Apps. Don't mistake them with OAuth scopes.
-        It's expected that apps be blind about these permissions.These are created for internal usages only, but feel free to request to be enabled for you app as needed.
+        این مجوزها برای کنترل دسترسی در اپلیکیشن‌های کنار دیوار استفاده می‌شوند. آنها را با دامنه‌های OAuth اشتباه نگیرید.
+        انتظار می‌رود اپلیکیشن‌ها نسبت به این مجوزها کور باشند. اینها فقط برای استفاده‌های داخلی ایجاد شده‌اند، اما در صورت نیاز آزادانه درخواست فعال‌سازی برای اپلیکیشن خود را ارائه دهید.
       operationId: Assets_GetPermissions
       responses:
         "200":
@@ -620,21 +661,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetPermissionsResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get KenarDivar permissions
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت مجوزهای کنار دیوار
       tags:
       - Assets
   /v1/open-platform/assets/ram-memory:
     get:
-      description: Get all available ram-memory options in Divar mobile/tablet/laptop
-        categories.This provides persian translations for each ram-memory options
-        which used in posts.
+      description: دریافت تمام گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ
+        دیوار. این ترجمه فارسی برای هر گزینه حافظه رم که در آگهی‌ها استفاده می‌شود،
+        ارائه می‌دهد.
       operationId: Assets_GetRamMemories
       responses:
         "200":
@@ -642,21 +683,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetRamMemoriesResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get available ram-memory options in Divar mobile/tablet/laptop categories
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ
+        دیوار
       tags:
       - Assets
   /v1/open-platform/assets/service-type:
     get:
       description: |-
-        These service types is used to group similar services in KenarDivar.
-        Any new idea with new service types are welcome. Feel free to request them as needed.
+        این انواع سرویس برای گروه‌بندی سرویس‌های مشابه در کنار دیوار استفاده می‌شود.
+        هر ایده جدید با انواع سرویس جدید خوشامد است. در صورت نیاز آزادانه درخواست دهید.
       operationId: Assets_GetServiceTypes
       responses:
         "200":
@@ -664,20 +706,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetsGetServiceTypesResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get available service types in KenarDivar
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت انواع سرویس موجود در کنار دیوار
       tags:
       - Assets
   /v1/open-platform/chat/conversations/{conversation_id}:
     get:
-      description: This API is used to get the conversation and messages of a conversation
-        by it's ID.This API expects access token with `CHAT_CONVERSATION_READ` scope.
+      description: این API برای دریافت مکالمه و پیام‌های یک مکالمه با شناسه آن استفاده
+        می‌شود. این API توکن دسترسی با دامنه `CHAT_CONVERSATION_READ` را انتظار دارد.
       operationId: ChatAPI_GetConversation
       parameters:
       - description: Unique identifier for the conversation
@@ -694,28 +736,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/chatapiGetConversationResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get Conversation by it's ID
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت مکالمه با شناسه آن
       tags:
       - ChatAPI
   /v1/open-platform/events/subscriptions:
     post:
       description: |-
-        This requests allows you to subscribe to an event.
-        You need to send access-token in this API to check your access.
-        For subscribing on `NEW_MESSAGE_ON_POST` you need one of these scopes:
+        این درخواست به شما امکان اشتراک در رویداد را می‌دهد.
+        باید access-token را در این API ارسال کنید تا دسترسی شما بررسی شود.
+        برای اشتراک در `NEW_MESSAGE_ON_POST` به یکی از این دامنه‌ها نیاز دارید:
         - CHAT_POST_CONVERSATIONS_READ.{post_token}
         - CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
-        For subscribing on `POST_UPDATE` you need `USER_POSTS_GET` scope.
-        After calling this API, You'll be notified in your webhook when corresponding event occurs.
-        Make sure webhook URL is set on providers panel for your app.
-        Some events are enabled by default and no subscription is needed for them(e.g chatbot messages).
+        برای اشتراک در `POST_UPDATE` به دامنه `USER_POSTS_GET` نیاز دارید.
+        پس از فراخوانی این API، هنگام وقوع رویداد مربوطه در webhook خود مطلع خواهید شد.
+        مطمئن شوید URL webhook در پنل ارائه‌دهندگان برای اپلیکیشن شما تنظیم شده است.
+        برخی رویدادها به طور پیش‌فرض فعال هستند و نیازی به اشتراک ندارند (مثل پیام‌های chatbot).
       operationId: Events_RegisterEventSubscription
       requestBody:
         content:
@@ -729,14 +771,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eventsRegisterEventSubscriptionResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Subscribe to an event
+          description: پاسخ خطای غیرمنتظره.
+      summary: اشتراک در رویداد
       tags:
       - Events
   /v1/open-platform/finder/post/{token}:
@@ -758,21 +800,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/finderGetPostResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get a Divar post
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت آگهی دیوار
       tags:
       - Finder
   /v1/open-platform/finder/user-posts:
     get:
       description: |-
-        This API allows you to get all posts of a user.
-        You can use this API to show user posts in your service.
+        این API به شما امکان دریافت تمام آگهی‌های یک کاربر را می‌دهد.
+        می‌توانید از این API برای نمایش آگهی‌های کاربر در سرویس خود استفاده کنید.
       operationId: Finder_GetUserPosts
       responses:
         "200":
@@ -780,21 +822,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/finderGetUserPostsResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get user posts
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت آگهی‌های کاربر
       tags:
       - Finder
   /v1/open-platform/payment-ticket/validate:
     post:
       description: |-
-        Payment tickets are designed to integrate Kenar apps with Divar internal teams.
-        Using this API you can validate a payment ticket and get the issuer payload.
+        بلیط‌های پرداخت برای یکپارچه‌سازی اپلیکیشن‌های کنار با تیم‌های داخلی دیوار طراحی شده‌اند.
+        با استفاده از این API می‌توانید بلیط پرداخت را اعتبارسنجی کرده و payload صادرکننده را دریافت کنید.
       operationId: PaymentTicket_Validate
       requestBody:
         content:
@@ -808,21 +850,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/payment_ticketValidateResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Validate a payment ticket
+          description: پاسخ خطای غیرمنتظره.
+      summary: اعتبارسنجی بلیط پرداخت
       tags:
       - PaymentTicket
   /v1/open-platform/post/image-upload-url:
     get:
       description: |-
-        This API allows you to get an upload URL for uploading images of a post.
-        You can upload images to the returned URL using a POST request with binary encoding.
+        این API به شما امکان دریافت URL آپلود برای آپلود تصاویر آگهی را می‌دهد.
+        می‌توانید تصاویر را با استفاده از درخواست POST با کدگذاری باینری به URL برگشتی آپلود کنید.
       operationId: Post_GetImageUploadURL
       responses:
         "200":
@@ -830,21 +872,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/postGetImageUploadURLResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get image upload URL
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت URL آپلود تصویر
       tags:
       - Post
   /v1/open-platform/post/{post_token}:
     put:
       description: |-
-        This API allows you to edit a post. This needs `POST_EDIT.{post_token}` OAuth scope.
-        By now you can only edit title, description, and images of a post.
+        این API به شما امکان ویرایش آگهی را می‌دهد. این نیاز به دامنه OAuth `POST_EDIT.{post_token}` دارد.
+        در حال حاضر فقط می‌توانید عنوان، توضیحات و تصاویر آگهی را ویرایش کنید.
       operationId: Post_EditPost
       parameters:
       - explode: false
@@ -866,25 +908,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/postEditPostResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Edit a post
+          description: پاسخ خطای غیرمنتظره.
+      summary: ویرایش آگهی
       tags:
       - Post
   /v1/open-platform/post/{post_token}/pricing:
     get:
-      description: "Using this API and with user permission, you can get the price\
-        \ of various services like Reorder.The price of this API is not necessarily\
-        \ the same as the price on Divar, and pricing may vary.Use this API to get\
-        \ the price before applying services (such as reordering a post)."
+      description: با استفاده از این API و با مجوز کاربر، می‌توانید قیمت سرویس‌های
+        مختلف مانند نردبان را دریافت کنید. قیمت این API لزوماً با قیمت روی دیوار یکسان
+        نیست و قیمت‌گذاری ممکن است متفاوت باشد. از این API برای دریافت قیمت قبل از
+        اعمال سرویس‌ها (مانند نردبان آگهی) استفاده کنید.
       operationId: Payment_GetPostPricing
       parameters:
-      - description: An 8-9 character unique identifier for the post
+      - description: شناسه منحصر به فرد 8-9 کاراکتری برای آگهی
         explode: false
         in: path
         name: post_token
@@ -898,20 +940,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/paymentGetPostPricingResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Retrieve the cost of the service
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت هزینه سرویس
       tags:
       - limited
   /v1/open-platform/semantic/user/{phone}:
     delete:
-      description: You can delete the semantic information of a user by calling this
-        API.
+      description: می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
       operationId: Semantic_DeleteUserSemantic
       parameters:
       - explode: false
@@ -934,22 +975,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/semanticDeleteUserSemanticResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Delete User Semantic
+          description: پاسخ خطای غیرمنتظره.
+      summary: حذف اطلاعات معنایی کاربر
       tags:
       - Semantic
     post:
       description: |-
-        In some cases, it is necessary to store information about the user in Divar without adding an addon.
-        The username in Divar is the same as the mobile number.
-        This API expects access token having `USER_VERIFICATION_CREATE` scope.
-        Use the User Semantic APIs for this purpose.This service allows sending semantic information and an optional payment ticket.
+        در برخی موارد، ذخیره اطلاعات مربوط به کاربر در دیوار بدون افزودن افزونه ضروری است.
+        نام کاربری در دیوار همان شماره موبایل است.
+        این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
+        از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
       operationId: Semantic_CreateUserSemantic
       parameters:
       - explode: false
@@ -967,20 +1008,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/semanticCreateUserSemanticResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Create User Semantic
+          description: پاسخ خطای غیرمنتظره.
+      summary: ایجاد اطلاعات معنایی کاربر
       tags:
       - Semantic
   /v1/open-platform/semantic/users/{divar_user_id}:
     delete:
-      description: You can delete the semantic information of a user by calling this
-        API.
+      description: می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
       operationId: Semantic_DeleteUserSemantic2
       parameters:
       - explode: false
@@ -1003,22 +1043,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/semanticDeleteUserSemanticResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Delete User Semantic
+          description: پاسخ خطای غیرمنتظره.
+      summary: حذف اطلاعات معنایی کاربر
       tags:
       - Semantic
     post:
       description: |-
-        In some cases, it is necessary to store information about the user in Divar without adding an addon.
-        The username in Divar is the same as the mobile number.
-        This API expects access token having `USER_VERIFICATION_CREATE` scope.
-        Use the User Semantic APIs for this purpose.This service allows sending semantic information and an optional payment ticket.
+        در برخی موارد، ذخیره اطلاعات مربوط به کاربر در دیوار بدون افزودن افزونه ضروری است.
+        نام کاربری در دیوار همان شماره موبایل است.
+        این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
+        از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
       operationId: Semantic_CreateUserSemantic2
       parameters:
       - explode: false
@@ -1036,22 +1076,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/semanticCreateUserSemanticResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Create User Semantic
+          description: پاسخ خطای غیرمنتظره.
+      summary: ایجاد اطلاعات معنایی کاربر
       tags:
       - Semantic
   /v1/open-platform/users:
     get:
       description: |
-        After gaining an access token, you can use this API to get user information.
-        With scope `USER_PHONE` you can get user phone number.
-        With scope `USER_ID` you can get user id and you can rely on uniqueness of this id.
+        پس از دریافت توکن دسترسی، می‌توانید از این API برای دریافت اطلاعات کاربر استفاده کنید.
+        با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
+        با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
       operationId: Finder_GetUser2
       responses:
         "200":
@@ -1059,21 +1099,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/finderUser'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get user information
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت اطلاعات کاربر
       tags:
       - Finder
     post:
       description: |
-        After gaining an access token, you can use this API to get user information.
-        With scope `USER_PHONE` you can get user phone number.
-        With scope `USER_ID` you can get user id and you can rely on uniqueness of this id.
+        پس از دریافت توکن دسترسی، می‌توانید از این API برای دریافت اطلاعات کاربر استفاده کنید.
+        با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
+        با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
       operationId: Finder_GetUser
       requestBody:
         content:
@@ -1087,22 +1127,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/finderUser'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Get user information
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت اطلاعات کاربر
       tags:
       - Finder
   /v2/open-platform/addons/post/{token}:
     post:
       description: |-
-        Using this API and with user permission, you can attach a new AD to a post.
-        You can use available widgets to design your Addon.
-        This API need access token having one of the following scopes:
+        با استفاده از این API و با مجوز کاربر، می‌توانید افزونه جدیدی به آگهی متصل کنید.
+        می‌توانید از ویجت‌های موجود برای طراحی افزونه خود استفاده کنید.
+        این API به توکن دسترسی با یکی از دامنه‌های زیر نیاز دارد:
         - USER_POSTS_ADDON_CREATE
         - POST_ADDON_CREATE.{post_token}
       operationId: Addons_CreatePostAddonV2
@@ -1126,23 +1166,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/addonsCreatePostAddonResponseV2'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Attach a new Addon to a post
+          description: پاسخ خطای غیرمنتظره.
+      summary: افزودن افزونه جدید به آگهی
       tags:
       - Addons
   /v2/open-platform/addons/user/{phone}:
     post:
       description: |-
-        Using this API and with user permission, you can create a UserAddon.
-        UserAddon will attach to all user posts in future and also back fills last 30 posts in the past.
-        You can use available widgets to design your UserAddon.
-        This API need access token having `USER_ADDON_CREATE` scope
+        با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
+        افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
+        می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
+        این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
       operationId: Addons_CreateUserAddonV2
       parameters:
       - explode: false
@@ -1160,19 +1200,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/addonsCreateUserAddonResponseV2'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Attach a new Addon to a user
+          description: پاسخ خطای غیرمنتظره.
+      summary: افزودن افزونه جدید به کاربر
       tags:
       - Addons
   /v2/open-platform/addons/users/{divar_user_id}:
     get:
-      description: Retrieve all UserAddons of a user.
+      description: دریافت تمام افزونه‌های کاربر یک کاربر.
       operationId: Addons_GetUserAddons2
       parameters:
       - explode: false
@@ -1195,22 +1235,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/addonsGetUserAddonsResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Retrieve all UserAddons
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت تمام افزونه‌های کاربر
       tags:
       - Addons
     post:
       description: |-
-        Using this API and with user permission, you can create a UserAddon.
-        UserAddon will attach to all user posts in future and also back fills last 30 posts in the past.
-        You can use available widgets to design your UserAddon.
-        This API need access token having `USER_ADDON_CREATE` scope
+        با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
+        افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
+        می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
+        این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
       operationId: Addons_CreateUserAddonV22
       parameters:
       - explode: false
@@ -1228,21 +1268,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/addonsCreateUserAddonResponseV2'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Attach a new Addon to a user
+          description: پاسخ خطای غیرمنتظره.
+      summary: افزودن افزونه جدید به کاربر
       tags:
       - Addons
   /v2/open-platform/conversations/{conversation_id}/messages:
     post:
       description: |
-        This API is used to send a message to a conversation.
-        You need one of the following scopes to call this API:
+        این API برای ارسال پیام به مکالمه استفاده می‌شود.
+        برای فراخوانی این API به یکی از دامنه‌های زیر نیاز دارید:
         - CONVERSATION_SEND_MESSAGE.{conversation_id}
         - CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND
         - CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{post_token}
@@ -1268,22 +1308,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/chatapiConversationSendMessageResponse'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Send a message to a conversation
+          description: پاسخ خطای غیرمنتظره.
+      summary: ارسال پیام به مکالمه
       tags:
       - ChatAPI
   /v2/open-platform/finder/post:
     post:
       description: |
-        This API allows you to search Divar posts with some filters.
-        You can search posts by category, city, district, and some other filters.
-        Posts will be sorted by their timestamp.
+        این API به شما امکان جستجو آگهی‌های دیوار با برخی فیلترها را می‌دهد.
+        می‌توانید آگهی‌ها را بر اساس دسته‌بندی، شهر، منطقه و برخی فیلترهای دیگر جستجو کنید.
+        آگهی‌ها بر اساس زمان آنها مرتب می‌شوند.
       operationId: Finder_SearchPostV2
       requestBody:
         content:
@@ -1297,14 +1337,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/finderSearchPostV2Response'
-          description: A successful response.
+          description: پاسخ موفقیت‌آمیز.
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-          description: An unexpected error response.
-      summary: Search Divar posts with some filters
+          description: پاسخ خطای غیرمنتظره.
+      summary: جستجو آگهی‌های دیوار با فیلترهایی
       tags:
       - Finder
 components:
@@ -1345,8 +1385,8 @@ components:
     AddonSemanticIdentityVerificationResult:
       enum:
       - FACE_AND_ID_MATCHED
-      title: "- FACE_AND_ID_MATCHED: ID means melli CARD, this value results in badge\
-        \ in matching"
+      title: "- FACE_AND_ID_MATCHED: ID به معنای کارت ملی است، این مقدار منجر به ن\
+        شان در تطبیق می‌شود"
       type: string
     AddonSemanticIdentityVerificationStage:
       enum:
@@ -2748,11 +2788,11 @@ components:
         cost_rials: cost_rials
       properties:
         available:
-          description: "Indicates if the post can be reordered. If false, the reorder\
-            \ API will return an error"
+          description: نشان می‌دهد که آیا آگهی قابل نردبان است. اگر false باشد، API
+            نردبان خطا برمی‌گرداند
           type: boolean
         cost_rials:
-          description: The cost of reordering in rials
+          description: هزینه نردبان به ریال
           format: int64
           type: string
       type: object
@@ -2825,12 +2865,12 @@ components:
         longitude: 5.962133916683182
       properties:
         latitude:
-          description: "The latitude in degrees. It must be in the range [-90.0, +90.0]."
+          description: "عرض جغرافیایی به درجه. باید در محدوده [-90.0, +90.0] باشد."
           format: double
           type: number
         longitude:
-          description: "The longitude in degrees. It must be in the range [-180.0,\
-            \ +180.0]."
+          description: "طول جغرافیایی به درجه. باید در محدوده [-180.0, +180.0] باش\
+            د."
           format: double
           type: number
       type: object
@@ -2904,15 +2944,14 @@ components:
         id: id
       properties:
         extra_details:
-          description: Additional details that you want to send to the Kenar side.
-            This field is optional and can be used to solve inconsistencies in the
-            transaction.
+          description: جزئیات اضافی که می‌خواهید به سمت کنار ارسال کنید. این فیلد
+            اختیاری است و می‌تواند برای حل ناسازگاری‌ها در تراکنش استفاده شود.
           type: string
         id:
-          description: "A Version 4 uuid that must be unique for each payment. This\
-            \ uuid must be generated on your side and sent in the request. If an id\
-            \ is sent that has a successful or semi-successful transaction on the\
-            \ Kenar side, you will receive an error."
+          description: یک uuid نسخه 4 که باید برای هر پرداخت منحصر به فرد باشد. این
+            uuid باید در سمت شما تولید شده و در درخواست ارسال شود. اگر id ای ارسال
+            شود که تراکنش موفق یا نیمه موفقی در سمت کنار داشته باشد، خطا دریافت خواهید
+            کرد.
           type: string
       type: object
     PostEditPostBody:
@@ -3157,8 +3196,7 @@ components:
         tokens:
           items:
             type: string
-          title: (OR) post is selected if the following array contains corresponding
-            field
+          title: (OR) آگهی انتخاب می‌شود اگر آرایه زیر شامل فیلد مربوطه باشد
           type: array
       title: |-
         (AND) post is selected by this selector if all of the following conditions
@@ -3166,13 +3204,13 @@ components:
       type: object
     addonsAddonSemantic:
       description: |-
-        This is the message extracted by OpenPlatform from service provider
-        semantics. Guidelines:
-         - Always check to see if an appropriate enum field or value exists before
-         adding one.
-         - Zero value of every enum should be {ENUM_NAME}_UNSPECIFIED.
-         - Enum values should not correspond to any specific post or person
-         attribute.
+        این پیام استخراج شده توسط OpenPlatform از اطلاعات معنایی
+        ارائه‌دهنده سرویس است. راهنماها:
+         - همیشه بررسی کنید که آیا فیلد یا مقدار enum مناسبی قبل از
+         افزودن وجود دارد.
+         - مقدار صفر هر enum باید {ENUM_NAME}_UNSPECIFIED باشد.
+         - مقادیر Enum نباید با هیچ آگهی خاص یا صفت شخص
+         مطابقت داشته باشد.
       example:
         car_verification_last_successful_stage: null
         identity_verification_result: FACE_AND_ID_MATCHED
@@ -3212,7 +3250,7 @@ components:
     addonsAddonSemanticPaymentMethod:
       enum:
       - SECURE
-      title: "- SECURE: this value results in badge in matching"
+      title: "- SECURE: این مقدار منجر به نشان در تطبیق می‌شود"
       type: string
     addonsAddonSemanticStatus:
       enum:
@@ -3254,7 +3292,7 @@ components:
         link_in_spec:
           type: string
         notes:
-          title: arbitrary data provided by addon creator
+          title: داده‌های دلخواه ارائه شده توسط سازنده افزونه
           type: string
         selector:
           $ref: '#/components/schemas/addonsAddonSelector'
@@ -3560,14 +3598,14 @@ components:
         semantic:
           additionalProperties:
             type: string
-          title: deprecated
+          title: منسوخ شده
           type: object
         semantic_data:
           $ref: '#/components/schemas/addonsAddonSemantic'
         semantic_sensitives:
           items:
             type: string
-          title: deprecated
+          title: منسوخ شده
           type: array
         sensitive_semantic:
           additionalProperties:
@@ -3714,19 +3752,19 @@ components:
         divar_user_id: divar_user_id
       properties:
         divar_user_id:
-          title: new field
+          title: فیلد جدید
           type: string
         filters:
           $ref: '#/components/schemas/addonsUserAddonFilters'
         meta_data:
           $ref: '#/components/schemas/addonsAddonMetaData'
         phone:
-          title: will be deprecated
+          title: منسوخ خواهد شد
           type: string
         semantic:
           additionalProperties:
             type: string
-          title: deprecated
+          title: منسوخ شده
           type: object
         semantic_data:
           $ref: '#/components/schemas/addonsAddonSemantic'
@@ -3894,7 +3932,7 @@ components:
         service_tags:
           items:
             $ref: '#/components/schemas/appsServiceTag'
-          title: deprecated - use AddonMetaData.service_tags
+          title: منسوخ شده - از AddonMetaData.service_tags استفاده کنید
           type: array
         service_type:
           $ref: '#/components/schemas/appsServiceType'
@@ -4190,8 +4228,8 @@ components:
         scope:
           $ref: '#/components/schemas/OAuthScopeScope'
       title: |-
-        Represents standard oauth scope parsed using `PERMISSION_ENUM__{resource_id}`
-        format string. e.g. EDIT_POST__AZrOi1eL
+        دامنه oauth استاندارد تجزیه شده با استفاده از رشته فرمت
+        `PERMISSION_ENUM__{resource_id}` را نمایش می‌دهد. مثال: EDIT_POST__AZrOi1eL
       type: object
     chatapiChatBotSendMessageResponse:
       example:
@@ -4224,7 +4262,7 @@ components:
         icon:
           $ref: '#/components/schemas/DivarIconsIconName'
         icon_name:
-          title: deprecated
+          title: منسوخ شده
           type: string
       type: object
     chatapiChatButtonGrid:
@@ -4538,6 +4576,7 @@ components:
         data: "{}"
         city: city
         district: district
+        supplier_chat_assistant_enabled: true
         chat_enabled: true
         first_published_at: 2000-01-23T04:56:07.000+00:00
         state: PUBLISHED
@@ -4564,6 +4603,8 @@ components:
           type: string
         state:
           $ref: '#/components/schemas/finderPostExtState'
+        supplier_chat_assistant_enabled:
+          type: boolean
         token:
           type: string
       type: object
@@ -4821,10 +4862,10 @@ components:
         phone_number:
           type: string
         phone_numbers:
-          description: deprecated
+          description: منسوخ شده
           items:
             type: string
-          title: "requires OAuth scope: USER_PHONE"
+          title: "نیاز به دامنه OAuth: USER_PHONE"
           type: array
         user_id:
           type: string
@@ -4872,7 +4913,7 @@ components:
         balance_rials: balance_rials
       properties:
         balance_rials:
-          description: The balance of the app in rials
+          description: موجودی اپلیکیشن به ریال
           format: int64
           type: string
       type: object
@@ -4897,17 +4938,41 @@ components:
         transaction:
           $ref: '#/components/schemas/paymentTransaction'
       type: object
+    paymentListTransactionsResponse:
+      example:
+        next_page_token: next_page_token
+        transactions:
+        - extra_details: extra_details
+          id: id
+          state: TRANSACTION_STATE_PENDING
+          type: TRANSACTION_TYPE_REORDER
+          cost_rials: cost_rials
+        - extra_details: extra_details
+          id: id
+          state: TRANSACTION_STATE_PENDING
+          type: TRANSACTION_TYPE_REORDER
+          cost_rials: cost_rials
+      properties:
+        next_page_token:
+          description: Token for the next page of results.
+          type: string
+        transactions:
+          description: List of transactions matching the request
+          items:
+            $ref: '#/components/schemas/paymentTransaction'
+          type: array
+      type: object
     paymentReorderPostResponse:
       example:
         id: id
         cost_rials: cost_rials
       properties:
         cost_rials:
-          description: The cost of the transaction in rials for your application
+          description: هزینه تراکنش به ریال برای اپلیکیشن شما
           format: int64
           type: string
         id:
-          description: Same uuid when creating transaction
+          description: همان uuid هنگام ایجاد تراکنش
           type: string
       type: object
     paymentTransaction:
@@ -4919,14 +4984,14 @@ components:
         cost_rials: cost_rials
       properties:
         cost_rials:
-          description: The cost of the transaction in rials for your application
+          description: هزینه تراکنش به ریال برای اپلیکیشن شما
           format: int64
           type: string
         extra_details:
-          description: Same Additional details which you sent in the request
+          description: همان جزئیات اضافی که در درخواست ارسال کردید
           type: string
         id:
-          description: Same uuid when creating transaction
+          description: همان uuid هنگام ایجاد تراکنش
           type: string
         state:
           $ref: '#/components/schemas/paymentTransactionState'
@@ -4952,7 +5017,7 @@ components:
     payment_ticketValidateRequest:
       properties:
         phone_number:
-          description: Deprecated. Use divar_user_id.
+          description: منسوخ شده. از divar_user_id استفاده کنید.
           type: string
         service_cost:
           format: int32
@@ -4981,13 +5046,13 @@ components:
     protobufAny:
       additionalProperties: {}
       description: |-
-        `Any` contains an arbitrary serialized protocol buffer message along with a
-        URL that describes the type of the serialized message.
+        `Any` شامل یک پیام protocol buffer سریالایز شده دلخواه همراه با
+        URL که نوع پیام سریالایز شده را توضیح می‌دهد.
 
-        Protobuf library provides support to pack/unpack Any values in the form
-        of utility functions or additional generated methods of the Any type.
+        کتابخانه Protobuf پشتیبانی برای pack/unpack مقادیر Any را به شکل
+        توابع کاربردی یا متدهای اضافی تولید شده نوع Any ارائه می‌دهد.
 
-        Example 1: Pack and unpack a message in C++.
+        مثال 1: Pack و unpack پیام در C++.
 
             Foo foo = ...;
             Any any;
@@ -4997,7 +5062,7 @@ components:
               ...
             }
 
-        Example 2: Pack and unpack a message in Java.
+        مثال 2: Pack و unpack پیام در Java.
 
             Foo foo = ...;
             Any any = Any.pack(foo);
@@ -5006,7 +5071,7 @@ components:
               foo = any.unpack(Foo.class);
             }
 
-        Example 3: Pack and unpack a message in Python.
+        مثال 3: Pack و unpack پیام در Python.
 
             foo = Foo(...)
             any = Any()
@@ -5016,7 +5081,7 @@ components:
               any.Unpack(foo)
               ...
 
-        Example 4: Pack and unpack a message in Go
+        مثال 4: Pack و unpack پیام در Go
 
              foo := &pb.Foo{...}
              any, err := anypb.New(foo)
@@ -5029,18 +5094,18 @@ components:
                ...
              }
 
-        The pack methods provided by protobuf library will by default use
-        'type.googleapis.com/full.type.name' as the type URL and the unpack
-        methods only use the fully qualified type name after the last '/'
-        in the type URL, for example "foo.bar.com/x/y.z" will yield type
-        name "y.z".
+        متدهای pack ارائه شده توسط کتابخانه protobuf به طور پیش‌فرض از
+        'type.googleapis.com/full.type.name' به عنوان URL نوع استفاده می‌کنند و متدهای unpack
+        فقط از نام نوع کاملاً واجد شرایط پس از آخرین '/'
+        در URL نوع استفاده می‌کنند، مثلاً "foo.bar.com/x/y.z" نام نوع
+        "y.z" را ایجاد می‌کند.
 
 
         JSON
 
-        The JSON representation of an `Any` value uses the regular
-        representation of the deserialized, embedded message, with an
-        additional field `@type` which contains the type URL. Example:
+        نمایش JSON یک مقدار `Any` از نمایش معمولی
+        پیام deserialize شده و جاسازی شده، با یک
+        فیلد اضافی `@type` که شامل URL نوع است، استفاده می‌کند. مثال:
 
             package google.profile;
             message Person {
@@ -5054,10 +5119,10 @@ components:
               "lastName": <string>
             }
 
-        If the embedded message type is well-known and has a custom JSON
-        representation, that representation will be embedded adding a field
-        `value` which holds the custom JSON in addition to the `@type`
-        field. Example (for message [google.protobuf.Duration][]):
+        اگر نوع پیام جاسازی شده شناخته شده باشد و نمایش JSON سفارشی
+        داشته باشد، آن نمایش با افزودن فیلد
+        `value` که JSON سفارشی را علاوه بر فیلد `@type`
+        نگه می‌دارد، جاسازی می‌شود. مثال (برای پیام [google.protobuf.Duration][]):
 
             {
               "@type": "type.googleapis.com/google.protobuf.Duration",
@@ -5068,41 +5133,37 @@ components:
       properties:
         '@type':
           description: |-
-            A URL/resource name that uniquely identifies the type of the serialized
-            protocol buffer message. This string must contain at least
-            one "/" character. The last segment of the URL's path must represent
-            the fully qualified name of the type (as in
-            `path/google.protobuf.Duration`). The name should be in a canonical form
-            (e.g., leading "." is not accepted).
+            یک URL/نام منبع که نوع پیام protocol buffer سریالایز شده را به طور منحصر به فرد شناسایی می‌کند. این رشته باید حداقل
+            یک کاراکتر "/" داشته باشد. آخرین بخش مسیر URL باید نام کاملاً واجد شرایط نوع را نمایش دهد (مانند
+            `path/google.protobuf.Duration`). نام باید در فرم کانونیکال باشد
+            (مثلاً، "." ابتدایی پذیرفته نیست).
 
-            In practice, teams usually precompile into the binary all types that they
-            expect it to use in the context of Any. However, for URLs which use the
-            scheme `http`, `https`, or no scheme, one can optionally set up a type
-            server that maps type URLs to message definitions as follows:
+            در عمل، تیم‌ها معمولاً تمام انواعی که انتظار دارند در زمینه Any استفاده شود را به صورت پیش‌کامپایل در باینری قرار می‌دهند. با این حال، برای URL هایی که از
+            طرح `http`، `https` یا بدون طرح استفاده می‌کنند، می‌توان به طور اختیاری یک سرور نوع تنظیم کرد که URL های نوع را به تعاریف پیام نگاشت می‌کند:
 
-            * If no scheme is provided, `https` is assumed.
-            * An HTTP GET on the URL must yield a [google.protobuf.Type][]
-              value in binary format, or produce an error.
-            * Applications are allowed to cache lookup results based on the
-              URL, or have them precompiled into a binary to avoid any
-              lookup. Therefore, binary compatibility needs to be preserved
-              on changes to types. (Use versioned type names to manage
-              breaking changes.)
+            * اگر طرحی ارائه نشود، `https` فرض می‌شود.
+            * یک HTTP GET روی URL باید مقدار [google.protobuf.Type][] را
+              به فرمت باینری ارائه دهد، یا خطا تولید کند.
+            * برنامه‌ها مجاز هستند نتایج جستجو را بر اساس
+              URL کش کنند، یا آنها را در باینری پیش‌کامپایل کنند تا از هر
+              جستجویی جلوگیری کنند. بنابراین، سازگاری باینری باید در
+              تغییرات انواع حفظ شود. (از نام‌های نوع نسخه‌دار برای مدیریت
+              تغییرات شکست‌آور استفاده کنید.)
 
-            Note: this functionality is not currently available in the official
-            protobuf release, and it is not used for type URLs beginning with
-            type.googleapis.com.
+            توجه: این قابلیت در حال حاضر در نسخه رسمی
+            protobuf در دسترس نیست، و برای URL های نوع که با
+            type.googleapis.com شروع می‌شوند استفاده نمی‌شود.
 
-            Schemes other than `http`, `https` (or the empty scheme) might be
-            used with implementation specific semantics.
+            طرح‌های غیر از `http`، `https` (یا طرح خالی) ممکن است
+            با معناشناسی خاص پیاده‌سازی استفاده شوند.
           type: string
       type: object
     protobufNullValue:
       description: |-
-        `NullValue` is a singleton enumeration to represent the null value for the
-        `Value` type union.
+        `NullValue` یک شمارش singleton برای نمایش مقدار null برای
+        اتحادیه نوع `Value` است.
 
-         The JSON representation for `NullValue` is JSON `null`.
+         نمایش JSON برای `NullValue` JSON `null` است.
       type: string
     semanticCreatePostSemanticResponse:
       type: object
@@ -5114,6 +5175,24 @@ components:
           type: string
       type: object
     semanticDeleteUserSemanticResponse:
+      type: object
+    semanticPostSemanticDeleted:
+      properties:
+        app_slug:
+          type: string
+        post_token:
+          type: string
+      type: object
+    semanticSendSemanticDeletionEventsResponse:
+      type: object
+    semanticUserSemanticDeleted:
+      properties:
+        app_slug:
+          type: string
+        id:
+          type: string
+        phone:
+          type: string
       type: object
   securitySchemes:
     APIKey:

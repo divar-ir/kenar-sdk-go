@@ -40,10 +40,10 @@ func (r ApiChatAPIChatBotSendMessageRequest) Execute() (*ChatapiChatBotSendMessa
 }
 
 /*
-ChatAPIChatBotSendMessage Send a message to a ChatBot conversation
+ChatAPIChatBotSendMessage ارسال پیام به مکالمه ChatBot
 
-You can call this API with either conversation_id or user_id.
-Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
+می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param conversationId Unique identifier for the conversation
@@ -177,10 +177,10 @@ func (r ApiChatAPIChatBotSendMessage2Request) Execute() (*ChatapiChatBotSendMess
 }
 
 /*
-ChatAPIChatBotSendMessage2 Send a message to a ChatBot conversation
+ChatAPIChatBotSendMessage2 ارسال پیام به مکالمه ChatBot
 
-You can call this API with either conversation_id or user_id.
-Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
+می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userId Unique identifier for the user to start or continue a conversation with
@@ -314,10 +314,10 @@ func (r ApiChatAPIChatBotSendMessage3Request) Execute() (*ChatapiChatBotSendMess
 }
 
 /*
-ChatAPIChatBotSendMessage3 Send a message to a ChatBot conversation
+ChatAPIChatBotSendMessage3 ارسال پیام به مکالمه ChatBot
 
-You can call this API with either conversation_id or user_id.
-Calling with user_id needs a access_token having CHAT_BOT_USER_MESSAGE_SEND scope.This enables you to start conversation with user from ChatBot.
+می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param conversationId Unique identifier for the conversation
@@ -451,10 +451,10 @@ func (r ApiChatAPIConversationSendMessageRequest) Execute() (*ChatapiConversatio
 }
 
 /*
-ChatAPIConversationSendMessage Send a message to a conversation
+ChatAPIConversationSendMessage ارسال پیام به مکالمه
 
-This API is used to send a message to a conversation.
-You need one of the following scopes to call this API:
+این API برای ارسال پیام به مکالمه استفاده می‌شود.
+برای فراخوانی این API به یکی از دامنه‌های زیر نیاز دارید:
 - CONVERSATION_SEND_MESSAGE.{conversation_id}
 - CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND
 - CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{post_token}
@@ -591,9 +591,9 @@ func (r ApiChatAPIGenerateUploadTokenRequest) Execute() (*ChatapiGenerateUploadT
 }
 
 /*
-ChatAPIGenerateUploadToken Generate an upload token
+ChatAPIGenerateUploadToken تولید توکن آپلود
 
-This API is used to generate an upload token for uploading media files.
+این API برای تولید توکن آپلود برای آپلود فایل‌های رسانه‌ای استفاده می‌شود.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiChatAPIGenerateUploadTokenRequest
@@ -718,9 +718,9 @@ func (r ApiChatAPIGetConversationRequest) Execute() (*ChatapiGetConversationResp
 }
 
 /*
-ChatAPIGetConversation Get Conversation by it's ID
+ChatAPIGetConversation دریافت مکالمه با شناسه آن
 
-This API is used to get the conversation and messages of a conversation by it's ID.This API expects access token with `CHAT_CONVERSATION_READ` scope.
+این API برای دریافت مکالمه و پیام‌های یک مکالمه با شناسه آن استفاده می‌شود. این API توکن دسترسی با دامنه `CHAT_CONVERSATION_READ` را انتظار دارد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param conversationId Unique identifier for the conversation

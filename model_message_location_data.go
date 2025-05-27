@@ -19,9 +19,9 @@ var _ MappedNullable = &MessageLocationData{}
 
 // MessageLocationData struct for MessageLocationData
 type MessageLocationData struct {
-	// The latitude in degrees. It must be in the range [-90.0, +90.0].
+	// عرض جغرافیایی به درجه. باید در محدوده [-90.0, +90.0] باشد.
 	Latitude *float64 `json:"latitude,omitempty"`
-	// The longitude in degrees. It must be in the range [-180.0, +180.0].
+	// طول جغرافیایی به درجه. باید در محدوده [-180.0, +180.0] باشد.
 	Longitude *float64 `json:"longitude,omitempty"`
 }
 

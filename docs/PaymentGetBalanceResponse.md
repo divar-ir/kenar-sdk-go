@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BalanceRials** | Pointer to **string** | The balance of the app in rials | [optional] 
+**BalanceRials** | Pointer to **string** | موجودی اپلیکیشن به ریال | [optional] 
 
 ## Methods
 

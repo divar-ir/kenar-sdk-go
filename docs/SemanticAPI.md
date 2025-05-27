@@ -4,11 +4,11 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SemanticCreatePostSemantic**](SemanticAPI.md#SemanticCreatePostSemantic) | **Post** /experimental/open-platform/semantic/post/{token} | Create Post Semantic
-[**SemanticCreateUserSemantic**](SemanticAPI.md#SemanticCreateUserSemantic) | **Post** /v1/open-platform/semantic/user/{phone} | Create User Semantic
-[**SemanticCreateUserSemantic2**](SemanticAPI.md#SemanticCreateUserSemantic2) | **Post** /v1/open-platform/semantic/users/{divar_user_id} | Create User Semantic
-[**SemanticDeleteUserSemantic**](SemanticAPI.md#SemanticDeleteUserSemantic) | **Delete** /v1/open-platform/semantic/user/{phone} | Delete User Semantic
-[**SemanticDeleteUserSemantic2**](SemanticAPI.md#SemanticDeleteUserSemantic2) | **Delete** /v1/open-platform/semantic/users/{divar_user_id} | Delete User Semantic
+[**SemanticCreatePostSemantic**](SemanticAPI.md#SemanticCreatePostSemantic) | **Post** /experimental/open-platform/semantic/post/{token} | ایجاد اطلاعات معنایی آگهی
+[**SemanticCreateUserSemantic**](SemanticAPI.md#SemanticCreateUserSemantic) | **Post** /v1/open-platform/semantic/user/{phone} | ایجاد اطلاعات معنایی کاربر
+[**SemanticCreateUserSemantic2**](SemanticAPI.md#SemanticCreateUserSemantic2) | **Post** /v1/open-platform/semantic/users/{divar_user_id} | ایجاد اطلاعات معنایی کاربر
+[**SemanticDeleteUserSemantic**](SemanticAPI.md#SemanticDeleteUserSemantic) | **Delete** /v1/open-platform/semantic/user/{phone} | حذف اطلاعات معنایی کاربر
+[**SemanticDeleteUserSemantic2**](SemanticAPI.md#SemanticDeleteUserSemantic2) | **Delete** /v1/open-platform/semantic/users/{divar_user_id} | حذف اطلاعات معنایی کاربر
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} SemanticCreatePostSemantic(ctx, token).SemanticCreatePostSemanticBody(semanticCreatePostSemanticBody).Execute()
 
-Create Post Semantic
+ایجاد اطلاعات معنایی آگهی
 
 
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > SemanticCreateUserSemanticResponse SemanticCreateUserSemantic(ctx, phone).SemanticCreateUserSemanticBody(semanticCreateUserSemanticBody).Execute()
 
-Create User Semantic
+ایجاد اطلاعات معنایی کاربر
 
 
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 > SemanticCreateUserSemanticResponse SemanticCreateUserSemantic2(ctx, divarUserId).SemanticCreateUserSemanticBody(semanticCreateUserSemanticBody).Execute()
 
-Create User Semantic
+ایجاد اطلاعات معنایی کاربر
 
 
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} SemanticDeleteUserSemantic(ctx, phone).DivarUserId(divarUserId).Execute()
 
-Delete User Semantic
+حذف اطلاعات معنایی کاربر
 
 
 
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} SemanticDeleteUserSemantic2(ctx, divarUserId).Phone(phone).Execute()
 
-Delete User Semantic
+حذف اطلاعات معنایی کاربر
 
 
 

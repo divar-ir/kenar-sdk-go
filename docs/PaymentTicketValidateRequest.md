@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PhoneNumber** | Pointer to **string** | Deprecated. Use divar_user_id. | [optional] 
+**PhoneNumber** | Pointer to **string** | منسوخ شده. از divar_user_id استفاده کنید. | [optional] 
 **ServiceCost** | Pointer to **int32** |  | [optional] 
 **TicketUuid** | Pointer to **string** |  | [optional] 
 **UserId** | Pointer to **string** |  | [optional] 

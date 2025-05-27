@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CostRials** | Pointer to **string** | The cost of the transaction in rials for your application | [optional] 
-**ExtraDetails** | Pointer to **string** | Same Additional details which you sent in the request | [optional] 
-**Id** | Pointer to **string** | Same uuid when creating transaction | [optional] 
+**CostRials** | Pointer to **string** | هزینه تراکنش به ریال برای اپلیکیشن شما | [optional] 
+**ExtraDetails** | Pointer to **string** | همان جزئیات اضافی که در درخواست ارسال کردید | [optional] 
+**Id** | Pointer to **string** | همان uuid هنگام ایجاد تراکنش | [optional] 
 **State** | Pointer to [**PaymentTransactionState**](PaymentTransactionState.md) |  | [optional] 
 **Type** | Pointer to [**PaymentTransactionType**](PaymentTransactionType.md) |  | [optional] 
 

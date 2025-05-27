@@ -4,8 +4,8 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PostEditPost**](PostAPI.md#PostEditPost) | **Put** /v1/open-platform/post/{post_token} | Edit a post
-[**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | Get image upload URL
+[**PostEditPost**](PostAPI.md#PostEditPost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
+[**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} PostEditPost(ctx, postToken).PostEditPostBody(postEditPostBody).Execute()
 
-Edit a post
+ویرایش آگهی
 
 
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 > PostGetImageUploadURLResponse PostGetImageUploadURL(ctx).Execute()
 
-Get image upload URL
+دریافت URL آپلود تصویر
 
 
 

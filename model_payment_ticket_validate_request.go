@@ -19,7 +19,7 @@ var _ MappedNullable = &PaymentTicketValidateRequest{}
 
 // PaymentTicketValidateRequest struct for PaymentTicketValidateRequest
 type PaymentTicketValidateRequest struct {
-	// Deprecated. Use divar_user_id.
+	// منسوخ شده. از divar_user_id استفاده کنید.
 	PhoneNumber *string `json:"phone_number,omitempty"`
 	ServiceCost *int32 `json:"service_cost,omitempty"`
 	TicketUuid *string `json:"ticket_uuid,omitempty"`

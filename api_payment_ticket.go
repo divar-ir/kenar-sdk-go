@@ -38,10 +38,10 @@ func (r ApiPaymentTicketValidateRequest) Execute() (*PaymentTicketValidateRespon
 }
 
 /*
-PaymentTicketValidate Validate a payment ticket
+PaymentTicketValidate اعتبارسنجی بلیط پرداخت
 
-Payment tickets are designed to integrate Kenar apps with Divar internal teams.
-Using this API you can validate a payment ticket and get the issuer payload.
+بلیط‌های پرداخت برای یکپارچه‌سازی اپلیکیشن‌های کنار با تیم‌های داخلی دیوار طراحی شده‌اند.
+با استفاده از این API می‌توانید بلیط پرداخت را اعتبارسنجی کرده و payload صادرکننده را دریافت کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentTicketValidateRequest

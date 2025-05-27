@@ -19,11 +19,11 @@ var _ MappedNullable = &PaymentTransaction{}
 
 // PaymentTransaction struct for PaymentTransaction
 type PaymentTransaction struct {
-	// The cost of the transaction in rials for your application
+	// هزینه تراکنش به ریال برای اپلیکیشن شما
 	CostRials *string `json:"cost_rials,omitempty"`
-	// Same Additional details which you sent in the request
+	// همان جزئیات اضافی که در درخواست ارسال کردید
 	ExtraDetails *string `json:"extra_details,omitempty"`
-	// Same uuid when creating transaction
+	// همان uuid هنگام ایجاد تراکنش
 	Id *string `json:"id,omitempty"`
 	State *PaymentTransactionState `json:"state,omitempty"`
 	Type *PaymentTransactionType `json:"type,omitempty"`

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CostRials** | Pointer to **string** | The cost of the transaction in rials for your application | [optional] 
-**Id** | Pointer to **string** | Same uuid when creating transaction | [optional] 
+**CostRials** | Pointer to **string** | هزینه تراکنش به ریال برای اپلیکیشن شما | [optional] 
+**Id** | Pointer to **string** | همان uuid هنگام ایجاد تراکنش | [optional] 
 
 ## Methods
 

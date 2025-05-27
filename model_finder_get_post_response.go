@@ -28,6 +28,7 @@ type FinderGetPostResponse struct {
 	District *string `json:"district,omitempty"`
 	FirstPublishedAt *time.Time `json:"first_published_at,omitempty"`
 	State *FinderPostExtState `json:"state,omitempty"`
+	SupplierChatAssistantEnabled *bool `json:"supplier_chat_assistant_enabled,omitempty"`
 	Token *string `json:"token,omitempty"`
 }
 
@@ -304,6 +305,38 @@ func (o *FinderGetPostResponse) SetState(v FinderPostExtState) {
 	o.State = &v
 }
 
+// GetSupplierChatAssistantEnabled returns the SupplierChatAssistantEnabled field value if set, zero value otherwise.
+func (o *FinderGetPostResponse) GetSupplierChatAssistantEnabled() bool {
+	if o == nil || IsNil(o.SupplierChatAssistantEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.SupplierChatAssistantEnabled
+}
+
+// GetSupplierChatAssistantEnabledOk returns a tuple with the SupplierChatAssistantEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderGetPostResponse) GetSupplierChatAssistantEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.SupplierChatAssistantEnabled) {
+		return nil, false
+	}
+	return o.SupplierChatAssistantEnabled, true
+}
+
+// HasSupplierChatAssistantEnabled returns a boolean if a field has been set.
+func (o *FinderGetPostResponse) HasSupplierChatAssistantEnabled() bool {
+	if o != nil && !IsNil(o.SupplierChatAssistantEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupplierChatAssistantEnabled gets a reference to the given bool and assigns it to the SupplierChatAssistantEnabled field.
+func (o *FinderGetPostResponse) SetSupplierChatAssistantEnabled(v bool) {
+	o.SupplierChatAssistantEnabled = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *FinderGetPostResponse) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -369,6 +402,9 @@ func (o FinderGetPostResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.SupplierChatAssistantEnabled) {
+		toSerialize["supplier_chat_assistant_enabled"] = o.SupplierChatAssistantEnabled
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

@@ -4,7 +4,7 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PaymentTicketValidate**](PaymentTicketAPI.md#PaymentTicketValidate) | **Post** /v1/open-platform/payment-ticket/validate | Validate a payment ticket
+[**PaymentTicketValidate**](PaymentTicketAPI.md#PaymentTicketValidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > PaymentTicketValidateResponse PaymentTicketValidate(ctx).PaymentTicketValidateRequest(paymentTicketValidateRequest).Execute()
 
-Validate a payment ticket
+اعتبارسنجی بلیط پرداخت
 
 
 

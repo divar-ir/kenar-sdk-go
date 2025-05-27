@@ -4,12 +4,12 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChatAPIChatBotSendMessage**](ChatAPIAPI.md#ChatAPIChatBotSendMessage) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | Send a message to a ChatBot conversation
-[**ChatAPIChatBotSendMessage2**](ChatAPIAPI.md#ChatAPIChatBotSendMessage2) | **Post** /experimental/open-platform/chat/bot/users/{user_id}/messages | Send a message to a ChatBot conversation
-[**ChatAPIChatBotSendMessage3**](ChatAPIAPI.md#ChatAPIChatBotSendMessage3) | **Post** /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages | Send a message to a ChatBot conversation
-[**ChatAPIConversationSendMessage**](ChatAPIAPI.md#ChatAPIConversationSendMessage) | **Post** /v2/open-platform/conversations/{conversation_id}/messages | Send a message to a conversation
-[**ChatAPIGenerateUploadToken**](ChatAPIAPI.md#ChatAPIGenerateUploadToken) | **Post** /experimental/open-platform/chat/upload | Generate an upload token
-[**ChatAPIGetConversation**](ChatAPIAPI.md#ChatAPIGetConversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | Get Conversation by it&#39;s ID
+[**ChatAPIChatBotSendMessage**](ChatAPIAPI.md#ChatAPIChatBotSendMessage) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIChatBotSendMessage2**](ChatAPIAPI.md#ChatAPIChatBotSendMessage2) | **Post** /experimental/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIChatBotSendMessage3**](ChatAPIAPI.md#ChatAPIChatBotSendMessage3) | **Post** /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIConversationSendMessage**](ChatAPIAPI.md#ChatAPIConversationSendMessage) | **Post** /v2/open-platform/conversations/{conversation_id}/messages | ارسال پیام به مکالمه
+[**ChatAPIGenerateUploadToken**](ChatAPIAPI.md#ChatAPIGenerateUploadToken) | **Post** /experimental/open-platform/chat/upload | تولید توکن آپلود
+[**ChatAPIGetConversation**](ChatAPIAPI.md#ChatAPIGetConversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | دریافت مکالمه با شناسه آن
 
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage(ctx, conversationId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
 
-Send a message to a ChatBot conversation
+ارسال پیام به مکالمه ChatBot
 
 
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 > ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage2(ctx, userId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
 
-Send a message to a ChatBot conversation
+ارسال پیام به مکالمه ChatBot
 
 
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 > ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage3(ctx, conversationId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
 
-Send a message to a ChatBot conversation
+ارسال پیام به مکالمه ChatBot
 
 
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 > ChatapiConversationSendMessageResponse ChatAPIConversationSendMessage(ctx, conversationId).ChatAPIConversationSendMessageBody(chatAPIConversationSendMessageBody).Execute()
 
-Send a message to a conversation
+ارسال پیام به مکالمه
 
 
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 > ChatapiGenerateUploadTokenResponse ChatAPIGenerateUploadToken(ctx).Body(body).Execute()
 
-Generate an upload token
+تولید توکن آپلود
 
 
 
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 > ChatapiGetConversationResponse ChatAPIGetConversation(ctx, conversationId).Execute()
 
-Get Conversation by it's ID
+دریافت مکالمه با شناسه آن
 
 
 

@@ -4,14 +4,14 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddonsCreatePostAddonV2**](AddonsAPI.md#AddonsCreatePostAddonV2) | **Post** /v2/open-platform/addons/post/{token} | Attach a new Addon to a post
-[**AddonsCreateUserAddonV2**](AddonsAPI.md#AddonsCreateUserAddonV2) | **Post** /v2/open-platform/addons/user/{phone} | Attach a new Addon to a user
-[**AddonsCreateUserAddonV22**](AddonsAPI.md#AddonsCreateUserAddonV22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | Attach a new Addon to a user
-[**AddonsDeletePostAddon**](AddonsAPI.md#AddonsDeletePostAddon) | **Delete** /v1/open-platform/add-ons/post/{token} | Delete an Addon from a post
-[**AddonsDeletePostAddon2**](AddonsAPI.md#AddonsDeletePostAddon2) | **Delete** /v1/open-platform/addons/post/{token} | Delete an Addon from a post
-[**AddonsDeleteUserAddon**](AddonsAPI.md#AddonsDeleteUserAddon) | **Delete** /v1/open-platform/addons/user/{id} | Delete an UserAddon
-[**AddonsGetUserAddons**](AddonsAPI.md#AddonsGetUserAddons) | **Get** /v1/open-platform/addons/user/{phone} | Retrieve all UserAddons
-[**AddonsGetUserAddons2**](AddonsAPI.md#AddonsGetUserAddons2) | **Get** /v2/open-platform/addons/users/{divar_user_id} | Retrieve all UserAddons
+[**AddonsCreatePostAddonV2**](AddonsAPI.md#AddonsCreatePostAddonV2) | **Post** /v2/open-platform/addons/post/{token} | افزودن افزونه جدید به آگهی
+[**AddonsCreateUserAddonV2**](AddonsAPI.md#AddonsCreateUserAddonV2) | **Post** /v2/open-platform/addons/user/{phone} | افزودن افزونه جدید به کاربر
+[**AddonsCreateUserAddonV22**](AddonsAPI.md#AddonsCreateUserAddonV22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | افزودن افزونه جدید به کاربر
+[**AddonsDeletePostAddon**](AddonsAPI.md#AddonsDeletePostAddon) | **Delete** /v1/open-platform/add-ons/post/{token} | حذف افزونه از آگهی
+[**AddonsDeletePostAddon2**](AddonsAPI.md#AddonsDeletePostAddon2) | **Delete** /v1/open-platform/addons/post/{token} | حذف افزونه از آگهی
+[**AddonsDeleteUserAddon**](AddonsAPI.md#AddonsDeleteUserAddon) | **Delete** /v1/open-platform/addons/user/{id} | حذف افزونه کاربر
+[**AddonsGetUserAddons**](AddonsAPI.md#AddonsGetUserAddons) | **Get** /v1/open-platform/addons/user/{phone} | دریافت تمام افزونه‌های کاربر
+[**AddonsGetUserAddons2**](AddonsAPI.md#AddonsGetUserAddons2) | **Get** /v2/open-platform/addons/users/{divar_user_id} | دریافت تمام افزونه‌های کاربر
 
 
 
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} AddonsCreatePostAddonV2(ctx, token).AddonsCreatePostAddonV2Body(addonsCreatePostAddonV2Body).Execute()
 
-Attach a new Addon to a post
+افزودن افزونه جدید به آگهی
 
 
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 > AddonsCreateUserAddonResponseV2 AddonsCreateUserAddonV2(ctx, phone).AddonsCreateUserAddonV2Body(addonsCreateUserAddonV2Body).Execute()
 
-Attach a new Addon to a user
+افزودن افزونه جدید به کاربر
 
 
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 > AddonsCreateUserAddonResponseV2 AddonsCreateUserAddonV22(ctx, divarUserId).AddonsCreateUserAddonV2Body(addonsCreateUserAddonV2Body).Execute()
 
-Attach a new Addon to a user
+افزودن افزونه جدید به کاربر
 
 
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} AddonsDeletePostAddon(ctx, token).Execute()
 
-Delete an Addon from a post
+حذف افزونه از آگهی
 
 
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} AddonsDeletePostAddon2(ctx, token).Execute()
 
-Delete an Addon from a post
+حذف افزونه از آگهی
 
 
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} AddonsDeleteUserAddon(ctx, id).Execute()
 
-Delete an UserAddon
+حذف افزونه کاربر
 
 
 
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 
 > AddonsGetUserAddonsResponse AddonsGetUserAddons(ctx, phone).DivarUserId(divarUserId).Execute()
 
-Retrieve all UserAddons
+دریافت تمام افزونه‌های کاربر
 
 
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 > AddonsGetUserAddonsResponse AddonsGetUserAddons2(ctx, divarUserId).Phone(phone).Execute()
 
-Retrieve all UserAddons
+دریافت تمام افزونه‌های کاربر
 
 
 

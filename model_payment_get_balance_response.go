@@ -19,7 +19,7 @@ var _ MappedNullable = &PaymentGetBalanceResponse{}
 
 // PaymentGetBalanceResponse struct for PaymentGetBalanceResponse
 type PaymentGetBalanceResponse struct {
-	// The balance of the app in rials
+	// موجودی اپلیکیشن به ریال
 	BalanceRials *string `json:"balance_rials,omitempty"`
 }
 

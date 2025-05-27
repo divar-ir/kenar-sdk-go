@@ -4,18 +4,18 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AssetsGetBodyStatuses**](AssetsAPI.md#AssetsGetBodyStatuses) | **Get** /v1/open-platform/assets/body-status | Get available body-status options in Divar vehicle categories
-[**AssetsGetBrandModels**](AssetsAPI.md#AssetsGetBrandModels) | **Get** /v1/open-platform/assets/brand-model/{category} | Get brand models in a Divar category
-[**AssetsGetCategories**](AssetsAPI.md#AssetsGetCategories) | **Get** /v1/open-platform/assets/category | Get Divar categories
-[**AssetsGetCities**](AssetsAPI.md#AssetsGetCities) | **Get** /v1/open-platform/assets/city | Get Divar cities
-[**AssetsGetColors**](AssetsAPI.md#AssetsGetColors) | **Get** /v1/open-platform/assets/color/{category} | Get colors in a Divar category
-[**AssetsGetDistricts**](AssetsAPI.md#AssetsGetDistricts) | **Get** /v1/open-platform/assets/district | Get Divar districts
-[**AssetsGetDistricts2**](AssetsAPI.md#AssetsGetDistricts2) | **Get** /v1/open-platform/assets/district/{city_slug} | Get Divar districts
-[**AssetsGetInternalStorages**](AssetsAPI.md#AssetsGetInternalStorages) | **Get** /v1/open-platform/assets/internal-storage | Get available internal-storage options in Divar mobile/tablet/laptop categories
-[**AssetsGetOAuthScopes**](AssetsAPI.md#AssetsGetOAuthScopes) | **Get** /v1/open-platform/assets/oauth-scope | Get KenarDivar OAuth scopes
-[**AssetsGetPermissions**](AssetsAPI.md#AssetsGetPermissions) | **Get** /v1/open-platform/assets/permission | Get KenarDivar permissions
-[**AssetsGetRamMemories**](AssetsAPI.md#AssetsGetRamMemories) | **Get** /v1/open-platform/assets/ram-memory | Get available ram-memory options in Divar mobile/tablet/laptop categories
-[**AssetsGetServiceTypes**](AssetsAPI.md#AssetsGetServiceTypes) | **Get** /v1/open-platform/assets/service-type | Get available service types in KenarDivar
+[**AssetsGetBodyStatuses**](AssetsAPI.md#AssetsGetBodyStatuses) | **Get** /v1/open-platform/assets/body-status | دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
+[**AssetsGetBrandModels**](AssetsAPI.md#AssetsGetBrandModels) | **Get** /v1/open-platform/assets/brand-model/{category} | دریافت مدل‌های برند در دسته‌بندی دیوار
+[**AssetsGetCategories**](AssetsAPI.md#AssetsGetCategories) | **Get** /v1/open-platform/assets/category | دریافت دسته‌بندی‌های دیوار
+[**AssetsGetCities**](AssetsAPI.md#AssetsGetCities) | **Get** /v1/open-platform/assets/city | دریافت شهرهای دیوار
+[**AssetsGetColors**](AssetsAPI.md#AssetsGetColors) | **Get** /v1/open-platform/assets/color/{category} | دریافت رنگ‌ها در دسته‌بندی دیوار
+[**AssetsGetDistricts**](AssetsAPI.md#AssetsGetDistricts) | **Get** /v1/open-platform/assets/district | دریافت مناطق دیوار
+[**AssetsGetDistricts2**](AssetsAPI.md#AssetsGetDistricts2) | **Get** /v1/open-platform/assets/district/{city_slug} | دریافت مناطق دیوار
+[**AssetsGetInternalStorages**](AssetsAPI.md#AssetsGetInternalStorages) | **Get** /v1/open-platform/assets/internal-storage | دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
+[**AssetsGetOAuthScopes**](AssetsAPI.md#AssetsGetOAuthScopes) | **Get** /v1/open-platform/assets/oauth-scope | دریافت دامنه‌های OAuth کنار دیوار
+[**AssetsGetPermissions**](AssetsAPI.md#AssetsGetPermissions) | **Get** /v1/open-platform/assets/permission | دریافت مجوزهای کنار دیوار
+[**AssetsGetRamMemories**](AssetsAPI.md#AssetsGetRamMemories) | **Get** /v1/open-platform/assets/ram-memory | دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
+[**AssetsGetServiceTypes**](AssetsAPI.md#AssetsGetServiceTypes) | **Get** /v1/open-platform/assets/service-type | دریافت انواع سرویس موجود در کنار دیوار
 
 
 
@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 > AssetsGetBodyStatusesResponse AssetsGetBodyStatuses(ctx).Execute()
 
-Get available body-status options in Divar vehicle categories
+دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
 
 
 
@@ -84,7 +84,7 @@ Other parameters are passed through a pointer to a apiAssetsGetBodyStatusesReque
 
 > AssetsGetBrandModelsResponse AssetsGetBrandModels(ctx, category).Execute()
 
-Get brand models in a Divar category
+دریافت مدل‌های برند در دسته‌بندی دیوار
 
 
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 > AssetsGetCategoriesResponse AssetsGetCategories(ctx).Execute()
 
-Get Divar categories
+دریافت دسته‌بندی‌های دیوار
 
 
 
@@ -215,7 +215,7 @@ Other parameters are passed through a pointer to a apiAssetsGetCategoriesRequest
 
 > AssetsGetCitiesResponse AssetsGetCities(ctx).Execute()
 
-Get Divar cities
+دریافت شهرهای دیوار
 
 
 
@@ -276,7 +276,7 @@ Other parameters are passed through a pointer to a apiAssetsGetCitiesRequest str
 
 > AssetsGetColorsResponse AssetsGetColors(ctx, category).Execute()
 
-Get colors in a Divar category
+دریافت رنگ‌ها در دسته‌بندی دیوار
 
 
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 > AssetsGetDistrictsResponse AssetsGetDistricts(ctx).CitySlug(citySlug).Execute()
 
-Get Divar districts
+دریافت مناطق دیوار
 
 
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 > AssetsGetDistrictsResponse AssetsGetDistricts2(ctx, citySlug).Execute()
 
-Get Divar districts
+دریافت مناطق دیوار
 
 
 
@@ -482,7 +482,7 @@ Name | Type | Description  | Notes
 
 > AssetsGetInternalStoragesResponse AssetsGetInternalStorages(ctx).Execute()
 
-Get available internal-storage options in Divar mobile/tablet/laptop categories
+دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
 
 
 
@@ -543,7 +543,7 @@ Other parameters are passed through a pointer to a apiAssetsGetInternalStoragesR
 
 > AssetsGetOAuthScopesResponse AssetsGetOAuthScopes(ctx).Execute()
 
-Get KenarDivar OAuth scopes
+دریافت دامنه‌های OAuth کنار دیوار
 
 
 
@@ -604,7 +604,7 @@ Other parameters are passed through a pointer to a apiAssetsGetOAuthScopesReques
 
 > AssetsGetPermissionsResponse AssetsGetPermissions(ctx).Execute()
 
-Get KenarDivar permissions
+دریافت مجوزهای کنار دیوار
 
 
 
@@ -665,7 +665,7 @@ Other parameters are passed through a pointer to a apiAssetsGetPermissionsReques
 
 > AssetsGetRamMemoriesResponse AssetsGetRamMemories(ctx).Execute()
 
-Get available ram-memory options in Divar mobile/tablet/laptop categories
+دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
 
 
 
@@ -726,7 +726,7 @@ Other parameters are passed through a pointer to a apiAssetsGetRamMemoriesReques
 
 > AssetsGetServiceTypesResponse AssetsGetServiceTypes(ctx).Execute()
 
-Get available service types in KenarDivar
+دریافت انواع سرویس موجود در کنار دیوار
 
 
 

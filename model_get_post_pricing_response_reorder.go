@@ -19,9 +19,9 @@ var _ MappedNullable = &GetPostPricingResponseReorder{}
 
 // GetPostPricingResponseReorder struct for GetPostPricingResponseReorder
 type GetPostPricingResponseReorder struct {
-	// Indicates if the post can be reordered. If false, the reorder API will return an error
+	// نشان می‌دهد که آیا آگهی قابل نردبان است. اگر false باشد، API نردبان خطا برمی‌گرداند
 	Available *bool `json:"available,omitempty"`
-	// The cost of reordering in rials
+	// هزینه نردبان به ریال
 	CostRials *string `json:"cost_rials,omitempty"`
 }
 

@@ -4,11 +4,11 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FinderGetPost**](FinderAPI.md#FinderGetPost) | **Get** /v1/open-platform/finder/post/{token} | Get a Divar post
-[**FinderGetUser**](FinderAPI.md#FinderGetUser) | **Post** /v1/open-platform/users | Get user information
-[**FinderGetUser2**](FinderAPI.md#FinderGetUser2) | **Get** /v1/open-platform/users | Get user information
-[**FinderGetUserPosts**](FinderAPI.md#FinderGetUserPosts) | **Get** /v1/open-platform/finder/user-posts | Get user posts
-[**FinderSearchPostV2**](FinderAPI.md#FinderSearchPostV2) | **Post** /v2/open-platform/finder/post | Search Divar posts with some filters
+[**FinderGetPost**](FinderAPI.md#FinderGetPost) | **Get** /v1/open-platform/finder/post/{token} | دریافت آگهی دیوار
+[**FinderGetUser**](FinderAPI.md#FinderGetUser) | **Post** /v1/open-platform/users | دریافت اطلاعات کاربر
+[**FinderGetUser2**](FinderAPI.md#FinderGetUser2) | **Get** /v1/open-platform/users | دریافت اطلاعات کاربر
+[**FinderGetUserPosts**](FinderAPI.md#FinderGetUserPosts) | **Get** /v1/open-platform/finder/user-posts | دریافت آگهی‌های کاربر
+[**FinderSearchPostV2**](FinderAPI.md#FinderSearchPostV2) | **Post** /v2/open-platform/finder/post | جستجو آگهی‌های دیوار با فیلترهایی
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > FinderGetPostResponse FinderGetPost(ctx, token).Execute()
 
-Get a Divar post
+دریافت آگهی دیوار
 
 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > FinderUser FinderGetUser(ctx).Body(body).Execute()
 
-Get user information
+دریافت اطلاعات کاربر
 
 
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 > FinderUser FinderGetUser2(ctx).Execute()
 
-Get user information
+دریافت اطلاعات کاربر
 
 
 
@@ -213,7 +213,7 @@ Other parameters are passed through a pointer to a apiFinderGetUser2Request stru
 
 > FinderGetUserPostsResponse FinderGetUserPosts(ctx).Execute()
 
-Get user posts
+دریافت آگهی‌های کاربر
 
 
 
@@ -274,7 +274,7 @@ Other parameters are passed through a pointer to a apiFinderGetUserPostsRequest 
 
 > FinderSearchPostV2Response FinderSearchPostV2(ctx).FinderSearchPostsV2Request(finderSearchPostsV2Request).Execute()
 
-Search Divar posts with some filters
+جستجو آگهی‌های دیوار با فیلترهایی
 
 
 

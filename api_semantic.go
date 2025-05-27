@@ -40,10 +40,10 @@ func (r ApiSemanticCreatePostSemanticRequest) Execute() (map[string]interface{},
 }
 
 /*
-SemanticCreatePostSemantic Create Post Semantic
+SemanticCreatePostSemantic ایجاد اطلاعات معنایی آگهی
 
-In some cases, it is necessary to store information about the post in Divar without adding an addon.
-This API expects access token having `POST_SEMANTIC_CREATE` scope.
+در برخی موارد، ذخیره اطلاعات مربوط به آگهی در دیوار بدون افزودن افزونه ضروری است.
+این API توکن دسترسی با دامنه `POST_SEMANTIC_CREATE` را انتظار دارد.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -178,12 +178,12 @@ func (r ApiSemanticCreateUserSemanticRequest) Execute() (*SemanticCreateUserSema
 }
 
 /*
-SemanticCreateUserSemantic Create User Semantic
+SemanticCreateUserSemantic ایجاد اطلاعات معنایی کاربر
 
-In some cases, it is necessary to store information about the user in Divar without adding an addon.
-The username in Divar is the same as the mobile number.
-This API expects access token having `USER_VERIFICATION_CREATE` scope.
-Use the User Semantic APIs for this purpose.This service allows sending semantic information and an optional payment ticket.
+در برخی موارد، ذخیره اطلاعات مربوط به کاربر در دیوار بدون افزودن افزونه ضروری است.
+نام کاربری در دیوار همان شماره موبایل است.
+این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
+از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param phone
@@ -317,12 +317,12 @@ func (r ApiSemanticCreateUserSemantic2Request) Execute() (*SemanticCreateUserSem
 }
 
 /*
-SemanticCreateUserSemantic2 Create User Semantic
+SemanticCreateUserSemantic2 ایجاد اطلاعات معنایی کاربر
 
-In some cases, it is necessary to store information about the user in Divar without adding an addon.
-The username in Divar is the same as the mobile number.
-This API expects access token having `USER_VERIFICATION_CREATE` scope.
-Use the User Semantic APIs for this purpose.This service allows sending semantic information and an optional payment ticket.
+در برخی موارد، ذخیره اطلاعات مربوط به کاربر در دیوار بدون افزودن افزونه ضروری است.
+نام کاربری در دیوار همان شماره موبایل است.
+این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
+از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param divarUserId
@@ -456,9 +456,9 @@ func (r ApiSemanticDeleteUserSemanticRequest) Execute() (map[string]interface{},
 }
 
 /*
-SemanticDeleteUserSemantic Delete User Semantic
+SemanticDeleteUserSemantic حذف اطلاعات معنایی کاربر
 
-You can delete the semantic information of a user by calling this API.
+می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param phone
@@ -590,9 +590,9 @@ func (r ApiSemanticDeleteUserSemantic2Request) Execute() (map[string]interface{}
 }
 
 /*
-SemanticDeleteUserSemantic2 Delete User Semantic
+SemanticDeleteUserSemantic2 حذف اطلاعات معنایی کاربر
 
-You can delete the semantic information of a user by calling this API.
+می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param divarUserId

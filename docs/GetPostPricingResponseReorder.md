@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Available** | Pointer to **bool** | Indicates if the post can be reordered. If false, the reorder API will return an error | [optional] 
-**CostRials** | Pointer to **string** | The cost of reordering in rials | [optional] 
+**Available** | Pointer to **bool** | نشان می‌دهد که آیا آگهی قابل نردبان است. اگر false باشد، API نردبان خطا برمی‌گرداند | [optional] 
+**CostRials** | Pointer to **string** | هزینه نردبان به ریال | [optional] 
 
 ## Methods
 

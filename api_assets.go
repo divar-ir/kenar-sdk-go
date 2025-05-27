@@ -33,9 +33,9 @@ func (r ApiAssetsGetBodyStatusesRequest) Execute() (*AssetsGetBodyStatusesRespon
 }
 
 /*
-AssetsGetBodyStatuses Get available body-status options in Divar vehicle categories
+AssetsGetBodyStatuses دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
 
-Get all available body-status options in Divar vehicle categories.This provides persian translations for each body-status options which used in posts.
+دریافت تمام گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار. این ترجمه فارسی برای هر گزینه وضعیت بدنه که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetBodyStatusesRequest
@@ -155,9 +155,9 @@ func (r ApiAssetsGetBrandModelsRequest) Execute() (*AssetsGetBrandModelsResponse
 }
 
 /*
-AssetsGetBrandModels Get brand models in a Divar category
+AssetsGetBrandModels دریافت مدل‌های برند در دسته‌بندی دیوار
 
-Get all Divar brand models in specified category.This provides persian translations for each brand models which used in posts.
+دریافت تمام مدل‌های برند دیوار در دسته‌بندی مشخص شده. این ترجمه فارسی برای هر مدل برند که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param category
@@ -279,9 +279,9 @@ func (r ApiAssetsGetCategoriesRequest) Execute() (*AssetsGetCategoriesResponse, 
 }
 
 /*
-AssetsGetCategories Get Divar categories
+AssetsGetCategories دریافت دسته‌بندی‌های دیوار
 
-Get all Divar categories. This provides persian translations for each category which used in posts.
+دریافت تمام دسته‌بندی‌های دیوار. این ترجمه فارسی برای هر دسته‌بندی که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetCategoriesRequest
@@ -400,9 +400,9 @@ func (r ApiAssetsGetCitiesRequest) Execute() (*AssetsGetCitiesResponse, *http.Re
 }
 
 /*
-AssetsGetCities Get Divar cities
+AssetsGetCities دریافت شهرهای دیوار
 
-Get all Divar cities. This provides persian translations for each city which used in posts.
+دریافت تمام شهرهای دیوار. این ترجمه فارسی برای هر شهر که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetCitiesRequest
@@ -522,9 +522,9 @@ func (r ApiAssetsGetColorsRequest) Execute() (*AssetsGetColorsResponse, *http.Re
 }
 
 /*
-AssetsGetColors Get colors in a Divar category
+AssetsGetColors دریافت رنگ‌ها در دسته‌بندی دیوار
 
-Get all Divar colors in specified category.This provides persian translations for each color which used in posts.
+دریافت تمام رنگ‌های دیوار در دسته‌بندی مشخص شده. این ترجمه فارسی برای هر رنگ که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param category
@@ -652,9 +652,9 @@ func (r ApiAssetsGetDistrictsRequest) Execute() (*AssetsGetDistrictsResponse, *h
 }
 
 /*
-AssetsGetDistricts Get Divar districts
+AssetsGetDistricts دریافت مناطق دیوار
 
-Get all Divar districts. This provides persian translations for each district which used in posts.
+دریافت تمام مناطق دیوار. این ترجمه فارسی برای هر منطقه که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetDistrictsRequest
@@ -777,9 +777,9 @@ func (r ApiAssetsGetDistricts2Request) Execute() (*AssetsGetDistrictsResponse, *
 }
 
 /*
-AssetsGetDistricts2 Get Divar districts
+AssetsGetDistricts2 دریافت مناطق دیوار
 
-Get all Divar districts. This provides persian translations for each district which used in posts.
+دریافت تمام مناطق دیوار. این ترجمه فارسی برای هر منطقه که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param citySlug
@@ -901,9 +901,9 @@ func (r ApiAssetsGetInternalStoragesRequest) Execute() (*AssetsGetInternalStorag
 }
 
 /*
-AssetsGetInternalStorages Get available internal-storage options in Divar mobile/tablet/laptop categories
+AssetsGetInternalStorages دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
 
-Get all available internal-storage options in Divar mobile categories.This provides persian translations for each internal-storage options which used in posts.
+دریافت تمام گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل دیوار. این ترجمه فارسی برای هر گزینه حافظه داخلی که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetInternalStoragesRequest
@@ -1022,10 +1022,10 @@ func (r ApiAssetsGetOAuthScopesRequest) Execute() (*AssetsGetOAuthScopesResponse
 }
 
 /*
-AssetsGetOAuthScopes Get KenarDivar OAuth scopes
+AssetsGetOAuthScopes دریافت دامنه‌های OAuth کنار دیوار
 
-These are available scopes for KenarDivar OAuth2.0.
-Use scopes in OAuth flow to request access to user data or perform actions on their behalf.
+اینها دامنه‌های موجود برای OAuth2.0 کنار دیوار هستند.
+از دامنه‌ها در جریان OAuth برای درخواست دسترسی به داده‌های کاربر یا انجام اقدامات از طرف آنها استفاده کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetOAuthScopesRequest
@@ -1144,10 +1144,10 @@ func (r ApiAssetsGetPermissionsRequest) Execute() (*AssetsGetPermissionsResponse
 }
 
 /*
-AssetsGetPermissions Get KenarDivar permissions
+AssetsGetPermissions دریافت مجوزهای کنار دیوار
 
-These permission are used to control access in KenarDivar Apps. Don't mistake them with OAuth scopes.
-It's expected that apps be blind about these permissions.These are created for internal usages only, but feel free to request to be enabled for you app as needed.
+این مجوزها برای کنترل دسترسی در اپلیکیشن‌های کنار دیوار استفاده می‌شوند. آنها را با دامنه‌های OAuth اشتباه نگیرید.
+انتظار می‌رود اپلیکیشن‌ها نسبت به این مجوزها کور باشند. اینها فقط برای استفاده‌های داخلی ایجاد شده‌اند، اما در صورت نیاز آزادانه درخواست فعال‌سازی برای اپلیکیشن خود را ارائه دهید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetPermissionsRequest
@@ -1266,9 +1266,9 @@ func (r ApiAssetsGetRamMemoriesRequest) Execute() (*AssetsGetRamMemoriesResponse
 }
 
 /*
-AssetsGetRamMemories Get available ram-memory options in Divar mobile/tablet/laptop categories
+AssetsGetRamMemories دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
 
-Get all available ram-memory options in Divar mobile/tablet/laptop categories.This provides persian translations for each ram-memory options which used in posts.
+دریافت تمام گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار. این ترجمه فارسی برای هر گزینه حافظه رم که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetRamMemoriesRequest
@@ -1387,10 +1387,10 @@ func (r ApiAssetsGetServiceTypesRequest) Execute() (*AssetsGetServiceTypesRespon
 }
 
 /*
-AssetsGetServiceTypes Get available service types in KenarDivar
+AssetsGetServiceTypes دریافت انواع سرویس موجود در کنار دیوار
 
-These service types is used to group similar services in KenarDivar.
-Any new idea with new service types are welcome. Feel free to request them as needed.
+این انواع سرویس برای گروه‌بندی سرویس‌های مشابه در کنار دیوار استفاده می‌شود.
+هر ایده جدید با انواع سرویس جدید خوشامد است. در صورت نیاز آزادانه درخواست دهید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetServiceTypesRequest

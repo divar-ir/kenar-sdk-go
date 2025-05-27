@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Latitude** | Pointer to **float64** | The latitude in degrees. It must be in the range [-90.0, +90.0]. | [optional] 
-**Longitude** | Pointer to **float64** | The longitude in degrees. It must be in the range [-180.0, +180.0]. | [optional] 
+**Latitude** | Pointer to **float64** | عرض جغرافیایی به درجه. باید در محدوده [-90.0, +90.0] باشد. | [optional] 
+**Longitude** | Pointer to **float64** | طول جغرافیایی به درجه. باید در محدوده [-180.0, +180.0] باشد. | [optional] 
 
 ## Methods
 

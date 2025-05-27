@@ -4,7 +4,7 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EventsRegisterEventSubscription**](EventsAPI.md#EventsRegisterEventSubscription) | **Post** /v1/open-platform/events/subscriptions | Subscribe to an event
+[**EventsRegisterEventSubscription**](EventsAPI.md#EventsRegisterEventSubscription) | **Post** /v1/open-platform/events/subscriptions | اشتراک در رویداد
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} EventsRegisterEventSubscription(ctx).EventsRegisterEventSubscriptionRequest(eventsRegisterEventSubscriptionRequest).Execute()
 
-Subscribe to an event
+اشتراک در رویداد
 
 
 

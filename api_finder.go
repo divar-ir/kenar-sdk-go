@@ -34,7 +34,7 @@ func (r ApiFinderGetPostRequest) Execute() (*FinderGetPostResponse, *http.Respon
 }
 
 /*
-FinderGetPost Get a Divar post
+FinderGetPost دریافت آگهی دیوار
 
 This API allows you to get details about Divar post by its token.
 You can use the token to get the post data and its state 
@@ -165,11 +165,11 @@ func (r ApiFinderGetUserRequest) Execute() (*FinderUser, *http.Response, error) 
 }
 
 /*
-FinderGetUser Get user information
+FinderGetUser دریافت اطلاعات کاربر
 
-After gaining an access token, you can use this API to get user information.
-With scope `USER_PHONE` you can get user phone number.
-With scope `USER_ID` you can get user id and you can rely on uniqueness of this id.
+پس از دریافت توکن دسترسی، می‌توانید از این API برای دریافت اطلاعات کاربر استفاده کنید.
+با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
+با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -294,11 +294,11 @@ func (r ApiFinderGetUser2Request) Execute() (*FinderUser, *http.Response, error)
 }
 
 /*
-FinderGetUser2 Get user information
+FinderGetUser2 دریافت اطلاعات کاربر
 
-After gaining an access token, you can use this API to get user information.
-With scope `USER_PHONE` you can get user phone number.
-With scope `USER_ID` you can get user id and you can rely on uniqueness of this id.
+پس از دریافت توکن دسترسی، می‌توانید از این API برای دریافت اطلاعات کاربر استفاده کنید.
+با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
+با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -418,10 +418,10 @@ func (r ApiFinderGetUserPostsRequest) Execute() (*FinderGetUserPostsResponse, *h
 }
 
 /*
-FinderGetUserPosts Get user posts
+FinderGetUserPosts دریافت آگهی‌های کاربر
 
-This API allows you to get all posts of a user.
-You can use this API to show user posts in your service.
+این API به شما امکان دریافت تمام آگهی‌های یک کاربر را می‌دهد.
+می‌توانید از این API برای نمایش آگهی‌های کاربر در سرویس خود استفاده کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderGetUserPostsRequest
@@ -546,11 +546,11 @@ func (r ApiFinderSearchPostV2Request) Execute() (*FinderSearchPostV2Response, *h
 }
 
 /*
-FinderSearchPostV2 Search Divar posts with some filters
+FinderSearchPostV2 جستجو آگهی‌های دیوار با فیلترهایی
 
-This API allows you to search Divar posts with some filters.
-You can search posts by category, city, district, and some other filters.
-Posts will be sorted by their timestamp.
+این API به شما امکان جستجو آگهی‌های دیوار با برخی فیلترها را می‌دهد.
+می‌توانید آگهی‌ها را بر اساس دسته‌بندی، شهر، منطقه و برخی فیلترهای دیگر جستجو کنید.
+آگهی‌ها بر اساس زمان آنها مرتب می‌شوند.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

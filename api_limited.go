@@ -35,7 +35,7 @@ func (r ApiPaymentGetBalanceRequest) Execute() (*PaymentGetBalanceResponse, *htt
 /*
 PaymentGetBalance Method for PaymentGetBalance
 
-Using this API you can retrieve current balance of your app.
+با استفاده از این API می‌توانید موجودی فعلی اپلیکیشن خود را دریافت کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentGetBalanceRequest
@@ -155,12 +155,12 @@ func (r ApiPaymentGetPostPricingRequest) Execute() (*PaymentGetPostPricingRespon
 }
 
 /*
-PaymentGetPostPricing Retrieve the cost of the service
+PaymentGetPostPricing دریافت هزینه سرویس
 
-Using this API and with user permission, you can get the price of various services like Reorder.The price of this API is not necessarily the same as the price on Divar, and pricing may vary.Use this API to get the price before applying services (such as reordering a post).
+با استفاده از این API و با مجوز کاربر، می‌توانید قیمت سرویس‌های مختلف مانند نردبان را دریافت کنید. قیمت این API لزوماً با قیمت روی دیوار یکسان نیست و قیمت‌گذاری ممکن است متفاوت باشد. از این API برای دریافت قیمت قبل از اعمال سرویس‌ها (مانند نردبان آگهی) استفاده کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param postToken An 8-9 character unique identifier for the post
+ @param postToken شناسه منحصر به فرد 8-9 کاراکتری برای آگهی
  @return ApiPaymentGetPostPricingRequest
 */
 func (a *LimitedAPIService) PaymentGetPostPricing(ctx context.Context, postToken string) ApiPaymentGetPostPricingRequest {
@@ -282,10 +282,10 @@ func (r ApiPaymentGetTransactionRequest) Execute() (*PaymentGetTransactionRespon
 /*
 PaymentGetTransaction Method for PaymentGetTransaction
 
-Using this API you can retrieve transaction details.
+با استفاده از این API می‌توانید جزئیات تراکنش را دریافت کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique identifier for the transaction, same as the id in the request
+ @param id شناسه منحصر به فرد برای تراکنش، همان id در درخواست
  @return ApiPaymentGetTransactionRequest
 */
 func (a *LimitedAPIService) PaymentGetTransaction(ctx context.Context, id string) ApiPaymentGetTransactionRequest {
@@ -394,6 +394,147 @@ func (a *LimitedAPIService) PaymentGetTransactionExecute(r ApiPaymentGetTransact
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiPaymentListTransactionsRequest struct {
+	ctx context.Context
+	ApiService *LimitedAPIService
+	pageSize *int32
+	pageToken *string
+}
+
+// Number of transactions to return per page
+func (r ApiPaymentListTransactionsRequest) PageSize(pageSize int32) ApiPaymentListTransactionsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Token for the next page of results
+func (r ApiPaymentListTransactionsRequest) PageToken(pageToken string) ApiPaymentListTransactionsRequest {
+	r.pageToken = &pageToken
+	return r
+}
+
+func (r ApiPaymentListTransactionsRequest) Execute() (*PaymentListTransactionsResponse, *http.Response, error) {
+	return r.ApiService.PaymentListTransactionsExecute(r)
+}
+
+/*
+PaymentListTransactions Method for PaymentListTransactions
+
+Using this API you can retrieve a list of transactions. Follow pages till you get an empty list.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPaymentListTransactionsRequest
+*/
+func (a *LimitedAPIService) PaymentListTransactions(ctx context.Context) ApiPaymentListTransactionsRequest {
+	return ApiPaymentListTransactionsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return PaymentListTransactionsResponse
+func (a *LimitedAPIService) PaymentListTransactionsExecute(r ApiPaymentListTransactionsRequest) (*PaymentListTransactionsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PaymentListTransactionsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LimitedAPIService.PaymentListTransactions")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/experimental/open-platform/transactions"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.pageToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_token", r.pageToken, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-API-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiPaymentReorderPostRequest struct {
 	ctx context.Context
 	ApiService *LimitedAPIService
@@ -413,7 +554,7 @@ func (r ApiPaymentReorderPostRequest) Execute() (*PaymentReorderPostResponse, *h
 /*
 PaymentReorderPost Method for PaymentReorderPost
 
-Use GetPostPricing API to get the cost of the service before calling this API.
+قبل از فراخوانی این API، از API GetPostPricing برای دریافت هزینه سرویس استفاده کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken

@@ -40,11 +40,11 @@ func (r ApiAddonsCreatePostAddonV2Request) Execute() (map[string]interface{}, *h
 }
 
 /*
-AddonsCreatePostAddonV2 Attach a new Addon to a post
+AddonsCreatePostAddonV2 افزودن افزونه جدید به آگهی
 
-Using this API and with user permission, you can attach a new AD to a post.
-You can use available widgets to design your Addon.
-This API need access token having one of the following scopes:
+با استفاده از این API و با مجوز کاربر، می‌توانید افزونه جدیدی به آگهی متصل کنید.
+می‌توانید از ویجت‌های موجود برای طراحی افزونه خود استفاده کنید.
+این API به توکن دسترسی با یکی از دامنه‌های زیر نیاز دارد:
 - USER_POSTS_ADDON_CREATE
 - POST_ADDON_CREATE.{post_token}
 
@@ -180,12 +180,12 @@ func (r ApiAddonsCreateUserAddonV2Request) Execute() (*AddonsCreateUserAddonResp
 }
 
 /*
-AddonsCreateUserAddonV2 Attach a new Addon to a user
+AddonsCreateUserAddonV2 افزودن افزونه جدید به کاربر
 
-Using this API and with user permission, you can create a UserAddon.
-UserAddon will attach to all user posts in future and also back fills last 30 posts in the past.
-You can use available widgets to design your UserAddon.
-This API need access token having `USER_ADDON_CREATE` scope
+با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
+افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
+می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
+این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param phone
@@ -319,12 +319,12 @@ func (r ApiAddonsCreateUserAddonV22Request) Execute() (*AddonsCreateUserAddonRes
 }
 
 /*
-AddonsCreateUserAddonV22 Attach a new Addon to a user
+AddonsCreateUserAddonV22 افزودن افزونه جدید به کاربر
 
-Using this API and with user permission, you can create a UserAddon.
-UserAddon will attach to all user posts in future and also back fills last 30 posts in the past.
-You can use available widgets to design your UserAddon.
-This API need access token having `USER_ADDON_CREATE` scope
+با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
+افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
+می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
+این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param divarUserId
@@ -452,9 +452,9 @@ func (r ApiAddonsDeletePostAddonRequest) Execute() (map[string]interface{}, *htt
 }
 
 /*
-AddonsDeletePostAddon Delete an Addon from a post
+AddonsDeletePostAddon حذف افزونه از آگهی
 
-You can only delete addons which are created by your app.
+فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
@@ -577,9 +577,9 @@ func (r ApiAddonsDeletePostAddon2Request) Execute() (map[string]interface{}, *ht
 }
 
 /*
-AddonsDeletePostAddon2 Delete an Addon from a post
+AddonsDeletePostAddon2 حذف افزونه از آگهی
 
-You can only delete addons which are created by your app.
+فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
@@ -702,10 +702,10 @@ func (r ApiAddonsDeleteUserAddonRequest) Execute() (map[string]interface{}, *htt
 }
 
 /*
-AddonsDeleteUserAddon Delete an UserAddon
+AddonsDeleteUserAddon حذف افزونه کاربر
 
-This will delete all correlated Addons to all user posts.
-You can only delete Addons which are created by your app.
+این تمام افزونه‌های مرتبط با تمام آگهی‌های کاربر را حذف می‌کند.
+فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -834,9 +834,9 @@ func (r ApiAddonsGetUserAddonsRequest) Execute() (*AddonsGetUserAddonsResponse, 
 }
 
 /*
-AddonsGetUserAddons Retrieve all UserAddons
+AddonsGetUserAddons دریافت تمام افزونه‌های کاربر
 
-Retrieve all UserAddons of a user.
+دریافت تمام افزونه‌های کاربر یک کاربر.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param phone
@@ -968,9 +968,9 @@ func (r ApiAddonsGetUserAddons2Request) Execute() (*AddonsGetUserAddonsResponse,
 }
 
 /*
-AddonsGetUserAddons2 Retrieve all UserAddons
+AddonsGetUserAddons2 دریافت تمام افزونه‌های کاربر
 
-Retrieve all UserAddons of a user.
+دریافت تمام افزونه‌های کاربر یک کاربر.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param divarUserId

@@ -19,9 +19,9 @@ var _ MappedNullable = &PaymentReorderPostResponse{}
 
 // PaymentReorderPostResponse struct for PaymentReorderPostResponse
 type PaymentReorderPostResponse struct {
-	// The cost of the transaction in rials for your application
+	// هزینه تراکنش به ریال برای اپلیکیشن شما
 	CostRials *string `json:"cost_rials,omitempty"`
-	// Same uuid when creating transaction
+	// همان uuid هنگام ایجاد تراکنش
 	Id *string `json:"id,omitempty"`
 }
 
