@@ -12,6 +12,7 @@ package kenarapi
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the PaymentTransaction type satisfies the MappedNullable interface at compile time
@@ -21,6 +22,8 @@ var _ MappedNullable = &PaymentTransaction{}
 type PaymentTransaction struct {
 	// هزینه تراکنش به ریال برای اپلیکیشن شما
 	CostRials *string `json:"cost_rials,omitempty"`
+	// The time when the transaction was created
+	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// همان جزئیات اضافی که در درخواست ارسال کردید
 	ExtraDetails *string `json:"extra_details,omitempty"`
 	// همان uuid هنگام ایجاد تراکنش
@@ -76,6 +79,38 @@ func (o *PaymentTransaction) HasCostRials() bool {
 // SetCostRials gets a reference to the given string and assigns it to the CostRials field.
 func (o *PaymentTransaction) SetCostRials(v string) {
 	o.CostRials = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *PaymentTransaction) GetCreatedAt() time.Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentTransaction) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *PaymentTransaction) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *PaymentTransaction) SetCreatedAt(v time.Time) {
+	o.CreatedAt = &v
 }
 
 // GetExtraDetails returns the ExtraDetails field value if set, zero value otherwise.
@@ -218,6 +253,9 @@ func (o PaymentTransaction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CostRials) {
 		toSerialize["cost_rials"] = o.CostRials
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
 	}
 	if !IsNil(o.ExtraDetails) {
 		toSerialize["extra_details"] = o.ExtraDetails

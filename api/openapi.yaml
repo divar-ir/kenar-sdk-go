@@ -199,6 +199,35 @@ paths:
           description: پاسخ خطای غیرمنتظره.
       tags:
       - limited
+  /experimental/open-platform/posts/{post_token}/stats:
+    get:
+      description: This API allows you to retrieve the statistics associated with
+        a single post (e.g. views).
+      operationId: Post_GetPostStats
+      parameters:
+      - explode: false
+        in: path
+        name: post_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postGetPostStatsResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: Get post statistics
+      tags:
+      - Post
   /experimental/open-platform/semantic/post/{token}:
     post:
       description: |
@@ -2806,6 +2835,34 @@ components:
         business_type:
           $ref: '#/components/schemas/PremiumPanelBusinessDataSubBusinessType'
       type: object
+    GetPostStatsResponseDailyStats:
+      example:
+        date: date
+        count: 0
+      properties:
+        count:
+          format: int32
+          type: integer
+        date:
+          type: string
+      type: object
+    GetPostStatsResponsePostStats:
+      example:
+        total: 6
+        daily:
+        - date: date
+          count: 0
+        - date: date
+          count: 0
+      properties:
+        daily:
+          items:
+            $ref: '#/components/schemas/GetPostStatsResponseDailyStats'
+          type: array
+        total:
+          format: int32
+          type: integer
+      type: object
     GetServiceTypesResponseServiceTypeData:
       example:
         display: display
@@ -2918,6 +2975,7 @@ components:
       - CHAT_MESSAGE_SEND
       - CHAT_CONVERSATION_READ
       - USER_POSTS_GET
+      - USER_POSTS_STATS_READ
       - CHAT_POST_CONVERSATIONS_READ
       - CHAT_POST_CONVERSATIONS_MESSAGE_SEND
       - CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
@@ -4930,6 +4988,7 @@ components:
       example:
         transaction:
           extra_details: extra_details
+          created_at: 2000-01-23T04:56:07.000+00:00
           id: id
           state: TRANSACTION_STATE_PENDING
           type: TRANSACTION_TYPE_REORDER
@@ -4943,11 +5002,13 @@ components:
         next_page_token: next_page_token
         transactions:
         - extra_details: extra_details
+          created_at: 2000-01-23T04:56:07.000+00:00
           id: id
           state: TRANSACTION_STATE_PENDING
           type: TRANSACTION_TYPE_REORDER
           cost_rials: cost_rials
         - extra_details: extra_details
+          created_at: 2000-01-23T04:56:07.000+00:00
           id: id
           state: TRANSACTION_STATE_PENDING
           type: TRANSACTION_TYPE_REORDER
@@ -4978,6 +5039,7 @@ components:
     paymentTransaction:
       example:
         extra_details: extra_details
+        created_at: 2000-01-23T04:56:07.000+00:00
         id: id
         state: TRANSACTION_STATE_PENDING
         type: TRANSACTION_TYPE_REORDER
@@ -4986,6 +5048,10 @@ components:
         cost_rials:
           description: هزینه تراکنش به ریال برای اپلیکیشن شما
           format: int64
+          type: string
+        created_at:
+          description: The time when the transaction was created
+          format: date-time
           type: string
         extra_details:
           description: همان جزئیات اضافی که در درخواست ارسال کردید
@@ -5042,6 +5108,19 @@ components:
       properties:
         upload_url:
           type: string
+      type: object
+    postGetPostStatsResponse:
+      example:
+        views:
+          total: 6
+          daily:
+          - date: date
+            count: 0
+          - date: date
+            count: 0
+      properties:
+        views:
+          $ref: '#/components/schemas/GetPostStatsResponsePostStats'
       type: object
     protobufAny:
       additionalProperties: {}

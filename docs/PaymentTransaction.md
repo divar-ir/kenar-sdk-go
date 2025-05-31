@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CostRials** | Pointer to **string** | هزینه تراکنش به ریال برای اپلیکیشن شما | [optional] 
+**CreatedAt** | Pointer to **time.Time** | The time when the transaction was created | [optional] 
 **ExtraDetails** | Pointer to **string** | همان جزئیات اضافی که در درخواست ارسال کردید | [optional] 
 **Id** | Pointer to **string** | همان uuid هنگام ایجاد تراکنش | [optional] 
 **State** | Pointer to [**PaymentTransactionState**](PaymentTransactionState.md) |  | [optional] 
@@ -53,6 +54,31 @@ SetCostRials sets CostRials field to given value.
 `func (o *PaymentTransaction) HasCostRials() bool`
 
 HasCostRials returns a boolean if a field has been set.
+
+### GetCreatedAt
+
+`func (o *PaymentTransaction) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *PaymentTransaction) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *PaymentTransaction) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *PaymentTransaction) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
 
 ### GetExtraDetails
 
