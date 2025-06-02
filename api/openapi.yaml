@@ -2810,6 +2810,7 @@ components:
       - HAND_CLICK
       - WHATS_APP
       - CHAT_SPARKLES
+      - PUZZLE_SPARKLES
       type: string
     GetPostPricingResponseReorder:
       example:
