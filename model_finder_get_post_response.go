@@ -27,6 +27,7 @@ type FinderGetPostResponse struct {
 	Data map[string]interface{} `json:"data,omitempty"`
 	District *string `json:"district,omitempty"`
 	FirstPublishedAt *time.Time `json:"first_published_at,omitempty"`
+	IsPhoneHidden *bool `json:"is_phone_hidden,omitempty"`
 	State *FinderPostExtState `json:"state,omitempty"`
 	SupplierChatAssistantEnabled *bool `json:"supplier_chat_assistant_enabled,omitempty"`
 	Token *string `json:"token,omitempty"`
@@ -273,6 +274,38 @@ func (o *FinderGetPostResponse) SetFirstPublishedAt(v time.Time) {
 	o.FirstPublishedAt = &v
 }
 
+// GetIsPhoneHidden returns the IsPhoneHidden field value if set, zero value otherwise.
+func (o *FinderGetPostResponse) GetIsPhoneHidden() bool {
+	if o == nil || IsNil(o.IsPhoneHidden) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPhoneHidden
+}
+
+// GetIsPhoneHiddenOk returns a tuple with the IsPhoneHidden field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderGetPostResponse) GetIsPhoneHiddenOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPhoneHidden) {
+		return nil, false
+	}
+	return o.IsPhoneHidden, true
+}
+
+// HasIsPhoneHidden returns a boolean if a field has been set.
+func (o *FinderGetPostResponse) HasIsPhoneHidden() bool {
+	if o != nil && !IsNil(o.IsPhoneHidden) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPhoneHidden gets a reference to the given bool and assigns it to the IsPhoneHidden field.
+func (o *FinderGetPostResponse) SetIsPhoneHidden(v bool) {
+	o.IsPhoneHidden = &v
+}
+
 // GetState returns the State field value if set, zero value otherwise.
 func (o *FinderGetPostResponse) GetState() FinderPostExtState {
 	if o == nil || IsNil(o.State) {
@@ -399,6 +432,9 @@ func (o FinderGetPostResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FirstPublishedAt) {
 		toSerialize["first_published_at"] = o.FirstPublishedAt
+	}
+	if !IsNil(o.IsPhoneHidden) {
+		toSerialize["is_phone_hidden"] = o.IsPhoneHidden
 	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State

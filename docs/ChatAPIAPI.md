@@ -4,9 +4,11 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChatAPIChatBotSendMessage**](ChatAPIAPI.md#ChatAPIChatBotSendMessage) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
-[**ChatAPIChatBotSendMessage2**](ChatAPIAPI.md#ChatAPIChatBotSendMessage2) | **Post** /experimental/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
-[**ChatAPIChatBotSendMessage3**](ChatAPIAPI.md#ChatAPIChatBotSendMessage3) | **Post** /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIChatBotSendMessage**](ChatAPIAPI.md#ChatAPIChatBotSendMessage) | **Post** /v1/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIChatBotSendMessage2**](ChatAPIAPI.md#ChatAPIChatBotSendMessage2) | **Post** /v1/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIChatBotSendMessage3**](ChatAPIAPI.md#ChatAPIChatBotSendMessage3) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIChatBotSendMessage4**](ChatAPIAPI.md#ChatAPIChatBotSendMessage4) | **Post** /experimental/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIChatBotSendMessage5**](ChatAPIAPI.md#ChatAPIChatBotSendMessage5) | **Post** /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
 [**ChatAPIConversationSendMessage**](ChatAPIAPI.md#ChatAPIConversationSendMessage) | **Post** /v2/open-platform/conversations/{conversation_id}/messages | ارسال پیام به مکالمه
 [**ChatAPIGenerateUploadToken**](ChatAPIAPI.md#ChatAPIGenerateUploadToken) | **Post** /experimental/open-platform/chat/upload | تولید توکن آپلود
 [**ChatAPIGetConversation**](ChatAPIAPI.md#ChatAPIGetConversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | دریافت مکالمه با شناسه آن
@@ -204,6 +206,150 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiChatAPIChatBotSendMessage3Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **chatAPIChatBotSendMessageBody** | [**ChatAPIChatBotSendMessageBody**](ChatAPIChatBotSendMessageBody.md) |  | 
+
+### Return type
+
+[**ChatapiChatBotSendMessageResponse**](ChatapiChatBotSendMessageResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ChatAPIChatBotSendMessage4
+
+> ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage4(ctx, userId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
+
+ارسال پیام به مکالمه ChatBot
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/kenarapi"
+)
+
+func main() {
+	userId := "userId_example" // string | Unique identifier for the user to start or continue a conversation with
+	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ChatAPIAPI.ChatAPIChatBotSendMessage4(context.Background(), userId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ChatAPIAPI.ChatAPIChatBotSendMessage4``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ChatAPIChatBotSendMessage4`: ChatapiChatBotSendMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `ChatAPIAPI.ChatAPIChatBotSendMessage4`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userId** | **string** | Unique identifier for the user to start or continue a conversation with | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiChatAPIChatBotSendMessage4Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **chatAPIChatBotSendMessageBody** | [**ChatAPIChatBotSendMessageBody**](ChatAPIChatBotSendMessageBody.md) |  | 
+
+### Return type
+
+[**ChatapiChatBotSendMessageResponse**](ChatapiChatBotSendMessageResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ChatAPIChatBotSendMessage5
+
+> ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage5(ctx, conversationId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
+
+ارسال پیام به مکالمه ChatBot
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/kenarapi"
+)
+
+func main() {
+	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ChatAPIAPI.ChatAPIChatBotSendMessage5(context.Background(), conversationId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ChatAPIAPI.ChatAPIChatBotSendMessage5``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ChatAPIChatBotSendMessage5`: ChatapiChatBotSendMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `ChatAPIAPI.ChatAPIChatBotSendMessage5`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**conversationId** | **string** | Unique identifier for the conversation | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiChatAPIChatBotSendMessage5Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes

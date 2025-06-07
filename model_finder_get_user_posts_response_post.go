@@ -21,6 +21,7 @@ var _ MappedNullable = &FinderGetUserPostsResponsePost{}
 type FinderGetUserPostsResponsePost struct {
 	Category *string `json:"category,omitempty"`
 	Images []string `json:"images,omitempty"`
+	IsPhoneHidden *bool `json:"is_phone_hidden,omitempty"`
 	Title *string `json:"title,omitempty"`
 	Token *string `json:"token,omitempty"`
 }
@@ -106,6 +107,38 @@ func (o *FinderGetUserPostsResponsePost) SetImages(v []string) {
 	o.Images = v
 }
 
+// GetIsPhoneHidden returns the IsPhoneHidden field value if set, zero value otherwise.
+func (o *FinderGetUserPostsResponsePost) GetIsPhoneHidden() bool {
+	if o == nil || IsNil(o.IsPhoneHidden) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPhoneHidden
+}
+
+// GetIsPhoneHiddenOk returns a tuple with the IsPhoneHidden field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderGetUserPostsResponsePost) GetIsPhoneHiddenOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPhoneHidden) {
+		return nil, false
+	}
+	return o.IsPhoneHidden, true
+}
+
+// HasIsPhoneHidden returns a boolean if a field has been set.
+func (o *FinderGetUserPostsResponsePost) HasIsPhoneHidden() bool {
+	if o != nil && !IsNil(o.IsPhoneHidden) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPhoneHidden gets a reference to the given bool and assigns it to the IsPhoneHidden field.
+func (o *FinderGetUserPostsResponsePost) SetIsPhoneHidden(v bool) {
+	o.IsPhoneHidden = &v
+}
+
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *FinderGetUserPostsResponsePost) GetTitle() string {
 	if o == nil || IsNil(o.Title) {
@@ -185,6 +218,9 @@ func (o FinderGetUserPostsResponsePost) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
+	}
+	if !IsNil(o.IsPhoneHidden) {
+		toSerialize["is_phone_hidden"] = o.IsPhoneHidden
 	}
 	if !IsNil(o.Title) {
 		toSerialize["title"] = o.Title

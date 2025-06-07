@@ -25,6 +25,7 @@ const (
 	PREMIUMPANELBUSINESSDATASUBBUSINESSTYPE_JOBS PremiumPanelBusinessDataSubBusinessType = "JOBS"
 	PREMIUMPANELBUSINESSDATASUBBUSINESSTYPE_MARKETPLACE PremiumPanelBusinessDataSubBusinessType = "MARKETPLACE"
 	PREMIUMPANELBUSINESSDATASUBBUSINESSTYPE_SERVICES PremiumPanelBusinessDataSubBusinessType = "SERVICES"
+	PREMIUMPANELBUSINESSDATASUBBUSINESSTYPE_PERSONAL PremiumPanelBusinessDataSubBusinessType = "PERSONAL"
 )
 
 // All allowed values of PremiumPanelBusinessDataSubBusinessType enum
@@ -34,6 +35,7 @@ var AllowedPremiumPanelBusinessDataSubBusinessTypeEnumValues = []PremiumPanelBus
 	"JOBS",
 	"MARKETPLACE",
 	"SERVICES",
+	"PERSONAL",
 }
 
 func (v *PremiumPanelBusinessDataSubBusinessType) UnmarshalJSON(src []byte) error {

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Category** | Pointer to **string** |  | [optional] 
 **Images** | Pointer to **[]string** |  | [optional] 
+**IsPhoneHidden** | Pointer to **bool** |  | [optional] 
 **Title** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetImages sets Images field to given value.
 `func (o *FinderGetUserPostsResponsePost) HasImages() bool`
 
 HasImages returns a boolean if a field has been set.
+
+### GetIsPhoneHidden
+
+`func (o *FinderGetUserPostsResponsePost) GetIsPhoneHidden() bool`
+
+GetIsPhoneHidden returns the IsPhoneHidden field if non-nil, zero value otherwise.
+
+### GetIsPhoneHiddenOk
+
+`func (o *FinderGetUserPostsResponsePost) GetIsPhoneHiddenOk() (*bool, bool)`
+
+GetIsPhoneHiddenOk returns a tuple with the IsPhoneHidden field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPhoneHidden
+
+`func (o *FinderGetUserPostsResponsePost) SetIsPhoneHidden(v bool)`
+
+SetIsPhoneHidden sets IsPhoneHidden field to given value.
+
+### HasIsPhoneHidden
+
+`func (o *FinderGetUserPostsResponsePost) HasIsPhoneHidden() bool`
+
+HasIsPhoneHidden returns a boolean if a field has been set.
 
 ### GetTitle
 

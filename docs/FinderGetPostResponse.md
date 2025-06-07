@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Data** | Pointer to **map[string]interface{}** |  | [optional] 
 **District** | Pointer to **string** |  | [optional] 
 **FirstPublishedAt** | Pointer to **time.Time** |  | [optional] 
+**IsPhoneHidden** | Pointer to **bool** |  | [optional] 
 **State** | Pointer to [**FinderPostExtState**](FinderPostExtState.md) |  | [optional] 
 **SupplierChatAssistantEnabled** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
@@ -208,6 +209,31 @@ SetFirstPublishedAt sets FirstPublishedAt field to given value.
 `func (o *FinderGetPostResponse) HasFirstPublishedAt() bool`
 
 HasFirstPublishedAt returns a boolean if a field has been set.
+
+### GetIsPhoneHidden
+
+`func (o *FinderGetPostResponse) GetIsPhoneHidden() bool`
+
+GetIsPhoneHidden returns the IsPhoneHidden field if non-nil, zero value otherwise.
+
+### GetIsPhoneHiddenOk
+
+`func (o *FinderGetPostResponse) GetIsPhoneHiddenOk() (*bool, bool)`
+
+GetIsPhoneHiddenOk returns a tuple with the IsPhoneHidden field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPhoneHidden
+
+`func (o *FinderGetPostResponse) SetIsPhoneHidden(v bool)`
+
+SetIsPhoneHidden sets IsPhoneHidden field to given value.
+
+### HasIsPhoneHidden
+
+`func (o *FinderGetPostResponse) HasIsPhoneHidden() bool`
+
+HasIsPhoneHidden returns a boolean if a field has been set.
 
 ### GetState
 

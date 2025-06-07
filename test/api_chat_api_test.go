@@ -64,6 +64,34 @@ func Test_kenarapi_ChatAPIAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ChatAPIAPIService ChatAPIChatBotSendMessage4", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var userId string
+
+		resp, httpRes, err := apiClient.ChatAPIAPI.ChatAPIChatBotSendMessage4(context.Background(), userId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ChatAPIAPIService ChatAPIChatBotSendMessage5", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var conversationId string
+
+		resp, httpRes, err := apiClient.ChatAPIAPI.ChatAPIChatBotSendMessage5(context.Background(), conversationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ChatAPIAPIService ChatAPIConversationSendMessage", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -72,7 +72,7 @@ func (a *ChatAPIAPIService) ChatAPIChatBotSendMessageExecute(r ApiChatAPIChatBot
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/experimental/open-platform/chatbot-conversations/{conversation_id}/messages"
+	localVarPath := localBasePath + "/v1/open-platform/chat/bot/conversations/{conversation_id}/messages"
 	localVarPath = strings.Replace(localVarPath, "{"+"conversation_id"+"}", url.PathEscape(parameterValueToString(r.conversationId, "conversationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -209,7 +209,7 @@ func (a *ChatAPIAPIService) ChatAPIChatBotSendMessage2Execute(r ApiChatAPIChatBo
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/experimental/open-platform/chat/bot/users/{user_id}/messages"
+	localVarPath := localBasePath + "/v1/open-platform/chat/bot/users/{user_id}/messages"
 	localVarPath = strings.Replace(localVarPath, "{"+"user_id"+"}", url.PathEscape(parameterValueToString(r.userId, "userId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -342,6 +342,280 @@ func (a *ChatAPIAPIService) ChatAPIChatBotSendMessage3Execute(r ApiChatAPIChatBo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChatAPIAPIService.ChatAPIChatBotSendMessage3")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/experimental/open-platform/chatbot-conversations/{conversation_id}/messages"
+	localVarPath = strings.Replace(localVarPath, "{"+"conversation_id"+"}", url.PathEscape(parameterValueToString(r.conversationId, "conversationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.chatAPIChatBotSendMessageBody == nil {
+		return localVarReturnValue, nil, reportError("chatAPIChatBotSendMessageBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.chatAPIChatBotSendMessageBody
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-API-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiChatAPIChatBotSendMessage4Request struct {
+	ctx context.Context
+	ApiService *ChatAPIAPIService
+	userId string
+	chatAPIChatBotSendMessageBody *ChatAPIChatBotSendMessageBody
+}
+
+func (r ApiChatAPIChatBotSendMessage4Request) ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody ChatAPIChatBotSendMessageBody) ApiChatAPIChatBotSendMessage4Request {
+	r.chatAPIChatBotSendMessageBody = &chatAPIChatBotSendMessageBody
+	return r
+}
+
+func (r ApiChatAPIChatBotSendMessage4Request) Execute() (*ChatapiChatBotSendMessageResponse, *http.Response, error) {
+	return r.ApiService.ChatAPIChatBotSendMessage4Execute(r)
+}
+
+/*
+ChatAPIChatBotSendMessage4 ارسال پیام به مکالمه ChatBot
+
+می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userId Unique identifier for the user to start or continue a conversation with
+ @return ApiChatAPIChatBotSendMessage4Request
+*/
+func (a *ChatAPIAPIService) ChatAPIChatBotSendMessage4(ctx context.Context, userId string) ApiChatAPIChatBotSendMessage4Request {
+	return ApiChatAPIChatBotSendMessage4Request{
+		ApiService: a,
+		ctx: ctx,
+		userId: userId,
+	}
+}
+
+// Execute executes the request
+//  @return ChatapiChatBotSendMessageResponse
+func (a *ChatAPIAPIService) ChatAPIChatBotSendMessage4Execute(r ApiChatAPIChatBotSendMessage4Request) (*ChatapiChatBotSendMessageResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ChatapiChatBotSendMessageResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChatAPIAPIService.ChatAPIChatBotSendMessage4")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/experimental/open-platform/chat/bot/users/{user_id}/messages"
+	localVarPath = strings.Replace(localVarPath, "{"+"user_id"+"}", url.PathEscape(parameterValueToString(r.userId, "userId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.chatAPIChatBotSendMessageBody == nil {
+		return localVarReturnValue, nil, reportError("chatAPIChatBotSendMessageBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.chatAPIChatBotSendMessageBody
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-API-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiChatAPIChatBotSendMessage5Request struct {
+	ctx context.Context
+	ApiService *ChatAPIAPIService
+	conversationId string
+	chatAPIChatBotSendMessageBody *ChatAPIChatBotSendMessageBody
+}
+
+func (r ApiChatAPIChatBotSendMessage5Request) ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody ChatAPIChatBotSendMessageBody) ApiChatAPIChatBotSendMessage5Request {
+	r.chatAPIChatBotSendMessageBody = &chatAPIChatBotSendMessageBody
+	return r
+}
+
+func (r ApiChatAPIChatBotSendMessage5Request) Execute() (*ChatapiChatBotSendMessageResponse, *http.Response, error) {
+	return r.ApiService.ChatAPIChatBotSendMessage5Execute(r)
+}
+
+/*
+ChatAPIChatBotSendMessage5 ارسال پیام به مکالمه ChatBot
+
+می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param conversationId Unique identifier for the conversation
+ @return ApiChatAPIChatBotSendMessage5Request
+*/
+func (a *ChatAPIAPIService) ChatAPIChatBotSendMessage5(ctx context.Context, conversationId string) ApiChatAPIChatBotSendMessage5Request {
+	return ApiChatAPIChatBotSendMessage5Request{
+		ApiService: a,
+		ctx: ctx,
+		conversationId: conversationId,
+	}
+}
+
+// Execute executes the request
+//  @return ChatapiChatBotSendMessageResponse
+func (a *ChatAPIAPIService) ChatAPIChatBotSendMessage5Execute(r ApiChatAPIChatBotSendMessage5Request) (*ChatapiChatBotSendMessageResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ChatapiChatBotSendMessageResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChatAPIAPIService.ChatAPIChatBotSendMessage5")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
