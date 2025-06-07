@@ -166,6 +166,8 @@ Class | Method | HTTP request | Description
  - [AddonsGroupInfoRow](docs/AddonsGroupInfoRow.md)
  - [AddonsGroupInfoRowGroupInfoItem](docs/AddonsGroupInfoRowGroupInfoItem.md)
  - [AddonsImageCarouselRow](docs/AddonsImageCarouselRow.md)
+ - [AddonsOpenPostManagePage](docs/AddonsOpenPostManagePage.md)
+ - [AddonsOpenPostPage](docs/AddonsOpenPostPage.md)
  - [AddonsOpenServerLink](docs/AddonsOpenServerLink.md)
  - [AddonsPostAddon](docs/AddonsPostAddon.md)
  - [AddonsScoreRow](docs/AddonsScoreRow.md)

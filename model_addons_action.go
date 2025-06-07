@@ -22,6 +22,8 @@ type AddonsAction struct {
 	GetDynamicAction *AddonsGetDynamicAction `json:"get_dynamic_action,omitempty"`
 	// An action to send user to your URL directly with just a resource id (if applicable)
 	OpenDirectLink *string `json:"open_direct_link,omitempty"`
+	OpenPostManagePage *AddonsOpenPostManagePage `json:"open_post_manage_page,omitempty"`
+	OpenPostPage *AddonsOpenPostPage `json:"open_post_page,omitempty"`
 	OpenServerLink *AddonsOpenServerLink `json:"open_server_link,omitempty"`
 }
 
@@ -106,6 +108,70 @@ func (o *AddonsAction) SetOpenDirectLink(v string) {
 	o.OpenDirectLink = &v
 }
 
+// GetOpenPostManagePage returns the OpenPostManagePage field value if set, zero value otherwise.
+func (o *AddonsAction) GetOpenPostManagePage() AddonsOpenPostManagePage {
+	if o == nil || IsNil(o.OpenPostManagePage) {
+		var ret AddonsOpenPostManagePage
+		return ret
+	}
+	return *o.OpenPostManagePage
+}
+
+// GetOpenPostManagePageOk returns a tuple with the OpenPostManagePage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAction) GetOpenPostManagePageOk() (*AddonsOpenPostManagePage, bool) {
+	if o == nil || IsNil(o.OpenPostManagePage) {
+		return nil, false
+	}
+	return o.OpenPostManagePage, true
+}
+
+// HasOpenPostManagePage returns a boolean if a field has been set.
+func (o *AddonsAction) HasOpenPostManagePage() bool {
+	if o != nil && !IsNil(o.OpenPostManagePage) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenPostManagePage gets a reference to the given AddonsOpenPostManagePage and assigns it to the OpenPostManagePage field.
+func (o *AddonsAction) SetOpenPostManagePage(v AddonsOpenPostManagePage) {
+	o.OpenPostManagePage = &v
+}
+
+// GetOpenPostPage returns the OpenPostPage field value if set, zero value otherwise.
+func (o *AddonsAction) GetOpenPostPage() AddonsOpenPostPage {
+	if o == nil || IsNil(o.OpenPostPage) {
+		var ret AddonsOpenPostPage
+		return ret
+	}
+	return *o.OpenPostPage
+}
+
+// GetOpenPostPageOk returns a tuple with the OpenPostPage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAction) GetOpenPostPageOk() (*AddonsOpenPostPage, bool) {
+	if o == nil || IsNil(o.OpenPostPage) {
+		return nil, false
+	}
+	return o.OpenPostPage, true
+}
+
+// HasOpenPostPage returns a boolean if a field has been set.
+func (o *AddonsAction) HasOpenPostPage() bool {
+	if o != nil && !IsNil(o.OpenPostPage) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenPostPage gets a reference to the given AddonsOpenPostPage and assigns it to the OpenPostPage field.
+func (o *AddonsAction) SetOpenPostPage(v AddonsOpenPostPage) {
+	o.OpenPostPage = &v
+}
+
 // GetOpenServerLink returns the OpenServerLink field value if set, zero value otherwise.
 func (o *AddonsAction) GetOpenServerLink() AddonsOpenServerLink {
 	if o == nil || IsNil(o.OpenServerLink) {
@@ -153,6 +219,12 @@ func (o AddonsAction) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OpenDirectLink) {
 		toSerialize["open_direct_link"] = o.OpenDirectLink
+	}
+	if !IsNil(o.OpenPostManagePage) {
+		toSerialize["open_post_manage_page"] = o.OpenPostManagePage
+	}
+	if !IsNil(o.OpenPostPage) {
+		toSerialize["open_post_page"] = o.OpenPostPage
 	}
 	if !IsNil(o.OpenServerLink) {
 		toSerialize["open_server_link"] = o.OpenServerLink

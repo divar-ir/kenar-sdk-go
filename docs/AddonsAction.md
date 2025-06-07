@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GetDynamicAction** | Pointer to [**AddonsGetDynamicAction**](AddonsGetDynamicAction.md) |  | [optional] 
 **OpenDirectLink** | Pointer to **string** | An action to send user to your URL directly with just a resource id (if applicable) | [optional] 
+**OpenPostManagePage** | Pointer to [**AddonsOpenPostManagePage**](AddonsOpenPostManagePage.md) |  | [optional] 
+**OpenPostPage** | Pointer to [**AddonsOpenPostPage**](AddonsOpenPostPage.md) |  | [optional] 
 **OpenServerLink** | Pointer to [**AddonsOpenServerLink**](AddonsOpenServerLink.md) |  | [optional] 
 
 ## Methods
@@ -76,6 +78,56 @@ SetOpenDirectLink sets OpenDirectLink field to given value.
 `func (o *AddonsAction) HasOpenDirectLink() bool`
 
 HasOpenDirectLink returns a boolean if a field has been set.
+
+### GetOpenPostManagePage
+
+`func (o *AddonsAction) GetOpenPostManagePage() AddonsOpenPostManagePage`
+
+GetOpenPostManagePage returns the OpenPostManagePage field if non-nil, zero value otherwise.
+
+### GetOpenPostManagePageOk
+
+`func (o *AddonsAction) GetOpenPostManagePageOk() (*AddonsOpenPostManagePage, bool)`
+
+GetOpenPostManagePageOk returns a tuple with the OpenPostManagePage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenPostManagePage
+
+`func (o *AddonsAction) SetOpenPostManagePage(v AddonsOpenPostManagePage)`
+
+SetOpenPostManagePage sets OpenPostManagePage field to given value.
+
+### HasOpenPostManagePage
+
+`func (o *AddonsAction) HasOpenPostManagePage() bool`
+
+HasOpenPostManagePage returns a boolean if a field has been set.
+
+### GetOpenPostPage
+
+`func (o *AddonsAction) GetOpenPostPage() AddonsOpenPostPage`
+
+GetOpenPostPage returns the OpenPostPage field if non-nil, zero value otherwise.
+
+### GetOpenPostPageOk
+
+`func (o *AddonsAction) GetOpenPostPageOk() (*AddonsOpenPostPage, bool)`
+
+GetOpenPostPageOk returns a tuple with the OpenPostPage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenPostPage
+
+`func (o *AddonsAction) SetOpenPostPage(v AddonsOpenPostPage)`
+
+SetOpenPostPage sets OpenPostPage field to given value.
+
+### HasOpenPostPage
+
+`func (o *AddonsAction) HasOpenPostPage() bool`
+
+HasOpenPostPage returns a boolean if a field has been set.
 
 ### GetOpenServerLink
 

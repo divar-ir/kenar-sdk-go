@@ -19,7 +19,9 @@ var _ MappedNullable = &GetPostStatsResponsePostStats{}
 
 // GetPostStatsResponsePostStats struct for GetPostStatsResponsePostStats
 type GetPostStatsResponsePostStats struct {
+	// Daily value the metric over the last seven days
 	Daily []GetPostStatsResponseDailyStats `json:"daily,omitempty"`
+	// Total number of the metric (e.g. view)
 	Total *int32 `json:"total,omitempty"`
 }
 

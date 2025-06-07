@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int32** |  | [optional] 
-**Date** | Pointer to **string** |  | [optional] 
+**Count** | Pointer to **int32** | Number of the daily metric (e.g. view) | [optional] 
+**Date** | Pointer to **string** | Date in YYYY-MM-DD format | [optional] 
 
 ## Methods
 

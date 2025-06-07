@@ -298,7 +298,7 @@ PostGetPostStats Get post statistics
 This API allows you to retrieve the statistics associated with a single post (e.g. views).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param postToken
+ @param postToken Post token
  @return ApiPostGetPostStatsRequest
 */
 func (a *PostAPIService) PostGetPostStats(ctx context.Context, postToken string) ApiPostGetPostStatsRequest {

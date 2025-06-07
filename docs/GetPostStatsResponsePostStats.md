@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Daily** | Pointer to [**[]GetPostStatsResponseDailyStats**](GetPostStatsResponseDailyStats.md) |  | [optional] 
-**Total** | Pointer to **int32** |  | [optional] 
+**Daily** | Pointer to [**[]GetPostStatsResponseDailyStats**](GetPostStatsResponseDailyStats.md) | Daily value the metric over the last seven days | [optional] 
+**Total** | Pointer to **int32** | Total number of the metric (e.g. view) | [optional] 
 
 ## Methods
 

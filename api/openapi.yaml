@@ -205,7 +205,8 @@ paths:
         a single post (e.g. views).
       operationId: Post_GetPostStats
       parameters:
-      - explode: false
+      - description: Post token
+        explode: false
         in: path
         name: post_token
         required: true
@@ -1537,6 +1538,10 @@ components:
               value: value
           button_bar:
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1551,6 +1556,10 @@ components:
             descriptive_score: descriptive_score
             score_color: null
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1582,6 +1591,10 @@ components:
           selector_row:
             has_divider: true
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1621,6 +1634,10 @@ components:
               value: value
           button_bar:
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1635,6 +1652,10 @@ components:
             descriptive_score: descriptive_score
             score_color: null
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1666,6 +1687,10 @@ components:
           selector_row:
             has_divider: true
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1728,6 +1753,10 @@ components:
               value: value
           button_bar:
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1742,6 +1771,10 @@ components:
             descriptive_score: descriptive_score
             score_color: null
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1773,6 +1806,10 @@ components:
           selector_row:
             has_divider: true
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1812,6 +1849,10 @@ components:
               value: value
           button_bar:
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1826,6 +1867,10 @@ components:
             descriptive_score: descriptive_score
             score_color: null
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1857,6 +1902,10 @@ components:
           selector_row:
             has_divider: true
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -1901,6 +1950,10 @@ components:
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -1912,6 +1965,10 @@ components:
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -1924,6 +1981,10 @@ components:
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -1935,6 +1996,10 @@ components:
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -1973,6 +2038,10 @@ components:
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -1984,6 +2053,10 @@ components:
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -1996,6 +2069,10 @@ components:
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -2007,6 +2084,10 @@ components:
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -2021,6 +2102,10 @@ components:
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -2032,6 +2117,10 @@ components:
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -2044,6 +2133,10 @@ components:
           - buttons:
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -2055,6 +2148,10 @@ components:
               icon_name: icon_name
             - icon: KEYBOARD_ARROW_RIGHT
               action:
+                open_post_page:
+                  post_token: AJIEWcw
+                open_post_manage_page:
+                  post_token: AJIEWcw
                 get_dynamic_action:
                   data:
                     your-internal-id: something
@@ -2905,29 +3002,36 @@ components:
       type: object
     GetPostStatsResponseDailyStats:
       example:
-        date: date
-        count: 0
+        date: 2025-06-03T00:00:00Z
+        count: 239
       properties:
         count:
+          description: Number of the daily metric (e.g. view)
+          example: 239
           format: int32
           type: integer
         date:
+          description: Date in YYYY-MM-DD format
+          example: 2025-06-03T00:00:00Z
           type: string
       type: object
     GetPostStatsResponsePostStats:
       example:
-        total: 6
+        total: 239
         daily:
-        - date: date
-          count: 0
-        - date: date
-          count: 0
+        - date: 2025-06-03T00:00:00Z
+          count: 239
+        - date: 2025-06-03T00:00:00Z
+          count: 239
       properties:
         daily:
+          description: Daily value the metric over the last seven days
           items:
             $ref: '#/components/schemas/GetPostStatsResponseDailyStats'
           type: array
         total:
+          description: Total number of the metric (e.g. view)
+          example: 239
           format: int32
           type: integer
       type: object
@@ -3226,6 +3330,10 @@ components:
     addonsAction:
       description: Represents an action that can be performed
       example:
+        open_post_page:
+          post_token: AJIEWcw
+        open_post_manage_page:
+          post_token: AJIEWcw
         get_dynamic_action:
           data:
             your-internal-id: something
@@ -3241,6 +3349,10 @@ components:
             id (if applicable)
           example: https://your-site.com/some-path
           type: string
+        open_post_manage_page:
+          $ref: '#/components/schemas/addonsOpenPostManagePage'
+        open_post_page:
+          $ref: '#/components/schemas/addonsOpenPostPage'
         open_server_link:
           $ref: '#/components/schemas/addonsOpenServerLink'
       title: Action
@@ -3400,6 +3512,10 @@ components:
     addonsButtonBar:
       example:
         action:
+          open_post_page:
+            post_token: AJIEWcw
+          open_post_manage_page:
+            post_token: AJIEWcw
           get_dynamic_action:
             data:
               your-internal-id: something
@@ -3692,6 +3808,32 @@ components:
             $ref: '#/components/schemas/ImageCarouselRowImageItem'
           type: array
       type: object
+    addonsOpenPostManagePage:
+      description: An action to open a post management page in the app
+      example:
+        post_token: AJIEWcw
+      properties:
+        post_token:
+          description: Token of the post to redirect to its management page
+          example: AJIEWcw
+          type: string
+      required:
+      - post_token
+      title: Open Post Manage Page
+      type: object
+    addonsOpenPostPage:
+      description: An action to open a post page in the app
+      example:
+        post_token: AJIEWcw
+      properties:
+        post_token:
+          description: Token of the post to open
+          example: AJIEWcw
+          type: string
+      required:
+      - post_token
+      title: Open Post Page
+      type: object
     addonsOpenServerLink:
       description: An action to pass complete session data and retrieve redirect location
         from your server on each user action
@@ -3752,6 +3894,10 @@ components:
         descriptive_score: descriptive_score
         score_color: null
         action:
+          open_post_page:
+            post_token: AJIEWcw
+          open_post_manage_page:
+            post_token: AJIEWcw
           get_dynamic_action:
             data:
               your-internal-id: something
@@ -3782,6 +3928,10 @@ components:
       example:
         has_divider: true
         action:
+          open_post_page:
+            post_token: AJIEWcw
+          open_post_manage_page:
+            post_token: AJIEWcw
           get_dynamic_action:
             data:
               your-internal-id: something
@@ -3940,6 +4090,10 @@ components:
             value: value
         button_bar:
           action:
+            open_post_page:
+              post_token: AJIEWcw
+            open_post_manage_page:
+              post_token: AJIEWcw
             get_dynamic_action:
               data:
                 your-internal-id: something
@@ -3954,6 +4108,10 @@ components:
           descriptive_score: descriptive_score
           score_color: null
           action:
+            open_post_page:
+              post_token: AJIEWcw
+            open_post_manage_page:
+              post_token: AJIEWcw
             get_dynamic_action:
               data:
                 your-internal-id: something
@@ -3985,6 +4143,10 @@ components:
         selector_row:
           has_divider: true
           action:
+            open_post_page:
+              post_token: AJIEWcw
+            open_post_manage_page:
+              post_token: AJIEWcw
             get_dynamic_action:
               data:
                 your-internal-id: something
@@ -4372,6 +4534,10 @@ components:
       example:
         icon: KEYBOARD_ARROW_RIGHT
         action:
+          open_post_page:
+            post_token: AJIEWcw
+          open_post_manage_page:
+            post_token: AJIEWcw
           get_dynamic_action:
             data:
               your-internal-id: something
@@ -4398,6 +4564,10 @@ components:
         - buttons:
           - icon: KEYBOARD_ARROW_RIGHT
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -4409,6 +4579,10 @@ components:
             icon_name: icon_name
           - icon: KEYBOARD_ARROW_RIGHT
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -4421,6 +4595,10 @@ components:
         - buttons:
           - icon: KEYBOARD_ARROW_RIGHT
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -4432,6 +4610,10 @@ components:
             icon_name: icon_name
           - icon: KEYBOARD_ARROW_RIGHT
             action:
+              open_post_page:
+                post_token: AJIEWcw
+              open_post_manage_page:
+                post_token: AJIEWcw
               get_dynamic_action:
                 data:
                   your-internal-id: something
@@ -4452,6 +4634,10 @@ components:
         buttons:
         - icon: KEYBOARD_ARROW_RIGHT
           action:
+            open_post_page:
+              post_token: AJIEWcw
+            open_post_manage_page:
+              post_token: AJIEWcw
             get_dynamic_action:
               data:
                 your-internal-id: something
@@ -4463,6 +4649,10 @@ components:
           icon_name: icon_name
         - icon: KEYBOARD_ARROW_RIGHT
           action:
+            open_post_page:
+              post_token: AJIEWcw
+            open_post_manage_page:
+              post_token: AJIEWcw
             get_dynamic_action:
               data:
                 your-internal-id: something
@@ -5190,12 +5380,12 @@ components:
     postGetPostStatsResponse:
       example:
         views:
-          total: 6
+          total: 239
           daily:
-          - date: date
-            count: 0
-          - date: date
-            count: 0
+          - date: 2025-06-03T00:00:00Z
+            count: 239
+          - date: 2025-06-03T00:00:00Z
+            count: 239
       properties:
         views:
           $ref: '#/components/schemas/GetPostStatsResponsePostStats'

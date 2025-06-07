@@ -164,7 +164,7 @@ import (
 )
 
 func main() {
-	postToken := "postToken_example" // string | 
+	postToken := "postToken_example" // string | Post token
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -184,7 +184,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**postToken** | **string** |  | 
+**postToken** | **string** | Post token | 
 
 ### Other Parameters
 

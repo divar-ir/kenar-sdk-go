@@ -19,7 +19,9 @@ var _ MappedNullable = &GetPostStatsResponseDailyStats{}
 
 // GetPostStatsResponseDailyStats struct for GetPostStatsResponseDailyStats
 type GetPostStatsResponseDailyStats struct {
+	// Number of the daily metric (e.g. view)
 	Count *int32 `json:"count,omitempty"`
+	// Date in YYYY-MM-DD format
 	Date *string `json:"date,omitempty"`
 }
 
