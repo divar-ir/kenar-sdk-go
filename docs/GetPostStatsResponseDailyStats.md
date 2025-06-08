@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int32** | Number of the daily metric (e.g. view) | [optional] 
-**Date** | Pointer to **string** | Date in YYYY-MM-DD format | [optional] 
+**Count** | Pointer to **int32** | تعداد روزانه‌ی آمار مورد نظر (مثلا بازدید) | [optional] 
+**Date** | Pointer to **string** | تاریخ به فرمت YYYY-MM-DD | [optional] 
 
 ## Methods
 

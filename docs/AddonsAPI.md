@@ -4,6 +4,7 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddonsCreateBusinessAddon**](AddonsAPI.md#AddonsCreateBusinessAddon) | **Post** /v1/open-platform/addons/business/{business_token} | Create a BusinessAddon
 [**AddonsCreatePostAddonV2**](AddonsAPI.md#AddonsCreatePostAddonV2) | **Post** /v2/open-platform/addons/post/{token} | افزودن افزونه جدید به آگهی
 [**AddonsCreateUserAddonV2**](AddonsAPI.md#AddonsCreateUserAddonV2) | **Post** /v2/open-platform/addons/user/{phone} | افزودن افزونه جدید به کاربر
 [**AddonsCreateUserAddonV22**](AddonsAPI.md#AddonsCreateUserAddonV22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | افزودن افزونه جدید به کاربر
@@ -13,6 +14,78 @@ Method | HTTP request | Description
 [**AddonsGetUserAddons**](AddonsAPI.md#AddonsGetUserAddons) | **Get** /v1/open-platform/addons/user/{phone} | دریافت تمام افزونه‌های کاربر
 [**AddonsGetUserAddons2**](AddonsAPI.md#AddonsGetUserAddons2) | **Get** /v2/open-platform/addons/users/{divar_user_id} | دریافت تمام افزونه‌های کاربر
 
+
+
+## AddonsCreateBusinessAddon
+
+> AddonsCreateBusinessAddonResponse AddonsCreateBusinessAddon(ctx, businessToken).AddonsCreateBusinessAddonBody(addonsCreateBusinessAddonBody).Execute()
+
+Create a BusinessAddon
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/kenarapi"
+)
+
+func main() {
+	businessToken := "businessToken_example" // string | 
+	addonsCreateBusinessAddonBody := *openapiclient.NewAddonsCreateBusinessAddonBody() // AddonsCreateBusinessAddonBody | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AddonsAPI.AddonsCreateBusinessAddon(context.Background(), businessToken).AddonsCreateBusinessAddonBody(addonsCreateBusinessAddonBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AddonsAPI.AddonsCreateBusinessAddon``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddonsCreateBusinessAddon`: AddonsCreateBusinessAddonResponse
+	fmt.Fprintf(os.Stdout, "Response from `AddonsAPI.AddonsCreateBusinessAddon`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**businessToken** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddonsCreateBusinessAddonRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **addonsCreateBusinessAddonBody** | [**AddonsCreateBusinessAddonBody**](AddonsCreateBusinessAddonBody.md) |  | 
+
+### Return type
+
+[**AddonsCreateBusinessAddonResponse**](AddonsCreateBusinessAddonResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## AddonsCreatePostAddonV2

@@ -23,6 +23,143 @@ import (
 // AddonsAPIService AddonsAPI service
 type AddonsAPIService service
 
+type ApiAddonsCreateBusinessAddonRequest struct {
+	ctx context.Context
+	ApiService *AddonsAPIService
+	businessToken string
+	addonsCreateBusinessAddonBody *AddonsCreateBusinessAddonBody
+}
+
+func (r ApiAddonsCreateBusinessAddonRequest) AddonsCreateBusinessAddonBody(addonsCreateBusinessAddonBody AddonsCreateBusinessAddonBody) ApiAddonsCreateBusinessAddonRequest {
+	r.addonsCreateBusinessAddonBody = &addonsCreateBusinessAddonBody
+	return r
+}
+
+func (r ApiAddonsCreateBusinessAddonRequest) Execute() (*AddonsCreateBusinessAddonResponse, *http.Response, error) {
+	return r.ApiService.AddonsCreateBusinessAddonExecute(r)
+}
+
+/*
+AddonsCreateBusinessAddon Create a BusinessAddon
+
+This will create a BusinessAddon on published posts of a business.
+You can only create Addons which are created by your app.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param businessToken
+ @return ApiAddonsCreateBusinessAddonRequest
+*/
+func (a *AddonsAPIService) AddonsCreateBusinessAddon(ctx context.Context, businessToken string) ApiAddonsCreateBusinessAddonRequest {
+	return ApiAddonsCreateBusinessAddonRequest{
+		ApiService: a,
+		ctx: ctx,
+		businessToken: businessToken,
+	}
+}
+
+// Execute executes the request
+//  @return AddonsCreateBusinessAddonResponse
+func (a *AddonsAPIService) AddonsCreateBusinessAddonExecute(r ApiAddonsCreateBusinessAddonRequest) (*AddonsCreateBusinessAddonResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AddonsCreateBusinessAddonResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddonsAPIService.AddonsCreateBusinessAddon")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/open-platform/addons/business/{business_token}"
+	localVarPath = strings.Replace(localVarPath, "{"+"business_token"+"}", url.PathEscape(parameterValueToString(r.businessToken, "businessToken")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.addonsCreateBusinessAddonBody == nil {
+		return localVarReturnValue, nil, reportError("addonsCreateBusinessAddonBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.addonsCreateBusinessAddonBody
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-API-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiAddonsCreatePostAddonV2Request struct {
 	ctx context.Context
 	ApiService *AddonsAPIService

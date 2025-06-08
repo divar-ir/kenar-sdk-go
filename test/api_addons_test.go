@@ -22,6 +22,20 @@ func Test_kenarapi_AddonsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test AddonsAPIService AddonsCreateBusinessAddon", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var businessToken string
+
+		resp, httpRes, err := apiClient.AddonsAPI.AddonsCreateBusinessAddon(context.Background(), businessToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AddonsAPIService AddonsCreatePostAddonV2", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PostEditPost**](PostAPI.md#PostEditPost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 [**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
-[**PostGetPostStats**](PostAPI.md#PostGetPostStats) | **Get** /experimental/open-platform/posts/{post_token}/stats | Get post statistics
+[**PostGetPostStats**](PostAPI.md#PostGetPostStats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
 
 
 
@@ -147,7 +147,7 @@ Other parameters are passed through a pointer to a apiPostGetImageUploadURLReque
 
 > PostGetPostStatsResponse PostGetPostStats(ctx, postToken).Execute()
 
-Get post statistics
+دریافت آمارهای آگهی
 
 
 
@@ -164,7 +164,7 @@ import (
 )
 
 func main() {
-	postToken := "postToken_example" // string | Post token
+	postToken := "postToken_example" // string | توکن آگهی
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -184,7 +184,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**postToken** | **string** | Post token | 
+**postToken** | **string** | توکن آگهی | 
 
 ### Other Parameters
 

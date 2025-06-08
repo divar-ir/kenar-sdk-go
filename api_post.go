@@ -293,12 +293,12 @@ func (r ApiPostGetPostStatsRequest) Execute() (*PostGetPostStatsResponse, *http.
 }
 
 /*
-PostGetPostStats Get post statistics
+PostGetPostStats دریافت آمارهای آگهی
 
-This API allows you to retrieve the statistics associated with a single post (e.g. views).
+از این api برای مشاهده‌ی آمارهای یک آگهی (مانند تعداد بازدید‌های آگهی) استفاده کنید. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param postToken Post token
+ @param postToken توکن آگهی
  @return ApiPostGetPostStatsRequest
 */
 func (a *PostAPIService) PostGetPostStats(ctx context.Context, postToken string) ApiPostGetPostStatsRequest {

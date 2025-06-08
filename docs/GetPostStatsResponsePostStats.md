@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Daily** | Pointer to [**[]GetPostStatsResponseDailyStats**](GetPostStatsResponseDailyStats.md) | Daily value the metric over the last seven days | [optional] 
-**Total** | Pointer to **int32** | Total number of the metric (e.g. view) | [optional] 
+**Daily** | Pointer to [**[]GetPostStatsResponseDailyStats**](GetPostStatsResponseDailyStats.md) | مقدار آمار مورد نظر در هفت روز اخیر | [optional] 
+**Total** | Pointer to **int32** | تعداد کلی آمار (مثلا بازدید) | [optional] 
 
 ## Methods
 

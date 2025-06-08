@@ -79,6 +79,7 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AddonsAPI* | [**AddonsCreateBusinessAddon**](docs/AddonsAPI.md#addonscreatebusinessaddon) | **Post** /v1/open-platform/addons/business/{business_token} | Create a BusinessAddon
 *AddonsAPI* | [**AddonsCreatePostAddonV2**](docs/AddonsAPI.md#addonscreatepostaddonv2) | **Post** /v2/open-platform/addons/post/{token} | افزودن افزونه جدید به آگهی
 *AddonsAPI* | [**AddonsCreateUserAddonV2**](docs/AddonsAPI.md#addonscreateuseraddonv2) | **Post** /v2/open-platform/addons/user/{phone} | افزودن افزونه جدید به کاربر
 *AddonsAPI* | [**AddonsCreateUserAddonV22**](docs/AddonsAPI.md#addonscreateuseraddonv22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | افزودن افزونه جدید به کاربر
@@ -121,7 +122,7 @@ Class | Method | HTTP request | Description
 *PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
-*PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | Get post statistics
+*PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
 *SemanticAPI* | [**SemanticCreatePostSemantic**](docs/SemanticAPI.md#semanticcreatepostsemantic) | **Post** /experimental/open-platform/semantic/post/{token} | ایجاد اطلاعات معنایی آگهی
 *SemanticAPI* | [**SemanticCreateUserSemantic**](docs/SemanticAPI.md#semanticcreateusersemantic) | **Post** /v1/open-platform/semantic/user/{phone} | ایجاد اطلاعات معنایی کاربر
 *SemanticAPI* | [**SemanticCreateUserSemantic2**](docs/SemanticAPI.md#semanticcreateusersemantic2) | **Post** /v1/open-platform/semantic/users/{divar_user_id} | ایجاد اطلاعات معنایی کاربر
@@ -150,6 +151,8 @@ Class | Method | HTTP request | Description
  - [AddonsAddonSemanticStatus](docs/AddonsAddonSemanticStatus.md)
  - [AddonsBusinessAddon](docs/AddonsBusinessAddon.md)
  - [AddonsButtonBar](docs/AddonsButtonBar.md)
+ - [AddonsCreateBusinessAddonBody](docs/AddonsCreateBusinessAddonBody.md)
+ - [AddonsCreateBusinessAddonResponse](docs/AddonsCreateBusinessAddonResponse.md)
  - [AddonsCreatePostAddonRequest](docs/AddonsCreatePostAddonRequest.md)
  - [AddonsCreatePostAddonV2Body](docs/AddonsCreatePostAddonV2Body.md)
  - [AddonsCreateUserAddonResponseV2](docs/AddonsCreateUserAddonResponseV2.md)

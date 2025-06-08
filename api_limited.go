@@ -420,7 +420,7 @@ func (r ApiPaymentListTransactionsRequest) Execute() (*PaymentListTransactionsRe
 /*
 PaymentListTransactions Method for PaymentListTransactions
 
-Using this API you can retrieve a list of transactions. Follow pages till you get an empty list.
+با استفاده از این api میتوانید لیست تراکنش‌های اپ را مشاهده کنید. برای مشاهده‌ی تمام تراکنش‌ها، صفحات را دنبال کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentListTransactionsRequest
