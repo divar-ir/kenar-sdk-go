@@ -4,7 +4,7 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddonsCreateBusinessAddon**](AddonsAPI.md#AddonsCreateBusinessAddon) | **Post** /v1/open-platform/addons/business/{business_token} | Create a BusinessAddon
+[**AddonsCreateBusinessAddon**](AddonsAPI.md#AddonsCreateBusinessAddon) | **Post** /v1/open-platform/addons/business/{business_token} | افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
 [**AddonsCreatePostAddonV2**](AddonsAPI.md#AddonsCreatePostAddonV2) | **Post** /v2/open-platform/addons/post/{token} | افزودن افزونه جدید به آگهی
 [**AddonsCreateUserAddonV2**](AddonsAPI.md#AddonsCreateUserAddonV2) | **Post** /v2/open-platform/addons/user/{phone} | افزودن افزونه جدید به کاربر
 [**AddonsCreateUserAddonV22**](AddonsAPI.md#AddonsCreateUserAddonV22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | افزودن افزونه جدید به کاربر
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 > AddonsCreateBusinessAddonResponse AddonsCreateBusinessAddon(ctx, businessToken).AddonsCreateBusinessAddonBody(addonsCreateBusinessAddonBody).Execute()
 
-Create a BusinessAddon
+افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
 
 
 

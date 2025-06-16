@@ -40,10 +40,12 @@ func (r ApiAddonsCreateBusinessAddonRequest) Execute() (*AddonsCreateBusinessAdd
 }
 
 /*
-AddonsCreateBusinessAddon Create a BusinessAddon
+AddonsCreateBusinessAddon افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
 
-This will create a BusinessAddon on published posts of a business.
-You can only create Addons which are created by your app.
+با استفاده از این API و با مجوز کاربر، می‌توانید افزونه جدیدی به آگهی‌های کسب‌و‌کار متصل کنید.
+می‌توانید از ویجت‌های موجود برای طراحی افزونه خود استفاده کنید.
+این API به توکن دسترسی با یکی از دامنه‌های زیر نیاز دارد:
+- BUSINESS_ADDON_CREATE.{business_token}
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessToken

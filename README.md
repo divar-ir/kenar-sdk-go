@@ -79,7 +79,7 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AddonsAPI* | [**AddonsCreateBusinessAddon**](docs/AddonsAPI.md#addonscreatebusinessaddon) | **Post** /v1/open-platform/addons/business/{business_token} | Create a BusinessAddon
+*AddonsAPI* | [**AddonsCreateBusinessAddon**](docs/AddonsAPI.md#addonscreatebusinessaddon) | **Post** /v1/open-platform/addons/business/{business_token} | افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
 *AddonsAPI* | [**AddonsCreatePostAddonV2**](docs/AddonsAPI.md#addonscreatepostaddonv2) | **Post** /v2/open-platform/addons/post/{token} | افزودن افزونه جدید به آگهی
 *AddonsAPI* | [**AddonsCreateUserAddonV2**](docs/AddonsAPI.md#addonscreateuseraddonv2) | **Post** /v2/open-platform/addons/user/{phone} | افزودن افزونه جدید به کاربر
 *AddonsAPI* | [**AddonsCreateUserAddonV22**](docs/AddonsAPI.md#addonscreateuseraddonv22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | افزودن افزونه جدید به کاربر
