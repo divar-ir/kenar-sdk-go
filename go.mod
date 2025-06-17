@@ -1,4 +1,4 @@
-module github.com/GIT_USER_ID/GIT_REPO_ID/kenarapi
+module github.com/divar-ir/kenar-sdk-go
 
 go 1.18
 

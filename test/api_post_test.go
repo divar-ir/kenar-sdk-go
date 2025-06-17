@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/kenarapi"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
 )
 
 func Test_kenarapi_PostAPIService(t *testing.T) {
