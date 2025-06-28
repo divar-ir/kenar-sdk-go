@@ -21,10 +21,10 @@ var _ MappedNullable = &ChatAPIConversationSendMessageBody{}
 
 // ChatAPIConversationSendMessageBody struct for ChatAPIConversationSendMessageBody
 type ChatAPIConversationSendMessageBody struct {
-	// Token for attached media (if any)
-	MediaToken *string `json:"media_token,omitempty"`
 	// Text message content to be sent
 	Message string `json:"message"`
+	// Token for attached media (if any)
+	MediaToken *string `json:"media_token,omitempty"`
 	ReceiverButtons *ChatapiChatButtonGrid `json:"receiver_buttons,omitempty"`
 	SenderButtons *ChatapiChatButtonGrid `json:"sender_buttons,omitempty"`
 }
@@ -47,6 +47,30 @@ func NewChatAPIConversationSendMessageBody(message string) *ChatAPIConversationS
 func NewChatAPIConversationSendMessageBodyWithDefaults() *ChatAPIConversationSendMessageBody {
 	this := ChatAPIConversationSendMessageBody{}
 	return &this
+}
+
+// GetMessage returns the Message field value
+func (o *ChatAPIConversationSendMessageBody) GetMessage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value
+// and a boolean to check if the value has been set.
+func (o *ChatAPIConversationSendMessageBody) GetMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Message, true
+}
+
+// SetMessage sets field value
+func (o *ChatAPIConversationSendMessageBody) SetMessage(v string) {
+	o.Message = v
 }
 
 // GetMediaToken returns the MediaToken field value if set, zero value otherwise.
@@ -79,30 +103,6 @@ func (o *ChatAPIConversationSendMessageBody) HasMediaToken() bool {
 // SetMediaToken gets a reference to the given string and assigns it to the MediaToken field.
 func (o *ChatAPIConversationSendMessageBody) SetMediaToken(v string) {
 	o.MediaToken = &v
-}
-
-// GetMessage returns the Message field value
-func (o *ChatAPIConversationSendMessageBody) GetMessage() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Message
-}
-
-// GetMessageOk returns a tuple with the Message field value
-// and a boolean to check if the value has been set.
-func (o *ChatAPIConversationSendMessageBody) GetMessageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Message, true
-}
-
-// SetMessage sets field value
-func (o *ChatAPIConversationSendMessageBody) SetMessage(v string) {
-	o.Message = v
 }
 
 // GetReceiverButtons returns the ReceiverButtons field value if set, zero value otherwise.
@@ -179,10 +179,10 @@ func (o ChatAPIConversationSendMessageBody) MarshalJSON() ([]byte, error) {
 
 func (o ChatAPIConversationSendMessageBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["message"] = o.Message
 	if !IsNil(o.MediaToken) {
 		toSerialize["media_token"] = o.MediaToken
 	}
-	toSerialize["message"] = o.Message
 	if !IsNil(o.ReceiverButtons) {
 		toSerialize["receiver_buttons"] = o.ReceiverButtons
 	}

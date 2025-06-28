@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TextMessage** | **string** | Text message content to be sent by the bot | 
 **Buttons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
 **MediaToken** | Pointer to **string** | Token for attached media (if any) | [optional] 
-**TextMessage** | **string** | Text message content to be sent by the bot | 
 **UserId** | Pointer to **string** | Unique identifier for the user to start or continue a conversation with | [optional] 
 
 ## Methods
@@ -27,6 +27,26 @@ will change when the set of required properties is changed
 NewChatAPIChatBotSendMessageBodyWithDefaults instantiates a new ChatAPIChatBotSendMessageBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTextMessage
+
+`func (o *ChatAPIChatBotSendMessageBody) GetTextMessage() string`
+
+GetTextMessage returns the TextMessage field if non-nil, zero value otherwise.
+
+### GetTextMessageOk
+
+`func (o *ChatAPIChatBotSendMessageBody) GetTextMessageOk() (*string, bool)`
+
+GetTextMessageOk returns a tuple with the TextMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTextMessage
+
+`func (o *ChatAPIChatBotSendMessageBody) SetTextMessage(v string)`
+
+SetTextMessage sets TextMessage field to given value.
+
 
 ### GetButtons
 
@@ -77,26 +97,6 @@ SetMediaToken sets MediaToken field to given value.
 `func (o *ChatAPIChatBotSendMessageBody) HasMediaToken() bool`
 
 HasMediaToken returns a boolean if a field has been set.
-
-### GetTextMessage
-
-`func (o *ChatAPIChatBotSendMessageBody) GetTextMessage() string`
-
-GetTextMessage returns the TextMessage field if non-nil, zero value otherwise.
-
-### GetTextMessageOk
-
-`func (o *ChatAPIChatBotSendMessageBody) GetTextMessageOk() (*string, bool)`
-
-GetTextMessageOk returns a tuple with the TextMessage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTextMessage
-
-`func (o *ChatAPIChatBotSendMessageBody) SetTextMessage(v string)`
-
-SetTextMessage sets TextMessage field to given value.
-
 
 ### GetUserId
 

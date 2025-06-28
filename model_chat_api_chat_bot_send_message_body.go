@@ -21,11 +21,11 @@ var _ MappedNullable = &ChatAPIChatBotSendMessageBody{}
 
 // ChatAPIChatBotSendMessageBody struct for ChatAPIChatBotSendMessageBody
 type ChatAPIChatBotSendMessageBody struct {
+	// Text message content to be sent by the bot
+	TextMessage string `json:"text_message"`
 	Buttons *ChatapiChatButtonGrid `json:"buttons,omitempty"`
 	// Token for attached media (if any)
 	MediaToken *string `json:"media_token,omitempty"`
-	// Text message content to be sent by the bot
-	TextMessage string `json:"text_message"`
 	// Unique identifier for the user to start or continue a conversation with
 	UserId *string `json:"user_id,omitempty"`
 }
@@ -48,6 +48,30 @@ func NewChatAPIChatBotSendMessageBody(textMessage string) *ChatAPIChatBotSendMes
 func NewChatAPIChatBotSendMessageBodyWithDefaults() *ChatAPIChatBotSendMessageBody {
 	this := ChatAPIChatBotSendMessageBody{}
 	return &this
+}
+
+// GetTextMessage returns the TextMessage field value
+func (o *ChatAPIChatBotSendMessageBody) GetTextMessage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TextMessage
+}
+
+// GetTextMessageOk returns a tuple with the TextMessage field value
+// and a boolean to check if the value has been set.
+func (o *ChatAPIChatBotSendMessageBody) GetTextMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TextMessage, true
+}
+
+// SetTextMessage sets field value
+func (o *ChatAPIChatBotSendMessageBody) SetTextMessage(v string) {
+	o.TextMessage = v
 }
 
 // GetButtons returns the Buttons field value if set, zero value otherwise.
@@ -114,30 +138,6 @@ func (o *ChatAPIChatBotSendMessageBody) SetMediaToken(v string) {
 	o.MediaToken = &v
 }
 
-// GetTextMessage returns the TextMessage field value
-func (o *ChatAPIChatBotSendMessageBody) GetTextMessage() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.TextMessage
-}
-
-// GetTextMessageOk returns a tuple with the TextMessage field value
-// and a boolean to check if the value has been set.
-func (o *ChatAPIChatBotSendMessageBody) GetTextMessageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TextMessage, true
-}
-
-// SetTextMessage sets field value
-func (o *ChatAPIChatBotSendMessageBody) SetTextMessage(v string) {
-	o.TextMessage = v
-}
-
 // GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *ChatAPIChatBotSendMessageBody) GetUserId() string {
 	if o == nil || IsNil(o.UserId) {
@@ -180,13 +180,13 @@ func (o ChatAPIChatBotSendMessageBody) MarshalJSON() ([]byte, error) {
 
 func (o ChatAPIChatBotSendMessageBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["text_message"] = o.TextMessage
 	if !IsNil(o.Buttons) {
 		toSerialize["buttons"] = o.Buttons
 	}
 	if !IsNil(o.MediaToken) {
 		toSerialize["media_token"] = o.MediaToken
 	}
-	toSerialize["text_message"] = o.TextMessage
 	if !IsNil(o.UserId) {
 		toSerialize["user_id"] = o.UserId
 	}

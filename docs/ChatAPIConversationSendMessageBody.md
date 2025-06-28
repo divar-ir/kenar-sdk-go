@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MediaToken** | Pointer to **string** | Token for attached media (if any) | [optional] 
 **Message** | **string** | Text message content to be sent | 
+**MediaToken** | Pointer to **string** | Token for attached media (if any) | [optional] 
 **ReceiverButtons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
 **SenderButtons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
 
@@ -27,6 +27,26 @@ will change when the set of required properties is changed
 NewChatAPIConversationSendMessageBodyWithDefaults instantiates a new ChatAPIConversationSendMessageBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMessage
+
+`func (o *ChatAPIConversationSendMessageBody) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *ChatAPIConversationSendMessageBody) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *ChatAPIConversationSendMessageBody) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
 
 ### GetMediaToken
 
@@ -52,26 +72,6 @@ SetMediaToken sets MediaToken field to given value.
 `func (o *ChatAPIConversationSendMessageBody) HasMediaToken() bool`
 
 HasMediaToken returns a boolean if a field has been set.
-
-### GetMessage
-
-`func (o *ChatAPIConversationSendMessageBody) GetMessage() string`
-
-GetMessage returns the Message field if non-nil, zero value otherwise.
-
-### GetMessageOk
-
-`func (o *ChatAPIConversationSendMessageBody) GetMessageOk() (*string, bool)`
-
-GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMessage
-
-`func (o *ChatAPIConversationSendMessageBody) SetMessage(v string)`
-
-SetMessage sets Message field to given value.
-
 
 ### GetReceiverButtons
 
