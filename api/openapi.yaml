@@ -6,8 +6,6 @@ servers:
 - url: https://open-api.divar.ir
 security:
 - APIKey: []
-- APIKey: []
-- APIKey: []
 tags:
 - name: Addons
 - name: Assets
