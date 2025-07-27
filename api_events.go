@@ -161,3 +161,278 @@ func (a *EventsAPIService) EventsRegisterEventSubscriptionExecute(r ApiEventsReg
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiEventsSendEventRequest struct {
+	ctx context.Context
+	ApiService *EventsAPIService
+	primaryButtonActionOpenPostPagePostToken *string
+	primaryButtonActionOpenPostManagePagePostToken *string
+	secondaryButtonActionOpenPostPagePostToken *string
+	secondaryButtonActionOpenPostManagePagePostToken *string
+	message *string
+	primaryButtonTitle *string
+	primaryButtonActionOpenDirectLink *string
+	primaryButtonActionOpenServerLinkData *map[string]interface{}
+	primaryButtonActionGetDynamicActionData *map[string]interface{}
+	secondaryButtonTitle *string
+	secondaryButtonActionOpenDirectLink *string
+	secondaryButtonActionOpenServerLinkData *map[string]interface{}
+	secondaryButtonActionGetDynamicActionData *map[string]interface{}
+	targetType *string
+	targetResourceId *string
+}
+
+// Token of the post to open
+func (r ApiEventsSendEventRequest) PrimaryButtonActionOpenPostPagePostToken(primaryButtonActionOpenPostPagePostToken string) ApiEventsSendEventRequest {
+	r.primaryButtonActionOpenPostPagePostToken = &primaryButtonActionOpenPostPagePostToken
+	return r
+}
+
+// Token of the post to redirect to its management page
+func (r ApiEventsSendEventRequest) PrimaryButtonActionOpenPostManagePagePostToken(primaryButtonActionOpenPostManagePagePostToken string) ApiEventsSendEventRequest {
+	r.primaryButtonActionOpenPostManagePagePostToken = &primaryButtonActionOpenPostManagePagePostToken
+	return r
+}
+
+// Token of the post to open
+func (r ApiEventsSendEventRequest) SecondaryButtonActionOpenPostPagePostToken(secondaryButtonActionOpenPostPagePostToken string) ApiEventsSendEventRequest {
+	r.secondaryButtonActionOpenPostPagePostToken = &secondaryButtonActionOpenPostPagePostToken
+	return r
+}
+
+// Token of the post to redirect to its management page
+func (r ApiEventsSendEventRequest) SecondaryButtonActionOpenPostManagePagePostToken(secondaryButtonActionOpenPostManagePagePostToken string) ApiEventsSendEventRequest {
+	r.secondaryButtonActionOpenPostManagePagePostToken = &secondaryButtonActionOpenPostManagePagePostToken
+	return r
+}
+
+// The event message to display to the user
+func (r ApiEventsSendEventRequest) Message(message string) ApiEventsSendEventRequest {
+	r.message = &message
+	return r
+}
+
+// The text to display on the button
+func (r ApiEventsSendEventRequest) PrimaryButtonTitle(primaryButtonTitle string) ApiEventsSendEventRequest {
+	r.primaryButtonTitle = &primaryButtonTitle
+	return r
+}
+
+// An action to send user to your URL directly with just a resource id (if applicable)
+func (r ApiEventsSendEventRequest) PrimaryButtonActionOpenDirectLink(primaryButtonActionOpenDirectLink string) ApiEventsSendEventRequest {
+	r.primaryButtonActionOpenDirectLink = &primaryButtonActionOpenDirectLink
+	return r
+}
+
+// A data that you can set and will be returned to you upon user click to recognize the action
+func (r ApiEventsSendEventRequest) PrimaryButtonActionOpenServerLinkData(primaryButtonActionOpenServerLinkData map[string]interface{}) ApiEventsSendEventRequest {
+	r.primaryButtonActionOpenServerLinkData = &primaryButtonActionOpenServerLinkData
+	return r
+}
+
+// A data that you can set and will be returned to you upon user click to recognize the action
+func (r ApiEventsSendEventRequest) PrimaryButtonActionGetDynamicActionData(primaryButtonActionGetDynamicActionData map[string]interface{}) ApiEventsSendEventRequest {
+	r.primaryButtonActionGetDynamicActionData = &primaryButtonActionGetDynamicActionData
+	return r
+}
+
+// The text to display on the button
+func (r ApiEventsSendEventRequest) SecondaryButtonTitle(secondaryButtonTitle string) ApiEventsSendEventRequest {
+	r.secondaryButtonTitle = &secondaryButtonTitle
+	return r
+}
+
+// An action to send user to your URL directly with just a resource id (if applicable)
+func (r ApiEventsSendEventRequest) SecondaryButtonActionOpenDirectLink(secondaryButtonActionOpenDirectLink string) ApiEventsSendEventRequest {
+	r.secondaryButtonActionOpenDirectLink = &secondaryButtonActionOpenDirectLink
+	return r
+}
+
+// A data that you can set and will be returned to you upon user click to recognize the action
+func (r ApiEventsSendEventRequest) SecondaryButtonActionOpenServerLinkData(secondaryButtonActionOpenServerLinkData map[string]interface{}) ApiEventsSendEventRequest {
+	r.secondaryButtonActionOpenServerLinkData = &secondaryButtonActionOpenServerLinkData
+	return r
+}
+
+// A data that you can set and will be returned to you upon user click to recognize the action
+func (r ApiEventsSendEventRequest) SecondaryButtonActionGetDynamicActionData(secondaryButtonActionGetDynamicActionData map[string]interface{}) ApiEventsSendEventRequest {
+	r.secondaryButtonActionGetDynamicActionData = &secondaryButtonActionGetDynamicActionData
+	return r
+}
+
+// Target of the event; USER or POST
+func (r ApiEventsSendEventRequest) TargetType(targetType string) ApiEventsSendEventRequest {
+	r.targetType = &targetType
+	return r
+}
+
+// id of the target. When target type is USER, it should be the Divar User ID of that user and when target type is POST, it should be the post token. 
+func (r ApiEventsSendEventRequest) TargetResourceId(targetResourceId string) ApiEventsSendEventRequest {
+	r.targetResourceId = &targetResourceId
+	return r
+}
+
+func (r ApiEventsSendEventRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.EventsSendEventExecute(r)
+}
+
+/*
+EventsSendEvent Send an event to a user
+
+Using this API, you can send an event to a user. The event can be specific to a post or general. The event can include buttons with custom actions allowing users to interact with your app.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEventsSendEventRequest
+*/
+func (a *EventsAPIService) EventsSendEvent(ctx context.Context) ApiEventsSendEventRequest {
+	return ApiEventsSendEventRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *EventsAPIService) EventsSendEventExecute(r ApiEventsSendEventRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsSendEvent")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/experimental/open-platform/events/send"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.primaryButtonActionOpenPostPagePostToken == nil {
+		return localVarReturnValue, nil, reportError("primaryButtonActionOpenPostPagePostToken is required and must be specified")
+	}
+	if r.primaryButtonActionOpenPostManagePagePostToken == nil {
+		return localVarReturnValue, nil, reportError("primaryButtonActionOpenPostManagePagePostToken is required and must be specified")
+	}
+	if r.secondaryButtonActionOpenPostPagePostToken == nil {
+		return localVarReturnValue, nil, reportError("secondaryButtonActionOpenPostPagePostToken is required and must be specified")
+	}
+	if r.secondaryButtonActionOpenPostManagePagePostToken == nil {
+		return localVarReturnValue, nil, reportError("secondaryButtonActionOpenPostManagePagePostToken is required and must be specified")
+	}
+
+	if r.message != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "message", r.message, "form", "")
+	}
+	if r.primaryButtonTitle != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "primary_button.title", r.primaryButtonTitle, "form", "")
+	}
+	if r.primaryButtonActionOpenDirectLink != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "primary_button.action.open_direct_link", r.primaryButtonActionOpenDirectLink, "form", "")
+	}
+	if r.primaryButtonActionOpenServerLinkData != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "primary_button.action.open_server_link.data", r.primaryButtonActionOpenServerLinkData, "form", "")
+	}
+	if r.primaryButtonActionGetDynamicActionData != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "primary_button.action.get_dynamic_action.data", r.primaryButtonActionGetDynamicActionData, "form", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "primary_button.action.open_post_page.post_token", r.primaryButtonActionOpenPostPagePostToken, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "primary_button.action.open_post_manage_page.post_token", r.primaryButtonActionOpenPostManagePagePostToken, "form", "")
+	if r.secondaryButtonTitle != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "secondary_button.title", r.secondaryButtonTitle, "form", "")
+	}
+	if r.secondaryButtonActionOpenDirectLink != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "secondary_button.action.open_direct_link", r.secondaryButtonActionOpenDirectLink, "form", "")
+	}
+	if r.secondaryButtonActionOpenServerLinkData != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "secondary_button.action.open_server_link.data", r.secondaryButtonActionOpenServerLinkData, "form", "")
+	}
+	if r.secondaryButtonActionGetDynamicActionData != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "secondary_button.action.get_dynamic_action.data", r.secondaryButtonActionGetDynamicActionData, "form", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "secondary_button.action.open_post_page.post_token", r.secondaryButtonActionOpenPostPagePostToken, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "secondary_button.action.open_post_manage_page.post_token", r.secondaryButtonActionOpenPostManagePagePostToken, "form", "")
+	if r.targetType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "target_type", r.targetType, "form", "")
+	}
+	if r.targetResourceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "target_resource_id", r.targetResourceId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-API-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

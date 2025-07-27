@@ -28,6 +28,7 @@ type FinderGetPostResponse struct {
 	District *string `json:"district,omitempty"`
 	FirstPublishedAt *time.Time `json:"first_published_at,omitempty"`
 	IsPhoneHidden *bool `json:"is_phone_hidden,omitempty"`
+	LastModifiedAt *time.Time `json:"last_modified_at,omitempty"`
 	State *FinderPostExtState `json:"state,omitempty"`
 	SupplierChatAssistantEnabled *bool `json:"supplier_chat_assistant_enabled,omitempty"`
 	Token *string `json:"token,omitempty"`
@@ -306,6 +307,38 @@ func (o *FinderGetPostResponse) SetIsPhoneHidden(v bool) {
 	o.IsPhoneHidden = &v
 }
 
+// GetLastModifiedAt returns the LastModifiedAt field value if set, zero value otherwise.
+func (o *FinderGetPostResponse) GetLastModifiedAt() time.Time {
+	if o == nil || IsNil(o.LastModifiedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastModifiedAt
+}
+
+// GetLastModifiedAtOk returns a tuple with the LastModifiedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FinderGetPostResponse) GetLastModifiedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastModifiedAt) {
+		return nil, false
+	}
+	return o.LastModifiedAt, true
+}
+
+// HasLastModifiedAt returns a boolean if a field has been set.
+func (o *FinderGetPostResponse) HasLastModifiedAt() bool {
+	if o != nil && !IsNil(o.LastModifiedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedAt gets a reference to the given time.Time and assigns it to the LastModifiedAt field.
+func (o *FinderGetPostResponse) SetLastModifiedAt(v time.Time) {
+	o.LastModifiedAt = &v
+}
+
 // GetState returns the State field value if set, zero value otherwise.
 func (o *FinderGetPostResponse) GetState() FinderPostExtState {
 	if o == nil || IsNil(o.State) {
@@ -435,6 +468,9 @@ func (o FinderGetPostResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsPhoneHidden) {
 		toSerialize["is_phone_hidden"] = o.IsPhoneHidden
+	}
+	if !IsNil(o.LastModifiedAt) {
+		toSerialize["last_modified_at"] = o.LastModifiedAt
 	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State

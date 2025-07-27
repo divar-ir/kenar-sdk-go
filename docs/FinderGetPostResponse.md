@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **District** | Pointer to **string** |  | [optional] 
 **FirstPublishedAt** | Pointer to **time.Time** |  | [optional] 
 **IsPhoneHidden** | Pointer to **bool** |  | [optional] 
+**LastModifiedAt** | Pointer to **time.Time** |  | [optional] 
 **State** | Pointer to [**FinderPostExtState**](FinderPostExtState.md) |  | [optional] 
 **SupplierChatAssistantEnabled** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
@@ -234,6 +235,31 @@ SetIsPhoneHidden sets IsPhoneHidden field to given value.
 `func (o *FinderGetPostResponse) HasIsPhoneHidden() bool`
 
 HasIsPhoneHidden returns a boolean if a field has been set.
+
+### GetLastModifiedAt
+
+`func (o *FinderGetPostResponse) GetLastModifiedAt() time.Time`
+
+GetLastModifiedAt returns the LastModifiedAt field if non-nil, zero value otherwise.
+
+### GetLastModifiedAtOk
+
+`func (o *FinderGetPostResponse) GetLastModifiedAtOk() (*time.Time, bool)`
+
+GetLastModifiedAtOk returns a tuple with the LastModifiedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModifiedAt
+
+`func (o *FinderGetPostResponse) SetLastModifiedAt(v time.Time)`
+
+SetLastModifiedAt sets LastModifiedAt field to given value.
+
+### HasLastModifiedAt
+
+`func (o *FinderGetPostResponse) HasLastModifiedAt() bool`
+
+HasLastModifiedAt returns a boolean if a field has been set.
 
 ### GetState
 

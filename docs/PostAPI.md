@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**PostEditPost**](PostAPI.md#PostEditPost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 [**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 [**PostGetPostStats**](PostAPI.md#PostGetPostStats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
+[**PostSubmitEmergencyResidencePost**](PostAPI.md#PostSubmitEmergencyResidencePost) | **Post** /experimental/open-platform/posts/emergency-residence | Submit an emergency residence post
+[**PostSubmitPost**](PostAPI.md#PostSubmitPost) | **Post** /experimental/open-platform/posts/new | Submit a post
 
 
 
@@ -206,6 +208,136 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostSubmitEmergencyResidencePost
+
+> PostSubmitEmergencyResidencePostResponse PostSubmitEmergencyResidencePost(ctx).PostSubmitEmergencyResidencePostRequest(postSubmitEmergencyResidencePostRequest).Execute()
+
+Submit an emergency residence post
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	postSubmitEmergencyResidencePostRequest := *openapiclient.NewPostSubmitEmergencyResidencePostRequest() // PostSubmitEmergencyResidencePostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PostAPI.PostSubmitEmergencyResidencePost(context.Background()).PostSubmitEmergencyResidencePostRequest(postSubmitEmergencyResidencePostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PostAPI.PostSubmitEmergencyResidencePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostSubmitEmergencyResidencePost`: PostSubmitEmergencyResidencePostResponse
+	fmt.Fprintf(os.Stdout, "Response from `PostAPI.PostSubmitEmergencyResidencePost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostSubmitEmergencyResidencePostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postSubmitEmergencyResidencePostRequest** | [**PostSubmitEmergencyResidencePostRequest**](PostSubmitEmergencyResidencePostRequest.md) |  | 
+
+### Return type
+
+[**PostSubmitEmergencyResidencePostResponse**](PostSubmitEmergencyResidencePostResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostSubmitPost
+
+> PostSubmitPostResponse PostSubmitPost(ctx).PostSubmitPostRequest(postSubmitPostRequest).Execute()
+
+Submit a post
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	postSubmitPostRequest := *openapiclient.NewPostSubmitPostRequest() // PostSubmitPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PostAPI.PostSubmitPost(context.Background()).PostSubmitPostRequest(postSubmitPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PostAPI.PostSubmitPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostSubmitPost`: PostSubmitPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `PostAPI.PostSubmitPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostSubmitPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postSubmitPostRequest** | [**PostSubmitPostRequest**](PostSubmitPostRequest.md) |  | 
+
+### Return type
+
+[**PostSubmitPostResponse**](PostSubmitPostResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
