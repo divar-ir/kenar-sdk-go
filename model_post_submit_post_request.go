@@ -19,23 +19,23 @@ var _ MappedNullable = &PostSubmitPostRequest{}
 
 // PostSubmitPostRequest struct for PostSubmitPostRequest
 type PostSubmitPostRequest struct {
-	// Whether to enable chat
+	// امکان چت فعال باشد
 	ChatEnabled *bool `json:"chat_enabled,omitempty"`
-	// City of the post
+	// شهر آگهی
 	City *string `json:"city,omitempty"`
-	// Description of the post
+	// توضیحات آگهی
 	Description *string `json:"description,omitempty"`
-	// District of the post
+	// محله آگهی
 	District *string `json:"district,omitempty"`
-	// Whether to hide the phone number from demand users
+	// عدم نمایش شماره تماس به کاربران
 	HidePhone *bool `json:"hide_phone,omitempty"`
 	Images []string `json:"images,omitempty"`
-	// Latitude of the post
+	// عرض جغرافیایی آگهی
 	Latitude *float64 `json:"latitude,omitempty"`
-	// Longitude of the post
+	// طول جغرافیایی آگهی
 	Longitude *float64 `json:"longitude,omitempty"`
 	TemporaryResidence *PostTemporaryResidenceFields `json:"temporary_residence,omitempty"`
-	// Title of the post
+	// عنوان آگهی
 	Title *string `json:"title,omitempty"`
 }
 

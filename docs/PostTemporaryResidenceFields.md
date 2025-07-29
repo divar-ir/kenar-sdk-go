@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Area** | Pointer to **int32** | Area of the residence in square meters | [optional] 
-**ExtraPersonCapacity** | Pointer to **int32** | Number of allowed extra people that can stay in the residence | [optional] 
-**HasOwnImage** | Pointer to **bool** | Whether the images are of the property itself and not decorative/stock photos. | [optional] 
-**PriceCostPerExtraPerson** | Pointer to **string** | Cost per extra person per night in Toman | [optional] 
-**PriceRegularDays** | Pointer to **string** | Price of the residence for regular days (Saturday to Tuesday) in Toman | [optional] 
-**PriceSpecialDays** | Pointer to **string** | Price of the residence for special days (holidays and occasions) in Toman | [optional] 
-**PriceWeekends** | Pointer to **string** | Price of the residence for weekends (Wednesday to Friday) in Toman | [optional] 
-**RegularPersonCapacity** | Pointer to **int32** | Number of allowed regular people that can stay in the residence | [optional] 
+**Area** | Pointer to **int32** | متراژ اقامتگاه به متر مربع | [optional] 
+**ExtraPersonCapacity** | Pointer to **int32** | تعداد افراد اضافه مجاز در اقامتگاه | [optional] 
+**HasOwnImage** | Pointer to **bool** | تصاویر مربوط به خود ملک بوده و تزئینی نیستند. | [optional] 
+**PriceCostPerExtraPerson** | Pointer to **string** | هزینه هر نفر اضافه به ازای هر شب به تومان | [optional] 
+**PriceRegularDays** | Pointer to **string** | قیمت اقامتگاه در روزهای عادی (شنبه تا سه‌شنبه) به تومان | [optional] 
+**PriceSpecialDays** | Pointer to **string** | قیمت اقامتگاه در روزهای خاص (تعطیلات و مناسبت‌ها) به تومان | [optional] 
+**PriceWeekends** | Pointer to **string** | قیمت اقامتگاه در آخر هفته (چهارشنبه تا جمعه) به تومان | [optional] 
+**RegularPersonCapacity** | Pointer to **int32** | ظرفیت استاندارد افراد در اقامتگاه | [optional] 
 **RoomsCount** | Pointer to [**TemporaryResidenceFieldsRoomsCount**](TemporaryResidenceFieldsRoomsCount.md) |  | [optional] 
 
 ## Methods

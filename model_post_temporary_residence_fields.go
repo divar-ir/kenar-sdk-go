@@ -19,21 +19,21 @@ var _ MappedNullable = &PostTemporaryResidenceFields{}
 
 // PostTemporaryResidenceFields struct for PostTemporaryResidenceFields
 type PostTemporaryResidenceFields struct {
-	// Area of the residence in square meters
+	// متراژ اقامتگاه به متر مربع
 	Area *int32 `json:"area,omitempty"`
-	// Number of allowed extra people that can stay in the residence
+	// تعداد افراد اضافه مجاز در اقامتگاه
 	ExtraPersonCapacity *int32 `json:"extra_person_capacity,omitempty"`
-	// Whether the images are of the property itself and not decorative/stock photos.
+	// تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
 	HasOwnImage *bool `json:"has_own_image,omitempty"`
-	// Cost per extra person per night in Toman
+	// هزینه هر نفر اضافه به ازای هر شب به تومان
 	PriceCostPerExtraPerson *string `json:"price_cost_per_extra_person,omitempty"`
-	// Price of the residence for regular days (Saturday to Tuesday) in Toman
+	// قیمت اقامتگاه در روزهای عادی (شنبه تا سه‌شنبه) به تومان
 	PriceRegularDays *string `json:"price_regular_days,omitempty"`
-	// Price of the residence for special days (holidays and occasions) in Toman
+	// قیمت اقامتگاه در روزهای خاص (تعطیلات و مناسبت‌ها) به تومان
 	PriceSpecialDays *string `json:"price_special_days,omitempty"`
-	// Price of the residence for weekends (Wednesday to Friday) in Toman
+	// قیمت اقامتگاه در آخر هفته (چهارشنبه تا جمعه) به تومان
 	PriceWeekends *string `json:"price_weekends,omitempty"`
-	// Number of allowed regular people that can stay in the residence
+	// ظرفیت استاندارد افراد در اقامتگاه
 	RegularPersonCapacity *int32 `json:"regular_person_capacity,omitempty"`
 	RoomsCount *TemporaryResidenceFieldsRoomsCount `json:"rooms_count,omitempty"`
 }

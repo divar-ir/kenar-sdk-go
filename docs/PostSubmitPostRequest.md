@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChatEnabled** | Pointer to **bool** | Whether to enable chat | [optional] 
-**City** | Pointer to **string** | City of the post | [optional] 
-**Description** | Pointer to **string** | Description of the post | [optional] 
-**District** | Pointer to **string** | District of the post | [optional] 
-**HidePhone** | Pointer to **bool** | Whether to hide the phone number from demand users | [optional] 
+**ChatEnabled** | Pointer to **bool** | امکان چت فعال باشد | [optional] 
+**City** | Pointer to **string** | شهر آگهی | [optional] 
+**Description** | Pointer to **string** | توضیحات آگهی | [optional] 
+**District** | Pointer to **string** | محله آگهی | [optional] 
+**HidePhone** | Pointer to **bool** | عدم نمایش شماره تماس به کاربران | [optional] 
 **Images** | Pointer to **[]string** |  | [optional] 
-**Latitude** | Pointer to **float64** | Latitude of the post | [optional] 
-**Longitude** | Pointer to **float64** | Longitude of the post | [optional] 
+**Latitude** | Pointer to **float64** | عرض جغرافیایی آگهی | [optional] 
+**Longitude** | Pointer to **float64** | طول جغرافیایی آگهی | [optional] 
 **TemporaryResidence** | Pointer to [**PostTemporaryResidenceFields**](PostTemporaryResidenceFields.md) |  | [optional] 
-**Title** | Pointer to **string** | Title of the post | [optional] 
+**Title** | Pointer to **string** | عنوان آگهی | [optional] 
 
 ## Methods
 
