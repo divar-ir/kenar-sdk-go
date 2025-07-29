@@ -25,13 +25,13 @@ type PostTemporaryResidenceFields struct {
 	ExtraPersonCapacity *int32 `json:"extra_person_capacity,omitempty"`
 	// Whether the images are of the property itself and not decorative/stock photos.
 	HasOwnImage *bool `json:"has_own_image,omitempty"`
-	// Cost per extra person per night in Rial
+	// Cost per extra person per night in Toman
 	PriceCostPerExtraPerson *string `json:"price_cost_per_extra_person,omitempty"`
-	// Price of the residence for regular days (Saturday to Tuesday) in Rial
+	// Price of the residence for regular days (Saturday to Tuesday) in Toman
 	PriceRegularDays *string `json:"price_regular_days,omitempty"`
-	// Price of the residence for special days (holidays and occasions) in Rial
+	// Price of the residence for special days (holidays and occasions) in Toman
 	PriceSpecialDays *string `json:"price_special_days,omitempty"`
-	// Price of the residence for weekends (Wednesday to Friday) in Rial
+	// Price of the residence for weekends (Wednesday to Friday) in Toman
 	PriceWeekends *string `json:"price_weekends,omitempty"`
 	// Number of allowed regular people that can stay in the residence
 	RegularPersonCapacity *int32 `json:"regular_person_capacity,omitempty"`

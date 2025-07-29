@@ -1613,6 +1613,12 @@
 
 * `THUMB_UP_BORDER` (value: `"THUMB_UP_BORDER"`)
 
+* `CALL_MADE` (value: `"CALL_MADE"`)
+
+* `CALL_RECEIVED` (value: `"CALL_RECEIVED"`)
+
+* `CALL_O` (value: `"CALL_O"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
