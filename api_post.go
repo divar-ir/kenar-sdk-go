@@ -553,10 +553,10 @@ func (r ApiPostSubmitPostRequest) Execute() (*PostSubmitPostResponse, *http.Resp
 }
 
 /*
-PostSubmitPost Submit a post
+PostSubmitPost ثبت آگهی
 
-This API allows you to submit a post. This needs `POST_SUBMIT` OAuth scope.
-You can submit a post with title, description, and images and other fields. There are general fields and category specific fields.
+این API به شما امکان ثبت آگهی را می‌دهد. این نیاز به دامنه OAuth `POST_SUBMIT` دارد.
+می‌توانید آگهی را با عنوان، توضیحات، تصاویر و سایر فیلدها ثبت کنید. فیلدهای عمومی و فیلدهای مخصوص دسته‌بندی وجود دارند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostSubmitPostRequest

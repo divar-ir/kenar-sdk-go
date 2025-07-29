@@ -125,7 +125,7 @@ Class | Method | HTTP request | Description
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 *PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
 *PostAPI* | [**PostSubmitEmergencyResidencePost**](docs/PostAPI.md#postsubmitemergencyresidencepost) | **Post** /experimental/open-platform/posts/emergency-residence | Submit an emergency residence post
-*PostAPI* | [**PostSubmitPost**](docs/PostAPI.md#postsubmitpost) | **Post** /experimental/open-platform/posts/new | Submit a post
+*PostAPI* | [**PostSubmitPost**](docs/PostAPI.md#postsubmitpost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
 *SemanticAPI* | [**SemanticCreatePostSemantic**](docs/SemanticAPI.md#semanticcreatepostsemantic) | **Post** /experimental/open-platform/semantic/post/{token} | ایجاد اطلاعات معنایی آگهی
 *SemanticAPI* | [**SemanticCreateUserSemantic**](docs/SemanticAPI.md#semanticcreateusersemantic) | **Post** /v1/open-platform/semantic/user/{phone} | ایجاد اطلاعات معنایی کاربر
 *SemanticAPI* | [**SemanticCreateUserSemantic2**](docs/SemanticAPI.md#semanticcreateusersemantic2) | **Post** /v1/open-platform/semantic/users/{divar_user_id} | ایجاد اطلاعات معنایی کاربر

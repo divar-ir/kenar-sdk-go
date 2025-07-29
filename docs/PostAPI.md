@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 [**PostGetPostStats**](PostAPI.md#PostGetPostStats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
 [**PostSubmitEmergencyResidencePost**](PostAPI.md#PostSubmitEmergencyResidencePost) | **Post** /experimental/open-platform/posts/emergency-residence | Submit an emergency residence post
-[**PostSubmitPost**](PostAPI.md#PostSubmitPost) | **Post** /experimental/open-platform/posts/new | Submit a post
+[**PostSubmitPost**](PostAPI.md#PostSubmitPost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
 
 
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 > PostSubmitPostResponse PostSubmitPost(ctx).PostSubmitPostRequest(postSubmitPostRequest).Execute()
 
-Submit a post
+ثبت آگهی
 
 
 
