@@ -10,7 +10,6 @@ tags:
 - name: Addons
 - name: Assets
 - name: ChatAPI
-- name: Darvaze
 - name: Events
 - name: Finder
 - name: Post
@@ -663,41 +662,6 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       summary: حذف افزونه کاربر
-      tags:
-      - Addons
-  /v1/open-platform/addons/user/{phone}:
-    get:
-      description: دریافت تمام افزونه‌های کاربر یک کاربر.
-      operationId: Addons_GetUserAddons
-      parameters:
-      - explode: false
-        in: path
-        name: phone
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: true
-        in: query
-        name: divar_user_id
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addonsGetUserAddonsResponse'
-          description: پاسخ موفقیت‌آمیز.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/googlerpcStatus'
-          description: پاسخ خطای غیرمنتظره.
-      summary: دریافت تمام افزونه‌های کاربر
       tags:
       - Addons
   /v1/open-platform/assets/body-status:
@@ -1554,40 +1518,6 @@ paths:
       tags:
       - Addons
   /v2/open-platform/addons/users/{divar_user_id}:
-    get:
-      description: دریافت تمام افزونه‌های کاربر یک کاربر.
-      operationId: Addons_GetUserAddons2
-      parameters:
-      - explode: false
-        in: path
-        name: divar_user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: true
-        in: query
-        name: phone
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addonsGetUserAddonsResponse'
-          description: پاسخ موفقیت‌آمیز.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/googlerpcStatus'
-          description: پاسخ خطای غیرمنتظره.
-      summary: دریافت تمام افزونه‌های کاربر
-      tags:
-      - Addons
     post:
       description: |-
         با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
@@ -1711,13 +1641,6 @@ components:
             $ref: '#/components/schemas/SemanticCreateUserSemanticBody'
       required: true
   schemas:
-    AddonSecondaryLinkagePosition:
-      enum:
-      - POST_SPEC_HEAD
-      - POST_SPEC_TAIL
-      - POST_PRICE_SPEC
-      - POST_DESC_TAIL
-      type: string
     AddonSemanticCarVerificationStage:
       enum:
       - CARVERIFICATIONSTAGE_NOT_STARTED
@@ -3436,6 +3359,7 @@ components:
       - CALL_MADE
       - CALL_RECEIVED
       - CALL_O
+      - AI_STARS_F
       type: string
     GetPostPricingResponseReorder:
       example:
@@ -3734,8 +3658,6 @@ components:
           format: int64
           type: integer
       type: object
-    SearchPostItemServicesFields:
-      type: object
     SearchPostItemToolsMaterialsEquipmentFields:
       type: object
     SearchPostItemVehiclesFields:
@@ -3794,6 +3716,11 @@ components:
       - USER
       - POST
       type: string
+    SubmitPostRequestLocationType:
+      enum:
+      - LOCATION_TYPE_EXACT
+      - LOCATION_TYPE_APPROXIMATE
+      type: string
     TemporaryResidenceFieldsRoomsCount:
       enum:
       - ROOMS_COUNT_0
@@ -3839,25 +3766,6 @@ components:
       - POST_MANAGEMENT
       type: string
     addonsAddonMetaData:
-      example:
-        app:
-          service_type: FUNC_CLICK_AND_COLLECT
-          divar_identification_key: divar_identification_key
-          service_tags:
-          - VERIFIED
-          - VERIFIED
-          display: display
-          avatar: avatar
-          slug: slug
-          status:
-            status: ACTIVE
-        service_tags:
-        - null
-        - null
-        created_at: 2000-01-23T04:56:07.000+00:00
-        id: id
-        last_modified: 2000-01-23T04:56:07.000+00:00
-        status: ACTIVE
       properties:
         app:
           $ref: '#/components/schemas/appsApp'
@@ -3879,10 +3787,17 @@ components:
     addonsAddonSecondaryLinkage:
       properties:
         position:
-          $ref: '#/components/schemas/AddonSecondaryLinkagePosition'
+          $ref: '#/components/schemas/addonsAddonSecondaryLinkagePosition'
         widgets:
           type: object
       type: object
+    addonsAddonSecondaryLinkagePosition:
+      enum:
+      - POST_SPEC_HEAD
+      - POST_SPEC_TAIL
+      - POST_PRICE_SPEC
+      - POST_DESC_TAIL
+      type: string
     addonsAddonSecondaryLinks:
       properties:
         secondary_linkages:
@@ -3926,18 +3841,6 @@ components:
          - مقدار صفر هر enum باید {ENUM_NAME}_UNSPECIFIED باشد.
          - مقادیر Enum نباید با هیچ آگهی خاص یا صفت شخص
          مطابقت داشته باشد.
-      example:
-        car_verification_last_successful_stage: null
-        identity_verification_result: FACE_AND_ID_MATCHED
-        ownership_result: OWNERSHIP_CONFIRMED
-        post_verification_result: POST_INFORMATION_MATCHED
-        identity_verification_last_successful_stage: null
-        inspection_result: INSPECTION_APPROVED
-        new_face_verification_result: NEW_FACE_VERIFICATION_FAILED
-        car_verification_failure_reason: CARVERIFICATIONSTAGE_NOT_STARTED
-        identity_verification_failure_reason: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
-        payment_method: SECURE
-        status: SUCCEEDED
       properties:
         car_verification_failure_reason:
           $ref: '#/components/schemas/AddonSemanticCarVerificationStage'
@@ -4145,101 +4048,6 @@ components:
         addons:
           items:
             $ref: '#/components/schemas/addonsPostAddon'
-          type: array
-      type: object
-    addonsGetUserAddonsResponse:
-      example:
-        addons:
-        - sensitive_semantic:
-            key: sensitive_semantic
-          semantic:
-            key: semantic
-          phone: phone
-          meta_data:
-            app:
-              service_type: FUNC_CLICK_AND_COLLECT
-              divar_identification_key: divar_identification_key
-              service_tags:
-              - VERIFIED
-              - VERIFIED
-              display: display
-              avatar: avatar
-              slug: slug
-              status:
-                status: ACTIVE
-            service_tags:
-            - null
-            - null
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: id
-            last_modified: 2000-01-23T04:56:07.000+00:00
-            status: ACTIVE
-          filters:
-            categories:
-            - categories
-            - categories
-          widgets: "{}"
-          semantic_data:
-            car_verification_last_successful_stage: null
-            identity_verification_result: FACE_AND_ID_MATCHED
-            ownership_result: OWNERSHIP_CONFIRMED
-            post_verification_result: POST_INFORMATION_MATCHED
-            identity_verification_last_successful_stage: null
-            inspection_result: INSPECTION_APPROVED
-            new_face_verification_result: NEW_FACE_VERIFICATION_FAILED
-            car_verification_failure_reason: CARVERIFICATIONSTAGE_NOT_STARTED
-            identity_verification_failure_reason: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
-            payment_method: SECURE
-            status: SUCCEEDED
-          widgets_semantic: "{}"
-          divar_user_id: divar_user_id
-        - sensitive_semantic:
-            key: sensitive_semantic
-          semantic:
-            key: semantic
-          phone: phone
-          meta_data:
-            app:
-              service_type: FUNC_CLICK_AND_COLLECT
-              divar_identification_key: divar_identification_key
-              service_tags:
-              - VERIFIED
-              - VERIFIED
-              display: display
-              avatar: avatar
-              slug: slug
-              status:
-                status: ACTIVE
-            service_tags:
-            - null
-            - null
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: id
-            last_modified: 2000-01-23T04:56:07.000+00:00
-            status: ACTIVE
-          filters:
-            categories:
-            - categories
-            - categories
-          widgets: "{}"
-          semantic_data:
-            car_verification_last_successful_stage: null
-            identity_verification_result: FACE_AND_ID_MATCHED
-            ownership_result: OWNERSHIP_CONFIRMED
-            post_verification_result: POST_INFORMATION_MATCHED
-            identity_verification_last_successful_stage: null
-            inspection_result: INSPECTION_APPROVED
-            new_face_verification_result: NEW_FACE_VERIFICATION_FAILED
-            car_verification_failure_reason: CARVERIFICATIONSTAGE_NOT_STARTED
-            identity_verification_failure_reason: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
-            payment_method: SECURE
-            status: SUCCEEDED
-          widgets_semantic: "{}"
-          divar_user_id: divar_user_id
-      properties:
-        addons:
-          items:
-            $ref: '#/components/schemas/addonsUserAddon'
           type: array
       type: object
     addonsGetUserPostAddonsResponse:
@@ -4466,50 +4274,6 @@ components:
           type: string
       type: object
     addonsUserAddon:
-      example:
-        sensitive_semantic:
-          key: sensitive_semantic
-        semantic:
-          key: semantic
-        phone: phone
-        meta_data:
-          app:
-            service_type: FUNC_CLICK_AND_COLLECT
-            divar_identification_key: divar_identification_key
-            service_tags:
-            - VERIFIED
-            - VERIFIED
-            display: display
-            avatar: avatar
-            slug: slug
-            status:
-              status: ACTIVE
-          service_tags:
-          - null
-          - null
-          created_at: 2000-01-23T04:56:07.000+00:00
-          id: id
-          last_modified: 2000-01-23T04:56:07.000+00:00
-          status: ACTIVE
-        filters:
-          categories:
-          - categories
-          - categories
-        widgets: "{}"
-        semantic_data:
-          car_verification_last_successful_stage: null
-          identity_verification_result: FACE_AND_ID_MATCHED
-          ownership_result: OWNERSHIP_CONFIRMED
-          post_verification_result: POST_INFORMATION_MATCHED
-          identity_verification_last_successful_stage: null
-          inspection_result: INSPECTION_APPROVED
-          new_face_verification_result: NEW_FACE_VERIFICATION_FAILED
-          car_verification_failure_reason: CARVERIFICATIONSTAGE_NOT_STARTED
-          identity_verification_failure_reason: IDENTITYVERIFICATIONSTAGE_NOT_STARTED
-          payment_method: SECURE
-          status: SUCCEEDED
-        widgets_semantic: "{}"
-        divar_user_id: divar_user_id
       properties:
         divar_user_id:
           title: فیلد جدید
@@ -4538,10 +4302,6 @@ components:
           type: object
       type: object
     addonsUserAddonFilters:
-      example:
-        categories:
-        - categories
-        - categories
       properties:
         categories:
           items:
@@ -4683,17 +4443,6 @@ components:
     addonsWidgets:
       type: object
     appsApp:
-      example:
-        service_type: FUNC_CLICK_AND_COLLECT
-        divar_identification_key: divar_identification_key
-        service_tags:
-        - VERIFIED
-        - VERIFIED
-        display: display
-        avatar: avatar
-        slug: slug
-        status:
-          status: ACTIVE
       properties:
         avatar:
           type: string
@@ -4714,8 +4463,6 @@ components:
           $ref: '#/components/schemas/appsAppStatus'
       type: object
     appsAppStatus:
-      example:
-        status: ACTIVE
       properties:
         status:
           $ref: '#/components/schemas/appsAppStatusStatus'
@@ -5348,81 +5095,6 @@ components:
       - LOCATION
       - VIDEO
       type: string
-    darvazeGenerateOrderForPostCodeValidationResponse:
-      properties:
-        order_id:
-          type: string
-        status:
-          $ref: '#/components/schemas/darvazeGenerateOrderForPostCodeValidationResponseStatus'
-      type: object
-    darvazeGenerateOrderForPostCodeValidationResponseStatus:
-      enum:
-      - SUCCESS
-      - FAILED
-      type: string
-    darvazeGetCarOwnershipStatusResponse:
-      properties:
-        description:
-          type: string
-        status:
-          $ref: '#/components/schemas/darvazeGetCarOwnershipStatusResponseStatus'
-      type: object
-    darvazeGetCarOwnershipStatusResponseStatus:
-      enum:
-      - PENDING
-      - VERIFIED
-      - REJECTED
-      type: string
-    darvazeIranianCarPlate:
-      properties:
-        area_code:
-          format: int64
-          title: "2-digit numeric code representing the regional area (e.g., 12)"
-          type: integer
-        province_code:
-          format: int64
-          title: "Province code identifying the issuing province (e.g., 66 for Tehran)"
-          type: integer
-        serial_letter:
-          title: "Single Persian letter indicating the car category or usage (e.g.,\
-            \ \"ب\")"
-          type: string
-        serial_number:
-          format: int64
-          title: "3-digit numeric sequence following the letter (e.g., 345)"
-          type: integer
-      type: object
-    darvazeRequestCarOwnershipDelegationResponse:
-      properties:
-        id:
-          type: string
-      type: object
-    darvazeRequestForPostCodeValidationResponse:
-      properties:
-        request_id:
-          type: string
-      type: object
-    darvazeVerifyCarOwnershipDelegationResponse:
-      properties:
-        id:
-          type: string
-      type: object
-    darvazeVerifyCarOwnershipResponse:
-      properties:
-        id:
-          type: string
-      type: object
-    darvazeVerifyPostCodeValidationResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/darvazeVerifyPostCodeValidationResponseStatus'
-      type: object
-    darvazeVerifyPostCodeValidationResponseStatus:
-      enum:
-      - PENDING
-      - VERIFIED
-      - REJECTED
-      type: string
     eventsEventButton:
       properties:
         action:
@@ -5627,6 +5299,8 @@ components:
         vehicles_fields:
           $ref: '#/components/schemas/SearchPostItemVehiclesFields'
       type: object
+    finderSearchPostItemServicesFields:
+      type: object
     finderSearchPostV2Response:
       example:
         posts:
@@ -5788,6 +5462,8 @@ components:
       type: object
     managementDevelopmentPost:
       properties:
+        category:
+          type: string
         created_at:
           format: date-time
           type: string
@@ -5806,6 +5482,40 @@ components:
       - APARTMENT_SELL
       - SUITE_APARTMENT
       type: string
+    open_platformpostServicesFields:
+      properties:
+        category:
+          $ref: '#/components/schemas/postServicesFieldsCategory'
+        expertise_ids:
+          description: List of expertise ids
+          example:
+          - "1"
+          - "2"
+          items:
+            type: string
+          type: array
+        work_hours_end:
+          description: End hour of work in 24-hour format (e.g. 18 for 18:00). Only
+            applicable if `works_24_7` is false.
+          example: 18
+          format: int32
+          type: integer
+        work_hours_start:
+          description: Start hour of work in 24-hour format (e.g. 9 for 9:00). Only
+            applicable if `works_24_7` is false.
+          example: 9
+          format: int32
+          type: integer
+        work_on_holidays:
+          description: Whether the service provider works on holidays
+          example: true
+          type: boolean
+        works_24_7:
+          description: "Whether the service provider is available 24/7. If true, `work_hours_start`\
+            \ and `work_hours_end` are ignored."
+          example: false
+          type: boolean
+      type: object
     paymentGetBalanceResponse:
       example:
         balance_rials: balance_rials
@@ -5962,6 +5672,19 @@ components:
         views:
           $ref: '#/components/schemas/GetPostStatsResponsePostStats'
       type: object
+    postServicesFieldsCategory:
+      enum:
+      - CATEGORY_CAR_AND_MOTOR
+      - CATEGORY_CATERING
+      - CATEGORY_COMPUTER_AND_MOBILE
+      - CATEGORY_ACCOUNTING_AND_FINANCE
+      - CATEGORY_TRANSPORT
+      - CATEGORY_CRAFTSMEN
+      - CATEGORY_BEAUTY_AND_HAIRCARE
+      - CATEGORY_CLEANING
+      - CATEGORY_GARDEN_AND_LANDSCAPING
+      - CATEGORY_TEACHING
+      type: string
     postSubmitEmergencyResidencePostRequest:
       properties:
         city:
@@ -6019,11 +5742,15 @@ components:
           example: 35.7152
           format: double
           type: number
+        location_type:
+          $ref: '#/components/schemas/SubmitPostRequestLocationType'
         longitude:
           description: طول جغرافیایی آگهی
           example: 51.4043
           format: double
           type: number
+        services:
+          $ref: '#/components/schemas/open_platformpostServicesFields'
         temporary_residence:
           $ref: '#/components/schemas/postTemporaryResidenceFields'
         title:

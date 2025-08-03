@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Position** | Pointer to [**AddonSecondaryLinkagePosition**](AddonSecondaryLinkagePosition.md) |  | [optional] 
+**Position** | Pointer to [**AddonsAddonSecondaryLinkagePosition**](AddonsAddonSecondaryLinkagePosition.md) |  | [optional] 
 **Widgets** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPosition
 
-`func (o *AddonsAddonSecondaryLinkage) GetPosition() AddonSecondaryLinkagePosition`
+`func (o *AddonsAddonSecondaryLinkage) GetPosition() AddonsAddonSecondaryLinkagePosition`
 
 GetPosition returns the Position field if non-nil, zero value otherwise.
 
 ### GetPositionOk
 
-`func (o *AddonsAddonSecondaryLinkage) GetPositionOk() (*AddonSecondaryLinkagePosition, bool)`
+`func (o *AddonsAddonSecondaryLinkage) GetPositionOk() (*AddonsAddonSecondaryLinkagePosition, bool)`
 
 GetPositionOk returns a tuple with the Position field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPosition
 
-`func (o *AddonsAddonSecondaryLinkage) SetPosition(v AddonSecondaryLinkagePosition)`
+`func (o *AddonsAddonSecondaryLinkage) SetPosition(v AddonsAddonSecondaryLinkagePosition)`
 
 SetPosition sets Position field to given value.
 

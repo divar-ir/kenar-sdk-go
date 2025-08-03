@@ -20,6 +20,7 @@ var _ MappedNullable = &ManagementDevelopmentPost{}
 
 // ManagementDevelopmentPost struct for ManagementDevelopmentPost
 type ManagementDevelopmentPost struct {
+	Category *string `json:"category,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	MngToken *string `json:"mng_token,omitempty"`
 	Preset *ManagementPreset `json:"preset,omitempty"`
@@ -41,6 +42,38 @@ func NewManagementDevelopmentPost() *ManagementDevelopmentPost {
 func NewManagementDevelopmentPostWithDefaults() *ManagementDevelopmentPost {
 	this := ManagementDevelopmentPost{}
 	return &this
+}
+
+// GetCategory returns the Category field value if set, zero value otherwise.
+func (o *ManagementDevelopmentPost) GetCategory() string {
+	if o == nil || IsNil(o.Category) {
+		var ret string
+		return ret
+	}
+	return *o.Category
+}
+
+// GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManagementDevelopmentPost) GetCategoryOk() (*string, bool) {
+	if o == nil || IsNil(o.Category) {
+		return nil, false
+	}
+	return o.Category, true
+}
+
+// HasCategory returns a boolean if a field has been set.
+func (o *ManagementDevelopmentPost) HasCategory() bool {
+	if o != nil && !IsNil(o.Category) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategory gets a reference to the given string and assigns it to the Category field.
+func (o *ManagementDevelopmentPost) SetCategory(v string) {
+	o.Category = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -181,6 +214,9 @@ func (o ManagementDevelopmentPost) MarshalJSON() ([]byte, error) {
 
 func (o ManagementDevelopmentPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Category) {
+		toSerialize["category"] = o.Category
+	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}

@@ -32,8 +32,10 @@ type PostSubmitPostRequest struct {
 	Images []string `json:"images,omitempty"`
 	// عرض جغرافیایی آگهی
 	Latitude *float64 `json:"latitude,omitempty"`
+	LocationType *SubmitPostRequestLocationType `json:"location_type,omitempty"`
 	// طول جغرافیایی آگهی
 	Longitude *float64 `json:"longitude,omitempty"`
+	Services *OpenPlatformpostServicesFields `json:"services,omitempty"`
 	TemporaryResidence *PostTemporaryResidenceFields `json:"temporary_residence,omitempty"`
 	// عنوان آگهی
 	Title *string `json:"title,omitempty"`
@@ -280,6 +282,38 @@ func (o *PostSubmitPostRequest) SetLatitude(v float64) {
 	o.Latitude = &v
 }
 
+// GetLocationType returns the LocationType field value if set, zero value otherwise.
+func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType {
+	if o == nil || IsNil(o.LocationType) {
+		var ret SubmitPostRequestLocationType
+		return ret
+	}
+	return *o.LocationType
+}
+
+// GetLocationTypeOk returns a tuple with the LocationType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationType, bool) {
+	if o == nil || IsNil(o.LocationType) {
+		return nil, false
+	}
+	return o.LocationType, true
+}
+
+// HasLocationType returns a boolean if a field has been set.
+func (o *PostSubmitPostRequest) HasLocationType() bool {
+	if o != nil && !IsNil(o.LocationType) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocationType gets a reference to the given SubmitPostRequestLocationType and assigns it to the LocationType field.
+func (o *PostSubmitPostRequest) SetLocationType(v SubmitPostRequestLocationType) {
+	o.LocationType = &v
+}
+
 // GetLongitude returns the Longitude field value if set, zero value otherwise.
 func (o *PostSubmitPostRequest) GetLongitude() float64 {
 	if o == nil || IsNil(o.Longitude) {
@@ -310,6 +344,38 @@ func (o *PostSubmitPostRequest) HasLongitude() bool {
 // SetLongitude gets a reference to the given float64 and assigns it to the Longitude field.
 func (o *PostSubmitPostRequest) SetLongitude(v float64) {
 	o.Longitude = &v
+}
+
+// GetServices returns the Services field value if set, zero value otherwise.
+func (o *PostSubmitPostRequest) GetServices() OpenPlatformpostServicesFields {
+	if o == nil || IsNil(o.Services) {
+		var ret OpenPlatformpostServicesFields
+		return ret
+	}
+	return *o.Services
+}
+
+// GetServicesOk returns a tuple with the Services field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetServicesOk() (*OpenPlatformpostServicesFields, bool) {
+	if o == nil || IsNil(o.Services) {
+		return nil, false
+	}
+	return o.Services, true
+}
+
+// HasServices returns a boolean if a field has been set.
+func (o *PostSubmitPostRequest) HasServices() bool {
+	if o != nil && !IsNil(o.Services) {
+		return true
+	}
+
+	return false
+}
+
+// SetServices gets a reference to the given OpenPlatformpostServicesFields and assigns it to the Services field.
+func (o *PostSubmitPostRequest) SetServices(v OpenPlatformpostServicesFields) {
+	o.Services = &v
 }
 
 // GetTemporaryResidence returns the TemporaryResidence field value if set, zero value otherwise.
@@ -407,8 +473,14 @@ func (o PostSubmitPostRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Latitude) {
 		toSerialize["latitude"] = o.Latitude
 	}
+	if !IsNil(o.LocationType) {
+		toSerialize["location_type"] = o.LocationType
+	}
 	if !IsNil(o.Longitude) {
 		toSerialize["longitude"] = o.Longitude
+	}
+	if !IsNil(o.Services) {
+		toSerialize["services"] = o.Services
 	}
 	if !IsNil(o.TemporaryResidence) {
 		toSerialize["temporary_residence"] = o.TemporaryResidence

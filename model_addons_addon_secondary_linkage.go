@@ -19,7 +19,7 @@ var _ MappedNullable = &AddonsAddonSecondaryLinkage{}
 
 // AddonsAddonSecondaryLinkage struct for AddonsAddonSecondaryLinkage
 type AddonsAddonSecondaryLinkage struct {
-	Position *AddonSecondaryLinkagePosition `json:"position,omitempty"`
+	Position *AddonsAddonSecondaryLinkagePosition `json:"position,omitempty"`
 	Widgets map[string]interface{} `json:"widgets,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewAddonsAddonSecondaryLinkageWithDefaults() *AddonsAddonSecondaryLinkage {
 }
 
 // GetPosition returns the Position field value if set, zero value otherwise.
-func (o *AddonsAddonSecondaryLinkage) GetPosition() AddonSecondaryLinkagePosition {
+func (o *AddonsAddonSecondaryLinkage) GetPosition() AddonsAddonSecondaryLinkagePosition {
 	if o == nil || IsNil(o.Position) {
-		var ret AddonSecondaryLinkagePosition
+		var ret AddonsAddonSecondaryLinkagePosition
 		return ret
 	}
 	return *o.Position
@@ -51,7 +51,7 @@ func (o *AddonsAddonSecondaryLinkage) GetPosition() AddonSecondaryLinkagePositio
 
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsAddonSecondaryLinkage) GetPositionOk() (*AddonSecondaryLinkagePosition, bool) {
+func (o *AddonsAddonSecondaryLinkage) GetPositionOk() (*AddonsAddonSecondaryLinkagePosition, bool) {
 	if o == nil || IsNil(o.Position) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *AddonsAddonSecondaryLinkage) HasPosition() bool {
 	return false
 }
 
-// SetPosition gets a reference to the given AddonSecondaryLinkagePosition and assigns it to the Position field.
-func (o *AddonsAddonSecondaryLinkage) SetPosition(v AddonSecondaryLinkagePosition) {
+// SetPosition gets a reference to the given AddonsAddonSecondaryLinkagePosition and assigns it to the Position field.
+func (o *AddonsAddonSecondaryLinkage) SetPosition(v AddonsAddonSecondaryLinkagePosition) {
 	o.Position = &v
 }
 

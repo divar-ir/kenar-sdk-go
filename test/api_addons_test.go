@@ -120,32 +120,4 @@ func Test_kenarapi_AddonsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AddonsAPIService AddonsGetUserAddons", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var phone string
-
-		resp, httpRes, err := apiClient.AddonsAPI.AddonsGetUserAddons(context.Background(), phone).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AddonsAPIService AddonsGetUserAddons2", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var divarUserId string
-
-		resp, httpRes, err := apiClient.AddonsAPI.AddonsGetUserAddons2(context.Background(), divarUserId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }

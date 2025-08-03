@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **HidePhone** | Pointer to **bool** | عدم نمایش شماره تماس به کاربران | [optional] 
 **Images** | Pointer to **[]string** |  | [optional] 
 **Latitude** | Pointer to **float64** | عرض جغرافیایی آگهی | [optional] 
+**LocationType** | Pointer to [**SubmitPostRequestLocationType**](SubmitPostRequestLocationType.md) |  | [optional] 
 **Longitude** | Pointer to **float64** | طول جغرافیایی آگهی | [optional] 
+**Services** | Pointer to [**OpenPlatformpostServicesFields**](OpenPlatformpostServicesFields.md) |  | [optional] 
 **TemporaryResidence** | Pointer to [**PostTemporaryResidenceFields**](PostTemporaryResidenceFields.md) |  | [optional] 
 **Title** | Pointer to **string** | عنوان آگهی | [optional] 
 
@@ -209,6 +211,31 @@ SetLatitude sets Latitude field to given value.
 
 HasLatitude returns a boolean if a field has been set.
 
+### GetLocationType
+
+`func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType`
+
+GetLocationType returns the LocationType field if non-nil, zero value otherwise.
+
+### GetLocationTypeOk
+
+`func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationType, bool)`
+
+GetLocationTypeOk returns a tuple with the LocationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocationType
+
+`func (o *PostSubmitPostRequest) SetLocationType(v SubmitPostRequestLocationType)`
+
+SetLocationType sets LocationType field to given value.
+
+### HasLocationType
+
+`func (o *PostSubmitPostRequest) HasLocationType() bool`
+
+HasLocationType returns a boolean if a field has been set.
+
 ### GetLongitude
 
 `func (o *PostSubmitPostRequest) GetLongitude() float64`
@@ -233,6 +260,31 @@ SetLongitude sets Longitude field to given value.
 `func (o *PostSubmitPostRequest) HasLongitude() bool`
 
 HasLongitude returns a boolean if a field has been set.
+
+### GetServices
+
+`func (o *PostSubmitPostRequest) GetServices() OpenPlatformpostServicesFields`
+
+GetServices returns the Services field if non-nil, zero value otherwise.
+
+### GetServicesOk
+
+`func (o *PostSubmitPostRequest) GetServicesOk() (*OpenPlatformpostServicesFields, bool)`
+
+GetServicesOk returns a tuple with the Services field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServices
+
+`func (o *PostSubmitPostRequest) SetServices(v OpenPlatformpostServicesFields)`
+
+SetServices sets Services field to given value.
+
+### HasServices
+
+`func (o *PostSubmitPostRequest) HasServices() bool`
+
+HasServices returns a boolean if a field has been set.
 
 ### GetTemporaryResidence
 
