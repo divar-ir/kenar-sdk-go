@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **District** | Pointer to **string** | محله آگهی | [optional] 
 **HidePhone** | Pointer to **bool** | عدم نمایش شماره تماس به کاربران | [optional] 
 **Images** | Pointer to **[]string** |  | [optional] 
+**LandlineNumbers** | Pointer to **[]string** | Landline numbers to be added to the post | [optional] 
 **Latitude** | Pointer to **float64** | عرض جغرافیایی آگهی | [optional] 
 **LocationType** | Pointer to [**SubmitPostRequestLocationType**](SubmitPostRequestLocationType.md) |  | [optional] 
 **Longitude** | Pointer to **float64** | طول جغرافیایی آگهی | [optional] 
@@ -185,6 +186,31 @@ SetImages sets Images field to given value.
 `func (o *PostSubmitPostRequest) HasImages() bool`
 
 HasImages returns a boolean if a field has been set.
+
+### GetLandlineNumbers
+
+`func (o *PostSubmitPostRequest) GetLandlineNumbers() []string`
+
+GetLandlineNumbers returns the LandlineNumbers field if non-nil, zero value otherwise.
+
+### GetLandlineNumbersOk
+
+`func (o *PostSubmitPostRequest) GetLandlineNumbersOk() (*[]string, bool)`
+
+GetLandlineNumbersOk returns a tuple with the LandlineNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLandlineNumbers
+
+`func (o *PostSubmitPostRequest) SetLandlineNumbers(v []string)`
+
+SetLandlineNumbers sets LandlineNumbers field to given value.
+
+### HasLandlineNumbers
+
+`func (o *PostSubmitPostRequest) HasLandlineNumbers() bool`
+
+HasLandlineNumbers returns a boolean if a field has been set.
 
 ### GetLatitude
 

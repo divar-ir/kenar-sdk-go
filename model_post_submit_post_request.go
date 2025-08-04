@@ -30,6 +30,8 @@ type PostSubmitPostRequest struct {
 	// عدم نمایش شماره تماس به کاربران
 	HidePhone *bool `json:"hide_phone,omitempty"`
 	Images []string `json:"images,omitempty"`
+	// Landline numbers to be added to the post
+	LandlineNumbers []string `json:"landline_numbers,omitempty"`
 	// عرض جغرافیایی آگهی
 	Latitude *float64 `json:"latitude,omitempty"`
 	LocationType *SubmitPostRequestLocationType `json:"location_type,omitempty"`
@@ -248,6 +250,38 @@ func (o *PostSubmitPostRequest) HasImages() bool {
 // SetImages gets a reference to the given []string and assigns it to the Images field.
 func (o *PostSubmitPostRequest) SetImages(v []string) {
 	o.Images = v
+}
+
+// GetLandlineNumbers returns the LandlineNumbers field value if set, zero value otherwise.
+func (o *PostSubmitPostRequest) GetLandlineNumbers() []string {
+	if o == nil || IsNil(o.LandlineNumbers) {
+		var ret []string
+		return ret
+	}
+	return o.LandlineNumbers
+}
+
+// GetLandlineNumbersOk returns a tuple with the LandlineNumbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetLandlineNumbersOk() ([]string, bool) {
+	if o == nil || IsNil(o.LandlineNumbers) {
+		return nil, false
+	}
+	return o.LandlineNumbers, true
+}
+
+// HasLandlineNumbers returns a boolean if a field has been set.
+func (o *PostSubmitPostRequest) HasLandlineNumbers() bool {
+	if o != nil && !IsNil(o.LandlineNumbers) {
+		return true
+	}
+
+	return false
+}
+
+// SetLandlineNumbers gets a reference to the given []string and assigns it to the LandlineNumbers field.
+func (o *PostSubmitPostRequest) SetLandlineNumbers(v []string) {
+	o.LandlineNumbers = v
 }
 
 // GetLatitude returns the Latitude field value if set, zero value otherwise.
@@ -469,6 +503,9 @@ func (o PostSubmitPostRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
+	}
+	if !IsNil(o.LandlineNumbers) {
+		toSerialize["landline_numbers"] = o.LandlineNumbers
 	}
 	if !IsNil(o.Latitude) {
 		toSerialize["latitude"] = o.Latitude

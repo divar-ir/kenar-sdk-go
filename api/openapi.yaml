@@ -3360,6 +3360,7 @@ components:
       - CALL_RECEIVED
       - CALL_O
       - AI_STARS_F
+      - CHEVRON_DOWN
       type: string
     GetPostPricingResponseReorder:
       example:
@@ -5735,6 +5736,14 @@ components:
           example: true
           type: boolean
         images:
+          items:
+            type: string
+          type: array
+        landline_numbers:
+          description: Landline numbers to be added to the post
+          example:
+          - "02188888888"
+          - "02188888889"
           items:
             type: string
           type: array

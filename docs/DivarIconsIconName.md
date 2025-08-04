@@ -1621,6 +1621,8 @@
 
 * `AI_STARS_F` (value: `"AI_STARS_F"`)
 
+* `CHEVRON_DOWN` (value: `"CHEVRON_DOWN"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
