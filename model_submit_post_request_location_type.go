@@ -20,12 +20,14 @@ type SubmitPostRequestLocationType string
 
 // List of SubmitPostRequestLocationType
 const (
+	SUBMITPOSTREQUESTLOCATIONTYPE_LOCATION_TYPE_EMPTY SubmitPostRequestLocationType = "LOCATION_TYPE_EMPTY"
 	SUBMITPOSTREQUESTLOCATIONTYPE_LOCATION_TYPE_EXACT SubmitPostRequestLocationType = "LOCATION_TYPE_EXACT"
 	SUBMITPOSTREQUESTLOCATIONTYPE_LOCATION_TYPE_APPROXIMATE SubmitPostRequestLocationType = "LOCATION_TYPE_APPROXIMATE"
 )
 
 // All allowed values of SubmitPostRequestLocationType enum
 var AllowedSubmitPostRequestLocationTypeEnumValues = []SubmitPostRequestLocationType{
+	"LOCATION_TYPE_EMPTY",
 	"LOCATION_TYPE_EXACT",
 	"LOCATION_TYPE_APPROXIMATE",
 }
