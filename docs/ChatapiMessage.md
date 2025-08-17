@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ContactData** | Pointer to [**MessageContactData**](MessageContactData.md) |  | [optional] 
 **Conversation** | Pointer to [**ChatapiConversation**](ChatapiConversation.md) |  | [optional] 
 **FileData** | Pointer to [**MessageFileData**](MessageFileData.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
@@ -34,6 +35,31 @@ will change when the set of required properties is changed
 NewChatapiMessageWithDefaults instantiates a new ChatapiMessage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetContactData
+
+`func (o *ChatapiMessage) GetContactData() MessageContactData`
+
+GetContactData returns the ContactData field if non-nil, zero value otherwise.
+
+### GetContactDataOk
+
+`func (o *ChatapiMessage) GetContactDataOk() (*MessageContactData, bool)`
+
+GetContactDataOk returns a tuple with the ContactData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContactData
+
+`func (o *ChatapiMessage) SetContactData(v MessageContactData)`
+
+SetContactData sets ContactData field to given value.
+
+### HasContactData
+
+`func (o *ChatapiMessage) HasContactData() bool`
+
+HasContactData returns a boolean if a field has been set.
 
 ### GetConversation
 

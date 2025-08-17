@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Category** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **MngToken** | Pointer to **string** |  | [optional] 
-**Preset** | Pointer to [**ManagementPreset**](ManagementPreset.md) |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -103,31 +102,6 @@ SetMngToken sets MngToken field to given value.
 `func (o *ManagementDevelopmentPost) HasMngToken() bool`
 
 HasMngToken returns a boolean if a field has been set.
-
-### GetPreset
-
-`func (o *ManagementDevelopmentPost) GetPreset() ManagementPreset`
-
-GetPreset returns the Preset field if non-nil, zero value otherwise.
-
-### GetPresetOk
-
-`func (o *ManagementDevelopmentPost) GetPresetOk() (*ManagementPreset, bool)`
-
-GetPresetOk returns a tuple with the Preset field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPreset
-
-`func (o *ManagementDevelopmentPost) SetPreset(v ManagementPreset)`
-
-SetPreset sets Preset field to given value.
-
-### HasPreset
-
-`func (o *ManagementDevelopmentPost) HasPreset() bool`
-
-HasPreset returns a boolean if a field has been set.
 
 ### GetToken
 

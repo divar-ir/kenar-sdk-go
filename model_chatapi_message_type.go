@@ -26,6 +26,7 @@ const (
 	CHATAPIMESSAGETYPE_VOICE ChatapiMessageType = "VOICE"
 	CHATAPIMESSAGETYPE_LOCATION ChatapiMessageType = "LOCATION"
 	CHATAPIMESSAGETYPE_VIDEO ChatapiMessageType = "VIDEO"
+	CHATAPIMESSAGETYPE_CONTACT ChatapiMessageType = "CONTACT"
 )
 
 // All allowed values of ChatapiMessageType enum
@@ -36,6 +37,7 @@ var AllowedChatapiMessageTypeEnumValues = []ChatapiMessageType{
 	"VOICE",
 	"LOCATION",
 	"VIDEO",
+	"CONTACT",
 }
 
 func (v *ChatapiMessageType) UnmarshalJSON(src []byte) error {

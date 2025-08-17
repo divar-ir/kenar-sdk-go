@@ -23,7 +23,6 @@ type ManagementDevelopmentPost struct {
 	Category *string `json:"category,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	MngToken *string `json:"mng_token,omitempty"`
-	Preset *ManagementPreset `json:"preset,omitempty"`
 	Token *string `json:"token,omitempty"`
 }
 
@@ -140,38 +139,6 @@ func (o *ManagementDevelopmentPost) SetMngToken(v string) {
 	o.MngToken = &v
 }
 
-// GetPreset returns the Preset field value if set, zero value otherwise.
-func (o *ManagementDevelopmentPost) GetPreset() ManagementPreset {
-	if o == nil || IsNil(o.Preset) {
-		var ret ManagementPreset
-		return ret
-	}
-	return *o.Preset
-}
-
-// GetPresetOk returns a tuple with the Preset field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ManagementDevelopmentPost) GetPresetOk() (*ManagementPreset, bool) {
-	if o == nil || IsNil(o.Preset) {
-		return nil, false
-	}
-	return o.Preset, true
-}
-
-// HasPreset returns a boolean if a field has been set.
-func (o *ManagementDevelopmentPost) HasPreset() bool {
-	if o != nil && !IsNil(o.Preset) {
-		return true
-	}
-
-	return false
-}
-
-// SetPreset gets a reference to the given ManagementPreset and assigns it to the Preset field.
-func (o *ManagementDevelopmentPost) SetPreset(v ManagementPreset) {
-	o.Preset = &v
-}
-
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *ManagementDevelopmentPost) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -222,9 +189,6 @@ func (o ManagementDevelopmentPost) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MngToken) {
 		toSerialize["mng_token"] = o.MngToken
-	}
-	if !IsNil(o.Preset) {
-		toSerialize["preset"] = o.Preset
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

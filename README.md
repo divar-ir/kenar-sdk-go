@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *ChatAPIAPI* | [**ChatAPIConversationSendMessage**](docs/ChatAPIAPI.md#chatapiconversationsendmessage) | **Post** /v2/open-platform/conversations/{conversation_id}/messages | ارسال پیام به مکالمه
 *ChatAPIAPI* | [**ChatAPIGenerateUploadToken**](docs/ChatAPIAPI.md#chatapigenerateuploadtoken) | **Post** /experimental/open-platform/chat/upload | تولید توکن آپلود
 *ChatAPIAPI* | [**ChatAPIGetConversation**](docs/ChatAPIAPI.md#chatapigetconversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | دریافت مکالمه با شناسه آن
+*EventsAPI* | [**EventsGetEventAction**](docs/EventsAPI.md#eventsgeteventaction) | **Post** /v1/open-platform/events/get-action | 
 *EventsAPI* | [**EventsRegisterEventSubscription**](docs/EventsAPI.md#eventsregistereventsubscription) | **Post** /v1/open-platform/events/subscriptions | اشتراک در رویداد
 *EventsAPI* | [**EventsSendEvent**](docs/EventsAPI.md#eventssendevent) | **Post** /experimental/open-platform/events/send | Send an event to a user
 *FinderAPI* | [**FinderGetPost**](docs/FinderAPI.md#findergetpost) | **Get** /v1/open-platform/finder/post/{token} | دریافت آگهی دیوار
@@ -222,6 +223,8 @@ Class | Method | HTTP request | Description
  - [ChatapiMessageType](docs/ChatapiMessageType.md)
  - [DivarIconsIconName](docs/DivarIconsIconName.md)
  - [EventsEventButton](docs/EventsEventButton.md)
+ - [EventsGetEventActionRequest](docs/EventsGetEventActionRequest.md)
+ - [EventsGetEventActionRequestRequestData](docs/EventsGetEventActionRequestRequestData.md)
  - [EventsRegisterEventSubscriptionRequest](docs/EventsRegisterEventSubscriptionRequest.md)
  - [EventsRegisterEventSubscriptionRequestEventType](docs/EventsRegisterEventSubscriptionRequestEventType.md)
  - [FinderGetAllDevelopmentPostsResponse](docs/FinderGetAllDevelopmentPostsResponse.md)
@@ -243,7 +246,7 @@ Class | Method | HTTP request | Description
  - [GooglerpcStatus](docs/GooglerpcStatus.md)
  - [ImageCarouselRowImageItem](docs/ImageCarouselRowImageItem.md)
  - [ManagementDevelopmentPost](docs/ManagementDevelopmentPost.md)
- - [ManagementPreset](docs/ManagementPreset.md)
+ - [MessageContactData](docs/MessageContactData.md)
  - [MessageFileData](docs/MessageFileData.md)
  - [MessageImageData](docs/MessageImageData.md)
  - [MessageLocationData](docs/MessageLocationData.md)
@@ -285,7 +288,14 @@ Class | Method | HTTP request | Description
  - [SemanticUserSemanticDeleted](docs/SemanticUserSemanticDeleted.md)
  - [SendEventRequestTargetType](docs/SendEventRequestTargetType.md)
  - [SubmitPostRequestLocationType](docs/SubmitPostRequestLocationType.md)
+ - [TemporaryResidenceFieldsComfortAmenity](docs/TemporaryResidenceFieldsComfortAmenity.md)
+ - [TemporaryResidenceFieldsHeatingCoolingSystem](docs/TemporaryResidenceFieldsHeatingCoolingSystem.md)
+ - [TemporaryResidenceFieldsPetsAllowed](docs/TemporaryResidenceFieldsPetsAllowed.md)
+ - [TemporaryResidenceFieldsRentalPeriod](docs/TemporaryResidenceFieldsRentalPeriod.md)
  - [TemporaryResidenceFieldsRoomsCount](docs/TemporaryResidenceFieldsRoomsCount.md)
+ - [WidgetsAction](docs/WidgetsAction.md)
+ - [WidgetsActionType](docs/WidgetsActionType.md)
+ - [WidgetsGeneralNetworkCallResponse](docs/WidgetsGeneralNetworkCallResponse.md)
 
 
 ## Documentation For Authorization

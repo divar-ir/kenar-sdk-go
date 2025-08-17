@@ -20,6 +20,7 @@ var _ MappedNullable = &SemanticUserSemanticDeleted{}
 // SemanticUserSemanticDeleted struct for SemanticUserSemanticDeleted
 type SemanticUserSemanticDeleted struct {
 	AppSlug *string `json:"app_slug,omitempty"`
+	DivarUserId *string `json:"divar_user_id,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Phone *string `json:"phone,omitempty"`
 }
@@ -71,6 +72,38 @@ func (o *SemanticUserSemanticDeleted) HasAppSlug() bool {
 // SetAppSlug gets a reference to the given string and assigns it to the AppSlug field.
 func (o *SemanticUserSemanticDeleted) SetAppSlug(v string) {
 	o.AppSlug = &v
+}
+
+// GetDivarUserId returns the DivarUserId field value if set, zero value otherwise.
+func (o *SemanticUserSemanticDeleted) GetDivarUserId() string {
+	if o == nil || IsNil(o.DivarUserId) {
+		var ret string
+		return ret
+	}
+	return *o.DivarUserId
+}
+
+// GetDivarUserIdOk returns a tuple with the DivarUserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SemanticUserSemanticDeleted) GetDivarUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DivarUserId) {
+		return nil, false
+	}
+	return o.DivarUserId, true
+}
+
+// HasDivarUserId returns a boolean if a field has been set.
+func (o *SemanticUserSemanticDeleted) HasDivarUserId() bool {
+	if o != nil && !IsNil(o.DivarUserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDivarUserId gets a reference to the given string and assigns it to the DivarUserId field.
+func (o *SemanticUserSemanticDeleted) SetDivarUserId(v string) {
+	o.DivarUserId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -149,6 +182,9 @@ func (o SemanticUserSemanticDeleted) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AppSlug) {
 		toSerialize["app_slug"] = o.AppSlug
+	}
+	if !IsNil(o.DivarUserId) {
+		toSerialize["divar_user_id"] = o.DivarUserId
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

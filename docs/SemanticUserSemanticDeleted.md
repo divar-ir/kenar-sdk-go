@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppSlug** | Pointer to **string** |  | [optional] 
+**DivarUserId** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Phone** | Pointer to **string** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetAppSlug sets AppSlug field to given value.
 `func (o *SemanticUserSemanticDeleted) HasAppSlug() bool`
 
 HasAppSlug returns a boolean if a field has been set.
+
+### GetDivarUserId
+
+`func (o *SemanticUserSemanticDeleted) GetDivarUserId() string`
+
+GetDivarUserId returns the DivarUserId field if non-nil, zero value otherwise.
+
+### GetDivarUserIdOk
+
+`func (o *SemanticUserSemanticDeleted) GetDivarUserIdOk() (*string, bool)`
+
+GetDivarUserIdOk returns a tuple with the DivarUserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDivarUserId
+
+`func (o *SemanticUserSemanticDeleted) SetDivarUserId(v string)`
+
+SetDivarUserId sets DivarUserId field to given value.
+
+### HasDivarUserId
+
+`func (o *SemanticUserSemanticDeleted) HasDivarUserId() bool`
+
+HasDivarUserId returns a boolean if a field has been set.
 
 ### GetId
 

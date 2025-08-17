@@ -20,6 +20,7 @@ var _ MappedNullable = &ChatapiMessage{}
 
 // ChatapiMessage struct for ChatapiMessage
 type ChatapiMessage struct {
+	ContactData *MessageContactData `json:"contact_data,omitempty"`
 	Conversation *ChatapiConversation `json:"conversation,omitempty"`
 	FileData *MessageFileData `json:"file_data,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -48,6 +49,38 @@ func NewChatapiMessage() *ChatapiMessage {
 func NewChatapiMessageWithDefaults() *ChatapiMessage {
 	this := ChatapiMessage{}
 	return &this
+}
+
+// GetContactData returns the ContactData field value if set, zero value otherwise.
+func (o *ChatapiMessage) GetContactData() MessageContactData {
+	if o == nil || IsNil(o.ContactData) {
+		var ret MessageContactData
+		return ret
+	}
+	return *o.ContactData
+}
+
+// GetContactDataOk returns a tuple with the ContactData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatapiMessage) GetContactDataOk() (*MessageContactData, bool) {
+	if o == nil || IsNil(o.ContactData) {
+		return nil, false
+	}
+	return o.ContactData, true
+}
+
+// HasContactData returns a boolean if a field has been set.
+func (o *ChatapiMessage) HasContactData() bool {
+	if o != nil && !IsNil(o.ContactData) {
+		return true
+	}
+
+	return false
+}
+
+// SetContactData gets a reference to the given MessageContactData and assigns it to the ContactData field.
+func (o *ChatapiMessage) SetContactData(v MessageContactData) {
+	o.ContactData = &v
 }
 
 // GetConversation returns the Conversation field value if set, zero value otherwise.
@@ -412,6 +445,9 @@ func (o ChatapiMessage) MarshalJSON() ([]byte, error) {
 
 func (o ChatapiMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ContactData) {
+		toSerialize["contact_data"] = o.ContactData
+	}
 	if !IsNil(o.Conversation) {
 		toSerialize["conversation"] = o.Conversation
 	}
