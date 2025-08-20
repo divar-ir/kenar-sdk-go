@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// SubmitPostRequestLocationType the model 'SubmitPostRequestLocationType'
+// SubmitPostRequestLocationType Type of the location
 type SubmitPostRequestLocationType string
 
 // List of SubmitPostRequestLocationType

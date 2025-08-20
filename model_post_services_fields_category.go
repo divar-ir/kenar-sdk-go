@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// PostServicesFieldsCategory the model 'PostServicesFieldsCategory'
+// PostServicesFieldsCategory The subcategory of the service
 type PostServicesFieldsCategory string
 
 // List of postServicesFieldsCategory

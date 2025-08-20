@@ -25,7 +25,6 @@ type PostTemporaryResidenceFields struct {
 	CheckInTime *string `json:"check_in_time,omitempty"`
 	// Check-out time
 	CheckOutTime *string `json:"check_out_time,omitempty"`
-	// List of comfort amenities available in the residence
 	ComfortAmenities []TemporaryResidenceFieldsComfortAmenity `json:"comfort_amenities,omitempty"`
 	// Damage deposit amount in Toman
 	DamageDeposit *string `json:"damage_deposit,omitempty"`
@@ -35,7 +34,6 @@ type PostTemporaryResidenceFields struct {
 	FullyFurnished *bool `json:"fully_furnished,omitempty"`
 	// تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
 	HasOwnImage *bool `json:"has_own_image,omitempty"`
-	// List of heating and cooling systems available
 	HeatingCoolingSystem []TemporaryResidenceFieldsHeatingCoolingSystem `json:"heating_cooling_system,omitempty"`
 	// House rules and regulations
 	HouseRules *string `json:"house_rules,omitempty"`

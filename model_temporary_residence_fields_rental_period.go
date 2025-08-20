@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// TemporaryResidenceFieldsRentalPeriod the model 'TemporaryResidenceFieldsRentalPeriod'
+// TemporaryResidenceFieldsRentalPeriod Rental period type (daily, weekly, monthly)
 type TemporaryResidenceFieldsRentalPeriod string
 
 // List of TemporaryResidenceFieldsRentalPeriod

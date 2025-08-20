@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// TemporaryResidenceFieldsRoomsCount the model 'TemporaryResidenceFieldsRoomsCount'
+// TemporaryResidenceFieldsRoomsCount Number of rooms in the residence
 type TemporaryResidenceFieldsRoomsCount string
 
 // List of TemporaryResidenceFieldsRoomsCount

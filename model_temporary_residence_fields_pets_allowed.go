@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// TemporaryResidenceFieldsPetsAllowed the model 'TemporaryResidenceFieldsPetsAllowed'
+// TemporaryResidenceFieldsPetsAllowed Pet policy for the residence
 type TemporaryResidenceFieldsPetsAllowed string
 
 // List of TemporaryResidenceFieldsPetsAllowed

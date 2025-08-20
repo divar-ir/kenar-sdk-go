@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// TemporaryResidenceFieldsHeatingCoolingSystem the model 'TemporaryResidenceFieldsHeatingCoolingSystem'
+// TemporaryResidenceFieldsHeatingCoolingSystem List of heating and cooling systems available
 type TemporaryResidenceFieldsHeatingCoolingSystem string
 
 // List of TemporaryResidenceFieldsHeatingCoolingSystem

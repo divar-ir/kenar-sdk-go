@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// TemporaryResidenceFieldsComfortAmenity the model 'TemporaryResidenceFieldsComfortAmenity'
+// TemporaryResidenceFieldsComfortAmenity List of comfort amenities available in the residence
 type TemporaryResidenceFieldsComfortAmenity string
 
 // List of TemporaryResidenceFieldsComfortAmenity
