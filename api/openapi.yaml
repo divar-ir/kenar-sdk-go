@@ -302,31 +302,6 @@ paths:
           description: پاسخ خطای غیرمنتظره.
       tags:
       - limited
-  /experimental/open-platform/posts/emergency-residence:
-    post:
-      operationId: Post_SubmitEmergencyResidencePost
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postSubmitEmergencyResidencePostRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/postSubmitEmergencyResidencePostResponse'
-          description: پاسخ موفقیت‌آمیز.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/googlerpcStatus'
-          description: پاسخ خطای غیرمنتظره.
-      summary: Submit an emergency residence post
-      tags:
-      - Post
   /experimental/open-platform/posts/new:
     post:
       description: |-
@@ -3548,6 +3523,9 @@ components:
           type: array
         title:
           type: string
+      required:
+      - description
+      - title
       type: object
     PremiumPanelBusinessDataSubBusinessType:
       enum:
@@ -5541,6 +5519,13 @@ components:
             \ and `work_hours_end` are ignored."
           example: false
           type: boolean
+      required:
+      - category
+      - expertise_ids
+      - work_hours_end
+      - work_hours_start
+      - work_on_holidays
+      - works_24_7
       type: object
     paymentGetBalanceResponse:
       example:
@@ -5713,32 +5698,6 @@ components:
       - CATEGORY_TEACHING
       example: CATEGORY_CAR_AND_MOTOR
       type: string
-    postSubmitEmergencyResidencePostRequest:
-      properties:
-        city:
-          type: string
-        data:
-          type: object
-        description:
-          type: string
-        district:
-          type: string
-        images:
-          items:
-            type: string
-          type: array
-        phone_number:
-          type: string
-        title:
-          type: string
-      type: object
-    postSubmitEmergencyResidencePostResponse:
-      example:
-        post_token: post_token
-      properties:
-        post_token:
-          type: string
-      type: object
     postSubmitPostRequest:
       properties:
         chat_enabled:
@@ -5793,6 +5752,14 @@ components:
           description: عنوان آگهی
           example: Temporary Residence for Rent in Tehran
           type: string
+      required:
+      - chat_enabled
+      - city
+      - description
+      - hide_phone
+      - images
+      - location_type
+      - title
       type: object
     postSubmitPostResponse:
       example:
@@ -5889,6 +5856,16 @@ components:
           $ref: '#/components/schemas/TemporaryResidenceFieldsRentalPeriod'
         rooms_count:
           $ref: '#/components/schemas/TemporaryResidenceFieldsRoomsCount'
+      required:
+      - area
+      - extra_person_capacity
+      - has_own_image
+      - price_cost_per_extra_person
+      - price_regular_days
+      - price_special_days
+      - price_weekends
+      - regular_person_capacity
+      - rooms_count
       type: object
     protobufAny:
       additionalProperties: {}

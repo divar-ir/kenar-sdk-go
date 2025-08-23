@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Category** | Pointer to [**PostServicesFieldsCategory**](PostServicesFieldsCategory.md) |  | [optional] 
-**ExpertiseIds** | Pointer to **[]string** | List of expertise ids | [optional] 
-**WorkHoursEnd** | Pointer to **int32** | End hour of work in 24-hour format (e.g. 18 for 18:00). Only applicable if &#x60;works_24_7&#x60; is false. | [optional] 
-**WorkHoursStart** | Pointer to **int32** | Start hour of work in 24-hour format (e.g. 9 for 9:00). Only applicable if &#x60;works_24_7&#x60; is false. | [optional] 
-**WorkOnHolidays** | Pointer to **bool** | Whether the service provider works on holidays | [optional] 
-**Works247** | Pointer to **bool** | Whether the service provider is available 24/7. If true, &#x60;work_hours_start&#x60; and &#x60;work_hours_end&#x60; are ignored. | [optional] 
+**Category** | [**PostServicesFieldsCategory**](PostServicesFieldsCategory.md) |  | 
+**ExpertiseIds** | **[]string** | List of expertise ids | 
+**WorkHoursEnd** | **int32** | End hour of work in 24-hour format (e.g. 18 for 18:00). Only applicable if &#x60;works_24_7&#x60; is false. | 
+**WorkHoursStart** | **int32** | Start hour of work in 24-hour format (e.g. 9 for 9:00). Only applicable if &#x60;works_24_7&#x60; is false. | 
+**WorkOnHolidays** | **bool** | Whether the service provider works on holidays | 
+**Works247** | **bool** | Whether the service provider is available 24/7. If true, &#x60;work_hours_start&#x60; and &#x60;work_hours_end&#x60; are ignored. | 
 
 ## Methods
 
 ### NewOpenPlatformpostServicesFields
 
-`func NewOpenPlatformpostServicesFields() *OpenPlatformpostServicesFields`
+`func NewOpenPlatformpostServicesFields(category PostServicesFieldsCategory, expertiseIds []string, workHoursEnd int32, workHoursStart int32, workOnHolidays bool, works247 bool, ) *OpenPlatformpostServicesFields`
 
 NewOpenPlatformpostServicesFields instantiates a new OpenPlatformpostServicesFields object
 This constructor will assign default values to properties that have it defined,
@@ -49,11 +49,6 @@ and a boolean to check if the value has been set.
 
 SetCategory sets Category field to given value.
 
-### HasCategory
-
-`func (o *OpenPlatformpostServicesFields) HasCategory() bool`
-
-HasCategory returns a boolean if a field has been set.
 
 ### GetExpertiseIds
 
@@ -74,11 +69,6 @@ and a boolean to check if the value has been set.
 
 SetExpertiseIds sets ExpertiseIds field to given value.
 
-### HasExpertiseIds
-
-`func (o *OpenPlatformpostServicesFields) HasExpertiseIds() bool`
-
-HasExpertiseIds returns a boolean if a field has been set.
 
 ### GetWorkHoursEnd
 
@@ -99,11 +89,6 @@ and a boolean to check if the value has been set.
 
 SetWorkHoursEnd sets WorkHoursEnd field to given value.
 
-### HasWorkHoursEnd
-
-`func (o *OpenPlatformpostServicesFields) HasWorkHoursEnd() bool`
-
-HasWorkHoursEnd returns a boolean if a field has been set.
 
 ### GetWorkHoursStart
 
@@ -124,11 +109,6 @@ and a boolean to check if the value has been set.
 
 SetWorkHoursStart sets WorkHoursStart field to given value.
 
-### HasWorkHoursStart
-
-`func (o *OpenPlatformpostServicesFields) HasWorkHoursStart() bool`
-
-HasWorkHoursStart returns a boolean if a field has been set.
 
 ### GetWorkOnHolidays
 
@@ -149,11 +129,6 @@ and a boolean to check if the value has been set.
 
 SetWorkOnHolidays sets WorkOnHolidays field to given value.
 
-### HasWorkOnHolidays
-
-`func (o *OpenPlatformpostServicesFields) HasWorkOnHolidays() bool`
-
-HasWorkOnHolidays returns a boolean if a field has been set.
 
 ### GetWorks247
 
@@ -174,11 +149,6 @@ and a boolean to check if the value has been set.
 
 SetWorks247 sets Works247 field to given value.
 
-### HasWorks247
-
-`func (o *OpenPlatformpostServicesFields) HasWorks247() bool`
-
-HasWorks247 returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

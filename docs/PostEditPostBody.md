@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** |  | [optional] 
+**Description** | **string** |  | 
+**Title** | **string** |  | 
 **ImagePaths** | Pointer to **[]string** |  | [optional] 
-**Title** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewPostEditPostBody
 
-`func NewPostEditPostBody() *PostEditPostBody`
+`func NewPostEditPostBody(description string, title string, ) *PostEditPostBody`
 
 NewPostEditPostBody instantiates a new PostEditPostBody object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,26 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
 
-`func (o *PostEditPostBody) HasDescription() bool`
+### GetTitle
 
-HasDescription returns a boolean if a field has been set.
+`func (o *PostEditPostBody) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *PostEditPostBody) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *PostEditPostBody) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
 
 ### GetImagePaths
 
@@ -76,31 +91,6 @@ SetImagePaths sets ImagePaths field to given value.
 `func (o *PostEditPostBody) HasImagePaths() bool`
 
 HasImagePaths returns a boolean if a field has been set.
-
-### GetTitle
-
-`func (o *PostEditPostBody) GetTitle() string`
-
-GetTitle returns the Title field if non-nil, zero value otherwise.
-
-### GetTitleOk
-
-`func (o *PostEditPostBody) GetTitleOk() (*string, bool)`
-
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTitle
-
-`func (o *PostEditPostBody) SetTitle(v string)`
-
-SetTitle sets Title field to given value.
-
-### HasTitle
-
-`func (o *PostEditPostBody) HasTitle() bool`
-
-HasTitle returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

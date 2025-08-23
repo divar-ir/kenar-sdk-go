@@ -122,7 +122,6 @@ Class | Method | HTTP request | Description
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 *PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
-*PostAPI* | [**PostSubmitEmergencyResidencePost**](docs/PostAPI.md#postsubmitemergencyresidencepost) | **Post** /experimental/open-platform/posts/emergency-residence | Submit an emergency residence post
 *PostAPI* | [**PostSubmitPost**](docs/PostAPI.md#postsubmitpost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
 *SemanticAPI* | [**SemanticCreatePostSemantic**](docs/SemanticAPI.md#semanticcreatepostsemantic) | **Post** /experimental/open-platform/semantic/post/{token} | ایجاد اطلاعات معنایی آگهی
 *SemanticAPI* | [**SemanticCreateUserSemantic**](docs/SemanticAPI.md#semanticcreateusersemantic) | **Post** /v1/open-platform/semantic/user/{phone} | ایجاد اطلاعات معنایی کاربر
@@ -268,8 +267,6 @@ Class | Method | HTTP request | Description
  - [PostGetImageUploadURLResponse](docs/PostGetImageUploadURLResponse.md)
  - [PostGetPostStatsResponse](docs/PostGetPostStatsResponse.md)
  - [PostServicesFieldsCategory](docs/PostServicesFieldsCategory.md)
- - [PostSubmitEmergencyResidencePostRequest](docs/PostSubmitEmergencyResidencePostRequest.md)
- - [PostSubmitEmergencyResidencePostResponse](docs/PostSubmitEmergencyResidencePostResponse.md)
  - [PostSubmitPostRequest](docs/PostSubmitPostRequest.md)
  - [PostSubmitPostResponse](docs/PostSubmitPostResponse.md)
  - [PostTemporaryResidenceFields](docs/PostTemporaryResidenceFields.md)

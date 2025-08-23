@@ -12,6 +12,8 @@ package kenarapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PostTemporaryResidenceFields type satisfies the MappedNullable interface at compile time
@@ -20,7 +22,22 @@ var _ MappedNullable = &PostTemporaryResidenceFields{}
 // PostTemporaryResidenceFields struct for PostTemporaryResidenceFields
 type PostTemporaryResidenceFields struct {
 	// متراژ اقامتگاه به متر مربع
-	Area *int32 `json:"area,omitempty"`
+	Area int32 `json:"area"`
+	// تعداد افراد اضافه مجاز در اقامتگاه
+	ExtraPersonCapacity int32 `json:"extra_person_capacity"`
+	// تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
+	HasOwnImage bool `json:"has_own_image"`
+	// هزینه هر نفر اضافه به ازای هر شب به تومان
+	PriceCostPerExtraPerson string `json:"price_cost_per_extra_person"`
+	// قیمت اقامتگاه در روزهای عادی (شنبه تا سه‌شنبه) به تومان
+	PriceRegularDays string `json:"price_regular_days"`
+	// قیمت اقامتگاه در روزهای خاص (تعطیلات و مناسبت‌ها) به تومان
+	PriceSpecialDays string `json:"price_special_days"`
+	// قیمت اقامتگاه در آخر هفته (چهارشنبه تا جمعه) به تومان
+	PriceWeekends string `json:"price_weekends"`
+	// ظرفیت استاندارد افراد در اقامتگاه
+	RegularPersonCapacity int32 `json:"regular_person_capacity"`
+	RoomsCount TemporaryResidenceFieldsRoomsCount `json:"rooms_count"`
 	// Check-in time
 	CheckInTime *string `json:"check_in_time,omitempty"`
 	// Check-out time
@@ -28,38 +45,34 @@ type PostTemporaryResidenceFields struct {
 	ComfortAmenities []TemporaryResidenceFieldsComfortAmenity `json:"comfort_amenities,omitempty"`
 	// Damage deposit amount in Toman
 	DamageDeposit *string `json:"damage_deposit,omitempty"`
-	// تعداد افراد اضافه مجاز در اقامتگاه
-	ExtraPersonCapacity *int32 `json:"extra_person_capacity,omitempty"`
 	// Whether the residence is fully furnished
 	FullyFurnished *bool `json:"fully_furnished,omitempty"`
-	// تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
-	HasOwnImage *bool `json:"has_own_image,omitempty"`
 	HeatingCoolingSystem []TemporaryResidenceFieldsHeatingCoolingSystem `json:"heating_cooling_system,omitempty"`
 	// House rules and regulations
 	HouseRules *string `json:"house_rules,omitempty"`
 	// Minimum number of days required for stay
 	MinimumStay *int32 `json:"minimum_stay,omitempty"`
 	PetsAllowed *TemporaryResidenceFieldsPetsAllowed `json:"pets_allowed,omitempty"`
-	// هزینه هر نفر اضافه به ازای هر شب به تومان
-	PriceCostPerExtraPerson *string `json:"price_cost_per_extra_person,omitempty"`
-	// قیمت اقامتگاه در روزهای عادی (شنبه تا سه‌شنبه) به تومان
-	PriceRegularDays *string `json:"price_regular_days,omitempty"`
-	// قیمت اقامتگاه در روزهای خاص (تعطیلات و مناسبت‌ها) به تومان
-	PriceSpecialDays *string `json:"price_special_days,omitempty"`
-	// قیمت اقامتگاه در آخر هفته (چهارشنبه تا جمعه) به تومان
-	PriceWeekends *string `json:"price_weekends,omitempty"`
-	// ظرفیت استاندارد افراد در اقامتگاه
-	RegularPersonCapacity *int32 `json:"regular_person_capacity,omitempty"`
 	RentalPeriod *TemporaryResidenceFieldsRentalPeriod `json:"rental_period,omitempty"`
-	RoomsCount *TemporaryResidenceFieldsRoomsCount `json:"rooms_count,omitempty"`
 }
+
+type _PostTemporaryResidenceFields PostTemporaryResidenceFields
 
 // NewPostTemporaryResidenceFields instantiates a new PostTemporaryResidenceFields object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPostTemporaryResidenceFields() *PostTemporaryResidenceFields {
+func NewPostTemporaryResidenceFields(area int32, extraPersonCapacity int32, hasOwnImage bool, priceCostPerExtraPerson string, priceRegularDays string, priceSpecialDays string, priceWeekends string, regularPersonCapacity int32, roomsCount TemporaryResidenceFieldsRoomsCount) *PostTemporaryResidenceFields {
 	this := PostTemporaryResidenceFields{}
+	this.Area = area
+	this.ExtraPersonCapacity = extraPersonCapacity
+	this.HasOwnImage = hasOwnImage
+	this.PriceCostPerExtraPerson = priceCostPerExtraPerson
+	this.PriceRegularDays = priceRegularDays
+	this.PriceSpecialDays = priceSpecialDays
+	this.PriceWeekends = priceWeekends
+	this.RegularPersonCapacity = regularPersonCapacity
+	this.RoomsCount = roomsCount
 	return &this
 }
 
@@ -71,36 +84,220 @@ func NewPostTemporaryResidenceFieldsWithDefaults() *PostTemporaryResidenceFields
 	return &this
 }
 
-// GetArea returns the Area field value if set, zero value otherwise.
+// GetArea returns the Area field value
 func (o *PostTemporaryResidenceFields) GetArea() int32 {
-	if o == nil || IsNil(o.Area) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Area
+
+	return o.Area
 }
 
-// GetAreaOk returns a tuple with the Area field value if set, nil otherwise
+// GetAreaOk returns a tuple with the Area field value
 // and a boolean to check if the value has been set.
 func (o *PostTemporaryResidenceFields) GetAreaOk() (*int32, bool) {
-	if o == nil || IsNil(o.Area) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Area, true
+	return &o.Area, true
 }
 
-// HasArea returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasArea() bool {
-	if o != nil && !IsNil(o.Area) {
-		return true
+// SetArea sets field value
+func (o *PostTemporaryResidenceFields) SetArea(v int32) {
+	o.Area = v
+}
+
+// GetExtraPersonCapacity returns the ExtraPersonCapacity field value
+func (o *PostTemporaryResidenceFields) GetExtraPersonCapacity() int32 {
+	if o == nil {
+		var ret int32
+		return ret
 	}
 
-	return false
+	return o.ExtraPersonCapacity
 }
 
-// SetArea gets a reference to the given int32 and assigns it to the Area field.
-func (o *PostTemporaryResidenceFields) SetArea(v int32) {
-	o.Area = &v
+// GetExtraPersonCapacityOk returns a tuple with the ExtraPersonCapacity field value
+// and a boolean to check if the value has been set.
+func (o *PostTemporaryResidenceFields) GetExtraPersonCapacityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExtraPersonCapacity, true
+}
+
+// SetExtraPersonCapacity sets field value
+func (o *PostTemporaryResidenceFields) SetExtraPersonCapacity(v int32) {
+	o.ExtraPersonCapacity = v
+}
+
+// GetHasOwnImage returns the HasOwnImage field value
+func (o *PostTemporaryResidenceFields) GetHasOwnImage() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HasOwnImage
+}
+
+// GetHasOwnImageOk returns a tuple with the HasOwnImage field value
+// and a boolean to check if the value has been set.
+func (o *PostTemporaryResidenceFields) GetHasOwnImageOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HasOwnImage, true
+}
+
+// SetHasOwnImage sets field value
+func (o *PostTemporaryResidenceFields) SetHasOwnImage(v bool) {
+	o.HasOwnImage = v
+}
+
+// GetPriceCostPerExtraPerson returns the PriceCostPerExtraPerson field value
+func (o *PostTemporaryResidenceFields) GetPriceCostPerExtraPerson() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PriceCostPerExtraPerson
+}
+
+// GetPriceCostPerExtraPersonOk returns a tuple with the PriceCostPerExtraPerson field value
+// and a boolean to check if the value has been set.
+func (o *PostTemporaryResidenceFields) GetPriceCostPerExtraPersonOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PriceCostPerExtraPerson, true
+}
+
+// SetPriceCostPerExtraPerson sets field value
+func (o *PostTemporaryResidenceFields) SetPriceCostPerExtraPerson(v string) {
+	o.PriceCostPerExtraPerson = v
+}
+
+// GetPriceRegularDays returns the PriceRegularDays field value
+func (o *PostTemporaryResidenceFields) GetPriceRegularDays() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PriceRegularDays
+}
+
+// GetPriceRegularDaysOk returns a tuple with the PriceRegularDays field value
+// and a boolean to check if the value has been set.
+func (o *PostTemporaryResidenceFields) GetPriceRegularDaysOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PriceRegularDays, true
+}
+
+// SetPriceRegularDays sets field value
+func (o *PostTemporaryResidenceFields) SetPriceRegularDays(v string) {
+	o.PriceRegularDays = v
+}
+
+// GetPriceSpecialDays returns the PriceSpecialDays field value
+func (o *PostTemporaryResidenceFields) GetPriceSpecialDays() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PriceSpecialDays
+}
+
+// GetPriceSpecialDaysOk returns a tuple with the PriceSpecialDays field value
+// and a boolean to check if the value has been set.
+func (o *PostTemporaryResidenceFields) GetPriceSpecialDaysOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PriceSpecialDays, true
+}
+
+// SetPriceSpecialDays sets field value
+func (o *PostTemporaryResidenceFields) SetPriceSpecialDays(v string) {
+	o.PriceSpecialDays = v
+}
+
+// GetPriceWeekends returns the PriceWeekends field value
+func (o *PostTemporaryResidenceFields) GetPriceWeekends() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PriceWeekends
+}
+
+// GetPriceWeekendsOk returns a tuple with the PriceWeekends field value
+// and a boolean to check if the value has been set.
+func (o *PostTemporaryResidenceFields) GetPriceWeekendsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PriceWeekends, true
+}
+
+// SetPriceWeekends sets field value
+func (o *PostTemporaryResidenceFields) SetPriceWeekends(v string) {
+	o.PriceWeekends = v
+}
+
+// GetRegularPersonCapacity returns the RegularPersonCapacity field value
+func (o *PostTemporaryResidenceFields) GetRegularPersonCapacity() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.RegularPersonCapacity
+}
+
+// GetRegularPersonCapacityOk returns a tuple with the RegularPersonCapacity field value
+// and a boolean to check if the value has been set.
+func (o *PostTemporaryResidenceFields) GetRegularPersonCapacityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RegularPersonCapacity, true
+}
+
+// SetRegularPersonCapacity sets field value
+func (o *PostTemporaryResidenceFields) SetRegularPersonCapacity(v int32) {
+	o.RegularPersonCapacity = v
+}
+
+// GetRoomsCount returns the RoomsCount field value
+func (o *PostTemporaryResidenceFields) GetRoomsCount() TemporaryResidenceFieldsRoomsCount {
+	if o == nil {
+		var ret TemporaryResidenceFieldsRoomsCount
+		return ret
+	}
+
+	return o.RoomsCount
+}
+
+// GetRoomsCountOk returns a tuple with the RoomsCount field value
+// and a boolean to check if the value has been set.
+func (o *PostTemporaryResidenceFields) GetRoomsCountOk() (*TemporaryResidenceFieldsRoomsCount, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RoomsCount, true
+}
+
+// SetRoomsCount sets field value
+func (o *PostTemporaryResidenceFields) SetRoomsCount(v TemporaryResidenceFieldsRoomsCount) {
+	o.RoomsCount = v
 }
 
 // GetCheckInTime returns the CheckInTime field value if set, zero value otherwise.
@@ -231,38 +428,6 @@ func (o *PostTemporaryResidenceFields) SetDamageDeposit(v string) {
 	o.DamageDeposit = &v
 }
 
-// GetExtraPersonCapacity returns the ExtraPersonCapacity field value if set, zero value otherwise.
-func (o *PostTemporaryResidenceFields) GetExtraPersonCapacity() int32 {
-	if o == nil || IsNil(o.ExtraPersonCapacity) {
-		var ret int32
-		return ret
-	}
-	return *o.ExtraPersonCapacity
-}
-
-// GetExtraPersonCapacityOk returns a tuple with the ExtraPersonCapacity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetExtraPersonCapacityOk() (*int32, bool) {
-	if o == nil || IsNil(o.ExtraPersonCapacity) {
-		return nil, false
-	}
-	return o.ExtraPersonCapacity, true
-}
-
-// HasExtraPersonCapacity returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasExtraPersonCapacity() bool {
-	if o != nil && !IsNil(o.ExtraPersonCapacity) {
-		return true
-	}
-
-	return false
-}
-
-// SetExtraPersonCapacity gets a reference to the given int32 and assigns it to the ExtraPersonCapacity field.
-func (o *PostTemporaryResidenceFields) SetExtraPersonCapacity(v int32) {
-	o.ExtraPersonCapacity = &v
-}
-
 // GetFullyFurnished returns the FullyFurnished field value if set, zero value otherwise.
 func (o *PostTemporaryResidenceFields) GetFullyFurnished() bool {
 	if o == nil || IsNil(o.FullyFurnished) {
@@ -293,38 +458,6 @@ func (o *PostTemporaryResidenceFields) HasFullyFurnished() bool {
 // SetFullyFurnished gets a reference to the given bool and assigns it to the FullyFurnished field.
 func (o *PostTemporaryResidenceFields) SetFullyFurnished(v bool) {
 	o.FullyFurnished = &v
-}
-
-// GetHasOwnImage returns the HasOwnImage field value if set, zero value otherwise.
-func (o *PostTemporaryResidenceFields) GetHasOwnImage() bool {
-	if o == nil || IsNil(o.HasOwnImage) {
-		var ret bool
-		return ret
-	}
-	return *o.HasOwnImage
-}
-
-// GetHasOwnImageOk returns a tuple with the HasOwnImage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetHasOwnImageOk() (*bool, bool) {
-	if o == nil || IsNil(o.HasOwnImage) {
-		return nil, false
-	}
-	return o.HasOwnImage, true
-}
-
-// HasHasOwnImage returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasHasOwnImage() bool {
-	if o != nil && !IsNil(o.HasOwnImage) {
-		return true
-	}
-
-	return false
-}
-
-// SetHasOwnImage gets a reference to the given bool and assigns it to the HasOwnImage field.
-func (o *PostTemporaryResidenceFields) SetHasOwnImage(v bool) {
-	o.HasOwnImage = &v
 }
 
 // GetHeatingCoolingSystem returns the HeatingCoolingSystem field value if set, zero value otherwise.
@@ -455,166 +588,6 @@ func (o *PostTemporaryResidenceFields) SetPetsAllowed(v TemporaryResidenceFields
 	o.PetsAllowed = &v
 }
 
-// GetPriceCostPerExtraPerson returns the PriceCostPerExtraPerson field value if set, zero value otherwise.
-func (o *PostTemporaryResidenceFields) GetPriceCostPerExtraPerson() string {
-	if o == nil || IsNil(o.PriceCostPerExtraPerson) {
-		var ret string
-		return ret
-	}
-	return *o.PriceCostPerExtraPerson
-}
-
-// GetPriceCostPerExtraPersonOk returns a tuple with the PriceCostPerExtraPerson field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetPriceCostPerExtraPersonOk() (*string, bool) {
-	if o == nil || IsNil(o.PriceCostPerExtraPerson) {
-		return nil, false
-	}
-	return o.PriceCostPerExtraPerson, true
-}
-
-// HasPriceCostPerExtraPerson returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasPriceCostPerExtraPerson() bool {
-	if o != nil && !IsNil(o.PriceCostPerExtraPerson) {
-		return true
-	}
-
-	return false
-}
-
-// SetPriceCostPerExtraPerson gets a reference to the given string and assigns it to the PriceCostPerExtraPerson field.
-func (o *PostTemporaryResidenceFields) SetPriceCostPerExtraPerson(v string) {
-	o.PriceCostPerExtraPerson = &v
-}
-
-// GetPriceRegularDays returns the PriceRegularDays field value if set, zero value otherwise.
-func (o *PostTemporaryResidenceFields) GetPriceRegularDays() string {
-	if o == nil || IsNil(o.PriceRegularDays) {
-		var ret string
-		return ret
-	}
-	return *o.PriceRegularDays
-}
-
-// GetPriceRegularDaysOk returns a tuple with the PriceRegularDays field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetPriceRegularDaysOk() (*string, bool) {
-	if o == nil || IsNil(o.PriceRegularDays) {
-		return nil, false
-	}
-	return o.PriceRegularDays, true
-}
-
-// HasPriceRegularDays returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasPriceRegularDays() bool {
-	if o != nil && !IsNil(o.PriceRegularDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetPriceRegularDays gets a reference to the given string and assigns it to the PriceRegularDays field.
-func (o *PostTemporaryResidenceFields) SetPriceRegularDays(v string) {
-	o.PriceRegularDays = &v
-}
-
-// GetPriceSpecialDays returns the PriceSpecialDays field value if set, zero value otherwise.
-func (o *PostTemporaryResidenceFields) GetPriceSpecialDays() string {
-	if o == nil || IsNil(o.PriceSpecialDays) {
-		var ret string
-		return ret
-	}
-	return *o.PriceSpecialDays
-}
-
-// GetPriceSpecialDaysOk returns a tuple with the PriceSpecialDays field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetPriceSpecialDaysOk() (*string, bool) {
-	if o == nil || IsNil(o.PriceSpecialDays) {
-		return nil, false
-	}
-	return o.PriceSpecialDays, true
-}
-
-// HasPriceSpecialDays returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasPriceSpecialDays() bool {
-	if o != nil && !IsNil(o.PriceSpecialDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetPriceSpecialDays gets a reference to the given string and assigns it to the PriceSpecialDays field.
-func (o *PostTemporaryResidenceFields) SetPriceSpecialDays(v string) {
-	o.PriceSpecialDays = &v
-}
-
-// GetPriceWeekends returns the PriceWeekends field value if set, zero value otherwise.
-func (o *PostTemporaryResidenceFields) GetPriceWeekends() string {
-	if o == nil || IsNil(o.PriceWeekends) {
-		var ret string
-		return ret
-	}
-	return *o.PriceWeekends
-}
-
-// GetPriceWeekendsOk returns a tuple with the PriceWeekends field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetPriceWeekendsOk() (*string, bool) {
-	if o == nil || IsNil(o.PriceWeekends) {
-		return nil, false
-	}
-	return o.PriceWeekends, true
-}
-
-// HasPriceWeekends returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasPriceWeekends() bool {
-	if o != nil && !IsNil(o.PriceWeekends) {
-		return true
-	}
-
-	return false
-}
-
-// SetPriceWeekends gets a reference to the given string and assigns it to the PriceWeekends field.
-func (o *PostTemporaryResidenceFields) SetPriceWeekends(v string) {
-	o.PriceWeekends = &v
-}
-
-// GetRegularPersonCapacity returns the RegularPersonCapacity field value if set, zero value otherwise.
-func (o *PostTemporaryResidenceFields) GetRegularPersonCapacity() int32 {
-	if o == nil || IsNil(o.RegularPersonCapacity) {
-		var ret int32
-		return ret
-	}
-	return *o.RegularPersonCapacity
-}
-
-// GetRegularPersonCapacityOk returns a tuple with the RegularPersonCapacity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetRegularPersonCapacityOk() (*int32, bool) {
-	if o == nil || IsNil(o.RegularPersonCapacity) {
-		return nil, false
-	}
-	return o.RegularPersonCapacity, true
-}
-
-// HasRegularPersonCapacity returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasRegularPersonCapacity() bool {
-	if o != nil && !IsNil(o.RegularPersonCapacity) {
-		return true
-	}
-
-	return false
-}
-
-// SetRegularPersonCapacity gets a reference to the given int32 and assigns it to the RegularPersonCapacity field.
-func (o *PostTemporaryResidenceFields) SetRegularPersonCapacity(v int32) {
-	o.RegularPersonCapacity = &v
-}
-
 // GetRentalPeriod returns the RentalPeriod field value if set, zero value otherwise.
 func (o *PostTemporaryResidenceFields) GetRentalPeriod() TemporaryResidenceFieldsRentalPeriod {
 	if o == nil || IsNil(o.RentalPeriod) {
@@ -647,38 +620,6 @@ func (o *PostTemporaryResidenceFields) SetRentalPeriod(v TemporaryResidenceField
 	o.RentalPeriod = &v
 }
 
-// GetRoomsCount returns the RoomsCount field value if set, zero value otherwise.
-func (o *PostTemporaryResidenceFields) GetRoomsCount() TemporaryResidenceFieldsRoomsCount {
-	if o == nil || IsNil(o.RoomsCount) {
-		var ret TemporaryResidenceFieldsRoomsCount
-		return ret
-	}
-	return *o.RoomsCount
-}
-
-// GetRoomsCountOk returns a tuple with the RoomsCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetRoomsCountOk() (*TemporaryResidenceFieldsRoomsCount, bool) {
-	if o == nil || IsNil(o.RoomsCount) {
-		return nil, false
-	}
-	return o.RoomsCount, true
-}
-
-// HasRoomsCount returns a boolean if a field has been set.
-func (o *PostTemporaryResidenceFields) HasRoomsCount() bool {
-	if o != nil && !IsNil(o.RoomsCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoomsCount gets a reference to the given TemporaryResidenceFieldsRoomsCount and assigns it to the RoomsCount field.
-func (o *PostTemporaryResidenceFields) SetRoomsCount(v TemporaryResidenceFieldsRoomsCount) {
-	o.RoomsCount = &v
-}
-
 func (o PostTemporaryResidenceFields) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -689,9 +630,15 @@ func (o PostTemporaryResidenceFields) MarshalJSON() ([]byte, error) {
 
 func (o PostTemporaryResidenceFields) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Area) {
-		toSerialize["area"] = o.Area
-	}
+	toSerialize["area"] = o.Area
+	toSerialize["extra_person_capacity"] = o.ExtraPersonCapacity
+	toSerialize["has_own_image"] = o.HasOwnImage
+	toSerialize["price_cost_per_extra_person"] = o.PriceCostPerExtraPerson
+	toSerialize["price_regular_days"] = o.PriceRegularDays
+	toSerialize["price_special_days"] = o.PriceSpecialDays
+	toSerialize["price_weekends"] = o.PriceWeekends
+	toSerialize["regular_person_capacity"] = o.RegularPersonCapacity
+	toSerialize["rooms_count"] = o.RoomsCount
 	if !IsNil(o.CheckInTime) {
 		toSerialize["check_in_time"] = o.CheckInTime
 	}
@@ -704,14 +651,8 @@ func (o PostTemporaryResidenceFields) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DamageDeposit) {
 		toSerialize["damage_deposit"] = o.DamageDeposit
 	}
-	if !IsNil(o.ExtraPersonCapacity) {
-		toSerialize["extra_person_capacity"] = o.ExtraPersonCapacity
-	}
 	if !IsNil(o.FullyFurnished) {
 		toSerialize["fully_furnished"] = o.FullyFurnished
-	}
-	if !IsNil(o.HasOwnImage) {
-		toSerialize["has_own_image"] = o.HasOwnImage
 	}
 	if !IsNil(o.HeatingCoolingSystem) {
 		toSerialize["heating_cooling_system"] = o.HeatingCoolingSystem
@@ -725,28 +666,55 @@ func (o PostTemporaryResidenceFields) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PetsAllowed) {
 		toSerialize["pets_allowed"] = o.PetsAllowed
 	}
-	if !IsNil(o.PriceCostPerExtraPerson) {
-		toSerialize["price_cost_per_extra_person"] = o.PriceCostPerExtraPerson
-	}
-	if !IsNil(o.PriceRegularDays) {
-		toSerialize["price_regular_days"] = o.PriceRegularDays
-	}
-	if !IsNil(o.PriceSpecialDays) {
-		toSerialize["price_special_days"] = o.PriceSpecialDays
-	}
-	if !IsNil(o.PriceWeekends) {
-		toSerialize["price_weekends"] = o.PriceWeekends
-	}
-	if !IsNil(o.RegularPersonCapacity) {
-		toSerialize["regular_person_capacity"] = o.RegularPersonCapacity
-	}
 	if !IsNil(o.RentalPeriod) {
 		toSerialize["rental_period"] = o.RentalPeriod
 	}
-	if !IsNil(o.RoomsCount) {
-		toSerialize["rooms_count"] = o.RoomsCount
-	}
 	return toSerialize, nil
+}
+
+func (o *PostTemporaryResidenceFields) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"area",
+		"extra_person_capacity",
+		"has_own_image",
+		"price_cost_per_extra_person",
+		"price_regular_days",
+		"price_special_days",
+		"price_weekends",
+		"regular_person_capacity",
+		"rooms_count",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPostTemporaryResidenceFields := _PostTemporaryResidenceFields{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPostTemporaryResidenceFields)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PostTemporaryResidenceFields(varPostTemporaryResidenceFields)
+
+	return err
 }
 
 type NullablePostTemporaryResidenceFields struct {

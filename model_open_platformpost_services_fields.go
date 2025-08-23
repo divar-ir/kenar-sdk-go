@@ -12,6 +12,8 @@ package kenarapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OpenPlatformpostServicesFields type satisfies the MappedNullable interface at compile time
@@ -19,25 +21,33 @@ var _ MappedNullable = &OpenPlatformpostServicesFields{}
 
 // OpenPlatformpostServicesFields struct for OpenPlatformpostServicesFields
 type OpenPlatformpostServicesFields struct {
-	Category *PostServicesFieldsCategory `json:"category,omitempty"`
+	Category PostServicesFieldsCategory `json:"category"`
 	// List of expertise ids
-	ExpertiseIds []string `json:"expertise_ids,omitempty"`
+	ExpertiseIds []string `json:"expertise_ids"`
 	// End hour of work in 24-hour format (e.g. 18 for 18:00). Only applicable if `works_24_7` is false.
-	WorkHoursEnd *int32 `json:"work_hours_end,omitempty"`
+	WorkHoursEnd int32 `json:"work_hours_end"`
 	// Start hour of work in 24-hour format (e.g. 9 for 9:00). Only applicable if `works_24_7` is false.
-	WorkHoursStart *int32 `json:"work_hours_start,omitempty"`
+	WorkHoursStart int32 `json:"work_hours_start"`
 	// Whether the service provider works on holidays
-	WorkOnHolidays *bool `json:"work_on_holidays,omitempty"`
+	WorkOnHolidays bool `json:"work_on_holidays"`
 	// Whether the service provider is available 24/7. If true, `work_hours_start` and `work_hours_end` are ignored.
-	Works247 *bool `json:"works_24_7,omitempty"`
+	Works247 bool `json:"works_24_7"`
 }
+
+type _OpenPlatformpostServicesFields OpenPlatformpostServicesFields
 
 // NewOpenPlatformpostServicesFields instantiates a new OpenPlatformpostServicesFields object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenPlatformpostServicesFields() *OpenPlatformpostServicesFields {
+func NewOpenPlatformpostServicesFields(category PostServicesFieldsCategory, expertiseIds []string, workHoursEnd int32, workHoursStart int32, workOnHolidays bool, works247 bool) *OpenPlatformpostServicesFields {
 	this := OpenPlatformpostServicesFields{}
+	this.Category = category
+	this.ExpertiseIds = expertiseIds
+	this.WorkHoursEnd = workHoursEnd
+	this.WorkHoursStart = workHoursStart
+	this.WorkOnHolidays = workOnHolidays
+	this.Works247 = works247
 	return &this
 }
 
@@ -49,196 +59,148 @@ func NewOpenPlatformpostServicesFieldsWithDefaults() *OpenPlatformpostServicesFi
 	return &this
 }
 
-// GetCategory returns the Category field value if set, zero value otherwise.
+// GetCategory returns the Category field value
 func (o *OpenPlatformpostServicesFields) GetCategory() PostServicesFieldsCategory {
-	if o == nil || IsNil(o.Category) {
+	if o == nil {
 		var ret PostServicesFieldsCategory
 		return ret
 	}
-	return *o.Category
+
+	return o.Category
 }
 
-// GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
+// GetCategoryOk returns a tuple with the Category field value
 // and a boolean to check if the value has been set.
 func (o *OpenPlatformpostServicesFields) GetCategoryOk() (*PostServicesFieldsCategory, bool) {
-	if o == nil || IsNil(o.Category) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Category, true
+	return &o.Category, true
 }
 
-// HasCategory returns a boolean if a field has been set.
-func (o *OpenPlatformpostServicesFields) HasCategory() bool {
-	if o != nil && !IsNil(o.Category) {
-		return true
-	}
-
-	return false
-}
-
-// SetCategory gets a reference to the given PostServicesFieldsCategory and assigns it to the Category field.
+// SetCategory sets field value
 func (o *OpenPlatformpostServicesFields) SetCategory(v PostServicesFieldsCategory) {
-	o.Category = &v
+	o.Category = v
 }
 
-// GetExpertiseIds returns the ExpertiseIds field value if set, zero value otherwise.
+// GetExpertiseIds returns the ExpertiseIds field value
 func (o *OpenPlatformpostServicesFields) GetExpertiseIds() []string {
-	if o == nil || IsNil(o.ExpertiseIds) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.ExpertiseIds
 }
 
-// GetExpertiseIdsOk returns a tuple with the ExpertiseIds field value if set, nil otherwise
+// GetExpertiseIdsOk returns a tuple with the ExpertiseIds field value
 // and a boolean to check if the value has been set.
 func (o *OpenPlatformpostServicesFields) GetExpertiseIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.ExpertiseIds) {
+	if o == nil {
 		return nil, false
 	}
 	return o.ExpertiseIds, true
 }
 
-// HasExpertiseIds returns a boolean if a field has been set.
-func (o *OpenPlatformpostServicesFields) HasExpertiseIds() bool {
-	if o != nil && !IsNil(o.ExpertiseIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetExpertiseIds gets a reference to the given []string and assigns it to the ExpertiseIds field.
+// SetExpertiseIds sets field value
 func (o *OpenPlatformpostServicesFields) SetExpertiseIds(v []string) {
 	o.ExpertiseIds = v
 }
 
-// GetWorkHoursEnd returns the WorkHoursEnd field value if set, zero value otherwise.
+// GetWorkHoursEnd returns the WorkHoursEnd field value
 func (o *OpenPlatformpostServicesFields) GetWorkHoursEnd() int32 {
-	if o == nil || IsNil(o.WorkHoursEnd) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.WorkHoursEnd
+
+	return o.WorkHoursEnd
 }
 
-// GetWorkHoursEndOk returns a tuple with the WorkHoursEnd field value if set, nil otherwise
+// GetWorkHoursEndOk returns a tuple with the WorkHoursEnd field value
 // and a boolean to check if the value has been set.
 func (o *OpenPlatformpostServicesFields) GetWorkHoursEndOk() (*int32, bool) {
-	if o == nil || IsNil(o.WorkHoursEnd) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WorkHoursEnd, true
+	return &o.WorkHoursEnd, true
 }
 
-// HasWorkHoursEnd returns a boolean if a field has been set.
-func (o *OpenPlatformpostServicesFields) HasWorkHoursEnd() bool {
-	if o != nil && !IsNil(o.WorkHoursEnd) {
-		return true
-	}
-
-	return false
-}
-
-// SetWorkHoursEnd gets a reference to the given int32 and assigns it to the WorkHoursEnd field.
+// SetWorkHoursEnd sets field value
 func (o *OpenPlatformpostServicesFields) SetWorkHoursEnd(v int32) {
-	o.WorkHoursEnd = &v
+	o.WorkHoursEnd = v
 }
 
-// GetWorkHoursStart returns the WorkHoursStart field value if set, zero value otherwise.
+// GetWorkHoursStart returns the WorkHoursStart field value
 func (o *OpenPlatformpostServicesFields) GetWorkHoursStart() int32 {
-	if o == nil || IsNil(o.WorkHoursStart) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.WorkHoursStart
+
+	return o.WorkHoursStart
 }
 
-// GetWorkHoursStartOk returns a tuple with the WorkHoursStart field value if set, nil otherwise
+// GetWorkHoursStartOk returns a tuple with the WorkHoursStart field value
 // and a boolean to check if the value has been set.
 func (o *OpenPlatformpostServicesFields) GetWorkHoursStartOk() (*int32, bool) {
-	if o == nil || IsNil(o.WorkHoursStart) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WorkHoursStart, true
+	return &o.WorkHoursStart, true
 }
 
-// HasWorkHoursStart returns a boolean if a field has been set.
-func (o *OpenPlatformpostServicesFields) HasWorkHoursStart() bool {
-	if o != nil && !IsNil(o.WorkHoursStart) {
-		return true
-	}
-
-	return false
-}
-
-// SetWorkHoursStart gets a reference to the given int32 and assigns it to the WorkHoursStart field.
+// SetWorkHoursStart sets field value
 func (o *OpenPlatformpostServicesFields) SetWorkHoursStart(v int32) {
-	o.WorkHoursStart = &v
+	o.WorkHoursStart = v
 }
 
-// GetWorkOnHolidays returns the WorkOnHolidays field value if set, zero value otherwise.
+// GetWorkOnHolidays returns the WorkOnHolidays field value
 func (o *OpenPlatformpostServicesFields) GetWorkOnHolidays() bool {
-	if o == nil || IsNil(o.WorkOnHolidays) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.WorkOnHolidays
+
+	return o.WorkOnHolidays
 }
 
-// GetWorkOnHolidaysOk returns a tuple with the WorkOnHolidays field value if set, nil otherwise
+// GetWorkOnHolidaysOk returns a tuple with the WorkOnHolidays field value
 // and a boolean to check if the value has been set.
 func (o *OpenPlatformpostServicesFields) GetWorkOnHolidaysOk() (*bool, bool) {
-	if o == nil || IsNil(o.WorkOnHolidays) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WorkOnHolidays, true
+	return &o.WorkOnHolidays, true
 }
 
-// HasWorkOnHolidays returns a boolean if a field has been set.
-func (o *OpenPlatformpostServicesFields) HasWorkOnHolidays() bool {
-	if o != nil && !IsNil(o.WorkOnHolidays) {
-		return true
-	}
-
-	return false
-}
-
-// SetWorkOnHolidays gets a reference to the given bool and assigns it to the WorkOnHolidays field.
+// SetWorkOnHolidays sets field value
 func (o *OpenPlatformpostServicesFields) SetWorkOnHolidays(v bool) {
-	o.WorkOnHolidays = &v
+	o.WorkOnHolidays = v
 }
 
-// GetWorks247 returns the Works247 field value if set, zero value otherwise.
+// GetWorks247 returns the Works247 field value
 func (o *OpenPlatformpostServicesFields) GetWorks247() bool {
-	if o == nil || IsNil(o.Works247) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Works247
+
+	return o.Works247
 }
 
-// GetWorks247Ok returns a tuple with the Works247 field value if set, nil otherwise
+// GetWorks247Ok returns a tuple with the Works247 field value
 // and a boolean to check if the value has been set.
 func (o *OpenPlatformpostServicesFields) GetWorks247Ok() (*bool, bool) {
-	if o == nil || IsNil(o.Works247) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Works247, true
+	return &o.Works247, true
 }
 
-// HasWorks247 returns a boolean if a field has been set.
-func (o *OpenPlatformpostServicesFields) HasWorks247() bool {
-	if o != nil && !IsNil(o.Works247) {
-		return true
-	}
-
-	return false
-}
-
-// SetWorks247 gets a reference to the given bool and assigns it to the Works247 field.
+// SetWorks247 sets field value
 func (o *OpenPlatformpostServicesFields) SetWorks247(v bool) {
-	o.Works247 = &v
+	o.Works247 = v
 }
 
 func (o OpenPlatformpostServicesFields) MarshalJSON() ([]byte, error) {
@@ -251,25 +213,55 @@ func (o OpenPlatformpostServicesFields) MarshalJSON() ([]byte, error) {
 
 func (o OpenPlatformpostServicesFields) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Category) {
-		toSerialize["category"] = o.Category
-	}
-	if !IsNil(o.ExpertiseIds) {
-		toSerialize["expertise_ids"] = o.ExpertiseIds
-	}
-	if !IsNil(o.WorkHoursEnd) {
-		toSerialize["work_hours_end"] = o.WorkHoursEnd
-	}
-	if !IsNil(o.WorkHoursStart) {
-		toSerialize["work_hours_start"] = o.WorkHoursStart
-	}
-	if !IsNil(o.WorkOnHolidays) {
-		toSerialize["work_on_holidays"] = o.WorkOnHolidays
-	}
-	if !IsNil(o.Works247) {
-		toSerialize["works_24_7"] = o.Works247
-	}
+	toSerialize["category"] = o.Category
+	toSerialize["expertise_ids"] = o.ExpertiseIds
+	toSerialize["work_hours_end"] = o.WorkHoursEnd
+	toSerialize["work_hours_start"] = o.WorkHoursStart
+	toSerialize["work_on_holidays"] = o.WorkOnHolidays
+	toSerialize["works_24_7"] = o.Works247
 	return toSerialize, nil
+}
+
+func (o *OpenPlatformpostServicesFields) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"category",
+		"expertise_ids",
+		"work_hours_end",
+		"work_hours_start",
+		"work_on_holidays",
+		"works_24_7",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOpenPlatformpostServicesFields := _OpenPlatformpostServicesFields{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOpenPlatformpostServicesFields)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenPlatformpostServicesFields(varOpenPlatformpostServicesFields)
+
+	return err
 }
 
 type NullableOpenPlatformpostServicesFields struct {

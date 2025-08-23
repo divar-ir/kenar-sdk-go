@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChatEnabled** | Pointer to **bool** | امکان چت فعال باشد | [optional] 
-**City** | Pointer to **string** | شهر آگهی | [optional] 
-**Description** | Pointer to **string** | توضیحات آگهی | [optional] 
+**ChatEnabled** | **bool** | امکان چت فعال باشد | 
+**City** | **string** | شهر آگهی | 
+**Description** | **string** | توضیحات آگهی | 
+**HidePhone** | **bool** | عدم نمایش شماره تماس به کاربران | 
+**Images** | **[]string** |  | 
+**LocationType** | [**SubmitPostRequestLocationType**](SubmitPostRequestLocationType.md) |  | 
+**Title** | **string** | عنوان آگهی | 
 **District** | Pointer to **string** | محله آگهی | [optional] 
-**HidePhone** | Pointer to **bool** | عدم نمایش شماره تماس به کاربران | [optional] 
-**Images** | Pointer to **[]string** |  | [optional] 
 **LandlineNumbers** | Pointer to **[]string** | Landline numbers to be added to the post | [optional] 
 **Latitude** | Pointer to **float64** | عرض جغرافیایی آگهی | [optional] 
-**LocationType** | Pointer to [**SubmitPostRequestLocationType**](SubmitPostRequestLocationType.md) |  | [optional] 
 **Longitude** | Pointer to **float64** | طول جغرافیایی آگهی | [optional] 
 **Services** | Pointer to [**OpenPlatformpostServicesFields**](OpenPlatformpostServicesFields.md) |  | [optional] 
 **TemporaryResidence** | Pointer to [**PostTemporaryResidenceFields**](PostTemporaryResidenceFields.md) |  | [optional] 
-**Title** | Pointer to **string** | عنوان آگهی | [optional] 
 
 ## Methods
 
 ### NewPostSubmitPostRequest
 
-`func NewPostSubmitPostRequest() *PostSubmitPostRequest`
+`func NewPostSubmitPostRequest(chatEnabled bool, city string, description string, hidePhone bool, images []string, locationType SubmitPostRequestLocationType, title string, ) *PostSubmitPostRequest`
 
 NewPostSubmitPostRequest instantiates a new PostSubmitPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -56,11 +56,6 @@ and a boolean to check if the value has been set.
 
 SetChatEnabled sets ChatEnabled field to given value.
 
-### HasChatEnabled
-
-`func (o *PostSubmitPostRequest) HasChatEnabled() bool`
-
-HasChatEnabled returns a boolean if a field has been set.
 
 ### GetCity
 
@@ -81,11 +76,6 @@ and a boolean to check if the value has been set.
 
 SetCity sets City field to given value.
 
-### HasCity
-
-`func (o *PostSubmitPostRequest) HasCity() bool`
-
-HasCity returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -106,11 +96,86 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
 
-`func (o *PostSubmitPostRequest) HasDescription() bool`
+### GetHidePhone
 
-HasDescription returns a boolean if a field has been set.
+`func (o *PostSubmitPostRequest) GetHidePhone() bool`
+
+GetHidePhone returns the HidePhone field if non-nil, zero value otherwise.
+
+### GetHidePhoneOk
+
+`func (o *PostSubmitPostRequest) GetHidePhoneOk() (*bool, bool)`
+
+GetHidePhoneOk returns a tuple with the HidePhone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHidePhone
+
+`func (o *PostSubmitPostRequest) SetHidePhone(v bool)`
+
+SetHidePhone sets HidePhone field to given value.
+
+
+### GetImages
+
+`func (o *PostSubmitPostRequest) GetImages() []string`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *PostSubmitPostRequest) GetImagesOk() (*[]string, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *PostSubmitPostRequest) SetImages(v []string)`
+
+SetImages sets Images field to given value.
+
+
+### GetLocationType
+
+`func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType`
+
+GetLocationType returns the LocationType field if non-nil, zero value otherwise.
+
+### GetLocationTypeOk
+
+`func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationType, bool)`
+
+GetLocationTypeOk returns a tuple with the LocationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocationType
+
+`func (o *PostSubmitPostRequest) SetLocationType(v SubmitPostRequestLocationType)`
+
+SetLocationType sets LocationType field to given value.
+
+
+### GetTitle
+
+`func (o *PostSubmitPostRequest) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *PostSubmitPostRequest) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *PostSubmitPostRequest) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
 
 ### GetDistrict
 
@@ -136,56 +201,6 @@ SetDistrict sets District field to given value.
 `func (o *PostSubmitPostRequest) HasDistrict() bool`
 
 HasDistrict returns a boolean if a field has been set.
-
-### GetHidePhone
-
-`func (o *PostSubmitPostRequest) GetHidePhone() bool`
-
-GetHidePhone returns the HidePhone field if non-nil, zero value otherwise.
-
-### GetHidePhoneOk
-
-`func (o *PostSubmitPostRequest) GetHidePhoneOk() (*bool, bool)`
-
-GetHidePhoneOk returns a tuple with the HidePhone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHidePhone
-
-`func (o *PostSubmitPostRequest) SetHidePhone(v bool)`
-
-SetHidePhone sets HidePhone field to given value.
-
-### HasHidePhone
-
-`func (o *PostSubmitPostRequest) HasHidePhone() bool`
-
-HasHidePhone returns a boolean if a field has been set.
-
-### GetImages
-
-`func (o *PostSubmitPostRequest) GetImages() []string`
-
-GetImages returns the Images field if non-nil, zero value otherwise.
-
-### GetImagesOk
-
-`func (o *PostSubmitPostRequest) GetImagesOk() (*[]string, bool)`
-
-GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImages
-
-`func (o *PostSubmitPostRequest) SetImages(v []string)`
-
-SetImages sets Images field to given value.
-
-### HasImages
-
-`func (o *PostSubmitPostRequest) HasImages() bool`
-
-HasImages returns a boolean if a field has been set.
 
 ### GetLandlineNumbers
 
@@ -236,31 +251,6 @@ SetLatitude sets Latitude field to given value.
 `func (o *PostSubmitPostRequest) HasLatitude() bool`
 
 HasLatitude returns a boolean if a field has been set.
-
-### GetLocationType
-
-`func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType`
-
-GetLocationType returns the LocationType field if non-nil, zero value otherwise.
-
-### GetLocationTypeOk
-
-`func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationType, bool)`
-
-GetLocationTypeOk returns a tuple with the LocationType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLocationType
-
-`func (o *PostSubmitPostRequest) SetLocationType(v SubmitPostRequestLocationType)`
-
-SetLocationType sets LocationType field to given value.
-
-### HasLocationType
-
-`func (o *PostSubmitPostRequest) HasLocationType() bool`
-
-HasLocationType returns a boolean if a field has been set.
 
 ### GetLongitude
 
@@ -336,31 +326,6 @@ SetTemporaryResidence sets TemporaryResidence field to given value.
 `func (o *PostSubmitPostRequest) HasTemporaryResidence() bool`
 
 HasTemporaryResidence returns a boolean if a field has been set.
-
-### GetTitle
-
-`func (o *PostSubmitPostRequest) GetTitle() string`
-
-GetTitle returns the Title field if non-nil, zero value otherwise.
-
-### GetTitleOk
-
-`func (o *PostSubmitPostRequest) GetTitleOk() (*string, bool)`
-
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTitle
-
-`func (o *PostSubmitPostRequest) SetTitle(v string)`
-
-SetTitle sets Title field to given value.
-
-### HasTitle
-
-`func (o *PostSubmitPostRequest) HasTitle() bool`
-
-HasTitle returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

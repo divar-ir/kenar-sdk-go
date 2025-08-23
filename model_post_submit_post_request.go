@@ -12,6 +12,8 @@ package kenarapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PostSubmitPostRequest type satisfies the MappedNullable interface at compile time
@@ -20,35 +22,44 @@ var _ MappedNullable = &PostSubmitPostRequest{}
 // PostSubmitPostRequest struct for PostSubmitPostRequest
 type PostSubmitPostRequest struct {
 	// امکان چت فعال باشد
-	ChatEnabled *bool `json:"chat_enabled,omitempty"`
+	ChatEnabled bool `json:"chat_enabled"`
 	// شهر آگهی
-	City *string `json:"city,omitempty"`
+	City string `json:"city"`
 	// توضیحات آگهی
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description"`
+	// عدم نمایش شماره تماس به کاربران
+	HidePhone bool `json:"hide_phone"`
+	Images []string `json:"images"`
+	LocationType SubmitPostRequestLocationType `json:"location_type"`
+	// عنوان آگهی
+	Title string `json:"title"`
 	// محله آگهی
 	District *string `json:"district,omitempty"`
-	// عدم نمایش شماره تماس به کاربران
-	HidePhone *bool `json:"hide_phone,omitempty"`
-	Images []string `json:"images,omitempty"`
 	// Landline numbers to be added to the post
 	LandlineNumbers []string `json:"landline_numbers,omitempty"`
 	// عرض جغرافیایی آگهی
 	Latitude *float64 `json:"latitude,omitempty"`
-	LocationType *SubmitPostRequestLocationType `json:"location_type,omitempty"`
 	// طول جغرافیایی آگهی
 	Longitude *float64 `json:"longitude,omitempty"`
 	Services *OpenPlatformpostServicesFields `json:"services,omitempty"`
 	TemporaryResidence *PostTemporaryResidenceFields `json:"temporary_residence,omitempty"`
-	// عنوان آگهی
-	Title *string `json:"title,omitempty"`
 }
+
+type _PostSubmitPostRequest PostSubmitPostRequest
 
 // NewPostSubmitPostRequest instantiates a new PostSubmitPostRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPostSubmitPostRequest() *PostSubmitPostRequest {
+func NewPostSubmitPostRequest(chatEnabled bool, city string, description string, hidePhone bool, images []string, locationType SubmitPostRequestLocationType, title string) *PostSubmitPostRequest {
 	this := PostSubmitPostRequest{}
+	this.ChatEnabled = chatEnabled
+	this.City = city
+	this.Description = description
+	this.HidePhone = hidePhone
+	this.Images = images
+	this.LocationType = locationType
+	this.Title = title
 	return &this
 }
 
@@ -60,100 +71,172 @@ func NewPostSubmitPostRequestWithDefaults() *PostSubmitPostRequest {
 	return &this
 }
 
-// GetChatEnabled returns the ChatEnabled field value if set, zero value otherwise.
+// GetChatEnabled returns the ChatEnabled field value
 func (o *PostSubmitPostRequest) GetChatEnabled() bool {
-	if o == nil || IsNil(o.ChatEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ChatEnabled
+
+	return o.ChatEnabled
 }
 
-// GetChatEnabledOk returns a tuple with the ChatEnabled field value if set, nil otherwise
+// GetChatEnabledOk returns a tuple with the ChatEnabled field value
 // and a boolean to check if the value has been set.
 func (o *PostSubmitPostRequest) GetChatEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.ChatEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ChatEnabled, true
+	return &o.ChatEnabled, true
 }
 
-// HasChatEnabled returns a boolean if a field has been set.
-func (o *PostSubmitPostRequest) HasChatEnabled() bool {
-	if o != nil && !IsNil(o.ChatEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetChatEnabled gets a reference to the given bool and assigns it to the ChatEnabled field.
+// SetChatEnabled sets field value
 func (o *PostSubmitPostRequest) SetChatEnabled(v bool) {
-	o.ChatEnabled = &v
+	o.ChatEnabled = v
 }
 
-// GetCity returns the City field value if set, zero value otherwise.
+// GetCity returns the City field value
 func (o *PostSubmitPostRequest) GetCity() string {
-	if o == nil || IsNil(o.City) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.City
+
+	return o.City
 }
 
-// GetCityOk returns a tuple with the City field value if set, nil otherwise
+// GetCityOk returns a tuple with the City field value
 // and a boolean to check if the value has been set.
 func (o *PostSubmitPostRequest) GetCityOk() (*string, bool) {
-	if o == nil || IsNil(o.City) {
+	if o == nil {
 		return nil, false
 	}
-	return o.City, true
+	return &o.City, true
 }
 
-// HasCity returns a boolean if a field has been set.
-func (o *PostSubmitPostRequest) HasCity() bool {
-	if o != nil && !IsNil(o.City) {
-		return true
-	}
-
-	return false
-}
-
-// SetCity gets a reference to the given string and assigns it to the City field.
+// SetCity sets field value
 func (o *PostSubmitPostRequest) SetCity(v string) {
-	o.City = &v
+	o.City = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value
 func (o *PostSubmitPostRequest) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+
+	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *PostSubmitPostRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return &o.Description, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *PostSubmitPostRequest) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
+// SetDescription sets field value
+func (o *PostSubmitPostRequest) SetDescription(v string) {
+	o.Description = v
+}
+
+// GetHidePhone returns the HidePhone field value
+func (o *PostSubmitPostRequest) GetHidePhone() bool {
+	if o == nil {
+		var ret bool
+		return ret
 	}
 
-	return false
+	return o.HidePhone
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *PostSubmitPostRequest) SetDescription(v string) {
-	o.Description = &v
+// GetHidePhoneOk returns a tuple with the HidePhone field value
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetHidePhoneOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HidePhone, true
+}
+
+// SetHidePhone sets field value
+func (o *PostSubmitPostRequest) SetHidePhone(v bool) {
+	o.HidePhone = v
+}
+
+// GetImages returns the Images field value
+func (o *PostSubmitPostRequest) GetImages() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetImagesOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// SetImages sets field value
+func (o *PostSubmitPostRequest) SetImages(v []string) {
+	o.Images = v
+}
+
+// GetLocationType returns the LocationType field value
+func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType {
+	if o == nil {
+		var ret SubmitPostRequestLocationType
+		return ret
+	}
+
+	return o.LocationType
+}
+
+// GetLocationTypeOk returns a tuple with the LocationType field value
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LocationType, true
+}
+
+// SetLocationType sets field value
+func (o *PostSubmitPostRequest) SetLocationType(v SubmitPostRequestLocationType) {
+	o.LocationType = v
+}
+
+// GetTitle returns the Title field value
+func (o *PostSubmitPostRequest) GetTitle() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetTitleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Title, true
+}
+
+// SetTitle sets field value
+func (o *PostSubmitPostRequest) SetTitle(v string) {
+	o.Title = v
 }
 
 // GetDistrict returns the District field value if set, zero value otherwise.
@@ -186,70 +269,6 @@ func (o *PostSubmitPostRequest) HasDistrict() bool {
 // SetDistrict gets a reference to the given string and assigns it to the District field.
 func (o *PostSubmitPostRequest) SetDistrict(v string) {
 	o.District = &v
-}
-
-// GetHidePhone returns the HidePhone field value if set, zero value otherwise.
-func (o *PostSubmitPostRequest) GetHidePhone() bool {
-	if o == nil || IsNil(o.HidePhone) {
-		var ret bool
-		return ret
-	}
-	return *o.HidePhone
-}
-
-// GetHidePhoneOk returns a tuple with the HidePhone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostSubmitPostRequest) GetHidePhoneOk() (*bool, bool) {
-	if o == nil || IsNil(o.HidePhone) {
-		return nil, false
-	}
-	return o.HidePhone, true
-}
-
-// HasHidePhone returns a boolean if a field has been set.
-func (o *PostSubmitPostRequest) HasHidePhone() bool {
-	if o != nil && !IsNil(o.HidePhone) {
-		return true
-	}
-
-	return false
-}
-
-// SetHidePhone gets a reference to the given bool and assigns it to the HidePhone field.
-func (o *PostSubmitPostRequest) SetHidePhone(v bool) {
-	o.HidePhone = &v
-}
-
-// GetImages returns the Images field value if set, zero value otherwise.
-func (o *PostSubmitPostRequest) GetImages() []string {
-	if o == nil || IsNil(o.Images) {
-		var ret []string
-		return ret
-	}
-	return o.Images
-}
-
-// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostSubmitPostRequest) GetImagesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Images) {
-		return nil, false
-	}
-	return o.Images, true
-}
-
-// HasImages returns a boolean if a field has been set.
-func (o *PostSubmitPostRequest) HasImages() bool {
-	if o != nil && !IsNil(o.Images) {
-		return true
-	}
-
-	return false
-}
-
-// SetImages gets a reference to the given []string and assigns it to the Images field.
-func (o *PostSubmitPostRequest) SetImages(v []string) {
-	o.Images = v
 }
 
 // GetLandlineNumbers returns the LandlineNumbers field value if set, zero value otherwise.
@@ -314,38 +333,6 @@ func (o *PostSubmitPostRequest) HasLatitude() bool {
 // SetLatitude gets a reference to the given float64 and assigns it to the Latitude field.
 func (o *PostSubmitPostRequest) SetLatitude(v float64) {
 	o.Latitude = &v
-}
-
-// GetLocationType returns the LocationType field value if set, zero value otherwise.
-func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType {
-	if o == nil || IsNil(o.LocationType) {
-		var ret SubmitPostRequestLocationType
-		return ret
-	}
-	return *o.LocationType
-}
-
-// GetLocationTypeOk returns a tuple with the LocationType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationType, bool) {
-	if o == nil || IsNil(o.LocationType) {
-		return nil, false
-	}
-	return o.LocationType, true
-}
-
-// HasLocationType returns a boolean if a field has been set.
-func (o *PostSubmitPostRequest) HasLocationType() bool {
-	if o != nil && !IsNil(o.LocationType) {
-		return true
-	}
-
-	return false
-}
-
-// SetLocationType gets a reference to the given SubmitPostRequestLocationType and assigns it to the LocationType field.
-func (o *PostSubmitPostRequest) SetLocationType(v SubmitPostRequestLocationType) {
-	o.LocationType = &v
 }
 
 // GetLongitude returns the Longitude field value if set, zero value otherwise.
@@ -444,38 +431,6 @@ func (o *PostSubmitPostRequest) SetTemporaryResidence(v PostTemporaryResidenceFi
 	o.TemporaryResidence = &v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *PostSubmitPostRequest) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostSubmitPostRequest) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *PostSubmitPostRequest) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *PostSubmitPostRequest) SetTitle(v string) {
-	o.Title = &v
-}
-
 func (o PostSubmitPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -486,32 +441,21 @@ func (o PostSubmitPostRequest) MarshalJSON() ([]byte, error) {
 
 func (o PostSubmitPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ChatEnabled) {
-		toSerialize["chat_enabled"] = o.ChatEnabled
-	}
-	if !IsNil(o.City) {
-		toSerialize["city"] = o.City
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
+	toSerialize["chat_enabled"] = o.ChatEnabled
+	toSerialize["city"] = o.City
+	toSerialize["description"] = o.Description
+	toSerialize["hide_phone"] = o.HidePhone
+	toSerialize["images"] = o.Images
+	toSerialize["location_type"] = o.LocationType
+	toSerialize["title"] = o.Title
 	if !IsNil(o.District) {
 		toSerialize["district"] = o.District
-	}
-	if !IsNil(o.HidePhone) {
-		toSerialize["hide_phone"] = o.HidePhone
-	}
-	if !IsNil(o.Images) {
-		toSerialize["images"] = o.Images
 	}
 	if !IsNil(o.LandlineNumbers) {
 		toSerialize["landline_numbers"] = o.LandlineNumbers
 	}
 	if !IsNil(o.Latitude) {
 		toSerialize["latitude"] = o.Latitude
-	}
-	if !IsNil(o.LocationType) {
-		toSerialize["location_type"] = o.LocationType
 	}
 	if !IsNil(o.Longitude) {
 		toSerialize["longitude"] = o.Longitude
@@ -522,10 +466,50 @@ func (o PostSubmitPostRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TemporaryResidence) {
 		toSerialize["temporary_residence"] = o.TemporaryResidence
 	}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
 	return toSerialize, nil
+}
+
+func (o *PostSubmitPostRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"chat_enabled",
+		"city",
+		"description",
+		"hide_phone",
+		"images",
+		"location_type",
+		"title",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPostSubmitPostRequest := _PostSubmitPostRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPostSubmitPostRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PostSubmitPostRequest(varPostSubmitPostRequest)
+
+	return err
 }
 
 type NullablePostSubmitPostRequest struct {
