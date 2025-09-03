@@ -33,8 +33,10 @@ type PostSubmitPostRequest struct {
 	LocationType SubmitPostRequestLocationType `json:"location_type"`
 	// عنوان آگهی
 	Title string `json:"title"`
+	ApartmentSell *PostApartmentSellFields `json:"apartment_sell,omitempty"`
 	// محله آگهی
 	District *string `json:"district,omitempty"`
+	HomePresell *PostHomePresellFields `json:"home_presell,omitempty"`
 	// Landline numbers to be added to the post
 	LandlineNumbers []string `json:"landline_numbers,omitempty"`
 	// عرض جغرافیایی آگهی
@@ -239,6 +241,38 @@ func (o *PostSubmitPostRequest) SetTitle(v string) {
 	o.Title = v
 }
 
+// GetApartmentSell returns the ApartmentSell field value if set, zero value otherwise.
+func (o *PostSubmitPostRequest) GetApartmentSell() PostApartmentSellFields {
+	if o == nil || IsNil(o.ApartmentSell) {
+		var ret PostApartmentSellFields
+		return ret
+	}
+	return *o.ApartmentSell
+}
+
+// GetApartmentSellOk returns a tuple with the ApartmentSell field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetApartmentSellOk() (*PostApartmentSellFields, bool) {
+	if o == nil || IsNil(o.ApartmentSell) {
+		return nil, false
+	}
+	return o.ApartmentSell, true
+}
+
+// HasApartmentSell returns a boolean if a field has been set.
+func (o *PostSubmitPostRequest) HasApartmentSell() bool {
+	if o != nil && !IsNil(o.ApartmentSell) {
+		return true
+	}
+
+	return false
+}
+
+// SetApartmentSell gets a reference to the given PostApartmentSellFields and assigns it to the ApartmentSell field.
+func (o *PostSubmitPostRequest) SetApartmentSell(v PostApartmentSellFields) {
+	o.ApartmentSell = &v
+}
+
 // GetDistrict returns the District field value if set, zero value otherwise.
 func (o *PostSubmitPostRequest) GetDistrict() string {
 	if o == nil || IsNil(o.District) {
@@ -269,6 +303,38 @@ func (o *PostSubmitPostRequest) HasDistrict() bool {
 // SetDistrict gets a reference to the given string and assigns it to the District field.
 func (o *PostSubmitPostRequest) SetDistrict(v string) {
 	o.District = &v
+}
+
+// GetHomePresell returns the HomePresell field value if set, zero value otherwise.
+func (o *PostSubmitPostRequest) GetHomePresell() PostHomePresellFields {
+	if o == nil || IsNil(o.HomePresell) {
+		var ret PostHomePresellFields
+		return ret
+	}
+	return *o.HomePresell
+}
+
+// GetHomePresellOk returns a tuple with the HomePresell field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostRequest) GetHomePresellOk() (*PostHomePresellFields, bool) {
+	if o == nil || IsNil(o.HomePresell) {
+		return nil, false
+	}
+	return o.HomePresell, true
+}
+
+// HasHomePresell returns a boolean if a field has been set.
+func (o *PostSubmitPostRequest) HasHomePresell() bool {
+	if o != nil && !IsNil(o.HomePresell) {
+		return true
+	}
+
+	return false
+}
+
+// SetHomePresell gets a reference to the given PostHomePresellFields and assigns it to the HomePresell field.
+func (o *PostSubmitPostRequest) SetHomePresell(v PostHomePresellFields) {
+	o.HomePresell = &v
 }
 
 // GetLandlineNumbers returns the LandlineNumbers field value if set, zero value otherwise.
@@ -448,8 +514,14 @@ func (o PostSubmitPostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["images"] = o.Images
 	toSerialize["location_type"] = o.LocationType
 	toSerialize["title"] = o.Title
+	if !IsNil(o.ApartmentSell) {
+		toSerialize["apartment_sell"] = o.ApartmentSell
+	}
 	if !IsNil(o.District) {
 		toSerialize["district"] = o.District
+	}
+	if !IsNil(o.HomePresell) {
+		toSerialize["home_presell"] = o.HomePresell
 	}
 	if !IsNil(o.LandlineNumbers) {
 		toSerialize["landline_numbers"] = o.LandlineNumbers

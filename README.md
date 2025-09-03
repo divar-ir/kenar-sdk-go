@@ -113,11 +113,14 @@ Class | Method | HTTP request | Description
 *FinderAPI* | [**FinderGetUser2**](docs/FinderAPI.md#findergetuser2) | **Get** /v1/open-platform/users | دریافت اطلاعات کاربر
 *FinderAPI* | [**FinderGetUserPosts**](docs/FinderAPI.md#findergetuserposts) | **Get** /v1/open-platform/finder/user-posts | دریافت آگهی‌های کاربر
 *FinderAPI* | [**FinderSearchPostV2**](docs/FinderAPI.md#findersearchpostv2) | **Post** /v2/open-platform/finder/post | جستجو آگهی‌های دیوار با فیلترهایی
+*LimitedAPI* | [**PaymentCommitWalletTransaction**](docs/LimitedAPI.md#paymentcommitwallettransaction) | **Post** /experimental/open-platform/wallet/payments/commit | 
+*LimitedAPI* | [**PaymentCreateWalletPayment**](docs/LimitedAPI.md#paymentcreatewalletpayment) | **Post** /experimental/open-platform/wallet/payments/create | 
 *LimitedAPI* | [**PaymentGetBalance**](docs/LimitedAPI.md#paymentgetbalance) | **Get** /experimental/open-platform/balance | 
 *LimitedAPI* | [**PaymentGetPostPricing**](docs/LimitedAPI.md#paymentgetpostpricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت هزینه سرویس
 *LimitedAPI* | [**PaymentGetTransaction**](docs/LimitedAPI.md#paymentgettransaction) | **Get** /experimental/open-platform/transactions/{id} | 
 *LimitedAPI* | [**PaymentListTransactions**](docs/LimitedAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | 
 *LimitedAPI* | [**PaymentReorderPost**](docs/LimitedAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
+*LimitedAPI* | [**PaymentRetrieveWalletTransaction**](docs/LimitedAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
 *PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
@@ -137,6 +140,7 @@ Class | Method | HTTP request | Description
  - [AddonSemanticIdentityVerificationStage](docs/AddonSemanticIdentityVerificationStage.md)
  - [AddonSemanticInspectionResult](docs/AddonSemanticInspectionResult.md)
  - [AddonSemanticNewFaceVerificationResult](docs/AddonSemanticNewFaceVerificationResult.md)
+ - [AddonSemanticOnlineReservationCapability](docs/AddonSemanticOnlineReservationCapability.md)
  - [AddonSemanticOwnershipResult](docs/AddonSemanticOwnershipResult.md)
  - [AddonSemanticPostVerificationResult](docs/AddonSemanticPostVerificationResult.md)
  - [AddonsAction](docs/AddonsAction.md)
@@ -240,6 +244,10 @@ Class | Method | HTTP request | Description
  - [GetPostStatsResponsePostStats](docs/GetPostStatsResponsePostStats.md)
  - [GetServiceTypesResponseServiceTypeData](docs/GetServiceTypesResponseServiceTypeData.md)
  - [GooglerpcStatus](docs/GooglerpcStatus.md)
+ - [HomePresellFieldsConstructionPhase](docs/HomePresellFieldsConstructionPhase.md)
+ - [HomePresellFieldsDeliveryMonth](docs/HomePresellFieldsDeliveryMonth.md)
+ - [HomePresellFieldsDeliveryYear](docs/HomePresellFieldsDeliveryYear.md)
+ - [HomePresellFieldsUnitType](docs/HomePresellFieldsUnitType.md)
  - [ImageCarouselRowImageItem](docs/ImageCarouselRowImageItem.md)
  - [ManagementDevelopmentPost](docs/ManagementDevelopmentPost.md)
  - [MessageContactData](docs/MessageContactData.md)
@@ -251,21 +259,31 @@ Class | Method | HTTP request | Description
  - [MessageVoiceData](docs/MessageVoiceData.md)
  - [OAuthScopeScope](docs/OAuthScopeScope.md)
  - [OpenPlatformpostServicesFields](docs/OpenPlatformpostServicesFields.md)
+ - [PaymentCommitWalletTransactionRequest](docs/PaymentCommitWalletTransactionRequest.md)
+ - [PaymentCommitWalletTransactionResponse](docs/PaymentCommitWalletTransactionResponse.md)
+ - [PaymentCreateWalletPaymentRequest](docs/PaymentCreateWalletPaymentRequest.md)
+ - [PaymentCreateWalletPaymentResponse](docs/PaymentCreateWalletPaymentResponse.md)
  - [PaymentGetBalanceResponse](docs/PaymentGetBalanceResponse.md)
  - [PaymentGetPostPricingResponse](docs/PaymentGetPostPricingResponse.md)
  - [PaymentGetTransactionResponse](docs/PaymentGetTransactionResponse.md)
  - [PaymentListTransactionsResponse](docs/PaymentListTransactionsResponse.md)
  - [PaymentReorderPostBody](docs/PaymentReorderPostBody.md)
  - [PaymentReorderPostResponse](docs/PaymentReorderPostResponse.md)
+ - [PaymentRetrieveWalletTransactionResponse](docs/PaymentRetrieveWalletTransactionResponse.md)
  - [PaymentTicketGenerateResponse](docs/PaymentTicketGenerateResponse.md)
  - [PaymentTicketValidateRequest](docs/PaymentTicketValidateRequest.md)
  - [PaymentTicketValidateResponse](docs/PaymentTicketValidateResponse.md)
  - [PaymentTransaction](docs/PaymentTransaction.md)
  - [PaymentTransactionState](docs/PaymentTransactionState.md)
  - [PaymentTransactionType](docs/PaymentTransactionType.md)
+ - [PaymentWalletTransaction](docs/PaymentWalletTransaction.md)
+ - [PaymentWalletTransactionStatus](docs/PaymentWalletTransactionStatus.md)
+ - [PostApartmentSellFields](docs/PostApartmentSellFields.md)
  - [PostEditPostBody](docs/PostEditPostBody.md)
  - [PostGetImageUploadURLResponse](docs/PostGetImageUploadURLResponse.md)
  - [PostGetPostStatsResponse](docs/PostGetPostStatsResponse.md)
+ - [PostHomePresellFields](docs/PostHomePresellFields.md)
+ - [PostRoomsCount](docs/PostRoomsCount.md)
  - [PostServicesFieldsCategory](docs/PostServicesFieldsCategory.md)
  - [PostSubmitPostRequest](docs/PostSubmitPostRequest.md)
  - [PostSubmitPostResponse](docs/PostSubmitPostResponse.md)
@@ -286,7 +304,6 @@ Class | Method | HTTP request | Description
  - [TemporaryResidenceFieldsHeatingCoolingSystem](docs/TemporaryResidenceFieldsHeatingCoolingSystem.md)
  - [TemporaryResidenceFieldsPetsAllowed](docs/TemporaryResidenceFieldsPetsAllowed.md)
  - [TemporaryResidenceFieldsRentalPeriod](docs/TemporaryResidenceFieldsRentalPeriod.md)
- - [TemporaryResidenceFieldsRoomsCount](docs/TemporaryResidenceFieldsRoomsCount.md)
 
 
 ## Documentation For Authorization

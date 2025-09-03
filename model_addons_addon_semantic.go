@@ -26,6 +26,7 @@ type AddonsAddonSemantic struct {
 	IdentityVerificationResult *AddonSemanticIdentityVerificationResult `json:"identity_verification_result,omitempty"`
 	InspectionResult *AddonSemanticInspectionResult `json:"inspection_result,omitempty"`
 	NewFaceVerificationResult *AddonSemanticNewFaceVerificationResult `json:"new_face_verification_result,omitempty"`
+	OnlineReservationCapability *AddonSemanticOnlineReservationCapability `json:"online_reservation_capability,omitempty"`
 	OwnershipResult *AddonSemanticOwnershipResult `json:"ownership_result,omitempty"`
 	PaymentMethod *AddonsAddonSemanticPaymentMethod `json:"payment_method,omitempty"`
 	PostVerificationResult *AddonSemanticPostVerificationResult `json:"post_verification_result,omitempty"`
@@ -273,6 +274,38 @@ func (o *AddonsAddonSemantic) SetNewFaceVerificationResult(v AddonSemanticNewFac
 	o.NewFaceVerificationResult = &v
 }
 
+// GetOnlineReservationCapability returns the OnlineReservationCapability field value if set, zero value otherwise.
+func (o *AddonsAddonSemantic) GetOnlineReservationCapability() AddonSemanticOnlineReservationCapability {
+	if o == nil || IsNil(o.OnlineReservationCapability) {
+		var ret AddonSemanticOnlineReservationCapability
+		return ret
+	}
+	return *o.OnlineReservationCapability
+}
+
+// GetOnlineReservationCapabilityOk returns a tuple with the OnlineReservationCapability field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddonsAddonSemantic) GetOnlineReservationCapabilityOk() (*AddonSemanticOnlineReservationCapability, bool) {
+	if o == nil || IsNil(o.OnlineReservationCapability) {
+		return nil, false
+	}
+	return o.OnlineReservationCapability, true
+}
+
+// HasOnlineReservationCapability returns a boolean if a field has been set.
+func (o *AddonsAddonSemantic) HasOnlineReservationCapability() bool {
+	if o != nil && !IsNil(o.OnlineReservationCapability) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnlineReservationCapability gets a reference to the given AddonSemanticOnlineReservationCapability and assigns it to the OnlineReservationCapability field.
+func (o *AddonsAddonSemantic) SetOnlineReservationCapability(v AddonSemanticOnlineReservationCapability) {
+	o.OnlineReservationCapability = &v
+}
+
 // GetOwnershipResult returns the OwnershipResult field value if set, zero value otherwise.
 func (o *AddonsAddonSemantic) GetOwnershipResult() AddonSemanticOwnershipResult {
 	if o == nil || IsNil(o.OwnershipResult) {
@@ -431,6 +464,9 @@ func (o AddonsAddonSemantic) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NewFaceVerificationResult) {
 		toSerialize["new_face_verification_result"] = o.NewFaceVerificationResult
+	}
+	if !IsNil(o.OnlineReservationCapability) {
+		toSerialize["online_reservation_capability"] = o.OnlineReservationCapability
 	}
 	if !IsNil(o.OwnershipResult) {
 		toSerialize["ownership_result"] = o.OwnershipResult

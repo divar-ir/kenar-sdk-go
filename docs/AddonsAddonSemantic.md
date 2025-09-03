@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **IdentityVerificationResult** | Pointer to [**AddonSemanticIdentityVerificationResult**](AddonSemanticIdentityVerificationResult.md) |  | [optional] 
 **InspectionResult** | Pointer to [**AddonSemanticInspectionResult**](AddonSemanticInspectionResult.md) |  | [optional] 
 **NewFaceVerificationResult** | Pointer to [**AddonSemanticNewFaceVerificationResult**](AddonSemanticNewFaceVerificationResult.md) |  | [optional] 
+**OnlineReservationCapability** | Pointer to [**AddonSemanticOnlineReservationCapability**](AddonSemanticOnlineReservationCapability.md) |  | [optional] 
 **OwnershipResult** | Pointer to [**AddonSemanticOwnershipResult**](AddonSemanticOwnershipResult.md) |  | [optional] 
 **PaymentMethod** | Pointer to [**AddonsAddonSemanticPaymentMethod**](AddonsAddonSemanticPaymentMethod.md) |  | [optional] 
 **PostVerificationResult** | Pointer to [**AddonSemanticPostVerificationResult**](AddonSemanticPostVerificationResult.md) |  | [optional] 
@@ -209,6 +210,31 @@ SetNewFaceVerificationResult sets NewFaceVerificationResult field to given value
 `func (o *AddonsAddonSemantic) HasNewFaceVerificationResult() bool`
 
 HasNewFaceVerificationResult returns a boolean if a field has been set.
+
+### GetOnlineReservationCapability
+
+`func (o *AddonsAddonSemantic) GetOnlineReservationCapability() AddonSemanticOnlineReservationCapability`
+
+GetOnlineReservationCapability returns the OnlineReservationCapability field if non-nil, zero value otherwise.
+
+### GetOnlineReservationCapabilityOk
+
+`func (o *AddonsAddonSemantic) GetOnlineReservationCapabilityOk() (*AddonSemanticOnlineReservationCapability, bool)`
+
+GetOnlineReservationCapabilityOk returns a tuple with the OnlineReservationCapability field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnlineReservationCapability
+
+`func (o *AddonsAddonSemantic) SetOnlineReservationCapability(v AddonSemanticOnlineReservationCapability)`
+
+SetOnlineReservationCapability sets OnlineReservationCapability field to given value.
+
+### HasOnlineReservationCapability
+
+`func (o *AddonsAddonSemantic) HasOnlineReservationCapability() bool`
+
+HasOnlineReservationCapability returns a boolean if a field has been set.
 
 ### GetOwnershipResult
 

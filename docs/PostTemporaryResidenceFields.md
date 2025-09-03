@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **PriceSpecialDays** | **string** | قیمت اقامتگاه در روزهای خاص (تعطیلات و مناسبت‌ها) به تومان | 
 **PriceWeekends** | **string** | قیمت اقامتگاه در آخر هفته (چهارشنبه تا جمعه) به تومان | 
 **RegularPersonCapacity** | **int32** | ظرفیت استاندارد افراد در اقامتگاه | 
-**RoomsCount** | [**TemporaryResidenceFieldsRoomsCount**](TemporaryResidenceFieldsRoomsCount.md) |  | 
+**RoomsCount** | [**PostRoomsCount**](PostRoomsCount.md) |  | 
 **CheckInTime** | Pointer to **string** | Check-in time | [optional] 
 **CheckOutTime** | Pointer to **string** | Check-out time | [optional] 
 **ComfortAmenities** | Pointer to [**[]TemporaryResidenceFieldsComfortAmenity**](TemporaryResidenceFieldsComfortAmenity.md) |  | [optional] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewPostTemporaryResidenceFields
 
-`func NewPostTemporaryResidenceFields(area int32, extraPersonCapacity int32, hasOwnImage bool, priceCostPerExtraPerson string, priceRegularDays string, priceSpecialDays string, priceWeekends string, regularPersonCapacity int32, roomsCount TemporaryResidenceFieldsRoomsCount, ) *PostTemporaryResidenceFields`
+`func NewPostTemporaryResidenceFields(area int32, extraPersonCapacity int32, hasOwnImage bool, priceCostPerExtraPerson string, priceRegularDays string, priceSpecialDays string, priceWeekends string, regularPersonCapacity int32, roomsCount PostRoomsCount, ) *PostTemporaryResidenceFields`
 
 NewPostTemporaryResidenceFields instantiates a new PostTemporaryResidenceFields object
 This constructor will assign default values to properties that have it defined,
@@ -205,20 +205,20 @@ SetRegularPersonCapacity sets RegularPersonCapacity field to given value.
 
 ### GetRoomsCount
 
-`func (o *PostTemporaryResidenceFields) GetRoomsCount() TemporaryResidenceFieldsRoomsCount`
+`func (o *PostTemporaryResidenceFields) GetRoomsCount() PostRoomsCount`
 
 GetRoomsCount returns the RoomsCount field if non-nil, zero value otherwise.
 
 ### GetRoomsCountOk
 
-`func (o *PostTemporaryResidenceFields) GetRoomsCountOk() (*TemporaryResidenceFieldsRoomsCount, bool)`
+`func (o *PostTemporaryResidenceFields) GetRoomsCountOk() (*PostRoomsCount, bool)`
 
 GetRoomsCountOk returns a tuple with the RoomsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoomsCount
 
-`func (o *PostTemporaryResidenceFields) SetRoomsCount(v TemporaryResidenceFieldsRoomsCount)`
+`func (o *PostTemporaryResidenceFields) SetRoomsCount(v PostRoomsCount)`
 
 SetRoomsCount sets RoomsCount field to given value.
 

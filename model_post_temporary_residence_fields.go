@@ -37,7 +37,7 @@ type PostTemporaryResidenceFields struct {
 	PriceWeekends string `json:"price_weekends"`
 	// ظرفیت استاندارد افراد در اقامتگاه
 	RegularPersonCapacity int32 `json:"regular_person_capacity"`
-	RoomsCount TemporaryResidenceFieldsRoomsCount `json:"rooms_count"`
+	RoomsCount PostRoomsCount `json:"rooms_count"`
 	// Check-in time
 	CheckInTime *string `json:"check_in_time,omitempty"`
 	// Check-out time
@@ -62,7 +62,7 @@ type _PostTemporaryResidenceFields PostTemporaryResidenceFields
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPostTemporaryResidenceFields(area int32, extraPersonCapacity int32, hasOwnImage bool, priceCostPerExtraPerson string, priceRegularDays string, priceSpecialDays string, priceWeekends string, regularPersonCapacity int32, roomsCount TemporaryResidenceFieldsRoomsCount) *PostTemporaryResidenceFields {
+func NewPostTemporaryResidenceFields(area int32, extraPersonCapacity int32, hasOwnImage bool, priceCostPerExtraPerson string, priceRegularDays string, priceSpecialDays string, priceWeekends string, regularPersonCapacity int32, roomsCount PostRoomsCount) *PostTemporaryResidenceFields {
 	this := PostTemporaryResidenceFields{}
 	this.Area = area
 	this.ExtraPersonCapacity = extraPersonCapacity
@@ -277,9 +277,9 @@ func (o *PostTemporaryResidenceFields) SetRegularPersonCapacity(v int32) {
 }
 
 // GetRoomsCount returns the RoomsCount field value
-func (o *PostTemporaryResidenceFields) GetRoomsCount() TemporaryResidenceFieldsRoomsCount {
+func (o *PostTemporaryResidenceFields) GetRoomsCount() PostRoomsCount {
 	if o == nil {
-		var ret TemporaryResidenceFieldsRoomsCount
+		var ret PostRoomsCount
 		return ret
 	}
 
@@ -288,7 +288,7 @@ func (o *PostTemporaryResidenceFields) GetRoomsCount() TemporaryResidenceFieldsR
 
 // GetRoomsCountOk returns a tuple with the RoomsCount field value
 // and a boolean to check if the value has been set.
-func (o *PostTemporaryResidenceFields) GetRoomsCountOk() (*TemporaryResidenceFieldsRoomsCount, bool) {
+func (o *PostTemporaryResidenceFields) GetRoomsCountOk() (*PostRoomsCount, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -296,7 +296,7 @@ func (o *PostTemporaryResidenceFields) GetRoomsCountOk() (*TemporaryResidenceFie
 }
 
 // SetRoomsCount sets field value
-func (o *PostTemporaryResidenceFields) SetRoomsCount(v TemporaryResidenceFieldsRoomsCount) {
+func (o *PostTemporaryResidenceFields) SetRoomsCount(v PostRoomsCount) {
 	o.RoomsCount = v
 }
 

@@ -59,6 +59,8 @@
 
 * `SEND_EVENT` (value: `"SEND_EVENT"`)
 
+* `CREATE_WALLET_PAYMENT` (value: `"CREATE_WALLET_PAYMENT"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

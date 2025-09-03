@@ -22,6 +22,30 @@ func Test_kenarapi_LimitedAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test LimitedAPIService PaymentCommitWalletTransaction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.LimitedAPI.PaymentCommitWalletTransaction(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test LimitedAPIService PaymentCreateWalletPayment", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.LimitedAPI.PaymentCreateWalletPayment(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test LimitedAPIService PaymentGetBalance", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -81,6 +105,20 @@ func Test_kenarapi_LimitedAPIService(t *testing.T) {
 		var postToken string
 
 		resp, httpRes, err := apiClient.LimitedAPI.PaymentReorderPost(context.Background(), postToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test LimitedAPIService PaymentRetrieveWalletTransaction", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var token string
+
+		resp, httpRes, err := apiClient.LimitedAPI.PaymentRetrieveWalletTransaction(context.Background(), token).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

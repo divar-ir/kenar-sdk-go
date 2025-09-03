@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **Images** | **[]string** |  | 
 **LocationType** | [**SubmitPostRequestLocationType**](SubmitPostRequestLocationType.md) |  | 
 **Title** | **string** | عنوان آگهی | 
+**ApartmentSell** | Pointer to [**PostApartmentSellFields**](PostApartmentSellFields.md) |  | [optional] 
 **District** | Pointer to **string** | محله آگهی | [optional] 
+**HomePresell** | Pointer to [**PostHomePresellFields**](PostHomePresellFields.md) |  | [optional] 
 **LandlineNumbers** | Pointer to **[]string** | Landline numbers to be added to the post | [optional] 
 **Latitude** | Pointer to **float64** | عرض جغرافیایی آگهی | [optional] 
 **Longitude** | Pointer to **float64** | طول جغرافیایی آگهی | [optional] 
@@ -177,6 +179,31 @@ and a boolean to check if the value has been set.
 SetTitle sets Title field to given value.
 
 
+### GetApartmentSell
+
+`func (o *PostSubmitPostRequest) GetApartmentSell() PostApartmentSellFields`
+
+GetApartmentSell returns the ApartmentSell field if non-nil, zero value otherwise.
+
+### GetApartmentSellOk
+
+`func (o *PostSubmitPostRequest) GetApartmentSellOk() (*PostApartmentSellFields, bool)`
+
+GetApartmentSellOk returns a tuple with the ApartmentSell field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApartmentSell
+
+`func (o *PostSubmitPostRequest) SetApartmentSell(v PostApartmentSellFields)`
+
+SetApartmentSell sets ApartmentSell field to given value.
+
+### HasApartmentSell
+
+`func (o *PostSubmitPostRequest) HasApartmentSell() bool`
+
+HasApartmentSell returns a boolean if a field has been set.
+
 ### GetDistrict
 
 `func (o *PostSubmitPostRequest) GetDistrict() string`
@@ -201,6 +228,31 @@ SetDistrict sets District field to given value.
 `func (o *PostSubmitPostRequest) HasDistrict() bool`
 
 HasDistrict returns a boolean if a field has been set.
+
+### GetHomePresell
+
+`func (o *PostSubmitPostRequest) GetHomePresell() PostHomePresellFields`
+
+GetHomePresell returns the HomePresell field if non-nil, zero value otherwise.
+
+### GetHomePresellOk
+
+`func (o *PostSubmitPostRequest) GetHomePresellOk() (*PostHomePresellFields, bool)`
+
+GetHomePresellOk returns a tuple with the HomePresell field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHomePresell
+
+`func (o *PostSubmitPostRequest) SetHomePresell(v PostHomePresellFields)`
+
+SetHomePresell sets HomePresell field to given value.
+
+### HasHomePresell
+
+`func (o *PostSubmitPostRequest) HasHomePresell() bool`
+
+HasHomePresell returns a boolean if a field has been set.
 
 ### GetLandlineNumbers
 
