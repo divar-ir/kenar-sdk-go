@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// HomePresellFieldsUnitType Type of units offered in the project
+// HomePresellFieldsUnitType نوع واحدهای ارائه شده در پروژه
 type HomePresellFieldsUnitType string
 
 // List of HomePresellFieldsUnitType

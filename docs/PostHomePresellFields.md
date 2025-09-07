@@ -5,17 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HasOwnImage** | **bool** | تصاویر مربوط به خود ملک بوده و تزئینی نیستند. | 
-**BasePricePerSquareMeter** | Pointer to **string** | Base price per square meter in Toman | [optional] 
+**BasePricePerSquareMeter** | Pointer to **string** | قیمت پایه هر متر مربع به تومان | [optional] 
 **ConstructionPhase** | Pointer to [**HomePresellFieldsConstructionPhase**](HomePresellFieldsConstructionPhase.md) |  | [optional] 
 **DeliveryMonth** | Pointer to [**HomePresellFieldsDeliveryMonth**](HomePresellFieldsDeliveryMonth.md) |  | [optional] 
-**DeliveryPaymentPercentage** | Pointer to **int32** | Payment percentage required upon delivery | [optional] 
+**DeliveryPaymentPercentage** | Pointer to **int32** | درصد پرداخت مورد نیاز در زمان تحویل | [optional] 
 **DeliveryYear** | Pointer to [**HomePresellFieldsDeliveryYear**](HomePresellFieldsDeliveryYear.md) |  | [optional] 
-**DeveloperCompanyName** | Pointer to **string** | Name of the developer company | [optional] 
-**DownPaymentPercentage** | Pointer to **int32** | Down payment percentage required | [optional] 
-**MinUnitSize** | Pointer to **int32** | Minimum unit size in square meters | [optional] 
-**ProjectName** | Pointer to **string** | Name of the home presell project | [optional] 
-**ProjectPhysicalProgressPercentage** | Pointer to **int32** | Physical progress percentage of the project | [optional] 
-**UnitTypesOffered** | Pointer to [**[]HomePresellFieldsUnitType**](HomePresellFieldsUnitType.md) | List of unit types offered in the project | [optional] 
+**DeveloperCompanyName** | Pointer to **string** | نام شرکت سازنده | [optional] 
+**DownPaymentPercentage** | Pointer to **int32** | درصد پیش پرداخت اولیه | [optional] 
+**MinUnitSize** | Pointer to **int32** | حداقل مساحت واحد بر حسب متر مربع | [optional] 
+**ProjectName** | Pointer to **string** | نام پروژه پیش‌فروش مسکن | [optional] 
+**ProjectPhysicalProgressPercentage** | Pointer to **int32** | درصد پیشرفت فیزیکی پروژه | [optional] 
+**UnitTypesOffered** | Pointer to [**[]HomePresellFieldsUnitType**](HomePresellFieldsUnitType.md) | فهرست انواع واحد ارائه شده در پروژه | [optional] 
 
 ## Methods
 

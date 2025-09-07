@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountRials** | **string** | Transaction amount in rials | 
-**Description** | **string** | A description of the transaction | 
-**RedirectUrl** | **string** | The address user should be redirected to after paying the amount | 
+**AmountRials** | **string** | مبلغ تراکنش به ریال | 
+**Description** | **string** | توضیحات تراکنش | 
+**RedirectUrl** | **string** | آدرسی که کاربر باید بعد از پرداخت مبلغ به آن هدایت شود | 
 
 ## Methods
 

@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// HomePresellFieldsConstructionPhase Current construction phase of the project
+// HomePresellFieldsConstructionPhase وضعیت فعلی پروژه
 type HomePresellFieldsConstructionPhase string
 
 // List of HomePresellFieldsConstructionPhase

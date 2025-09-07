@@ -509,7 +509,7 @@ import (
 )
 
 func main() {
-	token := "token_example" // string | Token of the transaction you want to retrieve
+	token := "token_example" // string | توکن تراکنشی که می‌خواهید بازیابی کنید
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -529,7 +529,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**token** | **string** | Token of the transaction you want to retrieve | 
+**token** | **string** | توکن تراکنشی که می‌خواهید بازیابی کنید | 
 
 ### Other Parameters
 

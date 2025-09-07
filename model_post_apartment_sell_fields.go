@@ -21,22 +21,22 @@ var _ MappedNullable = &PostApartmentSellFields{}
 
 // PostApartmentSellFields struct for PostApartmentSellFields
 type PostApartmentSellFields struct {
-	// Floor of the property. Use -1 for under ground floor and 0 for ground floor. Use 1 for first floor and so on.
+	// طبقه ملک. از -1 برای زیرزمین و 0 برای همکف استفاده کنید. از 1 برای طبقه اول و غیره.
 	Floor int32 `json:"floor"`
-	// Whether the property has an elevator
+	// آیا ملک آسانسور دارد
 	HasElevator bool `json:"has_elevator"`
 	// تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
 	HasOwnImage bool `json:"has_own_image"`
-	// Whether the property has a parking
+	// آیا ملک پارکینگ دارد
 	HasParking bool `json:"has_parking"`
-	// Whether the property has a warehouse
+	// آیا ملک انباری دارد
 	HasWarehouse bool `json:"has_warehouse"`
-	// Price of the property in Toman
+	// قیمت ملک به تومان
 	Price string `json:"price"`
 	RoomsCount PostRoomsCount `json:"rooms_count"`
-	// Size of the property in square meters
+	// مساحت ملک بر حسب متر مربع
 	Size int32 `json:"size"`
-	// Year the property was built (Persian/Shamsi calendar)
+	// سال ساخت ملک (تقویم شمسی)
 	YearBuilt int32 `json:"year_built"`
 }
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PaymentUrl** | Pointer to **string** | The address you should redirect the user to | [optional] 
-**Token** | Pointer to **string** | Token of the transaction. used for next operations | [optional] 
+**PaymentUrl** | Pointer to **string** | آدرسی که باید کاربر را به آن هدایت کنید | [optional] 
+**Token** | Pointer to **string** | توکن تراکنش. برای عملیات‌های بعدی استفاده می‌شود | [optional] 
 
 ## Methods
 

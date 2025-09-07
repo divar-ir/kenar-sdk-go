@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// HomePresellFieldsDeliveryMonth Delivery month (Persian/Shamsi calendar)
+// HomePresellFieldsDeliveryMonth ماه تحویل (تقویم شمسی)
 type HomePresellFieldsDeliveryMonth string
 
 // List of HomePresellFieldsDeliveryMonth

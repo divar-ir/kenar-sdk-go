@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// HomePresellFieldsDeliveryYear Delivery year (Persian/Shamsi calendar)
+// HomePresellFieldsDeliveryYear سال تحویل (تقویم شمسی)
 type HomePresellFieldsDeliveryYear string
 
 // List of HomePresellFieldsDeliveryYear

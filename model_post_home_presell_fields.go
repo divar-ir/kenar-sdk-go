@@ -23,24 +23,24 @@ var _ MappedNullable = &PostHomePresellFields{}
 type PostHomePresellFields struct {
 	// تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
 	HasOwnImage bool `json:"has_own_image"`
-	// Base price per square meter in Toman
+	// قیمت پایه هر متر مربع به تومان
 	BasePricePerSquareMeter *string `json:"base_price_per_square_meter,omitempty"`
 	ConstructionPhase *HomePresellFieldsConstructionPhase `json:"construction_phase,omitempty"`
 	DeliveryMonth *HomePresellFieldsDeliveryMonth `json:"delivery_month,omitempty"`
-	// Payment percentage required upon delivery
+	// درصد پرداخت مورد نیاز در زمان تحویل
 	DeliveryPaymentPercentage *int32 `json:"delivery_payment_percentage,omitempty"`
 	DeliveryYear *HomePresellFieldsDeliveryYear `json:"delivery_year,omitempty"`
-	// Name of the developer company
+	// نام شرکت سازنده
 	DeveloperCompanyName *string `json:"developer_company_name,omitempty"`
-	// Down payment percentage required
+	// درصد پیش پرداخت اولیه
 	DownPaymentPercentage *int32 `json:"down_payment_percentage,omitempty"`
-	// Minimum unit size in square meters
+	// حداقل مساحت واحد بر حسب متر مربع
 	MinUnitSize *int32 `json:"min_unit_size,omitempty"`
-	// Name of the home presell project
+	// نام پروژه پیش‌فروش مسکن
 	ProjectName *string `json:"project_name,omitempty"`
-	// Physical progress percentage of the project
+	// درصد پیشرفت فیزیکی پروژه
 	ProjectPhysicalProgressPercentage *int32 `json:"project_physical_progress_percentage,omitempty"`
-	// List of unit types offered in the project
+	// فهرست انواع واحد ارائه شده در پروژه
 	UnitTypesOffered []HomePresellFieldsUnitType `json:"unit_types_offered,omitempty"`
 }
 

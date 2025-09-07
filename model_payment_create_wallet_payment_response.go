@@ -19,9 +19,9 @@ var _ MappedNullable = &PaymentCreateWalletPaymentResponse{}
 
 // PaymentCreateWalletPaymentResponse struct for PaymentCreateWalletPaymentResponse
 type PaymentCreateWalletPaymentResponse struct {
-	// The address you should redirect the user to
+	// آدرسی که باید کاربر را به آن هدایت کنید
 	PaymentUrl *string `json:"payment_url,omitempty"`
-	// Token of the transaction. used for next operations
+	// توکن تراکنش. برای عملیات‌های بعدی استفاده می‌شود
 	Token *string `json:"token,omitempty"`
 }
 

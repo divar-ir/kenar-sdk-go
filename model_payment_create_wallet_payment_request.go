@@ -21,11 +21,11 @@ var _ MappedNullable = &PaymentCreateWalletPaymentRequest{}
 
 // PaymentCreateWalletPaymentRequest struct for PaymentCreateWalletPaymentRequest
 type PaymentCreateWalletPaymentRequest struct {
-	// Transaction amount in rials
+	// مبلغ تراکنش به ریال
 	AmountRials string `json:"amount_rials"`
-	// A description of the transaction
+	// توضیحات تراکنش
 	Description string `json:"description"`
-	// The address user should be redirected to after paying the amount
+	// آدرسی که کاربر باید بعد از پرداخت مبلغ به آن هدایت شود
 	RedirectUrl string `json:"redirect_url"`
 }
 

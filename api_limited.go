@@ -41,7 +41,7 @@ func (r ApiPaymentCommitWalletTransactionRequest) Execute() (*PaymentCommitWalle
 /*
 PaymentCommitWalletTransaction Method for PaymentCommitWalletTransaction
 
-Using this API you can commit a successful payment. This API is idempotent and you can call it multiple times.
+با استفاده از این API می‌توانید یک پرداخت موفق را commit کنید. این API idempotent است و می‌توانید چندین بار آن را فراخوانی کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentCommitWalletTransactionRequest
@@ -173,7 +173,7 @@ func (r ApiPaymentCreateWalletPaymentRequest) Execute() (*PaymentCreateWalletPay
 /*
 PaymentCreateWalletPayment Method for PaymentCreateWalletPayment
 
-Using this API you can start a payment transaction from the users wallet.
+با استفاده از این API می‌توانید یک تراکنش پرداخت از کیف پول کاربران شروع کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentCreateWalletPaymentRequest
@@ -948,10 +948,10 @@ func (r ApiPaymentRetrieveWalletTransactionRequest) Execute() (*PaymentRetrieveW
 /*
 PaymentRetrieveWalletTransaction Method for PaymentRetrieveWalletTransaction
 
-Using this API you can retrieve a transaction and its status. Use this API to validate the payment before committing.
+با استفاده از این API می‌توانید یک تراکنش و وضعیت آن را بازیابی کنید. از این API برای اعتبارسنجی پرداخت قبل از commit استفاده کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param token Token of the transaction you want to retrieve
+ @param token توکن تراکنشی که می‌خواهید بازیابی کنید
  @return ApiPaymentRetrieveWalletTransactionRequest
 */
 func (a *LimitedAPIService) PaymentRetrieveWalletTransaction(ctx context.Context, token string) ApiPaymentRetrieveWalletTransactionRequest {

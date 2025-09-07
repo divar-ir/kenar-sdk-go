@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Floor** | **int32** | Floor of the property. Use -1 for under ground floor and 0 for ground floor. Use 1 for first floor and so on. | 
-**HasElevator** | **bool** | Whether the property has an elevator | 
+**Floor** | **int32** | طبقه ملک. از -1 برای زیرزمین و 0 برای همکف استفاده کنید. از 1 برای طبقه اول و غیره. | 
+**HasElevator** | **bool** | آیا ملک آسانسور دارد | 
 **HasOwnImage** | **bool** | تصاویر مربوط به خود ملک بوده و تزئینی نیستند. | 
-**HasParking** | **bool** | Whether the property has a parking | 
-**HasWarehouse** | **bool** | Whether the property has a warehouse | 
-**Price** | **string** | Price of the property in Toman | 
+**HasParking** | **bool** | آیا ملک پارکینگ دارد | 
+**HasWarehouse** | **bool** | آیا ملک انباری دارد | 
+**Price** | **string** | قیمت ملک به تومان | 
 **RoomsCount** | [**PostRoomsCount**](PostRoomsCount.md) |  | 
-**Size** | **int32** | Size of the property in square meters | 
-**YearBuilt** | **int32** | Year the property was built (Persian/Shamsi calendar) | 
+**Size** | **int32** | مساحت ملک بر حسب متر مربع | 
+**YearBuilt** | **int32** | سال ساخت ملک (تقویم شمسی) | 
 
 ## Methods
 

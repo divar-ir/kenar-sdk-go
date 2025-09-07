@@ -19,7 +19,7 @@ var _ MappedNullable = &PaymentCommitWalletTransactionRequest{}
 
 // PaymentCommitWalletTransactionRequest struct for PaymentCommitWalletTransactionRequest
 type PaymentCommitWalletTransactionRequest struct {
-	// Token of the transaction you want to commit
+	// توکن تراکنشی که می‌خواهید commit کنید
 	Token *string `json:"token,omitempty"`
 }
 
