@@ -21,6 +21,8 @@
 
 * `MOBILE_EXPERT_INSPECTED` (value: `"MOBILE_EXPERT_INSPECTED"`)
 
+* `ONLINE_RESERVATION` (value: `"ONLINE_RESERVATION"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

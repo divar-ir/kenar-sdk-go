@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**AssetsGetPermissions**](AssetsAPI.md#AssetsGetPermissions) | **Get** /v1/open-platform/assets/permission | دریافت مجوزهای کنار دیوار
 [**AssetsGetRamMemories**](AssetsAPI.md#AssetsGetRamMemories) | **Get** /v1/open-platform/assets/ram-memory | دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
 [**AssetsGetServiceTypes**](AssetsAPI.md#AssetsGetServiceTypes) | **Get** /v1/open-platform/assets/service-type | دریافت انواع سرویس موجود در کنار دیوار
+[**AssetsGetSubmitSchema**](AssetsAPI.md#AssetsGetSubmitSchema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | Get submit schema
 
 
 
@@ -768,6 +769,76 @@ Other parameters are passed through a pointer to a apiAssetsGetServiceTypesReque
 ### Return type
 
 [**AssetsGetServiceTypesResponse**](AssetsGetServiceTypesResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AssetsGetSubmitSchema
+
+> AssetsGetSubmitSchemaResponse AssetsGetSubmitSchema(ctx, categorySlug).Execute()
+
+Get submit schema
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	categorySlug := "categorySlug_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AssetsAPI.AssetsGetSubmitSchema(context.Background(), categorySlug).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.AssetsGetSubmitSchema``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AssetsGetSubmitSchema`: AssetsGetSubmitSchemaResponse
+	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.AssetsGetSubmitSchema`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**categorySlug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAssetsGetSubmitSchemaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**AssetsGetSubmitSchemaResponse**](AssetsGetSubmitSchemaResponse.md)
 
 ### Authorization
 

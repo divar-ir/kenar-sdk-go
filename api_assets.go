@@ -1498,3 +1498,181 @@ func (a *AssetsAPIService) AssetsGetServiceTypesExecute(r ApiAssetsGetServiceTyp
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiAssetsGetSubmitSchemaRequest struct {
+	ctx context.Context
+	ApiService *AssetsAPIService
+	categorySlug string
+}
+
+func (r ApiAssetsGetSubmitSchemaRequest) Execute() (*AssetsGetSubmitSchemaResponse, *http.Response, error) {
+	return r.ApiService.AssetsGetSubmitSchemaExecute(r)
+}
+
+/*
+AssetsGetSubmitSchema Get submit schema
+
+This API allows you to get the submit schema for a given category slug. Response is in JSON Schema format.
+
+The schema defines the structure and validation rules for form fields when submitting posts in a specific category. Each field in the schema can have one of the following types:
+
+**Basic Types:**
+- `string`: Text input fields (e.g., titles, descriptions, time values)
+- `integer`: Numeric input fields for whole numbers (e.g., prices, counts, sizes)
+- `float`: Numeric input fields for decimal numbers
+- `boolean`: True/false checkbox fields
+- `array`: Multi-select fields that allow multiple values
+
+**Enum Fields:**
+Fields with predefined options use `enum` and `enumNames` properties:
+- `enum`: Array of internal values used for API communication
+- `enumNames`: Array of display labels shown to users (usually in Persian)
+- These are used for single-select dropdowns (e.g., floor selection, parking availability)
+
+**Array Fields with Enums:**
+Multi-select fields combine `type: "array"` with enum properties:
+- `items.enum`: Available options for selection
+- `items.enumNames`: Display labels for each option
+- Users can select multiple values (e.g., comfort amenities, heating systems)
+
+**Field Properties:**
+- `title`: Persian display name for the field
+- `required`: Array of field names that must be provided
+- `type`: Data type of the field
+
+**Example Usage:**
+```json
+{
+  "properties": {
+    "size": {
+      "title": "متراژ (متر مربع)",
+      "type": "integer"
+    },
+    "elevator": {
+      "enum": ["دارد", "ندارد"],
+      "enumNames": ["دارد", "ندارد"],
+      "title": "آسانسور",
+      "type": "string"
+    },
+    "comfort_amenities": {
+      "items": {
+        "enum": ["اینترنت_پرسرعت", "تلویزیون"],
+        "enumNames": ["اینترنت پرسرعت", "تلویزیون"],
+        "type": "string"
+      },
+      "title": "امکانات رفاهی",
+      "type": "array"
+    }
+  }
+}
+```
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param categorySlug
+ @return ApiAssetsGetSubmitSchemaRequest
+*/
+func (a *AssetsAPIService) AssetsGetSubmitSchema(ctx context.Context, categorySlug string) ApiAssetsGetSubmitSchemaRequest {
+	return ApiAssetsGetSubmitSchemaRequest{
+		ApiService: a,
+		ctx: ctx,
+		categorySlug: categorySlug,
+	}
+}
+
+// Execute executes the request
+//  @return AssetsGetSubmitSchemaResponse
+func (a *AssetsAPIService) AssetsGetSubmitSchemaExecute(r ApiAssetsGetSubmitSchemaRequest) (*AssetsGetSubmitSchemaResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AssetsGetSubmitSchemaResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetsAPIService.AssetsGetSubmitSchema")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/open-platform/assets/submit-schema/{category_slug}"
+	localVarPath = strings.Replace(localVarPath, "{"+"category_slug"+"}", url.PathEscape(parameterValueToString(r.categorySlug, "categorySlug")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-API-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

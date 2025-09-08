@@ -172,4 +172,18 @@ func Test_kenarapi_AssetsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AssetsAPIService AssetsGetSubmitSchema", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var categorySlug string
+
+		resp, httpRes, err := apiClient.AssetsAPI.AssetsGetSubmitSchema(context.Background(), categorySlug).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

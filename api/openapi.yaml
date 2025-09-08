@@ -7,16 +7,16 @@ servers:
 security:
 - APIKey: []
 tags:
-- name: PaymentTicket
-- name: Finder
 - name: Addons
+- name: Assets
+- name: ChatAPI
+- name: Events
+- name: Finder
+- name: Post
 - description: "Limited APIs, Create tickets if you need to use them."
   name: limited
+- name: PaymentTicket
 - name: Semantic
-- name: Events
-- name: Assets
-- name: Post
-- name: ChatAPI
 paths:
   /experimental/open-platform/balance:
     get:
@@ -959,6 +959,88 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       summary: دریافت انواع سرویس موجود در کنار دیوار
+      tags:
+      - Assets
+  /v1/open-platform/assets/submit-schema/{category_slug}:
+    get:
+      description: |-
+        This API allows you to get the submit schema for a given category slug. Response is in JSON Schema format.
+
+        The schema defines the structure and validation rules for form fields when submitting posts in a specific category. Each field in the schema can have one of the following types:
+
+        **Basic Types:**
+        - `string`: Text input fields (e.g., titles, descriptions, time values)
+        - `integer`: Numeric input fields for whole numbers (e.g., prices, counts, sizes)
+        - `float`: Numeric input fields for decimal numbers
+        - `boolean`: True/false checkbox fields
+        - `array`: Multi-select fields that allow multiple values
+
+        **Enum Fields:**
+        Fields with predefined options use `enum` and `enumNames` properties:
+        - `enum`: Array of internal values used for API communication
+        - `enumNames`: Array of display labels shown to users (usually in Persian)
+        - These are used for single-select dropdowns (e.g., floor selection, parking availability)
+
+        **Array Fields with Enums:**
+        Multi-select fields combine `type: "array"` with enum properties:
+        - `items.enum`: Available options for selection
+        - `items.enumNames`: Display labels for each option
+        - Users can select multiple values (e.g., comfort amenities, heating systems)
+
+        **Field Properties:**
+        - `title`: Persian display name for the field
+        - `required`: Array of field names that must be provided
+        - `type`: Data type of the field
+
+        **Example Usage:**
+        ```json
+        {
+          "properties": {
+            "size": {
+              "title": "متراژ (متر مربع)",
+              "type": "integer"
+            },
+            "elevator": {
+              "enum": ["دارد", "ندارد"],
+              "enumNames": ["دارد", "ندارد"],
+              "title": "آسانسور",
+              "type": "string"
+            },
+            "comfort_amenities": {
+              "items": {
+                "enum": ["اینترنت_پرسرعت", "تلویزیون"],
+                "enumNames": ["اینترنت پرسرعت", "تلویزیون"],
+                "type": "string"
+              },
+              "title": "امکانات رفاهی",
+              "type": "array"
+            }
+          }
+        }
+        ```
+      operationId: Assets_GetSubmitSchema
+      parameters:
+      - explode: false
+        in: path
+        name: category_slug
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assetsGetSubmitSchemaResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: Get submit schema
       tags:
       - Assets
   /v1/open-platform/chat/bot/conversations/{conversation_id}/messages:
@@ -4625,6 +4707,7 @@ components:
       - CAR_EXPERT_INSPECTED
       - HOME_EXPERT_INSPECTED
       - MOBILE_EXPERT_INSPECTED
+      - ONLINE_RESERVATION
       type: string
     appsServiceType:
       enum:
@@ -4865,6 +4948,13 @@ components:
           items:
             $ref: '#/components/schemas/GetServiceTypesResponseServiceTypeData'
           type: array
+      type: object
+    assetsGetSubmitSchemaResponse:
+      example:
+        schema: "{}"
+      properties:
+        schema:
+          type: object
       type: object
     authorizationAPICallerInfo:
       properties:
@@ -6365,12 +6455,12 @@ components:
       type: object
   securitySchemes:
     APIKey:
-      description: کلید API دریافت شده از پنل مدیریت کنار
+      description: API Key retrieved from kenar management panel
       in: header
       name: X-API-Key
       type: apiKey
     OAuth:
-      description: توکن دسترسی OAuth2 دریافت شده از کاربر
+      description: OAuth2 access token retrieved from user
       flows:
         authorizationCode:
           authorizationUrl: oauth.divar.ir/oauth2/auth
