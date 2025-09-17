@@ -21,7 +21,7 @@ var _ MappedNullable = &PostSubmitUserPostRequest{}
 
 // PostSubmitUserPostRequest struct for PostSubmitUserPostRequest
 type PostSubmitUserPostRequest struct {
-	// فیلدهای ویژه هر دسته‌بندی که باید مطابق ساختار مشخص شده تکمیل شوند. ساختار را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/
+	// فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/
 	CategoryFields map[string]interface{} `json:"category_fields"`
 	GeneralData PostSubmitPostGeneralData `json:"general_data"`
 }

@@ -7,16 +7,16 @@ servers:
 security:
 - APIKey: []
 tags:
-- name: Addons
-- name: Assets
-- name: ChatAPI
-- name: Events
+- name: PaymentTicket
 - name: Finder
-- name: Post
+- name: Addons
 - description: "Limited APIs, Create tickets if you need to use them."
   name: limited
-- name: PaymentTicket
 - name: Semantic
+- name: Events
+- name: Assets
+- name: Post
+- name: ChatAPI
 paths:
   /experimental/open-platform/balance:
     get:
@@ -333,8 +333,8 @@ paths:
   /experimental/open-platform/posts/new-v2:
     post:
       description: |-
-        این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی طرح JSON را می‌دهد. این به مجوز `POST_SUBMIT` نیاز دارد.
-        شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به طرح ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+        این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به مجوز `POST_SUBMIT` نیاز دارد.
+        شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
       operationId: Post_SubmitPostV2
       requestBody:
         content:
@@ -355,7 +355,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+      summary: ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
       tags:
       - Post
   /experimental/open-platform/posts/{post_token}/stats:
@@ -493,9 +493,9 @@ paths:
   /experimental/open-platform/user-posts/new:
     post:
       description: |-
-        این API به شما امکان ثبت آگهی از طرف یک کاربر احراز هویت شده با استفاده از اعتبارسنجی طرح JSON را می‌دهد. این به احراز هویت OAuth با توکن دسترسی معتبر و دامنه OAuth `SUBMIT_USER_POST` نیاز دارد.
+        این API به شما امکان ثبت آگهی از طرف یک کاربر احراز هویت شده با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به احراز هویت OAuth با توکن دسترسی معتبر و دامنه OAuth `SUBMIT_USER_POST` نیاز دارد.
         بر خلاف SubmitPostV2 که آگهی‌ها را به عنوان ارائه‌دهنده ثبت می‌کند، این نقطه پایانی آگهی‌ها را به عنوان کاربر مرتبط با توکن دسترسی ارائه شده ثبت می‌کند. آگهی متعلق به کاربر احراز هویت شده خواهد بود.
-        شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به طرح ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+        شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
       operationId: Post_SubmitUserPost
       requestBody:
         content:
@@ -1021,32 +1021,32 @@ paths:
   /v1/open-platform/assets/submit-schema/{category_slug}:
     get:
       description: |-
-        این API به شما امکان دریافت ساختار ثبت برای یک نام دسته‌بندی مشخص را می‌دهد. پاسخ در قالب JSON Schema است.
+        این API به شما امکان دریافت قالب ثبت آگهی برای یک دسته‌بندی مشخص را می‌دهد. پاسخ در قالب JSON Schema است.
 
-        طرح، ساختار و قوانین اعتبارسنجی برای فیلدهای فرم هنگام ثبت آگهی در یک دسته‌بندی خاص را تعریف می‌کند. هر فیلد در طرح می‌تواند یکی از انواع زیر باشد:
+        قالب تعریف کننده ساختار و قوانین برای فیلدهای فرم زمانی که آگهی در یک دسته‌بندی مشخص ثبت می‌شود. هر فیلد در قالب می‌تواند یکی از انواع زیر را داشته باشد:
 
-        **انواع پایه:**
-        - `string`: فیلدهای ورودی متنی (مثل عنوان، توضیحات، مقادیر زمان)
-        - `integer`: فیلدهای ورودی عددی برای اعداد صحیح (مثل قیمت، تعداد، اندازه)
+        **انواع اصلی:**
+        - `string`: فیلدهای ورودی متنی (مانند عنوان، توضیحات، مقادیر زمانی)
+        - `integer`: فیلدهای ورودی عددی برای اعداد صحیح (مانند قیمت، تعداد، اندازه)
         - `float`: فیلدهای ورودی عددی برای اعداد اعشاری
-        - `boolean`: فیلدهای چک‌باکس درست/غلط
-        - `array`: فیلدهای چندانتخابی که اجازه انتخاب چندین مقدار را می‌دهند
+        - `boolean`: فیلدهای ورودی بولین (صحیح/غلط)
+        - `array`: فیلدهای ورودی چندگانه که امکان انتخاب چند مقدار را دارند
 
         **فیلدهای Enum:**
-        فیلدهای با گزینه‌های از پیش تعریف شده از ویژگی‌های `enum` و `enumNames` استفاده می‌کنند:
-        - `enum`: آرایه مقادیر داخلی مورد استفاده برای ارتباط API
-        - `enumNames`: آرایه برچسب‌های نمایشی نشان داده شده به کاربران (معمولاً به فارسی)
-        - اینها برای منوهای کشویی تک‌انتخابی استفاده می‌شوند (مثل انتخاب طبقه، وجود پارکینگ)
+        فیلدها با گزینه‌های پیش‌تعریف شده از `enum` و `enumNames` استفاده می‌کنند:
+        - `enum`: آرایه از مقادیر داخلی استفاده شده برای ارتباط API
+        - `enumNames`: آرایه از برچسب‌های نمایشی نشان داده شده به کاربر (معمولاً به زبان فارسی)
+        - اینها برای فیلدهای ورودی چندگانه (مانند انتخاب طبقه، امکان استفاده از پارکینگ) استفاده می‌شوند
 
-        **فیلدهای Array با Enum:**
-        فیلدهای چندانتخابی `type: "array"` را با ویژگی‌های enum ترکیب می‌کنند:
+        **فیلدهای آرایه با Enum:**
+        فیلدهای ورودی چندگانه ترکیب `type: "array"` با کلید Enum را دارند:
         - `items.enum`: گزینه‌های موجود برای انتخاب
         - `items.enumNames`: برچسب‌های نمایشی برای هر گزینه
-        - کاربران می‌توانند چندین مقدار انتخاب کنند (مثل امکانات رفاهی، سیستم‌های گرمایش)
+        - کاربران می‌توانند چند مقدار را انتخاب کنند (مانند امکانات رفاهی، سیستم‌های گرمایش)
 
         **ویژگی‌های فیلد:**
         - `title`: نام نمایشی فارسی برای فیلد
-        - `required`: آرایه نام‌های فیلدهایی که باید ارائه شوند
+        - `required`: آرایه از نام فیلدهای اجباری که باید ارائه شوند
         - `type`: نوع داده فیلد
 
         **مثال استفاده:**
@@ -1097,7 +1097,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت ساختار ثبت
+      summary: دریافت قالب ثبت
       tags:
       - Assets
   /v1/open-platform/chat/bot/conversations/{conversation_id}/messages:
@@ -6382,8 +6382,8 @@ components:
     postSubmitPostV2Request:
       properties:
         category_fields:
-          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق ساختار مشخص شده تک\
-            میل شوند. ساختار را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/"
+          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمی\
+            ل شوند. قالب را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/"
           type: object
         general_data:
           $ref: '#/components/schemas/postSubmitPostGeneralData'
@@ -6402,8 +6402,8 @@ components:
     postSubmitUserPostRequest:
       properties:
         category_fields:
-          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق ساختار مشخص شده تک\
-            میل شوند. ساختار را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/"
+          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمی\
+            ل شوند. قالب را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/"
           type: object
         general_data:
           $ref: '#/components/schemas/postSubmitPostGeneralData'

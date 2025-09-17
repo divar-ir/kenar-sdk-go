@@ -98,7 +98,7 @@ Class | Method | HTTP request | Description
 *AssetsAPI* | [**AssetsGetPermissions**](docs/AssetsAPI.md#assetsgetpermissions) | **Get** /v1/open-platform/assets/permission | دریافت مجوزهای کنار دیوار
 *AssetsAPI* | [**AssetsGetRamMemories**](docs/AssetsAPI.md#assetsgetrammemories) | **Get** /v1/open-platform/assets/ram-memory | دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
 *AssetsAPI* | [**AssetsGetServiceTypes**](docs/AssetsAPI.md#assetsgetservicetypes) | **Get** /v1/open-platform/assets/service-type | دریافت انواع سرویس موجود در کنار دیوار
-*AssetsAPI* | [**AssetsGetSubmitSchema**](docs/AssetsAPI.md#assetsgetsubmitschema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | دریافت ساختار ثبت
+*AssetsAPI* | [**AssetsGetSubmitSchema**](docs/AssetsAPI.md#assetsgetsubmitschema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | دریافت قالب ثبت
 *ChatAPIAPI* | [**ChatAPIChatBotSendMessage**](docs/ChatAPIAPI.md#chatapichatbotsendmessage) | **Post** /v1/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
 *ChatAPIAPI* | [**ChatAPIChatBotSendMessage2**](docs/ChatAPIAPI.md#chatapichatbotsendmessage2) | **Post** /v1/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
 *ChatAPIAPI* | [**ChatAPIChatBotSendMessage3**](docs/ChatAPIAPI.md#chatapichatbotsendmessage3) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
@@ -128,7 +128,7 @@ Class | Method | HTTP request | Description
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 *PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
 *PostAPI* | [**PostSubmitPost**](docs/PostAPI.md#postsubmitpost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
-*PostAPI* | [**PostSubmitPostV2**](docs/PostAPI.md#postsubmitpostv2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+*PostAPI* | [**PostSubmitPostV2**](docs/PostAPI.md#postsubmitpostv2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
 *PostAPI* | [**PostSubmitUserPost**](docs/PostAPI.md#postsubmituserpost) | **Post** /experimental/open-platform/user-posts/new | ثبت آگهی به عنوان کاربر
 *SemanticAPI* | [**SemanticCreatePostSemantic**](docs/SemanticAPI.md#semanticcreatepostsemantic) | **Post** /experimental/open-platform/semantic/post/{token} | ایجاد اطلاعات معنایی آگهی
 *SemanticAPI* | [**SemanticCreateUserSemantic**](docs/SemanticAPI.md#semanticcreateusersemantic) | **Post** /v1/open-platform/semantic/user/{phone} | ایجاد اطلاعات معنایی کاربر

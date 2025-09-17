@@ -21,7 +21,7 @@ var _ MappedNullable = &PostSubmitPostV2Request{}
 
 // PostSubmitPostV2Request struct for PostSubmitPostV2Request
 type PostSubmitPostV2Request struct {
-	// فیلدهای ویژه هر دسته‌بندی که باید مطابق ساختار مشخص شده تکمیل شوند. ساختار را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/
+	// فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/
 	CategoryFields map[string]interface{} `json:"category_fields"`
 	GeneralData PostSubmitPostGeneralData `json:"general_data"`
 	// Landline numbers to be added to the post

@@ -556,10 +556,10 @@ func (r ApiPostSubmitPostV2Request) Execute() (*PostSubmitPostResponse, *http.Re
 }
 
 /*
-PostSubmitPostV2 ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+PostSubmitPostV2 ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
 
-این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی طرح JSON را می‌دهد. این به مجوز `POST_SUBMIT` نیاز دارد.
-شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به طرح ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به مجوز `POST_SUBMIT` نیاز دارد.
+شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostSubmitPostV2Request
@@ -691,9 +691,9 @@ func (r ApiPostSubmitUserPostRequest) Execute() (*PostSubmitPostResponse, *http.
 /*
 PostSubmitUserPost ثبت آگهی به عنوان کاربر
 
-این API به شما امکان ثبت آگهی از طرف یک کاربر احراز هویت شده با استفاده از اعتبارسنجی طرح JSON را می‌دهد. این به احراز هویت OAuth با توکن دسترسی معتبر و دامنه OAuth `SUBMIT_USER_POST` نیاز دارد.
+این API به شما امکان ثبت آگهی از طرف یک کاربر احراز هویت شده با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به احراز هویت OAuth با توکن دسترسی معتبر و دامنه OAuth `SUBMIT_USER_POST` نیاز دارد.
 بر خلاف SubmitPostV2 که آگهی‌ها را به عنوان ارائه‌دهنده ثبت می‌کند، این نقطه پایانی آگهی‌ها را به عنوان کاربر مرتبط با توکن دسترسی ارائه شده ثبت می‌کند. آگهی متعلق به کاربر احراز هویت شده خواهد بود.
-شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به طرح ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostSubmitUserPostRequest

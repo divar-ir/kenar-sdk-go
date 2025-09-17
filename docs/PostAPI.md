@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 [**PostGetPostStats**](PostAPI.md#PostGetPostStats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
 [**PostSubmitPost**](PostAPI.md#PostSubmitPost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
-[**PostSubmitPostV2**](PostAPI.md#PostSubmitPostV2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+[**PostSubmitPostV2**](PostAPI.md#PostSubmitPostV2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
 [**PostSubmitUserPost**](PostAPI.md#PostSubmitUserPost) | **Post** /experimental/open-platform/user-posts/new | ثبت آگهی به عنوان کاربر
 
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 > PostSubmitPostResponse PostSubmitPostV2(ctx).PostSubmitPostV2Request(postSubmitPostV2Request).Execute()
 
-ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
 
 
 
