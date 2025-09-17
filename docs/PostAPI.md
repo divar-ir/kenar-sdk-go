@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 [**PostGetPostStats**](PostAPI.md#PostGetPostStats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
 [**PostSubmitPost**](PostAPI.md#PostSubmitPost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
+[**PostSubmitPostV2**](PostAPI.md#PostSubmitPostV2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+[**PostSubmitUserPost**](PostAPI.md#PostSubmitUserPost) | **Post** /experimental/open-platform/user-posts/new | ثبت آگهی به عنوان کاربر
 
 
 
@@ -235,7 +237,7 @@ import (
 )
 
 func main() {
-	postSubmitPostRequest := *openapiclient.NewPostSubmitPostRequest(true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.SubmitPostRequestLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran") // PostSubmitPostRequest | 
+	postSubmitPostRequest := *openapiclient.NewPostSubmitPostRequest(true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.postLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran") // PostSubmitPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -261,6 +263,138 @@ Other parameters are passed through a pointer to a apiPostSubmitPostRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **postSubmitPostRequest** | [**PostSubmitPostRequest**](PostSubmitPostRequest.md) |  | 
+
+### Return type
+
+[**PostSubmitPostResponse**](PostSubmitPostResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostSubmitPostV2
+
+> PostSubmitPostResponse PostSubmitPostV2(ctx).PostSubmitPostV2Request(postSubmitPostV2Request).Execute()
+
+ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	postSubmitPostV2Request := *openapiclient.NewPostSubmitPostV2Request(map[string]interface{}(123), *openapiclient.NewPostSubmitPostGeneralData("apartment-sell", true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.postLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran")) // PostSubmitPostV2Request | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PostAPI.PostSubmitPostV2(context.Background()).PostSubmitPostV2Request(postSubmitPostV2Request).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PostAPI.PostSubmitPostV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostSubmitPostV2`: PostSubmitPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `PostAPI.PostSubmitPostV2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostSubmitPostV2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postSubmitPostV2Request** | [**PostSubmitPostV2Request**](PostSubmitPostV2Request.md) |  | 
+
+### Return type
+
+[**PostSubmitPostResponse**](PostSubmitPostResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostSubmitUserPost
+
+> PostSubmitPostResponse PostSubmitUserPost(ctx).PostSubmitUserPostRequest(postSubmitUserPostRequest).Execute()
+
+ثبت آگهی به عنوان کاربر
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	postSubmitUserPostRequest := *openapiclient.NewPostSubmitUserPostRequest(map[string]interface{}(123), *openapiclient.NewPostSubmitPostGeneralData("apartment-sell", true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.postLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran")) // PostSubmitUserPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PostAPI.PostSubmitUserPost(context.Background()).PostSubmitUserPostRequest(postSubmitUserPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PostAPI.PostSubmitUserPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostSubmitUserPost`: PostSubmitPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `PostAPI.PostSubmitUserPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostSubmitUserPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postSubmitUserPostRequest** | [**PostSubmitUserPostRequest**](PostSubmitUserPostRequest.md) |  | 
 
 ### Return type
 

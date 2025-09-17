@@ -30,7 +30,7 @@ type PostSubmitPostRequest struct {
 	// عدم نمایش شماره تماس به کاربران
 	HidePhone bool `json:"hide_phone"`
 	Images []string `json:"images"`
-	LocationType SubmitPostRequestLocationType `json:"location_type"`
+	LocationType PostLocationType `json:"location_type"`
 	// عنوان آگهی
 	Title string `json:"title"`
 	ApartmentSell *PostApartmentSellFields `json:"apartment_sell,omitempty"`
@@ -53,7 +53,7 @@ type _PostSubmitPostRequest PostSubmitPostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPostSubmitPostRequest(chatEnabled bool, city string, description string, hidePhone bool, images []string, locationType SubmitPostRequestLocationType, title string) *PostSubmitPostRequest {
+func NewPostSubmitPostRequest(chatEnabled bool, city string, description string, hidePhone bool, images []string, locationType PostLocationType, title string) *PostSubmitPostRequest {
 	this := PostSubmitPostRequest{}
 	this.ChatEnabled = chatEnabled
 	this.City = city
@@ -194,9 +194,9 @@ func (o *PostSubmitPostRequest) SetImages(v []string) {
 }
 
 // GetLocationType returns the LocationType field value
-func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType {
+func (o *PostSubmitPostRequest) GetLocationType() PostLocationType {
 	if o == nil {
-		var ret SubmitPostRequestLocationType
+		var ret PostLocationType
 		return ret
 	}
 
@@ -205,7 +205,7 @@ func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType 
 
 // GetLocationTypeOk returns a tuple with the LocationType field value
 // and a boolean to check if the value has been set.
-func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationType, bool) {
+func (o *PostSubmitPostRequest) GetLocationTypeOk() (*PostLocationType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -213,7 +213,7 @@ func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationT
 }
 
 // SetLocationType sets field value
-func (o *PostSubmitPostRequest) SetLocationType(v SubmitPostRequestLocationType) {
+func (o *PostSubmitPostRequest) SetLocationType(v PostLocationType) {
 	o.LocationType = v
 }
 

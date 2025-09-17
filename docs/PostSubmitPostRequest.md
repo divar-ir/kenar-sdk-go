@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Description** | **string** | توضیحات آگهی | 
 **HidePhone** | **bool** | عدم نمایش شماره تماس به کاربران | 
 **Images** | **[]string** |  | 
-**LocationType** | [**SubmitPostRequestLocationType**](SubmitPostRequestLocationType.md) |  | 
+**LocationType** | [**PostLocationType**](PostLocationType.md) |  | 
 **Title** | **string** | عنوان آگهی | 
 **ApartmentSell** | Pointer to [**PostApartmentSellFields**](PostApartmentSellFields.md) |  | [optional] 
 **District** | Pointer to **string** | محله آگهی | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewPostSubmitPostRequest
 
-`func NewPostSubmitPostRequest(chatEnabled bool, city string, description string, hidePhone bool, images []string, locationType SubmitPostRequestLocationType, title string, ) *PostSubmitPostRequest`
+`func NewPostSubmitPostRequest(chatEnabled bool, city string, description string, hidePhone bool, images []string, locationType PostLocationType, title string, ) *PostSubmitPostRequest`
 
 NewPostSubmitPostRequest instantiates a new PostSubmitPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -141,20 +141,20 @@ SetImages sets Images field to given value.
 
 ### GetLocationType
 
-`func (o *PostSubmitPostRequest) GetLocationType() SubmitPostRequestLocationType`
+`func (o *PostSubmitPostRequest) GetLocationType() PostLocationType`
 
 GetLocationType returns the LocationType field if non-nil, zero value otherwise.
 
 ### GetLocationTypeOk
 
-`func (o *PostSubmitPostRequest) GetLocationTypeOk() (*SubmitPostRequestLocationType, bool)`
+`func (o *PostSubmitPostRequest) GetLocationTypeOk() (*PostLocationType, bool)`
 
 GetLocationTypeOk returns a tuple with the LocationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocationType
 
-`func (o *PostSubmitPostRequest) SetLocationType(v SubmitPostRequestLocationType)`
+`func (o *PostSubmitPostRequest) SetLocationType(v PostLocationType)`
 
 SetLocationType sets LocationType field to given value.
 

@@ -330,6 +330,34 @@ paths:
       summary: ثبت آگهی
       tags:
       - Post
+  /experimental/open-platform/posts/new-v2:
+    post:
+      description: |-
+        این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی طرح JSON را می‌دهد. این به مجوز `POST_SUBMIT` نیاز دارد.
+        شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به طرح ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+      operationId: Post_SubmitPostV2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSubmitPostV2Request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postSubmitPostResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+      tags:
+      - Post
   /experimental/open-platform/posts/{post_token}/stats:
     get:
       description: 'از این api برای مشاهده‌ی آمارهای یک آگهی (مانند تعداد بازدید‌های
@@ -462,6 +490,35 @@ paths:
           description: پاسخ خطای غیرمنتظره.
       tags:
       - limited
+  /experimental/open-platform/user-posts/new:
+    post:
+      description: |-
+        این API به شما امکان ثبت آگهی از طرف یک کاربر احراز هویت شده با استفاده از اعتبارسنجی طرح JSON را می‌دهد. این به احراز هویت OAuth با توکن دسترسی معتبر و دامنه OAuth `SUBMIT_USER_POST` نیاز دارد.
+        بر خلاف SubmitPostV2 که آگهی‌ها را به عنوان ارائه‌دهنده ثبت می‌کند، این نقطه پایانی آگهی‌ها را به عنوان کاربر مرتبط با توکن دسترسی ارائه شده ثبت می‌کند. آگهی متعلق به کاربر احراز هویت شده خواهد بود.
+        شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به طرح ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+      operationId: Post_SubmitUserPost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSubmitUserPostRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postSubmitPostResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: ثبت آگهی به عنوان کاربر
+      tags:
+      - Post
   /experimental/open-platform/wallet/payments/commit:
     post:
       description: با استفاده از این API می‌توانید یک پرداخت موفق را commit کنید.
@@ -964,32 +1021,32 @@ paths:
   /v1/open-platform/assets/submit-schema/{category_slug}:
     get:
       description: |-
-        این API به شما امکان دریافت قالب ثبت آگهی برای یک دسته‌بندی مشخص را می‌دهد. پاسخ در قالب JSON Schema است.
+        این API به شما امکان دریافت ساختار ثبت برای یک نام دسته‌بندی مشخص را می‌دهد. پاسخ در قالب JSON Schema است.
 
-        قالب تعریف کننده ساختار و قوانین برای فیلدهای فرم زمانی که آگهی در یک دسته‌بندی مشخص ثبت می‌شود. هر فیلد در قالب می‌تواند یکی از انواع زیر را داشته باشد:
+        طرح، ساختار و قوانین اعتبارسنجی برای فیلدهای فرم هنگام ثبت آگهی در یک دسته‌بندی خاص را تعریف می‌کند. هر فیلد در طرح می‌تواند یکی از انواع زیر باشد:
 
-        **انواع اصلی:**
-        - `string`: فیلدهای ورودی متنی (مانند عنوان، توضیحات، مقادیر زمانی)
-        - `integer`: فیلدهای ورودی عددی برای اعداد صحیح (مانند قیمت، تعداد، اندازه)
+        **انواع پایه:**
+        - `string`: فیلدهای ورودی متنی (مثل عنوان، توضیحات، مقادیر زمان)
+        - `integer`: فیلدهای ورودی عددی برای اعداد صحیح (مثل قیمت، تعداد، اندازه)
         - `float`: فیلدهای ورودی عددی برای اعداد اعشاری
-        - `boolean`: فیلدهای ورودی بولین (صحیح/غلط)
-        - `array`: فیلدهای ورودی چندگانه که امکان انتخاب چند مقدار را دارند
+        - `boolean`: فیلدهای چک‌باکس درست/غلط
+        - `array`: فیلدهای چندانتخابی که اجازه انتخاب چندین مقدار را می‌دهند
 
         **فیلدهای Enum:**
-        فیلدها با گزینه‌های پیش‌تعریف شده از `enum` و `enumNames` استفاده می‌کنند:
-        - `enum`: آرایه از مقادیر داخلی استفاده شده برای ارتباط API
-        - `enumNames`: آرایه از برچسب‌های نمایشی نشان داده شده به کاربر (معمولاً به زبان فارسی)
-        - اینها برای فیلدهای ورودی چندگانه (مانند انتخاب طبقه، امکان استفاده از پارکینگ) استفاده می‌شوند
+        فیلدهای با گزینه‌های از پیش تعریف شده از ویژگی‌های `enum` و `enumNames` استفاده می‌کنند:
+        - `enum`: آرایه مقادیر داخلی مورد استفاده برای ارتباط API
+        - `enumNames`: آرایه برچسب‌های نمایشی نشان داده شده به کاربران (معمولاً به فارسی)
+        - اینها برای منوهای کشویی تک‌انتخابی استفاده می‌شوند (مثل انتخاب طبقه، وجود پارکینگ)
 
-        **فیلدهای آرایه با Enum:**
-        فیلدهای ورودی چندگانه ترکیب `type: "array"` با کلید Enum را دارند:
+        **فیلدهای Array با Enum:**
+        فیلدهای چندانتخابی `type: "array"` را با ویژگی‌های enum ترکیب می‌کنند:
         - `items.enum`: گزینه‌های موجود برای انتخاب
         - `items.enumNames`: برچسب‌های نمایشی برای هر گزینه
-        - کاربران می‌توانند چند مقدار را انتخاب کنند (مانند امکانات رفاهی، سیستم‌های گرمایش)
+        - کاربران می‌توانند چندین مقدار انتخاب کنند (مثل امکانات رفاهی، سیستم‌های گرمایش)
 
         **ویژگی‌های فیلد:**
         - `title`: نام نمایشی فارسی برای فیلد
-        - `required`: آرایه از نام فیلدهای اجباری که باید ارائه شوند
+        - `required`: آرایه نام‌های فیلدهایی که باید ارائه شوند
         - `type`: نوع داده فیلد
 
         **مثال استفاده:**
@@ -1040,7 +1097,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: Get submit schema
+      summary: دریافت ساختار ثبت
       tags:
       - Assets
   /v1/open-platform/chat/bot/conversations/{conversation_id}/messages:
@@ -1480,6 +1537,66 @@ paths:
       summary: ایجاد اطلاعات معنایی کاربر
       tags:
       - Semantic
+  /v1/open-platform/user-payments:
+    post:
+      description: "Using this API, you should submit a user payment. It is imperative\
+        \ you use this API to submit a user payment along with the received amount.\
+        \ This api is expected to be called with access token having `SUBMIT_USER_PAYMENT`\
+        \ scope."
+      operationId: Payment_SubmitUserPayment
+      parameters:
+      - description: "Total amount paid by the user, in rials."
+        explode: true
+        in: query
+        name: amount_rials
+        required: false
+        schema:
+          format: uint64
+          type: string
+        style: form
+      - description: "Profit or commission gained from this transaction, in rials."
+        explode: true
+        in: query
+        name: profit_rials
+        required: false
+        schema:
+          format: uint64
+          type: string
+        style: form
+      - description: "List of service slugs the user paid for (e.g. 'banner', 'title_refinement')."
+        explode: true
+        in: query
+        name: services
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Reference ID of the invoice or transaction.
+        explode: true
+        in: query
+        name: reference_id
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/paymentSubmitUserPaymentResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: Submit a user payment
+      tags:
+      - limited
   /v1/open-platform/users:
     get:
       description: |
@@ -3454,6 +3571,8 @@ components:
       - CHEVRON_DOWN
       - TAG_O
       - PHONE_SPARKLES
+      - PAINT_BRUSH
+      - VIDEO_LIBRARY
       type: string
     GetPostPricingResponseReorder:
       example:
@@ -3719,6 +3838,8 @@ components:
       - NOTIFICATION_ACCESS_REVOCATION
       - SEND_EVENT
       - CREATE_WALLET_PAYMENT
+      - SUBMIT_USER_POST
+      - SUBMIT_USER_PAYMENT
       type: string
     PaymentReorderPostBody:
       example:
@@ -3884,14 +4005,6 @@ components:
       enum:
       - USER
       - POST
-      type: string
-    SubmitPostRequestLocationType:
-      description: Type of the location
-      enum:
-      - LOCATION_TYPE_EMPTY
-      - LOCATION_TYPE_EXACT
-      - LOCATION_TYPE_APPROXIMATE
-      example: LOCATION_TYPE_EXACT
       type: string
     TemporaryResidenceFieldsComfortAmenity:
       description: List of comfort amenities available in the residence
@@ -4498,14 +4611,13 @@ components:
     addonsUserAddon:
       properties:
         divar_user_id:
-          title: فیلد جدید
           type: string
         filters:
           $ref: '#/components/schemas/addonsUserAddonFilters'
         meta_data:
           $ref: '#/components/schemas/addonsAddonMetaData'
         phone:
-          title: منسوخ خواهد شد
+          title: منسوخ شده. از divar_user_id استفاده کنید
           type: string
         semantic:
           additionalProperties:
@@ -5880,6 +5992,8 @@ components:
         transaction:
           $ref: '#/components/schemas/paymentWalletTransaction'
       type: object
+    paymentSubmitUserPaymentResponse:
+      type: object
     paymentTransaction:
       example:
         extra_details: extra_details
@@ -5954,7 +6068,6 @@ components:
     payment_ticketValidateRequest:
       properties:
         phone_number:
-          description: منسوخ شده. از divar_user_id استفاده کنید.
           type: string
         service_cost:
           format: int32
@@ -6101,6 +6214,14 @@ components:
       required:
       - has_own_image
       type: object
+    postLocationType:
+      description: Type of the location
+      enum:
+      - LOCATION_TYPE_EMPTY
+      - LOCATION_TYPE_EXACT
+      - LOCATION_TYPE_APPROXIMATE
+      example: LOCATION_TYPE_EXACT
+      type: string
     postRoomsCount:
       description: Number of rooms in the residence
       enum:
@@ -6127,6 +6248,63 @@ components:
       - CATEGORY_TEACHING
       example: CATEGORY_CAR_AND_MOTOR
       type: string
+    postSubmitPostGeneralData:
+      properties:
+        category_slug:
+          description: "نام دسته‌بندی هدف. دسته‌بندی‌های موجود را در این آدرس بیاب\
+            ید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-categories/"
+          example: apartment-sell
+          type: string
+        chat_enabled:
+          description: امکان چت فعال باشد
+          example: true
+          type: boolean
+        city:
+          description: شهر آگهی
+          example: tehran
+          type: string
+        description:
+          description: توضیحات آگهی
+          example: I'm available only in chat.
+          type: string
+        district:
+          description: محله آگهی
+          example: abshar
+          type: string
+        hide_phone:
+          description: عدم نمایش شماره تماس به کاربران
+          example: true
+          type: boolean
+        images:
+          items:
+            type: string
+          type: array
+        latitude:
+          description: عرض جغرافیایی آگهی
+          example: 35.7152
+          format: double
+          type: number
+        location_type:
+          $ref: '#/components/schemas/postLocationType'
+        longitude:
+          description: طول جغرافیایی آگهی
+          example: 51.4043
+          format: double
+          type: number
+        title:
+          description: عنوان آگهی
+          example: Temporary Residence for Rent in Tehran
+          type: string
+      required:
+      - category_slug
+      - chat_enabled
+      - city
+      - description
+      - hide_phone
+      - images
+      - location_type
+      - title
+      type: object
     postSubmitPostRequest:
       properties:
         apartment_sell:
@@ -6171,7 +6349,7 @@ components:
           format: double
           type: number
         location_type:
-          $ref: '#/components/schemas/SubmitPostRequestLocationType'
+          $ref: '#/components/schemas/postLocationType'
         longitude:
           description: طول جغرافیایی آگهی
           example: 51.4043
@@ -6200,6 +6378,38 @@ components:
       properties:
         post_token:
           type: string
+      type: object
+    postSubmitPostV2Request:
+      properties:
+        category_fields:
+          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق ساختار مشخص شده تک\
+            میل شوند. ساختار را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/"
+          type: object
+        general_data:
+          $ref: '#/components/schemas/postSubmitPostGeneralData'
+        landline_numbers:
+          description: Landline numbers to be added to the post
+          example:
+          - "02188888888"
+          - "02188888889"
+          items:
+            type: string
+          type: array
+      required:
+      - category_fields
+      - general_data
+      type: object
+    postSubmitUserPostRequest:
+      properties:
+        category_fields:
+          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق ساختار مشخص شده تک\
+            میل شوند. ساختار را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/"
+          type: object
+        general_data:
+          $ref: '#/components/schemas/postSubmitPostGeneralData'
+      required:
+      - category_fields
+      - general_data
       type: object
     postTemporaryResidenceFields:
       properties:
@@ -6451,6 +6661,7 @@ components:
         id:
           type: string
         phone:
+          title: منسوخ شده. از divar_user_id استفاده کنید
           type: string
       type: object
   securitySchemes:

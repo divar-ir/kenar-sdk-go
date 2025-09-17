@@ -98,7 +98,7 @@ Class | Method | HTTP request | Description
 *AssetsAPI* | [**AssetsGetPermissions**](docs/AssetsAPI.md#assetsgetpermissions) | **Get** /v1/open-platform/assets/permission | دریافت مجوزهای کنار دیوار
 *AssetsAPI* | [**AssetsGetRamMemories**](docs/AssetsAPI.md#assetsgetrammemories) | **Get** /v1/open-platform/assets/ram-memory | دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
 *AssetsAPI* | [**AssetsGetServiceTypes**](docs/AssetsAPI.md#assetsgetservicetypes) | **Get** /v1/open-platform/assets/service-type | دریافت انواع سرویس موجود در کنار دیوار
-*AssetsAPI* | [**AssetsGetSubmitSchema**](docs/AssetsAPI.md#assetsgetsubmitschema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | Get submit schema
+*AssetsAPI* | [**AssetsGetSubmitSchema**](docs/AssetsAPI.md#assetsgetsubmitschema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | دریافت ساختار ثبت
 *ChatAPIAPI* | [**ChatAPIChatBotSendMessage**](docs/ChatAPIAPI.md#chatapichatbotsendmessage) | **Post** /v1/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
 *ChatAPIAPI* | [**ChatAPIChatBotSendMessage2**](docs/ChatAPIAPI.md#chatapichatbotsendmessage2) | **Post** /v1/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
 *ChatAPIAPI* | [**ChatAPIChatBotSendMessage3**](docs/ChatAPIAPI.md#chatapichatbotsendmessage3) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
@@ -122,11 +122,14 @@ Class | Method | HTTP request | Description
 *LimitedAPI* | [**PaymentListTransactions**](docs/LimitedAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | 
 *LimitedAPI* | [**PaymentReorderPost**](docs/LimitedAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
 *LimitedAPI* | [**PaymentRetrieveWalletTransaction**](docs/LimitedAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
+*LimitedAPI* | [**PaymentSubmitUserPayment**](docs/LimitedAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | Submit a user payment
 *PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 *PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
 *PostAPI* | [**PostSubmitPost**](docs/PostAPI.md#postsubmitpost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
+*PostAPI* | [**PostSubmitPostV2**](docs/PostAPI.md#postsubmitpostv2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی ساختار JSON
+*PostAPI* | [**PostSubmitUserPost**](docs/PostAPI.md#postsubmituserpost) | **Post** /experimental/open-platform/user-posts/new | ثبت آگهی به عنوان کاربر
 *SemanticAPI* | [**SemanticCreatePostSemantic**](docs/SemanticAPI.md#semanticcreatepostsemantic) | **Post** /experimental/open-platform/semantic/post/{token} | ایجاد اطلاعات معنایی آگهی
 *SemanticAPI* | [**SemanticCreateUserSemantic**](docs/SemanticAPI.md#semanticcreateusersemantic) | **Post** /v1/open-platform/semantic/user/{phone} | ایجاد اطلاعات معنایی کاربر
 *SemanticAPI* | [**SemanticCreateUserSemantic2**](docs/SemanticAPI.md#semanticcreateusersemantic2) | **Post** /v1/open-platform/semantic/users/{divar_user_id} | ایجاد اطلاعات معنایی کاربر
@@ -285,10 +288,14 @@ Class | Method | HTTP request | Description
  - [PostGetImageUploadURLResponse](docs/PostGetImageUploadURLResponse.md)
  - [PostGetPostStatsResponse](docs/PostGetPostStatsResponse.md)
  - [PostHomePresellFields](docs/PostHomePresellFields.md)
+ - [PostLocationType](docs/PostLocationType.md)
  - [PostRoomsCount](docs/PostRoomsCount.md)
  - [PostServicesFieldsCategory](docs/PostServicesFieldsCategory.md)
+ - [PostSubmitPostGeneralData](docs/PostSubmitPostGeneralData.md)
  - [PostSubmitPostRequest](docs/PostSubmitPostRequest.md)
  - [PostSubmitPostResponse](docs/PostSubmitPostResponse.md)
+ - [PostSubmitPostV2Request](docs/PostSubmitPostV2Request.md)
+ - [PostSubmitUserPostRequest](docs/PostSubmitUserPostRequest.md)
  - [PostTemporaryResidenceFields](docs/PostTemporaryResidenceFields.md)
  - [PremiumPanelBusinessDataSubBusinessType](docs/PremiumPanelBusinessDataSubBusinessType.md)
  - [ProtobufAny](docs/ProtobufAny.md)
@@ -301,7 +308,6 @@ Class | Method | HTTP request | Description
  - [SemanticPostSemanticDeleted](docs/SemanticPostSemanticDeleted.md)
  - [SemanticUserSemanticDeleted](docs/SemanticUserSemanticDeleted.md)
  - [SendEventRequestTargetType](docs/SendEventRequestTargetType.md)
- - [SubmitPostRequestLocationType](docs/SubmitPostRequestLocationType.md)
  - [TemporaryResidenceFieldsComfortAmenity](docs/TemporaryResidenceFieldsComfortAmenity.md)
  - [TemporaryResidenceFieldsHeatingCoolingSystem](docs/TemporaryResidenceFieldsHeatingCoolingSystem.md)
  - [TemporaryResidenceFieldsPetsAllowed](docs/TemporaryResidenceFieldsPetsAllowed.md)

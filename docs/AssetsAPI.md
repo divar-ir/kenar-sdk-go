@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**AssetsGetPermissions**](AssetsAPI.md#AssetsGetPermissions) | **Get** /v1/open-platform/assets/permission | دریافت مجوزهای کنار دیوار
 [**AssetsGetRamMemories**](AssetsAPI.md#AssetsGetRamMemories) | **Get** /v1/open-platform/assets/ram-memory | دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
 [**AssetsGetServiceTypes**](AssetsAPI.md#AssetsGetServiceTypes) | **Get** /v1/open-platform/assets/service-type | دریافت انواع سرویس موجود در کنار دیوار
-[**AssetsGetSubmitSchema**](AssetsAPI.md#AssetsGetSubmitSchema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | Get submit schema
+[**AssetsGetSubmitSchema**](AssetsAPI.md#AssetsGetSubmitSchema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | دریافت ساختار ثبت
 
 
 
@@ -788,7 +788,7 @@ Other parameters are passed through a pointer to a apiAssetsGetServiceTypesReque
 
 > AssetsGetSubmitSchemaResponse AssetsGetSubmitSchema(ctx, categorySlug).Execute()
 
-Get submit schema
+دریافت ساختار ثبت
 
 
 

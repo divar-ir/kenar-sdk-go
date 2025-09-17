@@ -126,4 +126,16 @@ func Test_kenarapi_LimitedAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test LimitedAPIService PaymentSubmitUserPayment", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.LimitedAPI.PaymentSubmitUserPayment(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

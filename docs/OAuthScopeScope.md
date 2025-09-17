@@ -61,6 +61,10 @@
 
 * `CREATE_WALLET_PAYMENT` (value: `"CREATE_WALLET_PAYMENT"`)
 
+* `SUBMIT_USER_POST` (value: `"SUBMIT_USER_POST"`)
+
+* `SUBMIT_USER_PAYMENT` (value: `"SUBMIT_USER_PAYMENT"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

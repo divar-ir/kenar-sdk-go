@@ -1627,6 +1627,10 @@
 
 * `PHONE_SPARKLES` (value: `"PHONE_SPARKLES"`)
 
+* `PAINT_BRUSH` (value: `"PAINT_BRUSH"`)
+
+* `VIDEO_LIBRARY` (value: `"VIDEO_LIBRARY"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**PaymentListTransactions**](LimitedAPI.md#PaymentListTransactions) | **Get** /experimental/open-platform/transactions | 
 [**PaymentReorderPost**](LimitedAPI.md#PaymentReorderPost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
 [**PaymentRetrieveWalletTransaction**](LimitedAPI.md#PaymentRetrieveWalletTransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
+[**PaymentSubmitUserPayment**](LimitedAPI.md#PaymentSubmitUserPayment) | **Post** /v1/open-platform/user-payments | Submit a user payment
 
 
 
@@ -543,6 +544,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PaymentRetrieveWalletTransactionResponse**](PaymentRetrieveWalletTransactionResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PaymentSubmitUserPayment
+
+> map[string]interface{} PaymentSubmitUserPayment(ctx).AmountRials(amountRials).ProfitRials(profitRials).Services(services).ReferenceId(referenceId).Execute()
+
+Submit a user payment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	amountRials := "amountRials_example" // string | Total amount paid by the user, in rials. (optional)
+	profitRials := "profitRials_example" // string | Profit or commission gained from this transaction, in rials. (optional)
+	services := []string{"Inner_example"} // []string | List of service slugs the user paid for (e.g. 'banner', 'title_refinement'). (optional)
+	referenceId := "referenceId_example" // string | Reference ID of the invoice or transaction. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LimitedAPI.PaymentSubmitUserPayment(context.Background()).AmountRials(amountRials).ProfitRials(profitRials).Services(services).ReferenceId(referenceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LimitedAPI.PaymentSubmitUserPayment``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PaymentSubmitUserPayment`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `LimitedAPI.PaymentSubmitUserPayment`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPaymentSubmitUserPaymentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **amountRials** | **string** | Total amount paid by the user, in rials. | 
+ **profitRials** | **string** | Profit or commission gained from this transaction, in rials. | 
+ **services** | **[]string** | List of service slugs the user paid for (e.g. &#39;banner&#39;, &#39;title_refinement&#39;). | 
+ **referenceId** | **string** | Reference ID of the invoice or transaction. | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
