@@ -122,7 +122,7 @@ Class | Method | HTTP request | Description
 *LimitedAPI* | [**PaymentListTransactions**](docs/LimitedAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | 
 *LimitedAPI* | [**PaymentReorderPost**](docs/LimitedAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
 *LimitedAPI* | [**PaymentRetrieveWalletTransaction**](docs/LimitedAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
-*LimitedAPI* | [**PaymentSubmitUserPayment**](docs/LimitedAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | Submit a user payment
+*LimitedAPI* | [**PaymentSubmitUserPayment**](docs/LimitedAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
 *PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر

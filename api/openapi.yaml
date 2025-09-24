@@ -1594,7 +1594,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: Submit a user payment
+      summary: ثبت پرداخت کاربر
       tags:
       - limited
   /v1/open-platform/users:

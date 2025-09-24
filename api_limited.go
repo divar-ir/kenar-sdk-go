@@ -1099,7 +1099,7 @@ func (r ApiPaymentSubmitUserPaymentRequest) Execute() (map[string]interface{}, *
 }
 
 /*
-PaymentSubmitUserPayment Submit a user payment
+PaymentSubmitUserPayment ثبت پرداخت کاربر
 
 این API مخصوص ثبت پرداخت‌های کاربران در سرویس شما هست. ضروری است که از این API برای ثبت پرداخت کاربر به همراه مبلغ دریافتی استفاده کنید. انتظار می‌رود این API با توکن دسترسی دارای دامنه SUBMIT_USER_PAYMENT فراخوانی شود.
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**PaymentListTransactions**](LimitedAPI.md#PaymentListTransactions) | **Get** /experimental/open-platform/transactions | 
 [**PaymentReorderPost**](LimitedAPI.md#PaymentReorderPost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
 [**PaymentRetrieveWalletTransaction**](LimitedAPI.md#PaymentRetrieveWalletTransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
-[**PaymentSubmitUserPayment**](LimitedAPI.md#PaymentSubmitUserPayment) | **Post** /v1/open-platform/user-payments | Submit a user payment
+[**PaymentSubmitUserPayment**](LimitedAPI.md#PaymentSubmitUserPayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
 
 
 
@@ -563,7 +563,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} PaymentSubmitUserPayment(ctx).AmountRials(amountRials).ProfitRials(profitRials).Services(services).ReferenceId(referenceId).Execute()
 
-Submit a user payment
+ثبت پرداخت کاربر
 
 
 
