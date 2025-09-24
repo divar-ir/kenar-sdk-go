@@ -580,8 +580,8 @@ import (
 )
 
 func main() {
-	amountRials := "amountRials_example" // string | میزان پول پرداختی توسط کاربر به ریال (optional)
-	profitRials := "profitRials_example" // string | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد به ریال (optional)
+	amountRials := "amountRials_example" // string | کل مبلغ پرداختی توسط کاربر، به ریال (optional)
+	profitRials := "profitRials_example" // string | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال (optional)
 	services := []string{"Inner_example"} // []string | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «بنر»، «بهبود عنوان» و ...) (optional)
 	referenceId := "referenceId_example" // string | Reference ID of the invoice or transaction. (optional)
 
@@ -608,8 +608,8 @@ Other parameters are passed through a pointer to a apiPaymentSubmitUserPaymentRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **amountRials** | **string** | میزان پول پرداختی توسط کاربر به ریال | 
- **profitRials** | **string** | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد به ریال | 
+ **amountRials** | **string** | کل مبلغ پرداختی توسط کاربر، به ریال | 
+ **profitRials** | **string** | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال | 
  **services** | **[]string** | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «بنر»، «بهبود عنوان» و ...) | 
  **referenceId** | **string** | Reference ID of the invoice or transaction. | 
 

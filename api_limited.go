@@ -1070,13 +1070,13 @@ type ApiPaymentSubmitUserPaymentRequest struct {
 	referenceId *string
 }
 
-// میزان پول پرداختی توسط کاربر به ریال
+// کل مبلغ پرداختی توسط کاربر، به ریال
 func (r ApiPaymentSubmitUserPaymentRequest) AmountRials(amountRials string) ApiPaymentSubmitUserPaymentRequest {
 	r.amountRials = &amountRials
 	return r
 }
 
-// بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد به ریال
+// بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال
 func (r ApiPaymentSubmitUserPaymentRequest) ProfitRials(profitRials string) ApiPaymentSubmitUserPaymentRequest {
 	r.profitRials = &profitRials
 	return r
@@ -1101,7 +1101,7 @@ func (r ApiPaymentSubmitUserPaymentRequest) Execute() (map[string]interface{}, *
 /*
 PaymentSubmitUserPayment ثبت پرداخت کاربر
 
-این API مخصوص ثبت پرداخت‌های کاربران در سرویس شما هست. ضروری است که از این API برای ثبت پرداخت کاربر به همراه مبلغ دریافتی استفاده کنید. انتظار می‌رود این API با توکن دسترسی دارای دامنه SUBMIT_USER_PAYMENT فراخوانی شود.
+باید با استفاده از این API پرداخت کاربران را ثبت کنید. ضروری است که از این API برای ثبت هر پرداخت کاربر به همراه مبلغ دریافتی استفاده کنید. انتظار می‌رود این API با توکن دسترسی دارای دامنه SUBMIT_USER_PAYMENT فراخوانی شود.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentSubmitUserPaymentRequest
