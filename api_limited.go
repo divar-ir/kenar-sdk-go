@@ -1088,7 +1088,7 @@ func (r ApiPaymentSubmitUserPaymentRequest) Services(services []string) ApiPayme
 	return r
 }
 
-// Reference ID of the invoice or transaction.
+// شناسه مرجع فاکتور یا تراکنش
 func (r ApiPaymentSubmitUserPaymentRequest) ReferenceId(referenceId string) ApiPaymentSubmitUserPaymentRequest {
 	r.referenceId = &referenceId
 	return r

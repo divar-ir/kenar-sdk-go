@@ -1575,7 +1575,7 @@ paths:
             type: string
           type: array
         style: form
-      - description: Reference ID of the invoice or transaction.
+      - description: شناسه مرجع فاکتور یا تراکنش
         explode: true
         in: query
         name: reference_id
