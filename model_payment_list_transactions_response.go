@@ -21,7 +21,7 @@ var _ MappedNullable = &PaymentListTransactionsResponse{}
 type PaymentListTransactionsResponse struct {
 	// Token for the next page of results.
 	NextPageToken *string `json:"next_page_token,omitempty"`
-	// List of transactions matching the request
+	// شناسه مرجع فاکتور یا تراکنش
 	Transactions []PaymentTransaction `json:"transactions,omitempty"`
 }
 

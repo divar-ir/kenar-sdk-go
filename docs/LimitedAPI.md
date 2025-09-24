@@ -580,9 +580,9 @@ import (
 )
 
 func main() {
-	amountRials := "amountRials_example" // string | Total amount paid by the user, in rials. (optional)
-	profitRials := "profitRials_example" // string | Profit or commission gained from this transaction, in rials. (optional)
-	services := []string{"Inner_example"} // []string | List of service slugs the user paid for (e.g. 'banner', 'title_refinement'). (optional)
+	amountRials := "amountRials_example" // string | میزان پول پرداختی توسط کاربر به ریال (optional)
+	profitRials := "profitRials_example" // string | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد به ریال (optional)
+	services := []string{"Inner_example"} // []string | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «بنر»، «بهبود عنوان» و ...) (optional)
 	referenceId := "referenceId_example" // string | Reference ID of the invoice or transaction. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -608,9 +608,9 @@ Other parameters are passed through a pointer to a apiPaymentSubmitUserPaymentRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **amountRials** | **string** | Total amount paid by the user, in rials. | 
- **profitRials** | **string** | Profit or commission gained from this transaction, in rials. | 
- **services** | **[]string** | List of service slugs the user paid for (e.g. &#39;banner&#39;, &#39;title_refinement&#39;). | 
+ **amountRials** | **string** | میزان پول پرداختی توسط کاربر به ریال | 
+ **profitRials** | **string** | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد به ریال | 
+ **services** | **[]string** | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «بنر»، «بهبود عنوان» و ...) | 
  **referenceId** | **string** | Reference ID of the invoice or transaction. | 
 
 ### Return type
