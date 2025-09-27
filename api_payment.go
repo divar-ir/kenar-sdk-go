@@ -42,7 +42,7 @@ func (r ApiPaymentCommitWalletTransactionRequest) Execute() (*PaymentCommitWalle
 /*
 PaymentCommitWalletTransaction Method for PaymentCommitWalletTransaction
 
-(Limited) Using this API you can commit a successful payment. This API is idempotent and you can call it multiple times.
+(محدود) با استفاده از این API می‌توانید یک پرداخت موفق را commit کنید. این API idempotent است و می‌توانید چندین بار آن را فراخوانی کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentCommitWalletTransactionRequest
@@ -174,7 +174,7 @@ func (r ApiPaymentCreateWalletPaymentRequest) Execute() (*PaymentCreateWalletPay
 /*
 PaymentCreateWalletPayment Method for PaymentCreateWalletPayment
 
-(Limited) Using this API you can start a payment transaction from the users wallet.
+(محدود) با استفاده از این API می‌توانید یک تراکنش پرداخت از کیف پول کاربران شروع کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentCreateWalletPaymentRequest
@@ -300,7 +300,7 @@ func (r ApiPaymentGetBalanceRequest) Execute() (*PaymentGetBalanceResponse, *htt
 /*
 PaymentGetBalance Method for PaymentGetBalance
 
-(Limited) Using this API you can retrieve current balance of your app.
+(محدود) با استفاده از این API می‌توانید موجودی فعلی اپلیکیشن خود را دریافت کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentGetBalanceRequest
@@ -547,7 +547,7 @@ func (r ApiPaymentGetTransactionRequest) Execute() (*PaymentGetTransactionRespon
 /*
 PaymentGetTransaction Method for PaymentGetTransaction
 
-(Limited) Using this API you can retrieve transaction details.
+با استفاده از این (محدود) API می‌توانید جزئیات تراکنش را دریافت کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id شناسه منحصر به فرد برای تراکنش، همان id در درخواست
@@ -685,7 +685,7 @@ func (r ApiPaymentListTransactionsRequest) Execute() (*PaymentListTransactionsRe
 /*
 PaymentListTransactions Method for PaymentListTransactions
 
-(Limited) Using this API you can retrieve a list of transactions. Follow pages till you get an empty list.
+(محدود) با استفاده از این api میتوانید لیست تراکنش‌های اپ را مشاهده کنید. برای مشاهده‌ی تمام تراکنش‌ها، صفحات را دنبال کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentListTransactionsRequest
@@ -819,7 +819,7 @@ func (r ApiPaymentReorderPostRequest) Execute() (*PaymentReorderPostResponse, *h
 /*
 PaymentReorderPost Method for PaymentReorderPost
 
-(Limited) Use GetPostPricing API to get the cost of the service before calling this API.
+(محدود) قبل از فراخوانی این API، از API GetPostPricing برای دریافت هزینه سرویس استفاده کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -949,7 +949,7 @@ func (r ApiPaymentRetrieveWalletTransactionRequest) Execute() (*PaymentRetrieveW
 /*
 PaymentRetrieveWalletTransaction Method for PaymentRetrieveWalletTransaction
 
-(Limited) Using this API you can retrieve a transaction and its status. Use this API to validate the payment before committing.
+با استفاده از این API می‌توانید یک تراکنش و وضعیت آن را بازیابی کنید. (محدود) از این API برای اعتبارسنجی پرداخت قبل از commit استفاده کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token توکن تراکنشی که می‌خواهید بازیابی کنید
