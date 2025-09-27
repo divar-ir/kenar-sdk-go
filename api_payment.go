@@ -547,7 +547,7 @@ func (r ApiPaymentGetTransactionRequest) Execute() (*PaymentGetTransactionRespon
 /*
 PaymentGetTransaction Method for PaymentGetTransaction
 
-با استفاده از این (محدود) API می‌توانید جزئیات تراکنش را دریافت کنید.
+(محدود) با استفاده از این API می‌توانید جزئیات تراکنش را دریافت کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id شناسه منحصر به فرد برای تراکنش، همان id در درخواست
@@ -949,7 +949,7 @@ func (r ApiPaymentRetrieveWalletTransactionRequest) Execute() (*PaymentRetrieveW
 /*
 PaymentRetrieveWalletTransaction Method for PaymentRetrieveWalletTransaction
 
-با استفاده از این API می‌توانید یک تراکنش و وضعیت آن را بازیابی کنید. (محدود) از این API برای اعتبارسنجی پرداخت قبل از commit استفاده کنید.
+(محدود) با استفاده از این API می‌توانید یک تراکنش و وضعیت آن را بازیابی کنید. از این API برای اعتبارسنجی پرداخت قبل از commit استفاده کنید.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token توکن تراکنشی که می‌خواهید بازیابی کنید
