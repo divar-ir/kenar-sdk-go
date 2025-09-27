@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Reorder** | Pointer to [**GetPostPricingResponseReorder**](GetPostPricingResponseReorder.md) |  | [optional] 
+**Submit** | Pointer to [**GetPostPricingResponseSubmit**](GetPostPricingResponseSubmit.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetReorder sets Reorder field to given value.
 `func (o *PaymentGetPostPricingResponse) HasReorder() bool`
 
 HasReorder returns a boolean if a field has been set.
+
+### GetSubmit
+
+`func (o *PaymentGetPostPricingResponse) GetSubmit() GetPostPricingResponseSubmit`
+
+GetSubmit returns the Submit field if non-nil, zero value otherwise.
+
+### GetSubmitOk
+
+`func (o *PaymentGetPostPricingResponse) GetSubmitOk() (*GetPostPricingResponseSubmit, bool)`
+
+GetSubmitOk returns a tuple with the Submit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubmit
+
+`func (o *PaymentGetPostPricingResponse) SetSubmit(v GetPostPricingResponseSubmit)`
+
+SetSubmit sets Submit field to given value.
+
+### HasSubmit
+
+`func (o *PaymentGetPostPricingResponse) HasSubmit() bool`
+
+HasSubmit returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

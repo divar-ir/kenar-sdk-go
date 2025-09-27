@@ -20,7 +20,7 @@ var _ MappedNullable = &FinderGetPostResponse{}
 
 // FinderGetPostResponse struct for FinderGetPostResponse
 type FinderGetPostResponse struct {
-	BusinessData *GetPostResponseBusinessData `json:"business_data,omitempty"`
+	BusinessData *FinderGetPostResponseBusinessData `json:"business_data,omitempty"`
 	Category *string `json:"category,omitempty"`
 	ChatEnabled *bool `json:"chat_enabled,omitempty"`
 	City *string `json:"city,omitempty"`
@@ -52,9 +52,9 @@ func NewFinderGetPostResponseWithDefaults() *FinderGetPostResponse {
 }
 
 // GetBusinessData returns the BusinessData field value if set, zero value otherwise.
-func (o *FinderGetPostResponse) GetBusinessData() GetPostResponseBusinessData {
+func (o *FinderGetPostResponse) GetBusinessData() FinderGetPostResponseBusinessData {
 	if o == nil || IsNil(o.BusinessData) {
-		var ret GetPostResponseBusinessData
+		var ret FinderGetPostResponseBusinessData
 		return ret
 	}
 	return *o.BusinessData
@@ -62,7 +62,7 @@ func (o *FinderGetPostResponse) GetBusinessData() GetPostResponseBusinessData {
 
 // GetBusinessDataOk returns a tuple with the BusinessData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FinderGetPostResponse) GetBusinessDataOk() (*GetPostResponseBusinessData, bool) {
+func (o *FinderGetPostResponse) GetBusinessDataOk() (*FinderGetPostResponseBusinessData, bool) {
 	if o == nil || IsNil(o.BusinessData) {
 		return nil, false
 	}
@@ -78,8 +78,8 @@ func (o *FinderGetPostResponse) HasBusinessData() bool {
 	return false
 }
 
-// SetBusinessData gets a reference to the given GetPostResponseBusinessData and assigns it to the BusinessData field.
-func (o *FinderGetPostResponse) SetBusinessData(v GetPostResponseBusinessData) {
+// SetBusinessData gets a reference to the given FinderGetPostResponseBusinessData and assigns it to the BusinessData field.
+func (o *FinderGetPostResponse) SetBusinessData(v FinderGetPostResponseBusinessData) {
 	o.BusinessData = &v
 }
 

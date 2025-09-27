@@ -20,6 +20,7 @@ var _ MappedNullable = &PaymentGetPostPricingResponse{}
 // PaymentGetPostPricingResponse struct for PaymentGetPostPricingResponse
 type PaymentGetPostPricingResponse struct {
 	Reorder *GetPostPricingResponseReorder `json:"reorder,omitempty"`
+	Submit *GetPostPricingResponseSubmit `json:"submit,omitempty"`
 }
 
 // NewPaymentGetPostPricingResponse instantiates a new PaymentGetPostPricingResponse object
@@ -71,6 +72,38 @@ func (o *PaymentGetPostPricingResponse) SetReorder(v GetPostPricingResponseReord
 	o.Reorder = &v
 }
 
+// GetSubmit returns the Submit field value if set, zero value otherwise.
+func (o *PaymentGetPostPricingResponse) GetSubmit() GetPostPricingResponseSubmit {
+	if o == nil || IsNil(o.Submit) {
+		var ret GetPostPricingResponseSubmit
+		return ret
+	}
+	return *o.Submit
+}
+
+// GetSubmitOk returns a tuple with the Submit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentGetPostPricingResponse) GetSubmitOk() (*GetPostPricingResponseSubmit, bool) {
+	if o == nil || IsNil(o.Submit) {
+		return nil, false
+	}
+	return o.Submit, true
+}
+
+// HasSubmit returns a boolean if a field has been set.
+func (o *PaymentGetPostPricingResponse) HasSubmit() bool {
+	if o != nil && !IsNil(o.Submit) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubmit gets a reference to the given GetPostPricingResponseSubmit and assigns it to the Submit field.
+func (o *PaymentGetPostPricingResponse) SetSubmit(v GetPostPricingResponseSubmit) {
+	o.Submit = &v
+}
+
 func (o PaymentGetPostPricingResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -83,6 +116,9 @@ func (o PaymentGetPostPricingResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Reorder) {
 		toSerialize["reorder"] = o.Reorder
+	}
+	if !IsNil(o.Submit) {
+		toSerialize["submit"] = o.Submit
 	}
 	return toSerialize, nil
 }

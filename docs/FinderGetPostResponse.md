@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BusinessData** | Pointer to [**GetPostResponseBusinessData**](GetPostResponseBusinessData.md) |  | [optional] 
+**BusinessData** | Pointer to [**FinderGetPostResponseBusinessData**](FinderGetPostResponseBusinessData.md) |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
 **ChatEnabled** | Pointer to **bool** |  | [optional] 
 **City** | Pointer to **string** |  | [optional] 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBusinessData
 
-`func (o *FinderGetPostResponse) GetBusinessData() GetPostResponseBusinessData`
+`func (o *FinderGetPostResponse) GetBusinessData() FinderGetPostResponseBusinessData`
 
 GetBusinessData returns the BusinessData field if non-nil, zero value otherwise.
 
 ### GetBusinessDataOk
 
-`func (o *FinderGetPostResponse) GetBusinessDataOk() (*GetPostResponseBusinessData, bool)`
+`func (o *FinderGetPostResponse) GetBusinessDataOk() (*FinderGetPostResponseBusinessData, bool)`
 
 GetBusinessDataOk returns a tuple with the BusinessData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBusinessData
 
-`func (o *FinderGetPostResponse) SetBusinessData(v GetPostResponseBusinessData)`
+`func (o *FinderGetPostResponse) SetBusinessData(v FinderGetPostResponseBusinessData)`
 
 SetBusinessData sets BusinessData field to given value.
 
