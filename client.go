@@ -60,7 +60,7 @@ type APIClient struct {
 
 	FinderAPI *FinderAPIService
 
-	LimitedAPI *LimitedAPIService
+	PaymentAPI *PaymentAPIService
 
 	PaymentTicketAPI *PaymentTicketAPIService
 
@@ -90,7 +90,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ChatAPIAPI = (*ChatAPIAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.FinderAPI = (*FinderAPIService)(&c.common)
-	c.LimitedAPI = (*LimitedAPIService)(&c.common)
+	c.PaymentAPI = (*PaymentAPIService)(&c.common)
 	c.PaymentTicketAPI = (*PaymentTicketAPIService)(&c.common)
 	c.PostAPI = (*PostAPIService)(&c.common)
 	c.SemanticAPI = (*SemanticAPIService)(&c.common)

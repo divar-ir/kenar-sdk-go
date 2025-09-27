@@ -7,21 +7,21 @@ servers:
 security:
 - APIKey: []
 tags:
-- name: Addons
-- name: Assets
-- name: ChatAPI
-- name: Events
-- name: Finder
-- name: Post
-- description: "Limited APIs, Create tickets if you need to use them."
-  name: limited
-- name: PaymentTicket
 - name: Semantic
+- name: PaymentTicket
+- description: "Some APIs are limited, Create tickets if you need to use them."
+  name: Payment
+- name: Post
+- name: Finder
+- name: Events
+- name: ChatAPI
+- name: Assets
+- name: Addons
 paths:
   /experimental/open-platform/balance:
     get:
-      description: با استفاده از این API می‌توانید موجودی فعلی اپلیکیشن خود را دریافت
-        کنید.
+      description: (Limited) Using this API you can retrieve current balance of your
+        app.
       operationId: Payment_GetBalance
       responses:
         "200":
@@ -37,7 +37,7 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       tags:
-      - limited
+      - Payment
   /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages:
     post:
       description: |-
@@ -270,8 +270,8 @@ paths:
       - Events
   /experimental/open-platform/post/{post_token}/reorder:
     post:
-      description: قبل از فراخوانی این API، از API GetPostPricing برای دریافت هزینه
-        سرویس استفاده کنید.
+      description: (Limited) Use GetPostPricing API to get the cost of the service
+        before calling this API.
       operationId: Payment_ReorderPost
       parameters:
       - explode: false
@@ -301,7 +301,7 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       tags:
-      - limited
+      - Payment
   /experimental/open-platform/posts/new:
     post:
       description: |-
@@ -426,8 +426,8 @@ paths:
       - Semantic
   /experimental/open-platform/transactions:
     get:
-      description: با استفاده از این api میتوانید لیست تراکنش‌های اپ را مشاهده کنید.
-        برای مشاهده‌ی تمام تراکنش‌ها، صفحات را دنبال کنید.
+      description: (Limited) Using this API you can retrieve a list of transactions.
+        Follow pages till you get an empty list.
       operationId: Payment_ListTransactions
       parameters:
       - description: Number of transactions to return per page
@@ -461,10 +461,10 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       tags:
-      - limited
+      - Payment
   /experimental/open-platform/transactions/{id}:
     get:
-      description: با استفاده از این API می‌توانید جزئیات تراکنش را دریافت کنید.
+      description: (Limited) Using this API you can retrieve transaction details.
       operationId: Payment_GetTransaction
       parameters:
       - description: شناسه منحصر به فرد برای تراکنش، همان id در درخواست
@@ -489,7 +489,7 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       tags:
-      - limited
+      - Payment
   /experimental/open-platform/user-posts/new:
     post:
       description: |-
@@ -521,8 +521,8 @@ paths:
       - Post
   /experimental/open-platform/wallet/payments/commit:
     post:
-      description: با استفاده از این API می‌توانید یک پرداخت موفق را commit کنید.
-        این API idempotent است و می‌توانید چندین بار آن را فراخوانی کنید.
+      description: (Limited) Using this API you can commit a successful payment. This
+        API is idempotent and you can call it multiple times.
       operationId: Payment_CommitWalletTransaction
       requestBody:
         content:
@@ -544,11 +544,11 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       tags:
-      - limited
+      - Payment
   /experimental/open-platform/wallet/payments/create:
     post:
-      description: با استفاده از این API می‌توانید یک تراکنش پرداخت از کیف پول کاربران
-        شروع کنید.
+      description: (Limited) Using this API you can start a payment transaction from
+        the users wallet.
       operationId: Payment_CreateWalletPayment
       requestBody:
         content:
@@ -570,11 +570,11 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       tags:
-      - limited
+      - Payment
   /experimental/open-platform/wallet/payments/{token}:
     get:
-      description: با استفاده از این API می‌توانید یک تراکنش و وضعیت آن را بازیابی
-        کنید. از این API برای اعتبارسنجی پرداخت قبل از commit استفاده کنید.
+      description: (Limited) Using this API you can retrieve a transaction and its
+        status. Use this API to validate the payment before committing.
       operationId: Payment_RetrieveWalletTransaction
       parameters:
       - description: توکن تراکنشی که می‌خواهید بازیابی کنید
@@ -599,7 +599,7 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       tags:
-      - limited
+      - Payment
   /v1/open-platform/add-ons/post/{token}:
     delete:
       description: فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد
@@ -1401,7 +1401,7 @@ paths:
           description: پاسخ خطای غیرمنتظره.
       summary: دریافت هزینه سرویس
       tags:
-      - limited
+      - Payment
   /v1/open-platform/semantic/user/{phone}:
     delete:
       description: می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
@@ -1599,7 +1599,7 @@ paths:
           description: پاسخ خطای غیرمنتظره.
       summary: ثبت پرداخت کاربر
       tags:
-      - limited
+      - Payment
   /v1/open-platform/users:
     get:
       description: |

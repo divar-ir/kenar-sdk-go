@@ -114,15 +114,15 @@ Class | Method | HTTP request | Description
 *FinderAPI* | [**FinderGetUser2**](docs/FinderAPI.md#findergetuser2) | **Get** /v1/open-platform/users | دریافت اطلاعات کاربر
 *FinderAPI* | [**FinderGetUserPosts**](docs/FinderAPI.md#findergetuserposts) | **Get** /v1/open-platform/finder/user-posts | دریافت آگهی‌های کاربر
 *FinderAPI* | [**FinderSearchPostV2**](docs/FinderAPI.md#findersearchpostv2) | **Post** /v2/open-platform/finder/post | جستجو آگهی‌های دیوار با فیلترهایی
-*LimitedAPI* | [**PaymentCommitWalletTransaction**](docs/LimitedAPI.md#paymentcommitwallettransaction) | **Post** /experimental/open-platform/wallet/payments/commit | 
-*LimitedAPI* | [**PaymentCreateWalletPayment**](docs/LimitedAPI.md#paymentcreatewalletpayment) | **Post** /experimental/open-platform/wallet/payments/create | 
-*LimitedAPI* | [**PaymentGetBalance**](docs/LimitedAPI.md#paymentgetbalance) | **Get** /experimental/open-platform/balance | 
-*LimitedAPI* | [**PaymentGetPostPricing**](docs/LimitedAPI.md#paymentgetpostpricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت هزینه سرویس
-*LimitedAPI* | [**PaymentGetTransaction**](docs/LimitedAPI.md#paymentgettransaction) | **Get** /experimental/open-platform/transactions/{id} | 
-*LimitedAPI* | [**PaymentListTransactions**](docs/LimitedAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | 
-*LimitedAPI* | [**PaymentReorderPost**](docs/LimitedAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
-*LimitedAPI* | [**PaymentRetrieveWalletTransaction**](docs/LimitedAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
-*LimitedAPI* | [**PaymentSubmitUserPayment**](docs/LimitedAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
+*PaymentAPI* | [**PaymentCommitWalletTransaction**](docs/PaymentAPI.md#paymentcommitwallettransaction) | **Post** /experimental/open-platform/wallet/payments/commit | 
+*PaymentAPI* | [**PaymentCreateWalletPayment**](docs/PaymentAPI.md#paymentcreatewalletpayment) | **Post** /experimental/open-platform/wallet/payments/create | 
+*PaymentAPI* | [**PaymentGetBalance**](docs/PaymentAPI.md#paymentgetbalance) | **Get** /experimental/open-platform/balance | 
+*PaymentAPI* | [**PaymentGetPostPricing**](docs/PaymentAPI.md#paymentgetpostpricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت هزینه سرویس
+*PaymentAPI* | [**PaymentGetTransaction**](docs/PaymentAPI.md#paymentgettransaction) | **Get** /experimental/open-platform/transactions/{id} | 
+*PaymentAPI* | [**PaymentListTransactions**](docs/PaymentAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | 
+*PaymentAPI* | [**PaymentReorderPost**](docs/PaymentAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
+*PaymentAPI* | [**PaymentRetrieveWalletTransaction**](docs/PaymentAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
+*PaymentAPI* | [**PaymentSubmitUserPayment**](docs/PaymentAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
 *PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
