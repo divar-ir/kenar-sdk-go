@@ -1631,8 +1631,6 @@
 
 * `VIDEO_LIBRARY` (value: `"VIDEO_LIBRARY"`)
 
-* `MAGNIFIER_SPARKLE` (value: `"MAGNIFIER_SPARKLE"`)
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
