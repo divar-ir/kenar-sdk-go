@@ -1082,7 +1082,7 @@ func (r ApiPaymentSubmitUserPaymentRequest) ProfitRials(profitRials string) ApiP
 	return r
 }
 
-// لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «بنر»، «بهبود عنوان» و ...)
+// لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی کوتاه و توصیفی به‌عنوان شناسه سرویس استفاده شود.
 func (r ApiPaymentSubmitUserPaymentRequest) Services(services []string) ApiPaymentSubmitUserPaymentRequest {
 	r.services = &services
 	return r

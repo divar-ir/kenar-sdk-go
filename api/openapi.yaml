@@ -1568,7 +1568,8 @@ paths:
           type: string
         style: form
       - description: لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است
-          (مثلاً «بنر»، «بهبود عنوان» و ...)
+          (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی
+          کوتاه و توصیفی به‌عنوان شناسه سرویس استفاده شود.
         explode: true
         in: query
         name: services
@@ -3578,6 +3579,7 @@ components:
       - PHONE_SPARKLES
       - PAINT_BRUSH
       - VIDEO_LIBRARY
+      - MAGNIFIER_SPARKLE
       type: string
     GetPostPricingResponseReorder:
       example:

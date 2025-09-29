@@ -582,7 +582,7 @@ import (
 func main() {
 	amountRials := "amountRials_example" // string | کل مبلغ پرداختی توسط کاربر، به ریال (optional)
 	profitRials := "profitRials_example" // string | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال (optional)
-	services := []string{"Inner_example"} // []string | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «بنر»، «بهبود عنوان» و ...) (optional)
+	services := []string{"Inner_example"} // []string | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی کوتاه و توصیفی به‌عنوان شناسه سرویس استفاده شود. (optional)
 	referenceId := "referenceId_example" // string | شناسه مرجع فاکتور یا تراکنش (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **amountRials** | **string** | کل مبلغ پرداختی توسط کاربر، به ریال | 
  **profitRials** | **string** | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال | 
- **services** | **[]string** | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «بنر»، «بهبود عنوان» و ...) | 
+ **services** | **[]string** | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی کوتاه و توصیفی به‌عنوان شناسه سرویس استفاده شود. | 
  **referenceId** | **string** | شناسه مرجع فاکتور یا تراکنش | 
 
 ### Return type
