@@ -23,7 +23,7 @@ var _ MappedNullable = &PaymentSubmitUserPaymentRequest{}
 type PaymentSubmitUserPaymentRequest struct {
 	// کل مبلغ پرداختی توسط کاربر، به ریال
 	AmountRials string `json:"amount_rials"`
-	// بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال
+	// بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد، به ریال. به عنوان مثال در افزونه‌های پرداخت امن بخش اعظم مبلغ پرداختی سهم فروشنده آگهی هست و این پارامتر باید برابر بخشی از مبلغ پرداختی که مربوط به کمیسیون سرویس‌دهنده پرداخت امن است قرار بگیرد. در صورتی که چنین مفهومی در فرایند پرداخت شما وجود ندارد مقدار این پارامتر را دقیقا برابر amount_rials ارسال کنید.
 	ProfitRials string `json:"profit_rials"`
 	// شناسه مرجع فاکتور یا تراکنش
 	ReferenceId string `json:"reference_id"`
