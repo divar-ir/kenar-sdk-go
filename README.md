@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 *PaymentAPI* | [**PaymentRetrieveWalletTransaction**](docs/PaymentAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
 *PaymentAPI* | [**PaymentSubmitUserPayment**](docs/PaymentAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
 *PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
+*PostAPI* | [**PostCanUserSubmitPost**](docs/PostAPI.md#postcanusersubmitpost) | **Get** /experimental/open-platform/user-posts/can-submit | Check if user can submit post
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 *PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
@@ -172,6 +173,7 @@ Class | Method | HTTP request | Description
  - [AddonsGetBusinessAddonsResponse](docs/AddonsGetBusinessAddonsResponse.md)
  - [AddonsGetDynamicAction](docs/AddonsGetDynamicAction.md)
  - [AddonsGetPostAddonsResponse](docs/AddonsGetPostAddonsResponse.md)
+ - [AddonsGetUserAddonsResponse](docs/AddonsGetUserAddonsResponse.md)
  - [AddonsGetUserPostAddonsResponse](docs/AddonsGetUserPostAddonsResponse.md)
  - [AddonsGroupInfoRow](docs/AddonsGroupInfoRow.md)
  - [AddonsGroupInfoRowGroupInfoItem](docs/AddonsGroupInfoRowGroupInfoItem.md)
@@ -276,6 +278,7 @@ Class | Method | HTTP request | Description
  - [PaymentReorderPostBody](docs/PaymentReorderPostBody.md)
  - [PaymentReorderPostResponse](docs/PaymentReorderPostResponse.md)
  - [PaymentRetrieveWalletTransactionResponse](docs/PaymentRetrieveWalletTransactionResponse.md)
+ - [PaymentSubmitUserPaymentRequest](docs/PaymentSubmitUserPaymentRequest.md)
  - [PaymentTicketGenerateResponse](docs/PaymentTicketGenerateResponse.md)
  - [PaymentTicketValidateRequest](docs/PaymentTicketValidateRequest.md)
  - [PaymentTicketValidateResponse](docs/PaymentTicketValidateResponse.md)
@@ -285,6 +288,7 @@ Class | Method | HTTP request | Description
  - [PaymentWalletTransaction](docs/PaymentWalletTransaction.md)
  - [PaymentWalletTransactionStatus](docs/PaymentWalletTransactionStatus.md)
  - [PostApartmentSellFields](docs/PostApartmentSellFields.md)
+ - [PostCanUserSubmitPostResponse](docs/PostCanUserSubmitPostResponse.md)
  - [PostEditPostBody](docs/PostEditPostBody.md)
  - [PostGetImageUploadURLResponse](docs/PostGetImageUploadURLResponse.md)
  - [PostGetPostStatsResponse](docs/PostGetPostStatsResponse.md)

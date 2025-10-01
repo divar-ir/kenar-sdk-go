@@ -492,6 +492,28 @@ paths:
           description: پاسخ خطای غیرمنتظره.
       tags:
       - Payment
+  /experimental/open-platform/user-posts/can-submit:
+    get:
+      description: This API allows you to check if a user can submit a post.This API
+        expects the user's access token in the request headers with the `SUBMIT_USER_POST`
+        OAuth scope.
+      operationId: Post_CanUserSubmitPost
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postCanUserSubmitPostResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: Check if user can submit post
+      tags:
+      - Post
   /experimental/open-platform/user-posts/new:
     post:
       description: |-
@@ -1547,46 +1569,12 @@ paths:
         انتظار می‌رود این API با توکن دسترسی دارای دامنه SUBMIT_USER_PAYMENT فراخوانی
         شود.
       operationId: Payment_SubmitUserPayment
-      parameters:
-      - description: کل مبلغ پرداختی توسط کاربر، به ریال
-        explode: true
-        in: query
-        name: amount_rials
-        required: false
-        schema:
-          format: uint64
-          type: string
-        style: form
-      - description: بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)،
-          به ریال
-        explode: true
-        in: query
-        name: profit_rials
-        required: false
-        schema:
-          format: uint64
-          type: string
-        style: form
-      - description: لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است
-          (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی
-          کوتاه و توصیفی به‌عنوان شناسه سرویس استفاده شود.
-        explode: true
-        in: query
-        name: services
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: شناسه مرجع فاکتور یا تراکنش
-        explode: true
-        in: query
-        name: reference_id
-        required: false
-        schema:
-          type: string
-        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/paymentSubmitUserPaymentRequest'
+        required: true
       responses:
         "200":
           content:
@@ -4396,6 +4384,13 @@ components:
             $ref: '#/components/schemas/addonsPostAddon'
           type: array
       type: object
+    addonsGetUserAddonsResponse:
+      properties:
+        user_addons:
+          items:
+            $ref: '#/components/schemas/addonsUserAddon'
+          type: array
+      type: object
     addonsGetUserPostAddonsResponse:
       properties:
         addons:
@@ -6018,6 +6013,33 @@ components:
         transaction:
           $ref: '#/components/schemas/paymentWalletTransaction'
       type: object
+    paymentSubmitUserPaymentRequest:
+      properties:
+        amount_rials:
+          description: کل مبلغ پرداختی توسط کاربر، به ریال
+          format: uint64
+          type: string
+        profit_rials:
+          description: بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)،
+            به ریال
+          format: uint64
+          type: string
+        reference_id:
+          description: شناسه مرجع فاکتور یا تراکنش
+          type: string
+        services:
+          description: لیست شناسه خدماتی که کاربر برای آنها پرداخت انجام داده است
+            (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی
+            کوتاه و توصیفی به‌عنوان شناسه خدمت استفاده شود.
+          items:
+            type: string
+          type: array
+      required:
+      - amount_rials
+      - profit_rials
+      - reference_id
+      - services
+      type: object
     paymentSubmitUserPaymentResponse:
       type: object
     paymentTransaction:
@@ -6161,6 +6183,13 @@ components:
       - rooms_count
       - size
       - year_built
+      type: object
+    postCanUserSubmitPostResponse:
+      example:
+        can_submit: true
+      properties:
+        can_submit:
+          type: boolean
       type: object
     postEditPostResponse:
       type: object

@@ -17,7 +17,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"reflect"
 )
 
 
@@ -1064,33 +1063,11 @@ func (a *PaymentAPIService) PaymentRetrieveWalletTransactionExecute(r ApiPayment
 type ApiPaymentSubmitUserPaymentRequest struct {
 	ctx context.Context
 	ApiService *PaymentAPIService
-	amountRials *string
-	profitRials *string
-	services *[]string
-	referenceId *string
+	paymentSubmitUserPaymentRequest *PaymentSubmitUserPaymentRequest
 }
 
-// کل مبلغ پرداختی توسط کاربر، به ریال
-func (r ApiPaymentSubmitUserPaymentRequest) AmountRials(amountRials string) ApiPaymentSubmitUserPaymentRequest {
-	r.amountRials = &amountRials
-	return r
-}
-
-// بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال
-func (r ApiPaymentSubmitUserPaymentRequest) ProfitRials(profitRials string) ApiPaymentSubmitUserPaymentRequest {
-	r.profitRials = &profitRials
-	return r
-}
-
-// لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی کوتاه و توصیفی به‌عنوان شناسه سرویس استفاده شود.
-func (r ApiPaymentSubmitUserPaymentRequest) Services(services []string) ApiPaymentSubmitUserPaymentRequest {
-	r.services = &services
-	return r
-}
-
-// شناسه مرجع فاکتور یا تراکنش
-func (r ApiPaymentSubmitUserPaymentRequest) ReferenceId(referenceId string) ApiPaymentSubmitUserPaymentRequest {
-	r.referenceId = &referenceId
+func (r ApiPaymentSubmitUserPaymentRequest) PaymentSubmitUserPaymentRequest(paymentSubmitUserPaymentRequest PaymentSubmitUserPaymentRequest) ApiPaymentSubmitUserPaymentRequest {
+	r.paymentSubmitUserPaymentRequest = &paymentSubmitUserPaymentRequest
 	return r
 }
 
@@ -1133,29 +1110,12 @@ func (a *PaymentAPIService) PaymentSubmitUserPaymentExecute(r ApiPaymentSubmitUs
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.paymentSubmitUserPaymentRequest == nil {
+		return localVarReturnValue, nil, reportError("paymentSubmitUserPaymentRequest is required and must be specified")
+	}
 
-	if r.amountRials != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "amount_rials", r.amountRials, "form", "")
-	}
-	if r.profitRials != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "profit_rials", r.profitRials, "form", "")
-	}
-	if r.services != nil {
-		t := *r.services
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "services", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "services", t, "form", "multi")
-		}
-	}
-	if r.referenceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "reference_id", r.referenceId, "form", "")
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1171,6 +1131,8 @@ func (a *PaymentAPIService) PaymentSubmitUserPaymentExecute(r ApiPaymentSubmitUs
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.paymentSubmitUserPaymentRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Addons** | Pointer to [**[]AddonsUserAddon**](AddonsUserAddon.md) |  | [optional] 
+**UserAddons** | Pointer to [**[]AddonsUserAddon**](AddonsUserAddon.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewAddonsGetUserAddonsResponseWithDefaults instantiates a new AddonsGetUserAddon
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAddons
+### GetUserAddons
 
-`func (o *AddonsGetUserAddonsResponse) GetAddons() []AddonsUserAddon`
+`func (o *AddonsGetUserAddonsResponse) GetUserAddons() []AddonsUserAddon`
 
-GetAddons returns the Addons field if non-nil, zero value otherwise.
+GetUserAddons returns the UserAddons field if non-nil, zero value otherwise.
 
-### GetAddonsOk
+### GetUserAddonsOk
 
-`func (o *AddonsGetUserAddonsResponse) GetAddonsOk() (*[]AddonsUserAddon, bool)`
+`func (o *AddonsGetUserAddonsResponse) GetUserAddonsOk() (*[]AddonsUserAddon, bool)`
 
-GetAddonsOk returns a tuple with the Addons field if it's non-nil, zero value otherwise
+GetUserAddonsOk returns a tuple with the UserAddons field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAddons
+### SetUserAddons
 
-`func (o *AddonsGetUserAddonsResponse) SetAddons(v []AddonsUserAddon)`
+`func (o *AddonsGetUserAddonsResponse) SetUserAddons(v []AddonsUserAddon)`
 
-SetAddons sets Addons field to given value.
+SetUserAddons sets UserAddons field to given value.
 
-### HasAddons
+### HasUserAddons
 
-`func (o *AddonsGetUserAddonsResponse) HasAddons() bool`
+`func (o *AddonsGetUserAddonsResponse) HasUserAddons() bool`
 
-HasAddons returns a boolean if a field has been set.
+HasUserAddons returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

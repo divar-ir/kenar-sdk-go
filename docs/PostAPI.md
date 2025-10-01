@@ -4,6 +4,7 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**PostCanUserSubmitPost**](PostAPI.md#PostCanUserSubmitPost) | **Get** /experimental/open-platform/user-posts/can-submit | Check if user can submit post
 [**PostEditPost**](PostAPI.md#PostEditPost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
 [**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
 [**PostGetPostStats**](PostAPI.md#PostGetPostStats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
@@ -11,6 +12,67 @@ Method | HTTP request | Description
 [**PostSubmitPostV2**](PostAPI.md#PostSubmitPostV2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
 [**PostSubmitUserPost**](PostAPI.md#PostSubmitUserPost) | **Post** /experimental/open-platform/user-posts/new | ثبت آگهی به عنوان کاربر
 
+
+
+## PostCanUserSubmitPost
+
+> PostCanUserSubmitPostResponse PostCanUserSubmitPost(ctx).Execute()
+
+Check if user can submit post
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PostAPI.PostCanUserSubmitPost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PostAPI.PostCanUserSubmitPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostCanUserSubmitPost`: PostCanUserSubmitPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `PostAPI.PostCanUserSubmitPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostCanUserSubmitPostRequest struct via the builder pattern
+
+
+### Return type
+
+[**PostCanUserSubmitPostResponse**](PostCanUserSubmitPostResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## PostEditPost

@@ -561,7 +561,7 @@ Name | Type | Description  | Notes
 
 ## PaymentSubmitUserPayment
 
-> map[string]interface{} PaymentSubmitUserPayment(ctx).AmountRials(amountRials).ProfitRials(profitRials).Services(services).ReferenceId(referenceId).Execute()
+> map[string]interface{} PaymentSubmitUserPayment(ctx).PaymentSubmitUserPaymentRequest(paymentSubmitUserPaymentRequest).Execute()
 
 ثبت پرداخت کاربر
 
@@ -580,14 +580,11 @@ import (
 )
 
 func main() {
-	amountRials := "amountRials_example" // string | کل مبلغ پرداختی توسط کاربر، به ریال (optional)
-	profitRials := "profitRials_example" // string | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال (optional)
-	services := []string{"Inner_example"} // []string | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی کوتاه و توصیفی به‌عنوان شناسه سرویس استفاده شود. (optional)
-	referenceId := "referenceId_example" // string | شناسه مرجع فاکتور یا تراکنش (optional)
+	paymentSubmitUserPaymentRequest := *openapiclient.NewPaymentSubmitUserPaymentRequest("AmountRials_example", "ProfitRials_example", "ReferenceId_example", []string{"Services_example"}) // PaymentSubmitUserPaymentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentAPI.PaymentSubmitUserPayment(context.Background()).AmountRials(amountRials).ProfitRials(profitRials).Services(services).ReferenceId(referenceId).Execute()
+	resp, r, err := apiClient.PaymentAPI.PaymentSubmitUserPayment(context.Background()).PaymentSubmitUserPaymentRequest(paymentSubmitUserPaymentRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentAPI.PaymentSubmitUserPayment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -608,10 +605,7 @@ Other parameters are passed through a pointer to a apiPaymentSubmitUserPaymentRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **amountRials** | **string** | کل مبلغ پرداختی توسط کاربر، به ریال | 
- **profitRials** | **string** | بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد (سود یا کمیسیون)، به ریال | 
- **services** | **[]string** | لیست شناسه سرویس‌هایی که کاربر برای آنها پرداخت انجام داده است (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی کوتاه و توصیفی به‌عنوان شناسه سرویس استفاده شود. | 
- **referenceId** | **string** | شناسه مرجع فاکتور یا تراکنش | 
+ **paymentSubmitUserPaymentRequest** | [**PaymentSubmitUserPaymentRequest**](PaymentSubmitUserPaymentRequest.md) |  | 
 
 ### Return type
 
@@ -623,7 +617,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

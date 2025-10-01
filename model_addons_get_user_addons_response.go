@@ -19,7 +19,7 @@ var _ MappedNullable = &AddonsGetUserAddonsResponse{}
 
 // AddonsGetUserAddonsResponse struct for AddonsGetUserAddonsResponse
 type AddonsGetUserAddonsResponse struct {
-	Addons []AddonsUserAddon `json:"addons,omitempty"`
+	UserAddons []AddonsUserAddon `json:"user_addons,omitempty"`
 }
 
 // NewAddonsGetUserAddonsResponse instantiates a new AddonsGetUserAddonsResponse object
@@ -39,36 +39,36 @@ func NewAddonsGetUserAddonsResponseWithDefaults() *AddonsGetUserAddonsResponse {
 	return &this
 }
 
-// GetAddons returns the Addons field value if set, zero value otherwise.
-func (o *AddonsGetUserAddonsResponse) GetAddons() []AddonsUserAddon {
-	if o == nil || IsNil(o.Addons) {
+// GetUserAddons returns the UserAddons field value if set, zero value otherwise.
+func (o *AddonsGetUserAddonsResponse) GetUserAddons() []AddonsUserAddon {
+	if o == nil || IsNil(o.UserAddons) {
 		var ret []AddonsUserAddon
 		return ret
 	}
-	return o.Addons
+	return o.UserAddons
 }
 
-// GetAddonsOk returns a tuple with the Addons field value if set, nil otherwise
+// GetUserAddonsOk returns a tuple with the UserAddons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddonsGetUserAddonsResponse) GetAddonsOk() ([]AddonsUserAddon, bool) {
-	if o == nil || IsNil(o.Addons) {
+func (o *AddonsGetUserAddonsResponse) GetUserAddonsOk() ([]AddonsUserAddon, bool) {
+	if o == nil || IsNil(o.UserAddons) {
 		return nil, false
 	}
-	return o.Addons, true
+	return o.UserAddons, true
 }
 
-// HasAddons returns a boolean if a field has been set.
-func (o *AddonsGetUserAddonsResponse) HasAddons() bool {
-	if o != nil && !IsNil(o.Addons) {
+// HasUserAddons returns a boolean if a field has been set.
+func (o *AddonsGetUserAddonsResponse) HasUserAddons() bool {
+	if o != nil && !IsNil(o.UserAddons) {
 		return true
 	}
 
 	return false
 }
 
-// SetAddons gets a reference to the given []AddonsUserAddon and assigns it to the Addons field.
-func (o *AddonsGetUserAddonsResponse) SetAddons(v []AddonsUserAddon) {
-	o.Addons = v
+// SetUserAddons gets a reference to the given []AddonsUserAddon and assigns it to the UserAddons field.
+func (o *AddonsGetUserAddonsResponse) SetUserAddons(v []AddonsUserAddon) {
+	o.UserAddons = v
 }
 
 func (o AddonsGetUserAddonsResponse) MarshalJSON() ([]byte, error) {
@@ -81,8 +81,8 @@ func (o AddonsGetUserAddonsResponse) MarshalJSON() ([]byte, error) {
 
 func (o AddonsGetUserAddonsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Addons) {
-		toSerialize["addons"] = o.Addons
+	if !IsNil(o.UserAddons) {
+		toSerialize["user_addons"] = o.UserAddons
 	}
 	return toSerialize, nil
 }
