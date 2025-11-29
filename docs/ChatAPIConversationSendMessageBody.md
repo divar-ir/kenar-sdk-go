@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **string** | Text message content to be sent | 
-**MediaToken** | Pointer to **string** | Token for attached media (if any) | [optional] 
+**Message** | **string** | محتوای پیام متنی برای ارسال | 
+**MediaToken** | Pointer to **string** | توکن برای مدیای ضمیمه شده (در صورت وجود) | [optional] 
 **ReceiverButtons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
 **SenderButtons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
 

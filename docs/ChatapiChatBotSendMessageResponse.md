@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConversationId** | Pointer to **string** | ID of the conversation created or updated | [optional] [readonly] 
+**ConversationId** | Pointer to **string** | شناسه مکالمه ایجاد شده یا به‌روزرسانی شده | [optional] [readonly] 
 
 ## Methods
 

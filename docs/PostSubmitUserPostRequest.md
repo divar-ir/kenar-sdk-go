@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CategoryFields** | **map[string]interface{}** | فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/ | 
-**GeneralData** | [**PostSubmitPostGeneralData**](PostSubmitPostGeneralData.md) |  | 
+**CategoryFields** | **map[string]interface{}** | فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/ | 
+**GeneralData** | [**PostPostGeneralData**](PostPostGeneralData.md) |  | 
 
 ## Methods
 
 ### NewPostSubmitUserPostRequest
 
-`func NewPostSubmitUserPostRequest(categoryFields map[string]interface{}, generalData PostSubmitPostGeneralData, ) *PostSubmitUserPostRequest`
+`func NewPostSubmitUserPostRequest(categoryFields map[string]interface{}, generalData PostPostGeneralData, ) *PostSubmitUserPostRequest`
 
 NewPostSubmitUserPostRequest instantiates a new PostSubmitUserPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetCategoryFields sets CategoryFields field to given value.
 
 ### GetGeneralData
 
-`func (o *PostSubmitUserPostRequest) GetGeneralData() PostSubmitPostGeneralData`
+`func (o *PostSubmitUserPostRequest) GetGeneralData() PostPostGeneralData`
 
 GetGeneralData returns the GeneralData field if non-nil, zero value otherwise.
 
 ### GetGeneralDataOk
 
-`func (o *PostSubmitUserPostRequest) GetGeneralDataOk() (*PostSubmitPostGeneralData, bool)`
+`func (o *PostSubmitUserPostRequest) GetGeneralDataOk() (*PostPostGeneralData, bool)`
 
 GetGeneralDataOk returns a tuple with the GeneralData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGeneralData
 
-`func (o *PostSubmitUserPostRequest) SetGeneralData(v PostSubmitPostGeneralData)`
+`func (o *PostSubmitUserPostRequest) SetGeneralData(v PostPostGeneralData)`
 
 SetGeneralData sets GeneralData field to given value.
 

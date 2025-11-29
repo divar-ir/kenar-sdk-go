@@ -1,0 +1,27 @@
+# OpenPlatformpostPostState
+
+## Enum
+
+
+* `POST_STATE_IN_PUBLISH_QUEUE` (value: `"POST_STATE_IN_PUBLISH_QUEUE"`)
+
+* `POST_STATE_PUBLISHED` (value: `"POST_STATE_PUBLISHED"`)
+
+* `POST_STATE_WAITING_FOR_EDIT` (value: `"POST_STATE_WAITING_FOR_EDIT"`)
+
+* `POST_STATE_WAITING_FOR_PAYMENT` (value: `"POST_STATE_WAITING_FOR_PAYMENT"`)
+
+* `POST_STATE_WAITING_FOR_REVIEW` (value: `"POST_STATE_WAITING_FOR_REVIEW"`)
+
+* `POST_STATE_PUBLISHED_AND_EDIT_REJECTED` (value: `"POST_STATE_PUBLISHED_AND_EDIT_REJECTED"`)
+
+* `POST_STATE_REJECTED` (value: `"POST_STATE_REJECTED"`)
+
+* `POST_STATE_DELETED` (value: `"POST_STATE_DELETED"`)
+
+* `POST_STATE_RETIRED` (value: `"POST_STATE_RETIRED"`)
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

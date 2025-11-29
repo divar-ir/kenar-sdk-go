@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Renew** | Pointer to [**GetPostPricingResponseRenew**](GetPostPricingResponseRenew.md) |  | [optional] 
 **Reorder** | Pointer to [**GetPostPricingResponseReorder**](GetPostPricingResponseReorder.md) |  | [optional] 
 **Submit** | Pointer to [**GetPostPricingResponseSubmit**](GetPostPricingResponseSubmit.md) |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewPaymentGetPostPricingResponseWithDefaults instantiates a new PaymentGetPostPricingResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetRenew
+
+`func (o *PaymentGetPostPricingResponse) GetRenew() GetPostPricingResponseRenew`
+
+GetRenew returns the Renew field if non-nil, zero value otherwise.
+
+### GetRenewOk
+
+`func (o *PaymentGetPostPricingResponse) GetRenewOk() (*GetPostPricingResponseRenew, bool)`
+
+GetRenewOk returns a tuple with the Renew field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRenew
+
+`func (o *PaymentGetPostPricingResponse) SetRenew(v GetPostPricingResponseRenew)`
+
+SetRenew sets Renew field to given value.
+
+### HasRenew
+
+`func (o *PaymentGetPostPricingResponse) HasRenew() bool`
+
+HasRenew returns a boolean if a field has been set.
 
 ### GetReorder
 

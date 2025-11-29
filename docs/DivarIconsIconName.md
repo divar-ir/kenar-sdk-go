@@ -1633,6 +1633,10 @@
 
 * `MAGNIFIER_SPARKLE` (value: `"MAGNIFIER_SPARKLE"`)
 
+* `PIN_VARIANT` (value: `"PIN_VARIANT"`)
+
+* `MORE_HORIZONTAL_O` (value: `"MORE_HORIZONTAL_O"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -108,26 +108,37 @@ Class | Method | HTTP request | Description
 *ChatAPIAPI* | [**ChatAPIGenerateUploadToken**](docs/ChatAPIAPI.md#chatapigenerateuploadtoken) | **Post** /experimental/open-platform/chat/upload | تولید توکن آپلود
 *ChatAPIAPI* | [**ChatAPIGetConversation**](docs/ChatAPIAPI.md#chatapigetconversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | دریافت مکالمه با شناسه آن
 *EventsAPI* | [**EventsRegisterEventSubscription**](docs/EventsAPI.md#eventsregistereventsubscription) | **Post** /v1/open-platform/events/subscriptions | اشتراک در رویداد
-*EventsAPI* | [**EventsSendEvent**](docs/EventsAPI.md#eventssendevent) | **Post** /experimental/open-platform/events/send | Send an event to a user
+*EventsAPI* | [**EventsSendEvent**](docs/EventsAPI.md#eventssendevent) | **Post** /experimental/open-platform/events/send | ارسال رویداد به کاربر با استفاده از API
 *FinderAPI* | [**FinderGetPost**](docs/FinderAPI.md#findergetpost) | **Get** /v1/open-platform/finder/post/{token} | دریافت آگهی دیوار
 *FinderAPI* | [**FinderGetUser**](docs/FinderAPI.md#findergetuser) | **Post** /v1/open-platform/users | دریافت اطلاعات کاربر
 *FinderAPI* | [**FinderGetUser2**](docs/FinderAPI.md#findergetuser2) | **Get** /v1/open-platform/users | دریافت اطلاعات کاربر
+*FinderAPI* | [**FinderGetUserIDByPhone**](docs/FinderAPI.md#findergetuseridbyphone) | **Post** /v1/open-platform/get-user-id-by-phone | دریافت شناسه دیوار کاربر با شماره تلفن
 *FinderAPI* | [**FinderGetUserPosts**](docs/FinderAPI.md#findergetuserposts) | **Get** /v1/open-platform/finder/user-posts | دریافت آگهی‌های کاربر
 *FinderAPI* | [**FinderSearchPostV2**](docs/FinderAPI.md#findersearchpostv2) | **Post** /v2/open-platform/finder/post | جستجو آگهی‌های دیوار با فیلترهایی
-*PaymentAPI* | [**PaymentCommitWalletTransaction**](docs/PaymentAPI.md#paymentcommitwallettransaction) | **Post** /experimental/open-platform/wallet/payments/commit | 
-*PaymentAPI* | [**PaymentCreateWalletPayment**](docs/PaymentAPI.md#paymentcreatewalletpayment) | **Post** /experimental/open-platform/wallet/payments/create | 
-*PaymentAPI* | [**PaymentGetBalance**](docs/PaymentAPI.md#paymentgetbalance) | **Get** /experimental/open-platform/balance | 
+*PaymentAPI* | [**PaymentCommitWalletTransaction**](docs/PaymentAPI.md#paymentcommitwallettransaction) | **Post** /experimental/open-platform/wallet/payments/commit | تایید تراکنش کیف پول
+*PaymentAPI* | [**PaymentCreateWalletPayment**](docs/PaymentAPI.md#paymentcreatewalletpayment) | **Post** /experimental/open-platform/wallet/payments/create | ایجاد پرداخت کیف پول
+*PaymentAPI* | [**PaymentGetBalance**](docs/PaymentAPI.md#paymentgetbalance) | **Get** /experimental/open-platform/balance | دریافت موجودی اپلیکیشن
 *PaymentAPI* | [**PaymentGetPostPricing**](docs/PaymentAPI.md#paymentgetpostpricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت هزینه سرویس
-*PaymentAPI* | [**PaymentGetTransaction**](docs/PaymentAPI.md#paymentgettransaction) | **Get** /experimental/open-platform/transactions/{id} | 
-*PaymentAPI* | [**PaymentListTransactions**](docs/PaymentAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | 
-*PaymentAPI* | [**PaymentReorderPost**](docs/PaymentAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
-*PaymentAPI* | [**PaymentRetrieveWalletTransaction**](docs/PaymentAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
+*PaymentAPI* | [**PaymentGetTransaction**](docs/PaymentAPI.md#paymentgettransaction) | **Get** /experimental/open-platform/transactions/{id} | دریافت جزئیات تراکنش
+*PaymentAPI* | [**PaymentListTransactions**](docs/PaymentAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | لیست تراکنش‌ها
+*PaymentAPI* | [**PaymentPublishUserPost**](docs/PaymentAPI.md#paymentpublishuserpost) | **Post** /experimental/open-platform/post/{post_token}/publish | پرداخت هزینه ثبت آگهی کاربر از طرف ارائه‌دهنده
+*PaymentAPI* | [**PaymentRenewPost**](docs/PaymentAPI.md#paymentrenewpost) | **Post** /experimental/open-platform/post/{post_token}/renew | تمدید آگهی
+*PaymentAPI* | [**PaymentReorderPost**](docs/PaymentAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | نردبان آگهی
+*PaymentAPI* | [**PaymentRetrieveWalletTransaction**](docs/PaymentAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | بازیابی تراکنش کیف پول
 *PaymentAPI* | [**PaymentSubmitUserPayment**](docs/PaymentAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
 *PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
-*PostAPI* | [**PostCanUserSubmitPost**](docs/PostAPI.md#postcanusersubmitpost) | **Get** /experimental/open-platform/user-posts/can-submit | Check if user can submit post
+*PostAPI* | [**PostCanUserSubmitPost**](docs/PostAPI.md#postcanusersubmitpost) | **Get** /experimental/open-platform/user-posts/can-submit | بررسی اینکه آیا کاربر می‌تواند آگهی ارسال کند
+*PostAPI* | [**PostCreateBusinessCustomizedButton**](docs/PostAPI.md#postcreatebusinesscustomizedbutton) | **Post** /experimental/open-platform/business/{business_token}/customized-button | ایجاد دکمه اختصاصی برای آگهی‌های کسب‌و‌کار
+*PostAPI* | [**PostDeleteBusinessCustomizedButton**](docs/PostAPI.md#postdeletebusinesscustomizedbutton) | **Delete** /experimental/open-platform/business/{business_token}/customized-button | حذف دکمه اختصاصی از آگهی‌های کسب‌و‌کار
+*PostAPI* | [**PostDeletePostCustomizedButton**](docs/PostAPI.md#postdeletepostcustomizedbutton) | **Delete** /experimental/open-platform/posts/{post_token}/customized-button | حذف دکمه اختصاصی از آگهی
+*PostAPI* | [**PostDeleteUserPost**](docs/PostAPI.md#postdeleteuserpost) | **Delete** /v1/open-platform/post/{post_token} | حذف آگهی
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
-*PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت URL آپلود تصویر
+*PostAPI* | [**PostEditPostV2**](docs/PostAPI.md#posteditpostv2) | **Put** /v2/open-platform/post/{post_token} | ویرایش آگهی با پشتیبانی از فیلد ماسک
+*PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت آدرس اپلود تصاویر آگهی (منسوخ شده)
 *PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
+*PostAPI* | [**PostGetUploadURLsV2**](docs/PostAPI.md#postgetuploadurlsv2) | **Get** /v2/open-platform/post/upload-urls | دریافت آدرس آپلود برای تصاویر و ویدیو‌ی آگهی‌ها
+*PostAPI* | [**PostGetUserPost**](docs/PostAPI.md#postgetuserpost) | **Get** /v1/open-platform/user-post/{token} | دریافت آگهی با توکن
+*PostAPI* | [**PostSetPostCustomizedButton**](docs/PostAPI.md#postsetpostcustomizedbutton) | **Post** /experimental/open-platform/posts/{post_token}/customized-button | تنظیم دکمه اختصاصی بر روی آگهی ثبت شده
 *PostAPI* | [**PostSubmitPost**](docs/PostAPI.md#postsubmitpost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
 *PostAPI* | [**PostSubmitPostV2**](docs/PostAPI.md#postsubmitpostv2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
 *PostAPI* | [**PostSubmitUserPost**](docs/PostAPI.md#postsubmituserpost) | **Post** /experimental/open-platform/user-posts/new | ثبت آگهی به عنوان کاربر
@@ -232,11 +243,14 @@ Class | Method | HTTP request | Description
  - [ChatapiMessageType](docs/ChatapiMessageType.md)
  - [DivarIconsIconName](docs/DivarIconsIconName.md)
  - [EventsEventButton](docs/EventsEventButton.md)
+ - [EventsEventButtonList](docs/EventsEventButtonList.md)
  - [EventsRegisterEventSubscriptionRequest](docs/EventsRegisterEventSubscriptionRequest.md)
  - [EventsRegisterEventSubscriptionRequestEventType](docs/EventsRegisterEventSubscriptionRequestEventType.md)
  - [FinderGetAllDevelopmentPostsResponse](docs/FinderGetAllDevelopmentPostsResponse.md)
  - [FinderGetPostResponse](docs/FinderGetPostResponse.md)
  - [FinderGetPostResponseBusinessData](docs/FinderGetPostResponseBusinessData.md)
+ - [FinderGetUserIDByPhoneRequest](docs/FinderGetUserIDByPhoneRequest.md)
+ - [FinderGetUserIDByPhoneResponse](docs/FinderGetUserIDByPhoneResponse.md)
  - [FinderGetUserPostsResponse](docs/FinderGetUserPostsResponse.md)
  - [FinderGetUserPostsResponsePost](docs/FinderGetUserPostsResponsePost.md)
  - [FinderPostExtState](docs/FinderPostExtState.md)
@@ -246,11 +260,13 @@ Class | Method | HTTP request | Description
  - [FinderSearchQuery](docs/FinderSearchQuery.md)
  - [FinderSearchQueryNumberRange](docs/FinderSearchQueryNumberRange.md)
  - [FinderUser](docs/FinderUser.md)
+ - [GetPostPricingResponseRenew](docs/GetPostPricingResponseRenew.md)
  - [GetPostPricingResponseReorder](docs/GetPostPricingResponseReorder.md)
  - [GetPostPricingResponseSubmit](docs/GetPostPricingResponseSubmit.md)
  - [GetPostStatsResponseDailyStats](docs/GetPostStatsResponseDailyStats.md)
  - [GetPostStatsResponsePostStats](docs/GetPostStatsResponsePostStats.md)
  - [GetServiceTypesResponseServiceTypeData](docs/GetServiceTypesResponseServiceTypeData.md)
+ - [GetUploadURLsV2ResponseUploadFormat](docs/GetUploadURLsV2ResponseUploadFormat.md)
  - [GooglerpcStatus](docs/GooglerpcStatus.md)
  - [HomePresellFieldsConstructionPhase](docs/HomePresellFieldsConstructionPhase.md)
  - [HomePresellFieldsDeliveryMonth](docs/HomePresellFieldsDeliveryMonth.md)
@@ -266,6 +282,8 @@ Class | Method | HTTP request | Description
  - [MessageVideoData](docs/MessageVideoData.md)
  - [MessageVoiceData](docs/MessageVoiceData.md)
  - [OAuthScopeScope](docs/OAuthScopeScope.md)
+ - [OpenPlatformpostHTTPMethod](docs/OpenPlatformpostHTTPMethod.md)
+ - [OpenPlatformpostPostState](docs/OpenPlatformpostPostState.md)
  - [OpenPlatformpostServicesFields](docs/OpenPlatformpostServicesFields.md)
  - [PaymentCommitWalletTransactionRequest](docs/PaymentCommitWalletTransactionRequest.md)
  - [PaymentCommitWalletTransactionResponse](docs/PaymentCommitWalletTransactionResponse.md)
@@ -275,6 +293,10 @@ Class | Method | HTTP request | Description
  - [PaymentGetPostPricingResponse](docs/PaymentGetPostPricingResponse.md)
  - [PaymentGetTransactionResponse](docs/PaymentGetTransactionResponse.md)
  - [PaymentListTransactionsResponse](docs/PaymentListTransactionsResponse.md)
+ - [PaymentPublishUserPostBody](docs/PaymentPublishUserPostBody.md)
+ - [PaymentPublishUserPostResponse](docs/PaymentPublishUserPostResponse.md)
+ - [PaymentRenewPostBody](docs/PaymentRenewPostBody.md)
+ - [PaymentRenewPostResponse](docs/PaymentRenewPostResponse.md)
  - [PaymentReorderPostBody](docs/PaymentReorderPostBody.md)
  - [PaymentReorderPostResponse](docs/PaymentReorderPostResponse.md)
  - [PaymentRetrieveWalletTransactionResponse](docs/PaymentRetrieveWalletTransactionResponse.md)
@@ -289,14 +311,23 @@ Class | Method | HTTP request | Description
  - [PaymentWalletTransactionStatus](docs/PaymentWalletTransactionStatus.md)
  - [PostApartmentSellFields](docs/PostApartmentSellFields.md)
  - [PostCanUserSubmitPostResponse](docs/PostCanUserSubmitPostResponse.md)
+ - [PostCreateBusinessCustomizedButtonBody](docs/PostCreateBusinessCustomizedButtonBody.md)
+ - [PostCustomizedButton](docs/PostCustomizedButton.md)
+ - [PostCustomizedButtonType](docs/PostCustomizedButtonType.md)
  - [PostEditPostBody](docs/PostEditPostBody.md)
+ - [PostEditPostV2Body](docs/PostEditPostV2Body.md)
+ - [PostGeneralDataPostVideo](docs/PostGeneralDataPostVideo.md)
+ - [PostGetBusinessCustomizedButtonResponse](docs/PostGetBusinessCustomizedButtonResponse.md)
  - [PostGetImageUploadURLResponse](docs/PostGetImageUploadURLResponse.md)
  - [PostGetPostStatsResponse](docs/PostGetPostStatsResponse.md)
+ - [PostGetUploadURLsV2Response](docs/PostGetUploadURLsV2Response.md)
+ - [PostGetUserPostResponse](docs/PostGetUserPostResponse.md)
+ - [PostGetUserPostResponseBusinessData](docs/PostGetUserPostResponseBusinessData.md)
  - [PostHomePresellFields](docs/PostHomePresellFields.md)
  - [PostLocationType](docs/PostLocationType.md)
+ - [PostPostGeneralData](docs/PostPostGeneralData.md)
  - [PostRoomsCount](docs/PostRoomsCount.md)
- - [PostServicesFieldsCategory](docs/PostServicesFieldsCategory.md)
- - [PostSubmitPostGeneralData](docs/PostSubmitPostGeneralData.md)
+ - [PostSetPostCustomizedButtonBody](docs/PostSetPostCustomizedButtonBody.md)
  - [PostSubmitPostRequest](docs/PostSubmitPostRequest.md)
  - [PostSubmitPostResponse](docs/PostSubmitPostResponse.md)
  - [PostSubmitPostV2Request](docs/PostSubmitPostV2Request.md)
@@ -313,6 +344,7 @@ Class | Method | HTTP request | Description
  - [SemanticPostSemanticDeleted](docs/SemanticPostSemanticDeleted.md)
  - [SemanticUserSemanticDeleted](docs/SemanticUserSemanticDeleted.md)
  - [SendEventRequestTargetType](docs/SendEventRequestTargetType.md)
+ - [ServicesFieldsCategory](docs/ServicesFieldsCategory.md)
  - [TemporaryResidenceFieldsComfortAmenity](docs/TemporaryResidenceFieldsComfortAmenity.md)
  - [TemporaryResidenceFieldsHeatingCoolingSystem](docs/TemporaryResidenceFieldsHeatingCoolingSystem.md)
  - [TemporaryResidenceFieldsPetsAllowed](docs/TemporaryResidenceFieldsPetsAllowed.md)
@@ -352,6 +384,7 @@ r, err := client.Service.Operation(auth, args)
 - **Authorization URL**: oauth.divar.ir/oauth2/auth
 - **Scopes**: 
  - **BUSINESS_ADDON_CREATE.resource_id**: BUSINESS_ADDON_CREATE.resource_id
+ - **BUSINESS_CREATE_CUSTOMIZED_BUTTON.resource_id**: BUSINESS_CREATE_CUSTOMIZED_BUTTON.resource_id
  - **CHAT_BOT_USER_MESSAGE_SEND**: CHAT_BOT_USER_MESSAGE_SEND
  - **CHAT_CONVERSATION_READ.resource_id**: CHAT_CONVERSATION_READ.resource_id
  - **CHAT_MESSAGE_SEND.resource_id**: CHAT_MESSAGE_SEND.resource_id
@@ -360,20 +393,29 @@ r, err := client.Service.Operation(auth, args)
  - **CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND**: CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND
  - **CHAT_SUPPLIER_ALL_CONVERSATIONS_READ**: CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
  - **CONVERSATION_SEND_MESSAGE.resource_id**: CONVERSATION_SEND_MESSAGE.resource_id
+ - **CREATE_WALLET_PAYMENT**: CREATE_WALLET_PAYMENT
+ - **DELETE_USER_POST**: DELETE_USER_POST
+ - **EDIT_USER_POST**: EDIT_USER_POST
  - **MANAGEMENT_APPS_READ.resource_id**: MANAGEMENT_APPS_READ.resource_id
  - **MANAGEMENT_APPS_WRITE.resource_id**: MANAGEMENT_APPS_WRITE.resource_id
  - **NOTIFICATION_ACCESS_REVOCATION**: NOTIFICATION_ACCESS_REVOCATION
  - **PAYMENT_ALL_POSTS_PRICING_READ**: PAYMENT_ALL_POSTS_PRICING_READ
+ - **PAYMENT_ALL_POSTS_RENEW**: PAYMENT_ALL_POSTS_RENEW
  - **PAYMENT_ALL_POSTS_REORDER**: PAYMENT_ALL_POSTS_REORDER
  - **POST_ADDON_CREATE.resource_id**: POST_ADDON_CREATE.resource_id
  - **POST_EDIT.resource_id**: POST_EDIT.resource_id
  - **POST_ONGOING_IMAGES_GET.resource_id**: POST_ONGOING_IMAGES_GET.resource_id
  - **POST_SEMANTIC_CREATE.resource_id**: POST_SEMANTIC_CREATE.resource_id
+ - **SEND_EVENT**: SEND_EVENT
+ - **SUBMIT_USER_PAYMENT**: SUBMIT_USER_PAYMENT
+ - **SUBMIT_USER_POST**: SUBMIT_USER_POST
  - **USER_ADDON_CREATE**: USER_ADDON_CREATE
  - **USER_ID**: USER_ID
  - **USER_PHONE**: USER_PHONE
  - **USER_POSTS_ADDON_CREATE**: USER_POSTS_ADDON_CREATE
  - **USER_POSTS_GET**: USER_POSTS_GET
+ - **USER_POSTS_STATS_READ**: USER_POSTS_STATS_READ
+ - **USER_SET_CUSTOMIZED_BUTTON**: USER_SET_CUSTOMIZED_BUTTON
  - **USER_VERIFICATION_CREATE**: USER_VERIFICATION_CREATE
  - **offline_access**: offline_access
  - **openid**: openid

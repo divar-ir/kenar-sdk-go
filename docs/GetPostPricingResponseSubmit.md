@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Available** | Pointer to **bool** | Indicates if the post can be submitted. If false, the submit API will return an error | [optional] 
-**CostRials** | Pointer to **string** | The cost of submitting post in rials | [optional] 
+**Available** | Pointer to **bool** | نشان می‌دهد که آیا آگهی قابل ثبت است. اگر false باشد، API ثبت خطا برمی‌گرداند | [optional] 
+**CostRials** | Pointer to **string** | هزینه ثبت آگهی به ریال | [optional] 
 
 ## Methods
 

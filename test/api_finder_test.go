@@ -1,5 +1,5 @@
 /*
-Kenar API
+API کنار
 
 Testing FinderAPIService
 
@@ -53,6 +53,18 @@ func Test_kenarapi_FinderAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.FinderAPI.FinderGetUser2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FinderAPIService FinderGetUserIDByPhone", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.FinderAPI.FinderGetUserIDByPhone(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

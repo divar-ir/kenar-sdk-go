@@ -39,6 +39,8 @@
 
 * `PAYMENT_ALL_POSTS_REORDER` (value: `"PAYMENT_ALL_POSTS_REORDER"`)
 
+* `PAYMENT_ALL_POSTS_RENEW` (value: `"PAYMENT_ALL_POSTS_RENEW"`)
+
 * `MANAGEMENT_APPS_READ` (value: `"MANAGEMENT_APPS_READ"`)
 
 * `MANAGEMENT_APPS_WRITE` (value: `"MANAGEMENT_APPS_WRITE"`)
@@ -64,6 +66,14 @@
 * `SUBMIT_USER_POST` (value: `"SUBMIT_USER_POST"`)
 
 * `SUBMIT_USER_PAYMENT` (value: `"SUBMIT_USER_PAYMENT"`)
+
+* `USER_SET_CUSTOMIZED_BUTTON` (value: `"USER_SET_CUSTOMIZED_BUTTON"`)
+
+* `BUSINESS_CREATE_CUSTOMIZED_BUTTON` (value: `"BUSINESS_CREATE_CUSTOMIZED_BUTTON"`)
+
+* `DELETE_USER_POST` (value: `"DELETE_USER_POST"`)
+
+* `EDIT_USER_POST` (value: `"EDIT_USER_POST"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

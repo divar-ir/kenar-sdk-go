@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CategoryFields** | **map[string]interface{}** | فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/ | 
-**GeneralData** | [**PostSubmitPostGeneralData**](PostSubmitPostGeneralData.md) |  | 
-**LandlineNumbers** | Pointer to **[]string** | Landline numbers to be added to the post | [optional] 
+**CategoryFields** | **map[string]interface{}** | فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/ | 
+**GeneralData** | [**PostPostGeneralData**](PostPostGeneralData.md) |  | 
+**LandlineNumbers** | Pointer to **[]string** | شماره‌های ثابت برای افزودن به آگهی | [optional] 
 
 ## Methods
 
 ### NewPostSubmitPostV2Request
 
-`func NewPostSubmitPostV2Request(categoryFields map[string]interface{}, generalData PostSubmitPostGeneralData, ) *PostSubmitPostV2Request`
+`func NewPostSubmitPostV2Request(categoryFields map[string]interface{}, generalData PostPostGeneralData, ) *PostSubmitPostV2Request`
 
 NewPostSubmitPostV2Request instantiates a new PostSubmitPostV2Request object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetCategoryFields sets CategoryFields field to given value.
 
 ### GetGeneralData
 
-`func (o *PostSubmitPostV2Request) GetGeneralData() PostSubmitPostGeneralData`
+`func (o *PostSubmitPostV2Request) GetGeneralData() PostPostGeneralData`
 
 GetGeneralData returns the GeneralData field if non-nil, zero value otherwise.
 
 ### GetGeneralDataOk
 
-`func (o *PostSubmitPostV2Request) GetGeneralDataOk() (*PostSubmitPostGeneralData, bool)`
+`func (o *PostSubmitPostV2Request) GetGeneralDataOk() (*PostPostGeneralData, bool)`
 
 GetGeneralDataOk returns a tuple with the GeneralData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGeneralData
 
-`func (o *PostSubmitPostV2Request) SetGeneralData(v PostSubmitPostGeneralData)`
+`func (o *PostSubmitPostV2Request) SetGeneralData(v PostPostGeneralData)`
 
 SetGeneralData sets GeneralData field to given value.
 

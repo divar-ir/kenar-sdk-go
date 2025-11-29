@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to [**AddonsAction**](AddonsAction.md) |  | [optional] 
-**Title** | Pointer to **string** | The text to display on the button | [optional] 
+**Title** | Pointer to **string** | متن برای نمایش روی دکمه | [optional] 
 
 ## Methods
 

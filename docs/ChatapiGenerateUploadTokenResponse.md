@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Token** | Pointer to **string** | A url safe base64 encoded token that can be used in the upload endpoint | [optional] [readonly] 
+**Token** | Pointer to **string** | توکن کدگذاری شده base64 ایمن برای URL که می‌تواند در نقطه پایانی آپلود استفاده شود | [optional] [readonly] 
 
 ## Methods
 

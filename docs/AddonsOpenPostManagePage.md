@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PostToken** | **string** | Token of the post to redirect to its management page | 
+**PostToken** | **string** | توکن آگهی برای هدایت به صفحه مدیریت آن | 
 
 ## Methods
 

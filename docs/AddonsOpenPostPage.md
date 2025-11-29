@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PostToken** | **string** | Token of the post to open | 
+**PostToken** | **string** | توکن آگهی برای باز کردن | 
 
 ## Methods
 

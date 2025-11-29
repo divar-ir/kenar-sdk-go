@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TextMessage** | **string** | Text message content to be sent by the bot | 
+**TextMessage** | **string** | محتوای پیام متنی برای ارسال توسط ربات | 
 **Buttons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
-**MediaToken** | Pointer to **string** | Token for attached media (if any) | [optional] 
-**UserId** | Pointer to **string** | Unique identifier for the user to start or continue a conversation with | [optional] 
+**MediaToken** | Pointer to **string** | توکن برای مدیای ضمیمه شده (در صورت وجود) | [optional] 
+**UserId** | Pointer to **string** | شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه | [optional] 
 
 ## Methods
 

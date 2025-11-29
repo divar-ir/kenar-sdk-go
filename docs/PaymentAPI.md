@@ -4,14 +4,16 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PaymentCommitWalletTransaction**](PaymentAPI.md#PaymentCommitWalletTransaction) | **Post** /experimental/open-platform/wallet/payments/commit | 
-[**PaymentCreateWalletPayment**](PaymentAPI.md#PaymentCreateWalletPayment) | **Post** /experimental/open-platform/wallet/payments/create | 
-[**PaymentGetBalance**](PaymentAPI.md#PaymentGetBalance) | **Get** /experimental/open-platform/balance | 
+[**PaymentCommitWalletTransaction**](PaymentAPI.md#PaymentCommitWalletTransaction) | **Post** /experimental/open-platform/wallet/payments/commit | تایید تراکنش کیف پول
+[**PaymentCreateWalletPayment**](PaymentAPI.md#PaymentCreateWalletPayment) | **Post** /experimental/open-platform/wallet/payments/create | ایجاد پرداخت کیف پول
+[**PaymentGetBalance**](PaymentAPI.md#PaymentGetBalance) | **Get** /experimental/open-platform/balance | دریافت موجودی اپلیکیشن
 [**PaymentGetPostPricing**](PaymentAPI.md#PaymentGetPostPricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت هزینه سرویس
-[**PaymentGetTransaction**](PaymentAPI.md#PaymentGetTransaction) | **Get** /experimental/open-platform/transactions/{id} | 
-[**PaymentListTransactions**](PaymentAPI.md#PaymentListTransactions) | **Get** /experimental/open-platform/transactions | 
-[**PaymentReorderPost**](PaymentAPI.md#PaymentReorderPost) | **Post** /experimental/open-platform/post/{post_token}/reorder | 
-[**PaymentRetrieveWalletTransaction**](PaymentAPI.md#PaymentRetrieveWalletTransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | 
+[**PaymentGetTransaction**](PaymentAPI.md#PaymentGetTransaction) | **Get** /experimental/open-platform/transactions/{id} | دریافت جزئیات تراکنش
+[**PaymentListTransactions**](PaymentAPI.md#PaymentListTransactions) | **Get** /experimental/open-platform/transactions | لیست تراکنش‌ها
+[**PaymentPublishUserPost**](PaymentAPI.md#PaymentPublishUserPost) | **Post** /experimental/open-platform/post/{post_token}/publish | پرداخت هزینه ثبت آگهی کاربر از طرف ارائه‌دهنده
+[**PaymentRenewPost**](PaymentAPI.md#PaymentRenewPost) | **Post** /experimental/open-platform/post/{post_token}/renew | تمدید آگهی
+[**PaymentReorderPost**](PaymentAPI.md#PaymentReorderPost) | **Post** /experimental/open-platform/post/{post_token}/reorder | نردبان آگهی
+[**PaymentRetrieveWalletTransaction**](PaymentAPI.md#PaymentRetrieveWalletTransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | بازیابی تراکنش کیف پول
 [**PaymentSubmitUserPayment**](PaymentAPI.md#PaymentSubmitUserPayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
 
 
@@ -20,7 +22,7 @@ Method | HTTP request | Description
 
 > PaymentCommitWalletTransactionResponse PaymentCommitWalletTransaction(ctx).PaymentCommitWalletTransactionRequest(paymentCommitWalletTransactionRequest).Execute()
 
-
+تایید تراکنش کیف پول
 
 
 
@@ -86,7 +88,7 @@ Name | Type | Description  | Notes
 
 > PaymentCreateWalletPaymentResponse PaymentCreateWalletPayment(ctx).PaymentCreateWalletPaymentRequest(paymentCreateWalletPaymentRequest).Execute()
 
-
+ایجاد پرداخت کیف پول
 
 
 
@@ -152,7 +154,7 @@ Name | Type | Description  | Notes
 
 > PaymentGetBalanceResponse PaymentGetBalance(ctx).Execute()
 
-
+دریافت موجودی اپلیکیشن
 
 
 
@@ -283,7 +285,7 @@ Name | Type | Description  | Notes
 
 > PaymentGetTransactionResponse PaymentGetTransaction(ctx, id).Execute()
 
-
+دریافت جزئیات تراکنش
 
 
 
@@ -353,7 +355,7 @@ Name | Type | Description  | Notes
 
 > PaymentListTransactionsResponse PaymentListTransactions(ctx).PageSize(pageSize).PageToken(pageToken).Execute()
 
-
+لیست تراکنش‌ها
 
 
 
@@ -370,8 +372,8 @@ import (
 )
 
 func main() {
-	pageSize := int32(56) // int32 | Number of transactions to return per page (optional)
-	pageToken := "pageToken_example" // string | Token for the next page of results (optional)
+	pageSize := int32(56) // int32 | تعداد تراکنش‌ها برای برگرداندن در هر صفحه (optional)
+	pageToken := "pageToken_example" // string | توکن برای صفحه بعدی نتایج (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -396,8 +398,8 @@ Other parameters are passed through a pointer to a apiPaymentListTransactionsReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **int32** | Number of transactions to return per page | 
- **pageToken** | **string** | Token for the next page of results | 
+ **pageSize** | **int32** | تعداد تراکنش‌ها برای برگرداندن در هر صفحه | 
+ **pageToken** | **string** | توکن برای صفحه بعدی نتایج | 
 
 ### Return type
 
@@ -417,11 +419,155 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PaymentPublishUserPost
+
+> PaymentPublishUserPostResponse PaymentPublishUserPost(ctx, postToken).PaymentPublishUserPostBody(paymentPublishUserPostBody).Execute()
+
+پرداخت هزینه ثبت آگهی کاربر از طرف ارائه‌دهنده
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	postToken := "postToken_example" // string | توکن آگهی دریافت شده از RPC SubmitUserPost. شناسه منحصر به فرد 8-9 کاراکتری برای آگهی ثبت شده توسط کاربر.
+	paymentPublishUserPostBody := *openapiclient.NewPaymentPublishUserPostBody() // PaymentPublishUserPostBody | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PaymentAPI.PaymentPublishUserPost(context.Background(), postToken).PaymentPublishUserPostBody(paymentPublishUserPostBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PaymentAPI.PaymentPublishUserPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PaymentPublishUserPost`: PaymentPublishUserPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `PaymentAPI.PaymentPublishUserPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**postToken** | **string** | توکن آگهی دریافت شده از RPC SubmitUserPost. شناسه منحصر به فرد 8-9 کاراکتری برای آگهی ثبت شده توسط کاربر. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPaymentPublishUserPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **paymentPublishUserPostBody** | [**PaymentPublishUserPostBody**](PaymentPublishUserPostBody.md) |  | 
+
+### Return type
+
+[**PaymentPublishUserPostResponse**](PaymentPublishUserPostResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PaymentRenewPost
+
+> PaymentRenewPostResponse PaymentRenewPost(ctx, postToken).PaymentRenewPostBody(paymentRenewPostBody).Execute()
+
+تمدید آگهی
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	postToken := "postToken_example" // string | 
+	paymentRenewPostBody := *openapiclient.NewPaymentRenewPostBody() // PaymentRenewPostBody | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PaymentAPI.PaymentRenewPost(context.Background(), postToken).PaymentRenewPostBody(paymentRenewPostBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PaymentAPI.PaymentRenewPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PaymentRenewPost`: PaymentRenewPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `PaymentAPI.PaymentRenewPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**postToken** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPaymentRenewPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **paymentRenewPostBody** | [**PaymentRenewPostBody**](PaymentRenewPostBody.md) |  | 
+
+### Return type
+
+[**PaymentRenewPostResponse**](PaymentRenewPostResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PaymentReorderPost
 
 > PaymentReorderPostResponse PaymentReorderPost(ctx, postToken).PaymentReorderPostBody(paymentReorderPostBody).Execute()
 
-
+نردبان آگهی
 
 
 
@@ -493,7 +639,7 @@ Name | Type | Description  | Notes
 
 > PaymentRetrieveWalletTransactionResponse PaymentRetrieveWalletTransaction(ctx, token).Execute()
 
-
+بازیابی تراکنش کیف پول
 
 
 

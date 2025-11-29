@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **ApartmentSell** | Pointer to [**PostApartmentSellFields**](PostApartmentSellFields.md) |  | [optional] 
 **District** | Pointer to **string** | محله آگهی | [optional] 
 **HomePresell** | Pointer to [**PostHomePresellFields**](PostHomePresellFields.md) |  | [optional] 
-**LandlineNumbers** | Pointer to **[]string** | Landline numbers to be added to the post | [optional] 
+**LandlineNumbers** | Pointer to **[]string** | شماره‌های ثابت برای افزودن به آگهی | [optional] 
 **Latitude** | Pointer to **float64** | عرض جغرافیایی آگهی | [optional] 
 **Longitude** | Pointer to **float64** | طول جغرافیایی آگهی | [optional] 
 **Services** | Pointer to [**OpenPlatformpostServicesFields**](OpenPlatformpostServicesFields.md) |  | [optional] 

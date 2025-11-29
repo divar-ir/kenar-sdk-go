@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	conversationId := "conversationId_example" // string | شناسه منحصر به فرد برای مکالمه
 	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -57,7 +57,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** | Unique identifier for the conversation | 
+**conversationId** | **string** | شناسه منحصر به فرد برای مکالمه | 
 
 ### Other Parameters
 
@@ -108,7 +108,7 @@ import (
 )
 
 func main() {
-	userId := "userId_example" // string | Unique identifier for the user to start or continue a conversation with
+	userId := "userId_example" // string | شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه
 	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -129,7 +129,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | **string** | Unique identifier for the user to start or continue a conversation with | 
+**userId** | **string** | شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه | 
 
 ### Other Parameters
 
@@ -180,7 +180,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	conversationId := "conversationId_example" // string | شناسه منحصر به فرد برای مکالمه
 	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -201,7 +201,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** | Unique identifier for the conversation | 
+**conversationId** | **string** | شناسه منحصر به فرد برای مکالمه | 
 
 ### Other Parameters
 
@@ -252,7 +252,7 @@ import (
 )
 
 func main() {
-	userId := "userId_example" // string | Unique identifier for the user to start or continue a conversation with
+	userId := "userId_example" // string | شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه
 	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -273,7 +273,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | **string** | Unique identifier for the user to start or continue a conversation with | 
+**userId** | **string** | شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه | 
 
 ### Other Parameters
 
@@ -324,7 +324,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	conversationId := "conversationId_example" // string | شناسه منحصر به فرد برای مکالمه
 	chatAPIChatBotSendMessageBody := *openapiclient.NewChatAPIChatBotSendMessageBody("Thank you for your inquiry. How can I help you?") // ChatAPIChatBotSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -345,7 +345,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** | Unique identifier for the conversation | 
+**conversationId** | **string** | شناسه منحصر به فرد برای مکالمه | 
 
 ### Other Parameters
 
@@ -396,7 +396,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	conversationId := "conversationId_example" // string | شناسه منحصر به فرد برای مکالمه
 	chatAPIConversationSendMessageBody := *openapiclient.NewChatAPIConversationSendMessageBody("Hello, I'm interested in your product") // ChatAPIConversationSendMessageBody | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -417,7 +417,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** | Unique identifier for the conversation | 
+**conversationId** | **string** | شناسه منحصر به فرد برای مکالمه | 
 
 ### Other Parameters
 
@@ -534,7 +534,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | Unique identifier for the conversation
+	conversationId := "conversationId_example" // string | شناسه منحصر به فرد برای مکالمه
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -554,7 +554,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** | Unique identifier for the conversation | 
+**conversationId** | **string** | شناسه منحصر به فرد برای مکالمه | 
 
 ### Other Parameters
 

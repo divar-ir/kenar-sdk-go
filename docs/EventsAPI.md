@@ -5,7 +5,7 @@ All URIs are relative to *https://open-api.divar.ir*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**EventsRegisterEventSubscription**](EventsAPI.md#EventsRegisterEventSubscription) | **Post** /v1/open-platform/events/subscriptions | اشتراک در رویداد
-[**EventsSendEvent**](EventsAPI.md#EventsSendEvent) | **Post** /experimental/open-platform/events/send | Send an event to a user
+[**EventsSendEvent**](EventsAPI.md#EventsSendEvent) | **Post** /experimental/open-platform/events/send | ارسال رویداد به کاربر با استفاده از API
 
 
 
@@ -77,9 +77,9 @@ Name | Type | Description  | Notes
 
 ## EventsSendEvent
 
-> map[string]interface{} EventsSendEvent(ctx).PrimaryButtonActionOpenPostPagePostToken(primaryButtonActionOpenPostPagePostToken).PrimaryButtonActionOpenPostManagePagePostToken(primaryButtonActionOpenPostManagePagePostToken).Message(message).PrimaryButtonTitle(primaryButtonTitle).PrimaryButtonActionOpenDirectLink(primaryButtonActionOpenDirectLink).PrimaryButtonActionOpenServerLinkData(primaryButtonActionOpenServerLinkData).PrimaryButtonActionGetDynamicActionData(primaryButtonActionGetDynamicActionData).TargetType(targetType).TargetResourceId(targetResourceId).Execute()
+> map[string]interface{} EventsSendEvent(ctx).Message(message).TargetType(targetType).TargetResourceId(targetResourceId).Execute()
 
-Send an event to a user
+ارسال رویداد به کاربر با استفاده از API
 
 
 
@@ -96,19 +96,13 @@ import (
 )
 
 func main() {
-	primaryButtonActionOpenPostPagePostToken := "primaryButtonActionOpenPostPagePostToken_example" // string | Token of the post to open
-	primaryButtonActionOpenPostManagePagePostToken := "primaryButtonActionOpenPostManagePagePostToken_example" // string | Token of the post to redirect to its management page
-	message := "message_example" // string | The event message to display to the user (optional)
-	primaryButtonTitle := "primaryButtonTitle_example" // string | The text to display on the button (optional)
-	primaryButtonActionOpenDirectLink := "primaryButtonActionOpenDirectLink_example" // string | An action to send user to your URL directly with just a resource id (if applicable) (optional)
-	primaryButtonActionOpenServerLinkData := map[string]interface{}{ ... } // map[string]interface{} | A data that you can set and will be returned to you upon user click to recognize the action (optional)
-	primaryButtonActionGetDynamicActionData := map[string]interface{}{ ... } // map[string]interface{} | A data that you can set and will be returned to you upon user click to recognize the action (optional)
-	targetType := "targetType_example" // string | Target of the event; USER or POST (optional)
-	targetResourceId := "targetResourceId_example" // string | id of the target. When target type is USER, it should be the Divar User ID of that user and when target type is POST, it should be the post token.  (optional)
+	message := "message_example" // string | پیام رویداد برای نمایش به کاربر (optional)
+	targetType := "targetType_example" // string | هدف رویداد؛ USER یا POST (optional)
+	targetResourceId := "targetResourceId_example" // string | شناسه هدف. وقتی نوع هدف USER است، باید شناسه کاربر دیوار آن کاربر باشد و وقتی نوع هدف POST است، باید توکن آگهی باشد. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsSendEvent(context.Background()).PrimaryButtonActionOpenPostPagePostToken(primaryButtonActionOpenPostPagePostToken).PrimaryButtonActionOpenPostManagePagePostToken(primaryButtonActionOpenPostManagePagePostToken).Message(message).PrimaryButtonTitle(primaryButtonTitle).PrimaryButtonActionOpenDirectLink(primaryButtonActionOpenDirectLink).PrimaryButtonActionOpenServerLinkData(primaryButtonActionOpenServerLinkData).PrimaryButtonActionGetDynamicActionData(primaryButtonActionGetDynamicActionData).TargetType(targetType).TargetResourceId(targetResourceId).Execute()
+	resp, r, err := apiClient.EventsAPI.EventsSendEvent(context.Background()).Message(message).TargetType(targetType).TargetResourceId(targetResourceId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsSendEvent``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -129,15 +123,9 @@ Other parameters are passed through a pointer to a apiEventsSendEventRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **primaryButtonActionOpenPostPagePostToken** | **string** | Token of the post to open | 
- **primaryButtonActionOpenPostManagePagePostToken** | **string** | Token of the post to redirect to its management page | 
- **message** | **string** | The event message to display to the user | 
- **primaryButtonTitle** | **string** | The text to display on the button | 
- **primaryButtonActionOpenDirectLink** | **string** | An action to send user to your URL directly with just a resource id (if applicable) | 
- **primaryButtonActionOpenServerLinkData** | [**map[string]interface{}**](map[string]interface{}.md) | A data that you can set and will be returned to you upon user click to recognize the action | 
- **primaryButtonActionGetDynamicActionData** | [**map[string]interface{}**](map[string]interface{}.md) | A data that you can set and will be returned to you upon user click to recognize the action | 
- **targetType** | **string** | Target of the event; USER or POST | 
- **targetResourceId** | **string** | id of the target. When target type is USER, it should be the Divar User ID of that user and when target type is POST, it should be the post token.  | 
+ **message** | **string** | پیام رویداد برای نمایش به کاربر | 
+ **targetType** | **string** | هدف رویداد؛ USER یا POST | 
+ **targetResourceId** | **string** | شناسه هدف. وقتی نوع هدف USER است، باید شناسه کاربر دیوار آن کاربر باشد و وقتی نوع هدف POST است، باید توکن آگهی باشد. | 
 
 ### Return type
 

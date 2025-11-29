@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**FinderGetPost**](FinderAPI.md#FinderGetPost) | **Get** /v1/open-platform/finder/post/{token} | دریافت آگهی دیوار
 [**FinderGetUser**](FinderAPI.md#FinderGetUser) | **Post** /v1/open-platform/users | دریافت اطلاعات کاربر
 [**FinderGetUser2**](FinderAPI.md#FinderGetUser2) | **Get** /v1/open-platform/users | دریافت اطلاعات کاربر
+[**FinderGetUserIDByPhone**](FinderAPI.md#FinderGetUserIDByPhone) | **Post** /v1/open-platform/get-user-id-by-phone | دریافت شناسه دیوار کاربر با شماره تلفن
 [**FinderGetUserPosts**](FinderAPI.md#FinderGetUserPosts) | **Get** /v1/open-platform/finder/user-posts | دریافت آگهی‌های کاربر
 [**FinderSearchPostV2**](FinderAPI.md#FinderSearchPostV2) | **Post** /v2/open-platform/finder/post | جستجو آگهی‌های دیوار با فیلترهایی
 
@@ -202,6 +203,72 @@ Other parameters are passed through a pointer to a apiFinderGetUser2Request stru
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FinderGetUserIDByPhone
+
+> FinderGetUserIDByPhoneResponse FinderGetUserIDByPhone(ctx).FinderGetUserIDByPhoneRequest(finderGetUserIDByPhoneRequest).Execute()
+
+دریافت شناسه دیوار کاربر با شماره تلفن
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+	finderGetUserIDByPhoneRequest := *openapiclient.NewFinderGetUserIDByPhoneRequest() // FinderGetUserIDByPhoneRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FinderAPI.FinderGetUserIDByPhone(context.Background()).FinderGetUserIDByPhoneRequest(finderGetUserIDByPhoneRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FinderAPI.FinderGetUserIDByPhone``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FinderGetUserIDByPhone`: FinderGetUserIDByPhoneResponse
+	fmt.Fprintf(os.Stdout, "Response from `FinderAPI.FinderGetUserIDByPhone`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFinderGetUserIDByPhoneRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **finderGetUserIDByPhoneRequest** | [**FinderGetUserIDByPhoneRequest**](FinderGetUserIDByPhoneRequest.md) |  | 
+
+### Return type
+
+[**FinderGetUserIDByPhoneResponse**](FinderGetUserIDByPhoneResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

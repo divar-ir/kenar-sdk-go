@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Kenar API
+  title: API کنار
   version: "1.0"
 servers:
 - url: https://open-api.divar.ir
@@ -37,8 +37,73 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      summary: دریافت موجودی اپلیکیشن
       tags:
       - Payment
+  /experimental/open-platform/business/{business_token}/customized-button:
+    delete:
+      description: |
+        این API دکمه اختصاصی را از تمام آگهی‌های کسب‌وکار حذف می‌کند. این API به مجوز `BUSINESS_CUSTOMIZED_BUTTON_CREATE` نیاز دارد.
+      operationId: Post_DeleteBusinessCustomizedButton
+      parameters:
+      - explode: false
+        in: path
+        name: business_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postDeleteBusinessCustomizedButtonResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: حذف دکمه اختصاصی از آگهی‌های کسب‌و‌کار
+      tags:
+      - Post
+    post:
+      description: |
+        این API برای ایجاد دکمه اختصاصی برای تمام آگهی‌های کسب‌وکار استفاده می‌شود.
+        این API به مجوز `BUSINESS_CUSTOMIZED_BUTTON_CREATE` و دامنه OAuth `BUSINESS_CREATE_CUSTOMIZED_BUTTON.{business_ref}` نیاز دارد.
+      operationId: Post_CreateBusinessCustomizedButton
+      parameters:
+      - explode: false
+        in: path
+        name: business_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCreateBusinessCustomizedButtonBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postCreateBusinessCustomizedButtonResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: ایجاد دکمه اختصاصی برای آگهی‌های کسب‌و‌کار
+      tags:
+      - Post
   /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages:
     post:
       description: |-
@@ -46,7 +111,7 @@ paths:
         فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
       operationId: ChatAPI_ChatBotSendMessage5
       parameters:
-      - description: Unique identifier for the conversation
+      - description: شناسه منحصر به فرد برای مکالمه
         explode: false
         in: path
         name: conversation_id
@@ -79,8 +144,7 @@ paths:
         فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
       operationId: ChatAPI_ChatBotSendMessage4
       parameters:
-      - description: Unique identifier for the user to start or continue a conversation
-          with
+      - description: شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه
         explode: false
         in: path
         name: user_id
@@ -140,7 +204,7 @@ paths:
         فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
       operationId: ChatAPI_ChatBotSendMessage3
       parameters:
-      - description: Unique identifier for the conversation
+      - description: شناسه منحصر به فرد برای مکالمه
         explode: false
         in: path
         name: conversation_id
@@ -168,12 +232,13 @@ paths:
       - ChatAPI
   /experimental/open-platform/events/send:
     post:
-      description: "Using this API, you can send an event to a user. The event can\
-        \ be specific to a post or general. The event can include buttons with custom\
-        \ actions allowing users to interact with your app."
+      description: با استفاده از این API، می‌توانید رویدادی به کاربر ارسال کنید. رویداد
+        می‌تواند مربوط به یک آگهی خاص یا عمومی باشد. رویداد می‌تواند شامل دکمه‌هایی
+        با عملیات سفارشی باشد که به کاربران اجازه می‌دهد با برنامه شما تعامل داشته
+        باشند.
       operationId: Events_SendEvent
       parameters:
-      - description: The event message to display to the user
+      - description: پیام رویداد برای نمایش به کاربر
         explode: true
         in: query
         name: message
@@ -181,58 +246,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The text to display on the button
-        explode: true
-        in: query
-        name: primary_button.title
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: An action to send user to your URL directly with just a resource
-          id (if applicable)
-        explode: true
-        in: query
-        name: primary_button.action.open_direct_link
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: A data that you can set and will be returned to you upon user
-          click to recognize the action
-        explode: true
-        in: query
-        name: primary_button.action.open_server_link.data
-        required: false
-        schema:
-          type: object
-        style: form
-      - description: A data that you can set and will be returned to you upon user
-          click to recognize the action
-        explode: true
-        in: query
-        name: primary_button.action.get_dynamic_action.data
-        required: false
-        schema:
-          type: object
-        style: form
-      - description: Token of the post to open
-        explode: true
-        in: query
-        name: primary_button.action.open_post_page.post_token
-        required: true
-        schema:
-          type: string
-        style: form
-      - description: Token of the post to redirect to its management page
-        explode: true
-        in: query
-        name: primary_button.action.open_post_manage_page.post_token
-        required: true
-        schema:
-          type: string
-        style: form
-      - description: Target of the event; USER or POST
+      - description: هدف رویداد؛ USER یا POST
         explode: true
         in: query
         name: target_type
@@ -243,9 +257,8 @@ paths:
           - POST
           type: string
         style: form
-      - description: "id of the target. When target type is USER, it should be the\
-          \ Divar User ID of that user and when target type is POST, it should be\
-          \ the post token. "
+      - description: شناسه هدف. وقتی نوع هدف USER است، باید شناسه کاربر دیوار آن کاربر
+          باشد و وقتی نوع هدف POST است، باید توکن آگهی باشد.
         explode: true
         in: query
         name: target_resource_id
@@ -266,9 +279,82 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: Send an event to a user
+      summary: ارسال رویداد به کاربر با استفاده از API
       tags:
       - Events
+  /experimental/open-platform/post/{post_token}/publish:
+    post:
+      description: این API به ارائه‌دهندگان امکان پرداخت هزینه ثبت آگهی کاربر را می‌دهد.
+        post_token باید از API SubmitUserPost در مجموعه آگهی‌ها دریافت شود.
+      operationId: Payment_PublishUserPost
+      parameters:
+      - description: توکن آگهی دریافت شده از RPC SubmitUserPost. شناسه منحصر به فرد
+          8-9 کاراکتری برای آگهی ثبت شده توسط کاربر.
+        explode: false
+        in: path
+        name: post_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentPublishUserPostBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/paymentPublishUserPostResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: پرداخت هزینه ثبت آگهی کاربر از طرف ارائه‌دهنده
+      tags:
+      - Payment
+  /experimental/open-platform/post/{post_token}/renew:
+    post:
+      description: (محدود) از این API برای تمدید آگهی استفاده کنید که دوره نمایش آن
+        را تمدید می‌کند. قبل از فراخوانی این API، از API GetPostPricing برای دریافت
+        هزینه سرویس استفاده کنید.
+      operationId: Payment_RenewPost
+      parameters:
+      - explode: false
+        in: path
+        name: post_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRenewPostBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/paymentRenewPostResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: تمدید آگهی
+      tags:
+      - Payment
   /experimental/open-platform/post/{post_token}/reorder:
     post:
       description: (محدود) قبل از فراخوانی این API، از API GetPostPricing برای دریافت
@@ -301,12 +387,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      summary: نردبان آگهی
       tags:
       - Payment
   /experimental/open-platform/posts/new:
     post:
       description: |-
-        این API به شما امکان ثبت آگهی را می‌دهد. این نیاز به دامنه OAuth `POST_SUBMIT` دارد.
+        این API به شما امکان ثبت آگهی را می‌دهد. این نیاز به دامنه OAuth `SUBMIT_POST` دارد.
         می‌توانید آگهی را با عنوان، توضیحات، تصاویر و سایر فیلدها ثبت کنید. فیلدهای عمومی و فیلدهای مخصوص دسته‌بندی وجود دارند.
       operationId: Post_SubmitPost
       requestBody:
@@ -334,7 +421,7 @@ paths:
   /experimental/open-platform/posts/new-v2:
     post:
       description: |-
-        این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به مجوز `POST_SUBMIT` نیاز دارد.
+        این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به مجوز `SUBMIT_POST` نیاز دارد.
         شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
       operationId: Post_SubmitPostV2
       requestBody:
@@ -357,6 +444,70 @@ paths:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
       summary: ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
+      tags:
+      - Post
+  /experimental/open-platform/posts/{post_token}/customized-button:
+    delete:
+      description: |
+        این API دکمه اختصاصی را از آگهی ثبت شده توسط سرویس شما حذف می‌کند. این API نیاز به مجوز `SET_CUSTOMIZED_BUTTON` دارد.
+      operationId: Post_DeletePostCustomizedButton
+      parameters:
+      - explode: false
+        in: path
+        name: post_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postDeletePostCustomizedButtonResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: حذف دکمه اختصاصی از آگهی
+      tags:
+      - Post
+    post:
+      description: |-
+        این API برای تنظیم دکمه اختصاصی برای یک آگهی استفاده می‌شود. اگر دکمه‌ای وجود نداشته باشد، ایجاد خواهد شد. اگر از قبل وجود داشته باشد، داده‌های آن به‌روزرسانی خواهد شد. این API به مجوز `SET_CUSTOMIZED_BUTTON` نیاز دارد.
+        اگر این آگهی توسط کاربر ثبت شده باشد، این API به توکن دسترسی کاربر در هدرهای درخواست با دامنه OAuth `USER_SET_CUSTOMIZED_BUTTON` نیاز دارد.
+      operationId: Post_SetPostCustomizedButton
+      parameters:
+      - explode: false
+        in: path
+        name: post_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostSetPostCustomizedButtonBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postSetPostCustomizedButtonResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: تنظیم دکمه اختصاصی بر روی آگهی ثبت شده
       tags:
       - Post
   /experimental/open-platform/posts/{post_token}/stats:
@@ -431,7 +582,7 @@ paths:
         کنید. برای مشاهده‌ی تمام تراکنش‌ها، صفحات را دنبال کنید.
       operationId: Payment_ListTransactions
       parameters:
-      - description: Number of transactions to return per page
+      - description: تعداد تراکنش‌ها برای برگرداندن در هر صفحه
         explode: true
         in: query
         name: page_size
@@ -440,7 +591,7 @@ paths:
           format: int32
           type: integer
         style: form
-      - description: Token for the next page of results
+      - description: توکن برای صفحه بعدی نتایج
         explode: true
         in: query
         name: page_token
@@ -461,6 +612,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      summary: لیست تراکنش‌ها
       tags:
       - Payment
   /experimental/open-platform/transactions/{id}:
@@ -490,13 +642,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      summary: دریافت جزئیات تراکنش
       tags:
       - Payment
   /experimental/open-platform/user-posts/can-submit:
     get:
-      description: This API allows you to check if a user can submit a post.This API
-        expects the user's access token in the request headers with the `SUBMIT_USER_POST`
-        OAuth scope.
+      description: با این API میتوانید بررسی کنید آیا کاربر می‌تواند آگهی ارسال کند
+        یا خیر.این API انتظار دارد توکن کاربر در درخواست با اسکوپ `SUBMIT_USER_POST`
+        موجود باشد.
       operationId: Post_CanUserSubmitPost
       responses:
         "200":
@@ -511,7 +664,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: Check if user can submit post
+      summary: بررسی اینکه آیا کاربر می‌تواند آگهی ارسال کند
       tags:
       - Post
   /experimental/open-platform/user-posts/new:
@@ -567,6 +720,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      summary: تایید تراکنش کیف پول
       tags:
       - Payment
   /experimental/open-platform/wallet/payments/create:
@@ -593,6 +747,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      summary: ایجاد پرداخت کیف پول
       tags:
       - Payment
   /experimental/open-platform/wallet/payments/{token}:
@@ -622,6 +777,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      summary: بازیابی تراکنش کیف پول
       tags:
       - Payment
   /v1/open-platform/add-ons/post/{token}:
@@ -1131,7 +1287,7 @@ paths:
         فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
       operationId: ChatAPI_ChatBotSendMessage
       parameters:
-      - description: Unique identifier for the conversation
+      - description: شناسه منحصر به فرد برای مکالمه
         explode: false
         in: path
         name: conversation_id
@@ -1164,8 +1320,7 @@ paths:
         فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
       operationId: ChatAPI_ChatBotSendMessage2
       parameters:
-      - description: Unique identifier for the user to start or continue a conversation
-          with
+      - description: شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه
         explode: false
         in: path
         name: user_id
@@ -1197,7 +1352,7 @@ paths:
         می‌شود. این API توکن دسترسی با دامنه `CHAT_CONVERSATION_READ` را انتظار دارد.
       operationId: ChatAPI_GetConversation
       parameters:
-      - description: Unique identifier for the conversation
+      - description: شناسه منحصر به فرد برای مکالمه
         explode: false
         in: path
         name: conversation_id
@@ -1258,8 +1413,9 @@ paths:
       - Events
   /v1/open-platform/finder/post/{token}:
     get:
-      description: "This API allows you to get details about Divar post by its token.\n\
-        You can use the token to get the post data and its state "
+      description: |-
+        این API به شما امکان دریافت جزئیات آگهی دیوار با استفاده از توکن آن را می‌دهد.
+        می‌توانید از توکن برای دریافت داده‌های آگهی و وضعیت آن استفاده کنید
       operationId: Finder_GetPost
       parameters:
       - explode: false
@@ -1307,6 +1463,35 @@ paths:
       summary: دریافت آگهی‌های کاربر
       tags:
       - Finder
+  /v1/open-platform/get-user-id-by-phone:
+    post:
+      description: با استفاده از این API می‌توانید شناسه‌ی دیوار یک کاربر را با استفاده
+        از شماره تلفن دریافت کنید. این اجازه مختص برنامه‌هایی است که دسترسی به شماره
+        تماس کاربر ندارند و برای ارائه‌ی خدمات پشتیبانی به کاربران، نیاز به تبدیل
+        شماره به شناسه‌ی دیوار دارند.
+      operationId: Finder_GetUserIDByPhone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/finderGetUserIDByPhoneRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/finderGetUserIDByPhoneResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت شناسه دیوار کاربر با شماره تلفن
+      tags:
+      - Finder
   /v1/open-platform/payment-ticket/validate:
     post:
       description: |-
@@ -1338,8 +1523,9 @@ paths:
   /v1/open-platform/post/image-upload-url:
     get:
       description: |-
-        این API به شما امکان دریافت URL آپلود برای آپلود تصاویر آگهی را می‌دهد.
-        می‌توانید تصاویر را با استفاده از درخواست POST با کدگذاری باینری به URL برگشتی آپلود کنید.
+        این API به شما اجازه می‌دهد یک آدرس اینترنتی برای بارگذاری تصاویر یک پست دریافت کنید.
+        می‌توانید تصاویر را با یک درخواست POST و رمزگذاری باینری به آدرس برگشتی بارگذاری کنید.
+        به جای آن از https://kenar.divar.dev/openapi-doc/post-get-upload-urls-v2/ استفاده کنید
       operationId: Post_GetImageUploadURL
       responses:
         "200":
@@ -1354,10 +1540,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت URL آپلود تصویر
+      summary: دریافت آدرس اپلود تصاویر آگهی (منسوخ شده)
       tags:
       - Post
   /v1/open-platform/post/{post_token}:
+    delete:
+      description: این API به شما امکان حذف آگهی را می‌دهد. این نیاز به اسکوپ OAuth
+        `DELETE_USER_POST` دارد.
+      operationId: Post_DeleteUserPost
+      parameters:
+      - description: توکن آگهی برای حذف
+        explode: false
+        in: path
+        name: post_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postDeleteUserPostResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: حذف آگهی
+      tags:
+      - Post
     put:
       description: |-
         این API به شما امکان ویرایش آگهی را می‌دهد. این نیاز به دامنه OAuth `POST_EDIT.{post_token}` دارد.
@@ -1395,11 +1610,10 @@ paths:
       - Post
   /v1/open-platform/post/{post_token}/pricing:
     get:
-      description: "Using this API and with user permission, you can get the price\
-        \ of various services like Reorder and Submit.The price of this API is not\
-        \ necessarily the same as the price on Divar, and pricing may vary.Use this\
-        \ API to get the price before applying services (such as reordering a post\
-        \ or submitting a post)."
+      description: با استفاده از این API و با مجوز کاربر، می‌توانید قیمت سرویس‌های
+        مختلف مانند نردبان، تمدید و ثبت را دریافت کنید. قیمت این API لزوماً با قیمت
+        در دیوار یکسان نیست و ممکن است متفاوت باشد. از این API برای دریافت قیمت قبل
+        از اعمال سرویس‌ها (مانند نردبان آگهی، تمدید آگهی یا ثبت آگهی) استفاده کنید.
       operationId: Payment_GetPostPricing
       parameters:
       - description: شناسه منحصر به فرد 8-9 کاراکتری برای آگهی
@@ -1564,10 +1778,9 @@ paths:
       - Semantic
   /v1/open-platform/user-payments:
     post:
-      description: باید با استفاده از این API پرداخت کاربران را ثبت کنید. ضروری است
-        که از این API برای ثبت هر پرداخت کاربر به همراه مبلغ دریافتی استفاده کنید.
-        انتظار می‌رود این API با توکن دسترسی دارای دامنه SUBMIT_USER_PAYMENT فراخوانی
-        شود.
+      description: با استفاده از این API، باید پرداخت کاربر را ثبت کنید. ضروری است
+        که از این API برای ثبت پرداخت کاربر همراه با مبلغ دریافت شده استفاده کنید.
+        این API به توکن دسترسی با دامنه OAuth `SUBMIT_USER_PAYMENT` نیاز دارد.
       operationId: Payment_SubmitUserPayment
       requestBody:
         content:
@@ -1591,6 +1804,38 @@ paths:
       summary: ثبت پرداخت کاربر
       tags:
       - Payment
+  /v1/open-platform/user-post/{token}:
+    get:
+      description: |-
+        این API به شما امکان دریافت اطلاعات دقیق درباره یک آگهی خاص با استفاده از توکن آن را می‌دهد.
+        این نقطه پایانی آگهی‌های ثبت شده توسط کاربران احراز هویت شده از طریق پلتفرم باز را برمی‌گرداند، شامل داده‌های کسب‌وکار، وضعیت و دلایل رد.
+        این API به مجوز `GET_USER_POST` نیاز دارد.
+        این API به دامنه OAuth `USER_POSTS_GET` نیاز دارد.
+      operationId: Post_GetUserPost
+      parameters:
+      - explode: false
+        in: path
+        name: token
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postGetUserPostResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت آگهی با توکن
+      tags:
+      - Post
   /v1/open-platform/users:
     get:
       description: |
@@ -1759,7 +2004,7 @@ paths:
         - CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{post_token}
       operationId: ChatAPI_ConversationSendMessage
       parameters:
-      - description: Unique identifier for the conversation
+      - description: شناسه منحصر به فرد برای مکالمه
         explode: false
         in: path
         name: conversation_id
@@ -1818,6 +2063,69 @@ paths:
       summary: جستجو آگهی‌های دیوار با فیلترهایی
       tags:
       - Finder
+  /v2/open-platform/post/upload-urls:
+    get:
+      description: |-
+        این API به شما امکان دریافت URL آپلود برای آپلود تصاویر و ویدیوهای آگهی را می‌دهد.
+        می‌توانید تصاویر/ویدیوها را با استفاده از درخواست POST یا PUT با کدگذاری باینری به URL برگشتی آپلود کنید. آدرس برگشتی این API به api-key شما برای آپلود نیاز دارد. لطفاً توجه داشته باشید که آدرس برگشتی ممکن است بدون اطلاع قبلی تغییر کند.
+      operationId: Post_GetUploadURLsV2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postGetUploadURLsV2Response'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: دریافت آدرس آپلود برای تصاویر و ویدیو‌ی آگهی‌ها
+      tags:
+      - Post
+  /v2/open-platform/post/{post_token}:
+    put:
+      description: |-
+        این API به شما امکان ویرایش آگهی با استفاده از احراز هویت OAuth را می‌دهد.
+        توکن دسترسی از یک کاربر با اسکوپ OAuth `POST_EDIT.{post_token}` یا `EDIT_USER_POST` مورد نیاز است.
+
+        می‌توانید عنوان، توضیحات، تصاویر، موقعیت، فیلدهای مخصوص دسته‌بندی و سایر ویژگی‌های آگهی را ویرایش کنید. فیلدهای مخصوص دسته‌بندی باید از قالب دسته‌بندی آگهی پیروی کنند. قالب را از اینجا دریافت کنید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/
+
+        از فیلد update_mask برای مشخص کردن فیلدهایی که می‌خواهید به‌روزرسانی کنید استفاده کنید.
+      operationId: Post_EditPostV2
+      parameters:
+      - description: توکن آگهی
+        explode: false
+        in: path
+        name: post_token
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostEditPostV2Body'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postEditPostResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      summary: ویرایش آگهی با پشتیبانی از فیلد ماسک
+      tags:
+      - Post
 components:
   requestBodies:
     AddonsCreateUserAddonV2Body:
@@ -2588,16 +2896,15 @@ components:
         buttons:
           $ref: '#/components/schemas/chatapiChatButtonGrid'
         media_token:
-          description: Token for attached media (if any)
+          description: توکن برای مدیای ضمیمه شده (در صورت وجود)
           example: media_token_12345
           type: string
         text_message:
-          description: Text message content to be sent by the bot
+          description: محتوای پیام متنی برای ارسال توسط ربات
           example: Thank you for your inquiry. How can I help you?
           type: string
         user_id:
-          description: Unique identifier for the user to start or continue a conversation
-            with
+          description: شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه
           example: user_789012
           type: string
       required:
@@ -2737,11 +3044,11 @@ components:
         media_token: media_token_12345
       properties:
         media_token:
-          description: Token for attached media (if any)
+          description: توکن برای مدیای ضمیمه شده (در صورت وجود)
           example: media_token_12345
           type: string
         message:
-          description: Text message content to be sent
+          description: محتوای پیام متنی برای ارسال
           example: "Hello, I'm interested in your product"
           type: string
         receiver_buttons:
@@ -3568,7 +3875,23 @@ components:
       - PAINT_BRUSH
       - VIDEO_LIBRARY
       - MAGNIFIER_SPARKLE
+      - PIN_VARIANT
+      - MORE_HORIZONTAL_O
       type: string
+    GetPostPricingResponseRenew:
+      example:
+        available: true
+        cost_rials: cost_rials
+      properties:
+        available:
+          description: نشان می‌دهد که آیا آگهی قابل تمدید است. اگر false باشد، API
+            تمدید خطا برمی‌گرداند
+          type: boolean
+        cost_rials:
+          description: هزینه تمدید به ریال
+          format: int64
+          type: string
+      type: object
     GetPostPricingResponseReorder:
       example:
         available: true
@@ -3589,17 +3912,17 @@ components:
         cost_rials: cost_rials
       properties:
         available:
-          description: "Indicates if the post can be submitted. If false, the submit\
-            \ API will return an error"
+          description: نشان می‌دهد که آیا آگهی قابل ثبت است. اگر false باشد، API ثبت
+            خطا برمی‌گرداند
           type: boolean
         cost_rials:
-          description: The cost of submitting post in rials
+          description: هزینه ثبت آگهی به ریال
           format: int64
           type: string
       type: object
     GetPostStatsResponseDailyStats:
       example:
-        date: 2025-06-03T00:00:00Z
+        date: 2025-06-03
         count: 239
       properties:
         count:
@@ -3609,16 +3932,16 @@ components:
           type: integer
         date:
           description: تاریخ به فرمت YYYY-MM-DD
-          example: 2025-06-03T00:00:00Z
+          example: 2025-06-03
           type: string
       type: object
     GetPostStatsResponsePostStats:
       example:
         total: 239
         daily:
-        - date: 2025-06-03T00:00:00Z
+        - date: 2025-06-03
           count: 239
-        - date: 2025-06-03T00:00:00Z
+        - date: 2025-06-03
           count: 239
       properties:
         daily:
@@ -3641,6 +3964,16 @@ components:
           type: string
         slug:
           $ref: '#/components/schemas/appsServiceType'
+      type: object
+    GetUploadURLsV2ResponseUploadFormat:
+      example:
+        http_method: GET
+        url: url
+      properties:
+        http_method:
+          $ref: '#/components/schemas/open_platformpostHTTPMethod'
+        url:
+          type: string
       type: object
     HomePresellFieldsConstructionPhase:
       description: وضعیت فعلی پروژه
@@ -3826,6 +4159,7 @@ components:
       - OPENID
       - PAYMENT_ALL_POSTS_PRICING_READ
       - PAYMENT_ALL_POSTS_REORDER
+      - PAYMENT_ALL_POSTS_RENEW
       - MANAGEMENT_APPS_READ
       - MANAGEMENT_APPS_WRITE
       - POST_ONGOING_IMAGES_GET
@@ -3839,7 +4173,43 @@ components:
       - CREATE_WALLET_PAYMENT
       - SUBMIT_USER_POST
       - SUBMIT_USER_PAYMENT
+      - USER_SET_CUSTOMIZED_BUTTON
+      - BUSINESS_CREATE_CUSTOMIZED_BUTTON
+      - DELETE_USER_POST
+      - EDIT_USER_POST
       type: string
+    PaymentPublishUserPostBody:
+      example:
+        extra_details: extra_details
+        id: id
+      properties:
+        extra_details:
+          description: جزئیات اضافی که می‌خواهید به سمت کنار ارسال کنید. این فیلد
+            اختیاری است و می‌تواند برای حل ناسازگاری‌ها در تراکنش استفاده شود.
+          type: string
+        id:
+          description: یک uuid نسخه 4 که باید برای هر پرداخت منحصر به فرد باشد. این
+            uuid باید در سمت شما تولید شده و در درخواست ارسال شود. اگر id ای ارسال
+            شود که تراکنش موفق یا نیمه موفقی در سمت کنار داشته باشد، خطا دریافت خواهید
+            کرد.
+          type: string
+      type: object
+    PaymentRenewPostBody:
+      example:
+        extra_details: extra_details
+        id: id
+      properties:
+        extra_details:
+          description: جزئیات اضافی که می‌خواهید به سمت کنار ارسال کنید. این فیلد
+            اختیاری است و می‌تواند برای حل ناسازگاری‌ها در تراکنش استفاده شود.
+          type: string
+        id:
+          description: یک uuid نسخه 4 که باید برای هر پرداخت منحصر به فرد باشد. این
+            uuid باید در سمت شما تولید شده و در درخواست ارسال شود. اگر id ای ارسال
+            شود که تراکنش موفق یا نیمه موفقی در سمت کنار داشته باشد، خطا دریافت خواهید
+            کرد.
+          type: string
+      type: object
     PaymentReorderPostBody:
       example:
         extra_details: extra_details
@@ -3855,6 +4225,28 @@ components:
             شود که تراکنش موفق یا نیمه موفقی در سمت کنار داشته باشد، خطا دریافت خواهید
             کرد.
           type: string
+      type: object
+    PostCreateBusinessCustomizedButtonBody:
+      example:
+        customized_button:
+          action:
+            open_post_page:
+              post_token: AJIEWcw
+            open_post_manage_page:
+              post_token: AJIEWcw
+            get_dynamic_action:
+              data:
+                your-internal-id: something
+            open_server_link:
+              data:
+                your-internal-id: something
+            open_direct_link: https://your-site.com/some-path
+          type: ACCOMMODATION_BOOKING
+      properties:
+        customized_button:
+          $ref: '#/components/schemas/postCustomizedButton'
+      required:
+      - customized_button
       type: object
     PostEditPostBody:
       example:
@@ -3875,6 +4267,104 @@ components:
       required:
       - description
       - title
+      type: object
+    PostEditPostV2Body:
+      example:
+        category_data: "{}"
+        general_data:
+          images:
+          - images
+          - images
+          city: tehran
+          district: abshar
+          latitude: 35.7152
+          description: I'm available only in chat.
+          chat_enabled: true
+          hide_phone: true
+          video:
+            duration: "34"
+            thumbnail_name: thumbnail/4786eb10-eac6-4077-b622-78c1c42855c7.jpg
+            name: raw/4786eb10-eac6-4077-b622-78c1c42855c7.mp4
+          title: Temporary Residence for Rent in Tehran
+          category_slug: apartment-sell
+          location_type: LOCATION_TYPE_EXACT
+          longitude: 51.4043
+        update_mask:
+        - general_data.title
+        - general_data.description
+        - general_data.video
+        - category_data.price
+      properties:
+        category_data:
+          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمی\
+            ل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
+          type: object
+        general_data:
+          $ref: '#/components/schemas/postPostGeneralData'
+        update_mask:
+          description: فیلد ماسک مشخص می‌کند کدام فیلدها به‌روزرسانی شوند. از مسیرهای
+            تو در تو برای هر دو general_data و category_data استفاده کنید (مثلاً،
+            'general_data.title'، 'category_data.price'). این امکان تمایز بین حذف
+            یک فیلد و به‌روزرسانی نکردن آن را فراهم می‌کند.
+          example:
+          - general_data.title
+          - general_data.description
+          - general_data.video
+          - category_data.price
+          items:
+            type: string
+          type: array
+      required:
+      - update_mask
+      type: object
+    PostGeneralDataPostVideo:
+      example:
+        duration: "34"
+        thumbnail_name: thumbnail/4786eb10-eac6-4077-b622-78c1c42855c7.jpg
+        name: raw/4786eb10-eac6-4077-b622-78c1c42855c7.mp4
+      properties:
+        duration:
+          description: زمان ویدیو به ثانیه
+          example: "34"
+          format: uint64
+          type: string
+        name:
+          description: "Name of the video, retrieved from `video_name` field in the\
+            \ response of upload video endpoint"
+          example: raw/4786eb10-eac6-4077-b622-78c1c42855c7.mp4
+          type: string
+        thumbnail_name:
+          description: کاور ویدیو. این مقدار را از روی فیلد `thumbnail_name` در پاسخ
+            به درخواست آپلود ویدیو پر کنید. این تصویر، فریم اول ویدیو‌ی آپلود شده
+            است.
+          example: thumbnail/4786eb10-eac6-4077-b622-78c1c42855c7.jpg
+          type: string
+      required:
+      - duration
+      - name
+      - thumbnail_name
+      type: object
+    PostSetPostCustomizedButtonBody:
+      example:
+        customized_button:
+          action:
+            open_post_page:
+              post_token: AJIEWcw
+            open_post_manage_page:
+              post_token: AJIEWcw
+            get_dynamic_action:
+              data:
+                your-internal-id: something
+            open_server_link:
+              data:
+                your-internal-id: something
+            open_direct_link: https://your-site.com/some-path
+          type: ACCOMMODATION_BOOKING
+      properties:
+        customized_button:
+          $ref: '#/components/schemas/postCustomizedButton'
+      required:
+      - customized_button
       type: object
     PremiumPanelBusinessDataSubBusinessType:
       enum:
@@ -4005,8 +4495,23 @@ components:
       - USER
       - POST
       type: string
+    ServicesFieldsCategory:
+      description: زیردسته‌بندی سرویس
+      enum:
+      - CATEGORY_CAR_AND_MOTOR
+      - CATEGORY_CATERING
+      - CATEGORY_COMPUTER_AND_MOBILE
+      - CATEGORY_ACCOUNTING_AND_FINANCE
+      - CATEGORY_TRANSPORT
+      - CATEGORY_CRAFTSMEN
+      - CATEGORY_BEAUTY_AND_HAIRCARE
+      - CATEGORY_CLEANING
+      - CATEGORY_GARDEN_AND_LANDSCAPING
+      - CATEGORY_TEACHING
+      example: CATEGORY_CAR_AND_MOTOR
+      type: string
     TemporaryResidenceFieldsComfortAmenity:
-      description: List of comfort amenities available in the residence
+      description: فهرست امکانات رفاهی موجود در اقامتگاه
       enum:
       - COMFORT_AMENITY_TV
       - COMFORT_AMENITY_AUDIO_SYSTEM
@@ -4034,7 +4539,7 @@ components:
       - COMFORT_AMENITY_OUTDOOR_SPACE
       type: string
     TemporaryResidenceFieldsHeatingCoolingSystem:
-      description: List of heating and cooling systems available
+      description: فهرست سیستم‌های گرمایش و سرمایش موجود
       enum:
       - HEATING_COOLING_SYSTEM_EVAPORATIVE_COOLER
       - HEATING_COOLING_SYSTEM_RADIATOR
@@ -4047,7 +4552,7 @@ components:
       - HEATING_COOLING_SYSTEM_UNDERFLOOR_HEATING
       type: string
     TemporaryResidenceFieldsPetsAllowed:
-      description: Pet policy for the residence
+      description: سیاست نگهداری حیوان خانگی برای اقامتگاه
       enum:
       - PETS_ALLOWED_YES
       - PETS_ALLOWED_NO
@@ -4055,7 +4560,7 @@ components:
       example: PETS_ALLOWED_YES
       type: string
     TemporaryResidenceFieldsRentalPeriod:
-      description: "Rental period type (daily, weekly, monthly)"
+      description: نوع دوره اجاره (روزانه، هفتگی، ماهانه)
       enum:
       - RENTAL_PERIOD_DAILY
       - RENTAL_PERIOD_WEEKLY
@@ -4063,7 +4568,7 @@ components:
       example: RENTAL_PERIOD_DAILY
       type: string
     addonsAction:
-      description: Represents an action that can be performed
+      description: نمایان‌گر یک عملیات که می‌تواند انجام شود
       example:
         open_post_page:
           post_token: AJIEWcw
@@ -4080,8 +4585,8 @@ components:
         get_dynamic_action:
           $ref: '#/components/schemas/addonsGetDynamicAction'
         open_direct_link:
-          description: An action to send user to your URL directly with just a resource
-            id (if applicable)
+          description: عملیاتی برای ارسال کاربر به URL شما به صورت مستقیم با فقط یک
+            شناسه منبع (در صورت وجود)
           example: https://your-site.com/some-path
           type: string
         open_post_manage_page:
@@ -4090,7 +4595,7 @@ components:
           $ref: '#/components/schemas/addonsOpenPostPage'
         open_server_link:
           $ref: '#/components/schemas/addonsOpenServerLink'
-      title: Action
+      title: عملیات
       type: object
     addonsAddonLinkage:
       enum:
@@ -4161,8 +4666,8 @@ components:
           title: (OR) آگهی انتخاب می‌شود اگر آرایه زیر شامل فیلد مربوطه باشد
           type: array
       title: |-
-        (AND) post is selected by this selector if all of the following conditions
-        matches
+        (AND) آگهی توسط این انتخابگر انتخاب می‌شود اگر تمام شرایط زیر
+        برقرار باشند
       type: object
     addonsAddonSemantic:
       description: |-
@@ -4363,19 +4868,19 @@ components:
           type: array
       type: object
     addonsGetDynamicAction:
-      description: Represents a dynamic action that can be fetched and invoked on
-        user's device
+      description: نمایان‌گر یک اکشن پویا که می‌تواند در دستگاه کاربر دریافت و اجرا
+        شود
       example:
         data:
           your-internal-id: something
       properties:
         data:
-          description: A data that you can set and will be returned to you upon user
-            click to recognize the action
+          description: داده‌ای که می‌توانید تنظیم کنید و پس از کلیک کاربر برای شناسایی
+            عملیات به شما برگردانده می‌شود
           example:
             your-internal-id: something
           type: object
-      title: Get Dynamic Action
+      title: دریافت اکشن پویا
       type: object
     addonsGetPostAddonsResponse:
       properties:
@@ -4441,45 +4946,45 @@ components:
           type: array
       type: object
     addonsOpenPostManagePage:
-      description: An action to open a post management page in the app
+      description: عملیاتی برای باز کردن صفحه مدیریت آگهی در اپلیکیشن
       example:
         post_token: AJIEWcw
       properties:
         post_token:
-          description: Token of the post to redirect to its management page
+          description: توکن آگهی برای هدایت به صفحه مدیریت آن
           example: AJIEWcw
           type: string
       required:
       - post_token
-      title: Open Post Manage Page
+      title: باز کردن صفحه مدیریت آگهی
       type: object
     addonsOpenPostPage:
-      description: An action to open a post page in the app
+      description: عملیاتی برای باز کردن صفحه آگهی در اپلیکیشن
       example:
         post_token: AJIEWcw
       properties:
         post_token:
-          description: Token of the post to open
+          description: توکن آگهی برای باز کردن
           example: AJIEWcw
           type: string
       required:
       - post_token
-      title: Open Post Page
+      title: باز کردن صفحه آگهی
       type: object
     addonsOpenServerLink:
-      description: An action to pass complete session data and retrieve redirect location
-        from your server on each user action
+      description: عملیاتی برای ارسال داده‌های کامل نشست و دریافت مکان هدایت از سرور
+        شما در هر عملیات کاربر
       example:
         data:
           your-internal-id: something
       properties:
         data:
-          description: A data that you can set and will be returned to you upon user
-            click to recognize the action
+          description: داده‌ای که می‌توانید تنظیم کنید و پس از کلیک کاربر برای شناسایی
+            عملیات به شما برگردانده می‌شود
           example:
             your-internal-id: something
           type: object
-      title: Open Server Link
+      title: باز کردن لینک سرور
       type: object
     addonsPostAddon:
       properties:
@@ -5103,7 +5608,7 @@ components:
         conversation_id: conv_123456
       properties:
         conversation_id:
-          description: ID of the conversation created or updated
+          description: شناسه مکالمه ایجاد شده یا به‌روزرسانی شده
           example: conv_123456
           readOnly: true
           type: string
@@ -5282,8 +5787,8 @@ components:
         token: some_random_base64
       properties:
         token:
-          description: A url safe base64 encoded token that can be used in the upload
-            endpoint
+          description: توکن کدگذاری شده base64 ایمن برای URL که می‌تواند در نقطه پایانی
+            آپلود استفاده شود
           example: some_random_base64
           readOnly: true
           type: string
@@ -5365,7 +5870,7 @@ components:
         conversation:
           $ref: '#/components/schemas/chatapiConversation'
         messages:
-          description: List of messages in the conversation
+          description: فهرست پیام‌های مکالمه
           items:
             $ref: '#/components/schemas/chatapiMessage'
           type: array
@@ -5460,8 +5965,15 @@ components:
         action:
           $ref: '#/components/schemas/addonsAction'
         title:
-          description: The text to display on the button
+          description: متن برای نمایش روی دکمه
           type: string
+      type: object
+    eventsEventButtonList:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/eventsEventButton'
+          type: array
       type: object
     eventsRegisterEventSubscriptionRequest:
       properties:
@@ -5521,7 +6033,7 @@ components:
           format: date-time
           type: string
         is_phone_hidden:
-          title: This field is available only in webhook requests
+          title: این فیلد فقط در درخواست‌های webhook در دسترس است
           type: boolean
         last_modified_at:
           format: date-time
@@ -5542,6 +6054,18 @@ components:
           type: string
         business_type:
           $ref: '#/components/schemas/PremiumPanelBusinessDataSubBusinessType'
+      type: object
+    finderGetUserIDByPhoneRequest:
+      properties:
+        phone:
+          type: string
+      type: object
+    finderGetUserIDByPhoneResponse:
+      example:
+        user_id: user_id
+      properties:
+        user_id:
+          type: string
       type: object
     finderGetUserPostsResponse:
       example:
@@ -5842,12 +6366,34 @@ components:
         token:
           type: string
       type: object
+    open_platformpostHTTPMethod:
+      enum:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+      - HEAD
+      - OPTIONS
+      type: string
+    open_platformpostPostState:
+      enum:
+      - POST_STATE_IN_PUBLISH_QUEUE
+      - POST_STATE_PUBLISHED
+      - POST_STATE_WAITING_FOR_EDIT
+      - POST_STATE_WAITING_FOR_PAYMENT
+      - POST_STATE_WAITING_FOR_REVIEW
+      - POST_STATE_PUBLISHED_AND_EDIT_REJECTED
+      - POST_STATE_REJECTED
+      - POST_STATE_DELETED
+      - POST_STATE_RETIRED
+      type: string
     open_platformpostServicesFields:
       properties:
         category:
-          $ref: '#/components/schemas/postServicesFieldsCategory'
+          $ref: '#/components/schemas/ServicesFieldsCategory'
         expertise_ids:
-          description: List of expertise ids
+          description: فهرست شناسه‌های تخصص
           example:
           - "1"
           - "2"
@@ -5855,24 +6401,24 @@ components:
             type: string
           type: array
         work_hours_end:
-          description: End hour of work in 24-hour format (e.g. 18 for 18:00). Only
-            applicable if `works_24_7` is false.
+          description: ساعت پایان کار به فرمت 24 ساعته (مثلاً 18 برای 18:00). فقط
+            در صورتی اعمال می‌شود که `works_24_7` false باشد.
           example: 18
           format: int32
           type: integer
         work_hours_start:
-          description: Start hour of work in 24-hour format (e.g. 9 for 9:00). Only
-            applicable if `works_24_7` is false.
+          description: ساعت شروع کار به فرمت 24 ساعته (مثلاً 9 برای 9:00). فقط در
+            صورتی اعمال می‌شود که `works_24_7` false باشد.
           example: 9
           format: int32
           type: integer
         work_on_holidays:
-          description: Whether the service provider works on holidays
+          description: آیا ارائه‌دهنده سرویس در تعطیلات کار می‌کند
           example: true
           type: boolean
         works_24_7:
-          description: "Whether the service provider is available 24/7. If true, `work_hours_start`\
-            \ and `work_hours_end` are ignored."
+          description: آیا ارائه‌دهنده سرویس به صورت 24/7 در دسترس است. اگر true باشد،
+            `work_hours_start` و `work_hours_end` نادیده گرفته می‌شوند.
           example: false
           type: boolean
       required:
@@ -5945,7 +6491,12 @@ components:
         reorder:
           available: true
           cost_rials: cost_rials
+        renew:
+          available: true
+          cost_rials: cost_rials
       properties:
+        renew:
+          $ref: '#/components/schemas/GetPostPricingResponseRenew'
         reorder:
           $ref: '#/components/schemas/GetPostPricingResponseReorder'
         submit:
@@ -5955,6 +6506,7 @@ components:
       example:
         transaction:
           extra_details: extra_details
+          app_slug: app_slug
           created_at: 2000-01-23T04:56:07.000+00:00
           id: id
           state: TRANSACTION_STATE_PENDING
@@ -5969,12 +6521,14 @@ components:
         next_page_token: next_page_token
         transactions:
         - extra_details: extra_details
+          app_slug: app_slug
           created_at: 2000-01-23T04:56:07.000+00:00
           id: id
           state: TRANSACTION_STATE_PENDING
           type: TRANSACTION_TYPE_REORDER
           cost_rials: cost_rials
         - extra_details: extra_details
+          app_slug: app_slug
           created_at: 2000-01-23T04:56:07.000+00:00
           id: id
           state: TRANSACTION_STATE_PENDING
@@ -5982,13 +6536,41 @@ components:
           cost_rials: cost_rials
       properties:
         next_page_token:
-          description: Token for the next page of results.
+          description: توکن برای صفحه بعدی نتایج.
           type: string
         transactions:
           description: شناسه مرجع فاکتور یا تراکنش
           items:
             $ref: '#/components/schemas/paymentTransaction'
           type: array
+      type: object
+    paymentPublishUserPostResponse:
+      example:
+        transaction:
+          extra_details: extra_details
+          app_slug: app_slug
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: id
+          state: TRANSACTION_STATE_PENDING
+          type: TRANSACTION_TYPE_REORDER
+          cost_rials: cost_rials
+      properties:
+        transaction:
+          $ref: '#/components/schemas/paymentTransaction'
+      type: object
+    paymentRenewPostResponse:
+      example:
+        transaction:
+          extra_details: extra_details
+          app_slug: app_slug
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: id
+          state: TRANSACTION_STATE_PENDING
+          type: TRANSACTION_TYPE_REORDER
+          cost_rials: cost_rials
+      properties:
+        transaction:
+          $ref: '#/components/schemas/paymentTransaction'
       type: object
     paymentReorderPostResponse:
       example:
@@ -6028,7 +6610,8 @@ components:
           format: uint64
           type: string
         reference_id:
-          description: شناسه مرجع فاکتور یا تراکنش
+          description: شناسه منحصر به فرد بین دیوار و ارائه‌دهنده برای فاکتور یا تراکنش.
+            این شناسه مرجع درگاه پرداخت نیست.
           type: string
         services:
           description: لیست شناسه خدماتی که کاربر برای آنها پرداخت انجام داده است
@@ -6048,18 +6631,22 @@ components:
     paymentTransaction:
       example:
         extra_details: extra_details
+        app_slug: app_slug
         created_at: 2000-01-23T04:56:07.000+00:00
         id: id
         state: TRANSACTION_STATE_PENDING
         type: TRANSACTION_TYPE_REORDER
         cost_rials: cost_rials
       properties:
+        app_slug:
+          description: شناسه اپلیکیشنی که تراکنش را ایجاد کرده است
+          type: string
         cost_rials:
           description: هزینه تراکنش به ریال برای اپلیکیشن شما
           format: int64
           type: string
         created_at:
-          description: The time when the transaction was created
+          description: زمان ایجاد تراکنش
           format: date-time
           type: string
         extra_details:
@@ -6083,6 +6670,8 @@ components:
     paymentTransactionType:
       enum:
       - TRANSACTION_TYPE_REORDER
+      - TRANSACTION_TYPE_SUBMIT
+      - TRANSACTION_TYPE_RENEW
       type: string
     paymentWalletTransaction:
       example:
@@ -6194,7 +6783,65 @@ components:
         can_submit:
           type: boolean
       type: object
+    postCreateBusinessCustomizedButtonResponse:
+      type: object
+    postCustomizedButton:
+      example:
+        action:
+          open_post_page:
+            post_token: AJIEWcw
+          open_post_manage_page:
+            post_token: AJIEWcw
+          get_dynamic_action:
+            data:
+              your-internal-id: something
+          open_server_link:
+            data:
+              your-internal-id: something
+          open_direct_link: https://your-site.com/some-path
+        type: ACCOMMODATION_BOOKING
+      properties:
+        action:
+          $ref: '#/components/schemas/addonsAction'
+        type:
+          $ref: '#/components/schemas/postCustomizedButtonType'
+      required:
+      - action
+      - type
+      type: object
+    postCustomizedButtonType:
+      description: |
+        نوع دکمه اختصاصی که هدف و رفتار آن را تعیین می‌کند. ویژگی‌هایی مانند عنوان دکمه بر اساس نوع آن تعیین می‌شوند.
+
+        انواع موجود:
+        - `ACCOMMODATION_BOOKING`: برای رزرو اقامتگاه
+        - `EXTERNAL_PRODUCT_STORE`: برای مشاهده و خرید محصولات در فروشگاه‌های آنلاین
+        - `RESUME_SUBMISSION`: برای ارسال رزومه
+      enum:
+      - ACCOMMODATION_BOOKING
+      - EXTERNAL_PRODUCT_STORE
+      - RESUME_SUBMISSION
+      type: string
+    postDeleteBusinessCustomizedButtonResponse:
+      type: object
+    postDeleteCustomizedButtonsOffloadedResponse:
+      type: object
+    postDeletePostCustomizedButtonResponse:
+      type: object
+    postDeleteUserPostResponse:
+      type: object
     postEditPostResponse:
+      type: object
+    postGetBusinessCustomizedButtonResponse:
+      properties:
+        app_name:
+          type: string
+        app_slug:
+          type: string
+        is_active:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/postCustomizedButtonType'
       type: object
     postGetImageUploadURLResponse:
       example:
@@ -6205,16 +6852,96 @@ components:
       type: object
     postGetPostStatsResponse:
       example:
+        chats:
+          total: 239
+          daily:
+          - date: 2025-06-03
+            count: 239
+          - date: 2025-06-03
+            count: 239
+        impressions:
+          total: 239
+          daily:
+          - date: 2025-06-03
+            count: 239
+          - date: 2025-06-03
+            count: 239
         views:
           total: 239
           daily:
-          - date: 2025-06-03T00:00:00Z
+          - date: 2025-06-03
             count: 239
-          - date: 2025-06-03T00:00:00Z
+          - date: 2025-06-03
             count: 239
       properties:
+        chats:
+          $ref: '#/components/schemas/GetPostStatsResponsePostStats'
+        impressions:
+          $ref: '#/components/schemas/GetPostStatsResponsePostStats'
         views:
           $ref: '#/components/schemas/GetPostStatsResponsePostStats'
+      type: object
+    postGetUploadURLsV2Response:
+      example:
+        image:
+          http_method: GET
+          url: url
+        video:
+          http_method: GET
+          url: url
+      properties:
+        image:
+          $ref: '#/components/schemas/GetUploadURLsV2ResponseUploadFormat'
+        video:
+          $ref: '#/components/schemas/GetUploadURLsV2ResponseUploadFormat'
+      type: object
+    postGetUserPostResponse:
+      example:
+        category_data: "{}"
+        general_data:
+          images:
+          - images
+          - images
+          city: tehran
+          district: abshar
+          latitude: 35.7152
+          description: I'm available only in chat.
+          chat_enabled: true
+          hide_phone: true
+          video:
+            duration: "34"
+            thumbnail_name: thumbnail/4786eb10-eac6-4077-b622-78c1c42855c7.jpg
+            name: raw/4786eb10-eac6-4077-b622-78c1c42855c7.mp4
+          title: Temporary Residence for Rent in Tehran
+          category_slug: apartment-sell
+          location_type: LOCATION_TYPE_EXACT
+          longitude: 51.4043
+        reject_reason: reject_reason
+        state: POST_STATE_IN_PUBLISH_QUEUE
+        business_data:
+          business_name: business_name
+          business_type: CAR
+      properties:
+        business_data:
+          $ref: '#/components/schemas/postGetUserPostResponseBusinessData'
+        category_data:
+          type: object
+        general_data:
+          $ref: '#/components/schemas/postPostGeneralData'
+        reject_reason:
+          type: string
+        state:
+          $ref: '#/components/schemas/open_platformpostPostState'
+      type: object
+    postGetUserPostResponseBusinessData:
+      example:
+        business_name: business_name
+        business_type: CAR
+      properties:
+        business_name:
+          type: string
+        business_type:
+          $ref: '#/components/schemas/PremiumPanelBusinessDataSubBusinessType'
       type: object
     postHomePresellFields:
       properties:
@@ -6273,44 +7000,36 @@ components:
       - has_own_image
       type: object
     postLocationType:
-      description: Type of the location
+      description: نوع موقعیت
       enum:
       - LOCATION_TYPE_EMPTY
       - LOCATION_TYPE_EXACT
       - LOCATION_TYPE_APPROXIMATE
       example: LOCATION_TYPE_EXACT
       type: string
-    postRoomsCount:
-      description: Number of rooms in the residence
-      enum:
-      - ROOMS_COUNT_0
-      - ROOMS_COUNT_1
-      - ROOMS_COUNT_2
-      - ROOMS_COUNT_3
-      - ROOMS_COUNT_4
-      - ROOMS_COUNT_5_OR_MORE
-      example: ROOMS_COUNT_2
-      type: string
-    postServicesFieldsCategory:
-      description: The subcategory of the service
-      enum:
-      - CATEGORY_CAR_AND_MOTOR
-      - CATEGORY_CATERING
-      - CATEGORY_COMPUTER_AND_MOBILE
-      - CATEGORY_ACCOUNTING_AND_FINANCE
-      - CATEGORY_TRANSPORT
-      - CATEGORY_CRAFTSMEN
-      - CATEGORY_BEAUTY_AND_HAIRCARE
-      - CATEGORY_CLEANING
-      - CATEGORY_GARDEN_AND_LANDSCAPING
-      - CATEGORY_TEACHING
-      example: CATEGORY_CAR_AND_MOTOR
-      type: string
-    postSubmitPostGeneralData:
+    postPostGeneralData:
+      example:
+        images:
+        - images
+        - images
+        city: tehran
+        district: abshar
+        latitude: 35.7152
+        description: I'm available only in chat.
+        chat_enabled: true
+        hide_phone: true
+        video:
+          duration: "34"
+          thumbnail_name: thumbnail/4786eb10-eac6-4077-b622-78c1c42855c7.jpg
+          name: raw/4786eb10-eac6-4077-b622-78c1c42855c7.mp4
+        title: Temporary Residence for Rent in Tehran
+        category_slug: apartment-sell
+        location_type: LOCATION_TYPE_EXACT
+        longitude: 51.4043
       properties:
         category_slug:
           description: "نام دسته‌بندی هدف. دسته‌بندی‌های موجود را در این آدرس بیاب\
-            ید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-categories/"
+            ید: https://kenar.divar.dev/openapi-doc/assets-get-categories/"
           example: apartment-sell
           type: string
         chat_enabled:
@@ -6353,6 +7072,8 @@ components:
           description: عنوان آگهی
           example: Temporary Residence for Rent in Tehran
           type: string
+        video:
+          $ref: '#/components/schemas/PostGeneralDataPostVideo'
       required:
       - category_slug
       - chat_enabled
@@ -6362,6 +7083,19 @@ components:
       - images
       - location_type
       - title
+      type: object
+    postRoomsCount:
+      description: تعداد اتاق‌های اقامتگاه
+      enum:
+      - ROOMS_COUNT_0
+      - ROOMS_COUNT_1
+      - ROOMS_COUNT_2
+      - ROOMS_COUNT_3
+      - ROOMS_COUNT_4
+      - ROOMS_COUNT_5_OR_MORE
+      example: ROOMS_COUNT_2
+      type: string
+    postSetPostCustomizedButtonResponse:
       type: object
     postSubmitPostRequest:
       properties:
@@ -6394,7 +7128,7 @@ components:
             type: string
           type: array
         landline_numbers:
-          description: Landline numbers to be added to the post
+          description: شماره‌های ثابت برای افزودن به آگهی
           example:
           - "02188888888"
           - "02188888889"
@@ -6441,12 +7175,12 @@ components:
       properties:
         category_fields:
           description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمی\
-            ل شوند. قالب را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/"
+            ل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
           type: object
         general_data:
-          $ref: '#/components/schemas/postSubmitPostGeneralData'
+          $ref: '#/components/schemas/postPostGeneralData'
         landline_numbers:
-          description: Landline numbers to be added to the post
+          description: شماره‌های ثابت برای افزودن به آگهی
           example:
           - "02188888888"
           - "02188888889"
@@ -6461,10 +7195,10 @@ components:
       properties:
         category_fields:
           description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمی\
-            ل شوند. قالب را از اینجا ببینید: https://divar-ir.github.io/kenar-docs/openapi-doc/assets-get-submit-schema/"
+            ل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
           type: object
         general_data:
-          $ref: '#/components/schemas/postSubmitPostGeneralData'
+          $ref: '#/components/schemas/postPostGeneralData'
       required:
       - category_fields
       - general_data
@@ -6477,11 +7211,11 @@ components:
           format: int32
           type: integer
         check_in_time:
-          description: Check-in time
+          description: زمان ورود
           example: 08:00
           type: string
         check_out_time:
-          description: Check-out time
+          description: زمان خروج
           example: 20:00
           type: string
         comfort_amenities:
@@ -6493,7 +7227,7 @@ components:
             $ref: '#/components/schemas/TemporaryResidenceFieldsComfortAmenity'
           type: array
         damage_deposit:
-          description: Damage deposit amount in Toman
+          description: مبلغ ودیعه خسارت به تومان
           example: "2000000"
           format: int64
           type: string
@@ -6503,7 +7237,7 @@ components:
           format: int32
           type: integer
         fully_furnished:
-          description: Whether the residence is fully furnished
+          description: آیا اقامتگاه کاملاً مبله است
           example: true
           type: boolean
         has_own_image:
@@ -6518,11 +7252,11 @@ components:
             $ref: '#/components/schemas/TemporaryResidenceFieldsHeatingCoolingSystem'
           type: array
         house_rules:
-          description: House rules and regulations
+          description: قوانین و مقررات خانه
           example: no smoking
           type: string
         minimum_stay:
-          description: Minimum number of days required for stay
+          description: حداقل تعداد روزهای مورد نیاز برای اقامت
           example: 3
           format: int32
           type: integer
@@ -6571,13 +7305,13 @@ components:
     protobufAny:
       additionalProperties: {}
       description: |-
-        `Any` شامل یک پیام protocol buffer سریالایز شده دلخواه همراه با
-        URL که نوع پیام سریالایز شده را توضیح می‌دهد.
+        `Any` contains an arbitrary serialized protocol buffer message along with a
+        URL that describes the type of the serialized message.
 
-        کتابخانه Protobuf پشتیبانی برای pack/unpack مقادیر Any را به شکل
-        توابع کاربردی یا متدهای اضافی تولید شده نوع Any ارائه می‌دهد.
+        Protobuf library provides support to pack/unpack Any values in the form
+        of utility functions or additional generated methods of the Any type.
 
-        مثال 1: Pack و unpack پیام در C++.
+        Example 1: Pack and unpack a message in C++.
 
             Foo foo = ...;
             Any any;
@@ -6587,7 +7321,7 @@ components:
               ...
             }
 
-        مثال 2: Pack و unpack پیام در Java.
+        Example 2: Pack and unpack a message in Java.
 
             Foo foo = ...;
             Any any = Any.pack(foo);
@@ -6596,7 +7330,7 @@ components:
               foo = any.unpack(Foo.class);
             }
 
-        مثال 3: Pack و unpack پیام در Python.
+        Example 3: Pack and unpack a message in Python.
 
             foo = Foo(...)
             any = Any()
@@ -6606,7 +7340,7 @@ components:
               any.Unpack(foo)
               ...
 
-        مثال 4: Pack و unpack پیام در Go
+        Example 4: Pack and unpack a message in Go
 
              foo := &pb.Foo{...}
              any, err := anypb.New(foo)
@@ -6619,18 +7353,18 @@ components:
                ...
              }
 
-        متدهای pack ارائه شده توسط کتابخانه protobuf به طور پیش‌فرض از
-        'type.googleapis.com/full.type.name' به عنوان URL نوع استفاده می‌کنند و متدهای unpack
-        فقط از نام نوع کاملاً واجد شرایط پس از آخرین '/'
-        در URL نوع استفاده می‌کنند، مثلاً "foo.bar.com/x/y.z" نام نوع
-        "y.z" را ایجاد می‌کند.
+        The pack methods provided by protobuf library will by default use
+        'type.googleapis.com/full.type.name' as the type URL and the unpack
+        methods only use the fully qualified type name after the last '/'
+        in the type URL, for example "foo.bar.com/x/y.z" will yield type
+        name "y.z".
 
 
         JSON
 
-        نمایش JSON یک مقدار `Any` از نمایش معمولی
-        پیام deserialize شده و جاسازی شده، با یک
-        فیلد اضافی `@type` که شامل URL نوع است، استفاده می‌کند. مثال:
+        The JSON representation of an `Any` value uses the regular
+        representation of the deserialized, embedded message, with an
+        additional field `@type` which contains the type URL. Example:
 
             package google.profile;
             message Person {
@@ -6644,10 +7378,10 @@ components:
               "lastName": <string>
             }
 
-        اگر نوع پیام جاسازی شده شناخته شده باشد و نمایش JSON سفارشی
-        داشته باشد، آن نمایش با افزودن فیلد
-        `value` که JSON سفارشی را علاوه بر فیلد `@type`
-        نگه می‌دارد، جاسازی می‌شود. مثال (برای پیام [google.protobuf.Duration][]):
+        If the embedded message type is well-known and has a custom JSON
+        representation, that representation will be embedded adding a field
+        `value` which holds the custom JSON in addition to the `@type`
+        field. Example (for message [google.protobuf.Duration][]):
 
             {
               "@type": "type.googleapis.com/google.protobuf.Duration",
@@ -6658,29 +7392,33 @@ components:
       properties:
         '@type':
           description: |-
-            یک URL/نام منبع که نوع پیام protocol buffer سریالایز شده را به طور منحصر به فرد شناسایی می‌کند. این رشته باید حداقل
-            یک کاراکتر "/" داشته باشد. آخرین بخش مسیر URL باید نام کاملاً واجد شرایط نوع را نمایش دهد (مانند
-            `path/google.protobuf.Duration`). نام باید در فرم کانونیکال باشد
-            (مثلاً، "." ابتدایی پذیرفته نیست).
+            A URL/resource name that uniquely identifies the type of the serialized
+            protocol buffer message. This string must contain at least
+            one "/" character. The last segment of the URL's path must represent
+            the fully qualified name of the type (as in
+            `path/google.protobuf.Duration`). The name should be in a canonical form
+            (e.g., leading "." is not accepted).
 
-            در عمل، تیم‌ها معمولاً تمام انواعی که انتظار دارند در زمینه Any استفاده شود را به صورت پیش‌کامپایل در باینری قرار می‌دهند. با این حال، برای URL هایی که از
-            طرح `http`، `https` یا بدون طرح استفاده می‌کنند، می‌توان به طور اختیاری یک سرور نوع تنظیم کرد که URL های نوع را به تعاریف پیام نگاشت می‌کند:
+            In practice, teams usually precompile into the binary all types that they
+            expect it to use in the context of Any. However, for URLs which use the
+            scheme `http`, `https`, or no scheme, one can optionally set up a type
+            server that maps type URLs to message definitions as follows:
 
-            * اگر طرحی ارائه نشود، `https` فرض می‌شود.
-            * یک HTTP GET روی URL باید مقدار [google.protobuf.Type][] را
-              به فرمت باینری ارائه دهد، یا خطا تولید کند.
-            * برنامه‌ها مجاز هستند نتایج جستجو را بر اساس
-              URL کش کنند، یا آنها را در باینری پیش‌کامپایل کنند تا از هر
-              جستجویی جلوگیری کنند. بنابراین، سازگاری باینری باید در
-              تغییرات انواع حفظ شود. (از نام‌های نوع نسخه‌دار برای مدیریت
-              تغییرات شکست‌آور استفاده کنید.)
+            * If no scheme is provided, `https` is assumed.
+            * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+              value in binary format, or produce an error.
+            * Applications are allowed to cache lookup results based on the
+              URL, or have them precompiled into a binary to avoid any
+              lookup. Therefore, binary compatibility needs to be preserved
+              on changes to types. (Use versioned type names to manage
+              breaking changes.)
 
-            توجه: این قابلیت در حال حاضر در نسخه رسمی
-            protobuf در دسترس نیست، و برای URL های نوع که با
-            type.googleapis.com شروع می‌شوند استفاده نمی‌شود.
+            Note: this functionality is not currently available in the official
+            protobuf release, and it is not used for type URLs beginning with
+            type.googleapis.com.
 
-            طرح‌های غیر از `http`، `https` (یا طرح خالی) ممکن است
-            با معناشناسی خاص پیاده‌سازی استفاده شوند.
+            Schemes other than `http`, `https` (or the empty scheme) might be
+            used with implementation specific semantics.
           type: string
       type: object
     protobufNullValue:
@@ -6736,6 +7474,7 @@ components:
           refreshUrl: oauth.divar.ir/oauth2/token
           scopes:
             BUSINESS_ADDON_CREATE.resource_id: BUSINESS_ADDON_CREATE.resource_id
+            BUSINESS_CREATE_CUSTOMIZED_BUTTON.resource_id: BUSINESS_CREATE_CUSTOMIZED_BUTTON.resource_id
             CHAT_BOT_USER_MESSAGE_SEND: CHAT_BOT_USER_MESSAGE_SEND
             CHAT_CONVERSATION_READ.resource_id: CHAT_CONVERSATION_READ.resource_id
             CHAT_MESSAGE_SEND.resource_id: CHAT_MESSAGE_SEND.resource_id
@@ -6744,20 +7483,29 @@ components:
             CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND: CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND
             CHAT_SUPPLIER_ALL_CONVERSATIONS_READ: CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
             CONVERSATION_SEND_MESSAGE.resource_id: CONVERSATION_SEND_MESSAGE.resource_id
+            CREATE_WALLET_PAYMENT: CREATE_WALLET_PAYMENT
+            DELETE_USER_POST: DELETE_USER_POST
+            EDIT_USER_POST: EDIT_USER_POST
             MANAGEMENT_APPS_READ.resource_id: MANAGEMENT_APPS_READ.resource_id
             MANAGEMENT_APPS_WRITE.resource_id: MANAGEMENT_APPS_WRITE.resource_id
             NOTIFICATION_ACCESS_REVOCATION: NOTIFICATION_ACCESS_REVOCATION
             PAYMENT_ALL_POSTS_PRICING_READ: PAYMENT_ALL_POSTS_PRICING_READ
+            PAYMENT_ALL_POSTS_RENEW: PAYMENT_ALL_POSTS_RENEW
             PAYMENT_ALL_POSTS_REORDER: PAYMENT_ALL_POSTS_REORDER
             POST_ADDON_CREATE.resource_id: POST_ADDON_CREATE.resource_id
             POST_EDIT.resource_id: POST_EDIT.resource_id
             POST_ONGOING_IMAGES_GET.resource_id: POST_ONGOING_IMAGES_GET.resource_id
             POST_SEMANTIC_CREATE.resource_id: POST_SEMANTIC_CREATE.resource_id
+            SEND_EVENT: SEND_EVENT
+            SUBMIT_USER_PAYMENT: SUBMIT_USER_PAYMENT
+            SUBMIT_USER_POST: SUBMIT_USER_POST
             USER_ADDON_CREATE: USER_ADDON_CREATE
             USER_ID: USER_ID
             USER_PHONE: USER_PHONE
             USER_POSTS_ADDON_CREATE: USER_POSTS_ADDON_CREATE
             USER_POSTS_GET: USER_POSTS_GET
+            USER_POSTS_STATS_READ: USER_POSTS_STATS_READ
+            USER_SET_CUSTOMIZED_BUTTON: USER_SET_CUSTOMIZED_BUTTON
             USER_VERIFICATION_CREATE: USER_VERIFICATION_CREATE
             offline_access: offline_access
             openid: openid

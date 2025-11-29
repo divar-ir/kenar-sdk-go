@@ -13,14 +13,14 @@ Name | Type | Description | Notes
 **PriceWeekends** | **string** | قیمت اقامتگاه در آخر هفته (چهارشنبه تا جمعه) به تومان | 
 **RegularPersonCapacity** | **int32** | ظرفیت استاندارد افراد در اقامتگاه | 
 **RoomsCount** | [**PostRoomsCount**](PostRoomsCount.md) |  | 
-**CheckInTime** | Pointer to **string** | Check-in time | [optional] 
-**CheckOutTime** | Pointer to **string** | Check-out time | [optional] 
+**CheckInTime** | Pointer to **string** | زمان ورود | [optional] 
+**CheckOutTime** | Pointer to **string** | زمان خروج | [optional] 
 **ComfortAmenities** | Pointer to [**[]TemporaryResidenceFieldsComfortAmenity**](TemporaryResidenceFieldsComfortAmenity.md) |  | [optional] 
-**DamageDeposit** | Pointer to **string** | Damage deposit amount in Toman | [optional] 
-**FullyFurnished** | Pointer to **bool** | Whether the residence is fully furnished | [optional] 
+**DamageDeposit** | Pointer to **string** | مبلغ ودیعه خسارت به تومان | [optional] 
+**FullyFurnished** | Pointer to **bool** | آیا اقامتگاه کاملاً مبله است | [optional] 
 **HeatingCoolingSystem** | Pointer to [**[]TemporaryResidenceFieldsHeatingCoolingSystem**](TemporaryResidenceFieldsHeatingCoolingSystem.md) |  | [optional] 
-**HouseRules** | Pointer to **string** | House rules and regulations | [optional] 
-**MinimumStay** | Pointer to **int32** | Minimum number of days required for stay | [optional] 
+**HouseRules** | Pointer to **string** | قوانین و مقررات خانه | [optional] 
+**MinimumStay** | Pointer to **int32** | حداقل تعداد روزهای مورد نیاز برای اقامت | [optional] 
 **PetsAllowed** | Pointer to [**TemporaryResidenceFieldsPetsAllowed**](TemporaryResidenceFieldsPetsAllowed.md) |  | [optional] 
 **RentalPeriod** | Pointer to [**TemporaryResidenceFieldsRentalPeriod**](TemporaryResidenceFieldsRentalPeriod.md) |  | [optional] 
 

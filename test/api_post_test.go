@@ -1,5 +1,5 @@
 /*
-Kenar API
+API کنار
 
 Testing PostAPIService
 
@@ -34,6 +34,62 @@ func Test_kenarapi_PostAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PostAPIService PostCreateBusinessCustomizedButton", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var businessToken string
+
+		resp, httpRes, err := apiClient.PostAPI.PostCreateBusinessCustomizedButton(context.Background(), businessToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PostAPIService PostDeleteBusinessCustomizedButton", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var businessToken string
+
+		resp, httpRes, err := apiClient.PostAPI.PostDeleteBusinessCustomizedButton(context.Background(), businessToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PostAPIService PostDeletePostCustomizedButton", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var postToken string
+
+		resp, httpRes, err := apiClient.PostAPI.PostDeletePostCustomizedButton(context.Background(), postToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PostAPIService PostDeleteUserPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var postToken string
+
+		resp, httpRes, err := apiClient.PostAPI.PostDeleteUserPost(context.Background(), postToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PostAPIService PostEditPost", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -41,6 +97,20 @@ func Test_kenarapi_PostAPIService(t *testing.T) {
 		var postToken string
 
 		resp, httpRes, err := apiClient.PostAPI.PostEditPost(context.Background(), postToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PostAPIService PostEditPostV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var postToken string
+
+		resp, httpRes, err := apiClient.PostAPI.PostEditPostV2(context.Background(), postToken).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,6 +137,46 @@ func Test_kenarapi_PostAPIService(t *testing.T) {
 		var postToken string
 
 		resp, httpRes, err := apiClient.PostAPI.PostGetPostStats(context.Background(), postToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PostAPIService PostGetUploadURLsV2", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.PostAPI.PostGetUploadURLsV2(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PostAPIService PostGetUserPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var token string
+
+		resp, httpRes, err := apiClient.PostAPI.PostGetUserPost(context.Background(), token).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PostAPIService PostSetPostCustomizedButton", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var postToken string
+
+		resp, httpRes, err := apiClient.PostAPI.PostSetPostCustomizedButton(context.Background(), postToken).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

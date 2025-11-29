@@ -1,5 +1,5 @@
 /*
-Kenar API
+API کنار
 
 Testing PaymentAPIService
 
@@ -91,6 +91,34 @@ func Test_kenarapi_PaymentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PaymentAPI.PaymentListTransactions(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PaymentAPIService PaymentPublishUserPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var postToken string
+
+		resp, httpRes, err := apiClient.PaymentAPI.PaymentPublishUserPost(context.Background(), postToken).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PaymentAPIService PaymentRenewPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var postToken string
+
+		resp, httpRes, err := apiClient.PaymentAPI.PaymentRenewPost(context.Background(), postToken).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

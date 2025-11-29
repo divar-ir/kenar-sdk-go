@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AppSlug** | Pointer to **string** | شناسه اپلیکیشنی که تراکنش را ایجاد کرده است | [optional] 
 **CostRials** | Pointer to **string** | هزینه تراکنش به ریال برای اپلیکیشن شما | [optional] 
-**CreatedAt** | Pointer to **time.Time** | The time when the transaction was created | [optional] 
+**CreatedAt** | Pointer to **time.Time** | زمان ایجاد تراکنش | [optional] 
 **ExtraDetails** | Pointer to **string** | همان جزئیات اضافی که در درخواست ارسال کردید | [optional] 
 **Id** | Pointer to **string** | همان uuid هنگام ایجاد تراکنش | [optional] 
 **State** | Pointer to [**PaymentTransactionState**](PaymentTransactionState.md) |  | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewPaymentTransactionWithDefaults instantiates a new PaymentTransaction object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAppSlug
+
+`func (o *PaymentTransaction) GetAppSlug() string`
+
+GetAppSlug returns the AppSlug field if non-nil, zero value otherwise.
+
+### GetAppSlugOk
+
+`func (o *PaymentTransaction) GetAppSlugOk() (*string, bool)`
+
+GetAppSlugOk returns a tuple with the AppSlug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppSlug
+
+`func (o *PaymentTransaction) SetAppSlug(v string)`
+
+SetAppSlug sets AppSlug field to given value.
+
+### HasAppSlug
+
+`func (o *PaymentTransaction) HasAppSlug() bool`
+
+HasAppSlug returns a boolean if a field has been set.
 
 ### GetCostRials
 
