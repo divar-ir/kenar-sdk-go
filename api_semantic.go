@@ -46,6 +46,8 @@ SemanticCreatePostSemantic ایجاد اطلاعات معنایی آگهی
 این API توکن دسترسی با دامنه `POST_SEMANTIC_CREATE` را انتظار دارد.
 
 
+مجوزهای مورد نیاز: POST_SEMANTIC_CREATE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
  @return ApiSemanticCreatePostSemanticRequest
@@ -184,6 +186,8 @@ SemanticCreateUserSemantic ایجاد اطلاعات معنایی کاربر
 نام کاربری در دیوار همان شماره موبایل است.
 این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
 از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
+
+مجوزهای مورد نیاز: USER_SEMANTIC_CREATE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param phone
@@ -459,6 +463,8 @@ func (r ApiSemanticDeleteUserSemanticRequest) Execute() (map[string]interface{},
 SemanticDeleteUserSemantic حذف اطلاعات معنایی کاربر
 
 می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
+
+مجوزهای مورد نیاز: USER_SEMANTIC_DELETE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param phone

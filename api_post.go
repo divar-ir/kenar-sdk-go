@@ -37,6 +37,8 @@ PostCanUserSubmitPost بررسی اینکه آیا کاربر می‌تواند 
 
 با این API میتوانید بررسی کنید آیا کاربر می‌تواند آگهی ارسال کند یا خیر.این API انتظار دارد توکن کاربر در درخواست با اسکوپ `SUBMIT_USER_POST` موجود باشد.
 
+مجوزهای مورد نیاز: CAN_USER_SUBMIT_POST.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCanUserSubmitPostRequest
 */
@@ -166,6 +168,8 @@ PostCreateBusinessCustomizedButton ایجاد دکمه اختصاصی برای �
 این API برای ایجاد دکمه اختصاصی برای تمام آگهی‌های کسب‌وکار استفاده می‌شود.
 این API به مجوز `BUSINESS_CUSTOMIZED_BUTTON_CREATE` و دامنه OAuth `BUSINESS_CREATE_CUSTOMIZED_BUTTON.{business_ref}` نیاز دارد.
 
+
+مجوزهای مورد نیاز: BUSINESS_CUSTOMIZED_BUTTON_CREATE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessToken
@@ -298,6 +302,8 @@ PostDeleteBusinessCustomizedButton حذف دکمه اختصاصی از آگهی�
 این API دکمه اختصاصی را از تمام آگهی‌های کسب‌وکار حذف می‌کند. این API به مجوز `BUSINESS_CUSTOMIZED_BUTTON_CREATE` نیاز دارد.
 
 
+مجوزهای مورد نیاز: BUSINESS_CUSTOMIZED_BUTTON_CREATE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessToken
  @return ApiPostDeleteBusinessCustomizedButtonRequest
@@ -424,6 +430,8 @@ PostDeletePostCustomizedButton حذف دکمه اختصاصی از آگهی
 این API دکمه اختصاصی را از آگهی ثبت شده توسط سرویس شما حذف می‌کند. این API نیاز به مجوز `SET_CUSTOMIZED_BUTTON` دارد.
 
 
+مجوزهای مورد نیاز: SET_CUSTOMIZED_BUTTON.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
  @return ApiPostDeletePostCustomizedButtonRequest
@@ -548,6 +556,8 @@ func (r ApiPostDeleteUserPostRequest) Execute() (map[string]interface{}, *http.R
 PostDeleteUserPost حذف آگهی
 
 این API به شما امکان حذف آگهی را می‌دهد. این نیاز به اسکوپ OAuth `DELETE_USER_POST` دارد.
+
+مجوزهای مورد نیاز: DELETE_USER_POST.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken توکن آگهی برای حذف
@@ -680,6 +690,8 @@ PostEditPost ویرایش آگهی
 
 این API به شما امکان ویرایش آگهی را می‌دهد. این نیاز به دامنه OAuth `POST_EDIT.{post_token}` دارد.
 در حال حاضر فقط می‌توانید عنوان، توضیحات و تصاویر آگهی را ویرایش کنید.
+
+مجوزهای مورد نیاز: EDIT_POST.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -822,6 +834,8 @@ PostEditPostV2 ویرایش آگهی با پشتیبانی از فیلد ماس�
 
 از فیلد update_mask برای مشخص کردن فیلدهایی که می‌خواهید به‌روزرسانی کنید استفاده کنید.
 
+مجوزهای مورد نیاز: EDIT_POST.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken توکن آگهی
  @return ApiPostEditPostV2Request
@@ -953,6 +967,8 @@ PostGetImageUploadURL دریافت آدرس اپلود تصاویر آگهی (م
 می‌توانید تصاویر را با یک درخواست POST و رمزگذاری باینری به آدرس برگشتی بارگذاری کنید.
 به جای آن از https://kenar.divar.dev/openapi-doc/post-get-upload-urls-v2/ استفاده کنید
 
+مجوزهای مورد نیاز: UPLOAD_POST_IMAGE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostGetImageUploadURLRequest
 */
@@ -1074,6 +1090,8 @@ func (r ApiPostGetPostStatsRequest) Execute() (*PostGetPostStatsResponse, *http.
 PostGetPostStats دریافت آمارهای آگهی
 
 از این api برای مشاهده‌ی آمارهای یک آگهی (مانند تعداد بازدید‌های آگهی) استفاده کنید. 
+
+مجوزهای مورد نیاز: POST_STATS_RETRIEVE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken توکن آگهی
@@ -1200,6 +1218,8 @@ PostGetUploadURLsV2 دریافت آدرس آپلود برای تصاویر و و
 این API به شما امکان دریافت URL آپلود برای آپلود تصاویر و ویدیوهای آگهی را می‌دهد.
 می‌توانید تصاویر/ویدیوها را با استفاده از درخواست POST یا PUT با کدگذاری باینری به URL برگشتی آپلود کنید. آدرس برگشتی این API به api-key شما برای آپلود نیاز دارد. لطفاً توجه داشته باشید که آدرس برگشتی ممکن است بدون اطلاع قبلی تغییر کند.
 
+مجوزهای مورد نیاز: UPLOAD_POST_IMAGE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostGetUploadURLsV2Request
 */
@@ -1324,6 +1344,8 @@ PostGetUserPost دریافت آگهی با توکن
 این نقطه پایانی آگهی‌های ثبت شده توسط کاربران احراز هویت شده از طریق پلتفرم باز را برمی‌گرداند، شامل داده‌های کسب‌وکار، وضعیت و دلایل رد.
 این API به مجوز `GET_USER_POST` نیاز دارد.
 این API به دامنه OAuth `USER_POSTS_GET` نیاز دارد.
+
+مجوزهای مورد نیاز: GET_USER_POST.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
@@ -1456,6 +1478,8 @@ PostSetPostCustomizedButton تنظیم دکمه اختصاصی بر روی آگ�
 
 این API برای تنظیم دکمه اختصاصی برای یک آگهی استفاده می‌شود. اگر دکمه‌ای وجود نداشته باشد، ایجاد خواهد شد. اگر از قبل وجود داشته باشد، داده‌های آن به‌روزرسانی خواهد شد. این API به مجوز `SET_CUSTOMIZED_BUTTON` نیاز دارد.
 اگر این آگهی توسط کاربر ثبت شده باشد، این API به توکن دسترسی کاربر در هدرهای درخواست با دامنه OAuth `USER_SET_CUSTOMIZED_BUTTON` نیاز دارد.
+
+مجوزهای مورد نیاز: SET_CUSTOMIZED_BUTTON.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -1593,6 +1617,8 @@ PostSubmitPost ثبت آگهی
 این API به شما امکان ثبت آگهی را می‌دهد. این نیاز به دامنه OAuth `SUBMIT_POST` دارد.
 می‌توانید آگهی را با عنوان، توضیحات، تصاویر و سایر فیلدها ثبت کنید. فیلدهای عمومی و فیلدهای مخصوص دسته‌بندی وجود دارند.
 
+مجوزهای مورد نیاز: SUBMIT_POST.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostSubmitPostRequest
 */
@@ -1725,6 +1751,8 @@ PostSubmitPostV2 ثبت آگهی با استفاده از اعتبارسنجی �
 
 این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به مجوز `SUBMIT_POST` نیاز دارد.
 شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+
+مجوزهای مورد نیاز: SUBMIT_POST.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostSubmitPostV2Request
@@ -1859,6 +1887,8 @@ PostSubmitUserPost ثبت آگهی به عنوان کاربر
 این API به شما امکان ثبت آگهی از طرف یک کاربر احراز هویت شده با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به احراز هویت OAuth با توکن دسترسی معتبر و دامنه OAuth `SUBMIT_USER_POST` نیاز دارد.
 بر خلاف SubmitPostV2 که آگهی‌ها را به عنوان ارائه‌دهنده ثبت می‌کند، این نقطه پایانی آگهی‌ها را به عنوان کاربر مرتبط با توکن دسترسی ارائه شده ثبت می‌کند. آگهی متعلق به کاربر احراز هویت شده خواهد بود.
 شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+
+مجوزهای مورد نیاز: SUBMIT_USER_POST.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostSubmitUserPostRequest

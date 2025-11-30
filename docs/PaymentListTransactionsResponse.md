@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **NextPageToken** | Pointer to **string** | توکن برای صفحه بعدی نتایج. | [optional] 
-**Transactions** | Pointer to [**[]PaymentTransaction**](PaymentTransaction.md) | شناسه مرجع فاکتور یا تراکنش | [optional] 
+**Transactions** | Pointer to [**[]PaymentTransaction**](PaymentTransaction.md) | فهرست تراکنش‌هایی که با درخواست مطابقت دارند | [optional] 
 
 ## Methods
 

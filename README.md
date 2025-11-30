@@ -118,14 +118,14 @@ Class | Method | HTTP request | Description
 *PaymentAPI* | [**PaymentCommitWalletTransaction**](docs/PaymentAPI.md#paymentcommitwallettransaction) | **Post** /experimental/open-platform/wallet/payments/commit | تایید تراکنش کیف پول
 *PaymentAPI* | [**PaymentCreateWalletPayment**](docs/PaymentAPI.md#paymentcreatewalletpayment) | **Post** /experimental/open-platform/wallet/payments/create | ایجاد پرداخت کیف پول
 *PaymentAPI* | [**PaymentGetBalance**](docs/PaymentAPI.md#paymentgetbalance) | **Get** /experimental/open-platform/balance | دریافت موجودی اپلیکیشن
-*PaymentAPI* | [**PaymentGetPostPricing**](docs/PaymentAPI.md#paymentgetpostpricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت هزینه سرویس
+*PaymentAPI* | [**PaymentGetPostPricing**](docs/PaymentAPI.md#paymentgetpostpricing) | **Get** /v1/open-platform/post/{post_token}/pricing | Get post service pricing
 *PaymentAPI* | [**PaymentGetTransaction**](docs/PaymentAPI.md#paymentgettransaction) | **Get** /experimental/open-platform/transactions/{id} | دریافت جزئیات تراکنش
 *PaymentAPI* | [**PaymentListTransactions**](docs/PaymentAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | لیست تراکنش‌ها
-*PaymentAPI* | [**PaymentPublishUserPost**](docs/PaymentAPI.md#paymentpublishuserpost) | **Post** /experimental/open-platform/post/{post_token}/publish | پرداخت هزینه ثبت آگهی کاربر از طرف ارائه‌دهنده
+*PaymentAPI* | [**PaymentPublishUserPost**](docs/PaymentAPI.md#paymentpublishuserpost) | **Post** /experimental/open-platform/post/{post_token}/publish | Publish user post (provider pays)
 *PaymentAPI* | [**PaymentRenewPost**](docs/PaymentAPI.md#paymentrenewpost) | **Post** /experimental/open-platform/post/{post_token}/renew | تمدید آگهی
 *PaymentAPI* | [**PaymentReorderPost**](docs/PaymentAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | نردبان آگهی
 *PaymentAPI* | [**PaymentRetrieveWalletTransaction**](docs/PaymentAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | بازیابی تراکنش کیف پول
-*PaymentAPI* | [**PaymentSubmitUserPayment**](docs/PaymentAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
+*PaymentAPI* | [**PaymentSubmitUserPayment**](docs/PaymentAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | Submit user payment record
 *PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
 *PostAPI* | [**PostCanUserSubmitPost**](docs/PostAPI.md#postcanusersubmitpost) | **Get** /experimental/open-platform/user-posts/can-submit | بررسی اینکه آیا کاربر می‌تواند آگهی ارسال کند
 *PostAPI* | [**PostCreateBusinessCustomizedButton**](docs/PostAPI.md#postcreatebusinesscustomizedbutton) | **Post** /experimental/open-platform/business/{business_token}/customized-button | ایجاد دکمه اختصاصی برای آگهی‌های کسب‌و‌کار

@@ -39,6 +39,8 @@ FinderGetPost دریافت آگهی دیوار
 این API به شما امکان دریافت جزئیات آگهی دیوار با استفاده از توکن آن را می‌دهد.
 می‌توانید از توکن برای دریافت داده‌های آگهی و وضعیت آن استفاده کنید
 
+مجوزهای مورد نیاز: GET_POST.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
  @return ApiFinderGetPostRequest
@@ -171,6 +173,8 @@ FinderGetUser دریافت اطلاعات کاربر
 با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
 با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
 
+
+مجوزهای مورد نیاز: USER_RETRIEVE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderGetUserRequest
@@ -428,6 +432,8 @@ FinderGetUserIDByPhone دریافت شناسه دیوار کاربر با شما
 
 با استفاده از این API می‌توانید شناسه‌ی دیوار یک کاربر را با استفاده از شماره تلفن دریافت کنید. این اجازه مختص برنامه‌هایی است که دسترسی به شماره تماس کاربر ندارند و برای ارائه‌ی خدمات پشتیبانی به کاربران، نیاز به تبدیل شماره به شناسه‌ی دیوار دارند.
 
+مجوزهای مورد نیاز: GET_USER_ID_BY_PHONE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderGetUserIDByPhoneRequest
 */
@@ -554,6 +560,8 @@ FinderGetUserPosts دریافت آگهی‌های کاربر
 
 این API به شما امکان دریافت تمام آگهی‌های یک کاربر را می‌دهد.
 می‌توانید از این API برای نمایش آگهی‌های کاربر در سرویس خود استفاده کنید.
+
+مجوزهای مورد نیاز: GET_USER_POSTS.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderGetUserPostsRequest
@@ -684,6 +692,8 @@ FinderSearchPostV2 جستجو آگهی‌های دیوار با فیلترهای
 می‌توانید آگهی‌ها را بر اساس دسته‌بندی، شهر، منطقه و برخی فیلترهای دیگر جستجو کنید.
 آگهی‌ها بر اساس زمان آنها مرتب می‌شوند.
 
+
+مجوزهای مورد نیاز: SEARCH_POST.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderSearchPostV2Request

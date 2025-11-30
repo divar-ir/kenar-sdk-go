@@ -41,7 +41,16 @@ func (r ApiPaymentCommitWalletTransactionRequest) Execute() (*PaymentCommitWalle
 /*
 PaymentCommitWalletTransaction تایید تراکنش کیف پول
 
-(محدود) با استفاده از این API می‌توانید یک پرداخت موفق را commit کنید. این API idempotent است و می‌توانید چندین بار آن را فراخوانی کنید.
+This API allows you to finalize a wallet payment transaction after the user has successfully paid. Call this endpoint to mark the transaction as complete and trigger your business logic.
+
+**OAuth Scopes**:
+- `CREATE_WALLET_PAYMENT` - Allows creating wallet payment transactions on behalf of the user
+
+**Important Notes**:
+- This feature is experimental and limited to approved apps only
+- Only commit transactions that are in PAID status
+
+مجوزهای مورد نیاز: WALLET_PAYMENT. نیاز به دامنه‌های OAuth: CREATE_WALLET_PAYMENT.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentCommitWalletTransactionRequest
@@ -173,7 +182,20 @@ func (r ApiPaymentCreateWalletPaymentRequest) Execute() (*PaymentCreateWalletPay
 /*
 PaymentCreateWalletPayment ایجاد پرداخت کیف پول
 
-(محدود) با استفاده از این API می‌توانید یک تراکنش پرداخت از کیف پول کاربران شروع کنید.
+This API allows you to initiate a payment transaction from a user's Divar wallet. The user will be redirected to complete the payment, and you can track the transaction status.
+
+**OAuth Scopes**:
+- `CREATE_WALLET_PAYMENT` - Allows creating wallet payment transactions on behalf of the user
+
+**Important Notes**:
+- This feature is experimental and limited to approved apps only
+- User will be redirected to the payment URL to complete the transaction
+- After payment, user is redirected to your specified `redirect_url`
+- Use `RetrieveWalletTransaction` to check payment status
+- Use `CommitWalletTransaction` to finalize the transaction after successful payment
+
+
+مجوزهای مورد نیاز: WALLET_PAYMENT. نیاز به دامنه‌های OAuth: CREATE_WALLET_PAYMENT.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentCreateWalletPaymentRequest
@@ -299,7 +321,15 @@ func (r ApiPaymentGetBalanceRequest) Execute() (*PaymentGetBalanceResponse, *htt
 /*
 PaymentGetBalance دریافت موجودی اپلیکیشن
 
-(محدود) با استفاده از این API می‌توانید موجودی فعلی اپلیکیشن خود را دریافت کنید.
+This API allows you to retrieve your app's current balance in rials. Use this to monitor your account balance before performing paid operations.
+
+**Note**: This API does not require user authorization.
+
+**Important Notes**:
+- This feature is limited to approved apps only
+- Balance is returned in Iranian Rials
+
+مجوزهای مورد نیاز: BALANCE_RETRIEVE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentGetBalanceRequest
@@ -419,9 +449,19 @@ func (r ApiPaymentGetPostPricingRequest) Execute() (*PaymentGetPostPricingRespon
 }
 
 /*
-PaymentGetPostPricing دریافت هزینه سرویس
+PaymentGetPostPricing Get post service pricing
 
-با استفاده از این API و با مجوز کاربر، می‌توانید قیمت سرویس‌های مختلف مانند نردبان، تمدید و ثبت را دریافت کنید. قیمت این API لزوماً با قیمت در دیوار یکسان نیست و ممکن است متفاوت باشد. از این API برای دریافت قیمت قبل از اعمال سرویس‌ها (مانند نردبان آگهی، تمدید آگهی یا ثبت آگهی) استفاده کنید.
+This API allows you to retrieve pricing information for post-related services. Use this endpoint to check costs before performing paid operations like reordering, renewing, or submitting posts.
+
+**OAuth Scopes**:
+- `PAYMENT_ALL_POSTS_PRICING_READ` - Allows reading pricing for posts on behalf of the user
+
+**Important Notes**:
+- Pricing is specific to your app and may differ from standard Divar pricing
+- Prices may vary based on post category and city
+- The `available` flag indicates whether the service can be applied to this post
+
+مجوزهای مورد نیاز: POST_PRICING_RETRIEVE. نیاز به دامنه‌های OAuth: PAYMENT_ALL_POSTS_PRICING_READ.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken شناسه منحصر به فرد 8-9 کاراکتری برای آگهی
@@ -546,7 +586,18 @@ func (r ApiPaymentGetTransactionRequest) Execute() (*PaymentGetTransactionRespon
 /*
 PaymentGetTransaction دریافت جزئیات تراکنش
 
-(محدود) با استفاده از این API می‌توانید جزئیات تراکنش را دریافت کنید.
+This API allows you to retrieve detailed information about a specific transaction using its ID. Use this to track transaction status, costs, and metadata.
+
+**Note**: This API does not require user authorization.
+
+**Important Notes**:
+- This feature is limited to approved apps only
+- Transaction ID is the UUID you provided when creating the transaction
+- Transaction states: PENDING, COMPLETED, FAILED, REFUNDED
+- Transaction types: REORDER, SUBMIT, RENEW
+- Use this to verify transaction completion after paid operations
+
+مجوزهای مورد نیاز: TRANSACTION_RETRIEVE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id شناسه منحصر به فرد برای تراکنش، همان id در درخواست
@@ -684,7 +735,17 @@ func (r ApiPaymentListTransactionsRequest) Execute() (*PaymentListTransactionsRe
 /*
 PaymentListTransactions لیست تراکنش‌ها
 
-(محدود) با استفاده از این api میتوانید لیست تراکنش‌های اپ را مشاهده کنید. برای مشاهده‌ی تمام تراکنش‌ها، صفحات را دنبال کنید.
+This API allows you to retrieve a paginated list of your app's transactions. Use this for transaction history, auditing, and reconciliation.
+
+**Note**: This API does not require user authorization.
+
+**Important Notes**:
+- This feature is limited to approved apps only
+- Results are paginated - use `page_size` to control items per page
+- Use `page_token` from the response to fetch the next page
+- Transactions are ordered by creation time (newest first)
+
+مجوزهای مورد نیاز: TRANSACTION_LIST.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentListTransactionsRequest
@@ -816,9 +877,21 @@ func (r ApiPaymentPublishUserPostRequest) Execute() (*PaymentPublishUserPostResp
 }
 
 /*
-PaymentPublishUserPost پرداخت هزینه ثبت آگهی کاربر از طرف ارائه‌دهنده
+PaymentPublishUserPost Publish user post (provider pays)
 
-این API به ارائه‌دهندگان امکان پرداخت هزینه ثبت آگهی کاربر را می‌دهد. post_token باید از API SubmitUserPost در مجموعه آگهی‌ها دریافت شود.
+This API allows you to pay for publishing a user-submitted post on behalf of your app. The cost is deducted from your app's balance, and the post will be published.
+
+**OAuth Scopes** (required):
+- `SUBMIT_USER_PAYMENT` - Allows reporting user payments to Divar
+
+**Important Notes**:
+- The post must be created using the `SubmitUserPost` API first
+- Provide a unique `id` (UUID v4) for idempotency
+- The post must be in a state that requires payment (WAITING_FOR_PAYMENT)
+- Ensure your app has sufficient balance
+- Costs vary by post category and city
+
+مجوزهای مورد نیاز: PUBLISH_USER_POST. نیاز به دامنه‌های OAuth: SUBMIT_USER_PAYMENT.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken توکن آگهی دریافت شده از RPC SubmitUserPost. شناسه منحصر به فرد 8-9 کاراکتری برای آگهی ثبت شده توسط کاربر.
@@ -954,7 +1027,21 @@ func (r ApiPaymentRenewPostRequest) Execute() (*PaymentRenewPostResponse, *http.
 /*
 PaymentRenewPost تمدید آگهی
 
-(محدود) از این API برای تمدید آگهی استفاده کنید که دوره نمایش آن را تمدید می‌کند. قبل از فراخوانی این API، از API GetPostPricing برای دریافت هزینه سرویس استفاده کنید.
+This API allows you to renew a post, which extends its visibility period on Divar. The cost is deducted from your app's balance.
+
+**OAuth Scopes**:
+- `PAYMENT_ALL_POSTS_RENEW` - Allows renewing posts on behalf of the user
+
+**Important Notes**:
+- This feature is limited to approved apps only
+- Use `GetPostPricing` to check the cost before renewing
+- Provide a unique `id` (UUID v4) for idempotency
+- The post must be in PUBLISHED state and eligible for renewal
+- Ensure your app has sufficient balance
+- Costs vary by post category and city
+- Renewal extends the post's visibility and resets its age
+
+مجوزهای مورد نیاز: POST_RENEW. نیاز به دامنه‌های OAuth: PAYMENT_ALL_POSTS_RENEW.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -1090,7 +1177,20 @@ func (r ApiPaymentReorderPostRequest) Execute() (*PaymentReorderPostResponse, *h
 /*
 PaymentReorderPost نردبان آگهی
 
-(محدود) قبل از فراخوانی این API، از API GetPostPricing برای دریافت هزینه سرویس استفاده کنید.
+This API allows you to reorder (bump) a post to the top of the listing. The cost is deducted from your app's balance.
+
+**OAuth Scopes**:
+- `PAYMENT_ALL_POSTS_REORDER` - Allows reordering posts on behalf of the user
+
+**Important Notes**:
+- This feature is limited to approved apps only
+- Use `GetPostPricing` to check the cost before reordering
+- Provide a unique `id` (UUID v4) for idempotency
+- The post must be in PUBLISHED state
+- Ensure your app has sufficient balance
+- Costs vary by post category and city
+
+مجوزهای مورد نیاز: POST_REORDER. نیاز به دامنه‌های OAuth: PAYMENT_ALL_POSTS_REORDER.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -1220,7 +1320,16 @@ func (r ApiPaymentRetrieveWalletTransactionRequest) Execute() (*PaymentRetrieveW
 /*
 PaymentRetrieveWalletTransaction بازیابی تراکنش کیف پول
 
-(محدود) با استفاده از این API می‌توانید یک تراکنش و وضعیت آن را بازیابی کنید. از این API برای اعتبارسنجی پرداخت قبل از commit استفاده کنید.
+This API allows you to retrieve the current status and details of a wallet payment transaction. Use this to verify payment completion before committing the transaction.
+
+**OAuth Scopes**:
+- `CREATE_WALLET_PAYMENT` - Allows creating wallet payment transactions on behalf of the user
+
+**Important Notes**:
+- This feature is experimental and limited to approved apps only
+- Transaction statuses: UNKNOWN, CREATED, EXPIRED, PAID, COMMITTED
+
+مجوزهای مورد نیاز: WALLET_PAYMENT. نیاز به دامنه‌های OAuth: CREATE_WALLET_PAYMENT.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token توکن تراکنشی که می‌خواهید بازیابی کنید
@@ -1348,9 +1457,21 @@ func (r ApiPaymentSubmitUserPaymentRequest) Execute() (map[string]interface{}, *
 }
 
 /*
-PaymentSubmitUserPayment ثبت پرداخت کاربر
+PaymentSubmitUserPayment Submit user payment record
 
-با استفاده از این API، باید پرداخت کاربر را ثبت کنید. ضروری است که از این API برای ثبت پرداخت کاربر همراه با مبلغ دریافت شده استفاده کنید. این API به توکن دسترسی با دامنه OAuth `SUBMIT_USER_PAYMENT` نیاز دارد.
+This API allows you to report a payment made by a user to your service. Use this to inform Divar about transactions where users pay for services through your platform.
+
+**OAuth Scopes** (required):
+- `SUBMIT_USER_PAYMENT` - Allows reporting user payments to Divar
+
+**Important Notes**:
+- You must report payments within the agreed timeframe
+- The `reference_id` must be unique for each transaction (used for reconciliation)
+- List specific service slugs the user paid for (e.g., 'banner', 'title_refinement')
+- This data is used for revenue sharing and financial reporting
+
+
+مجوزهای مورد نیاز: SUBMIT_USER_PAYMENT. نیاز به دامنه‌های OAuth: SUBMIT_USER_PAYMENT.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentSubmitUserPaymentRequest

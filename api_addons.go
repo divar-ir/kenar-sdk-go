@@ -47,6 +47,8 @@ AddonsCreateBusinessAddon افزودن افزونه جدید به آگهی‌ه�
 این API به توکن دسترسی با یکی از دامنه‌های زیر نیاز دارد:
 - BUSINESS_ADDON_CREATE.{business_token}
 
+مجوزهای مورد نیاز: BUSINESS_ADDON_CREATE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessToken
  @return ApiAddonsCreateBusinessAddonRequest
@@ -187,6 +189,8 @@ AddonsCreatePostAddonV2 افزودن افزونه جدید به آگهی
 - USER_POSTS_ADDON_CREATE
 - POST_ADDON_CREATE.{post_token}
 
+مجوزهای مورد نیاز: ADD_ON_CREATE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
  @return ApiAddonsCreatePostAddonV2Request
@@ -325,6 +329,8 @@ AddonsCreateUserAddonV2 افزودن افزونه جدید به کاربر
 افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
 می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
 این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
+
+مجوزهای مورد نیاز: USER_ADDON_CREATE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param phone
@@ -595,6 +601,8 @@ AddonsDeletePostAddon حذف افزونه از آگهی
 
 فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
 
+مجوزهای مورد نیاز: ADD_ON_DELETE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
  @return ApiAddonsDeletePostAddonRequest
@@ -845,6 +853,8 @@ AddonsDeleteUserAddon حذف افزونه کاربر
 
 این تمام افزونه‌های مرتبط با تمام آگهی‌های کاربر را حذف می‌کند.
 فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
+
+مجوزهای مورد نیاز: USER_ADDON_DELETE.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id

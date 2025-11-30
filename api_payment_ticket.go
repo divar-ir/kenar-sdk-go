@@ -43,6 +43,8 @@ PaymentTicketValidate اعتبارسنجی بلیط پرداخت
 بلیط‌های پرداخت برای یکپارچه‌سازی اپلیکیشن‌های کنار با تیم‌های داخلی دیوار طراحی شده‌اند.
 با استفاده از این API می‌توانید بلیط پرداخت را اعتبارسنجی کرده و payload صادرکننده را دریافت کنید.
 
+مجوزهای مورد نیاز: PAYMENT_TICKET_VALIDATE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentTicketValidateRequest
 */

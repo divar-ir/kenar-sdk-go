@@ -50,6 +50,8 @@ EventsRegisterEventSubscription اشتراک در رویداد
 مطمئن شوید URL webhook در پنل ارائه‌دهندگان برای اپلیکیشن شما تنظیم شده است.
 برخی رویدادها به طور پیش‌فرض فعال هستند و نیازی به اشتراک ندارند (مثل پیام‌های chatbot).
 
+مجوزهای مورد نیاز: EVENTS_REGISTER_SUBSCRIPTION.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEventsRegisterEventSubscriptionRequest
 */
@@ -196,6 +198,8 @@ func (r ApiEventsSendEventRequest) Execute() (map[string]interface{}, *http.Resp
 EventsSendEvent ارسال رویداد به کاربر با استفاده از API
 
 با استفاده از این API، می‌توانید رویدادی به کاربر ارسال کنید. رویداد می‌تواند مربوط به یک آگهی خاص یا عمومی باشد. رویداد می‌تواند شامل دکمه‌هایی با عملیات سفارشی باشد که به کاربران اجازه می‌دهد با برنامه شما تعامل داشته باشند.
+
+مجوزهای مورد نیاز: EVENTS_SEND.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEventsSendEventRequest

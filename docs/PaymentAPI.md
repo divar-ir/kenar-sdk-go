@@ -7,14 +7,14 @@ Method | HTTP request | Description
 [**PaymentCommitWalletTransaction**](PaymentAPI.md#PaymentCommitWalletTransaction) | **Post** /experimental/open-platform/wallet/payments/commit | تایید تراکنش کیف پول
 [**PaymentCreateWalletPayment**](PaymentAPI.md#PaymentCreateWalletPayment) | **Post** /experimental/open-platform/wallet/payments/create | ایجاد پرداخت کیف پول
 [**PaymentGetBalance**](PaymentAPI.md#PaymentGetBalance) | **Get** /experimental/open-platform/balance | دریافت موجودی اپلیکیشن
-[**PaymentGetPostPricing**](PaymentAPI.md#PaymentGetPostPricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت هزینه سرویس
+[**PaymentGetPostPricing**](PaymentAPI.md#PaymentGetPostPricing) | **Get** /v1/open-platform/post/{post_token}/pricing | Get post service pricing
 [**PaymentGetTransaction**](PaymentAPI.md#PaymentGetTransaction) | **Get** /experimental/open-platform/transactions/{id} | دریافت جزئیات تراکنش
 [**PaymentListTransactions**](PaymentAPI.md#PaymentListTransactions) | **Get** /experimental/open-platform/transactions | لیست تراکنش‌ها
-[**PaymentPublishUserPost**](PaymentAPI.md#PaymentPublishUserPost) | **Post** /experimental/open-platform/post/{post_token}/publish | پرداخت هزینه ثبت آگهی کاربر از طرف ارائه‌دهنده
+[**PaymentPublishUserPost**](PaymentAPI.md#PaymentPublishUserPost) | **Post** /experimental/open-platform/post/{post_token}/publish | Publish user post (provider pays)
 [**PaymentRenewPost**](PaymentAPI.md#PaymentRenewPost) | **Post** /experimental/open-platform/post/{post_token}/renew | تمدید آگهی
 [**PaymentReorderPost**](PaymentAPI.md#PaymentReorderPost) | **Post** /experimental/open-platform/post/{post_token}/reorder | نردبان آگهی
 [**PaymentRetrieveWalletTransaction**](PaymentAPI.md#PaymentRetrieveWalletTransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | بازیابی تراکنش کیف پول
-[**PaymentSubmitUserPayment**](PaymentAPI.md#PaymentSubmitUserPayment) | **Post** /v1/open-platform/user-payments | ثبت پرداخت کاربر
+[**PaymentSubmitUserPayment**](PaymentAPI.md#PaymentSubmitUserPayment) | **Post** /v1/open-platform/user-payments | Submit user payment record
 
 
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -215,7 +215,7 @@ Other parameters are passed through a pointer to a apiPaymentGetBalanceRequest s
 
 > PaymentGetPostPricingResponse PaymentGetPostPricing(ctx, postToken).Execute()
 
-دریافت هزینه سرویس
+Get post service pricing
 
 
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 > PaymentPublishUserPostResponse PaymentPublishUserPost(ctx, postToken).PaymentPublishUserPostBody(paymentPublishUserPostBody).Execute()
 
-پرداخت هزینه ثبت آگهی کاربر از طرف ارائه‌دهنده
+Publish user post (provider pays)
 
 
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -551,7 +551,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -623,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -693,7 +693,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -709,7 +709,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} PaymentSubmitUserPayment(ctx).PaymentSubmitUserPaymentRequest(paymentSubmitUserPaymentRequest).Execute()
 
-ثبت پرداخت کاربر
+Submit user payment record
 
 
 
@@ -759,7 +759,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 

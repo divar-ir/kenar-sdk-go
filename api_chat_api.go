@@ -45,6 +45,8 @@ ChatAPIChatBotSendMessage ارسال پیام به مکالمه ChatBot
 می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
 فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
 
+مجوزهای مورد نیاز: CHAT_BOT_SEND_MESSAGE.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param conversationId شناسه منحصر به فرد برای مکالمه
  @return ApiChatAPIChatBotSendMessageRequest
@@ -734,6 +736,8 @@ ChatAPIConversationSendMessage ارسال پیام به مکالمه
 - CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{post_token}
 
 
+مجوزهای مورد نیاز: CHAT_SEND_MESSAGE_OAUTH.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param conversationId شناسه منحصر به فرد برای مکالمه
  @return ApiChatAPIConversationSendMessageRequest
@@ -869,6 +873,8 @@ ChatAPIGenerateUploadToken تولید توکن آپلود
 
 این API برای تولید توکن آپلود برای آپلود فایل‌های رسانه‌ای استفاده می‌شود.
 
+مجوزهای مورد نیاز: CHAT_UPLOAD_MEDIA.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiChatAPIGenerateUploadTokenRequest
 */
@@ -995,6 +1001,8 @@ func (r ApiChatAPIGetConversationRequest) Execute() (*ChatapiGetConversationResp
 ChatAPIGetConversation دریافت مکالمه با شناسه آن
 
 این API برای دریافت مکالمه و پیام‌های یک مکالمه با شناسه آن استفاده می‌شود. این API توکن دسترسی با دامنه `CHAT_CONVERSATION_READ` را انتظار دارد.
+
+مجوزهای مورد نیاز: CHAT_READ_CONVERSATION.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param conversationId شناسه منحصر به فرد برای مکالمه
