@@ -7,25 +7,25 @@ servers:
 security:
 - APIKey: []
 tags:
-- name: Addons
-  x-displayName: افزونه‌ها
-- name: Assets
-  x-displayName: اطلاعات پایه
-- name: ChatAPI
-  x-displayName: چت
-- name: Events
-  x-displayName: رویدادها
-- name: Finder
-  x-displayName: جستجوگر
-- name: Post
-  x-displayName: آگهی
+- name: Semantic
+  x-displayName: اطلاعات معنایی
+- name: PaymentTicket
+  x-displayName: تیکت پرداخت
 - description: "Some APIs are limited, Create tickets if you need to use them."
   name: Payment
   x-displayName: پرداخت
-- name: PaymentTicket
-  x-displayName: تیکت پرداخت
-- name: Semantic
-  x-displayName: اطلاعات معنایی
+- name: Post
+  x-displayName: آگهی
+- name: Finder
+  x-displayName: جستجوگر
+- name: Events
+  x-displayName: رویدادها
+- name: ChatAPI
+  x-displayName: چت
+- name: Assets
+  x-displayName: اطلاعات پایه
+- name: Addons
+  x-displayName: افزونه‌ها
 paths:
   /experimental/open-platform/balance:
     get:
