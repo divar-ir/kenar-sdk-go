@@ -33,8 +33,8 @@ import (
 )
 
 func main() {
-	token := "token_example" // string | 
-	semanticCreatePostSemanticBody := *openapiclient.NewSemanticCreatePostSemanticBody() // SemanticCreatePostSemanticBody | 
+	token := "token_example" // string | توکن آگهی
+	semanticCreatePostSemanticBody := *openapiclient.NewSemanticCreatePostSemanticBody(map[string]string{"key": "Inner_example"}) // SemanticCreatePostSemanticBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -54,7 +54,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**token** | **string** |  | 
+**token** | **string** | توکن آگهی | 
 
 ### Other Parameters
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -105,8 +105,8 @@ import (
 )
 
 func main() {
-	phone := "phone_example" // string | 
-	semanticCreateUserSemanticBody := *openapiclient.NewSemanticCreateUserSemanticBody() // SemanticCreateUserSemanticBody | 
+	phone := "phone_example" // string | شماره موبایل کاربر
+	semanticCreateUserSemanticBody := *openapiclient.NewSemanticCreateUserSemanticBody("Phone_example", map[string]string{"key": "Inner_example"}) // SemanticCreateUserSemanticBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -126,7 +126,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**phone** | **string** |  | 
+**phone** | **string** | شماره موبایل کاربر | 
 
 ### Other Parameters
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -177,8 +177,8 @@ import (
 )
 
 func main() {
-	divarUserId := "divarUserId_example" // string | 
-	semanticCreateUserSemanticBody := *openapiclient.NewSemanticCreateUserSemanticBody() // SemanticCreateUserSemanticBody | 
+	divarUserId := "divarUserId_example" // string | شناسه کاربر دیوار
+	semanticCreateUserSemanticBody := *openapiclient.NewSemanticCreateUserSemanticBody("Phone_example", map[string]string{"key": "Inner_example"}) // SemanticCreateUserSemanticBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -198,7 +198,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**divarUserId** | **string** |  | 
+**divarUserId** | **string** | شناسه کاربر دیوار | 
 
 ### Other Parameters
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -249,8 +249,8 @@ import (
 )
 
 func main() {
-	phone := "phone_example" // string | 
-	divarUserId := "divarUserId_example" // string |  (optional)
+	phone := "phone_example" // string | شماره موبایل کاربر
+	divarUserId := "divarUserId_example" // string | شناسه کاربر دیوار (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -270,7 +270,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**phone** | **string** |  | 
+**phone** | **string** | شماره موبایل کاربر | 
 
 ### Other Parameters
 
@@ -280,7 +280,7 @@ Other parameters are passed through a pointer to a apiSemanticDeleteUserSemantic
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **divarUserId** | **string** |  | 
+ **divarUserId** | **string** | شناسه کاربر دیوار | 
 
 ### Return type
 
@@ -321,8 +321,8 @@ import (
 )
 
 func main() {
-	divarUserId := "divarUserId_example" // string | 
-	phone := "phone_example" // string |  (optional)
+	divarUserId := "divarUserId_example" // string | شناسه کاربر دیوار
+	phone := "phone_example" // string | شماره موبایل کاربر
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -342,7 +342,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**divarUserId** | **string** |  | 
+**divarUserId** | **string** | شناسه کاربر دیوار | 
 
 ### Other Parameters
 
@@ -352,7 +352,7 @@ Other parameters are passed through a pointer to a apiSemanticDeleteUserSemantic
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **phone** | **string** |  | 
+ **phone** | **string** | شماره موبایل کاربر | 
 
 ### Return type
 

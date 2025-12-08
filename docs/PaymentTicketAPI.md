@@ -4,7 +4,7 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PaymentTicketValidate**](PaymentTicketAPI.md#PaymentTicketValidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
+[**PaymentTicketValidate**](PaymentTicketAPI.md#PaymentTicketValidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی تیکت پرداخت
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > PaymentTicketValidateResponse PaymentTicketValidate(ctx).PaymentTicketValidateRequest(paymentTicketValidateRequest).Execute()
 
-اعتبارسنجی بلیط پرداخت
+اعتبارسنجی تیکت پرداخت
 
 
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	paymentTicketValidateRequest := *openapiclient.NewPaymentTicketValidateRequest() // PaymentTicketValidateRequest | 
+	paymentTicketValidateRequest := *openapiclient.NewPaymentTicketValidateRequest(int32(123), "TicketUuid_example") // PaymentTicketValidateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

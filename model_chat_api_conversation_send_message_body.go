@@ -23,7 +23,7 @@ var _ MappedNullable = &ChatAPIConversationSendMessageBody{}
 type ChatAPIConversationSendMessageBody struct {
 	// محتوای پیام متنی برای ارسال
 	Message string `json:"message"`
-	// توکن برای مدیای ضمیمه شده (در صورت وجود)
+	// توکن فایل ضمیمه شده (در صورت وجود)
 	MediaToken *string `json:"media_token,omitempty"`
 	ReceiverButtons *ChatapiChatButtonGrid `json:"receiver_buttons,omitempty"`
 	SenderButtons *ChatapiChatButtonGrid `json:"sender_buttons,omitempty"`

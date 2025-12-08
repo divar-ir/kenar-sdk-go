@@ -39,11 +39,23 @@ func (r ApiPaymentCommitWalletTransactionRequest) Execute() (*PaymentCommitWalle
 }
 
 /*
-PaymentCommitWalletTransaction تایید تراکنش کیف پول
+PaymentCommitWalletTransaction نهایی کردن تراکنش کیف پول
 
-(Limited) Using this API you can commit a successful payment. This API is idempotent and you can call it multiple times.
+این API تراکنش پرداخت کیف پول را پس از پرداخت موفق نهایی می‌کند.
 
-مجوزهای مورد نیاز: WALLET_PAYMENT.
+**نکات مهم**:
+- این قابلیت آزمایشی است و فقط برای اپلیکیشن‌های تایید شده در دسترس است
+- فقط تراکنش‌هایی که در وضعیت PAID هستند را نهایی کنید
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `WALLET_PAYMENT`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `CREATE_WALLET_PAYMENT`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentCommitWalletTransactionRequest
@@ -175,9 +187,25 @@ func (r ApiPaymentCreateWalletPaymentRequest) Execute() (*PaymentCreateWalletPay
 /*
 PaymentCreateWalletPayment ایجاد پرداخت کیف پول
 
-(Limited) Using this API you can start a payment transaction from the users wallet.
+این API امکان شروع تراکنش پرداخت از کیف پول دیوار کاربر را فراهم می‌کند. کاربر برای تکمیل پرداخت هدایت می‌شود و می‌توانید وضعیت تراکنش را پیگیری کنید.
 
-مجوزهای مورد نیاز: WALLET_PAYMENT.
+**نکات مهم**:
+- این قابلیت آزمایشی است و فقط برای اپلیکیشن‌های تایید شده در دسترس است
+- کاربر برای تکمیل تراکنش به آدرس پرداخت هدایت می‌شود
+- پس از پرداخت، کاربر به `redirect_url` مشخص شده شما هدایت می‌شود
+- از `RetrieveWalletTransaction` برای بررسی وضعیت پرداخت استفاده کنید
+- از `CommitWalletTransaction` برای نهایی کردن تراکنش پس از پرداخت موفق استفاده کنید
+
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `WALLET_PAYMENT`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `CREATE_WALLET_PAYMENT`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentCreateWalletPaymentRequest
@@ -303,9 +331,17 @@ func (r ApiPaymentGetBalanceRequest) Execute() (*PaymentGetBalanceResponse, *htt
 /*
 PaymentGetBalance دریافت موجودی اپلیکیشن
 
-(Limited) Using this API you can retrieve current balance of your app.
+این API امکان دریافت موجودی فعلی اپلیکیشن شما به ریال را فراهم می‌کند. برای نظارت بر موجودی حساب قبل از انجام عملیات‌های پولی استفاده کنید.
 
-مجوزهای مورد نیاز: BALANCE_RETRIEVE.
+**نکات مهم**:
+- این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+- موجودی به ریال ایران برگردانده می‌شود
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `BALANCE_RETRIEVE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentGetBalanceRequest
@@ -425,11 +461,24 @@ func (r ApiPaymentGetPostPricingRequest) Execute() (*PaymentGetPostPricingRespon
 }
 
 /*
-PaymentGetPostPricing Retrieve the cost of the service
+PaymentGetPostPricing دریافت قیمت خدمات آگهی
 
-Using this API and with user permission, you can get the price of various services like Reorder, Renew, and Submit.The price of this API is not necessarily the same as the price on Divar, and pricing may vary.Use this API to get the price before applying services (such as reordering a post, renewing a post, or submitting a post).
+این API امکان دریافت اطلاعات قیمت‌گذاری برای خدمات مرتبط با آگهی را فراهم می‌کند. قبل از انجام عملیات‌های پولی مانند نردبان، تمدید یا ثبت آگهی از این برای بررسی هزینه‌ها استفاده کنید.
 
-مجوزهای مورد نیاز: POST_PRICING_RETRIEVE.
+**نکات مهم**:
+- قیمت‌گذاری مختص اپلیکیشن شما است و ممکن است با قیمت‌گذاری استاندارد دیوار متفاوت باشد
+- قیمت‌ها ممکن است بر اساس دسته‌بندی و شهر آگهی متفاوت باشند
+- فلگ `available` نشان می‌دهد که آیا سرویس برای این آگهی قابل اعمال است
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `POST_PRICING_RETRIEVE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `PAYMENT_ALL_POSTS_PRICING_READ`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken شناسه منحصر به فرد 8-9 کاراکتری برای آگهی
@@ -554,9 +603,20 @@ func (r ApiPaymentGetTransactionRequest) Execute() (*PaymentGetTransactionRespon
 /*
 PaymentGetTransaction دریافت جزئیات تراکنش
 
-(Limited) Using this API you can retrieve transaction details.
+این API امکان دریافت اطلاعات دقیق یک تراکنش خاص با شناسه آن را فراهم می‌کند. برای پیگیری وضعیت تراکنش، هزینه‌ها و متادیتا استفاده کنید.
 
-مجوزهای مورد نیاز: TRANSACTION_RETRIEVE.
+**نکات مهم**:
+- این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+- شناسه تراکنش همان UUID است که هنگام ایجاد تراکنش ارسال کردید
+- وضعیت‌های تراکنش: PENDING، COMPLETED، FAILED، REFUNDED
+- انواع تراکنش: REORDER، SUBMIT، RENEW
+- برای تایید تکمیل تراکنش پس از عملیات‌های پولی استفاده کنید
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `TRANSACTION_RETRIEVE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id شناسه منحصر به فرد برای تراکنش، همان id در درخواست
@@ -675,7 +735,7 @@ type ApiPaymentListTransactionsRequest struct {
 	pageToken *string
 }
 
-// تعداد تراکنش‌ها برای برگرداندن در هر صفحه
+// تعداد تراکنش‌ها در هر صفحه
 func (r ApiPaymentListTransactionsRequest) PageSize(pageSize int32) ApiPaymentListTransactionsRequest {
 	r.pageSize = &pageSize
 	return r
@@ -694,9 +754,19 @@ func (r ApiPaymentListTransactionsRequest) Execute() (*PaymentListTransactionsRe
 /*
 PaymentListTransactions لیست تراکنش‌ها
 
-(Limited) Using this API you can retrieve a list of transactions. Follow pages till you get an empty list.
+این API امکان دریافت لیست صفحه‌بندی شده از تراکنش‌های اپلیکیشن شما را فراهم می‌کند. برای تاریخچه تراکنش، ممیزی و تسویه حساب استفاده کنید.
 
-مجوزهای مورد نیاز: TRANSACTION_LIST.
+**نکات مهم**:
+- این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+- نتایج صفحه‌بندی شده هستند - از `page_size` برای کنترل تعداد آیتم‌ها در هر صفحه استفاده کنید
+- از `page_token` در پاسخ برای دریافت صفحه بعدی استفاده کنید
+- تراکنش‌ها بر اساس زمان ایجاد مرتب می‌شوند (جدیدترین اول)
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `TRANSACTION_LIST`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentListTransactionsRequest
@@ -828,11 +898,26 @@ func (r ApiPaymentPublishUserPostRequest) Execute() (*PaymentPublishUserPostResp
 }
 
 /*
-PaymentPublishUserPost Pay for user post submission on behalf of provider
+PaymentPublishUserPost انتشار آگهی کاربر (پرداخت توسط ارائه‌دهنده)
 
-This API allows providers to pay for user post submission costs. The post_token should be obtained from the SubmitUserPost API in post collection.
+این API امکان پرداخت هزینه انتشار آگهی ثبت شده توسط کاربر از طرف اپلیکیشن شما را فراهم می‌کند. هزینه از موجودی اپلیکیشن شما کسر می‌شود و آگهی منتشر می‌شود.
 
-مجوزهای مورد نیاز: PUBLISH_USER_POST.
+**نکات مهم**:
+- ابتدا آگهی باید با API `SubmitUserPost` ایجاد شده باشد
+- یک `id` منحصر به فرد (UUID v4) برای جلوگیری از تکرار ارسال کنید
+- آگهی باید در وضعیت نیازمند پرداخت (WAITING_FOR_PAYMENT) باشد
+- از کافی بودن موجودی اپلیکیشن خود اطمینان حاصل کنید
+- هزینه‌ها بر اساس دسته‌بندی و شهر آگهی متفاوت است
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `PUBLISH_USER_POST`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `SUBMIT_USER_POST`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken توکن آگهی دریافت شده از RPC SubmitUserPost. شناسه منحصر به فرد 8-9 کاراکتری برای آگهی ثبت شده توسط کاربر.
@@ -968,9 +1053,26 @@ func (r ApiPaymentRenewPostRequest) Execute() (*PaymentRenewPostResponse, *http.
 /*
 PaymentRenewPost تمدید آگهی
 
-(Limited) Use this API to renew a post, which extends its visibility period. Use GetPostPricing API to get the cost of the service before calling this API.
+این API امکان تمدید آگهی را فراهم می‌کند که دوره نمایش آن در دیوار را افزایش می‌دهد. هزینه از موجودی اپلیکیشن شما کسر می‌شود.
 
-مجوزهای مورد نیاز: POST_RENEW.
+**نکات مهم**:
+- این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+- قبل از تمدید، از `GetPostPricing` برای بررسی هزینه استفاده کنید
+- یک `id` منحصر به فرد (UUID v4) برای جلوگیری از تکرار ارسال کنید
+- آگهی باید در وضعیت PUBLISHED و واجد شرایط تمدید باشد
+- از کافی بودن موجودی اپلیکیشن خود اطمینان حاصل کنید
+- هزینه‌ها بر اساس دسته‌بندی و شهر آگهی متفاوت است
+- تمدید، نمایش آگهی را افزایش داده و عمر آن را بازنشانی می‌کند
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `POST_RENEW`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `PAYMENT_ALL_POSTS_RENEW`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -1106,9 +1208,25 @@ func (r ApiPaymentReorderPostRequest) Execute() (*PaymentReorderPostResponse, *h
 /*
 PaymentReorderPost نردبان آگهی
 
-(Limited) Use GetPostPricing API to get the cost of the service before calling this API.
+این API امکان نردبان کردن آگهی به بالای لیست را فراهم می‌کند. هزینه از موجودی اپلیکیشن شما کسر می‌شود.
 
-مجوزهای مورد نیاز: POST_REORDER.
+**نکات مهم**:
+- این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+- قبل از نردبان، از `GetPostPricing` برای بررسی هزینه استفاده کنید
+- یک `id` منحصر به فرد (UUID v4) برای جلوگیری از تکرار ارسال کنید
+- آگهی باید در وضعیت PUBLISHED باشد
+- از کافی بودن موجودی اپلیکیشن خود اطمینان حاصل کنید
+- هزینه‌ها بر اساس دسته‌بندی و شهر آگهی متفاوت است
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `POST_REORDER`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `PAYMENT_ALL_POSTS_REORDER`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -1236,14 +1354,26 @@ func (r ApiPaymentRetrieveWalletTransactionRequest) Execute() (*PaymentRetrieveW
 }
 
 /*
-PaymentRetrieveWalletTransaction بازیابی تراکنش کیف پول
+PaymentRetrieveWalletTransaction دریافت تراکنش کیف پول
 
-(Limited) Using this API you can retrieve a transaction and its status. Use this API to validate the payment before committing.
+این API امکان دریافت وضعیت فعلی و جزئیات تراکنش پرداخت کیف پول را فراهم می‌کند. برای تایید تکمیل پرداخت قبل از commit کردن تراکنش استفاده کنید.
 
-مجوزهای مورد نیاز: WALLET_PAYMENT.
+**نکات مهم**:
+- این قابلیت آزمایشی است و فقط برای اپلیکیشن‌های تایید شده در دسترس است
+- وضعیت‌های تراکنش: UNKNOWN، CREATED، EXPIRED، PAID، COMMITTED
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `WALLET_PAYMENT`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `CREATE_WALLET_PAYMENT`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param token توکن تراکنشی که می‌خواهید بازیابی کنید
+ @param token توکن تراکنشی که می‌خواهید دریافت کنید
  @return ApiPaymentRetrieveWalletTransactionRequest
 */
 func (a *PaymentAPIService) PaymentRetrieveWalletTransaction(ctx context.Context, token string) ApiPaymentRetrieveWalletTransactionRequest {
@@ -1368,11 +1498,26 @@ func (r ApiPaymentSubmitUserPaymentRequest) Execute() (map[string]interface{}, *
 }
 
 /*
-PaymentSubmitUserPayment Submit a user payment
+PaymentSubmitUserPayment ثبت رکورد پرداخت کاربر
 
-Using this API, you should submit a user payment. It is imperative you use this API to submit a user payment along with the received amount. This API requires an access token with the `SUBMIT_USER_PAYMENT` OAuth scope.
+این API امکان گزارش پرداخت انجام شده توسط کاربر به سرویس شما را فراهم می‌کند. از این برای اطلاع‌رسانی دیوار درباره تراکنش‌هایی که کاربران از طریق پلتفرم شما پرداخت می‌کنند استفاده کنید.
 
-مجوزهای مورد نیاز: SUBMIT_USER_PAYMENT.
+**نکات مهم**:
+- باید پرداخت‌ها را در بازه زمانی توافق شده گزارش دهید
+- `reference_id` باید برای هر تراکنش منحصر به فرد باشد (برای تسویه حساب استفاده می‌شود)
+- شناسه خدماتی که کاربر برای آنها پرداخت کرده را لیست کنید (مثلاً 'banner', 'title_refinement')
+- این داده‌ها برای تقسیم درآمد و گزارش مالی استفاده می‌شوند
+
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `SUBMIT_USER_PAYMENT`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `SUBMIT_USER_PAYMENT`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentSubmitUserPaymentRequest

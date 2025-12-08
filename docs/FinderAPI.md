@@ -7,9 +7,10 @@ Method | HTTP request | Description
 [**FinderGetPost**](FinderAPI.md#FinderGetPost) | **Get** /v1/open-platform/finder/post/{token} | دریافت آگهی دیوار
 [**FinderGetUser**](FinderAPI.md#FinderGetUser) | **Post** /v1/open-platform/users | دریافت اطلاعات کاربر
 [**FinderGetUser2**](FinderAPI.md#FinderGetUser2) | **Get** /v1/open-platform/users | دریافت اطلاعات کاربر
-[**FinderGetUserIDByPhone**](FinderAPI.md#FinderGetUserIDByPhone) | **Post** /v1/open-platform/get-user-id-by-phone | دریافت شناسه دیوار کاربر با شماره تلفن
+[**FinderGetUserBusinesses**](FinderAPI.md#FinderGetUserBusinesses) | **Get** /v1/open-platform/user/businesses | دریافت کسب‌وکارهای کاربر
+[**FinderGetUserIDByPhone**](FinderAPI.md#FinderGetUserIDByPhone) | **Post** /v1/open-platform/get-user-id-by-phone | دریافت شناسه کاربر
 [**FinderGetUserPosts**](FinderAPI.md#FinderGetUserPosts) | **Get** /v1/open-platform/finder/user-posts | دریافت آگهی‌های کاربر
-[**FinderSearchPostV2**](FinderAPI.md#FinderSearchPostV2) | **Post** /v2/open-platform/finder/post | جستجو آگهی‌های دیوار با فیلترهایی
+[**FinderSearchPostV2**](FinderAPI.md#FinderSearchPostV2) | **Post** /v2/open-platform/finder/post | جستجوی آگهی‌های دیوار
 
 
 
@@ -137,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -198,7 +199,68 @@ Other parameters are passed through a pointer to a apiFinderGetUser2Request stru
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FinderGetUserBusinesses
+
+> FinderGetUserBusinessesResponse FinderGetUserBusinesses(ctx).Execute()
+
+دریافت کسب‌وکارهای کاربر
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/divar-ir/kenar-sdk-go"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FinderAPI.FinderGetUserBusinesses(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FinderAPI.FinderGetUserBusinesses``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FinderGetUserBusinesses`: FinderGetUserBusinessesResponse
+	fmt.Fprintf(os.Stdout, "Response from `FinderAPI.FinderGetUserBusinesses`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFinderGetUserBusinessesRequest struct via the builder pattern
+
+
+### Return type
+
+[**FinderGetUserBusinessesResponse**](FinderGetUserBusinessesResponse.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -214,7 +276,7 @@ Other parameters are passed through a pointer to a apiFinderGetUser2Request stru
 
 > FinderGetUserIDByPhoneResponse FinderGetUserIDByPhone(ctx).FinderGetUserIDByPhoneRequest(finderGetUserIDByPhoneRequest).Execute()
 
-دریافت شناسه دیوار کاربر با شماره تلفن
+دریافت شناسه کاربر
 
 
 
@@ -325,7 +387,7 @@ Other parameters are passed through a pointer to a apiFinderGetUserPostsRequest 
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -341,7 +403,7 @@ Other parameters are passed through a pointer to a apiFinderGetUserPostsRequest 
 
 > FinderSearchPostV2Response FinderSearchPostV2(ctx).FinderSearchPostsV2Request(finderSearchPostsV2Request).Execute()
 
-جستجو آگهی‌های دیوار با فیلترهایی
+جستجوی آگهی‌های دیوار
 
 
 

@@ -24,7 +24,7 @@ type ChatAPIChatBotSendMessageBody struct {
 	// محتوای پیام متنی برای ارسال توسط ربات
 	TextMessage string `json:"text_message"`
 	Buttons *ChatapiChatButtonGrid `json:"buttons,omitempty"`
-	// توکن برای مدیای ضمیمه شده (در صورت وجود)
+	// توکن فایل ضمیمه شده (در صورت وجود)
 	MediaToken *string `json:"media_token,omitempty"`
 	// شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه
 	UserId *string `json:"user_id,omitempty"`

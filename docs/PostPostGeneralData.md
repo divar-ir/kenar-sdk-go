@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CategorySlug** | **string** | نام دسته‌بندی هدف. دسته‌بندی‌های موجود را در این آدرس بیابید: https://kenar.divar.dev/openapi-doc/assets-get-categories/ | 
-**ChatEnabled** | **bool** | امکان چت فعال باشد | 
+**CategorySlug** | **string** | slug دسته‌بندی. لیست دسته‌بندی‌ها: https://kenar.divar.dev/openapi-doc/assets-get-categories/ | 
+**ChatEnabled** | **bool** | فعال بودن چت | 
 **City** | **string** | شهر آگهی | 
 **Description** | **string** | توضیحات آگهی | 
-**HidePhone** | **bool** | عدم نمایش شماره تماس به کاربران | 
+**HidePhone** | **bool** | مخفی کردن شماره تماس از کاربران | 
 **Images** | **[]string** |  | 
 **LocationType** | [**PostLocationType**](PostLocationType.md) |  | 
 **Title** | **string** | عنوان آگهی | 

@@ -40,17 +40,23 @@ func (r ApiEventsRegisterEventSubscriptionRequest) Execute() (map[string]interfa
 /*
 EventsRegisterEventSubscription اشتراک در رویداد
 
-این درخواست به شما امکان اشتراک در رویداد را می‌دهد.
-باید access-token را در این API ارسال کنید تا دسترسی شما بررسی شود.
-برای اشتراک در `NEW_MESSAGE_ON_POST` به یکی از این دامنه‌ها نیاز دارید:
-- CHAT_POST_CONVERSATIONS_READ.{post_token}
-- CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
-برای اشتراک در `POST_UPDATE` به دامنه `USER_POSTS_GET` نیاز دارید.
-پس از فراخوانی این API، هنگام وقوع رویداد مربوطه در webhook خود مطلع خواهید شد.
-مطمئن شوید URL webhook در پنل ارائه‌دهندگان برای اپلیکیشن شما تنظیم شده است.
-برخی رویدادها به طور پیش‌فرض فعال هستند و نیازی به اشتراک ندارند (مثل پیام‌های chatbot).
+این API امکان اشتراک در رویدادها برای دریافت اعلان‌ها از طریق webhook هنگام وقوع رویدادها را فراهم می‌کند. پس از اشتراک، هنگام وقوع رویداد مربوطه در آدرس webhook شما مطلع خواهید شد.
 
-مجوزهای مورد نیاز: EVENTS_REGISTER_SUBSCRIPTION.
+**نکات مهم**:
+- برای رویداد `NEW_MESSAGE_ON_POST`: نیاز به اسکوپ `CHAT_POST_CONVERSATIONS_READ.post_token` یا `CHAT_SUPPLIER_ALL_CONVERSATIONS_READ`
+- برای رویداد `POST_UPDATE`: نیاز به اسکوپ `USER_POSTS_GET`
+- آدرس webhook باید در پنل ارائه‌دهندگان برای اپلیکیشن شما تنظیم شده باشد
+- برخی رویدادها به صورت پیش‌فرض فعال هستند و نیازی به اشتراک ندارند (مثل پیام‌های ربات چت)
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `EVENTS_REGISTER_SUBSCRIPTION`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `CHAT_POST_CONVERSATIONS_READ.post_token` یا `CHAT_SUPPLIER_ALL_CONVERSATIONS_READ` یا `USER_POSTS_GET`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEventsRegisterEventSubscriptionRequest
@@ -105,159 +111,6 @@ func (a *EventsAPIService) EventsRegisterEventSubscriptionExecute(r ApiEventsReg
 	}
 	// body params
 	localVarPostBody = r.eventsRegisterEventSubscriptionRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["APIKey"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-API-Key"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEventsSendEventRequest struct {
-	ctx context.Context
-	ApiService *EventsAPIService
-	message *string
-	targetType *string
-	targetResourceId *string
-}
-
-// پیام رویداد برای نمایش به کاربر
-func (r ApiEventsSendEventRequest) Message(message string) ApiEventsSendEventRequest {
-	r.message = &message
-	return r
-}
-
-// هدف رویداد؛ USER یا POST
-func (r ApiEventsSendEventRequest) TargetType(targetType string) ApiEventsSendEventRequest {
-	r.targetType = &targetType
-	return r
-}
-
-// شناسه هدف. وقتی نوع هدف USER است، باید شناسه کاربر دیوار آن کاربر باشد و وقتی نوع هدف POST است، باید توکن آگهی باشد.
-func (r ApiEventsSendEventRequest) TargetResourceId(targetResourceId string) ApiEventsSendEventRequest {
-	r.targetResourceId = &targetResourceId
-	return r
-}
-
-func (r ApiEventsSendEventRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.EventsSendEventExecute(r)
-}
-
-/*
-EventsSendEvent ارسال رویداد به کاربر با استفاده از API
-
-با استفاده از این API، می‌توانید رویدادی به کاربر ارسال کنید. رویداد می‌تواند مربوط به یک آگهی خاص یا عمومی باشد. رویداد می‌تواند شامل دکمه‌هایی با عملیات سفارشی باشد که به کاربران اجازه می‌دهد با برنامه شما تعامل داشته باشند.
-
-مجوزهای مورد نیاز: EVENTS_SEND.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsSendEventRequest
-*/
-func (a *EventsAPIService) EventsSendEvent(ctx context.Context) ApiEventsSendEventRequest {
-	return ApiEventsSendEventRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return map[string]interface{}
-func (a *EventsAPIService) EventsSendEventExecute(r ApiEventsSendEventRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsSendEvent")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/experimental/open-platform/events/send"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.message != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "message", r.message, "form", "")
-	}
-	if r.targetType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "target_type", r.targetType, "form", "")
-	}
-	if r.targetResourceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "target_resource_id", r.targetResourceId, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

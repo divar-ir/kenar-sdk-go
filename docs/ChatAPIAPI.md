@@ -4,14 +4,14 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChatAPIChatBotSendMessage**](ChatAPIAPI.md#ChatAPIChatBotSendMessage) | **Post** /v1/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
-[**ChatAPIChatBotSendMessage2**](ChatAPIAPI.md#ChatAPIChatBotSendMessage2) | **Post** /v1/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
-[**ChatAPIChatBotSendMessage3**](ChatAPIAPI.md#ChatAPIChatBotSendMessage3) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
-[**ChatAPIChatBotSendMessage4**](ChatAPIAPI.md#ChatAPIChatBotSendMessage4) | **Post** /experimental/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
-[**ChatAPIChatBotSendMessage5**](ChatAPIAPI.md#ChatAPIChatBotSendMessage5) | **Post** /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
+[**ChatAPIChatBotSendMessage**](ChatAPIAPI.md#ChatAPIChatBotSendMessage) | **Post** /v1/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه چت‌بات
+[**ChatAPIChatBotSendMessage2**](ChatAPIAPI.md#ChatAPIChatBotSendMessage2) | **Post** /v1/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه چت‌بات
+[**ChatAPIChatBotSendMessage3**](ChatAPIAPI.md#ChatAPIChatBotSendMessage3) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه چت‌بات
+[**ChatAPIChatBotSendMessage4**](ChatAPIAPI.md#ChatAPIChatBotSendMessage4) | **Post** /experimental/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه چت‌بات
+[**ChatAPIChatBotSendMessage5**](ChatAPIAPI.md#ChatAPIChatBotSendMessage5) | **Post** /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه چت‌بات
 [**ChatAPIConversationSendMessage**](ChatAPIAPI.md#ChatAPIConversationSendMessage) | **Post** /v2/open-platform/conversations/{conversation_id}/messages | ارسال پیام به مکالمه
 [**ChatAPIGenerateUploadToken**](ChatAPIAPI.md#ChatAPIGenerateUploadToken) | **Post** /experimental/open-platform/chat/upload | تولید توکن آپلود
-[**ChatAPIGetConversation**](ChatAPIAPI.md#ChatAPIGetConversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | دریافت مکالمه با شناسه آن
+[**ChatAPIGetConversation**](ChatAPIAPI.md#ChatAPIGetConversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | دریافت مکالمه
 
 
 
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage(ctx, conversationId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
 
-ارسال پیام به مکالمه ChatBot
+ارسال پیام به مکالمه چت‌بات
 
 
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 > ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage2(ctx, userId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
 
-ارسال پیام به مکالمه ChatBot
+ارسال پیام به مکالمه چت‌بات
 
 
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 > ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage3(ctx, conversationId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
 
-ارسال پیام به مکالمه ChatBot
+ارسال پیام به مکالمه چت‌بات
 
 
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 > ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage4(ctx, userId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
 
-ارسال پیام به مکالمه ChatBot
+ارسال پیام به مکالمه چت‌بات
 
 
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 > ChatapiChatBotSendMessageResponse ChatAPIChatBotSendMessage5(ctx, conversationId).ChatAPIChatBotSendMessageBody(chatAPIChatBotSendMessageBody).Execute()
 
-ارسال پیام به مکالمه ChatBot
+ارسال پیام به مکالمه چت‌بات
 
 
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -435,7 +435,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 > ChatapiGetConversationResponse ChatAPIGetConversation(ctx, conversationId).Execute()
 
-دریافت مکالمه با شناسه آن
+دریافت مکالمه
 
 
 
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 

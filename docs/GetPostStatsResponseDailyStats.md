@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int32** | تعداد روزانه‌ی آمار مورد نظر (مثلا بازدید) | [optional] 
+**Count** | Pointer to **int32** | تعداد روزانه آمار (مثلاً بازدید) | [optional] 
 **Date** | Pointer to **string** | تاریخ به فرمت YYYY-MM-DD | [optional] 
 
 ## Methods

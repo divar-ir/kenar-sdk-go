@@ -4,17 +4,17 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PaymentCommitWalletTransaction**](PaymentAPI.md#PaymentCommitWalletTransaction) | **Post** /experimental/open-platform/wallet/payments/commit | تایید تراکنش کیف پول
+[**PaymentCommitWalletTransaction**](PaymentAPI.md#PaymentCommitWalletTransaction) | **Post** /experimental/open-platform/wallet/payments/commit | نهایی کردن تراکنش کیف پول
 [**PaymentCreateWalletPayment**](PaymentAPI.md#PaymentCreateWalletPayment) | **Post** /experimental/open-platform/wallet/payments/create | ایجاد پرداخت کیف پول
 [**PaymentGetBalance**](PaymentAPI.md#PaymentGetBalance) | **Get** /experimental/open-platform/balance | دریافت موجودی اپلیکیشن
-[**PaymentGetPostPricing**](PaymentAPI.md#PaymentGetPostPricing) | **Get** /v1/open-platform/post/{post_token}/pricing | Retrieve the cost of the service
+[**PaymentGetPostPricing**](PaymentAPI.md#PaymentGetPostPricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت قیمت خدمات آگهی
 [**PaymentGetTransaction**](PaymentAPI.md#PaymentGetTransaction) | **Get** /experimental/open-platform/transactions/{id} | دریافت جزئیات تراکنش
 [**PaymentListTransactions**](PaymentAPI.md#PaymentListTransactions) | **Get** /experimental/open-platform/transactions | لیست تراکنش‌ها
-[**PaymentPublishUserPost**](PaymentAPI.md#PaymentPublishUserPost) | **Post** /experimental/open-platform/post/{post_token}/publish | Pay for user post submission on behalf of provider
+[**PaymentPublishUserPost**](PaymentAPI.md#PaymentPublishUserPost) | **Post** /experimental/open-platform/post/{post_token}/publish | انتشار آگهی کاربر (پرداخت توسط ارائه‌دهنده)
 [**PaymentRenewPost**](PaymentAPI.md#PaymentRenewPost) | **Post** /experimental/open-platform/post/{post_token}/renew | تمدید آگهی
 [**PaymentReorderPost**](PaymentAPI.md#PaymentReorderPost) | **Post** /experimental/open-platform/post/{post_token}/reorder | نردبان آگهی
-[**PaymentRetrieveWalletTransaction**](PaymentAPI.md#PaymentRetrieveWalletTransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | بازیابی تراکنش کیف پول
-[**PaymentSubmitUserPayment**](PaymentAPI.md#PaymentSubmitUserPayment) | **Post** /v1/open-platform/user-payments | Submit a user payment
+[**PaymentRetrieveWalletTransaction**](PaymentAPI.md#PaymentRetrieveWalletTransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | دریافت تراکنش کیف پول
+[**PaymentSubmitUserPayment**](PaymentAPI.md#PaymentSubmitUserPayment) | **Post** /v1/open-platform/user-payments | ثبت رکورد پرداخت کاربر
 
 
 
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 > PaymentCommitWalletTransactionResponse PaymentCommitWalletTransaction(ctx).PaymentCommitWalletTransactionRequest(paymentCommitWalletTransactionRequest).Execute()
 
-تایید تراکنش کیف پول
+نهایی کردن تراکنش کیف پول
 
 
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -215,7 +215,7 @@ Other parameters are passed through a pointer to a apiPaymentGetBalanceRequest s
 
 > PaymentGetPostPricingResponse PaymentGetPostPricing(ctx, postToken).Execute()
 
-Retrieve the cost of the service
+دریافت قیمت خدمات آگهی
 
 
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -372,7 +372,7 @@ import (
 )
 
 func main() {
-	pageSize := int32(56) // int32 | تعداد تراکنش‌ها برای برگرداندن در هر صفحه (optional)
+	pageSize := int32(56) // int32 | تعداد تراکنش‌ها در هر صفحه (optional)
 	pageToken := "pageToken_example" // string | توکن برای صفحه بعدی نتایج (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -398,7 +398,7 @@ Other parameters are passed through a pointer to a apiPaymentListTransactionsReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **int32** | تعداد تراکنش‌ها برای برگرداندن در هر صفحه | 
+ **pageSize** | **int32** | تعداد تراکنش‌ها در هر صفحه | 
  **pageToken** | **string** | توکن برای صفحه بعدی نتایج | 
 
 ### Return type
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 > PaymentPublishUserPostResponse PaymentPublishUserPost(ctx, postToken).PaymentPublishUserPostBody(paymentPublishUserPostBody).Execute()
 
-Pay for user post submission on behalf of provider
+انتشار آگهی کاربر (پرداخت توسط ارائه‌دهنده)
 
 
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -551,7 +551,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -623,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -639,7 +639,7 @@ Name | Type | Description  | Notes
 
 > PaymentRetrieveWalletTransactionResponse PaymentRetrieveWalletTransaction(ctx, token).Execute()
 
-بازیابی تراکنش کیف پول
+دریافت تراکنش کیف پول
 
 
 
@@ -656,7 +656,7 @@ import (
 )
 
 func main() {
-	token := "token_example" // string | توکن تراکنشی که می‌خواهید بازیابی کنید
+	token := "token_example" // string | توکن تراکنشی که می‌خواهید دریافت کنید
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -676,7 +676,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**token** | **string** | توکن تراکنشی که می‌خواهید بازیابی کنید | 
+**token** | **string** | توکن تراکنشی که می‌خواهید دریافت کنید | 
 
 ### Other Parameters
 
@@ -693,7 +693,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -709,7 +709,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} PaymentSubmitUserPayment(ctx).PaymentSubmitUserPaymentRequest(paymentSubmitUserPaymentRequest).Execute()
 
-Submit a user payment
+ثبت رکورد پرداخت کاربر
 
 
 
@@ -759,7 +759,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 

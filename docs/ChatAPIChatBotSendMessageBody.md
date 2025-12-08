@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TextMessage** | **string** | محتوای پیام متنی برای ارسال توسط ربات | 
 **Buttons** | Pointer to [**ChatapiChatButtonGrid**](ChatapiChatButtonGrid.md) |  | [optional] 
-**MediaToken** | Pointer to **string** | توکن برای مدیای ضمیمه شده (در صورت وجود) | [optional] 
+**MediaToken** | Pointer to **string** | توکن فایل ضمیمه شده (در صورت وجود) | [optional] 
 **UserId** | Pointer to **string** | شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه | [optional] 
 
 ## Methods

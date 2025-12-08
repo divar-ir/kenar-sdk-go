@@ -17,9 +17,9 @@ import (
 // checks if the AddonsOpenServerLink type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AddonsOpenServerLink{}
 
-// AddonsOpenServerLink عملیاتی برای ارسال داده‌های کامل نشست و دریافت مکان هدایت از سرور شما در هر عملیات کاربر
+// AddonsOpenServerLink عملیاتی برای ارسال داده‌های کامل session و دریافت آدرس redirect از سرور شما
 type AddonsOpenServerLink struct {
-	// داده‌ای که می‌توانید تنظیم کنید و پس از کلیک کاربر برای شناسایی عملیات به شما برگردانده می‌شود
+	// داده‌ای که می‌توانید مقداردهی کنید و هنگام کلیک کاربر به شما برگردانده می‌شود
 	Data map[string]interface{} `json:"data,omitempty"`
 }
 

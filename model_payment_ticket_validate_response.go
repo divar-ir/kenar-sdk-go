@@ -19,6 +19,7 @@ var _ MappedNullable = &PaymentTicketValidateResponse{}
 
 // PaymentTicketValidateResponse struct for PaymentTicketValidateResponse
 type PaymentTicketValidateResponse struct {
+	// داده payload ارائه شده توسط صادرکننده تیکت
 	IssuerPayload map[string]interface{} `json:"issuer_payload,omitempty"`
 }
 

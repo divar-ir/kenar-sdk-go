@@ -36,10 +36,17 @@ func (r ApiFinderGetPostRequest) Execute() (*FinderGetPostResponse, *http.Respon
 /*
 FinderGetPost دریافت آگهی دیوار
 
-این API به شما امکان دریافت جزئیات آگهی دیوار با استفاده از توکن آن را می‌دهد.
-می‌توانید از توکن برای دریافت داده‌های آگهی و وضعیت آن استفاده کنید
+این API امکان دریافت داده‌های عمومی آگهی با توکن را فراهم می‌کند. جزئیات آگهی شامل داده‌های دسته‌بندی، موقعیت، وضعیت، زمان‌ها و اطلاعات کسب‌وکار برمی‌گردد.
 
-مجوزهای مورد نیاز: GET_POST.
+**نکات مهم**:
+- فقط داده‌های عمومی آگهی برگردانده می‌شوند (فیلدهای خصوصی حذف می‌شوند)
+- می‌توان هر آگهی منتشر شده‌ای را دریافت کرد، محدود به آگهی‌های خود کاربر نیست
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `GET_POST`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
@@ -169,12 +176,21 @@ func (r ApiFinderGetUserRequest) Execute() (*FinderUser, *http.Response, error) 
 /*
 FinderGetUser دریافت اطلاعات کاربر
 
-پس از دریافت توکن دسترسی، می‌توانید از این API برای دریافت اطلاعات کاربر استفاده کنید.
-با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
-با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
+این API اطلاعات کاربر احراز هویت شده را برمی‌گرداند. داده‌های برگشتی به OAuth اسکوپ‌های اعطا شده بستگی دارد.
 
+**نکات مهم**:
+- با اسکوپ `USER_PHONE`: شماره تلفن کاربر برمی‌گردد
+- با اسکوپ `USER_ID`: شناسه مبهم‌شده کاربر برمی‌گردد (یکتا برای هر اپلیکیشن)
 
-مجوزهای مورد نیاز: USER_RETRIEVE.
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `USER_RETRIEVE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_ID` یا `USER_PHONE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderGetUserRequest
@@ -300,10 +316,21 @@ func (r ApiFinderGetUser2Request) Execute() (*FinderUser, *http.Response, error)
 /*
 FinderGetUser2 دریافت اطلاعات کاربر
 
-پس از دریافت توکن دسترسی، می‌توانید از این API برای دریافت اطلاعات کاربر استفاده کنید.
-با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
-با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
+این API اطلاعات کاربر احراز هویت شده را برمی‌گرداند. داده‌های برگشتی به OAuth اسکوپ‌های اعطا شده بستگی دارد.
 
+**نکات مهم**:
+- با اسکوپ `USER_PHONE`: شماره تلفن کاربر برمی‌گردد
+- با اسکوپ `USER_ID`: شناسه مبهم‌شده کاربر برمی‌گردد (یکتا برای هر اپلیکیشن)
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `USER_RETRIEVE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_ID` یا `USER_PHONE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderGetUser2Request
@@ -412,6 +439,137 @@ func (a *FinderAPIService) FinderGetUser2Execute(r ApiFinderGetUser2Request) (*F
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiFinderGetUserBusinessesRequest struct {
+	ctx context.Context
+	ApiService *FinderAPIService
+}
+
+func (r ApiFinderGetUserBusinessesRequest) Execute() (*FinderGetUserBusinessesResponse, *http.Response, error) {
+	return r.ApiService.FinderGetUserBusinessesExecute(r)
+}
+
+/*
+FinderGetUserBusinesses دریافت کسب‌وکارهای کاربر
+
+این API امکان دریافت تمام کسب‌وکارهای مرتبط با کاربر احراز هویت شده را فراهم می‌کند، همراه با نقش کاربر در هر کسب‌وکار.
+
+**نکات مهم**:
+- تمام کسب‌وکارهایی که کاربر در آنها نقش دارد (مثلاً مالک یا همکار) را برمی‌گرداند
+- شامل اطلاعات کسب‌وکار مانند business_token، business_type، brand_name و نقش کاربر است
+
+#### دسترسی‌ها:
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_BUSINESSES_READ`
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiFinderGetUserBusinessesRequest
+*/
+func (a *FinderAPIService) FinderGetUserBusinesses(ctx context.Context) ApiFinderGetUserBusinessesRequest {
+	return ApiFinderGetUserBusinessesRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return FinderGetUserBusinessesResponse
+func (a *FinderAPIService) FinderGetUserBusinessesExecute(r ApiFinderGetUserBusinessesRequest) (*FinderGetUserBusinessesResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FinderGetUserBusinessesResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FinderAPIService.FinderGetUserBusinesses")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/open-platform/user/businesses"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["APIKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-API-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v GooglerpcStatus
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiFinderGetUserIDByPhoneRequest struct {
 	ctx context.Context
 	ApiService *FinderAPIService
@@ -428,11 +586,19 @@ func (r ApiFinderGetUserIDByPhoneRequest) Execute() (*FinderGetUserIDByPhoneResp
 }
 
 /*
-FinderGetUserIDByPhone دریافت شناسه دیوار کاربر با شماره تلفن
+FinderGetUserIDByPhone دریافت شناسه کاربر
 
-با استفاده از این API می‌توانید شناسه‌ی دیوار یک کاربر را با استفاده از شماره تلفن دریافت کنید. این اجازه مختص برنامه‌هایی است که دسترسی به شماره تماس کاربر ندارند و برای ارائه‌ی خدمات پشتیبانی به کاربران، نیاز به تبدیل شماره به شناسه‌ی دیوار دارند.
+این API امکان پیدا کردن شناسه کاربر با شماره تلفن را می‌دهد. مناسب برای یکپارچه‌سازی با سیستم‌های CRM یا پشتیبانی.
 
-مجوزهای مورد نیاز: GET_USER_ID_BY_PHONE.
+**نکات مهم**:
+- شناسه مبهم‌شده برمی‌گردد (یکتا برای هر اپلیکیشن، نه شناسه واقعی کاربر دیوار)
+
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `GET_USER_ID_BY_PHONE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderGetUserIDByPhoneRequest
@@ -558,10 +724,21 @@ func (r ApiFinderGetUserPostsRequest) Execute() (*FinderGetUserPostsResponse, *h
 /*
 FinderGetUserPosts دریافت آگهی‌های کاربر
 
-این API به شما امکان دریافت تمام آگهی‌های یک کاربر را می‌دهد.
-می‌توانید از این API برای نمایش آگهی‌های کاربر در سرویس خود استفاده کنید.
+این API امکان دریافت لیست آگهی‌های متعلق به کاربر احراز هویت شده را فراهم می‌کند. اطلاعات پایه شامل توکن، عنوان، تصاویر، دسته‌بندی و وضعیت نمایش شماره تلفن برمی‌گردد.
 
-مجوزهای مورد نیاز: GET_USER_POSTS.
+**نکات مهم**:
+- فقط آگهی‌های متعلق به کاربر احراز هویت شده برگردانده می‌شوند
+- آگهی‌ها در وضعیت‌های مختلف برگردانده می‌شوند: منتشر شده، در انتظار پرداخت، در انتظار بررسی یا نیازمند اصلاح
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `GET_USER_POSTS`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_POSTS_GET`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderGetUserPostsRequest
@@ -686,14 +863,19 @@ func (r ApiFinderSearchPostV2Request) Execute() (*FinderSearchPostV2Response, *h
 }
 
 /*
-FinderSearchPostV2 جستجو آگهی‌های دیوار با فیلترهایی
+FinderSearchPostV2 جستجوی آگهی‌های دیوار
 
-این API به شما امکان جستجو آگهی‌های دیوار با برخی فیلترها را می‌دهد.
-می‌توانید آگهی‌ها را بر اساس دسته‌بندی، شهر، منطقه و برخی فیلترهای دیگر جستجو کنید.
-آگهی‌ها بر اساس زمان آنها مرتب می‌شوند.
+این API امکان جستجوی آگهی‌های منتشر شده دیوار با فیلتر را فراهم می‌کند. می‌توانید بر اساس دسته‌بندی، شهر، محله و فیلدهای ویژه دسته‌بندی مانند محدوده قیمت، متراژ، تعداد اتاق و سال تولید فیلتر کنید.
 
+**نکات مهم**:
+- آگهی‌ها بر اساس زمان آخرین تغییر مرتب می‌شوند
+- فقط آگهی‌های منتشر شده برگردانده می‌شوند
 
-مجوزهای مورد نیاز: SEARCH_POST.
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `SEARCH_POST`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFinderSearchPostV2Request

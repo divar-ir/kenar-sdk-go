@@ -4,19 +4,19 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AssetsGetBodyStatuses**](AssetsAPI.md#AssetsGetBodyStatuses) | **Get** /v1/open-platform/assets/body-status | دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
-[**AssetsGetBrandModels**](AssetsAPI.md#AssetsGetBrandModels) | **Get** /v1/open-platform/assets/brand-model/{category} | دریافت مدل‌های برند در دسته‌بندی دیوار
-[**AssetsGetCategories**](AssetsAPI.md#AssetsGetCategories) | **Get** /v1/open-platform/assets/category | دریافت دسته‌بندی‌های دیوار
-[**AssetsGetCities**](AssetsAPI.md#AssetsGetCities) | **Get** /v1/open-platform/assets/city | دریافت شهرهای دیوار
-[**AssetsGetColors**](AssetsAPI.md#AssetsGetColors) | **Get** /v1/open-platform/assets/color/{category} | دریافت رنگ‌ها در دسته‌بندی دیوار
-[**AssetsGetDistricts**](AssetsAPI.md#AssetsGetDistricts) | **Get** /v1/open-platform/assets/district | دریافت مناطق دیوار
-[**AssetsGetDistricts2**](AssetsAPI.md#AssetsGetDistricts2) | **Get** /v1/open-platform/assets/district/{city_slug} | دریافت مناطق دیوار
-[**AssetsGetInternalStorages**](AssetsAPI.md#AssetsGetInternalStorages) | **Get** /v1/open-platform/assets/internal-storage | دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
-[**AssetsGetOAuthScopes**](AssetsAPI.md#AssetsGetOAuthScopes) | **Get** /v1/open-platform/assets/oauth-scope | دریافت دامنه‌های OAuth کنار دیوار
-[**AssetsGetPermissions**](AssetsAPI.md#AssetsGetPermissions) | **Get** /v1/open-platform/assets/permission | دریافت مجوزهای کنار دیوار
-[**AssetsGetRamMemories**](AssetsAPI.md#AssetsGetRamMemories) | **Get** /v1/open-platform/assets/ram-memory | دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
-[**AssetsGetServiceTypes**](AssetsAPI.md#AssetsGetServiceTypes) | **Get** /v1/open-platform/assets/service-type | دریافت انواع سرویس موجود در کنار دیوار
-[**AssetsGetSubmitSchema**](AssetsAPI.md#AssetsGetSubmitSchema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | دریافت قالب ثبت
+[**AssetsGetBodyStatuses**](AssetsAPI.md#AssetsGetBodyStatuses) | **Get** /v1/open-platform/assets/body-status | لیست گزینه‌های وضعیت بدنه
+[**AssetsGetBrandModels**](AssetsAPI.md#AssetsGetBrandModels) | **Get** /v1/open-platform/assets/brand-model/{category} | لیست مدل برندها بر اساس دسته‌بندی
+[**AssetsGetCategories**](AssetsAPI.md#AssetsGetCategories) | **Get** /v1/open-platform/assets/category | لیست همه دسته‌بندی‌ها
+[**AssetsGetCities**](AssetsAPI.md#AssetsGetCities) | **Get** /v1/open-platform/assets/city | لیست همه شهرها
+[**AssetsGetColors**](AssetsAPI.md#AssetsGetColors) | **Get** /v1/open-platform/assets/color/{category} | لیست رنگ‌ها بر اساس دسته‌بندی
+[**AssetsGetDistricts**](AssetsAPI.md#AssetsGetDistricts) | **Get** /v1/open-platform/assets/district | لیست محله‌ها
+[**AssetsGetDistricts2**](AssetsAPI.md#AssetsGetDistricts2) | **Get** /v1/open-platform/assets/district/{city_slug} | لیست محله‌ها
+[**AssetsGetInternalStorages**](AssetsAPI.md#AssetsGetInternalStorages) | **Get** /v1/open-platform/assets/internal-storage | لیست گزینه‌های حافظه داخلی
+[**AssetsGetOAuthScopes**](AssetsAPI.md#AssetsGetOAuthScopes) | **Get** /v1/open-platform/assets/oauth-scope | لیست دامنه‌های OAuth
+[**AssetsGetPermissions**](AssetsAPI.md#AssetsGetPermissions) | **Get** /v1/open-platform/assets/permission | لیست مجوزهای کنار دیوار
+[**AssetsGetRamMemories**](AssetsAPI.md#AssetsGetRamMemories) | **Get** /v1/open-platform/assets/ram-memory | لیست گزینه‌های حافظه RAM
+[**AssetsGetServiceTypes**](AssetsAPI.md#AssetsGetServiceTypes) | **Get** /v1/open-platform/assets/service-type | لیست انواع سرویس
+[**AssetsGetSubmitSchema**](AssetsAPI.md#AssetsGetSubmitSchema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | دریافت schema ثبت آگهی
 
 
 
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 > AssetsGetBodyStatusesResponse AssetsGetBodyStatuses(ctx).Execute()
 
-دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
+لیست گزینه‌های وضعیت بدنه
 
 
 
@@ -85,7 +85,7 @@ Other parameters are passed through a pointer to a apiAssetsGetBodyStatusesReque
 
 > AssetsGetBrandModelsResponse AssetsGetBrandModels(ctx, category).Execute()
 
-دریافت مدل‌های برند در دسته‌بندی دیوار
+لیست مدل برندها بر اساس دسته‌بندی
 
 
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 > AssetsGetCategoriesResponse AssetsGetCategories(ctx).Execute()
 
-دریافت دسته‌بندی‌های دیوار
+لیست همه دسته‌بندی‌ها
 
 
 
@@ -216,7 +216,7 @@ Other parameters are passed through a pointer to a apiAssetsGetCategoriesRequest
 
 > AssetsGetCitiesResponse AssetsGetCities(ctx).Execute()
 
-دریافت شهرهای دیوار
+لیست همه شهرها
 
 
 
@@ -277,7 +277,7 @@ Other parameters are passed through a pointer to a apiAssetsGetCitiesRequest str
 
 > AssetsGetColorsResponse AssetsGetColors(ctx, category).Execute()
 
-دریافت رنگ‌ها در دسته‌بندی دیوار
+لیست رنگ‌ها بر اساس دسته‌بندی
 
 
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 > AssetsGetDistrictsResponse AssetsGetDistricts(ctx).CitySlug(citySlug).Execute()
 
-دریافت مناطق دیوار
+لیست محله‌ها
 
 
 
@@ -413,7 +413,7 @@ Name | Type | Description  | Notes
 
 > AssetsGetDistrictsResponse AssetsGetDistricts2(ctx, citySlug).Execute()
 
-دریافت مناطق دیوار
+لیست محله‌ها
 
 
 
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 
 > AssetsGetInternalStoragesResponse AssetsGetInternalStorages(ctx).Execute()
 
-دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
+لیست گزینه‌های حافظه داخلی
 
 
 
@@ -544,7 +544,7 @@ Other parameters are passed through a pointer to a apiAssetsGetInternalStoragesR
 
 > AssetsGetOAuthScopesResponse AssetsGetOAuthScopes(ctx).Execute()
 
-دریافت دامنه‌های OAuth کنار دیوار
+لیست دامنه‌های OAuth
 
 
 
@@ -605,7 +605,7 @@ Other parameters are passed through a pointer to a apiAssetsGetOAuthScopesReques
 
 > AssetsGetPermissionsResponse AssetsGetPermissions(ctx).Execute()
 
-دریافت مجوزهای کنار دیوار
+لیست مجوزهای کنار دیوار
 
 
 
@@ -666,7 +666,7 @@ Other parameters are passed through a pointer to a apiAssetsGetPermissionsReques
 
 > AssetsGetRamMemoriesResponse AssetsGetRamMemories(ctx).Execute()
 
-دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
+لیست گزینه‌های حافظه RAM
 
 
 
@@ -727,7 +727,7 @@ Other parameters are passed through a pointer to a apiAssetsGetRamMemoriesReques
 
 > AssetsGetServiceTypesResponse AssetsGetServiceTypes(ctx).Execute()
 
-دریافت انواع سرویس موجود در کنار دیوار
+لیست انواع سرویس
 
 
 
@@ -788,7 +788,7 @@ Other parameters are passed through a pointer to a apiAssetsGetServiceTypesReque
 
 > AssetsGetSubmitSchemaResponse AssetsGetSubmitSchema(ctx, categorySlug).Execute()
 
-دریافت قالب ثبت
+دریافت schema ثبت آگهی
 
 
 

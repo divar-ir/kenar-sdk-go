@@ -12,6 +12,8 @@ package kenarapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PaymentTicketValidateRequest type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,26 @@ var _ MappedNullable = &PaymentTicketValidateRequest{}
 
 // PaymentTicketValidateRequest struct for PaymentTicketValidateRequest
 type PaymentTicketValidateRequest struct {
+	// هزینه سرویس به ریال
+	ServiceCost int32 `json:"service_cost"`
+	// شناسه منحصر به فرد تیکت پرداخت
+	TicketUuid string `json:"ticket_uuid"`
+	// شماره تلفن کاربر (به جای آن از user_id استفاده کنید)
 	PhoneNumber *string `json:"phone_number,omitempty"`
-	ServiceCost *int32 `json:"service_cost,omitempty"`
-	TicketUuid *string `json:"ticket_uuid,omitempty"`
+	// شناسه منحصر به فرد کاربر
 	UserId *string `json:"user_id,omitempty"`
 }
+
+type _PaymentTicketValidateRequest PaymentTicketValidateRequest
 
 // NewPaymentTicketValidateRequest instantiates a new PaymentTicketValidateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaymentTicketValidateRequest() *PaymentTicketValidateRequest {
+func NewPaymentTicketValidateRequest(serviceCost int32, ticketUuid string) *PaymentTicketValidateRequest {
 	this := PaymentTicketValidateRequest{}
+	this.ServiceCost = serviceCost
+	this.TicketUuid = ticketUuid
 	return &this
 }
 
@@ -40,6 +50,54 @@ func NewPaymentTicketValidateRequest() *PaymentTicketValidateRequest {
 func NewPaymentTicketValidateRequestWithDefaults() *PaymentTicketValidateRequest {
 	this := PaymentTicketValidateRequest{}
 	return &this
+}
+
+// GetServiceCost returns the ServiceCost field value
+func (o *PaymentTicketValidateRequest) GetServiceCost() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.ServiceCost
+}
+
+// GetServiceCostOk returns a tuple with the ServiceCost field value
+// and a boolean to check if the value has been set.
+func (o *PaymentTicketValidateRequest) GetServiceCostOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ServiceCost, true
+}
+
+// SetServiceCost sets field value
+func (o *PaymentTicketValidateRequest) SetServiceCost(v int32) {
+	o.ServiceCost = v
+}
+
+// GetTicketUuid returns the TicketUuid field value
+func (o *PaymentTicketValidateRequest) GetTicketUuid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TicketUuid
+}
+
+// GetTicketUuidOk returns a tuple with the TicketUuid field value
+// and a boolean to check if the value has been set.
+func (o *PaymentTicketValidateRequest) GetTicketUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TicketUuid, true
+}
+
+// SetTicketUuid sets field value
+func (o *PaymentTicketValidateRequest) SetTicketUuid(v string) {
+	o.TicketUuid = v
 }
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
@@ -72,70 +130,6 @@ func (o *PaymentTicketValidateRequest) HasPhoneNumber() bool {
 // SetPhoneNumber gets a reference to the given string and assigns it to the PhoneNumber field.
 func (o *PaymentTicketValidateRequest) SetPhoneNumber(v string) {
 	o.PhoneNumber = &v
-}
-
-// GetServiceCost returns the ServiceCost field value if set, zero value otherwise.
-func (o *PaymentTicketValidateRequest) GetServiceCost() int32 {
-	if o == nil || IsNil(o.ServiceCost) {
-		var ret int32
-		return ret
-	}
-	return *o.ServiceCost
-}
-
-// GetServiceCostOk returns a tuple with the ServiceCost field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PaymentTicketValidateRequest) GetServiceCostOk() (*int32, bool) {
-	if o == nil || IsNil(o.ServiceCost) {
-		return nil, false
-	}
-	return o.ServiceCost, true
-}
-
-// HasServiceCost returns a boolean if a field has been set.
-func (o *PaymentTicketValidateRequest) HasServiceCost() bool {
-	if o != nil && !IsNil(o.ServiceCost) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceCost gets a reference to the given int32 and assigns it to the ServiceCost field.
-func (o *PaymentTicketValidateRequest) SetServiceCost(v int32) {
-	o.ServiceCost = &v
-}
-
-// GetTicketUuid returns the TicketUuid field value if set, zero value otherwise.
-func (o *PaymentTicketValidateRequest) GetTicketUuid() string {
-	if o == nil || IsNil(o.TicketUuid) {
-		var ret string
-		return ret
-	}
-	return *o.TicketUuid
-}
-
-// GetTicketUuidOk returns a tuple with the TicketUuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PaymentTicketValidateRequest) GetTicketUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.TicketUuid) {
-		return nil, false
-	}
-	return o.TicketUuid, true
-}
-
-// HasTicketUuid returns a boolean if a field has been set.
-func (o *PaymentTicketValidateRequest) HasTicketUuid() bool {
-	if o != nil && !IsNil(o.TicketUuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetTicketUuid gets a reference to the given string and assigns it to the TicketUuid field.
-func (o *PaymentTicketValidateRequest) SetTicketUuid(v string) {
-	o.TicketUuid = &v
 }
 
 // GetUserId returns the UserId field value if set, zero value otherwise.
@@ -180,19 +174,53 @@ func (o PaymentTicketValidateRequest) MarshalJSON() ([]byte, error) {
 
 func (o PaymentTicketValidateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["service_cost"] = o.ServiceCost
+	toSerialize["ticket_uuid"] = o.TicketUuid
 	if !IsNil(o.PhoneNumber) {
 		toSerialize["phone_number"] = o.PhoneNumber
-	}
-	if !IsNil(o.ServiceCost) {
-		toSerialize["service_cost"] = o.ServiceCost
-	}
-	if !IsNil(o.TicketUuid) {
-		toSerialize["ticket_uuid"] = o.TicketUuid
 	}
 	if !IsNil(o.UserId) {
 		toSerialize["user_id"] = o.UserId
 	}
 	return toSerialize, nil
+}
+
+func (o *PaymentTicketValidateRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"service_cost",
+		"ticket_uuid",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaymentTicketValidateRequest := _PaymentTicketValidateRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaymentTicketValidateRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaymentTicketValidateRequest(varPaymentTicketValidateRequest)
+
+	return err
 }
 
 type NullablePaymentTicketValidateRequest struct {

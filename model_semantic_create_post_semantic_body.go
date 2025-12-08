@@ -12,6 +12,8 @@ package kenarapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SemanticCreatePostSemanticBody type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,23 @@ var _ MappedNullable = &SemanticCreatePostSemanticBody{}
 
 // SemanticCreatePostSemanticBody struct for SemanticCreatePostSemanticBody
 type SemanticCreatePostSemanticBody struct {
+	// مپ key-value اطلاعات معنایی برای ذخیره
+	Semantic map[string]string `json:"semantic"`
+	// هزینه مرتبط با عملیات
 	Cost *int32 `json:"cost,omitempty"`
-	Semantic *map[string]string `json:"semantic,omitempty"`
+	// UUID تیکت پرداخت (اختیاری)
 	TicketUuid *string `json:"ticket_uuid,omitempty"`
 }
+
+type _SemanticCreatePostSemanticBody SemanticCreatePostSemanticBody
 
 // NewSemanticCreatePostSemanticBody instantiates a new SemanticCreatePostSemanticBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSemanticCreatePostSemanticBody() *SemanticCreatePostSemanticBody {
+func NewSemanticCreatePostSemanticBody(semantic map[string]string) *SemanticCreatePostSemanticBody {
 	this := SemanticCreatePostSemanticBody{}
+	this.Semantic = semantic
 	return &this
 }
 
@@ -39,6 +47,30 @@ func NewSemanticCreatePostSemanticBody() *SemanticCreatePostSemanticBody {
 func NewSemanticCreatePostSemanticBodyWithDefaults() *SemanticCreatePostSemanticBody {
 	this := SemanticCreatePostSemanticBody{}
 	return &this
+}
+
+// GetSemantic returns the Semantic field value
+func (o *SemanticCreatePostSemanticBody) GetSemantic() map[string]string {
+	if o == nil {
+		var ret map[string]string
+		return ret
+	}
+
+	return o.Semantic
+}
+
+// GetSemanticOk returns a tuple with the Semantic field value
+// and a boolean to check if the value has been set.
+func (o *SemanticCreatePostSemanticBody) GetSemanticOk() (*map[string]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Semantic, true
+}
+
+// SetSemantic sets field value
+func (o *SemanticCreatePostSemanticBody) SetSemantic(v map[string]string) {
+	o.Semantic = v
 }
 
 // GetCost returns the Cost field value if set, zero value otherwise.
@@ -71,38 +103,6 @@ func (o *SemanticCreatePostSemanticBody) HasCost() bool {
 // SetCost gets a reference to the given int32 and assigns it to the Cost field.
 func (o *SemanticCreatePostSemanticBody) SetCost(v int32) {
 	o.Cost = &v
-}
-
-// GetSemantic returns the Semantic field value if set, zero value otherwise.
-func (o *SemanticCreatePostSemanticBody) GetSemantic() map[string]string {
-	if o == nil || IsNil(o.Semantic) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Semantic
-}
-
-// GetSemanticOk returns a tuple with the Semantic field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SemanticCreatePostSemanticBody) GetSemanticOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.Semantic) {
-		return nil, false
-	}
-	return o.Semantic, true
-}
-
-// HasSemantic returns a boolean if a field has been set.
-func (o *SemanticCreatePostSemanticBody) HasSemantic() bool {
-	if o != nil && !IsNil(o.Semantic) {
-		return true
-	}
-
-	return false
-}
-
-// SetSemantic gets a reference to the given map[string]string and assigns it to the Semantic field.
-func (o *SemanticCreatePostSemanticBody) SetSemantic(v map[string]string) {
-	o.Semantic = &v
 }
 
 // GetTicketUuid returns the TicketUuid field value if set, zero value otherwise.
@@ -147,16 +147,51 @@ func (o SemanticCreatePostSemanticBody) MarshalJSON() ([]byte, error) {
 
 func (o SemanticCreatePostSemanticBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["semantic"] = o.Semantic
 	if !IsNil(o.Cost) {
 		toSerialize["cost"] = o.Cost
-	}
-	if !IsNil(o.Semantic) {
-		toSerialize["semantic"] = o.Semantic
 	}
 	if !IsNil(o.TicketUuid) {
 		toSerialize["ticket_uuid"] = o.TicketUuid
 	}
 	return toSerialize, nil
+}
+
+func (o *SemanticCreatePostSemanticBody) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"semantic",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSemanticCreatePostSemanticBody := _SemanticCreatePostSemanticBody{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSemanticCreatePostSemanticBody)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SemanticCreatePostSemanticBody(varSemanticCreatePostSemanticBody)
+
+	return err
 }
 
 type NullableSemanticCreatePostSemanticBody struct {

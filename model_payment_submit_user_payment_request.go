@@ -21,13 +21,13 @@ var _ MappedNullable = &PaymentSubmitUserPaymentRequest{}
 
 // PaymentSubmitUserPaymentRequest struct for PaymentSubmitUserPaymentRequest
 type PaymentSubmitUserPaymentRequest struct {
-	// کل مبلغ پرداختی توسط کاربر، به ریال
+	// مبلغ کل پرداختی کاربر به ریال
 	AmountRials string `json:"amount_rials"`
-	// بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد، به ریال. به عنوان مثال در افزونه‌های پرداخت امن بخش اعظم مبلغ پرداختی سهم فروشنده آگهی هست و این پارامتر باید برابر بخشی از مبلغ پرداختی که مربوط به کمیسیون سرویس‌دهنده پرداخت امن است قرار بگیرد. در صورتی که چنین مفهومی در فرایند پرداخت شما وجود ندارد مقدار این پارامتر را دقیقا برابر amount_rials ارسال کنید.
+	// سود یا کمیسیون شما از این تراکنش، به ریال. اگر چنین مفهومی در فرایند پرداخت شما وجود ندارد، مقدار این پارامتر را برابر amount_rials قرار دهید.
 	ProfitRials string `json:"profit_rials"`
 	// شناسه منحصر به فرد بین دیوار و ارائه‌دهنده برای فاکتور یا تراکنش. این شناسه مرجع درگاه پرداخت نیست.
 	ReferenceId string `json:"reference_id"`
-	// لیست شناسه خدماتی که کاربر برای آنها پرداخت انجام داده است (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی کوتاه و توصیفی به‌عنوان شناسه خدمت استفاده شود.
+	// لیست slug خدماتی که کاربر برای آنها پرداخت کرده (مثلاً 'banner'، 'title_refinement')
 	Services []string `json:"services"`
 }
 

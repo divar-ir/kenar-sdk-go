@@ -17,9 +17,9 @@ import (
 // checks if the AddonsGetDynamicAction type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AddonsGetDynamicAction{}
 
-// AddonsGetDynamicAction نمایان‌گر یک اکشن پویا که می‌تواند در دستگاه کاربر دریافت و اجرا شود
+// AddonsGetDynamicAction نمایانگر یک Action پویا که می‌تواند در دستگاه کاربر دریافت و اجرا شود
 type AddonsGetDynamicAction struct {
-	// داده‌ای که می‌توانید تنظیم کنید و پس از کلیک کاربر برای شناسایی عملیات به شما برگردانده می‌شود
+	// داده‌ای که می‌توانید مقداردهی کنید و هنگام کلیک کاربر به شما برگردانده می‌شود
 	Data map[string]interface{} `json:"data,omitempty"`
 }
 

@@ -5,19 +5,18 @@ All URIs are relative to *https://open-api.divar.ir*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PostCanUserSubmitPost**](PostAPI.md#PostCanUserSubmitPost) | **Get** /experimental/open-platform/user-posts/can-submit | بررسی اینکه آیا کاربر می‌تواند آگهی ارسال کند
-[**PostCreateBusinessCustomizedButton**](PostAPI.md#PostCreateBusinessCustomizedButton) | **Post** /experimental/open-platform/business/{business_token}/customized-button | ایجاد دکمه اختصاصی برای آگهی‌های کسب‌و‌کار
+[**PostCreateBusinessCustomizedButton**](PostAPI.md#PostCreateBusinessCustomizedButton) | **Post** /experimental/open-platform/business/{business_token}/customized-button | ایجاد دکمه اختصاصی برای آگهی‌های کسب‌وکار
 [**PostDeleteBusinessCustomizedButton**](PostAPI.md#PostDeleteBusinessCustomizedButton) | **Delete** /experimental/open-platform/business/{business_token}/customized-button | حذف دکمه اختصاصی از آگهی‌های کسب‌و‌کار
 [**PostDeletePostCustomizedButton**](PostAPI.md#PostDeletePostCustomizedButton) | **Delete** /experimental/open-platform/posts/{post_token}/customized-button | حذف دکمه اختصاصی از آگهی
 [**PostDeleteUserPost**](PostAPI.md#PostDeleteUserPost) | **Delete** /v1/open-platform/post/{post_token} | حذف آگهی
 [**PostEditPost**](PostAPI.md#PostEditPost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
-[**PostEditPostV2**](PostAPI.md#PostEditPostV2) | **Put** /v2/open-platform/post/{post_token} | ویرایش آگهی با پشتیبانی از فیلد ماسک
+[**PostEditPostV2**](PostAPI.md#PostEditPostV2) | **Put** /v2/open-platform/post/{post_token} | ویرایش آگهی (پیشرفته)
 [**PostGetImageUploadURL**](PostAPI.md#PostGetImageUploadURL) | **Get** /v1/open-platform/post/image-upload-url | دریافت آدرس اپلود تصاویر آگهی (منسوخ شده)
 [**PostGetPostStats**](PostAPI.md#PostGetPostStats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
-[**PostGetUploadURLsV2**](PostAPI.md#PostGetUploadURLsV2) | **Get** /v2/open-platform/post/upload-urls | دریافت آدرس آپلود برای تصاویر و ویدیو‌ی آگهی‌ها
+[**PostGetUploadURLsV2**](PostAPI.md#PostGetUploadURLsV2) | **Get** /v2/open-platform/post/upload-urls | دریافت آدرس آپلود تصاویر و ویدیو
 [**PostGetUserPost**](PostAPI.md#PostGetUserPost) | **Get** /v1/open-platform/user-post/{token} | دریافت آگهی با توکن
-[**PostSetPostCustomizedButton**](PostAPI.md#PostSetPostCustomizedButton) | **Post** /experimental/open-platform/posts/{post_token}/customized-button | تنظیم دکمه اختصاصی بر روی آگهی ثبت شده
-[**PostSubmitPost**](PostAPI.md#PostSubmitPost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
-[**PostSubmitPostV2**](PostAPI.md#PostSubmitPostV2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
+[**PostSetPostCustomizedButton**](PostAPI.md#PostSetPostCustomizedButton) | **Post** /experimental/open-platform/posts/{post_token}/customized-button | تنظیم دکمه اختصاصی روی آگهی
+[**PostSubmitPostV2**](PostAPI.md#PostSubmitPostV2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی
 [**PostSubmitUserPost**](PostAPI.md#PostSubmitUserPost) | **Post** /experimental/open-platform/user-posts/new | ثبت آگهی به عنوان کاربر
 
 
@@ -71,7 +70,7 @@ Other parameters are passed through a pointer to a apiPostCanUserSubmitPostReque
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -87,7 +86,7 @@ Other parameters are passed through a pointer to a apiPostCanUserSubmitPostReque
 
 > map[string]interface{} PostCreateBusinessCustomizedButton(ctx, businessToken).PostCreateBusinessCustomizedButtonBody(postCreateBusinessCustomizedButtonBody).Execute()
 
-ایجاد دکمه اختصاصی برای آگهی‌های کسب‌و‌کار
+ایجاد دکمه اختصاصی برای آگهی‌های کسب‌وکار
 
 
 
@@ -143,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -283,7 +282,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -353,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -425,7 +424,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -441,7 +440,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} PostEditPostV2(ctx, postToken).PostEditPostV2Body(postEditPostV2Body).Execute()
 
-ویرایش آگهی با پشتیبانی از فیلد ماسک
+ویرایش آگهی (پیشرفته)
 
 
 
@@ -497,7 +496,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -628,7 +627,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -644,7 +643,7 @@ Name | Type | Description  | Notes
 
 > PostGetUploadURLsV2Response PostGetUploadURLsV2(ctx).Execute()
 
-دریافت آدرس آپلود برای تصاویر و ویدیو‌ی آگهی‌ها
+دریافت آدرس آپلود تصاویر و ویدیو
 
 
 
@@ -759,7 +758,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -775,7 +774,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} PostSetPostCustomizedButton(ctx, postToken).PostSetPostCustomizedButtonBody(postSetPostCustomizedButtonBody).Execute()
 
-تنظیم دکمه اختصاصی بر روی آگهی ثبت شده
+تنظیم دکمه اختصاصی روی آگهی
 
 
 
@@ -831,7 +830,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -843,9 +842,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PostSubmitPost
+## PostSubmitPostV2
 
-> PostSubmitPostResponse PostSubmitPost(ctx).PostSubmitPostRequest(postSubmitPostRequest).Execute()
+> PostSubmitPostResponse PostSubmitPostV2(ctx).PostSubmitPostV2Request(postSubmitPostV2Request).Execute()
 
 ثبت آگهی
 
@@ -864,73 +863,7 @@ import (
 )
 
 func main() {
-	postSubmitPostRequest := *openapiclient.NewPostSubmitPostRequest(true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.postLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran") // PostSubmitPostRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PostAPI.PostSubmitPost(context.Background()).PostSubmitPostRequest(postSubmitPostRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PostAPI.PostSubmitPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PostSubmitPost`: PostSubmitPostResponse
-	fmt.Fprintf(os.Stdout, "Response from `PostAPI.PostSubmitPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPostSubmitPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **postSubmitPostRequest** | [**PostSubmitPostRequest**](PostSubmitPostRequest.md) |  | 
-
-### Return type
-
-[**PostSubmitPostResponse**](PostSubmitPostResponse.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PostSubmitPostV2
-
-> PostSubmitPostResponse PostSubmitPostV2(ctx).PostSubmitPostV2Request(postSubmitPostV2Request).Execute()
-
-ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/divar-ir/kenar-sdk-go"
-)
-
-func main() {
-	postSubmitPostV2Request := *openapiclient.NewPostSubmitPostV2Request(map[string]interface{}(123), *openapiclient.NewPostPostGeneralData("apartment-sell", true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.postLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran")) // PostSubmitPostV2Request | 
+	postSubmitPostV2Request := *openapiclient.NewPostSubmitPostV2Request("xYzAbC123", map[string]interface{}(123), *openapiclient.NewPostPostGeneralData("apartment-sell", true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.postLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran")) // PostSubmitPostV2Request | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -996,7 +929,7 @@ import (
 )
 
 func main() {
-	postSubmitUserPostRequest := *openapiclient.NewPostSubmitUserPostRequest(map[string]interface{}(123), *openapiclient.NewPostPostGeneralData("apartment-sell", true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.postLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran")) // PostSubmitUserPostRequest | 
+	postSubmitUserPostRequest := *openapiclient.NewPostSubmitUserPostRequest("xYzAbC123", map[string]interface{}(123), *openapiclient.NewPostPostGeneralData("apartment-sell", true, "tehran", "I'm available only in chat.", true, []string{"Images_example"}, openapiclient.postLocationType("LOCATION_TYPE_EMPTY"), "Temporary Residence for Rent in Tehran")) // PostSubmitUserPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1029,7 +962,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 

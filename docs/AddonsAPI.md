@@ -4,12 +4,12 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddonsCreateBusinessAddon**](AddonsAPI.md#AddonsCreateBusinessAddon) | **Post** /v1/open-platform/addons/business/{business_token} | افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
-[**AddonsCreatePostAddonV2**](AddonsAPI.md#AddonsCreatePostAddonV2) | **Post** /v2/open-platform/addons/post/{token} | افزودن افزونه جدید به آگهی
-[**AddonsCreateUserAddonV2**](AddonsAPI.md#AddonsCreateUserAddonV2) | **Post** /v2/open-platform/addons/user/{phone} | افزودن افزونه جدید به کاربر
-[**AddonsCreateUserAddonV22**](AddonsAPI.md#AddonsCreateUserAddonV22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | افزودن افزونه جدید به کاربر
-[**AddonsDeletePostAddon**](AddonsAPI.md#AddonsDeletePostAddon) | **Delete** /v1/open-platform/add-ons/post/{token} | حذف افزونه از آگهی
-[**AddonsDeletePostAddon2**](AddonsAPI.md#AddonsDeletePostAddon2) | **Delete** /v1/open-platform/addons/post/{token} | حذف افزونه از آگهی
+[**AddonsCreateBusinessAddon**](AddonsAPI.md#AddonsCreateBusinessAddon) | **Post** /v1/open-platform/addons/business/{business_token} | ایجاد افزونه کسب‌وکار
+[**AddonsCreatePostAddonV2**](AddonsAPI.md#AddonsCreatePostAddonV2) | **Post** /v2/open-platform/addons/post/{token} | ایجاد افزونه آگهی
+[**AddonsCreateUserAddonV2**](AddonsAPI.md#AddonsCreateUserAddonV2) | **Post** /v2/open-platform/addons/user/{phone} | ایجاد افزونه کاربر
+[**AddonsCreateUserAddonV22**](AddonsAPI.md#AddonsCreateUserAddonV22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | ایجاد افزونه کاربر
+[**AddonsDeletePostAddon**](AddonsAPI.md#AddonsDeletePostAddon) | **Delete** /v1/open-platform/add-ons/post/{token} | حذف افزونه آگهی
+[**AddonsDeletePostAddon2**](AddonsAPI.md#AddonsDeletePostAddon2) | **Delete** /v1/open-platform/addons/post/{token} | حذف افزونه آگهی
 [**AddonsDeleteUserAddon**](AddonsAPI.md#AddonsDeleteUserAddon) | **Delete** /v1/open-platform/addons/user/{id} | حذف افزونه کاربر
 
 
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 > AddonsCreateBusinessAddonResponse AddonsCreateBusinessAddon(ctx, businessToken).AddonsCreateBusinessAddonBody(addonsCreateBusinessAddonBody).Execute()
 
-افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
+ایجاد افزونه کسب‌وکار
 
 
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} AddonsCreatePostAddonV2(ctx, token).AddonsCreatePostAddonV2Body(addonsCreatePostAddonV2Body).Execute()
 
-افزودن افزونه جدید به آگهی
+ایجاد افزونه آگهی
 
 
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 > AddonsCreateUserAddonResponseV2 AddonsCreateUserAddonV2(ctx, phone).AddonsCreateUserAddonV2Body(addonsCreateUserAddonV2Body).Execute()
 
-افزودن افزونه جدید به کاربر
+ایجاد افزونه کاربر
 
 
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 > AddonsCreateUserAddonResponseV2 AddonsCreateUserAddonV22(ctx, divarUserId).AddonsCreateUserAddonV2Body(addonsCreateUserAddonV2Body).Execute()
 
-افزودن افزونه جدید به کاربر
+ایجاد افزونه کاربر
 
 
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OAuth](../README.md#OAuth)
 
 ### HTTP request headers
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} AddonsDeletePostAddon(ctx, token).Execute()
 
-حذف افزونه از آگهی
+حذف افزونه آگهی
 
 
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} AddonsDeletePostAddon2(ctx, token).Execute()
 
-حذف افزونه از آگهی
+حذف افزونه آگهی
 
 
 

@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CategoryFields** | **map[string]interface{}** | فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/ | 
+**BusinessToken** | **string** | توکن کسب‌وکاری که این آگهی متعلق به آن می‌شود | 
+**CategoryFields** | **map[string]interface{}** | فیلدهای مختص دسته‌بندی که باید مطابق schema تکمیل شوند. schema را اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/ | 
 **GeneralData** | [**PostPostGeneralData**](PostPostGeneralData.md) |  | 
 
 ## Methods
 
 ### NewPostSubmitUserPostRequest
 
-`func NewPostSubmitUserPostRequest(categoryFields map[string]interface{}, generalData PostPostGeneralData, ) *PostSubmitUserPostRequest`
+`func NewPostSubmitUserPostRequest(businessToken string, categoryFields map[string]interface{}, generalData PostPostGeneralData, ) *PostSubmitUserPostRequest`
 
 NewPostSubmitUserPostRequest instantiates a new PostSubmitUserPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewPostSubmitUserPostRequestWithDefaults instantiates a new PostSubmitUserPostRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBusinessToken
+
+`func (o *PostSubmitUserPostRequest) GetBusinessToken() string`
+
+GetBusinessToken returns the BusinessToken field if non-nil, zero value otherwise.
+
+### GetBusinessTokenOk
+
+`func (o *PostSubmitUserPostRequest) GetBusinessTokenOk() (*string, bool)`
+
+GetBusinessTokenOk returns a tuple with the BusinessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBusinessToken
+
+`func (o *PostSubmitUserPostRequest) SetBusinessToken(v string)`
+
+SetBusinessToken sets BusinessToken field to given value.
+
 
 ### GetCategoryFields
 

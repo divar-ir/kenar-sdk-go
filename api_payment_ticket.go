@@ -38,12 +38,19 @@ func (r ApiPaymentTicketValidateRequest) Execute() (*PaymentTicketValidateRespon
 }
 
 /*
-PaymentTicketValidate اعتبارسنجی بلیط پرداخت
+PaymentTicketValidate اعتبارسنجی تیکت پرداخت
 
-بلیط‌های پرداخت برای یکپارچه‌سازی اپلیکیشن‌های کنار با تیم‌های داخلی دیوار طراحی شده‌اند.
-با استفاده از این API می‌توانید بلیط پرداخت را اعتبارسنجی کرده و payload صادرکننده را دریافت کنید.
+این API امکان اعتبارسنجی تیکت پرداخت و دریافت payload صادرکننده آن را فراهم می‌کند. برای تایید تیکت‌های ارائه شده توسط کاربران جهت یکپارچه‌سازی با سرویس‌های دیوار استفاده کنید.
 
-مجوزهای مورد نیاز: PAYMENT_TICKET_VALIDATE.
+**نکات مهم**:
+- این API توسط اپلیکیشن‌های کنار برای اعتبارسنجی تیکت‌ها استفاده می‌شود
+- پاسخ شامل payload ارائه شده توسط صادرکننده است
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `PAYMENT_TICKET_VALIDATE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPaymentTicketValidateRequest

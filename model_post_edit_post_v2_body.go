@@ -21,9 +21,9 @@ var _ MappedNullable = &PostEditPostV2Body{}
 
 // PostEditPostV2Body struct for PostEditPostV2Body
 type PostEditPostV2Body struct {
-	// فیلد ماسک مشخص می‌کند کدام فیلدها به‌روزرسانی شوند. از مسیرهای تو در تو برای هر دو general_data و category_data استفاده کنید (مثلاً، 'general_data.title'، 'category_data.price'). این امکان تمایز بین حذف یک فیلد و به‌روزرسانی نکردن آن را فراهم می‌کند.
+	// مشخص می‌کند کدام فیلدها به‌روزرسانی شوند. از مسیرهای تودرتو مانند 'general_data.title' یا 'category_data.price' استفاده کنید. این کار تمایز بین پاک کردن یک فیلد و تغییر ندادن آن را ممکن می‌سازد.
 	UpdateMask []string `json:"update_mask"`
-	// فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/
+	// فیلدهای مختص دسته‌بندی که باید مطابق schema تکمیل شوند. schema را اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/
 	CategoryData map[string]interface{} `json:"category_data,omitempty"`
 	GeneralData *PostPostGeneralData `json:"general_data,omitempty"`
 }

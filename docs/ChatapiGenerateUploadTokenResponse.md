@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Token** | Pointer to **string** | توکن کدگذاری شده base64 ایمن برای URL که می‌تواند در نقطه پایانی آپلود استفاده شود | [optional] [readonly] 
+**Token** | Pointer to **string** | توکن با کدگذاری base64 که می‌توان در endpoint آپلود از آن استفاده کرد | [optional] [readonly] 
 
 ## Methods
 

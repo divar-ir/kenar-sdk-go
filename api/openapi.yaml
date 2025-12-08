@@ -7,32 +7,42 @@ servers:
 security:
 - APIKey: []
 tags:
-- name: Semantic
-  x-displayName: اطلاعات معنایی
-- name: PaymentTicket
-  x-displayName: تیکت پرداخت
-- description: "Some APIs are limited, Create tickets if you need to use them."
-  name: Payment
-  x-displayName: پرداخت
-- name: Post
-  x-displayName: آگهی
-- name: Finder
-  x-displayName: جستجوگر
-- name: Events
-  x-displayName: رویدادها
-- name: ChatAPI
-  x-displayName: چت
-- name: Assets
-  x-displayName: اطلاعات پایه
 - name: Addons
   x-displayName: افزونه‌ها
+- name: Assets
+  x-displayName: اطلاعات پایه
+- name: ChatAPI
+  x-displayName: چت
+- name: Events
+  x-displayName: رویدادها
+- name: Finder
+  x-displayName: جستجوگر
+- description: APIهای پرداخت و تراکنش برای مدیریت موجودی اپلیکیشن، خدمات مرتبط با
+    آگهی (نردبان، تمدید، انتشار) و پرداخت‌های کیف پول. برخی APIها محدود به اپلیکیشن‌های
+    تایید شده هستند - برای دسترسی با تیم دیوار تماس بگیرید.
+  name: Payment
+  x-displayName: پرداخت
+- name: PaymentTicket
+  x-displayName: تیکت پرداخت
+- name: Post
+  x-displayName: آگهی
+- name: Semantic
+  x-displayName: اطلاعات معنایی
 paths:
   /experimental/open-platform/balance:
     get:
       description: |-
-        (Limited) Using this API you can retrieve current balance of your app.
+        این API امکان دریافت موجودی فعلی اپلیکیشن شما به ریال را فراهم می‌کند. برای نظارت بر موجودی حساب قبل از انجام عملیات‌های پولی استفاده کنید.
 
-        مجوزهای مورد نیاز: BALANCE_RETRIEVE.
+        **نکات مهم**:
+        - این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+        - موجودی به ریال ایران برگردانده می‌شود
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `BALANCE_RETRIEVE`
       operationId: Payment_GetBalance
       responses:
         "200":
@@ -47,16 +57,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: دریافت موجودی اپلیکیشن
       tags:
       - Payment
   /experimental/open-platform/business/{business_token}/customized-button:
     delete:
       description: |-
-        این API دکمه اختصاصی را از تمام آگهی‌های کسب‌وکار حذف می‌کند. این API به مجوز `BUSINESS_CUSTOMIZED_BUTTON_CREATE` نیاز دارد.
+        این API تنظیمات دکمه اختصاصی را از تمام آگهی‌های کسب‌وکار حذف می‌کند.
 
+        #### دسترسی‌ها:
 
-        مجوزهای مورد نیاز: BUSINESS_CUSTOMIZED_BUTTON_CREATE.
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `BUSINESS_CUSTOMIZED_BUTTON_CREATE`
       operationId: Post_DeleteBusinessCustomizedButton
       parameters:
       - explode: false
@@ -79,16 +94,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: حذف دکمه اختصاصی از آگهی‌های کسب‌و‌کار
       tags:
       - Post
     post:
       description: |-
-        این API برای ایجاد دکمه اختصاصی برای تمام آگهی‌های کسب‌وکار استفاده می‌شود.
-        این API به مجوز `BUSINESS_CUSTOMIZED_BUTTON_CREATE` و دامنه OAuth `BUSINESS_CREATE_CUSTOMIZED_BUTTON.{business_ref}` نیاز دارد.
+        این API تنظیمات دکمه اختصاصی را برای تمام آگهی‌های کسب‌وکار ایجاد می‌کند.
 
+        #### دسترسی‌ها:
 
-        مجوزهای مورد نیاز: BUSINESS_CUSTOMIZED_BUTTON_CREATE.
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `BUSINESS_CUSTOMIZED_BUTTON_CREATE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `BUSINESS_CREATE_CUSTOMIZED_BUTTON.business_token`
       operationId: Post_CreateBusinessCustomizedButton
       parameters:
       - explode: false
@@ -117,14 +140,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ایجاد دکمه اختصاصی برای آگهی‌های کسب‌و‌کار
+      security:
+      - APIKey: []
+        OAuth:
+        - BUSINESS_CREATE_CUSTOMIZED_BUTTON.business_token
+      summary: ایجاد دکمه اختصاصی برای آگهی‌های کسب‌وکار
       tags:
       - Post
   /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages:
     post:
       description: |-
-        می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
-        فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
+        این API امکان ارسال پیام از ربات چت شما به یک مکالمه یا کاربر را فراهم می‌کند. می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+
+        **نکات مهم**:
+        - هنگام استفاده از user_id، باید با شناسه مبهم شده کاربر احراز هویت شده مطابقت داشته باشد
+        - یا پیام متنی یا توکن رسانه باید ارسال شود (نه هر دو)
+        - می‌توان شبکه دکمه‌ها را به پیام ضمیمه کرد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CHAT_BOT_SEND_MESSAGE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CHAT_BOT_USER_MESSAGE_SEND`
       operationId: ChatAPI_ChatBotSendMessage5
       parameters:
       - description: شناسه منحصر به فرد برای مکالمه
@@ -150,14 +191,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ارسال پیام به مکالمه ChatBot
+      security:
+      - APIKey: []
+        OAuth:
+        - CHAT_BOT_USER_MESSAGE_SEND
+      summary: ارسال پیام به مکالمه چت‌بات
       tags:
       - ChatAPI
   /experimental/open-platform/chat/bot/users/{user_id}/messages:
     post:
       description: |-
-        می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
-        فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
+        این API امکان ارسال پیام از ربات چت شما به یک مکالمه یا کاربر را فراهم می‌کند. می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+
+        **نکات مهم**:
+        - هنگام استفاده از user_id، باید با شناسه مبهم شده کاربر احراز هویت شده مطابقت داشته باشد
+        - یا پیام متنی یا توکن رسانه باید ارسال شود (نه هر دو)
+        - می‌توان شبکه دکمه‌ها را به پیام ضمیمه کرد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CHAT_BOT_SEND_MESSAGE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CHAT_BOT_USER_MESSAGE_SEND`
       operationId: ChatAPI_ChatBotSendMessage4
       parameters:
       - description: شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه
@@ -183,15 +242,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ارسال پیام به مکالمه ChatBot
+      security:
+      - APIKey: []
+        OAuth:
+        - CHAT_BOT_USER_MESSAGE_SEND
+      summary: ارسال پیام به مکالمه چت‌بات
       tags:
       - ChatAPI
   /experimental/open-platform/chat/upload:
     post:
       description: |-
-        این API برای تولید توکن آپلود برای آپلود فایل‌های رسانه‌ای استفاده می‌شود.
+        این API توکن آپلود برای بارگذاری فایل‌های رسانه‌ای در پیام‌های چت تولید می‌کند.
 
-        مجوزهای مورد نیاز: CHAT_UPLOAD_MEDIA.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CHAT_UPLOAD_MEDIA`
       operationId: ChatAPI_GenerateUploadToken
       requestBody:
         content:
@@ -212,14 +279,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: تولید توکن آپلود
       tags:
       - ChatAPI
   /experimental/open-platform/chatbot-conversations/{conversation_id}/messages:
     post:
       description: |-
-        می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
-        فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
+        این API امکان ارسال پیام از ربات چت شما به یک مکالمه یا کاربر را فراهم می‌کند. می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+
+        **نکات مهم**:
+        - هنگام استفاده از user_id، باید با شناسه مبهم شده کاربر احراز هویت شده مطابقت داشته باشد
+        - یا پیام متنی یا توکن رسانه باید ارسال شود (نه هر دو)
+        - می‌توان شبکه دکمه‌ها را به پیام ضمیمه کرد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CHAT_BOT_SEND_MESSAGE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CHAT_BOT_USER_MESSAGE_SEND`
       operationId: ChatAPI_ChatBotSendMessage3
       parameters:
       - description: شناسه منحصر به فرد برای مکالمه
@@ -245,67 +328,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ارسال پیام به مکالمه ChatBot
+      security:
+      - APIKey: []
+        OAuth:
+        - CHAT_BOT_USER_MESSAGE_SEND
+      summary: ارسال پیام به مکالمه چت‌بات
       tags:
       - ChatAPI
-  /experimental/open-platform/events/send:
-    post:
-      description: |-
-        با استفاده از این API، می‌توانید رویدادی به کاربر ارسال کنید. رویداد می‌تواند مربوط به یک آگهی خاص یا عمومی باشد. رویداد می‌تواند شامل دکمه‌هایی با عملیات سفارشی باشد که به کاربران اجازه می‌دهد با برنامه شما تعامل داشته باشند.
-
-        مجوزهای مورد نیاز: EVENTS_SEND.
-      operationId: Events_SendEvent
-      parameters:
-      - description: پیام رویداد برای نمایش به کاربر
-        explode: true
-        in: query
-        name: message
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: هدف رویداد؛ USER یا POST
-        explode: true
-        in: query
-        name: target_type
-        required: false
-        schema:
-          enum:
-          - USER
-          - POST
-          type: string
-        style: form
-      - description: شناسه هدف. وقتی نوع هدف USER است، باید شناسه کاربر دیوار آن کاربر
-          باشد و وقتی نوع هدف POST است، باید توکن آگهی باشد.
-        explode: true
-        in: query
-        name: target_resource_id
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/eventsSendEventResponse'
-          description: پاسخ موفقیت‌آمیز.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/googlerpcStatus'
-          description: پاسخ خطای غیرمنتظره.
-      summary: ارسال رویداد به کاربر با استفاده از API
-      tags:
-      - Events
   /experimental/open-platform/post/{post_token}/publish:
     post:
       description: |-
-        This API allows providers to pay for user post submission costs. The post_token should be obtained from the SubmitUserPost API in post collection.
+        این API امکان پرداخت هزینه انتشار آگهی ثبت شده توسط کاربر از طرف اپلیکیشن شما را فراهم می‌کند. هزینه از موجودی اپلیکیشن شما کسر می‌شود و آگهی منتشر می‌شود.
 
-        مجوزهای مورد نیاز: PUBLISH_USER_POST.
+        **نکات مهم**:
+        - ابتدا آگهی باید با API `SubmitUserPost` ایجاد شده باشد
+        - یک `id` منحصر به فرد (UUID v4) برای جلوگیری از تکرار ارسال کنید
+        - آگهی باید در وضعیت نیازمند پرداخت (WAITING_FOR_PAYMENT) باشد
+        - از کافی بودن موجودی اپلیکیشن خود اطمینان حاصل کنید
+        - هزینه‌ها بر اساس دسته‌بندی و شهر آگهی متفاوت است
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `PUBLISH_USER_POST`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `SUBMIT_USER_POST`
       operationId: Payment_PublishUserPost
       parameters:
       - description: توکن آگهی دریافت شده از RPC SubmitUserPost. شناسه منحصر به فرد
@@ -336,15 +386,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: Pay for user post submission on behalf of provider
+      security:
+      - APIKey: []
+        OAuth:
+        - SUBMIT_USER_POST
+      summary: انتشار آگهی کاربر (پرداخت توسط ارائه‌دهنده)
       tags:
       - Payment
   /experimental/open-platform/post/{post_token}/renew:
     post:
       description: |-
-        (Limited) Use this API to renew a post, which extends its visibility period. Use GetPostPricing API to get the cost of the service before calling this API.
+        این API امکان تمدید آگهی را فراهم می‌کند که دوره نمایش آن در دیوار را افزایش می‌دهد. هزینه از موجودی اپلیکیشن شما کسر می‌شود.
 
-        مجوزهای مورد نیاز: POST_RENEW.
+        **نکات مهم**:
+        - این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+        - قبل از تمدید، از `GetPostPricing` برای بررسی هزینه استفاده کنید
+        - یک `id` منحصر به فرد (UUID v4) برای جلوگیری از تکرار ارسال کنید
+        - آگهی باید در وضعیت PUBLISHED و واجد شرایط تمدید باشد
+        - از کافی بودن موجودی اپلیکیشن خود اطمینان حاصل کنید
+        - هزینه‌ها بر اساس دسته‌بندی و شهر آگهی متفاوت است
+        - تمدید، نمایش آگهی را افزایش داده و عمر آن را بازنشانی می‌کند
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `POST_RENEW`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `PAYMENT_ALL_POSTS_RENEW`
       operationId: Payment_RenewPost
       parameters:
       - explode: false
@@ -373,15 +444,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - PAYMENT_ALL_POSTS_RENEW
       summary: تمدید آگهی
       tags:
       - Payment
   /experimental/open-platform/post/{post_token}/reorder:
     post:
       description: |-
-        (Limited) Use GetPostPricing API to get the cost of the service before calling this API.
+        این API امکان نردبان کردن آگهی به بالای لیست را فراهم می‌کند. هزینه از موجودی اپلیکیشن شما کسر می‌شود.
 
-        مجوزهای مورد نیاز: POST_REORDER.
+        **نکات مهم**:
+        - این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+        - قبل از نردبان، از `GetPostPricing` برای بررسی هزینه استفاده کنید
+        - یک `id` منحصر به فرد (UUID v4) برای جلوگیری از تکرار ارسال کنید
+        - آگهی باید در وضعیت PUBLISHED باشد
+        - از کافی بودن موجودی اپلیکیشن خود اطمینان حاصل کنید
+        - هزینه‌ها بر اساس دسته‌بندی و شهر آگهی متفاوت است
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `POST_REORDER`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `PAYMENT_ALL_POSTS_REORDER`
       operationId: Payment_ReorderPost
       parameters:
       - explode: false
@@ -410,46 +501,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - PAYMENT_ALL_POSTS_REORDER
       summary: نردبان آگهی
       tags:
       - Payment
-  /experimental/open-platform/posts/new:
-    post:
-      description: |-
-        این API به شما امکان ثبت آگهی را می‌دهد. این نیاز به دامنه OAuth `SUBMIT_POST` دارد.
-        می‌توانید آگهی را با عنوان، توضیحات، تصاویر و سایر فیلدها ثبت کنید. فیلدهای عمومی و فیلدهای مخصوص دسته‌بندی وجود دارند.
-
-        مجوزهای مورد نیاز: SUBMIT_POST.
-      operationId: Post_SubmitPost
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/postSubmitPostRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/postSubmitPostResponse'
-          description: پاسخ موفقیت‌آمیز.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/googlerpcStatus'
-          description: پاسخ خطای غیرمنتظره.
-      summary: ثبت آگهی
-      tags:
-      - Post
   /experimental/open-platform/posts/new-v2:
     post:
       description: |-
-        این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به مجوز `SUBMIT_POST` نیاز دارد.
-        شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+        این API امکان ثبت آگهی با استفاده از اعتبارسنجی JSON schema را فراهم می‌کند. داده‌های آگهی در برابر قالب دسته‌بندی مشخص شده اعتبارسنجی می‌شوند.
 
-        مجوزهای مورد نیاز: SUBMIT_POST.
+        **نکات مهم**:
+        - فیلدهای ویژه دسته‌بندی باید از [قالب](https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/) پیروی کنند
+        - تمام فیلدهای اجباری ذکر شده در قالب باید ارسال شوند، در غیر این صورت ثبت ناموفق خواهد بود
+        - این برای ثبت در سطح اپلیکیشن است (آگهی‌های ارائه‌دهنده)
+        - آگهی‌های ثبت شده توسط ارائه‌دهندگان باید آگهی‌های کسب‌وکار باشند، بنابراین توکن کسب‌وکار الزامی است
+        - کاربر احراز هویت شده باید به کسب‌وکار دسترسی داشته باشد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `SUBMIT_POST`
       operationId: Post_SubmitPostV2
       requestBody:
         content:
@@ -470,16 +545,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
+      security:
+      - APIKey: []
+      summary: ثبت آگهی
       tags:
       - Post
   /experimental/open-platform/posts/{post_token}/customized-button:
     delete:
       description: |-
-        این API دکمه اختصاصی را از آگهی ثبت شده توسط سرویس شما حذف می‌کند. این API نیاز به مجوز `SET_CUSTOMIZED_BUTTON` دارد.
+        این API تنظیمات دکمه اختصاصی را از یک آگهی حذف می‌کند.
 
+        #### دسترسی‌ها:
 
-        مجوزهای مورد نیاز: SET_CUSTOMIZED_BUTTON.
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `SET_CUSTOMIZED_BUTTON`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_SET_CUSTOMIZED_BUTTON`
       operationId: Post_DeletePostCustomizedButton
       parameters:
       - explode: false
@@ -502,15 +586,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_SET_CUSTOMIZED_BUTTON
       summary: حذف دکمه اختصاصی از آگهی
       tags:
       - Post
     post:
       description: |-
-        این API برای تنظیم دکمه اختصاصی برای یک آگهی استفاده می‌شود. اگر دکمه‌ای وجود نداشته باشد، ایجاد خواهد شد. اگر از قبل وجود داشته باشد، داده‌های آن به‌روزرسانی خواهد شد. این API به مجوز `SET_CUSTOMIZED_BUTTON` نیاز دارد.
-        اگر این آگهی توسط کاربر ثبت شده باشد، این API به توکن دسترسی کاربر در هدرهای درخواست با دامنه OAuth `USER_SET_CUSTOMIZED_BUTTON` نیاز دارد.
+        این API تنظیمات دکمه اختصاصی را برای یک آگهی تعیین می‌کند. اگر دکمه وجود نداشته باشد، ایجاد می‌شود. اگر از قبل وجود داشته باشد، داده‌های آن به‌روزرسانی می‌شوند.
 
-        مجوزهای مورد نیاز: SET_CUSTOMIZED_BUTTON.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `SET_CUSTOMIZED_BUTTON`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_SET_CUSTOMIZED_BUTTON`
       operationId: Post_SetPostCustomizedButton
       parameters:
       - explode: false
@@ -539,13 +634,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: تنظیم دکمه اختصاصی بر روی آگهی ثبت شده
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_SET_CUSTOMIZED_BUTTON
+      summary: تنظیم دکمه اختصاصی روی آگهی
       tags:
       - Post
   /experimental/open-platform/posts/{post_token}/stats:
     get:
-      description: "از این api برای مشاهده‌ی آمارهای یک آگهی (مانند تعداد بازدید‌ه\
-        ای آگهی) استفاده کنید. \n\nمجوزهای مورد نیاز: POST_STATS_RETRIEVE."
+      description: |-
+        این API امکان دریافت آمار یک آگهی شامل بازدیدها، نمایش‌ها و چت‌ها را فراهم می‌کند. آمار روزانه برای 7 روز اخیر و تعداد کل برمی‌گردد.
+
+        **نکات مهم**:
+        - فقط آمار آگهی‌های متعلق به کاربر احراز هویت شده برگردانده می‌شود
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `POST_STATS_RETRIEVE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_POSTS_STATS_READ`
       operationId: Post_GetPostStats
       parameters:
       - description: توکن آگهی
@@ -569,20 +681,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_POSTS_STATS_READ
       summary: دریافت آمارهای آگهی
       tags:
       - Post
   /experimental/open-platform/semantic/post/{token}:
     post:
       description: |-
-        در برخی موارد، ذخیره اطلاعات مربوط به آگهی در دیوار بدون افزودن افزونه ضروری است.
-        این API توکن دسترسی با دامنه `POST_SEMANTIC_CREATE` را انتظار دارد.
+        این API امکان ذخیره اطلاعات درباره یک آگهی در دیوار بدون افزودن افزونه را فراهم می‌کند.
 
+        #### دسترسی‌ها:
 
-        مجوزهای مورد نیاز: POST_SEMANTIC_CREATE.
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `POST_SEMANTIC_CREATE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `POST_SEMANTIC_CREATE.post_token`
       operationId: Semantic_CreatePostSemantic
       parameters:
-      - explode: false
+      - description: توکن آگهی
+        explode: false
         in: path
         name: token
         required: true
@@ -608,18 +731,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - POST_SEMANTIC_CREATE.post_token
       summary: ایجاد اطلاعات معنایی آگهی
       tags:
       - Semantic
   /experimental/open-platform/transactions:
     get:
       description: |-
-        (Limited) Using this API you can retrieve a list of transactions. Follow pages till you get an empty list.
+        این API امکان دریافت لیست صفحه‌بندی شده از تراکنش‌های اپلیکیشن شما را فراهم می‌کند. برای تاریخچه تراکنش، ممیزی و تسویه حساب استفاده کنید.
 
-        مجوزهای مورد نیاز: TRANSACTION_LIST.
+        **نکات مهم**:
+        - این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+        - نتایج صفحه‌بندی شده هستند - از `page_size` برای کنترل تعداد آیتم‌ها در هر صفحه استفاده کنید
+        - از `page_token` در پاسخ برای دریافت صفحه بعدی استفاده کنید
+        - تراکنش‌ها بر اساس زمان ایجاد مرتب می‌شوند (جدیدترین اول)
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `TRANSACTION_LIST`
       operationId: Payment_ListTransactions
       parameters:
-      - description: تعداد تراکنش‌ها برای برگرداندن در هر صفحه
+      - description: تعداد تراکنش‌ها در هر صفحه
         explode: true
         in: query
         name: page_size
@@ -649,15 +786,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: لیست تراکنش‌ها
       tags:
       - Payment
   /experimental/open-platform/transactions/{id}:
     get:
       description: |-
-        (Limited) Using this API you can retrieve transaction details.
+        این API امکان دریافت اطلاعات دقیق یک تراکنش خاص با شناسه آن را فراهم می‌کند. برای پیگیری وضعیت تراکنش، هزینه‌ها و متادیتا استفاده کنید.
 
-        مجوزهای مورد نیاز: TRANSACTION_RETRIEVE.
+        **نکات مهم**:
+        - این قابلیت فقط برای اپلیکیشن‌های تایید شده در دسترس است
+        - شناسه تراکنش همان UUID است که هنگام ایجاد تراکنش ارسال کردید
+        - وضعیت‌های تراکنش: PENDING، COMPLETED، FAILED، REFUNDED
+        - انواع تراکنش: REORDER، SUBMIT، RENEW
+        - برای تایید تکمیل تراکنش پس از عملیات‌های پولی استفاده کنید
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `TRANSACTION_RETRIEVE`
       operationId: Payment_GetTransaction
       parameters:
       - description: شناسه منحصر به فرد برای تراکنش، همان id در درخواست
@@ -681,15 +831,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: دریافت جزئیات تراکنش
       tags:
       - Payment
   /experimental/open-platform/user-posts/can-submit:
     get:
       description: |-
-        با این API میتوانید بررسی کنید آیا کاربر می‌تواند آگهی ارسال کند یا خیر.این API انتظار دارد توکن کاربر در درخواست با اسکوپ `SUBMIT_USER_POST` موجود باشد.
+        این API بررسی می‌کند که آیا کاربر واجد شرایط ثبت آگهی است. تایید می‌کند که کاربر در لیست سیاه نیست، متخلف نیست و احراز هویت شده است.
 
-        مجوزهای مورد نیاز: CAN_USER_SUBMIT_POST.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CAN_USER_SUBMIT_POST`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `SUBMIT_USER_POST`
       operationId: Post_CanUserSubmitPost
       responses:
         "200":
@@ -704,17 +864,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - SUBMIT_USER_POST
       summary: بررسی اینکه آیا کاربر می‌تواند آگهی ارسال کند
       tags:
       - Post
   /experimental/open-platform/user-posts/new:
     post:
       description: |-
-        این API به شما امکان ثبت آگهی از طرف یک کاربر احراز هویت شده با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به احراز هویت OAuth با توکن دسترسی معتبر و دامنه OAuth `SUBMIT_USER_POST` نیاز دارد.
-        بر خلاف SubmitPostV2 که آگهی‌ها را به عنوان ارائه‌دهنده ثبت می‌کند، این نقطه پایانی آگهی‌ها را به عنوان کاربر مرتبط با توکن دسترسی ارائه شده ثبت می‌کند. آگهی متعلق به کاربر احراز هویت شده خواهد بود.
-        شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+        این API امکان ثبت آگهی از طرف کاربر احراز هویت شده با استفاده از اعتبارسنجی JSON schema را فراهم می‌کند. آگهی متعلق به کاربر احراز هویت شده خواهد بود و می‌توان از طریق APIهای مختص کاربر مدیریت کرد.
 
-        مجوزهای مورد نیاز: SUBMIT_USER_POST.
+        **نکات مهم**:
+        - فیلدهای ویژه دسته‌بندی باید از [قالب](https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/) پیروی کنند
+        - تمام فیلدهای اجباری ذکر شده در قالب باید ارسال شوند، در غیر این صورت ثبت ناموفق خواهد بود
+        - آگهی‌های ثبت شده توسط ارائه‌دهندگان باید آگهی‌های کسب‌وکار باشند، بنابراین توکن کسب‌وکار الزامی است
+        - کاربر احراز هویت شده باید به کسب‌وکار دسترسی داشته باشد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `SUBMIT_USER_POST`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `SUBMIT_USER_POST`
       operationId: Post_SubmitUserPost
       requestBody:
         content:
@@ -735,15 +911,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - SUBMIT_USER_POST
       summary: ثبت آگهی به عنوان کاربر
       tags:
       - Post
   /experimental/open-platform/wallet/payments/commit:
     post:
       description: |-
-        (Limited) Using this API you can commit a successful payment. This API is idempotent and you can call it multiple times.
+        این API تراکنش پرداخت کیف پول را پس از پرداخت موفق نهایی می‌کند.
 
-        مجوزهای مورد نیاز: WALLET_PAYMENT.
+        **نکات مهم**:
+        - این قابلیت آزمایشی است و فقط برای اپلیکیشن‌های تایید شده در دسترس است
+        - فقط تراکنش‌هایی که در وضعیت PAID هستند را نهایی کنید
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `WALLET_PAYMENT`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CREATE_WALLET_PAYMENT`
       operationId: Payment_CommitWalletTransaction
       requestBody:
         content:
@@ -764,15 +956,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: تایید تراکنش کیف پول
+      security:
+      - APIKey: []
+        OAuth:
+        - CREATE_WALLET_PAYMENT
+      summary: نهایی کردن تراکنش کیف پول
       tags:
       - Payment
   /experimental/open-platform/wallet/payments/create:
     post:
       description: |-
-        (Limited) Using this API you can start a payment transaction from the users wallet.
+        این API امکان شروع تراکنش پرداخت از کیف پول دیوار کاربر را فراهم می‌کند. کاربر برای تکمیل پرداخت هدایت می‌شود و می‌توانید وضعیت تراکنش را پیگیری کنید.
 
-        مجوزهای مورد نیاز: WALLET_PAYMENT.
+        **نکات مهم**:
+        - این قابلیت آزمایشی است و فقط برای اپلیکیشن‌های تایید شده در دسترس است
+        - کاربر برای تکمیل تراکنش به آدرس پرداخت هدایت می‌شود
+        - پس از پرداخت، کاربر به `redirect_url` مشخص شده شما هدایت می‌شود
+        - از `RetrieveWalletTransaction` برای بررسی وضعیت پرداخت استفاده کنید
+        - از `CommitWalletTransaction` برای نهایی کردن تراکنش پس از پرداخت موفق استفاده کنید
+
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `WALLET_PAYMENT`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CREATE_WALLET_PAYMENT`
       operationId: Payment_CreateWalletPayment
       requestBody:
         content:
@@ -793,18 +1005,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - CREATE_WALLET_PAYMENT
       summary: ایجاد پرداخت کیف پول
       tags:
       - Payment
   /experimental/open-platform/wallet/payments/{token}:
     get:
       description: |-
-        (Limited) Using this API you can retrieve a transaction and its status. Use this API to validate the payment before committing.
+        این API امکان دریافت وضعیت فعلی و جزئیات تراکنش پرداخت کیف پول را فراهم می‌کند. برای تایید تکمیل پرداخت قبل از commit کردن تراکنش استفاده کنید.
 
-        مجوزهای مورد نیاز: WALLET_PAYMENT.
+        **نکات مهم**:
+        - این قابلیت آزمایشی است و فقط برای اپلیکیشن‌های تایید شده در دسترس است
+        - وضعیت‌های تراکنش: UNKNOWN، CREATED، EXPIRED، PAID، COMMITTED
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `WALLET_PAYMENT`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CREATE_WALLET_PAYMENT`
       operationId: Payment_RetrieveWalletTransaction
       parameters:
-      - description: توکن تراکنشی که می‌خواهید بازیابی کنید
+      - description: توکن تراکنشی که می‌خواهید دریافت کنید
         explode: false
         in: path
         name: token
@@ -825,15 +1053,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: بازیابی تراکنش کیف پول
+      security:
+      - APIKey: []
+        OAuth:
+        - CREATE_WALLET_PAYMENT
+      summary: دریافت تراکنش کیف پول
       tags:
       - Payment
   /v1/open-platform/add-ons/post/{token}:
     delete:
       description: |-
-        فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
+        این API امکان حذف افزونه از یک آگهی را فراهم می‌کند. تمام افزونه‌های ایجاد شده توسط اپلیکیشن شما برای توکن آگهی مشخص شده حذف می‌شوند.
 
-        مجوزهای مورد نیاز: ADD_ON_DELETE.
+        **نکات مهم**:
+        - فقط افزونه‌های ایجاد شده توسط اپلیکیشن شما قابل حذف هستند
+
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `ADD_ON_DELETE`
       operationId: Addons_DeletePostAddon
       parameters:
       - explode: false
@@ -856,18 +1096,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: حذف افزونه از آگهی
+      security:
+      - APIKey: []
+      summary: حذف افزونه آگهی
       tags:
       - Addons
   /v1/open-platform/addons/business/{business_token}:
     post:
       description: |-
-        با استفاده از این API و با مجوز کاربر، می‌توانید افزونه جدیدی به آگهی‌های کسب‌و‌کار متصل کنید.
-        می‌توانید از ویجت‌های موجود برای طراحی افزونه خود استفاده کنید.
-        این API به توکن دسترسی با یکی از دامنه‌های زیر نیاز دارد:
-        - BUSINESS_ADDON_CREATE.{business_token}
+        این API امکان ایجاد افزونه کسب‌وکار را فراهم می‌کند که روی تمام آگهی‌های منتشر شده یک کسب‌وکار نمایش داده می‌شود.
 
-        مجوزهای مورد نیاز: BUSINESS_ADDON_CREATE.
+        **نکات مهم**:
+        - ویجت‌ها باید معتبر بوده و از مشخصات فرمت ویجت پیروی کنند
+        - مالکیت کسب‌وکار قبل از ایجاد افزونه بررسی می‌شود
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `BUSINESS_ADDON_CREATE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `BUSINESS_ADDON_CREATE.business_token`
       operationId: Addons_CreateBusinessAddon
       parameters:
       - explode: false
@@ -896,13 +1147,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
+      security:
+      - APIKey: []
+        OAuth:
+        - BUSINESS_ADDON_CREATE.business_token
+      summary: ایجاد افزونه کسب‌وکار
       tags:
       - Addons
   /v1/open-platform/addons/post/{token}:
     delete:
-      description: فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد
-        شده‌اند.
+      description: |-
+        این API امکان حذف افزونه از یک آگهی را فراهم می‌کند. تمام افزونه‌های ایجاد شده توسط اپلیکیشن شما برای توکن آگهی مشخص شده حذف می‌شوند.
+
+        **نکات مهم**:
+        - فقط افزونه‌های ایجاد شده توسط اپلیکیشن شما قابل حذف هستند
+
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `ADD_ON_DELETE`
       operationId: Addons_DeletePostAddon2
       parameters:
       - explode: false
@@ -925,16 +1190,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: حذف افزونه از آگهی
+      security:
+      - APIKey: []
+      summary: حذف افزونه آگهی
       tags:
       - Addons
   /v1/open-platform/addons/user/{id}:
     delete:
       description: |-
-        این تمام افزونه‌های مرتبط با تمام آگهی‌های کاربر را حذف می‌کند.
-        فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
+        این API امکان حذف افزونه کاربر با شناسه را فراهم می‌کند. این کار افزونه کاربر و تمام افزونه‌های آگهی مرتبط را حذف می‌کند.
 
-        مجوزهای مورد نیاز: USER_ADDON_DELETE.
+        **نکات مهم**:
+        - فقط افزونه‌های کاربر ایجاد شده توسط اپلیکیشن شما قابل حذف هستند
+
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `USER_ADDON_DELETE`
       operationId: Addons_DeleteUserAddon
       parameters:
       - explode: false
@@ -957,14 +1231,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: حذف افزونه کاربر
       tags:
       - Addons
   /v1/open-platform/assets/body-status:
     get:
-      description: دریافت تمام گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار.
-        این ترجمه فارسی برای هر گزینه وضعیت بدنه که در آگهی‌ها استفاده می‌شود، ارائه
-        می‌دهد.
+      description: این API امکان دریافت گزینه‌های وضعیت بدنه موجود برای دسته‌بندی‌های
+        خودرو را فراهم می‌کند.
       operationId: Assets_GetBodyStatuses
       responses:
         "200":
@@ -979,13 +1254,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
+      summary: لیست گزینه‌های وضعیت بدنه
       tags:
       - Assets
   /v1/open-platform/assets/brand-model/{category}:
     get:
-      description: دریافت تمام مدل‌های برند دیوار در دسته‌بندی مشخص شده. این ترجمه
-        فارسی برای هر مدل برند که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+      description: |-
+        این API امکان دریافت مدل برندها برای یک دسته‌بندی خاص را فراهم می‌کند. دسته‌بندی‌های پشتیبانی شده: `light` (خودرو) و `mobile-phones`.
+
+        **نکات مهم**:
+        - مدل برندها با نام‌های فارسی برگردانده می‌شوند
+        - دسته‌بندی باید یکی از دسته‌بندی‌های پشتیبانی شده باشد، در غیر این صورت خطا برمی‌گردد
       operationId: Assets_GetBrandModels
       parameters:
       - explode: false
@@ -1008,13 +1287,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت مدل‌های برند در دسته‌بندی دیوار
+      summary: لیست مدل برندها بر اساس دسته‌بندی
       tags:
       - Assets
   /v1/open-platform/assets/category:
     get:
-      description: دریافت تمام دسته‌بندی‌های دیوار. این ترجمه فارسی برای هر دسته‌بندی
-        که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+      description: این API امکان دریافت همه دسته‌بندی‌های دیوار را فراهم می‌کند. شناسه
+        دسته‌بندی‌ها و نام‌های فارسی آنها برای استفاده در ثبت و جستجوی آگهی برمی‌گردد.
       operationId: Assets_GetCategories
       responses:
         "200":
@@ -1029,13 +1308,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت دسته‌بندی‌های دیوار
+      summary: لیست همه دسته‌بندی‌ها
       tags:
       - Assets
   /v1/open-platform/assets/city:
     get:
-      description: دریافت تمام شهرهای دیوار. این ترجمه فارسی برای هر شهر که در آگهی‌ها
-        استفاده می‌شود، ارائه می‌دهد.
+      description: این API امکان دریافت همه شهرهای دیوار را فراهم می‌کند. شناسه شهرها
+        و نام‌های فارسی آنها برای استفاده در ثبت و جستجوی آگهی برمی‌گردد.
       operationId: Assets_GetCities
       responses:
         "200":
@@ -1050,13 +1329,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت شهرهای دیوار
+      summary: لیست همه شهرها
       tags:
       - Assets
   /v1/open-platform/assets/color/{category}:
     get:
-      description: دریافت تمام رنگ‌های دیوار در دسته‌بندی مشخص شده. این ترجمه فارسی
-        برای هر رنگ که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+      description: |-
+        این API امکان دریافت رنگ‌های موجود برای یک دسته‌بندی خاص را فراهم می‌کند. دسته‌بندی‌های پشتیبانی شده: `light` (خودرو) و `mobile-phones`.
+
+        **نکات مهم**:
+        - رنگ‌ها با نام‌های فارسی برگردانده می‌شوند
+        - دسته‌بندی باید یکی از دسته‌بندی‌های پشتیبانی شده باشد، در غیر این صورت خطا برمی‌گردد
       operationId: Assets_GetColors
       parameters:
       - explode: false
@@ -1079,13 +1362,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت رنگ‌ها در دسته‌بندی دیوار
+      summary: لیست رنگ‌ها بر اساس دسته‌بندی
       tags:
       - Assets
   /v1/open-platform/assets/district:
     get:
-      description: دریافت تمام مناطق دیوار. این ترجمه فارسی برای هر منطقه که در آگهی‌ها
-        استفاده می‌شود، ارائه می‌دهد.
+      description: این API امکان دریافت محله‌های دیوار را فراهم می‌کند. می‌توان بدون
+        پارامتر برای دریافت همه محله‌ها یا با city_slug برای دریافت محله‌های یک شهر
+        خاص فراخوانی کرد.
       operationId: Assets_GetDistricts
       parameters:
       - explode: true
@@ -1108,13 +1392,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت مناطق دیوار
+      summary: لیست محله‌ها
       tags:
       - Assets
   /v1/open-platform/assets/district/{city_slug}:
     get:
-      description: دریافت تمام مناطق دیوار. این ترجمه فارسی برای هر منطقه که در آگهی‌ها
-        استفاده می‌شود، ارائه می‌دهد.
+      description: این API امکان دریافت محله‌های دیوار را فراهم می‌کند. می‌توان بدون
+        پارامتر برای دریافت همه محله‌ها یا با city_slug برای دریافت محله‌های یک شهر
+        خاص فراخوانی کرد.
       operationId: Assets_GetDistricts2
       parameters:
       - explode: false
@@ -1137,14 +1422,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت مناطق دیوار
+      summary: لیست محله‌ها
       tags:
       - Assets
   /v1/open-platform/assets/internal-storage:
     get:
-      description: دریافت تمام گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل
-        دیوار. این ترجمه فارسی برای هر گزینه حافظه داخلی که در آگهی‌ها استفاده می‌شود،
-        ارائه می‌دهد.
+      description: این API امکان دریافت گزینه‌های حافظه داخلی موجود برای دسته‌بندی‌های
+        موبایل، تبلت و لپ‌تاپ را فراهم می‌کند.
       operationId: Assets_GetInternalStorages
       responses:
         "200":
@@ -1159,15 +1443,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ
-        دیوار
+      summary: لیست گزینه‌های حافظه داخلی
       tags:
       - Assets
   /v1/open-platform/assets/oauth-scope:
     get:
       description: |-
-        اینها دامنه‌های موجود برای OAuth2.0 کنار دیوار هستند.
-        از دامنه‌ها در جریان OAuth برای درخواست دسترسی به داده‌های کاربر یا انجام اقدامات از طرف آنها استفاده کنید.
+        این API لیست OAuth اسکوپ‌های موجود برای کنار دیوار را برمی‌گرداند. از این اسکوپ‌ها در جریان OAuth برای درخواست دسترسی به داده‌های کاربر استفاده کنید.
+
+        **نکات مهم**:
+        - هر اسکوپ شامل وضعیت چرخه حیات است (آزمایشی، فعال، در حال منسوخ شدن، منسوخ شده)
+        - برخی اسکوپ‌ها نیاز به resource id دارند (مثلاً توکن آگهی، شناسه مکالمه)
       operationId: Assets_GetOAuthScopes
       responses:
         "200":
@@ -1182,14 +1468,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت دامنه‌های OAuth کنار دیوار
+      summary: لیست دامنه‌های OAuth
       tags:
       - Assets
   /v1/open-platform/assets/permission:
     get:
       description: |-
-        این مجوزها برای کنترل دسترسی در اپلیکیشن‌های کنار دیوار استفاده می‌شوند. آنها را با دامنه‌های OAuth اشتباه نگیرید.
-        انتظار می‌رود اپلیکیشن‌ها نسبت به این مجوزها کور باشند. اینها فقط برای استفاده‌های داخلی ایجاد شده‌اند، اما در صورت نیاز آزادانه درخواست فعال‌سازی برای اپلیکیشن خود را ارائه دهید.
+        این API امکان دریافت مجوزهای موجود کنار دیوار را فراهم می‌کند. این مجوزها برای کنترل دسترسی در اپلیکیشن‌های کنار دیوار استفاده می‌شوند و با دامنه‌های OAuth متفاوت هستند.
+
+        **نکات مهم**:
+        - مجوزها برای استفاده داخلی هستند و اپلیکیشن‌ها نباید مستقیماً به آنها وابسته باشند
+        - هر مجوز شامل وضعیت چرخه حیات آن است (آزمایشی، فعال، در حال منسوخ شدن، منسوخ شده)
       operationId: Assets_GetPermissions
       responses:
         "200":
@@ -1204,14 +1493,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت مجوزهای کنار دیوار
+      summary: لیست مجوزهای کنار دیوار
       tags:
       - Assets
   /v1/open-platform/assets/ram-memory:
     get:
-      description: دریافت تمام گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ
-        دیوار. این ترجمه فارسی برای هر گزینه حافظه رم که در آگهی‌ها استفاده می‌شود،
-        ارائه می‌دهد.
+      description: این API امکان دریافت گزینه‌های حافظه RAM موجود برای دسته‌بندی‌های
+        موبایل، تبلت و لپ‌تاپ را فراهم می‌کند.
       operationId: Assets_GetRamMemories
       responses:
         "200":
@@ -1226,15 +1514,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ
-        دیوار
+      summary: لیست گزینه‌های حافظه RAM
       tags:
       - Assets
   /v1/open-platform/assets/service-type:
     get:
       description: |-
-        این انواع سرویس برای گروه‌بندی سرویس‌های مشابه در کنار دیوار استفاده می‌شود.
-        هر ایده جدید با انواع سرویس جدید خوشامد است. در صورت نیاز آزادانه درخواست دهید.
+        این API امکان دریافت انواع سرویس موجود در کنار دیوار را فراهم می‌کند. انواع سرویس برای گروه‌بندی سرویس‌های مشابه استفاده می‌شوند.
+
+        **نکات مهم**:
+        - می‌توان انواع سرویس جدید را در صورت نیاز درخواست داد
       operationId: Assets_GetServiceTypes
       responses:
         "200":
@@ -1249,7 +1538,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت انواع سرویس موجود در کنار دیوار
+      summary: لیست انواع سرویس
       tags:
       - Assets
   /v1/open-platform/assets/submit-schema/{category_slug}:
@@ -1331,16 +1620,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت قالب ثبت
+      summary: دریافت schema ثبت آگهی
       tags:
       - Assets
   /v1/open-platform/chat/bot/conversations/{conversation_id}/messages:
     post:
       description: |-
-        می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
-        فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
+        این API امکان ارسال پیام از ربات چت شما به یک مکالمه یا کاربر را فراهم می‌کند. می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
 
-        مجوزهای مورد نیاز: CHAT_BOT_SEND_MESSAGE.
+        **نکات مهم**:
+        - هنگام استفاده از user_id، باید با شناسه مبهم شده کاربر احراز هویت شده مطابقت داشته باشد
+        - یا پیام متنی یا توکن رسانه باید ارسال شود (نه هر دو)
+        - می‌توان شبکه دکمه‌ها را به پیام ضمیمه کرد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CHAT_BOT_SEND_MESSAGE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CHAT_BOT_USER_MESSAGE_SEND`
       operationId: ChatAPI_ChatBotSendMessage
       parameters:
       - description: شناسه منحصر به فرد برای مکالمه
@@ -1366,14 +1667,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ارسال پیام به مکالمه ChatBot
+      security:
+      - APIKey: []
+        OAuth:
+        - CHAT_BOT_USER_MESSAGE_SEND
+      summary: ارسال پیام به مکالمه چت‌بات
       tags:
       - ChatAPI
   /v1/open-platform/chat/bot/users/{user_id}/messages:
     post:
       description: |-
-        می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
-        فراخوانی با user_id نیاز به access_token با دامنه CHAT_BOT_USER_MESSAGE_SEND دارد. این به شما امکان شروع مکالمه با کاربر از ChatBot را می‌دهد.
+        این API امکان ارسال پیام از ربات چت شما به یک مکالمه یا کاربر را فراهم می‌کند. می‌توانید این API را با conversation_id یا user_id فراخوانی کنید.
+
+        **نکات مهم**:
+        - هنگام استفاده از user_id، باید با شناسه مبهم شده کاربر احراز هویت شده مطابقت داشته باشد
+        - یا پیام متنی یا توکن رسانه باید ارسال شود (نه هر دو)
+        - می‌توان شبکه دکمه‌ها را به پیام ضمیمه کرد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CHAT_BOT_SEND_MESSAGE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CHAT_BOT_USER_MESSAGE_SEND`
       operationId: ChatAPI_ChatBotSendMessage2
       parameters:
       - description: شناسه منحصر به فرد کاربر برای شروع یا ادامه مکالمه
@@ -1399,15 +1718,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ارسال پیام به مکالمه ChatBot
+      security:
+      - APIKey: []
+        OAuth:
+        - CHAT_BOT_USER_MESSAGE_SEND
+      summary: ارسال پیام به مکالمه چت‌بات
       tags:
       - ChatAPI
   /v1/open-platform/chat/conversations/{conversation_id}:
     get:
       description: |-
-        این API برای دریافت مکالمه و پیام‌های یک مکالمه با شناسه آن استفاده می‌شود. این API توکن دسترسی با دامنه `CHAT_CONVERSATION_READ` را انتظار دارد.
+        این API امکان دریافت مکالمه و پیام‌های آن با شناسه مکالمه را فراهم می‌کند. جزئیات مکالمه و پیام‌های متنی تا زمان انقضای توکن OAuth برمی‌گردد.
 
-        مجوزهای مورد نیاز: CHAT_READ_CONVERSATION.
+        **نکات مهم**:
+        - فقط پیام‌های متنی برگردانده می‌شوند (سایر انواع پیام فیلتر می‌شوند)
+        - پیام‌ها به ترتیب صعودی برگردانده می‌شوند
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CHAT_READ_CONVERSATION`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CHAT_CONVERSATION_READ.conversation_id`
       operationId: ChatAPI_GetConversation
       parameters:
       - description: شناسه منحصر به فرد برای مکالمه
@@ -1431,23 +1766,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت مکالمه با شناسه آن
+      security:
+      - APIKey: []
+        OAuth:
+        - CHAT_CONVERSATION_READ.conversation_id
+      summary: دریافت مکالمه
       tags:
       - ChatAPI
   /v1/open-platform/events/subscriptions:
     post:
       description: |-
-        این درخواست به شما امکان اشتراک در رویداد را می‌دهد.
-        باید access-token را در این API ارسال کنید تا دسترسی شما بررسی شود.
-        برای اشتراک در `NEW_MESSAGE_ON_POST` به یکی از این دامنه‌ها نیاز دارید:
-        - CHAT_POST_CONVERSATIONS_READ.{post_token}
-        - CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
-        برای اشتراک در `POST_UPDATE` به دامنه `USER_POSTS_GET` نیاز دارید.
-        پس از فراخوانی این API، هنگام وقوع رویداد مربوطه در webhook خود مطلع خواهید شد.
-        مطمئن شوید URL webhook در پنل ارائه‌دهندگان برای اپلیکیشن شما تنظیم شده است.
-        برخی رویدادها به طور پیش‌فرض فعال هستند و نیازی به اشتراک ندارند (مثل پیام‌های chatbot).
+        این API امکان اشتراک در رویدادها برای دریافت اعلان‌ها از طریق webhook هنگام وقوع رویدادها را فراهم می‌کند. پس از اشتراک، هنگام وقوع رویداد مربوطه در آدرس webhook شما مطلع خواهید شد.
 
-        مجوزهای مورد نیاز: EVENTS_REGISTER_SUBSCRIPTION.
+        **نکات مهم**:
+        - برای رویداد `NEW_MESSAGE_ON_POST`: نیاز به اسکوپ `CHAT_POST_CONVERSATIONS_READ.post_token` یا `CHAT_SUPPLIER_ALL_CONVERSATIONS_READ`
+        - برای رویداد `POST_UPDATE`: نیاز به اسکوپ `USER_POSTS_GET`
+        - آدرس webhook باید در پنل ارائه‌دهندگان برای اپلیکیشن شما تنظیم شده باشد
+        - برخی رویدادها به صورت پیش‌فرض فعال هستند و نیازی به اشتراک ندارند (مثل پیام‌های ربات چت)
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `EVENTS_REGISTER_SUBSCRIPTION`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CHAT_POST_CONVERSATIONS_READ.post_token` یا `CHAT_SUPPLIER_ALL_CONVERSATIONS_READ` یا `USER_POSTS_GET`
       operationId: Events_RegisterEventSubscription
       requestBody:
         content:
@@ -1468,16 +1813,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - CHAT_POST_CONVERSATIONS_READ.post_token
+        - CHAT_SUPPLIER_ALL_CONVERSATIONS_READ
+        - USER_POSTS_GET
       summary: اشتراک در رویداد
       tags:
       - Events
   /v1/open-platform/finder/post/{token}:
     get:
       description: |-
-        این API به شما امکان دریافت جزئیات آگهی دیوار با استفاده از توکن آن را می‌دهد.
-        می‌توانید از توکن برای دریافت داده‌های آگهی و وضعیت آن استفاده کنید
+        این API امکان دریافت داده‌های عمومی آگهی با توکن را فراهم می‌کند. جزئیات آگهی شامل داده‌های دسته‌بندی، موقعیت، وضعیت، زمان‌ها و اطلاعات کسب‌وکار برمی‌گردد.
 
-        مجوزهای مورد نیاز: GET_POST.
+        **نکات مهم**:
+        - فقط داده‌های عمومی آگهی برگردانده می‌شوند (فیلدهای خصوصی حذف می‌شوند)
+        - می‌توان هر آگهی منتشر شده‌ای را دریافت کرد، محدود به آگهی‌های خود کاربر نیست
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `GET_POST`
       operationId: Finder_GetPost
       parameters:
       - explode: false
@@ -1500,16 +1858,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: دریافت آگهی دیوار
       tags:
       - Finder
   /v1/open-platform/finder/user-posts:
     get:
       description: |-
-        این API به شما امکان دریافت تمام آگهی‌های یک کاربر را می‌دهد.
-        می‌توانید از این API برای نمایش آگهی‌های کاربر در سرویس خود استفاده کنید.
+        این API امکان دریافت لیست آگهی‌های متعلق به کاربر احراز هویت شده را فراهم می‌کند. اطلاعات پایه شامل توکن، عنوان، تصاویر، دسته‌بندی و وضعیت نمایش شماره تلفن برمی‌گردد.
 
-        مجوزهای مورد نیاز: GET_USER_POSTS.
+        **نکات مهم**:
+        - فقط آگهی‌های متعلق به کاربر احراز هویت شده برگردانده می‌شوند
+        - آگهی‌ها در وضعیت‌های مختلف برگردانده می‌شوند: منتشر شده، در انتظار پرداخت، در انتظار بررسی یا نیازمند اصلاح
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `GET_USER_POSTS`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_POSTS_GET`
       operationId: Finder_GetUserPosts
       responses:
         "200":
@@ -1524,15 +1895,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_POSTS_GET
       summary: دریافت آگهی‌های کاربر
       tags:
       - Finder
   /v1/open-platform/get-user-id-by-phone:
     post:
       description: |-
-        با استفاده از این API می‌توانید شناسه‌ی دیوار یک کاربر را با استفاده از شماره تلفن دریافت کنید. این اجازه مختص برنامه‌هایی است که دسترسی به شماره تماس کاربر ندارند و برای ارائه‌ی خدمات پشتیبانی به کاربران، نیاز به تبدیل شماره به شناسه‌ی دیوار دارند.
+        این API امکان پیدا کردن شناسه کاربر با شماره تلفن را می‌دهد. مناسب برای یکپارچه‌سازی با سیستم‌های CRM یا پشتیبانی.
 
-        مجوزهای مورد نیاز: GET_USER_ID_BY_PHONE.
+        **نکات مهم**:
+        - شناسه مبهم‌شده برمی‌گردد (یکتا برای هر اپلیکیشن، نه شناسه واقعی کاربر دیوار)
+
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `GET_USER_ID_BY_PHONE`
       operationId: Finder_GetUserIDByPhone
       requestBody:
         content:
@@ -1553,16 +1936,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت شناسه دیوار کاربر با شماره تلفن
+      security:
+      - APIKey: []
+      summary: دریافت شناسه کاربر
       tags:
       - Finder
   /v1/open-platform/payment-ticket/validate:
     post:
       description: |-
-        بلیط‌های پرداخت برای یکپارچه‌سازی اپلیکیشن‌های کنار با تیم‌های داخلی دیوار طراحی شده‌اند.
-        با استفاده از این API می‌توانید بلیط پرداخت را اعتبارسنجی کرده و payload صادرکننده را دریافت کنید.
+        این API امکان اعتبارسنجی تیکت پرداخت و دریافت payload صادرکننده آن را فراهم می‌کند. برای تایید تیکت‌های ارائه شده توسط کاربران جهت یکپارچه‌سازی با سرویس‌های دیوار استفاده کنید.
 
-        مجوزهای مورد نیاز: PAYMENT_TICKET_VALIDATE.
+        **نکات مهم**:
+        - این API توسط اپلیکیشن‌های کنار برای اعتبارسنجی تیکت‌ها استفاده می‌شود
+        - پاسخ شامل payload ارائه شده توسط صادرکننده است
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `PAYMENT_TICKET_VALIDATE`
       operationId: PaymentTicket_Validate
       requestBody:
         content:
@@ -1583,17 +1975,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: اعتبارسنجی بلیط پرداخت
+      security:
+      - APIKey: []
+      summary: اعتبارسنجی تیکت پرداخت
       tags:
       - PaymentTicket
   /v1/open-platform/post/image-upload-url:
     get:
+      deprecated: true
       description: |-
-        این API به شما اجازه می‌دهد یک آدرس اینترنتی برای بارگذاری تصاویر یک پست دریافت کنید.
-        می‌توانید تصاویر را با یک درخواست POST و رمزگذاری باینری به آدرس برگشتی بارگذاری کنید.
-        به جای آن از https://kenar.divar.dev/openapi-doc/post-get-upload-urls-v2/ استفاده کنید
+        این API آدرس آپلود برای بارگذاری تصاویر آگهی را برمی‌گرداند.
 
-        مجوزهای مورد نیاز: UPLOAD_POST_IMAGE.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `UPLOAD_POST_IMAGE`
       operationId: Post_GetImageUploadURL
       responses:
         "200":
@@ -1608,15 +2005,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: دریافت آدرس اپلود تصاویر آگهی (منسوخ شده)
       tags:
       - Post
   /v1/open-platform/post/{post_token}:
     delete:
       description: |-
-        این API به شما امکان حذف آگهی را می‌دهد. این نیاز به اسکوپ OAuth `DELETE_USER_POST` دارد.
+        این API امکان حذف آگهی را فراهم می‌کند. فقط آگهی‌های متعلق به کاربر احراز هویت شده قابل حذف هستند.
 
-        مجوزهای مورد نیاز: DELETE_USER_POST.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `DELETE_USER_POST`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `DELETE_USER_POST`
       operationId: Post_DeleteUserPost
       parameters:
       - description: توکن آگهی برای حذف
@@ -1640,15 +2047,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - DELETE_USER_POST
       summary: حذف آگهی
       tags:
       - Post
     put:
+      deprecated: true
       description: |-
-        این API به شما امکان ویرایش آگهی را می‌دهد. این نیاز به دامنه OAuth `POST_EDIT.{post_token}` دارد.
-        در حال حاضر فقط می‌توانید عنوان، توضیحات و تصاویر آگهی را ویرایش کنید.
+        این API امکان ویرایش آگهی را فراهم می‌کند. می‌توانید عنوان، توضیحات و تصاویر آگهی را به‌روزرسانی کنید.
 
-        مجوزهای مورد نیاز: EDIT_POST.
+        **نکات مهم**:
+        - عنوان باید بین 3 تا 50 کاراکتر باشد
+        - آگهی نباید منقضی شده باشد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `EDIT_POST`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `POST_EDIT.post_token`
       operationId: Post_EditPost
       parameters:
       - explode: false
@@ -1677,15 +2100,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - POST_EDIT.post_token
       summary: ویرایش آگهی
       tags:
       - Post
   /v1/open-platform/post/{post_token}/pricing:
     get:
       description: |-
-        Using this API and with user permission, you can get the price of various services like Reorder, Renew, and Submit.The price of this API is not necessarily the same as the price on Divar, and pricing may vary.Use this API to get the price before applying services (such as reordering a post, renewing a post, or submitting a post).
+        این API امکان دریافت اطلاعات قیمت‌گذاری برای خدمات مرتبط با آگهی را فراهم می‌کند. قبل از انجام عملیات‌های پولی مانند نردبان، تمدید یا ثبت آگهی از این برای بررسی هزینه‌ها استفاده کنید.
 
-        مجوزهای مورد نیاز: POST_PRICING_RETRIEVE.
+        **نکات مهم**:
+        - قیمت‌گذاری مختص اپلیکیشن شما است و ممکن است با قیمت‌گذاری استاندارد دیوار متفاوت باشد
+        - قیمت‌ها ممکن است بر اساس دسته‌بندی و شهر آگهی متفاوت باشند
+        - فلگ `available` نشان می‌دهد که آیا سرویس برای این آگهی قابل اعمال است
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `POST_PRICING_RETRIEVE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `PAYMENT_ALL_POSTS_PRICING_READ`
       operationId: Payment_GetPostPricing
       parameters:
       - description: شناسه منحصر به فرد 8-9 کاراکتری برای آگهی
@@ -1709,25 +2149,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: Retrieve the cost of the service
+      security:
+      - APIKey: []
+        OAuth:
+        - PAYMENT_ALL_POSTS_PRICING_READ
+      summary: دریافت قیمت خدمات آگهی
       tags:
       - Payment
   /v1/open-platform/semantic/user/{phone}:
     delete:
       description: |-
-        می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
+        این API امکان حذف اطلاعات معنایی یک کاربر را فراهم می‌کند.
 
-        مجوزهای مورد نیاز: USER_SEMANTIC_DELETE.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `USER_SEMANTIC_DELETE`
       operationId: Semantic_DeleteUserSemantic
       parameters:
-      - explode: false
+      - description: شماره موبایل کاربر
+        explode: false
         in: path
         name: phone
         required: true
         schema:
           type: string
         style: simple
-      - explode: true
+      - description: شناسه کاربر دیوار
+        explode: true
         in: query
         name: divar_user_id
         required: false
@@ -1747,20 +2197,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: حذف اطلاعات معنایی کاربر
       tags:
       - Semantic
     post:
       description: |-
-        در برخی موارد، ذخیره اطلاعات مربوط به کاربر در دیوار بدون افزودن افزونه ضروری است.
-        نام کاربری در دیوار همان شماره موبایل است.
-        این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
-        از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
+        این API امکان ایجاد یا به‌روزرسانی semantic کاربر بدون افزودن افزونه را می‌دهد.
 
-        مجوزهای مورد نیاز: USER_SEMANTIC_CREATE.
+        **نکات مهم**:
+        - امکان ارسال اطلاعات معنایی و تیکت پرداخت (اختیاری) وجود دارد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `USER_SEMANTIC_CREATE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_VERIFICATION_CREATE`
       operationId: Semantic_CreateUserSemantic
       parameters:
-      - explode: false
+      - description: شماره موبایل کاربر
+        explode: false
         in: path
         name: phone
         required: true
@@ -1782,25 +2243,38 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_VERIFICATION_CREATE
       summary: ایجاد اطلاعات معنایی کاربر
       tags:
       - Semantic
   /v1/open-platform/semantic/users/{divar_user_id}:
     delete:
-      description: می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
+      description: |-
+        این API امکان حذف اطلاعات معنایی یک کاربر را فراهم می‌کند.
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `USER_SEMANTIC_DELETE`
       operationId: Semantic_DeleteUserSemantic2
       parameters:
-      - explode: false
+      - description: شناسه کاربر دیوار
+        explode: false
         in: path
         name: divar_user_id
         required: true
         schema:
           type: string
         style: simple
-      - explode: true
+      - description: شماره موبایل کاربر
+        explode: true
         in: query
         name: phone
-        required: false
+        required: true
         schema:
           type: string
         style: form
@@ -1817,18 +2291,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
       summary: حذف اطلاعات معنایی کاربر
       tags:
       - Semantic
     post:
       description: |-
-        در برخی موارد، ذخیره اطلاعات مربوط به کاربر در دیوار بدون افزودن افزونه ضروری است.
-        نام کاربری در دیوار همان شماره موبایل است.
-        این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
-        از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
+        این API امکان ایجاد یا به‌روزرسانی semantic کاربر بدون افزودن افزونه را می‌دهد.
+
+        **نکات مهم**:
+        - امکان ارسال اطلاعات معنایی و تیکت پرداخت (اختیاری) وجود دارد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `USER_SEMANTIC_CREATE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_VERIFICATION_CREATE`
       operationId: Semantic_CreateUserSemantic2
       parameters:
-      - explode: false
+      - description: شناسه کاربر دیوار
+        explode: false
         in: path
         name: divar_user_id
         required: true
@@ -1850,15 +2337,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_VERIFICATION_CREATE
       summary: ایجاد اطلاعات معنایی کاربر
       tags:
       - Semantic
   /v1/open-platform/user-payments:
     post:
       description: |-
-        Using this API, you should submit a user payment. It is imperative you use this API to submit a user payment along with the received amount. This API requires an access token with the `SUBMIT_USER_PAYMENT` OAuth scope.
+        این API امکان گزارش پرداخت انجام شده توسط کاربر به سرویس شما را فراهم می‌کند. از این برای اطلاع‌رسانی دیوار درباره تراکنش‌هایی که کاربران از طریق پلتفرم شما پرداخت می‌کنند استفاده کنید.
 
-        مجوزهای مورد نیاز: SUBMIT_USER_PAYMENT.
+        **نکات مهم**:
+        - باید پرداخت‌ها را در بازه زمانی توافق شده گزارش دهید
+        - `reference_id` باید برای هر تراکنش منحصر به فرد باشد (برای تسویه حساب استفاده می‌شود)
+        - شناسه خدماتی که کاربر برای آنها پرداخت کرده را لیست کنید (مثلاً 'banner', 'title_refinement')
+        - این داده‌ها برای تقسیم درآمد و گزارش مالی استفاده می‌شوند
+
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `SUBMIT_USER_PAYMENT`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `SUBMIT_USER_PAYMENT`
       operationId: Payment_SubmitUserPayment
       requestBody:
         content:
@@ -1879,18 +2385,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: Submit a user payment
+      security:
+      - APIKey: []
+        OAuth:
+        - SUBMIT_USER_PAYMENT
+      summary: ثبت رکورد پرداخت کاربر
       tags:
       - Payment
   /v1/open-platform/user-post/{token}:
     get:
       description: |-
-        این API به شما امکان دریافت اطلاعات دقیق درباره یک آگهی خاص با استفاده از توکن آن را می‌دهد.
-        این نقطه پایانی آگهی‌های ثبت شده توسط کاربران احراز هویت شده از طریق پلتفرم باز را برمی‌گرداند، شامل داده‌های کسب‌وکار، وضعیت و دلایل رد.
-        این API به مجوز `GET_USER_POST` نیاز دارد.
-        این API به دامنه OAuth `USER_POSTS_GET` نیاز دارد.
+        این API امکان دریافت اطلاعات دقیق یک آگهی شامل داده‌های عمومی، داده‌های دسته‌بندی، داده‌های کسب‌وکار، وضعیت و دلیل رد را فراهم می‌کند. فقط آگهی‌های متعلق به کاربر احراز هویت شده قابل دریافت هستند.
 
-        مجوزهای مورد نیاز: GET_USER_POST.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `GET_USER_POST`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_POSTS_GET`
       operationId: Post_GetUserPost
       parameters:
       - explode: false
@@ -1913,15 +2428,66 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_POSTS_GET
       summary: دریافت آگهی با توکن
       tags:
       - Post
+  /v1/open-platform/user/businesses:
+    get:
+      description: |-
+        این API امکان دریافت تمام کسب‌وکارهای مرتبط با کاربر احراز هویت شده را فراهم می‌کند، همراه با نقش کاربر در هر کسب‌وکار.
+
+        **نکات مهم**:
+        - تمام کسب‌وکارهایی که کاربر در آنها نقش دارد (مثلاً مالک یا همکار) را برمی‌گرداند
+        - شامل اطلاعات کسب‌وکار مانند business_token، business_type، brand_name و نقش کاربر است
+
+        #### دسترسی‌ها:
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_BUSINESSES_READ`
+      operationId: Finder_GetUserBusinesses
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/finderGetUserBusinessesResponse'
+          description: پاسخ موفقیت‌آمیز.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_BUSINESSES_READ
+      summary: دریافت کسب‌وکارهای کاربر
+      tags:
+      - Finder
   /v1/open-platform/users:
     get:
-      description: |
-        پس از دریافت توکن دسترسی، می‌توانید از این API برای دریافت اطلاعات کاربر استفاده کنید.
-        با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
-        با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
+      description: |-
+        این API اطلاعات کاربر احراز هویت شده را برمی‌گرداند. داده‌های برگشتی به OAuth اسکوپ‌های اعطا شده بستگی دارد.
+
+        **نکات مهم**:
+        - با اسکوپ `USER_PHONE`: شماره تلفن کاربر برمی‌گردد
+        - با اسکوپ `USER_ID`: شناسه مبهم‌شده کاربر برمی‌گردد (یکتا برای هر اپلیکیشن)
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `USER_RETRIEVE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_ID` یا `USER_PHONE`
       operationId: Finder_GetUser2
       responses:
         "200":
@@ -1936,17 +2502,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_ID
+        - USER_PHONE
       summary: دریافت اطلاعات کاربر
       tags:
       - Finder
     post:
       description: |-
-        پس از دریافت توکن دسترسی، می‌توانید از این API برای دریافت اطلاعات کاربر استفاده کنید.
-        با scope `USER_PHONE` می‌توانید شماره تلفن کاربر را دریافت کنید.
-        با scope `USER_ID` می‌توانید شناسه کاربر را دریافت کرده و می‌توانید روی منحصر به فرد بودن این شناسه تکیه کنید.
+        این API اطلاعات کاربر احراز هویت شده را برمی‌گرداند. داده‌های برگشتی به OAuth اسکوپ‌های اعطا شده بستگی دارد.
 
+        **نکات مهم**:
+        - با اسکوپ `USER_PHONE`: شماره تلفن کاربر برمی‌گردد
+        - با اسکوپ `USER_ID`: شناسه مبهم‌شده کاربر برمی‌گردد (یکتا برای هر اپلیکیشن)
 
-        مجوزهای مورد نیاز: USER_RETRIEVE.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `USER_RETRIEVE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_ID` یا `USER_PHONE`
       operationId: Finder_GetUser
       requestBody:
         content:
@@ -1967,19 +2547,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_ID
+        - USER_PHONE
       summary: دریافت اطلاعات کاربر
       tags:
       - Finder
   /v2/open-platform/addons/post/{token}:
     post:
       description: |-
-        با استفاده از این API و با مجوز کاربر، می‌توانید افزونه جدیدی به آگهی متصل کنید.
-        می‌توانید از ویجت‌های موجود برای طراحی افزونه خود استفاده کنید.
-        این API به توکن دسترسی با یکی از دامنه‌های زیر نیاز دارد:
-        - USER_POSTS_ADDON_CREATE
-        - POST_ADDON_CREATE.{post_token}
+        این API امکان ایجاد افزونه متصل به یک آگهی خاص را فراهم می‌کند. افزونه در صفحه جزئیات آگهی نمایش داده می‌شود.
 
-        مجوزهای مورد نیاز: ADD_ON_CREATE.
+        **نکات مهم**:
+        - ویجت‌ها باید معتبر بوده و از مشخصات فرمت ویجت پیروی کنند
+        - مسیرهای معنایی از ویجت‌ها برای دسته‌بندی استخراج می‌شوند
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `ADD_ON_CREATE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `POST_ADDON_CREATE.post_token` یا `USER_POSTS_ADDON_CREATE`
       operationId: Addons_CreatePostAddonV2
       parameters:
       - explode: false
@@ -2008,18 +2601,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: افزودن افزونه جدید به آگهی
+      security:
+      - APIKey: []
+        OAuth:
+        - POST_ADDON_CREATE.post_token
+        - USER_POSTS_ADDON_CREATE
+      summary: ایجاد افزونه آگهی
       tags:
       - Addons
   /v2/open-platform/addons/user/{phone}:
     post:
       description: |-
-        با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
-        افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
-        می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
-        این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
+        این API امکان ایجاد افزونه کاربر را فراهم می‌کند که به صورت خودکار به تمام آگهی‌های کاربر متصل می‌شود. افزونه برای آگهی‌های آینده اعمال شده و همچنین تا 30 آگهی اخیر به عقب برمی‌گردد.
 
-        مجوزهای مورد نیاز: USER_ADDON_CREATE.
+        **نکات مهم**:
+        - می‌توان دسته‌بندی‌ها را برای فیلتر کردن آگهی‌هایی که افزونه دریافت می‌کنند مشخص کرد
+        - ویجت‌ها باید معتبر بوده و از مشخصات فرمت ویجت پیروی کنند
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `USER_ADDON_CREATE`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_ADDON_CREATE`
       operationId: Addons_CreateUserAddonV2
       parameters:
       - explode: false
@@ -2044,16 +2651,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: افزودن افزونه جدید به کاربر
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_ADDON_CREATE
+      summary: ایجاد افزونه کاربر
       tags:
       - Addons
   /v2/open-platform/addons/users/{divar_user_id}:
     post:
       description: |-
-        با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
-        افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
-        می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
-        این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
+        این API امکان ایجاد افزونه کاربر را فراهم می‌کند که به صورت خودکار به تمام آگهی‌های کاربر متصل می‌شود. افزونه برای آگهی‌های آینده اعمال شده و همچنین تا 30 آگهی اخیر به عقب برمی‌گردد.
+
+        **نکات مهم**:
+        - می‌توان دسته‌بندی‌ها را برای فیلتر کردن آگهی‌هایی که افزونه دریافت می‌کنند مشخص کرد
+        - ویجت‌ها باید معتبر بوده و از مشخصات فرمت ویجت پیروی کنند
+
+        #### دسترسی‌ها:
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `USER_ADDON_CREATE`
       operationId: Addons_CreateUserAddonV22
       parameters:
       - explode: false
@@ -2078,20 +2696,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: افزودن افزونه جدید به کاربر
+      security:
+      - APIKey: []
+        OAuth:
+        - USER_ADDON_CREATE
+      summary: ایجاد افزونه کاربر
       tags:
       - Addons
   /v2/open-platform/conversations/{conversation_id}/messages:
     post:
       description: |-
-        این API برای ارسال پیام به مکالمه استفاده می‌شود.
-        برای فراخوانی این API به یکی از دامنه‌های زیر نیاز دارید:
-        - CONVERSATION_SEND_MESSAGE.{conversation_id}
-        - CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND
-        - CHAT_POST_CONVERSATIONS_MESSAGE_SEND.{post_token}
+        این API امکان ارسال پیام متنی یا رسانه به یک مکالمه را فراهم می‌کند. اگر مکالمه وجود نداشته باشد، به صورت خودکار ایجاد می‌شود.
 
+        **نکات مهم**:
+        - یا پیام متنی یا توکن رسانه باید ارسال شود (نه هر دو)
+        - می‌توان شبکه دکمه‌ها را برای فرستنده و گیرنده ضمیمه کرد
 
-        مجوزهای مورد نیاز: CHAT_SEND_MESSAGE_OAUTH.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `CHAT_SEND_MESSAGE_OAUTH`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `CHAT_POST_CONVERSATIONS_MESSAGE_SEND.post_token` یا `CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND` یا `CONVERSATION_SEND_MESSAGE.conversation_id`
       operationId: ChatAPI_ConversationSendMessage
       parameters:
       - description: شناسه منحصر به فرد برای مکالمه
@@ -2121,18 +2750,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
+      security:
+      - APIKey: []
+        OAuth:
+        - CHAT_POST_CONVERSATIONS_MESSAGE_SEND.post_token
+        - CHAT_SUPPLIER_ALL_CONVERSATIONS_MESSAGE_SEND
+        - CONVERSATION_SEND_MESSAGE.conversation_id
       summary: ارسال پیام به مکالمه
       tags:
       - ChatAPI
   /v2/open-platform/finder/post:
     post:
       description: |-
-        این API به شما امکان جستجو آگهی‌های دیوار با برخی فیلترها را می‌دهد.
-        می‌توانید آگهی‌ها را بر اساس دسته‌بندی، شهر، منطقه و برخی فیلترهای دیگر جستجو کنید.
-        آگهی‌ها بر اساس زمان آنها مرتب می‌شوند.
+        این API امکان جستجوی آگهی‌های منتشر شده دیوار با فیلتر را فراهم می‌کند. می‌توانید بر اساس دسته‌بندی، شهر، محله و فیلدهای ویژه دسته‌بندی مانند محدوده قیمت، متراژ، تعداد اتاق و سال تولید فیلتر کنید.
 
+        **نکات مهم**:
+        - آگهی‌ها بر اساس زمان آخرین تغییر مرتب می‌شوند
+        - فقط آگهی‌های منتشر شده برگردانده می‌شوند
 
-        مجوزهای مورد نیاز: SEARCH_POST.
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `SEARCH_POST`
       operationId: Finder_SearchPostV2
       requestBody:
         content:
@@ -2153,16 +2793,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: جستجو آگهی‌های دیوار با فیلترهایی
+      security:
+      - APIKey: []
+      summary: جستجوی آگهی‌های دیوار
       tags:
       - Finder
   /v2/open-platform/post/upload-urls:
     get:
       description: |-
-        این API به شما امکان دریافت URL آپلود برای آپلود تصاویر و ویدیوهای آگهی را می‌دهد.
-        می‌توانید تصاویر/ویدیوها را با استفاده از درخواست POST یا PUT با کدگذاری باینری به URL برگشتی آپلود کنید. آدرس برگشتی این API به api-key شما برای آپلود نیاز دارد. لطفاً توجه داشته باشید که آدرس برگشتی ممکن است بدون اطلاع قبلی تغییر کند.
+        این API امکان دریافت آدرس‌های آپلود برای بارگذاری تصاویر و ویدیوهای آگهی را فراهم می‌کند. می‌توانید تصاویر/ویدیوها را با درخواست POST یا PUT با کدگذاری باینری به آدرس برگشتی آپلود کنید.
 
-        مجوزهای مورد نیاز: UPLOAD_POST_IMAGE.
+        **نکات مهم**:
+        - آدرس برگشتی برای آپلود نیاز به api-key شما دارد
+
+        #### دسترسی‌ها:
+
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `UPLOAD_POST_IMAGE`
       operationId: Post_GetUploadURLsV2
       responses:
         "200":
@@ -2177,20 +2825,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: دریافت آدرس آپلود برای تصاویر و ویدیو‌ی آگهی‌ها
+      security:
+      - APIKey: []
+      summary: دریافت آدرس آپلود تصاویر و ویدیو
       tags:
       - Post
   /v2/open-platform/post/{post_token}:
     put:
       description: |-
-        این API به شما امکان ویرایش آگهی با استفاده از احراز هویت OAuth را می‌دهد.
-        توکن دسترسی از یک کاربر با اسکوپ OAuth `POST_EDIT.{post_token}` یا `EDIT_USER_POST` مورد نیاز است.
+        این API امکان ویرایش آگهی با پشتیبانی از field mask را فراهم می‌کند. می‌توانید عنوان، توضیحات، تصاویر، موقعیت، فیلدهای ویژه دسته‌بندی و سایر ویژگی‌ها را به‌روزرسانی کنید.
 
-        می‌توانید عنوان، توضیحات، تصاویر، موقعیت، فیلدهای مخصوص دسته‌بندی و سایر ویژگی‌های آگهی را ویرایش کنید. فیلدهای مخصوص دسته‌بندی باید از قالب دسته‌بندی آگهی پیروی کنند. قالب را از اینجا دریافت کنید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/
+        **نکات مهم**:
+        - فیلدهای ویژه دسته‌بندی باید از [قالب](https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/) پیروی کنند
+        - از `update_mask` برای مشخص کردن فیلدهای مورد به‌روزرسانی استفاده کنید
+        - هنگام استفاده از اسکوپ `EDIT_USER_POST`، آگهی باید متعلق به کاربر احراز هویت شده باشد
+        - آگهی نباید منقضی شده باشد
 
-        از فیلد update_mask برای مشخص کردن فیلدهایی که می‌خواهید به‌روزرسانی کنید استفاده کنید.
+        #### دسترسی‌ها:
 
-        مجوزهای مورد نیاز: EDIT_POST.
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `EDIT_POST`
+
+        ##### OAuth اسکوپ موردنیاز:
+
+        - `EDIT_USER_POST` یا `POST_EDIT.post_token`
       operationId: Post_EditPostV2
       parameters:
       - description: توکن آگهی
@@ -2220,7 +2879,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
           description: پاسخ خطای غیرمنتظره.
-      summary: ویرایش آگهی با پشتیبانی از فیلد ماسک
+      security:
+      - APIKey: []
+        OAuth:
+        - EDIT_USER_POST
+        - POST_EDIT.post_token
+      summary: ویرایش آگهی (پیشرفته)
       tags:
       - Post
 components:
@@ -2993,7 +3657,7 @@ components:
         buttons:
           $ref: '#/components/schemas/chatapiChatButtonGrid'
         media_token:
-          description: توکن برای مدیای ضمیمه شده (در صورت وجود)
+          description: توکن فایل ضمیمه شده (در صورت وجود)
           example: media_token_12345
           type: string
         text_message:
@@ -3141,7 +3805,7 @@ components:
         media_token: media_token_12345
       properties:
         media_token:
-          description: توکن برای مدیای ضمیمه شده (در صورت وجود)
+          description: توکن فایل ضمیمه شده (در صورت وجود)
           example: media_token_12345
           type: string
         message:
@@ -4023,7 +4687,7 @@ components:
         count: 239
       properties:
         count:
-          description: تعداد روزانه‌ی آمار مورد نظر (مثلا بازدید)
+          description: تعداد روزانه آمار (مثلاً بازدید)
           example: 239
           format: int32
           type: integer
@@ -4042,12 +4706,12 @@ components:
           count: 239
       properties:
         daily:
-          description: مقدار آمار مورد نظر در هفت روز اخیر
+          description: مقدار روزانه آمار در هفت روز گذشته
           items:
             $ref: '#/components/schemas/GetPostStatsResponseDailyStats'
           type: array
         total:
-          description: تعداد کلی آمار (مثلا بازدید)
+          description: مجموع آمار (مثلاً بازدید)
           example: 239
           format: int32
           type: integer
@@ -4072,67 +4736,6 @@ components:
         url:
           type: string
       type: object
-    HomePresellFieldsConstructionPhase:
-      description: وضعیت فعلی پروژه
-      enum:
-      - CONSTRUCTION_PHASE_PERMIT_AND_LAND_PREPARATION
-      - CONSTRUCTION_PHASE_EXCAVATION
-      - CONSTRUCTION_PHASE_FOUNDATION
-      - CONSTRUCTION_PHASE_STRUCTURE
-      - CONSTRUCTION_PHASE_ROOFING
-      - CONSTRUCTION_PHASE_MASONRY
-      - CONSTRUCTION_PHASE_MEP_ROUGH_IN
-      - CONSTRUCTION_PHASE_INTERIOR_PLASTERING
-      - CONSTRUCTION_PHASE_FACADE
-      - CONSTRUCTION_PHASE_TILING_AND_FLOORING
-      - CONSTRUCTION_PHASE_PAINTING_AND_INTERIOR_DECORATION
-      - CONSTRUCTION_PHASE_DOOR_AND_WINDOW_INSTALLATION
-      - CONSTRUCTION_PHASE_FINAL_MEP_INSTALLATION
-      - CONSTRUCTION_PHASE_LANDSCAPING
-      - CONSTRUCTION_PHASE_COMPLETION_CERTIFICATE
-      - CONSTRUCTION_PHASE_FINAL_DELIVERY
-      example: CONSTRUCTION_PHASE_EXCAVATION
-      type: string
-    HomePresellFieldsDeliveryMonth:
-      description: ماه تحویل (تقویم شمسی)
-      enum:
-      - DELIVERY_MONTH_FARVARDIN
-      - DELIVERY_MONTH_ORDIBEHESHT
-      - DELIVERY_MONTH_KHORDAD
-      - DELIVERY_MONTH_TIR
-      - DELIVERY_MONTH_MORDAD
-      - DELIVERY_MONTH_SHAHRIVAR
-      - DELIVERY_MONTH_MEHR
-      - DELIVERY_MONTH_ABAN
-      - DELIVERY_MONTH_AZAR
-      - DELIVERY_MONTH_DEY
-      - DELIVERY_MONTH_BAHMAN
-      - DELIVERY_MONTH_ESFAND
-      example: DELIVERY_MONTH_TIR
-      type: string
-    HomePresellFieldsDeliveryYear:
-      description: سال تحویل (تقویم شمسی)
-      enum:
-      - DELIVERY_YEAR_1404
-      - DELIVERY_YEAR_1405
-      - DELIVERY_YEAR_1406
-      - DELIVERY_YEAR_1407
-      - DELIVERY_YEAR_1408
-      - DELIVERY_YEAR_1409
-      - DELIVERY_YEAR_1410
-      - DELIVERY_YEAR_1411
-      - DELIVERY_YEAR_1412
-      - DELIVERY_YEAR_1413
-      - DELIVERY_YEAR_1414
-      example: DELIVERY_YEAR_1405
-      type: string
-    HomePresellFieldsUnitType:
-      description: نوع واحدهای ارائه شده در پروژه
-      enum:
-      - UNIT_TYPE_RESIDENTIAL_APARTMENT
-      - UNIT_TYPE_COMMERCIAL_UNIT
-      - UNIT_TYPE_OFFICE_UNIT
-      type: string
     ImageCarouselRowImageItem:
       example:
         description: description
@@ -4274,6 +4877,7 @@ components:
       - BUSINESS_CREATE_CUSTOMIZED_BUTTON
       - DELETE_USER_POST
       - EDIT_USER_POST
+      - USER_BUSINESSES_READ
       type: string
     PaymentPublishUserPostBody:
       example:
@@ -4281,14 +4885,13 @@ components:
         id: id
       properties:
         extra_details:
-          description: جزئیات اضافی که می‌خواهید به سمت کنار ارسال کنید. این فیلد
-            اختیاری است و می‌تواند برای حل ناسازگاری‌ها در تراکنش استفاده شود.
+          description: اطلاعات تکمیلی که می‌خواهید به کنار ارسال کنید. این فیلد اختیاری
+            است و برای رفع مغایرت‌های احتمالی در تراکنش کاربرد دارد.
           type: string
         id:
-          description: یک uuid نسخه 4 که باید برای هر پرداخت منحصر به فرد باشد. این
-            uuid باید در سمت شما تولید شده و در درخواست ارسال شود. اگر id ای ارسال
-            شود که تراکنش موفق یا نیمه موفقی در سمت کنار داشته باشد، خطا دریافت خواهید
-            کرد.
+          description: یک UUID نسخه ۴ که باید برای هر پرداخت یکتا باشد. این UUID باید
+            در سمت شما ساخته شده و در درخواست ارسال شود. اگر id ارسال‌شده قبلاً تراکنش
+            موفق یا نیمه‌موفقی در کنار داشته باشد، خطا دریافت می‌کنید.
           type: string
       type: object
     PaymentRenewPostBody:
@@ -4297,14 +4900,13 @@ components:
         id: id
       properties:
         extra_details:
-          description: جزئیات اضافی که می‌خواهید به سمت کنار ارسال کنید. این فیلد
-            اختیاری است و می‌تواند برای حل ناسازگاری‌ها در تراکنش استفاده شود.
+          description: اطلاعات تکمیلی که می‌خواهید به کنار ارسال کنید. این فیلد اختیاری
+            است و برای رفع مغایرت‌های احتمالی در تراکنش کاربرد دارد.
           type: string
         id:
-          description: یک uuid نسخه 4 که باید برای هر پرداخت منحصر به فرد باشد. این
-            uuid باید در سمت شما تولید شده و در درخواست ارسال شود. اگر id ای ارسال
-            شود که تراکنش موفق یا نیمه موفقی در سمت کنار داشته باشد، خطا دریافت خواهید
-            کرد.
+          description: یک UUID نسخه ۴ که باید برای هر پرداخت یکتا باشد. این UUID باید
+            در سمت شما ساخته شده و در درخواست ارسال شود. اگر id ارسال‌شده قبلاً تراکنش
+            موفق یا نیمه‌موفقی در کنار داشته باشد، خطا دریافت می‌کنید.
           type: string
       type: object
     PaymentReorderPostBody:
@@ -4313,14 +4915,13 @@ components:
         id: id
       properties:
         extra_details:
-          description: جزئیات اضافی که می‌خواهید به سمت کنار ارسال کنید. این فیلد
-            اختیاری است و می‌تواند برای حل ناسازگاری‌ها در تراکنش استفاده شود.
+          description: اطلاعات تکمیلی که می‌خواهید به کنار ارسال کنید. این فیلد اختیاری
+            است و برای رفع مغایرت‌های احتمالی در تراکنش کاربرد دارد.
           type: string
         id:
-          description: یک uuid نسخه 4 که باید برای هر پرداخت منحصر به فرد باشد. این
-            uuid باید در سمت شما تولید شده و در درخواست ارسال شود. اگر id ای ارسال
-            شود که تراکنش موفق یا نیمه موفقی در سمت کنار داشته باشد، خطا دریافت خواهید
-            کرد.
+          description: یک UUID نسخه ۴ که باید برای هر پرداخت یکتا باشد. این UUID باید
+            در سمت شما ساخته شده و در درخواست ارسال شود. اگر id ارسال‌شده قبلاً تراکنش
+            موفق یا نیمه‌موفقی در کنار داشته باشد، خطا دریافت می‌کنید.
           type: string
       type: object
     PostCreateBusinessCustomizedButtonBody:
@@ -4393,16 +4994,15 @@ components:
         - category_data.price
       properties:
         category_data:
-          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمی\
-            ل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
+          description: "فیلدهای مختص دسته‌بندی که باید مطابق schema تکمیل شوند. schema\
+            \ را اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
           type: object
         general_data:
           $ref: '#/components/schemas/postPostGeneralData'
         update_mask:
-          description: فیلد ماسک مشخص می‌کند کدام فیلدها به‌روزرسانی شوند. از مسیرهای
-            تو در تو برای هر دو general_data و category_data استفاده کنید (مثلاً،
-            'general_data.title'، 'category_data.price'). این امکان تمایز بین حذف
-            یک فیلد و به‌روزرسانی نکردن آن را فراهم می‌کند.
+          description: مشخص می‌کند کدام فیلدها به‌روزرسانی شوند. از مسیرهای تودرتو
+            مانند 'general_data.title' یا 'category_data.price' استفاده کنید. این
+            کار تمایز بین پاک کردن یک فیلد و تغییر ندادن آن را ممکن می‌سازد.
           example:
           - general_data.title
           - general_data.description
@@ -4426,14 +5026,12 @@ components:
           format: uint64
           type: string
         name:
-          description: "Name of the video, retrieved from `video_name` field in the\
-            \ response of upload video endpoint"
+          description: نام ویدیو (از فیلد `video_name` در پاسخ آپلود)
           example: raw/4786eb10-eac6-4077-b622-78c1c42855c7.mp4
           type: string
         thumbnail_name:
-          description: کاور ویدیو. این مقدار را از روی فیلد `thumbnail_name` در پاسخ
-            به درخواست آپلود ویدیو پر کنید. این تصویر، فریم اول ویدیو‌ی آپلود شده
-            است.
+          description: کاور ویدیو (از فیلد `thumbnail_name` در پاسخ آپلود). فریم اول
+            ویدیوی آپلود‌شده است.
           example: thumbnail/4786eb10-eac6-4077-b622-78c1c42855c7.jpg
           type: string
       required:
@@ -4558,14 +5156,19 @@ components:
         cost: 0
       properties:
         cost:
+          description: هزینه مرتبط با عملیات
           format: int32
           type: integer
         semantic:
           additionalProperties:
             type: string
+          description: مپ key-value اطلاعات معنایی برای ذخیره
           type: object
         ticket_uuid:
+          description: UUID تیکت پرداخت (اختیاری)
           type: string
+      required:
+      - semantic
       type: object
     SemanticCreateUserSemanticBody:
       example:
@@ -4576,96 +5179,26 @@ components:
         phone: phone
       properties:
         cost:
+          description: هزینه مرتبط با عملیات
           format: int32
           type: integer
         phone:
+          description: شماره موبایل کاربر
           type: string
         semantic:
           additionalProperties:
             type: string
+          description: مپ key-value اطلاعات معنایی برای ذخیره
           type: object
         ticket_uuid:
+          description: UUID تیکت پرداخت (اختیاری)
           type: string
+      required:
+      - phone
+      - semantic
       type: object
-    SendEventRequestTargetType:
-      enum:
-      - USER
-      - POST
-      type: string
-    ServicesFieldsCategory:
-      description: زیردسته‌بندی سرویس
-      enum:
-      - CATEGORY_CAR_AND_MOTOR
-      - CATEGORY_CATERING
-      - CATEGORY_COMPUTER_AND_MOBILE
-      - CATEGORY_ACCOUNTING_AND_FINANCE
-      - CATEGORY_TRANSPORT
-      - CATEGORY_CRAFTSMEN
-      - CATEGORY_BEAUTY_AND_HAIRCARE
-      - CATEGORY_CLEANING
-      - CATEGORY_GARDEN_AND_LANDSCAPING
-      - CATEGORY_TEACHING
-      example: CATEGORY_CAR_AND_MOTOR
-      type: string
-    TemporaryResidenceFieldsComfortAmenity:
-      description: فهرست امکانات رفاهی موجود در اقامتگاه
-      enum:
-      - COMFORT_AMENITY_TV
-      - COMFORT_AMENITY_AUDIO_SYSTEM
-      - COMFORT_AMENITY_REFRIGERATOR
-      - COMFORT_AMENITY_HIGH_SPEED_INTERNET
-      - COMFORT_AMENITY_WASHING_MACHINE
-      - COMFORT_AMENITY_GAS_STOVE
-      - COMFORT_AMENITY_MICROWAVE
-      - COMFORT_AMENITY_COOKING_UTENSILS
-      - COMFORT_AMENITY_CLEAN_SHEETS_TOWELS
-      - COMFORT_AMENITY_IRON
-      - COMFORT_AMENITY_HAIR_DRYER
-      - COMFORT_AMENITY_AIR_CONDITIONER
-      - COMFORT_AMENITY_PRIVATE_PARKING
-      - COMFORT_AMENITY_BALCONY
-      - COMFORT_AMENITY_PRIVATE_BATHROOM
-      - COMFORT_AMENITY_WORK_SPACE
-      - COMFORT_AMENITY_ELEVATOR_ACCESS
-      - COMFORT_AMENITY_SECURITY_SYSTEM
-      - COMFORT_AMENITY_COFFEE_MAKER
-      - COMFORT_AMENITY_AIR_CONDITIONING_SYSTEM
-      - COMFORT_AMENITY_CENTRAL_HEATING
-      - COMFORT_AMENITY_DISHWASHER
-      - COMFORT_AMENITY_POOL
-      - COMFORT_AMENITY_OUTDOOR_SPACE
-      type: string
-    TemporaryResidenceFieldsHeatingCoolingSystem:
-      description: فهرست سیستم‌های گرمایش و سرمایش موجود
-      enum:
-      - HEATING_COOLING_SYSTEM_EVAPORATIVE_COOLER
-      - HEATING_COOLING_SYSTEM_RADIATOR
-      - HEATING_COOLING_SYSTEM_SPLIT
-      - HEATING_COOLING_SYSTEM_PACKAGE
-      - HEATING_COOLING_SYSTEM_GAS_HEATER
-      - HEATING_COOLING_SYSTEM_FAN_COIL
-      - HEATING_COOLING_SYSTEM_CHAUFFAGE
-      - HEATING_COOLING_SYSTEM_AIR_CONDITIONER
-      - HEATING_COOLING_SYSTEM_UNDERFLOOR_HEATING
-      type: string
-    TemporaryResidenceFieldsPetsAllowed:
-      description: سیاست نگهداری حیوان خانگی برای اقامتگاه
-      enum:
-      - PETS_ALLOWED_YES
-      - PETS_ALLOWED_NO
-      - PETS_ALLOWED_WITH_AGREEMENT
-      example: PETS_ALLOWED_YES
-      type: string
-    TemporaryResidenceFieldsRentalPeriod:
-      description: نوع دوره اجاره (روزانه، هفتگی، ماهانه)
-      enum:
-      - RENTAL_PERIOD_DAILY
-      - RENTAL_PERIOD_WEEKLY
-      - RENTAL_PERIOD_MONTHLY
-      example: RENTAL_PERIOD_DAILY
-      type: string
     addonsAction:
-      description: نمایان‌گر یک عملیات که می‌تواند انجام شود
+      description: نمایانگر یک Action که می‌تواند انجام شود
       example:
         open_post_page:
           post_token: AJIEWcw
@@ -4682,8 +5215,8 @@ components:
         get_dynamic_action:
           $ref: '#/components/schemas/addonsGetDynamicAction'
         open_direct_link:
-          description: عملیاتی برای ارسال کاربر به URL شما به صورت مستقیم با فقط یک
-            شناسه منبع (در صورت وجود)
+          description: عملیاتی برای هدایت مستقیم کاربر به URL شما (در صورت وجود resource
+            id)
           example: https://your-site.com/some-path
           type: string
         open_post_manage_page:
@@ -4768,13 +5301,11 @@ components:
       type: object
     addonsAddonSemantic:
       description: |-
-        این پیام استخراج شده توسط OpenPlatform از اطلاعات معنایی
-        ارائه‌دهنده سرویس است. راهنماها:
-         - همیشه بررسی کنید که آیا فیلد یا مقدار enum مناسبی قبل از
-         افزودن وجود دارد.
-         - مقدار صفر هر enum باید {ENUM_NAME}_UNSPECIFIED باشد.
-         - مقادیر Enum نباید با هیچ آگهی خاص یا صفت شخص
-         مطابقت داشته باشد.
+        پیام استخراج‌شده توسط OpenPlatform از semantic ارائه‌دهنده سرویس.
+        راهنما:
+        - قبل از افزودن enum جدید، بررسی کنید که آیا مقدار مناسبی وجود دارد.
+        - مقدار صفر هر enum باید {ENUM_NAME}_UNSPECIFIED باشد.
+        - مقادیر Enum نباید مختص آگهی یا شخص خاصی باشند.
       properties:
         car_verification_failure_reason:
           $ref: '#/components/schemas/AddonSemanticCarVerificationStage'
@@ -4965,19 +5496,19 @@ components:
           type: array
       type: object
     addonsGetDynamicAction:
-      description: نمایان‌گر یک اکشن پویا که می‌تواند در دستگاه کاربر دریافت و اجرا
+      description: نمایانگر یک Action پویا که می‌تواند در دستگاه کاربر دریافت و اجرا
         شود
       example:
         data:
           your-internal-id: something
       properties:
         data:
-          description: داده‌ای که می‌توانید تنظیم کنید و پس از کلیک کاربر برای شناسایی
-            عملیات به شما برگردانده می‌شود
+          description: داده‌ای که می‌توانید مقداردهی کنید و هنگام کلیک کاربر به شما
+            برگردانده می‌شود
           example:
             your-internal-id: something
           type: object
-      title: دریافت اکشن پویا
+      title: دریافت Action پویا
       type: object
     addonsGetPostAddonsResponse:
       properties:
@@ -5069,15 +5600,15 @@ components:
       title: باز کردن صفحه آگهی
       type: object
     addonsOpenServerLink:
-      description: عملیاتی برای ارسال داده‌های کامل نشست و دریافت مکان هدایت از سرور
-        شما در هر عملیات کاربر
+      description: عملیاتی برای ارسال داده‌های کامل session و دریافت آدرس redirect
+        از سرور شما
       example:
         data:
           your-internal-id: something
       properties:
         data:
-          description: داده‌ای که می‌توانید تنظیم کنید و پس از کلیک کاربر برای شناسایی
-            عملیات به شما برگردانده می‌شود
+          description: داده‌ای که می‌توانید مقداردهی کنید و هنگام کلیک کاربر به شما
+            برگردانده می‌شود
           example:
             your-internal-id: something
           type: object
@@ -5697,9 +6228,19 @@ components:
         scope:
           $ref: '#/components/schemas/OAuthScopeScope'
       title: |-
-        دامنه oauth استاندارد تجزیه شده با استفاده از رشته فرمت
-        `PERMISSION_ENUM__{resource_id}` را نمایش می‌دهد. مثال: EDIT_POST__AZrOi1eL
+        OAuth اسکوپ استاندارد با فرمت `PERMISSION_ENUM__{resource_id}`.
+        مثال: EDIT_POST__AZrOi1eL
       type: object
+    baseBusinessType:
+      enum:
+      - REAL_ESTATE_BUSINESS
+      - CAR_BUSINESS
+      - MARKETPLACE_BUSINESS
+      - CAR_CONCIERGE_SALE
+      - PERSONAL
+      - JOBS_BUSINESS
+      - PREMIUM_PANEL
+      type: string
     chatapiChatBotSendMessageResponse:
       example:
         conversation_id: conv_123456
@@ -5884,8 +6425,8 @@ components:
         token: some_random_base64
       properties:
         token:
-          description: توکن کدگذاری شده base64 ایمن برای URL که می‌تواند در نقطه پایانی
-            آپلود استفاده شود
+          description: توکن با کدگذاری base64 که می‌توان در endpoint آپلود از آن استفاده
+            کرد
           example: some_random_base64
           readOnly: true
           type: string
@@ -6057,21 +6598,6 @@ components:
       - VIDEO
       - CONTACT
       type: string
-    eventsEventButton:
-      properties:
-        action:
-          $ref: '#/components/schemas/addonsAction'
-        title:
-          description: متن برای نمایش روی دکمه
-          type: string
-      type: object
-    eventsEventButtonList:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/eventsEventButton'
-          type: array
-      type: object
     eventsRegisterEventSubscriptionRequest:
       properties:
         event_resource_id:
@@ -6087,8 +6613,6 @@ components:
       - POST_UPDATE
       type: string
     eventsRegisterEventSubscriptionResponse:
-      type: object
-    eventsSendEventResponse:
       type: object
     finderGetAllDevelopmentPostsResponse:
       properties:
@@ -6151,6 +6675,51 @@ components:
           type: string
         business_type:
           $ref: '#/components/schemas/PremiumPanelBusinessDataSubBusinessType'
+      type: object
+    finderGetUserBusinessesResponse:
+      example:
+        businesses:
+        - user_role: ROLE_ADMIN
+          business_token: xYzAbC123
+          business_type: REAL_ESTATE_BUSINESS
+          brand_description: Business description
+          brand_name: My Business
+        - user_role: ROLE_ADMIN
+          business_token: xYzAbC123
+          business_type: REAL_ESTATE_BUSINESS
+          brand_description: Business description
+          brand_name: My Business
+      properties:
+        businesses:
+          description: فهرست کسب‌وکارهای مرتبط با کاربر احراز هویت شده
+          items:
+            $ref: '#/components/schemas/finderGetUserBusinessesResponseBusiness'
+          type: array
+      type: object
+    finderGetUserBusinessesResponseBusiness:
+      example:
+        user_role: ROLE_ADMIN
+        business_token: xYzAbC123
+        business_type: REAL_ESTATE_BUSINESS
+        brand_description: Business description
+        brand_name: My Business
+      properties:
+        brand_description:
+          description: توضیحات کسب‌وکار
+          example: Business description
+          type: string
+        brand_name:
+          description: نام کسب‌وکار/برند
+          example: My Business
+          type: string
+        business_token:
+          description: شناسه توکن کسب‌وکار
+          example: xYzAbC123
+          type: string
+        business_type:
+          $ref: '#/components/schemas/baseBusinessType'
+        user_role:
+          $ref: '#/components/schemas/premium_panelUserRole'
       type: object
     finderGetUserIDByPhoneRequest:
       properties:
@@ -6428,7 +6997,7 @@ components:
           description: منسوخ شده
           items:
             type: string
-          title: "نیاز به دامنه OAuth: USER_PHONE"
+          title: "نیاز به OAuth اسکوپ: USER_PHONE"
           type: array
         user_id:
           type: string
@@ -6485,51 +7054,10 @@ components:
       - POST_STATE_DELETED
       - POST_STATE_RETIRED
       type: string
-    open_platformpostServicesFields:
-      properties:
-        category:
-          $ref: '#/components/schemas/ServicesFieldsCategory'
-        expertise_ids:
-          description: فهرست شناسه‌های تخصص
-          example:
-          - "1"
-          - "2"
-          items:
-            type: string
-          type: array
-        work_hours_end:
-          description: ساعت پایان کار به فرمت 24 ساعته (مثلاً 18 برای 18:00). فقط
-            در صورتی اعمال می‌شود که `works_24_7` false باشد.
-          example: 18
-          format: int32
-          type: integer
-        work_hours_start:
-          description: ساعت شروع کار به فرمت 24 ساعته (مثلاً 9 برای 9:00). فقط در
-            صورتی اعمال می‌شود که `works_24_7` false باشد.
-          example: 9
-          format: int32
-          type: integer
-        work_on_holidays:
-          description: آیا ارائه‌دهنده سرویس در تعطیلات کار می‌کند
-          example: true
-          type: boolean
-        works_24_7:
-          description: آیا ارائه‌دهنده سرویس به صورت 24/7 در دسترس است. اگر true باشد،
-            `work_hours_start` و `work_hours_end` نادیده گرفته می‌شوند.
-          example: false
-          type: boolean
-      required:
-      - category
-      - expertise_ids
-      - work_hours_end
-      - work_hours_start
-      - work_on_holidays
-      - works_24_7
-      type: object
     paymentCommitWalletTransactionRequest:
       properties:
         token:
-          description: توکن تراکنشی که می‌خواهید commit کنید
+          description: توکن تراکنشی که می‌خواهید نهایی کنید
           type: string
       type: object
     paymentCommitWalletTransactionResponse:
@@ -6695,15 +7223,13 @@ components:
     paymentSubmitUserPaymentRequest:
       properties:
         amount_rials:
-          description: کل مبلغ پرداختی توسط کاربر، به ریال
+          description: مبلغ کل پرداختی کاربر به ریال
           format: uint64
           type: string
         profit_rials:
-          description: بخشی از مبلغ پرداختی که به شما تعلق می‌گیرد، به ریال. به عنوان
-            مثال در افزونه‌های پرداخت امن بخش اعظم مبلغ پرداختی سهم فروشنده آگهی هست
-            و این پارامتر باید برابر بخشی از مبلغ پرداختی که مربوط به کمیسیون سرویس‌دهنده
-            پرداخت امن است قرار بگیرد. در صورتی که چنین مفهومی در فرایند پرداخت شما
-            وجود ندارد مقدار این پارامتر را دقیقا برابر amount_rials ارسال کنید.
+          description: سود یا کمیسیون شما از این تراکنش، به ریال. اگر چنین مفهومی
+            در فرایند پرداخت شما وجود ندارد، مقدار این پارامتر را برابر amount_rials
+            قرار دهید.
           format: uint64
           type: string
         reference_id:
@@ -6711,9 +7237,8 @@ components:
             این شناسه مرجع درگاه پرداخت نیست.
           type: string
         services:
-          description: لیست شناسه خدماتی که کاربر برای آنها پرداخت انجام داده است
-            (مثلاً «banner»، «title_refinement» و ...). توصیه می‌شود از نام‌های انگلیسی
-            کوتاه و توصیفی به‌عنوان شناسه خدمت استفاده شود.
+          description: لیست slug خدماتی که کاربر برای آنها پرداخت کرده (مثلاً 'banner'،
+            'title_refinement')
           items:
             type: string
           type: array
@@ -6785,12 +7310,9 @@ components:
           type: string
       type: object
     paymentWalletTransactionStatus:
-      description: "وضعیت‌های مختلفی که یک تراکنش کیف پول می‌تواند در طول چرخه حیا\
-        ت خود داشته باشد. UNKNOWN: وضعیت پیش‌فرض/مقداردهی اولیه نشده - نباید در عم\
-        لیات عادی استفاده شود. CREATED: تراکنش ایجاد شده و در انتظار پرداخت یا پرد\
-        ازش بیشتر است. EXPIRED: تراکنش ایجاد شد اما قبل از تکمیل منقضی شد (مثل timeout\
-        \ پرداخت). PAID: تراکنش پرداخت/تامین مالی شده و هنوز در انتظار تایید نهایی\
-        \ است. COMMITTED: تراکنش با موفقیت commit و نهایی شده در سیستم."
+      description: "وضعیت‌های مختلف تراکنش کیف پول: UNKNOWN (پیش‌فرض - نباید استفا\
+        ده شود)، CREATED (در انتظار پرداخت)، EXPIRED (منقضی شده)، PAID (پرداخت شده\
+        ، در انتظار تایید نهایی)، COMMITTED (نهایی شده)."
       enum:
       - CREATED
       - EXPIRED
@@ -6805,73 +7327,29 @@ components:
     payment_ticketValidateRequest:
       properties:
         phone_number:
+          description: شماره تلفن کاربر (به جای آن از user_id استفاده کنید)
           type: string
         service_cost:
+          description: هزینه سرویس به ریال
           format: int32
           type: integer
         ticket_uuid:
+          description: شناسه منحصر به فرد تیکت پرداخت
           type: string
         user_id:
+          description: شناسه منحصر به فرد کاربر
           type: string
+      required:
+      - service_cost
+      - ticket_uuid
       type: object
     payment_ticketValidateResponse:
       example:
         issuer_payload: "{}"
       properties:
         issuer_payload:
+          description: داده payload ارائه شده توسط صادرکننده تیکت
           type: object
-      type: object
-    postApartmentSellFields:
-      properties:
-        floor:
-          description: طبقه ملک. از -1 برای زیرزمین و 0 برای همکف استفاده کنید. از
-            1 برای طبقه اول و غیره.
-          example: 1
-          format: int32
-          type: integer
-        has_elevator:
-          description: آیا ملک آسانسور دارد
-          example: true
-          type: boolean
-        has_own_image:
-          description: تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
-          example: true
-          type: boolean
-        has_parking:
-          description: آیا ملک پارکینگ دارد
-          example: true
-          type: boolean
-        has_warehouse:
-          description: آیا ملک انباری دارد
-          example: true
-          type: boolean
-        price:
-          description: قیمت ملک به تومان
-          example: "1000000000"
-          format: int64
-          type: string
-        rooms_count:
-          $ref: '#/components/schemas/postRoomsCount'
-        size:
-          description: مساحت ملک بر حسب متر مربع
-          example: 100
-          format: int32
-          type: integer
-        year_built:
-          description: سال ساخت ملک (تقویم شمسی)
-          example: 1404
-          format: int32
-          type: integer
-      required:
-      - floor
-      - has_elevator
-      - has_own_image
-      - has_parking
-      - has_warehouse
-      - price
-      - rooms_count
-      - size
-      - year_built
       type: object
     postCanUserSubmitPostResponse:
       example:
@@ -7040,62 +7518,6 @@ components:
         business_type:
           $ref: '#/components/schemas/PremiumPanelBusinessDataSubBusinessType'
       type: object
-    postHomePresellFields:
-      properties:
-        base_price_per_square_meter:
-          description: قیمت پایه هر متر مربع به تومان
-          example: "50000000"
-          format: int64
-          type: string
-        construction_phase:
-          $ref: '#/components/schemas/HomePresellFieldsConstructionPhase'
-        delivery_month:
-          $ref: '#/components/schemas/HomePresellFieldsDeliveryMonth'
-        delivery_payment_percentage:
-          description: درصد پرداخت مورد نیاز در زمان تحویل
-          example: 60
-          format: int32
-          type: integer
-        delivery_year:
-          $ref: '#/components/schemas/HomePresellFieldsDeliveryYear'
-        developer_company_name:
-          description: نام شرکت سازنده
-          example: Mehr Construction Group
-          type: string
-        down_payment_percentage:
-          description: درصد پیش پرداخت اولیه
-          example: 40
-          format: int32
-          type: integer
-        has_own_image:
-          description: تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
-          example: true
-          type: boolean
-        min_unit_size:
-          description: حداقل مساحت واحد بر حسب متر مربع
-          example: 60
-          format: int32
-          type: integer
-        project_name:
-          description: نام پروژه پیش‌فروش مسکن
-          example: Paradise Tower
-          type: string
-        project_physical_progress_percentage:
-          description: درصد پیشرفت فیزیکی پروژه
-          example: 10
-          format: int32
-          type: integer
-        unit_types_offered:
-          description: فهرست انواع واحد ارائه شده در پروژه
-          example:
-          - UNIT_TYPE_RESIDENTIAL_APARTMENT
-          - UNIT_TYPE_COMMERCIAL_UNIT
-          items:
-            $ref: '#/components/schemas/HomePresellFieldsUnitType'
-          type: array
-      required:
-      - has_own_image
-      type: object
     postLocationType:
       description: نوع موقعیت
       enum:
@@ -7125,12 +7547,11 @@ components:
         longitude: 51.4043
       properties:
         category_slug:
-          description: "نام دسته‌بندی هدف. دسته‌بندی‌های موجود را در این آدرس بیاب\
-            ید: https://kenar.divar.dev/openapi-doc/assets-get-categories/"
+          description: "slug دسته‌بندی. لیست دسته‌بندی‌ها: https://kenar.divar.dev/openapi-doc/assets-get-categories/"
           example: apartment-sell
           type: string
         chat_enabled:
-          description: امکان چت فعال باشد
+          description: فعال بودن چت
           example: true
           type: boolean
         city:
@@ -7146,7 +7567,7 @@ components:
           example: abshar
           type: string
         hide_phone:
-          description: عدم نمایش شماره تماس به کاربران
+          description: مخفی کردن شماره تماس از کاربران
           example: true
           type: boolean
         images:
@@ -7181,85 +7602,7 @@ components:
       - location_type
       - title
       type: object
-    postRoomsCount:
-      description: تعداد اتاق‌های اقامتگاه
-      enum:
-      - ROOMS_COUNT_0
-      - ROOMS_COUNT_1
-      - ROOMS_COUNT_2
-      - ROOMS_COUNT_3
-      - ROOMS_COUNT_4
-      - ROOMS_COUNT_5_OR_MORE
-      example: ROOMS_COUNT_2
-      type: string
     postSetPostCustomizedButtonResponse:
-      type: object
-    postSubmitPostRequest:
-      properties:
-        apartment_sell:
-          $ref: '#/components/schemas/postApartmentSellFields'
-        chat_enabled:
-          description: امکان چت فعال باشد
-          example: true
-          type: boolean
-        city:
-          description: شهر آگهی
-          example: tehran
-          type: string
-        description:
-          description: توضیحات آگهی
-          example: I'm available only in chat.
-          type: string
-        district:
-          description: محله آگهی
-          example: abshar
-          type: string
-        hide_phone:
-          description: عدم نمایش شماره تماس به کاربران
-          example: true
-          type: boolean
-        home_presell:
-          $ref: '#/components/schemas/postHomePresellFields'
-        images:
-          items:
-            type: string
-          type: array
-        landline_numbers:
-          description: شماره‌های ثابت برای افزودن به آگهی
-          example:
-          - "02188888888"
-          - "02188888889"
-          items:
-            type: string
-          type: array
-        latitude:
-          description: عرض جغرافیایی آگهی
-          example: 35.7152
-          format: double
-          type: number
-        location_type:
-          $ref: '#/components/schemas/postLocationType'
-        longitude:
-          description: طول جغرافیایی آگهی
-          example: 51.4043
-          format: double
-          type: number
-        services:
-          $ref: '#/components/schemas/open_platformpostServicesFields'
-        temporary_residence:
-          $ref: '#/components/schemas/postTemporaryResidenceFields'
-        title:
-          description: عنوان آگهی
-          example: Temporary Residence for Rent in Tehran
-          type: string
-      required:
-      - chat_enabled
-      - city
-      - description
-      - hide_phone
-      - images
-      - location_type
-      - title
       type: object
     postSubmitPostResponse:
       example:
@@ -7270,9 +7613,13 @@ components:
       type: object
     postSubmitPostV2Request:
       properties:
+        business_token:
+          description: توکن کسب‌وکاری که این آگهی متعلق به آن می‌شود
+          example: xYzAbC123
+          type: string
         category_fields:
-          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمی\
-            ل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
+          description: "فیلدهای مختص دسته‌بندی که باید مطابق schema تکمیل شوند. schema\
+            \ را اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
           type: object
         general_data:
           $ref: '#/components/schemas/postPostGeneralData'
@@ -7285,120 +7632,33 @@ components:
             type: string
           type: array
       required:
+      - business_token
       - category_fields
       - general_data
       type: object
     postSubmitUserPostRequest:
       properties:
+        business_token:
+          description: توکن کسب‌وکاری که این آگهی متعلق به آن می‌شود
+          example: xYzAbC123
+          type: string
         category_fields:
-          description: "فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمی\
-            ل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
+          description: "فیلدهای مختص دسته‌بندی که باید مطابق schema تکمیل شوند. schema\
+            \ را اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/"
           type: object
         general_data:
           $ref: '#/components/schemas/postPostGeneralData'
       required:
+      - business_token
       - category_fields
       - general_data
       type: object
-    postTemporaryResidenceFields:
-      properties:
-        area:
-          description: متراژ اقامتگاه به متر مربع
-          example: 100
-          format: int32
-          type: integer
-        check_in_time:
-          description: زمان ورود
-          example: 08:00
-          type: string
-        check_out_time:
-          description: زمان خروج
-          example: 20:00
-          type: string
-        comfort_amenities:
-          example:
-          - COMFORT_AMENITY_TV
-          - COMFORT_AMENITY_WASHING_MACHINE
-          - COMFORT_AMENITY_AIR_CONDITIONER
-          items:
-            $ref: '#/components/schemas/TemporaryResidenceFieldsComfortAmenity'
-          type: array
-        damage_deposit:
-          description: مبلغ ودیعه خسارت به تومان
-          example: "2000000"
-          format: int64
-          type: string
-        extra_person_capacity:
-          description: تعداد افراد اضافه مجاز در اقامتگاه
-          example: 2
-          format: int32
-          type: integer
-        fully_furnished:
-          description: آیا اقامتگاه کاملاً مبله است
-          example: true
-          type: boolean
-        has_own_image:
-          description: تصاویر مربوط به خود ملک بوده و تزئینی نیستند.
-          example: true
-          type: boolean
-        heating_cooling_system:
-          example:
-          - HEATING_COOLING_SYSTEM_SPLIT
-          - HEATING_COOLING_SYSTEM_RADIATOR
-          items:
-            $ref: '#/components/schemas/TemporaryResidenceFieldsHeatingCoolingSystem'
-          type: array
-        house_rules:
-          description: قوانین و مقررات خانه
-          example: no smoking
-          type: string
-        minimum_stay:
-          description: حداقل تعداد روزهای مورد نیاز برای اقامت
-          example: 3
-          format: int32
-          type: integer
-        pets_allowed:
-          $ref: '#/components/schemas/TemporaryResidenceFieldsPetsAllowed'
-        price_cost_per_extra_person:
-          description: هزینه هر نفر اضافه به ازای هر شب به تومان
-          example: "150000"
-          format: int64
-          type: string
-        price_regular_days:
-          description: قیمت اقامتگاه در روزهای عادی (شنبه تا سه‌شنبه) به تومان
-          example: "1000000"
-          format: int64
-          type: string
-        price_special_days:
-          description: قیمت اقامتگاه در روزهای خاص (تعطیلات و مناسبت‌ها) به تومان
-          example: "1500000"
-          format: int64
-          type: string
-        price_weekends:
-          description: قیمت اقامتگاه در آخر هفته (چهارشنبه تا جمعه) به تومان
-          example: "1200000"
-          format: int64
-          type: string
-        regular_person_capacity:
-          description: ظرفیت استاندارد افراد در اقامتگاه
-          example: 4
-          format: int32
-          type: integer
-        rental_period:
-          $ref: '#/components/schemas/TemporaryResidenceFieldsRentalPeriod'
-        rooms_count:
-          $ref: '#/components/schemas/postRoomsCount'
-      required:
-      - area
-      - extra_person_capacity
-      - has_own_image
-      - price_cost_per_extra_person
-      - price_regular_days
-      - price_special_days
-      - price_weekends
-      - regular_person_capacity
-      - rooms_count
-      type: object
+    premium_panelUserRole:
+      enum:
+      - ROLE_ADMIN
+      - ROLE_AGENT
+      - ROLE_OWNER
+      type: string
     protobufAny:
       additionalProperties: {}
       description: |-
@@ -7607,4 +7867,5 @@ components:
             offline_access: offline_access
             openid: openid
           tokenUrl: oauth.divar.ir/oauth2/token
+      name: ACCESS_TOKEN
       type: oauth2

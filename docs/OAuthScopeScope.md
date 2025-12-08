@@ -75,6 +75,8 @@
 
 * `EDIT_USER_POST` (value: `"EDIT_USER_POST"`)
 
+* `USER_BUSINESSES_READ` (value: `"USER_BUSINESSES_READ"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

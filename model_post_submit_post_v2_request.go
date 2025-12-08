@@ -21,7 +21,9 @@ var _ MappedNullable = &PostSubmitPostV2Request{}
 
 // PostSubmitPostV2Request struct for PostSubmitPostV2Request
 type PostSubmitPostV2Request struct {
-	// فیلدهای ویژه هر دسته‌بندی که باید مطابق قالب مشخص شده تکمیل شوند. قالب را از اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/
+	// توکن کسب‌وکاری که این آگهی متعلق به آن می‌شود
+	BusinessToken string `json:"business_token"`
+	// فیلدهای مختص دسته‌بندی که باید مطابق schema تکمیل شوند. schema را اینجا ببینید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/
 	CategoryFields map[string]interface{} `json:"category_fields"`
 	GeneralData PostPostGeneralData `json:"general_data"`
 	// شماره‌های ثابت برای افزودن به آگهی
@@ -34,8 +36,9 @@ type _PostSubmitPostV2Request PostSubmitPostV2Request
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPostSubmitPostV2Request(categoryFields map[string]interface{}, generalData PostPostGeneralData) *PostSubmitPostV2Request {
+func NewPostSubmitPostV2Request(businessToken string, categoryFields map[string]interface{}, generalData PostPostGeneralData) *PostSubmitPostV2Request {
 	this := PostSubmitPostV2Request{}
+	this.BusinessToken = businessToken
 	this.CategoryFields = categoryFields
 	this.GeneralData = generalData
 	return &this
@@ -47,6 +50,30 @@ func NewPostSubmitPostV2Request(categoryFields map[string]interface{}, generalDa
 func NewPostSubmitPostV2RequestWithDefaults() *PostSubmitPostV2Request {
 	this := PostSubmitPostV2Request{}
 	return &this
+}
+
+// GetBusinessToken returns the BusinessToken field value
+func (o *PostSubmitPostV2Request) GetBusinessToken() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BusinessToken
+}
+
+// GetBusinessTokenOk returns a tuple with the BusinessToken field value
+// and a boolean to check if the value has been set.
+func (o *PostSubmitPostV2Request) GetBusinessTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BusinessToken, true
+}
+
+// SetBusinessToken sets field value
+func (o *PostSubmitPostV2Request) SetBusinessToken(v string) {
+	o.BusinessToken = v
 }
 
 // GetCategoryFields returns the CategoryFields field value
@@ -139,6 +166,7 @@ func (o PostSubmitPostV2Request) MarshalJSON() ([]byte, error) {
 
 func (o PostSubmitPostV2Request) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["business_token"] = o.BusinessToken
 	toSerialize["category_fields"] = o.CategoryFields
 	toSerialize["general_data"] = o.GeneralData
 	if !IsNil(o.LandlineNumbers) {
@@ -152,6 +180,7 @@ func (o *PostSubmitPostV2Request) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"business_token",
 		"category_fields",
 		"general_data",
 	}

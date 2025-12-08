@@ -23,9 +23,9 @@ var _ MappedNullable = &PostGeneralDataPostVideo{}
 type PostGeneralDataPostVideo struct {
 	// زمان ویدیو به ثانیه
 	Duration string `json:"duration"`
-	// Name of the video, retrieved from `video_name` field in the response of upload video endpoint
+	// نام ویدیو (از فیلد `video_name` در پاسخ آپلود)
 	Name string `json:"name"`
-	// کاور ویدیو. این مقدار را از روی فیلد `thumbnail_name` در پاسخ به درخواست آپلود ویدیو پر کنید. این تصویر، فریم اول ویدیو‌ی آپلود شده است.
+	// کاور ویدیو (از فیلد `thumbnail_name` در پاسخ آپلود). فریم اول ویدیوی آپلود‌شده است.
 	ThumbnailName string `json:"thumbnail_name"`
 }
 

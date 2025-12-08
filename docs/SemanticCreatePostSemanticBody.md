@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cost** | Pointer to **int32** |  | [optional] 
-**Semantic** | Pointer to **map[string]string** |  | [optional] 
-**TicketUuid** | Pointer to **string** |  | [optional] 
+**Semantic** | **map[string]string** | مپ key-value اطلاعات معنایی برای ذخیره | 
+**Cost** | Pointer to **int32** | هزینه مرتبط با عملیات | [optional] 
+**TicketUuid** | Pointer to **string** | UUID تیکت پرداخت (اختیاری) | [optional] 
 
 ## Methods
 
 ### NewSemanticCreatePostSemanticBody
 
-`func NewSemanticCreatePostSemanticBody() *SemanticCreatePostSemanticBody`
+`func NewSemanticCreatePostSemanticBody(semantic map[string]string, ) *SemanticCreatePostSemanticBody`
 
 NewSemanticCreatePostSemanticBody instantiates a new SemanticCreatePostSemanticBody object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +26,26 @@ will change when the set of required properties is changed
 NewSemanticCreatePostSemanticBodyWithDefaults instantiates a new SemanticCreatePostSemanticBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetSemantic
+
+`func (o *SemanticCreatePostSemanticBody) GetSemantic() map[string]string`
+
+GetSemantic returns the Semantic field if non-nil, zero value otherwise.
+
+### GetSemanticOk
+
+`func (o *SemanticCreatePostSemanticBody) GetSemanticOk() (*map[string]string, bool)`
+
+GetSemanticOk returns a tuple with the Semantic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSemantic
+
+`func (o *SemanticCreatePostSemanticBody) SetSemantic(v map[string]string)`
+
+SetSemantic sets Semantic field to given value.
+
 
 ### GetCost
 
@@ -51,31 +71,6 @@ SetCost sets Cost field to given value.
 `func (o *SemanticCreatePostSemanticBody) HasCost() bool`
 
 HasCost returns a boolean if a field has been set.
-
-### GetSemantic
-
-`func (o *SemanticCreatePostSemanticBody) GetSemantic() map[string]string`
-
-GetSemantic returns the Semantic field if non-nil, zero value otherwise.
-
-### GetSemanticOk
-
-`func (o *SemanticCreatePostSemanticBody) GetSemanticOk() (*map[string]string, bool)`
-
-GetSemanticOk returns a tuple with the Semantic field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSemantic
-
-`func (o *SemanticCreatePostSemanticBody) SetSemantic(v map[string]string)`
-
-SetSemantic sets Semantic field to given value.
-
-### HasSemantic
-
-`func (o *SemanticCreatePostSemanticBody) HasSemantic() bool`
-
-HasSemantic returns a boolean if a field has been set.
 
 ### GetTicketUuid
 

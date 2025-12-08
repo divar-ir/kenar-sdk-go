@@ -19,7 +19,7 @@ var _ MappedNullable = &ChatapiGenerateUploadTokenResponse{}
 
 // ChatapiGenerateUploadTokenResponse struct for ChatapiGenerateUploadTokenResponse
 type ChatapiGenerateUploadTokenResponse struct {
-	// توکن کدگذاری شده base64 ایمن برای URL که می‌تواند در نقطه پایانی آپلود استفاده شود
+	// توکن با کدگذاری base64 که می‌توان در endpoint آپلود از آن استفاده کرد
 	Token *string `json:"token,omitempty"`
 }
 

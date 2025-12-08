@@ -12,6 +12,8 @@ package kenarapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SemanticCreateUserSemanticBody type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,26 @@ var _ MappedNullable = &SemanticCreateUserSemanticBody{}
 
 // SemanticCreateUserSemanticBody struct for SemanticCreateUserSemanticBody
 type SemanticCreateUserSemanticBody struct {
+	// شماره موبایل کاربر
+	Phone string `json:"phone"`
+	// مپ key-value اطلاعات معنایی برای ذخیره
+	Semantic map[string]string `json:"semantic"`
+	// هزینه مرتبط با عملیات
 	Cost *int32 `json:"cost,omitempty"`
-	Phone *string `json:"phone,omitempty"`
-	Semantic *map[string]string `json:"semantic,omitempty"`
+	// UUID تیکت پرداخت (اختیاری)
 	TicketUuid *string `json:"ticket_uuid,omitempty"`
 }
+
+type _SemanticCreateUserSemanticBody SemanticCreateUserSemanticBody
 
 // NewSemanticCreateUserSemanticBody instantiates a new SemanticCreateUserSemanticBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSemanticCreateUserSemanticBody() *SemanticCreateUserSemanticBody {
+func NewSemanticCreateUserSemanticBody(phone string, semantic map[string]string) *SemanticCreateUserSemanticBody {
 	this := SemanticCreateUserSemanticBody{}
+	this.Phone = phone
+	this.Semantic = semantic
 	return &this
 }
 
@@ -40,6 +50,54 @@ func NewSemanticCreateUserSemanticBody() *SemanticCreateUserSemanticBody {
 func NewSemanticCreateUserSemanticBodyWithDefaults() *SemanticCreateUserSemanticBody {
 	this := SemanticCreateUserSemanticBody{}
 	return &this
+}
+
+// GetPhone returns the Phone field value
+func (o *SemanticCreateUserSemanticBody) GetPhone() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Phone
+}
+
+// GetPhoneOk returns a tuple with the Phone field value
+// and a boolean to check if the value has been set.
+func (o *SemanticCreateUserSemanticBody) GetPhoneOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Phone, true
+}
+
+// SetPhone sets field value
+func (o *SemanticCreateUserSemanticBody) SetPhone(v string) {
+	o.Phone = v
+}
+
+// GetSemantic returns the Semantic field value
+func (o *SemanticCreateUserSemanticBody) GetSemantic() map[string]string {
+	if o == nil {
+		var ret map[string]string
+		return ret
+	}
+
+	return o.Semantic
+}
+
+// GetSemanticOk returns a tuple with the Semantic field value
+// and a boolean to check if the value has been set.
+func (o *SemanticCreateUserSemanticBody) GetSemanticOk() (*map[string]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Semantic, true
+}
+
+// SetSemantic sets field value
+func (o *SemanticCreateUserSemanticBody) SetSemantic(v map[string]string) {
+	o.Semantic = v
 }
 
 // GetCost returns the Cost field value if set, zero value otherwise.
@@ -72,70 +130,6 @@ func (o *SemanticCreateUserSemanticBody) HasCost() bool {
 // SetCost gets a reference to the given int32 and assigns it to the Cost field.
 func (o *SemanticCreateUserSemanticBody) SetCost(v int32) {
 	o.Cost = &v
-}
-
-// GetPhone returns the Phone field value if set, zero value otherwise.
-func (o *SemanticCreateUserSemanticBody) GetPhone() string {
-	if o == nil || IsNil(o.Phone) {
-		var ret string
-		return ret
-	}
-	return *o.Phone
-}
-
-// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SemanticCreateUserSemanticBody) GetPhoneOk() (*string, bool) {
-	if o == nil || IsNil(o.Phone) {
-		return nil, false
-	}
-	return o.Phone, true
-}
-
-// HasPhone returns a boolean if a field has been set.
-func (o *SemanticCreateUserSemanticBody) HasPhone() bool {
-	if o != nil && !IsNil(o.Phone) {
-		return true
-	}
-
-	return false
-}
-
-// SetPhone gets a reference to the given string and assigns it to the Phone field.
-func (o *SemanticCreateUserSemanticBody) SetPhone(v string) {
-	o.Phone = &v
-}
-
-// GetSemantic returns the Semantic field value if set, zero value otherwise.
-func (o *SemanticCreateUserSemanticBody) GetSemantic() map[string]string {
-	if o == nil || IsNil(o.Semantic) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Semantic
-}
-
-// GetSemanticOk returns a tuple with the Semantic field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SemanticCreateUserSemanticBody) GetSemanticOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.Semantic) {
-		return nil, false
-	}
-	return o.Semantic, true
-}
-
-// HasSemantic returns a boolean if a field has been set.
-func (o *SemanticCreateUserSemanticBody) HasSemantic() bool {
-	if o != nil && !IsNil(o.Semantic) {
-		return true
-	}
-
-	return false
-}
-
-// SetSemantic gets a reference to the given map[string]string and assigns it to the Semantic field.
-func (o *SemanticCreateUserSemanticBody) SetSemantic(v map[string]string) {
-	o.Semantic = &v
 }
 
 // GetTicketUuid returns the TicketUuid field value if set, zero value otherwise.
@@ -180,19 +174,53 @@ func (o SemanticCreateUserSemanticBody) MarshalJSON() ([]byte, error) {
 
 func (o SemanticCreateUserSemanticBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["phone"] = o.Phone
+	toSerialize["semantic"] = o.Semantic
 	if !IsNil(o.Cost) {
 		toSerialize["cost"] = o.Cost
-	}
-	if !IsNil(o.Phone) {
-		toSerialize["phone"] = o.Phone
-	}
-	if !IsNil(o.Semantic) {
-		toSerialize["semantic"] = o.Semantic
 	}
 	if !IsNil(o.TicketUuid) {
 		toSerialize["ticket_uuid"] = o.TicketUuid
 	}
 	return toSerialize, nil
+}
+
+func (o *SemanticCreateUserSemanticBody) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"phone",
+		"semantic",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSemanticCreateUserSemanticBody := _SemanticCreateUserSemanticBody{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSemanticCreateUserSemanticBody)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SemanticCreateUserSemanticBody(varSemanticCreateUserSemanticBody)
+
+	return err
 }
 
 type NullableSemanticCreateUserSemanticBody struct {

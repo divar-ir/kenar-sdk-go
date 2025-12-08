@@ -40,14 +40,23 @@ func (r ApiAddonsCreateBusinessAddonRequest) Execute() (*AddonsCreateBusinessAdd
 }
 
 /*
-AddonsCreateBusinessAddon افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
+AddonsCreateBusinessAddon ایجاد افزونه کسب‌وکار
 
-با استفاده از این API و با مجوز کاربر، می‌توانید افزونه جدیدی به آگهی‌های کسب‌و‌کار متصل کنید.
-می‌توانید از ویجت‌های موجود برای طراحی افزونه خود استفاده کنید.
-این API به توکن دسترسی با یکی از دامنه‌های زیر نیاز دارد:
-- BUSINESS_ADDON_CREATE.{business_token}
+این API امکان ایجاد افزونه کسب‌وکار را فراهم می‌کند که روی تمام آگهی‌های منتشر شده یک کسب‌وکار نمایش داده می‌شود.
 
-مجوزهای مورد نیاز: BUSINESS_ADDON_CREATE.
+**نکات مهم**:
+- ویجت‌ها باید معتبر بوده و از مشخصات فرمت ویجت پیروی کنند
+- مالکیت کسب‌وکار قبل از ایجاد افزونه بررسی می‌شود
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `BUSINESS_ADDON_CREATE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `BUSINESS_ADDON_CREATE.business_token`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessToken
@@ -181,15 +190,23 @@ func (r ApiAddonsCreatePostAddonV2Request) Execute() (map[string]interface{}, *h
 }
 
 /*
-AddonsCreatePostAddonV2 افزودن افزونه جدید به آگهی
+AddonsCreatePostAddonV2 ایجاد افزونه آگهی
 
-با استفاده از این API و با مجوز کاربر، می‌توانید افزونه جدیدی به آگهی متصل کنید.
-می‌توانید از ویجت‌های موجود برای طراحی افزونه خود استفاده کنید.
-این API به توکن دسترسی با یکی از دامنه‌های زیر نیاز دارد:
-- USER_POSTS_ADDON_CREATE
-- POST_ADDON_CREATE.{post_token}
+این API امکان ایجاد افزونه متصل به یک آگهی خاص را فراهم می‌کند. افزونه در صفحه جزئیات آگهی نمایش داده می‌شود.
 
-مجوزهای مورد نیاز: ADD_ON_CREATE.
+**نکات مهم**:
+- ویجت‌ها باید معتبر بوده و از مشخصات فرمت ویجت پیروی کنند
+- مسیرهای معنایی از ویجت‌ها برای دسته‌بندی استخراج می‌شوند
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `ADD_ON_CREATE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `POST_ADDON_CREATE.post_token` یا `USER_POSTS_ADDON_CREATE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
@@ -323,14 +340,23 @@ func (r ApiAddonsCreateUserAddonV2Request) Execute() (*AddonsCreateUserAddonResp
 }
 
 /*
-AddonsCreateUserAddonV2 افزودن افزونه جدید به کاربر
+AddonsCreateUserAddonV2 ایجاد افزونه کاربر
 
-با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
-افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
-می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
-این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
+این API امکان ایجاد افزونه کاربر را فراهم می‌کند که به صورت خودکار به تمام آگهی‌های کاربر متصل می‌شود. افزونه برای آگهی‌های آینده اعمال شده و همچنین تا 30 آگهی اخیر به عقب برمی‌گردد.
 
-مجوزهای مورد نیاز: USER_ADDON_CREATE.
+**نکات مهم**:
+- می‌توان دسته‌بندی‌ها را برای فیلتر کردن آگهی‌هایی که افزونه دریافت می‌کنند مشخص کرد
+- ویجت‌ها باید معتبر بوده و از مشخصات فرمت ویجت پیروی کنند
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `USER_ADDON_CREATE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_ADDON_CREATE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param phone
@@ -464,12 +490,19 @@ func (r ApiAddonsCreateUserAddonV22Request) Execute() (*AddonsCreateUserAddonRes
 }
 
 /*
-AddonsCreateUserAddonV22 افزودن افزونه جدید به کاربر
+AddonsCreateUserAddonV22 ایجاد افزونه کاربر
 
-با استفاده از این API و با مجوز کاربر، می‌توانید افزونه کاربر ایجاد کنید.
-افزونه کاربر به تمام آگهی‌های آینده کاربر متصل می‌شود و همچنین 30 آگهی آخر گذشته را پر می‌کند.
-می‌توانید از ویجت‌های موجود برای طراحی افزونه کاربر خود استفاده کنید.
-این API به توکن دسترسی با دامنه `USER_ADDON_CREATE` نیاز دارد
+این API امکان ایجاد افزونه کاربر را فراهم می‌کند که به صورت خودکار به تمام آگهی‌های کاربر متصل می‌شود. افزونه برای آگهی‌های آینده اعمال شده و همچنین تا 30 آگهی اخیر به عقب برمی‌گردد.
+
+**نکات مهم**:
+- می‌توان دسته‌بندی‌ها را برای فیلتر کردن آگهی‌هایی که افزونه دریافت می‌کنند مشخص کرد
+- ویجت‌ها باید معتبر بوده و از مشخصات فرمت ویجت پیروی کنند
+
+#### دسترسی‌ها:
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_ADDON_CREATE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param divarUserId
@@ -597,11 +630,19 @@ func (r ApiAddonsDeletePostAddonRequest) Execute() (map[string]interface{}, *htt
 }
 
 /*
-AddonsDeletePostAddon حذف افزونه از آگهی
+AddonsDeletePostAddon حذف افزونه آگهی
 
-فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
+این API امکان حذف افزونه از یک آگهی را فراهم می‌کند. تمام افزونه‌های ایجاد شده توسط اپلیکیشن شما برای توکن آگهی مشخص شده حذف می‌شوند.
 
-مجوزهای مورد نیاز: ADD_ON_DELETE.
+**نکات مهم**:
+- فقط افزونه‌های ایجاد شده توسط اپلیکیشن شما قابل حذف هستند
+
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `ADD_ON_DELETE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
@@ -724,9 +765,19 @@ func (r ApiAddonsDeletePostAddon2Request) Execute() (map[string]interface{}, *ht
 }
 
 /*
-AddonsDeletePostAddon2 حذف افزونه از آگهی
+AddonsDeletePostAddon2 حذف افزونه آگهی
 
-فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
+این API امکان حذف افزونه از یک آگهی را فراهم می‌کند. تمام افزونه‌های ایجاد شده توسط اپلیکیشن شما برای توکن آگهی مشخص شده حذف می‌شوند.
+
+**نکات مهم**:
+- فقط افزونه‌های ایجاد شده توسط اپلیکیشن شما قابل حذف هستند
+
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `ADD_ON_DELETE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
@@ -851,10 +902,17 @@ func (r ApiAddonsDeleteUserAddonRequest) Execute() (map[string]interface{}, *htt
 /*
 AddonsDeleteUserAddon حذف افزونه کاربر
 
-این تمام افزونه‌های مرتبط با تمام آگهی‌های کاربر را حذف می‌کند.
-فقط می‌توانید افزونه‌هایی را حذف کنید که توسط اپلیکیشن شما ایجاد شده‌اند.
+این API امکان حذف افزونه کاربر با شناسه را فراهم می‌کند. این کار افزونه کاربر و تمام افزونه‌های آگهی مرتبط را حذف می‌کند.
 
-مجوزهای مورد نیاز: USER_ADDON_DELETE.
+**نکات مهم**:
+- فقط افزونه‌های کاربر ایجاد شده توسط اپلیکیشن شما قابل حذف هستند
+
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `USER_ADDON_DELETE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id

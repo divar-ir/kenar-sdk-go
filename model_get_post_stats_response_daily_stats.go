@@ -19,7 +19,7 @@ var _ MappedNullable = &GetPostStatsResponseDailyStats{}
 
 // GetPostStatsResponseDailyStats struct for GetPostStatsResponseDailyStats
 type GetPostStatsResponseDailyStats struct {
-	// تعداد روزانه‌ی آمار مورد نظر (مثلا بازدید)
+	// تعداد روزانه آمار (مثلاً بازدید)
 	Count *int32 `json:"count,omitempty"`
 	// تاریخ به فرمت YYYY-MM-DD
 	Date *string `json:"date,omitempty"`

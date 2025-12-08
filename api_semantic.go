@@ -42,14 +42,20 @@ func (r ApiSemanticCreatePostSemanticRequest) Execute() (map[string]interface{},
 /*
 SemanticCreatePostSemantic ایجاد اطلاعات معنایی آگهی
 
-در برخی موارد، ذخیره اطلاعات مربوط به آگهی در دیوار بدون افزودن افزونه ضروری است.
-این API توکن دسترسی با دامنه `POST_SEMANTIC_CREATE` را انتظار دارد.
+این API امکان ذخیره اطلاعات درباره یک آگهی در دیوار بدون افزودن افزونه را فراهم می‌کند.
 
+#### دسترسی‌ها:
 
-مجوزهای مورد نیاز: POST_SEMANTIC_CREATE.
+##### مجوزهای API Key مورد نیاز:
+
+- `POST_SEMANTIC_CREATE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `POST_SEMANTIC_CREATE.post_token`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param token
+ @param token توکن آگهی
  @return ApiSemanticCreatePostSemanticRequest
 */
 func (a *SemanticAPIService) SemanticCreatePostSemantic(ctx context.Context, token string) ApiSemanticCreatePostSemanticRequest {
@@ -182,15 +188,23 @@ func (r ApiSemanticCreateUserSemanticRequest) Execute() (*SemanticCreateUserSema
 /*
 SemanticCreateUserSemantic ایجاد اطلاعات معنایی کاربر
 
-در برخی موارد، ذخیره اطلاعات مربوط به کاربر در دیوار بدون افزودن افزونه ضروری است.
-نام کاربری در دیوار همان شماره موبایل است.
-این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
-از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
+این API امکان ایجاد یا به‌روزرسانی semantic کاربر بدون افزودن افزونه را می‌دهد.
 
-مجوزهای مورد نیاز: USER_SEMANTIC_CREATE.
+**نکات مهم**:
+- امکان ارسال اطلاعات معنایی و تیکت پرداخت (اختیاری) وجود دارد
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `USER_SEMANTIC_CREATE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_VERIFICATION_CREATE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param phone
+ @param phone شماره موبایل کاربر
  @return ApiSemanticCreateUserSemanticRequest
 */
 func (a *SemanticAPIService) SemanticCreateUserSemantic(ctx context.Context, phone string) ApiSemanticCreateUserSemanticRequest {
@@ -323,13 +337,23 @@ func (r ApiSemanticCreateUserSemantic2Request) Execute() (*SemanticCreateUserSem
 /*
 SemanticCreateUserSemantic2 ایجاد اطلاعات معنایی کاربر
 
-در برخی موارد، ذخیره اطلاعات مربوط به کاربر در دیوار بدون افزودن افزونه ضروری است.
-نام کاربری در دیوار همان شماره موبایل است.
-این API توکن دسترسی با دامنه `USER_VERIFICATION_CREATE` را انتظار دارد.
-از APIهای اطلاعات معنایی کاربر برای این منظور استفاده کنید. این سرویس امکان ارسال اطلاعات معنایی و بلیط پرداخت اختیاری را فراهم می‌کند.
+این API امکان ایجاد یا به‌روزرسانی semantic کاربر بدون افزودن افزونه را می‌دهد.
+
+**نکات مهم**:
+- امکان ارسال اطلاعات معنایی و تیکت پرداخت (اختیاری) وجود دارد
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `USER_SEMANTIC_CREATE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_VERIFICATION_CREATE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param divarUserId
+ @param divarUserId شناسه کاربر دیوار
  @return ApiSemanticCreateUserSemantic2Request
 */
 func (a *SemanticAPIService) SemanticCreateUserSemantic2(ctx context.Context, divarUserId string) ApiSemanticCreateUserSemantic2Request {
@@ -450,6 +474,7 @@ type ApiSemanticDeleteUserSemanticRequest struct {
 	divarUserId *string
 }
 
+// شناسه کاربر دیوار
 func (r ApiSemanticDeleteUserSemanticRequest) DivarUserId(divarUserId string) ApiSemanticDeleteUserSemanticRequest {
 	r.divarUserId = &divarUserId
 	return r
@@ -462,12 +487,16 @@ func (r ApiSemanticDeleteUserSemanticRequest) Execute() (map[string]interface{},
 /*
 SemanticDeleteUserSemantic حذف اطلاعات معنایی کاربر
 
-می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
+این API امکان حذف اطلاعات معنایی یک کاربر را فراهم می‌کند.
 
-مجوزهای مورد نیاز: USER_SEMANTIC_DELETE.
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `USER_SEMANTIC_DELETE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param phone
+ @param phone شماره موبایل کاربر
  @return ApiSemanticDeleteUserSemanticRequest
 */
 func (a *SemanticAPIService) SemanticDeleteUserSemantic(ctx context.Context, phone string) ApiSemanticDeleteUserSemanticRequest {
@@ -586,6 +615,7 @@ type ApiSemanticDeleteUserSemantic2Request struct {
 	phone *string
 }
 
+// شماره موبایل کاربر
 func (r ApiSemanticDeleteUserSemantic2Request) Phone(phone string) ApiSemanticDeleteUserSemantic2Request {
 	r.phone = &phone
 	return r
@@ -598,10 +628,16 @@ func (r ApiSemanticDeleteUserSemantic2Request) Execute() (map[string]interface{}
 /*
 SemanticDeleteUserSemantic2 حذف اطلاعات معنایی کاربر
 
-می‌توانید اطلاعات معنایی یک کاربر را با فراخوانی این API حذف کنید.
+این API امکان حذف اطلاعات معنایی یک کاربر را فراهم می‌کند.
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `USER_SEMANTIC_DELETE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param divarUserId
+ @param divarUserId شناسه کاربر دیوار
  @return ApiSemanticDeleteUserSemantic2Request
 */
 func (a *SemanticAPIService) SemanticDeleteUserSemantic2(ctx context.Context, divarUserId string) ApiSemanticDeleteUserSemantic2Request {
@@ -633,10 +669,11 @@ func (a *SemanticAPIService) SemanticDeleteUserSemantic2Execute(r ApiSemanticDel
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.phone != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "phone", r.phone, "form", "")
+	if r.phone == nil {
+		return localVarReturnValue, nil, reportError("phone is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "phone", r.phone, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

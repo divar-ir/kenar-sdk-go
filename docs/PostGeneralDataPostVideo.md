@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Duration** | **string** | زمان ویدیو به ثانیه | 
-**Name** | **string** | Name of the video, retrieved from &#x60;video_name&#x60; field in the response of upload video endpoint | 
-**ThumbnailName** | **string** | کاور ویدیو. این مقدار را از روی فیلد &#x60;thumbnail_name&#x60; در پاسخ به درخواست آپلود ویدیو پر کنید. این تصویر، فریم اول ویدیو‌ی آپلود شده است. | 
+**Name** | **string** | نام ویدیو (از فیلد &#x60;video_name&#x60; در پاسخ آپلود) | 
+**ThumbnailName** | **string** | کاور ویدیو (از فیلد &#x60;thumbnail_name&#x60; در پاسخ آپلود). فریم اول ویدیوی آپلود‌شده است. | 
 
 ## Methods
 

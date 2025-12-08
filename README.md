@@ -79,68 +79,67 @@ All URIs are relative to *https://open-api.divar.ir*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AddonsAPI* | [**AddonsCreateBusinessAddon**](docs/AddonsAPI.md#addonscreatebusinessaddon) | **Post** /v1/open-platform/addons/business/{business_token} | افزودن افزونه جدید به آگهی‌های کسب‌و‌کار
-*AddonsAPI* | [**AddonsCreatePostAddonV2**](docs/AddonsAPI.md#addonscreatepostaddonv2) | **Post** /v2/open-platform/addons/post/{token} | افزودن افزونه جدید به آگهی
-*AddonsAPI* | [**AddonsCreateUserAddonV2**](docs/AddonsAPI.md#addonscreateuseraddonv2) | **Post** /v2/open-platform/addons/user/{phone} | افزودن افزونه جدید به کاربر
-*AddonsAPI* | [**AddonsCreateUserAddonV22**](docs/AddonsAPI.md#addonscreateuseraddonv22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | افزودن افزونه جدید به کاربر
-*AddonsAPI* | [**AddonsDeletePostAddon**](docs/AddonsAPI.md#addonsdeletepostaddon) | **Delete** /v1/open-platform/add-ons/post/{token} | حذف افزونه از آگهی
-*AddonsAPI* | [**AddonsDeletePostAddon2**](docs/AddonsAPI.md#addonsdeletepostaddon2) | **Delete** /v1/open-platform/addons/post/{token} | حذف افزونه از آگهی
+*AddonsAPI* | [**AddonsCreateBusinessAddon**](docs/AddonsAPI.md#addonscreatebusinessaddon) | **Post** /v1/open-platform/addons/business/{business_token} | ایجاد افزونه کسب‌وکار
+*AddonsAPI* | [**AddonsCreatePostAddonV2**](docs/AddonsAPI.md#addonscreatepostaddonv2) | **Post** /v2/open-platform/addons/post/{token} | ایجاد افزونه آگهی
+*AddonsAPI* | [**AddonsCreateUserAddonV2**](docs/AddonsAPI.md#addonscreateuseraddonv2) | **Post** /v2/open-platform/addons/user/{phone} | ایجاد افزونه کاربر
+*AddonsAPI* | [**AddonsCreateUserAddonV22**](docs/AddonsAPI.md#addonscreateuseraddonv22) | **Post** /v2/open-platform/addons/users/{divar_user_id} | ایجاد افزونه کاربر
+*AddonsAPI* | [**AddonsDeletePostAddon**](docs/AddonsAPI.md#addonsdeletepostaddon) | **Delete** /v1/open-platform/add-ons/post/{token} | حذف افزونه آگهی
+*AddonsAPI* | [**AddonsDeletePostAddon2**](docs/AddonsAPI.md#addonsdeletepostaddon2) | **Delete** /v1/open-platform/addons/post/{token} | حذف افزونه آگهی
 *AddonsAPI* | [**AddonsDeleteUserAddon**](docs/AddonsAPI.md#addonsdeleteuseraddon) | **Delete** /v1/open-platform/addons/user/{id} | حذف افزونه کاربر
-*AssetsAPI* | [**AssetsGetBodyStatuses**](docs/AssetsAPI.md#assetsgetbodystatuses) | **Get** /v1/open-platform/assets/body-status | دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
-*AssetsAPI* | [**AssetsGetBrandModels**](docs/AssetsAPI.md#assetsgetbrandmodels) | **Get** /v1/open-platform/assets/brand-model/{category} | دریافت مدل‌های برند در دسته‌بندی دیوار
-*AssetsAPI* | [**AssetsGetCategories**](docs/AssetsAPI.md#assetsgetcategories) | **Get** /v1/open-platform/assets/category | دریافت دسته‌بندی‌های دیوار
-*AssetsAPI* | [**AssetsGetCities**](docs/AssetsAPI.md#assetsgetcities) | **Get** /v1/open-platform/assets/city | دریافت شهرهای دیوار
-*AssetsAPI* | [**AssetsGetColors**](docs/AssetsAPI.md#assetsgetcolors) | **Get** /v1/open-platform/assets/color/{category} | دریافت رنگ‌ها در دسته‌بندی دیوار
-*AssetsAPI* | [**AssetsGetDistricts**](docs/AssetsAPI.md#assetsgetdistricts) | **Get** /v1/open-platform/assets/district | دریافت مناطق دیوار
-*AssetsAPI* | [**AssetsGetDistricts2**](docs/AssetsAPI.md#assetsgetdistricts2) | **Get** /v1/open-platform/assets/district/{city_slug} | دریافت مناطق دیوار
-*AssetsAPI* | [**AssetsGetInternalStorages**](docs/AssetsAPI.md#assetsgetinternalstorages) | **Get** /v1/open-platform/assets/internal-storage | دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
-*AssetsAPI* | [**AssetsGetOAuthScopes**](docs/AssetsAPI.md#assetsgetoauthscopes) | **Get** /v1/open-platform/assets/oauth-scope | دریافت دامنه‌های OAuth کنار دیوار
-*AssetsAPI* | [**AssetsGetPermissions**](docs/AssetsAPI.md#assetsgetpermissions) | **Get** /v1/open-platform/assets/permission | دریافت مجوزهای کنار دیوار
-*AssetsAPI* | [**AssetsGetRamMemories**](docs/AssetsAPI.md#assetsgetrammemories) | **Get** /v1/open-platform/assets/ram-memory | دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
-*AssetsAPI* | [**AssetsGetServiceTypes**](docs/AssetsAPI.md#assetsgetservicetypes) | **Get** /v1/open-platform/assets/service-type | دریافت انواع سرویس موجود در کنار دیوار
-*AssetsAPI* | [**AssetsGetSubmitSchema**](docs/AssetsAPI.md#assetsgetsubmitschema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | دریافت قالب ثبت
-*ChatAPIAPI* | [**ChatAPIChatBotSendMessage**](docs/ChatAPIAPI.md#chatapichatbotsendmessage) | **Post** /v1/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
-*ChatAPIAPI* | [**ChatAPIChatBotSendMessage2**](docs/ChatAPIAPI.md#chatapichatbotsendmessage2) | **Post** /v1/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
-*ChatAPIAPI* | [**ChatAPIChatBotSendMessage3**](docs/ChatAPIAPI.md#chatapichatbotsendmessage3) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
-*ChatAPIAPI* | [**ChatAPIChatBotSendMessage4**](docs/ChatAPIAPI.md#chatapichatbotsendmessage4) | **Post** /experimental/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه ChatBot
-*ChatAPIAPI* | [**ChatAPIChatBotSendMessage5**](docs/ChatAPIAPI.md#chatapichatbotsendmessage5) | **Post** /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه ChatBot
+*AssetsAPI* | [**AssetsGetBodyStatuses**](docs/AssetsAPI.md#assetsgetbodystatuses) | **Get** /v1/open-platform/assets/body-status | لیست گزینه‌های وضعیت بدنه
+*AssetsAPI* | [**AssetsGetBrandModels**](docs/AssetsAPI.md#assetsgetbrandmodels) | **Get** /v1/open-platform/assets/brand-model/{category} | لیست مدل برندها بر اساس دسته‌بندی
+*AssetsAPI* | [**AssetsGetCategories**](docs/AssetsAPI.md#assetsgetcategories) | **Get** /v1/open-platform/assets/category | لیست همه دسته‌بندی‌ها
+*AssetsAPI* | [**AssetsGetCities**](docs/AssetsAPI.md#assetsgetcities) | **Get** /v1/open-platform/assets/city | لیست همه شهرها
+*AssetsAPI* | [**AssetsGetColors**](docs/AssetsAPI.md#assetsgetcolors) | **Get** /v1/open-platform/assets/color/{category} | لیست رنگ‌ها بر اساس دسته‌بندی
+*AssetsAPI* | [**AssetsGetDistricts**](docs/AssetsAPI.md#assetsgetdistricts) | **Get** /v1/open-platform/assets/district | لیست محله‌ها
+*AssetsAPI* | [**AssetsGetDistricts2**](docs/AssetsAPI.md#assetsgetdistricts2) | **Get** /v1/open-platform/assets/district/{city_slug} | لیست محله‌ها
+*AssetsAPI* | [**AssetsGetInternalStorages**](docs/AssetsAPI.md#assetsgetinternalstorages) | **Get** /v1/open-platform/assets/internal-storage | لیست گزینه‌های حافظه داخلی
+*AssetsAPI* | [**AssetsGetOAuthScopes**](docs/AssetsAPI.md#assetsgetoauthscopes) | **Get** /v1/open-platform/assets/oauth-scope | لیست دامنه‌های OAuth
+*AssetsAPI* | [**AssetsGetPermissions**](docs/AssetsAPI.md#assetsgetpermissions) | **Get** /v1/open-platform/assets/permission | لیست مجوزهای کنار دیوار
+*AssetsAPI* | [**AssetsGetRamMemories**](docs/AssetsAPI.md#assetsgetrammemories) | **Get** /v1/open-platform/assets/ram-memory | لیست گزینه‌های حافظه RAM
+*AssetsAPI* | [**AssetsGetServiceTypes**](docs/AssetsAPI.md#assetsgetservicetypes) | **Get** /v1/open-platform/assets/service-type | لیست انواع سرویس
+*AssetsAPI* | [**AssetsGetSubmitSchema**](docs/AssetsAPI.md#assetsgetsubmitschema) | **Get** /v1/open-platform/assets/submit-schema/{category_slug} | دریافت schema ثبت آگهی
+*ChatAPIAPI* | [**ChatAPIChatBotSendMessage**](docs/ChatAPIAPI.md#chatapichatbotsendmessage) | **Post** /v1/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه چت‌بات
+*ChatAPIAPI* | [**ChatAPIChatBotSendMessage2**](docs/ChatAPIAPI.md#chatapichatbotsendmessage2) | **Post** /v1/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه چت‌بات
+*ChatAPIAPI* | [**ChatAPIChatBotSendMessage3**](docs/ChatAPIAPI.md#chatapichatbotsendmessage3) | **Post** /experimental/open-platform/chatbot-conversations/{conversation_id}/messages | ارسال پیام به مکالمه چت‌بات
+*ChatAPIAPI* | [**ChatAPIChatBotSendMessage4**](docs/ChatAPIAPI.md#chatapichatbotsendmessage4) | **Post** /experimental/open-platform/chat/bot/users/{user_id}/messages | ارسال پیام به مکالمه چت‌بات
+*ChatAPIAPI* | [**ChatAPIChatBotSendMessage5**](docs/ChatAPIAPI.md#chatapichatbotsendmessage5) | **Post** /experimental/open-platform/chat/bot/conversations/{conversation_id}/messages | ارسال پیام به مکالمه چت‌بات
 *ChatAPIAPI* | [**ChatAPIConversationSendMessage**](docs/ChatAPIAPI.md#chatapiconversationsendmessage) | **Post** /v2/open-platform/conversations/{conversation_id}/messages | ارسال پیام به مکالمه
 *ChatAPIAPI* | [**ChatAPIGenerateUploadToken**](docs/ChatAPIAPI.md#chatapigenerateuploadtoken) | **Post** /experimental/open-platform/chat/upload | تولید توکن آپلود
-*ChatAPIAPI* | [**ChatAPIGetConversation**](docs/ChatAPIAPI.md#chatapigetconversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | دریافت مکالمه با شناسه آن
+*ChatAPIAPI* | [**ChatAPIGetConversation**](docs/ChatAPIAPI.md#chatapigetconversation) | **Get** /v1/open-platform/chat/conversations/{conversation_id} | دریافت مکالمه
 *EventsAPI* | [**EventsRegisterEventSubscription**](docs/EventsAPI.md#eventsregistereventsubscription) | **Post** /v1/open-platform/events/subscriptions | اشتراک در رویداد
-*EventsAPI* | [**EventsSendEvent**](docs/EventsAPI.md#eventssendevent) | **Post** /experimental/open-platform/events/send | ارسال رویداد به کاربر با استفاده از API
 *FinderAPI* | [**FinderGetPost**](docs/FinderAPI.md#findergetpost) | **Get** /v1/open-platform/finder/post/{token} | دریافت آگهی دیوار
 *FinderAPI* | [**FinderGetUser**](docs/FinderAPI.md#findergetuser) | **Post** /v1/open-platform/users | دریافت اطلاعات کاربر
 *FinderAPI* | [**FinderGetUser2**](docs/FinderAPI.md#findergetuser2) | **Get** /v1/open-platform/users | دریافت اطلاعات کاربر
-*FinderAPI* | [**FinderGetUserIDByPhone**](docs/FinderAPI.md#findergetuseridbyphone) | **Post** /v1/open-platform/get-user-id-by-phone | دریافت شناسه دیوار کاربر با شماره تلفن
+*FinderAPI* | [**FinderGetUserBusinesses**](docs/FinderAPI.md#findergetuserbusinesses) | **Get** /v1/open-platform/user/businesses | دریافت کسب‌وکارهای کاربر
+*FinderAPI* | [**FinderGetUserIDByPhone**](docs/FinderAPI.md#findergetuseridbyphone) | **Post** /v1/open-platform/get-user-id-by-phone | دریافت شناسه کاربر
 *FinderAPI* | [**FinderGetUserPosts**](docs/FinderAPI.md#findergetuserposts) | **Get** /v1/open-platform/finder/user-posts | دریافت آگهی‌های کاربر
-*FinderAPI* | [**FinderSearchPostV2**](docs/FinderAPI.md#findersearchpostv2) | **Post** /v2/open-platform/finder/post | جستجو آگهی‌های دیوار با فیلترهایی
-*PaymentAPI* | [**PaymentCommitWalletTransaction**](docs/PaymentAPI.md#paymentcommitwallettransaction) | **Post** /experimental/open-platform/wallet/payments/commit | تایید تراکنش کیف پول
+*FinderAPI* | [**FinderSearchPostV2**](docs/FinderAPI.md#findersearchpostv2) | **Post** /v2/open-platform/finder/post | جستجوی آگهی‌های دیوار
+*PaymentAPI* | [**PaymentCommitWalletTransaction**](docs/PaymentAPI.md#paymentcommitwallettransaction) | **Post** /experimental/open-platform/wallet/payments/commit | نهایی کردن تراکنش کیف پول
 *PaymentAPI* | [**PaymentCreateWalletPayment**](docs/PaymentAPI.md#paymentcreatewalletpayment) | **Post** /experimental/open-platform/wallet/payments/create | ایجاد پرداخت کیف پول
 *PaymentAPI* | [**PaymentGetBalance**](docs/PaymentAPI.md#paymentgetbalance) | **Get** /experimental/open-platform/balance | دریافت موجودی اپلیکیشن
-*PaymentAPI* | [**PaymentGetPostPricing**](docs/PaymentAPI.md#paymentgetpostpricing) | **Get** /v1/open-platform/post/{post_token}/pricing | Retrieve the cost of the service
+*PaymentAPI* | [**PaymentGetPostPricing**](docs/PaymentAPI.md#paymentgetpostpricing) | **Get** /v1/open-platform/post/{post_token}/pricing | دریافت قیمت خدمات آگهی
 *PaymentAPI* | [**PaymentGetTransaction**](docs/PaymentAPI.md#paymentgettransaction) | **Get** /experimental/open-platform/transactions/{id} | دریافت جزئیات تراکنش
 *PaymentAPI* | [**PaymentListTransactions**](docs/PaymentAPI.md#paymentlisttransactions) | **Get** /experimental/open-platform/transactions | لیست تراکنش‌ها
-*PaymentAPI* | [**PaymentPublishUserPost**](docs/PaymentAPI.md#paymentpublishuserpost) | **Post** /experimental/open-platform/post/{post_token}/publish | Pay for user post submission on behalf of provider
+*PaymentAPI* | [**PaymentPublishUserPost**](docs/PaymentAPI.md#paymentpublishuserpost) | **Post** /experimental/open-platform/post/{post_token}/publish | انتشار آگهی کاربر (پرداخت توسط ارائه‌دهنده)
 *PaymentAPI* | [**PaymentRenewPost**](docs/PaymentAPI.md#paymentrenewpost) | **Post** /experimental/open-platform/post/{post_token}/renew | تمدید آگهی
 *PaymentAPI* | [**PaymentReorderPost**](docs/PaymentAPI.md#paymentreorderpost) | **Post** /experimental/open-platform/post/{post_token}/reorder | نردبان آگهی
-*PaymentAPI* | [**PaymentRetrieveWalletTransaction**](docs/PaymentAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | بازیابی تراکنش کیف پول
-*PaymentAPI* | [**PaymentSubmitUserPayment**](docs/PaymentAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | Submit a user payment
-*PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی بلیط پرداخت
+*PaymentAPI* | [**PaymentRetrieveWalletTransaction**](docs/PaymentAPI.md#paymentretrievewallettransaction) | **Get** /experimental/open-platform/wallet/payments/{token} | دریافت تراکنش کیف پول
+*PaymentAPI* | [**PaymentSubmitUserPayment**](docs/PaymentAPI.md#paymentsubmituserpayment) | **Post** /v1/open-platform/user-payments | ثبت رکورد پرداخت کاربر
+*PaymentTicketAPI* | [**PaymentTicketValidate**](docs/PaymentTicketAPI.md#paymentticketvalidate) | **Post** /v1/open-platform/payment-ticket/validate | اعتبارسنجی تیکت پرداخت
 *PostAPI* | [**PostCanUserSubmitPost**](docs/PostAPI.md#postcanusersubmitpost) | **Get** /experimental/open-platform/user-posts/can-submit | بررسی اینکه آیا کاربر می‌تواند آگهی ارسال کند
-*PostAPI* | [**PostCreateBusinessCustomizedButton**](docs/PostAPI.md#postcreatebusinesscustomizedbutton) | **Post** /experimental/open-platform/business/{business_token}/customized-button | ایجاد دکمه اختصاصی برای آگهی‌های کسب‌و‌کار
+*PostAPI* | [**PostCreateBusinessCustomizedButton**](docs/PostAPI.md#postcreatebusinesscustomizedbutton) | **Post** /experimental/open-platform/business/{business_token}/customized-button | ایجاد دکمه اختصاصی برای آگهی‌های کسب‌وکار
 *PostAPI* | [**PostDeleteBusinessCustomizedButton**](docs/PostAPI.md#postdeletebusinesscustomizedbutton) | **Delete** /experimental/open-platform/business/{business_token}/customized-button | حذف دکمه اختصاصی از آگهی‌های کسب‌و‌کار
 *PostAPI* | [**PostDeletePostCustomizedButton**](docs/PostAPI.md#postdeletepostcustomizedbutton) | **Delete** /experimental/open-platform/posts/{post_token}/customized-button | حذف دکمه اختصاصی از آگهی
 *PostAPI* | [**PostDeleteUserPost**](docs/PostAPI.md#postdeleteuserpost) | **Delete** /v1/open-platform/post/{post_token} | حذف آگهی
 *PostAPI* | [**PostEditPost**](docs/PostAPI.md#posteditpost) | **Put** /v1/open-platform/post/{post_token} | ویرایش آگهی
-*PostAPI* | [**PostEditPostV2**](docs/PostAPI.md#posteditpostv2) | **Put** /v2/open-platform/post/{post_token} | ویرایش آگهی با پشتیبانی از فیلد ماسک
+*PostAPI* | [**PostEditPostV2**](docs/PostAPI.md#posteditpostv2) | **Put** /v2/open-platform/post/{post_token} | ویرایش آگهی (پیشرفته)
 *PostAPI* | [**PostGetImageUploadURL**](docs/PostAPI.md#postgetimageuploadurl) | **Get** /v1/open-platform/post/image-upload-url | دریافت آدرس اپلود تصاویر آگهی (منسوخ شده)
 *PostAPI* | [**PostGetPostStats**](docs/PostAPI.md#postgetpoststats) | **Get** /experimental/open-platform/posts/{post_token}/stats | دریافت آمارهای آگهی
-*PostAPI* | [**PostGetUploadURLsV2**](docs/PostAPI.md#postgetuploadurlsv2) | **Get** /v2/open-platform/post/upload-urls | دریافت آدرس آپلود برای تصاویر و ویدیو‌ی آگهی‌ها
+*PostAPI* | [**PostGetUploadURLsV2**](docs/PostAPI.md#postgetuploadurlsv2) | **Get** /v2/open-platform/post/upload-urls | دریافت آدرس آپلود تصاویر و ویدیو
 *PostAPI* | [**PostGetUserPost**](docs/PostAPI.md#postgetuserpost) | **Get** /v1/open-platform/user-post/{token} | دریافت آگهی با توکن
-*PostAPI* | [**PostSetPostCustomizedButton**](docs/PostAPI.md#postsetpostcustomizedbutton) | **Post** /experimental/open-platform/posts/{post_token}/customized-button | تنظیم دکمه اختصاصی بر روی آگهی ثبت شده
-*PostAPI* | [**PostSubmitPost**](docs/PostAPI.md#postsubmitpost) | **Post** /experimental/open-platform/posts/new | ثبت آگهی
-*PostAPI* | [**PostSubmitPostV2**](docs/PostAPI.md#postsubmitpostv2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
+*PostAPI* | [**PostSetPostCustomizedButton**](docs/PostAPI.md#postsetpostcustomizedbutton) | **Post** /experimental/open-platform/posts/{post_token}/customized-button | تنظیم دکمه اختصاصی روی آگهی
+*PostAPI* | [**PostSubmitPostV2**](docs/PostAPI.md#postsubmitpostv2) | **Post** /experimental/open-platform/posts/new-v2 | ثبت آگهی
 *PostAPI* | [**PostSubmitUserPost**](docs/PostAPI.md#postsubmituserpost) | **Post** /experimental/open-platform/user-posts/new | ثبت آگهی به عنوان کاربر
 *SemanticAPI* | [**SemanticCreatePostSemantic**](docs/SemanticAPI.md#semanticcreatepostsemantic) | **Post** /experimental/open-platform/semantic/post/{token} | ایجاد اطلاعات معنایی آگهی
 *SemanticAPI* | [**SemanticCreateUserSemantic**](docs/SemanticAPI.md#semanticcreateusersemantic) | **Post** /v1/open-platform/semantic/user/{phone} | ایجاد اطلاعات معنایی کاربر
@@ -226,6 +225,7 @@ Class | Method | HTTP request | Description
  - [AssetsGetSubmitSchemaResponse](docs/AssetsGetSubmitSchemaResponse.md)
  - [AuthorizationAPICallerInfo](docs/AuthorizationAPICallerInfo.md)
  - [AuthorizationOAuthScope](docs/AuthorizationOAuthScope.md)
+ - [BaseBusinessType](docs/BaseBusinessType.md)
  - [ChatAPIChatBotSendMessageBody](docs/ChatAPIChatBotSendMessageBody.md)
  - [ChatAPIConversationSendMessageBody](docs/ChatAPIConversationSendMessageBody.md)
  - [ChatapiChatBotSendMessageResponse](docs/ChatapiChatBotSendMessageResponse.md)
@@ -242,13 +242,13 @@ Class | Method | HTTP request | Description
  - [ChatapiMessageSenderType](docs/ChatapiMessageSenderType.md)
  - [ChatapiMessageType](docs/ChatapiMessageType.md)
  - [DivarIconsIconName](docs/DivarIconsIconName.md)
- - [EventsEventButton](docs/EventsEventButton.md)
- - [EventsEventButtonList](docs/EventsEventButtonList.md)
  - [EventsRegisterEventSubscriptionRequest](docs/EventsRegisterEventSubscriptionRequest.md)
  - [EventsRegisterEventSubscriptionRequestEventType](docs/EventsRegisterEventSubscriptionRequestEventType.md)
  - [FinderGetAllDevelopmentPostsResponse](docs/FinderGetAllDevelopmentPostsResponse.md)
  - [FinderGetPostResponse](docs/FinderGetPostResponse.md)
  - [FinderGetPostResponseBusinessData](docs/FinderGetPostResponseBusinessData.md)
+ - [FinderGetUserBusinessesResponse](docs/FinderGetUserBusinessesResponse.md)
+ - [FinderGetUserBusinessesResponseBusiness](docs/FinderGetUserBusinessesResponseBusiness.md)
  - [FinderGetUserIDByPhoneRequest](docs/FinderGetUserIDByPhoneRequest.md)
  - [FinderGetUserIDByPhoneResponse](docs/FinderGetUserIDByPhoneResponse.md)
  - [FinderGetUserPostsResponse](docs/FinderGetUserPostsResponse.md)
@@ -268,10 +268,6 @@ Class | Method | HTTP request | Description
  - [GetServiceTypesResponseServiceTypeData](docs/GetServiceTypesResponseServiceTypeData.md)
  - [GetUploadURLsV2ResponseUploadFormat](docs/GetUploadURLsV2ResponseUploadFormat.md)
  - [GooglerpcStatus](docs/GooglerpcStatus.md)
- - [HomePresellFieldsConstructionPhase](docs/HomePresellFieldsConstructionPhase.md)
- - [HomePresellFieldsDeliveryMonth](docs/HomePresellFieldsDeliveryMonth.md)
- - [HomePresellFieldsDeliveryYear](docs/HomePresellFieldsDeliveryYear.md)
- - [HomePresellFieldsUnitType](docs/HomePresellFieldsUnitType.md)
  - [ImageCarouselRowImageItem](docs/ImageCarouselRowImageItem.md)
  - [ManagementDevelopmentPost](docs/ManagementDevelopmentPost.md)
  - [MessageContactData](docs/MessageContactData.md)
@@ -284,7 +280,6 @@ Class | Method | HTTP request | Description
  - [OAuthScopeScope](docs/OAuthScopeScope.md)
  - [OpenPlatformpostHTTPMethod](docs/OpenPlatformpostHTTPMethod.md)
  - [OpenPlatformpostPostState](docs/OpenPlatformpostPostState.md)
- - [OpenPlatformpostServicesFields](docs/OpenPlatformpostServicesFields.md)
  - [PaymentCommitWalletTransactionRequest](docs/PaymentCommitWalletTransactionRequest.md)
  - [PaymentCommitWalletTransactionResponse](docs/PaymentCommitWalletTransactionResponse.md)
  - [PaymentCreateWalletPaymentRequest](docs/PaymentCreateWalletPaymentRequest.md)
@@ -309,7 +304,6 @@ Class | Method | HTTP request | Description
  - [PaymentTransactionType](docs/PaymentTransactionType.md)
  - [PaymentWalletTransaction](docs/PaymentWalletTransaction.md)
  - [PaymentWalletTransactionStatus](docs/PaymentWalletTransactionStatus.md)
- - [PostApartmentSellFields](docs/PostApartmentSellFields.md)
  - [PostCanUserSubmitPostResponse](docs/PostCanUserSubmitPostResponse.md)
  - [PostCreateBusinessCustomizedButtonBody](docs/PostCreateBusinessCustomizedButtonBody.md)
  - [PostCustomizedButton](docs/PostCustomizedButton.md)
@@ -323,17 +317,14 @@ Class | Method | HTTP request | Description
  - [PostGetUploadURLsV2Response](docs/PostGetUploadURLsV2Response.md)
  - [PostGetUserPostResponse](docs/PostGetUserPostResponse.md)
  - [PostGetUserPostResponseBusinessData](docs/PostGetUserPostResponseBusinessData.md)
- - [PostHomePresellFields](docs/PostHomePresellFields.md)
  - [PostLocationType](docs/PostLocationType.md)
  - [PostPostGeneralData](docs/PostPostGeneralData.md)
- - [PostRoomsCount](docs/PostRoomsCount.md)
  - [PostSetPostCustomizedButtonBody](docs/PostSetPostCustomizedButtonBody.md)
- - [PostSubmitPostRequest](docs/PostSubmitPostRequest.md)
  - [PostSubmitPostResponse](docs/PostSubmitPostResponse.md)
  - [PostSubmitPostV2Request](docs/PostSubmitPostV2Request.md)
  - [PostSubmitUserPostRequest](docs/PostSubmitUserPostRequest.md)
- - [PostTemporaryResidenceFields](docs/PostTemporaryResidenceFields.md)
  - [PremiumPanelBusinessDataSubBusinessType](docs/PremiumPanelBusinessDataSubBusinessType.md)
+ - [PremiumPanelUserRole](docs/PremiumPanelUserRole.md)
  - [ProtobufAny](docs/ProtobufAny.md)
  - [SearchPostItemPrice](docs/SearchPostItemPrice.md)
  - [SearchPostItemRealEstateFields](docs/SearchPostItemRealEstateFields.md)
@@ -343,12 +334,6 @@ Class | Method | HTTP request | Description
  - [SemanticCreateUserSemanticResponse](docs/SemanticCreateUserSemanticResponse.md)
  - [SemanticPostSemanticDeleted](docs/SemanticPostSemanticDeleted.md)
  - [SemanticUserSemanticDeleted](docs/SemanticUserSemanticDeleted.md)
- - [SendEventRequestTargetType](docs/SendEventRequestTargetType.md)
- - [ServicesFieldsCategory](docs/ServicesFieldsCategory.md)
- - [TemporaryResidenceFieldsComfortAmenity](docs/TemporaryResidenceFieldsComfortAmenity.md)
- - [TemporaryResidenceFieldsHeatingCoolingSystem](docs/TemporaryResidenceFieldsHeatingCoolingSystem.md)
- - [TemporaryResidenceFieldsPetsAllowed](docs/TemporaryResidenceFieldsPetsAllowed.md)
- - [TemporaryResidenceFieldsRentalPeriod](docs/TemporaryResidenceFieldsRentalPeriod.md)
 
 
 ## Documentation For Authorization

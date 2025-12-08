@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Daily** | Pointer to [**[]GetPostStatsResponseDailyStats**](GetPostStatsResponseDailyStats.md) | مقدار آمار مورد نظر در هفت روز اخیر | [optional] 
-**Total** | Pointer to **int32** | تعداد کلی آمار (مثلا بازدید) | [optional] 
+**Daily** | Pointer to [**[]GetPostStatsResponseDailyStats**](GetPostStatsResponseDailyStats.md) | مقدار روزانه آمار در هفت روز گذشته | [optional] 
+**Total** | Pointer to **int32** | مجموع آمار (مثلاً بازدید) | [optional] 
 
 ## Methods
 

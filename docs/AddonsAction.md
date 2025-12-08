@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GetDynamicAction** | Pointer to [**AddonsGetDynamicAction**](AddonsGetDynamicAction.md) |  | [optional] 
-**OpenDirectLink** | Pointer to **string** | عملیاتی برای ارسال کاربر به URL شما به صورت مستقیم با فقط یک شناسه منبع (در صورت وجود) | [optional] 
+**OpenDirectLink** | Pointer to **string** | عملیاتی برای هدایت مستقیم کاربر به URL شما (در صورت وجود resource id) | [optional] 
 **OpenPostManagePage** | Pointer to [**AddonsOpenPostManagePage**](AddonsOpenPostManagePage.md) |  | [optional] 
 **OpenPostPage** | Pointer to [**AddonsOpenPostPage**](AddonsOpenPostPage.md) |  | [optional] 
 **OpenServerLink** | Pointer to [**AddonsOpenServerLink**](AddonsOpenServerLink.md) |  | [optional] 

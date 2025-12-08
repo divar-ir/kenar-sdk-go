@@ -35,9 +35,17 @@ func (r ApiPostCanUserSubmitPostRequest) Execute() (*PostCanUserSubmitPostRespon
 /*
 PostCanUserSubmitPost بررسی اینکه آیا کاربر می‌تواند آگهی ارسال کند
 
-با این API میتوانید بررسی کنید آیا کاربر می‌تواند آگهی ارسال کند یا خیر.این API انتظار دارد توکن کاربر در درخواست با اسکوپ `SUBMIT_USER_POST` موجود باشد.
+این API بررسی می‌کند که آیا کاربر واجد شرایط ثبت آگهی است. تایید می‌کند که کاربر در لیست سیاه نیست، متخلف نیست و احراز هویت شده است.
 
-مجوزهای مورد نیاز: CAN_USER_SUBMIT_POST.
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `CAN_USER_SUBMIT_POST`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `SUBMIT_USER_POST`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCanUserSubmitPostRequest
@@ -163,13 +171,19 @@ func (r ApiPostCreateBusinessCustomizedButtonRequest) Execute() (map[string]inte
 }
 
 /*
-PostCreateBusinessCustomizedButton ایجاد دکمه اختصاصی برای آگهی‌های کسب‌و‌کار
+PostCreateBusinessCustomizedButton ایجاد دکمه اختصاصی برای آگهی‌های کسب‌وکار
 
-این API برای ایجاد دکمه اختصاصی برای تمام آگهی‌های کسب‌وکار استفاده می‌شود.
-این API به مجوز `BUSINESS_CUSTOMIZED_BUTTON_CREATE` و دامنه OAuth `BUSINESS_CREATE_CUSTOMIZED_BUTTON.{business_ref}` نیاز دارد.
+این API تنظیمات دکمه اختصاصی را برای تمام آگهی‌های کسب‌وکار ایجاد می‌کند.
 
+#### دسترسی‌ها:
 
-مجوزهای مورد نیاز: BUSINESS_CUSTOMIZED_BUTTON_CREATE.
+##### مجوزهای API Key مورد نیاز:
+
+- `BUSINESS_CUSTOMIZED_BUTTON_CREATE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `BUSINESS_CREATE_CUSTOMIZED_BUTTON.business_token`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessToken
@@ -299,10 +313,13 @@ func (r ApiPostDeleteBusinessCustomizedButtonRequest) Execute() (map[string]inte
 /*
 PostDeleteBusinessCustomizedButton حذف دکمه اختصاصی از آگهی‌های کسب‌و‌کار
 
-این API دکمه اختصاصی را از تمام آگهی‌های کسب‌وکار حذف می‌کند. این API به مجوز `BUSINESS_CUSTOMIZED_BUTTON_CREATE` نیاز دارد.
+این API تنظیمات دکمه اختصاصی را از تمام آگهی‌های کسب‌وکار حذف می‌کند.
 
+#### دسترسی‌ها:
 
-مجوزهای مورد نیاز: BUSINESS_CUSTOMIZED_BUTTON_CREATE.
+##### مجوزهای API Key مورد نیاز:
+
+- `BUSINESS_CUSTOMIZED_BUTTON_CREATE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param businessToken
@@ -427,10 +444,17 @@ func (r ApiPostDeletePostCustomizedButtonRequest) Execute() (map[string]interfac
 /*
 PostDeletePostCustomizedButton حذف دکمه اختصاصی از آگهی
 
-این API دکمه اختصاصی را از آگهی ثبت شده توسط سرویس شما حذف می‌کند. این API نیاز به مجوز `SET_CUSTOMIZED_BUTTON` دارد.
+این API تنظیمات دکمه اختصاصی را از یک آگهی حذف می‌کند.
 
+#### دسترسی‌ها:
 
-مجوزهای مورد نیاز: SET_CUSTOMIZED_BUTTON.
+##### مجوزهای API Key مورد نیاز:
+
+- `SET_CUSTOMIZED_BUTTON`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_SET_CUSTOMIZED_BUTTON`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -555,9 +579,17 @@ func (r ApiPostDeleteUserPostRequest) Execute() (map[string]interface{}, *http.R
 /*
 PostDeleteUserPost حذف آگهی
 
-این API به شما امکان حذف آگهی را می‌دهد. این نیاز به اسکوپ OAuth `DELETE_USER_POST` دارد.
+این API امکان حذف آگهی را فراهم می‌کند. فقط آگهی‌های متعلق به کاربر احراز هویت شده قابل حذف هستند.
 
-مجوزهای مورد نیاز: DELETE_USER_POST.
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `DELETE_USER_POST`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `DELETE_USER_POST`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken توکن آگهی برای حذف
@@ -688,14 +720,27 @@ func (r ApiPostEditPostRequest) Execute() (map[string]interface{}, *http.Respons
 /*
 PostEditPost ویرایش آگهی
 
-این API به شما امکان ویرایش آگهی را می‌دهد. این نیاز به دامنه OAuth `POST_EDIT.{post_token}` دارد.
-در حال حاضر فقط می‌توانید عنوان، توضیحات و تصاویر آگهی را ویرایش کنید.
+این API امکان ویرایش آگهی را فراهم می‌کند. می‌توانید عنوان، توضیحات و تصاویر آگهی را به‌روزرسانی کنید.
 
-مجوزهای مورد نیاز: EDIT_POST.
+**نکات مهم**:
+- عنوان باید بین 3 تا 50 کاراکتر باشد
+- آگهی نباید منقضی شده باشد
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `EDIT_POST`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `POST_EDIT.post_token`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
  @return ApiPostEditPostRequest
+
+Deprecated
 */
 func (a *PostAPIService) PostEditPost(ctx context.Context, postToken string) ApiPostEditPostRequest {
 	return ApiPostEditPostRequest{
@@ -707,6 +752,7 @@ func (a *PostAPIService) PostEditPost(ctx context.Context, postToken string) Api
 
 // Execute executes the request
 //  @return map[string]interface{}
+// Deprecated
 func (a *PostAPIService) PostEditPostExecute(r ApiPostEditPostRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -825,16 +871,25 @@ func (r ApiPostEditPostV2Request) Execute() (map[string]interface{}, *http.Respo
 }
 
 /*
-PostEditPostV2 ویرایش آگهی با پشتیبانی از فیلد ماسک
+PostEditPostV2 ویرایش آگهی (پیشرفته)
 
-این API به شما امکان ویرایش آگهی با استفاده از احراز هویت OAuth را می‌دهد.
-توکن دسترسی از یک کاربر با اسکوپ OAuth `POST_EDIT.{post_token}` یا `EDIT_USER_POST` مورد نیاز است.
+این API امکان ویرایش آگهی با پشتیبانی از field mask را فراهم می‌کند. می‌توانید عنوان، توضیحات، تصاویر، موقعیت، فیلدهای ویژه دسته‌بندی و سایر ویژگی‌ها را به‌روزرسانی کنید.
 
-می‌توانید عنوان، توضیحات، تصاویر، موقعیت، فیلدهای مخصوص دسته‌بندی و سایر ویژگی‌های آگهی را ویرایش کنید. فیلدهای مخصوص دسته‌بندی باید از قالب دسته‌بندی آگهی پیروی کنند. قالب را از اینجا دریافت کنید: https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/
+**نکات مهم**:
+- فیلدهای ویژه دسته‌بندی باید از [قالب](https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/) پیروی کنند
+- از `update_mask` برای مشخص کردن فیلدهای مورد به‌روزرسانی استفاده کنید
+- هنگام استفاده از اسکوپ `EDIT_USER_POST`، آگهی باید متعلق به کاربر احراز هویت شده باشد
+- آگهی نباید منقضی شده باشد
 
-از فیلد update_mask برای مشخص کردن فیلدهایی که می‌خواهید به‌روزرسانی کنید استفاده کنید.
+#### دسترسی‌ها:
 
-مجوزهای مورد نیاز: EDIT_POST.
+##### مجوزهای API Key مورد نیاز:
+
+- `EDIT_POST`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `EDIT_USER_POST` یا `POST_EDIT.post_token`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken توکن آگهی
@@ -963,14 +1018,18 @@ func (r ApiPostGetImageUploadURLRequest) Execute() (*PostGetImageUploadURLRespon
 /*
 PostGetImageUploadURL دریافت آدرس اپلود تصاویر آگهی (منسوخ شده)
 
-این API به شما اجازه می‌دهد یک آدرس اینترنتی برای بارگذاری تصاویر یک پست دریافت کنید.
-می‌توانید تصاویر را با یک درخواست POST و رمزگذاری باینری به آدرس برگشتی بارگذاری کنید.
-به جای آن از https://kenar.divar.dev/openapi-doc/post-get-upload-urls-v2/ استفاده کنید
+این API آدرس آپلود برای بارگذاری تصاویر آگهی را برمی‌گرداند.
 
-مجوزهای مورد نیاز: UPLOAD_POST_IMAGE.
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `UPLOAD_POST_IMAGE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostGetImageUploadURLRequest
+
+Deprecated
 */
 func (a *PostAPIService) PostGetImageUploadURL(ctx context.Context) ApiPostGetImageUploadURLRequest {
 	return ApiPostGetImageUploadURLRequest{
@@ -981,6 +1040,7 @@ func (a *PostAPIService) PostGetImageUploadURL(ctx context.Context) ApiPostGetIm
 
 // Execute executes the request
 //  @return PostGetImageUploadURLResponse
+// Deprecated
 func (a *PostAPIService) PostGetImageUploadURLExecute(r ApiPostGetImageUploadURLRequest) (*PostGetImageUploadURLResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1089,9 +1149,20 @@ func (r ApiPostGetPostStatsRequest) Execute() (*PostGetPostStatsResponse, *http.
 /*
 PostGetPostStats دریافت آمارهای آگهی
 
-از این api برای مشاهده‌ی آمارهای یک آگهی (مانند تعداد بازدید‌های آگهی) استفاده کنید. 
+این API امکان دریافت آمار یک آگهی شامل بازدیدها، نمایش‌ها و چت‌ها را فراهم می‌کند. آمار روزانه برای 7 روز اخیر و تعداد کل برمی‌گردد.
 
-مجوزهای مورد نیاز: POST_STATS_RETRIEVE.
+**نکات مهم**:
+- فقط آمار آگهی‌های متعلق به کاربر احراز هویت شده برگردانده می‌شود
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `POST_STATS_RETRIEVE`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_POSTS_STATS_READ`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken توکن آگهی
@@ -1213,12 +1284,18 @@ func (r ApiPostGetUploadURLsV2Request) Execute() (*PostGetUploadURLsV2Response, 
 }
 
 /*
-PostGetUploadURLsV2 دریافت آدرس آپلود برای تصاویر و ویدیو‌ی آگهی‌ها
+PostGetUploadURLsV2 دریافت آدرس آپلود تصاویر و ویدیو
 
-این API به شما امکان دریافت URL آپلود برای آپلود تصاویر و ویدیوهای آگهی را می‌دهد.
-می‌توانید تصاویر/ویدیوها را با استفاده از درخواست POST یا PUT با کدگذاری باینری به URL برگشتی آپلود کنید. آدرس برگشتی این API به api-key شما برای آپلود نیاز دارد. لطفاً توجه داشته باشید که آدرس برگشتی ممکن است بدون اطلاع قبلی تغییر کند.
+این API امکان دریافت آدرس‌های آپلود برای بارگذاری تصاویر و ویدیوهای آگهی را فراهم می‌کند. می‌توانید تصاویر/ویدیوها را با درخواست POST یا PUT با کدگذاری باینری به آدرس برگشتی آپلود کنید.
 
-مجوزهای مورد نیاز: UPLOAD_POST_IMAGE.
+**نکات مهم**:
+- آدرس برگشتی برای آپلود نیاز به api-key شما دارد
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `UPLOAD_POST_IMAGE`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostGetUploadURLsV2Request
@@ -1340,12 +1417,17 @@ func (r ApiPostGetUserPostRequest) Execute() (*PostGetUserPostResponse, *http.Re
 /*
 PostGetUserPost دریافت آگهی با توکن
 
-این API به شما امکان دریافت اطلاعات دقیق درباره یک آگهی خاص با استفاده از توکن آن را می‌دهد.
-این نقطه پایانی آگهی‌های ثبت شده توسط کاربران احراز هویت شده از طریق پلتفرم باز را برمی‌گرداند، شامل داده‌های کسب‌وکار، وضعیت و دلایل رد.
-این API به مجوز `GET_USER_POST` نیاز دارد.
-این API به دامنه OAuth `USER_POSTS_GET` نیاز دارد.
+این API امکان دریافت اطلاعات دقیق یک آگهی شامل داده‌های عمومی، داده‌های دسته‌بندی، داده‌های کسب‌وکار، وضعیت و دلیل رد را فراهم می‌کند. فقط آگهی‌های متعلق به کاربر احراز هویت شده قابل دریافت هستند.
 
-مجوزهای مورد نیاز: GET_USER_POST.
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `GET_USER_POST`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_POSTS_GET`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param token
@@ -1474,12 +1556,19 @@ func (r ApiPostSetPostCustomizedButtonRequest) Execute() (map[string]interface{}
 }
 
 /*
-PostSetPostCustomizedButton تنظیم دکمه اختصاصی بر روی آگهی ثبت شده
+PostSetPostCustomizedButton تنظیم دکمه اختصاصی روی آگهی
 
-این API برای تنظیم دکمه اختصاصی برای یک آگهی استفاده می‌شود. اگر دکمه‌ای وجود نداشته باشد، ایجاد خواهد شد. اگر از قبل وجود داشته باشد، داده‌های آن به‌روزرسانی خواهد شد. این API به مجوز `SET_CUSTOMIZED_BUTTON` نیاز دارد.
-اگر این آگهی توسط کاربر ثبت شده باشد، این API به توکن دسترسی کاربر در هدرهای درخواست با دامنه OAuth `USER_SET_CUSTOMIZED_BUTTON` نیاز دارد.
+این API تنظیمات دکمه اختصاصی را برای یک آگهی تعیین می‌کند. اگر دکمه وجود نداشته باشد، ایجاد می‌شود. اگر از قبل وجود داشته باشد، داده‌های آن به‌روزرسانی می‌شوند.
 
-مجوزهای مورد نیاز: SET_CUSTOMIZED_BUTTON.
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `SET_CUSTOMIZED_BUTTON`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `USER_SET_CUSTOMIZED_BUTTON`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param postToken
@@ -1596,141 +1685,6 @@ func (a *PostAPIService) PostSetPostCustomizedButtonExecute(r ApiPostSetPostCust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostSubmitPostRequest struct {
-	ctx context.Context
-	ApiService *PostAPIService
-	postSubmitPostRequest *PostSubmitPostRequest
-}
-
-func (r ApiPostSubmitPostRequest) PostSubmitPostRequest(postSubmitPostRequest PostSubmitPostRequest) ApiPostSubmitPostRequest {
-	r.postSubmitPostRequest = &postSubmitPostRequest
-	return r
-}
-
-func (r ApiPostSubmitPostRequest) Execute() (*PostSubmitPostResponse, *http.Response, error) {
-	return r.ApiService.PostSubmitPostExecute(r)
-}
-
-/*
-PostSubmitPost ثبت آگهی
-
-این API به شما امکان ثبت آگهی را می‌دهد. این نیاز به دامنه OAuth `SUBMIT_POST` دارد.
-می‌توانید آگهی را با عنوان، توضیحات، تصاویر و سایر فیلدها ثبت کنید. فیلدهای عمومی و فیلدهای مخصوص دسته‌بندی وجود دارند.
-
-مجوزهای مورد نیاز: SUBMIT_POST.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostSubmitPostRequest
-*/
-func (a *PostAPIService) PostSubmitPost(ctx context.Context) ApiPostSubmitPostRequest {
-	return ApiPostSubmitPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return PostSubmitPostResponse
-func (a *PostAPIService) PostSubmitPostExecute(r ApiPostSubmitPostRequest) (*PostSubmitPostResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PostSubmitPostResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PostAPIService.PostSubmitPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/experimental/open-platform/posts/new"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.postSubmitPostRequest == nil {
-		return localVarReturnValue, nil, reportError("postSubmitPostRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.postSubmitPostRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["APIKey"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-API-Key"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-			var v GooglerpcStatus
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiPostSubmitPostV2Request struct {
 	ctx context.Context
 	ApiService *PostAPIService
@@ -1747,12 +1701,22 @@ func (r ApiPostSubmitPostV2Request) Execute() (*PostSubmitPostResponse, *http.Re
 }
 
 /*
-PostSubmitPostV2 ثبت آگهی با استفاده از اعتبارسنجی قالب JSON
+PostSubmitPostV2 ثبت آگهی
 
-این API به شما امکان ثبت آگهی با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به مجوز `SUBMIT_POST` نیاز دارد.
-شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+این API امکان ثبت آگهی با استفاده از اعتبارسنجی JSON schema را فراهم می‌کند. داده‌های آگهی در برابر قالب دسته‌بندی مشخص شده اعتبارسنجی می‌شوند.
 
-مجوزهای مورد نیاز: SUBMIT_POST.
+**نکات مهم**:
+- فیلدهای ویژه دسته‌بندی باید از [قالب](https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/) پیروی کنند
+- تمام فیلدهای اجباری ذکر شده در قالب باید ارسال شوند، در غیر این صورت ثبت ناموفق خواهد بود
+- این برای ثبت در سطح اپلیکیشن است (آگهی‌های ارائه‌دهنده)
+- آگهی‌های ثبت شده توسط ارائه‌دهندگان باید آگهی‌های کسب‌وکار باشند، بنابراین توکن کسب‌وکار الزامی است
+- کاربر احراز هویت شده باید به کسب‌وکار دسترسی داشته باشد
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `SUBMIT_POST`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostSubmitPostV2Request
@@ -1884,11 +1848,23 @@ func (r ApiPostSubmitUserPostRequest) Execute() (*PostSubmitPostResponse, *http.
 /*
 PostSubmitUserPost ثبت آگهی به عنوان کاربر
 
-این API به شما امکان ثبت آگهی از طرف یک کاربر احراز هویت شده با استفاده از اعتبارسنجی قالب JSON را می‌دهد. این به احراز هویت OAuth با توکن دسترسی معتبر و دامنه OAuth `SUBMIT_USER_POST` نیاز دارد.
-بر خلاف SubmitPostV2 که آگهی‌ها را به عنوان ارائه‌دهنده ثبت می‌کند، این نقطه پایانی آگهی‌ها را به عنوان کاربر مرتبط با توکن دسترسی ارائه شده ثبت می‌کند. آگهی متعلق به کاربر احراز هویت شده خواهد بود.
-شما داده‌های کامل آگهی را به عنوان یک رشته JSON ارائه می‌دهید که با احترام به قالب ثبت برای دسته‌بندی مشخص شده موجود در دارایی‌ها اعتبارسنجی خواهد شد.
+این API امکان ثبت آگهی از طرف کاربر احراز هویت شده با استفاده از اعتبارسنجی JSON schema را فراهم می‌کند. آگهی متعلق به کاربر احراز هویت شده خواهد بود و می‌توان از طریق APIهای مختص کاربر مدیریت کرد.
 
-مجوزهای مورد نیاز: SUBMIT_USER_POST.
+**نکات مهم**:
+- فیلدهای ویژه دسته‌بندی باید از [قالب](https://kenar.divar.dev/openapi-doc/assets-get-submit-schema/) پیروی کنند
+- تمام فیلدهای اجباری ذکر شده در قالب باید ارسال شوند، در غیر این صورت ثبت ناموفق خواهد بود
+- آگهی‌های ثبت شده توسط ارائه‌دهندگان باید آگهی‌های کسب‌وکار باشند، بنابراین توکن کسب‌وکار الزامی است
+- کاربر احراز هویت شده باید به کسب‌وکار دسترسی داشته باشد
+
+#### دسترسی‌ها:
+
+##### مجوزهای API Key مورد نیاز:
+
+- `SUBMIT_USER_POST`
+
+##### OAuth اسکوپ موردنیاز:
+
+- `SUBMIT_USER_POST`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostSubmitUserPostRequest

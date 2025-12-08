@@ -21,15 +21,15 @@ var _ MappedNullable = &PostPostGeneralData{}
 
 // PostPostGeneralData struct for PostPostGeneralData
 type PostPostGeneralData struct {
-	// نام دسته‌بندی هدف. دسته‌بندی‌های موجود را در این آدرس بیابید: https://kenar.divar.dev/openapi-doc/assets-get-categories/
+	// slug دسته‌بندی. لیست دسته‌بندی‌ها: https://kenar.divar.dev/openapi-doc/assets-get-categories/
 	CategorySlug string `json:"category_slug"`
-	// امکان چت فعال باشد
+	// فعال بودن چت
 	ChatEnabled bool `json:"chat_enabled"`
 	// شهر آگهی
 	City string `json:"city"`
 	// توضیحات آگهی
 	Description string `json:"description"`
-	// عدم نمایش شماره تماس به کاربران
+	// مخفی کردن شماره تماس از کاربران
 	HidePhone bool `json:"hide_phone"`
 	Images []string `json:"images"`
 	LocationType PostLocationType `json:"location_type"`

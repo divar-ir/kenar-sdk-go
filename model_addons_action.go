@@ -17,10 +17,10 @@ import (
 // checks if the AddonsAction type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AddonsAction{}
 
-// AddonsAction نمایان‌گر یک عملیات که می‌تواند انجام شود
+// AddonsAction نمایانگر یک Action که می‌تواند انجام شود
 type AddonsAction struct {
 	GetDynamicAction *AddonsGetDynamicAction `json:"get_dynamic_action,omitempty"`
-	// عملیاتی برای ارسال کاربر به URL شما به صورت مستقیم با فقط یک شناسه منبع (در صورت وجود)
+	// عملیاتی برای هدایت مستقیم کاربر به URL شما (در صورت وجود resource id)
 	OpenDirectLink *string `json:"open_direct_link,omitempty"`
 	OpenPostManagePage *AddonsOpenPostManagePage `json:"open_post_manage_page,omitempty"`
 	OpenPostPage *AddonsOpenPostPage `json:"open_post_page,omitempty"`

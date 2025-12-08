@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Token** | Pointer to **string** | توکن تراکنشی که می‌خواهید commit کنید | [optional] 
+**Token** | Pointer to **string** | توکن تراکنشی که می‌خواهید نهایی کنید | [optional] 
 
 ## Methods
 

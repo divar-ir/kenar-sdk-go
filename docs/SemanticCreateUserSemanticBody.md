@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cost** | Pointer to **int32** |  | [optional] 
-**Phone** | Pointer to **string** |  | [optional] 
-**Semantic** | Pointer to **map[string]string** |  | [optional] 
-**TicketUuid** | Pointer to **string** |  | [optional] 
+**Phone** | **string** | شماره موبایل کاربر | 
+**Semantic** | **map[string]string** | مپ key-value اطلاعات معنایی برای ذخیره | 
+**Cost** | Pointer to **int32** | هزینه مرتبط با عملیات | [optional] 
+**TicketUuid** | Pointer to **string** | UUID تیکت پرداخت (اختیاری) | [optional] 
 
 ## Methods
 
 ### NewSemanticCreateUserSemanticBody
 
-`func NewSemanticCreateUserSemanticBody() *SemanticCreateUserSemanticBody`
+`func NewSemanticCreateUserSemanticBody(phone string, semantic map[string]string, ) *SemanticCreateUserSemanticBody`
 
 NewSemanticCreateUserSemanticBody instantiates a new SemanticCreateUserSemanticBody object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +27,46 @@ will change when the set of required properties is changed
 NewSemanticCreateUserSemanticBodyWithDefaults instantiates a new SemanticCreateUserSemanticBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetPhone
+
+`func (o *SemanticCreateUserSemanticBody) GetPhone() string`
+
+GetPhone returns the Phone field if non-nil, zero value otherwise.
+
+### GetPhoneOk
+
+`func (o *SemanticCreateUserSemanticBody) GetPhoneOk() (*string, bool)`
+
+GetPhoneOk returns a tuple with the Phone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhone
+
+`func (o *SemanticCreateUserSemanticBody) SetPhone(v string)`
+
+SetPhone sets Phone field to given value.
+
+
+### GetSemantic
+
+`func (o *SemanticCreateUserSemanticBody) GetSemantic() map[string]string`
+
+GetSemantic returns the Semantic field if non-nil, zero value otherwise.
+
+### GetSemanticOk
+
+`func (o *SemanticCreateUserSemanticBody) GetSemanticOk() (*map[string]string, bool)`
+
+GetSemanticOk returns a tuple with the Semantic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSemantic
+
+`func (o *SemanticCreateUserSemanticBody) SetSemantic(v map[string]string)`
+
+SetSemantic sets Semantic field to given value.
+
 
 ### GetCost
 
@@ -52,56 +92,6 @@ SetCost sets Cost field to given value.
 `func (o *SemanticCreateUserSemanticBody) HasCost() bool`
 
 HasCost returns a boolean if a field has been set.
-
-### GetPhone
-
-`func (o *SemanticCreateUserSemanticBody) GetPhone() string`
-
-GetPhone returns the Phone field if non-nil, zero value otherwise.
-
-### GetPhoneOk
-
-`func (o *SemanticCreateUserSemanticBody) GetPhoneOk() (*string, bool)`
-
-GetPhoneOk returns a tuple with the Phone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPhone
-
-`func (o *SemanticCreateUserSemanticBody) SetPhone(v string)`
-
-SetPhone sets Phone field to given value.
-
-### HasPhone
-
-`func (o *SemanticCreateUserSemanticBody) HasPhone() bool`
-
-HasPhone returns a boolean if a field has been set.
-
-### GetSemantic
-
-`func (o *SemanticCreateUserSemanticBody) GetSemantic() map[string]string`
-
-GetSemantic returns the Semantic field if non-nil, zero value otherwise.
-
-### GetSemanticOk
-
-`func (o *SemanticCreateUserSemanticBody) GetSemanticOk() (*map[string]string, bool)`
-
-GetSemanticOk returns a tuple with the Semantic field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSemantic
-
-`func (o *SemanticCreateUserSemanticBody) SetSemantic(v map[string]string)`
-
-SetSemantic sets Semantic field to given value.
-
-### HasSemantic
-
-`func (o *SemanticCreateUserSemanticBody) HasSemantic() bool`
-
-HasSemantic returns a boolean if a field has been set.
 
 ### GetTicketUuid
 

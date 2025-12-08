@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IssuerPayload** | Pointer to **map[string]interface{}** |  | [optional] 
+**IssuerPayload** | Pointer to **map[string]interface{}** | داده payload ارائه شده توسط صادرکننده تیکت | [optional] 
 
 ## Methods
 

@@ -33,9 +33,9 @@ func (r ApiAssetsGetBodyStatusesRequest) Execute() (*AssetsGetBodyStatusesRespon
 }
 
 /*
-AssetsGetBodyStatuses دریافت گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار
+AssetsGetBodyStatuses لیست گزینه‌های وضعیت بدنه
 
-دریافت تمام گزینه‌های وضعیت بدنه موجود در دسته‌بندی‌های خودرو دیوار. این ترجمه فارسی برای هر گزینه وضعیت بدنه که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت گزینه‌های وضعیت بدنه موجود برای دسته‌بندی‌های خودرو را فراهم می‌کند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetBodyStatusesRequest
@@ -155,9 +155,13 @@ func (r ApiAssetsGetBrandModelsRequest) Execute() (*AssetsGetBrandModelsResponse
 }
 
 /*
-AssetsGetBrandModels دریافت مدل‌های برند در دسته‌بندی دیوار
+AssetsGetBrandModels لیست مدل برندها بر اساس دسته‌بندی
 
-دریافت تمام مدل‌های برند دیوار در دسته‌بندی مشخص شده. این ترجمه فارسی برای هر مدل برند که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت مدل برندها برای یک دسته‌بندی خاص را فراهم می‌کند. دسته‌بندی‌های پشتیبانی شده: `light` (خودرو) و `mobile-phones`.
+
+**نکات مهم**:
+- مدل برندها با نام‌های فارسی برگردانده می‌شوند
+- دسته‌بندی باید یکی از دسته‌بندی‌های پشتیبانی شده باشد، در غیر این صورت خطا برمی‌گردد
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param category
@@ -279,9 +283,9 @@ func (r ApiAssetsGetCategoriesRequest) Execute() (*AssetsGetCategoriesResponse, 
 }
 
 /*
-AssetsGetCategories دریافت دسته‌بندی‌های دیوار
+AssetsGetCategories لیست همه دسته‌بندی‌ها
 
-دریافت تمام دسته‌بندی‌های دیوار. این ترجمه فارسی برای هر دسته‌بندی که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت همه دسته‌بندی‌های دیوار را فراهم می‌کند. شناسه دسته‌بندی‌ها و نام‌های فارسی آنها برای استفاده در ثبت و جستجوی آگهی برمی‌گردد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetCategoriesRequest
@@ -400,9 +404,9 @@ func (r ApiAssetsGetCitiesRequest) Execute() (*AssetsGetCitiesResponse, *http.Re
 }
 
 /*
-AssetsGetCities دریافت شهرهای دیوار
+AssetsGetCities لیست همه شهرها
 
-دریافت تمام شهرهای دیوار. این ترجمه فارسی برای هر شهر که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت همه شهرهای دیوار را فراهم می‌کند. شناسه شهرها و نام‌های فارسی آنها برای استفاده در ثبت و جستجوی آگهی برمی‌گردد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetCitiesRequest
@@ -522,9 +526,13 @@ func (r ApiAssetsGetColorsRequest) Execute() (*AssetsGetColorsResponse, *http.Re
 }
 
 /*
-AssetsGetColors دریافت رنگ‌ها در دسته‌بندی دیوار
+AssetsGetColors لیست رنگ‌ها بر اساس دسته‌بندی
 
-دریافت تمام رنگ‌های دیوار در دسته‌بندی مشخص شده. این ترجمه فارسی برای هر رنگ که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت رنگ‌های موجود برای یک دسته‌بندی خاص را فراهم می‌کند. دسته‌بندی‌های پشتیبانی شده: `light` (خودرو) و `mobile-phones`.
+
+**نکات مهم**:
+- رنگ‌ها با نام‌های فارسی برگردانده می‌شوند
+- دسته‌بندی باید یکی از دسته‌بندی‌های پشتیبانی شده باشد، در غیر این صورت خطا برمی‌گردد
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param category
@@ -652,9 +660,9 @@ func (r ApiAssetsGetDistrictsRequest) Execute() (*AssetsGetDistrictsResponse, *h
 }
 
 /*
-AssetsGetDistricts دریافت مناطق دیوار
+AssetsGetDistricts لیست محله‌ها
 
-دریافت تمام مناطق دیوار. این ترجمه فارسی برای هر منطقه که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت محله‌های دیوار را فراهم می‌کند. می‌توان بدون پارامتر برای دریافت همه محله‌ها یا با city_slug برای دریافت محله‌های یک شهر خاص فراخوانی کرد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetDistrictsRequest
@@ -777,9 +785,9 @@ func (r ApiAssetsGetDistricts2Request) Execute() (*AssetsGetDistrictsResponse, *
 }
 
 /*
-AssetsGetDistricts2 دریافت مناطق دیوار
+AssetsGetDistricts2 لیست محله‌ها
 
-دریافت تمام مناطق دیوار. این ترجمه فارسی برای هر منطقه که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت محله‌های دیوار را فراهم می‌کند. می‌توان بدون پارامتر برای دریافت همه محله‌ها یا با city_slug برای دریافت محله‌های یک شهر خاص فراخوانی کرد.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param citySlug
@@ -901,9 +909,9 @@ func (r ApiAssetsGetInternalStoragesRequest) Execute() (*AssetsGetInternalStorag
 }
 
 /*
-AssetsGetInternalStorages دریافت گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
+AssetsGetInternalStorages لیست گزینه‌های حافظه داخلی
 
-دریافت تمام گزینه‌های حافظه داخلی موجود در دسته‌بندی‌های موبایل دیوار. این ترجمه فارسی برای هر گزینه حافظه داخلی که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت گزینه‌های حافظه داخلی موجود برای دسته‌بندی‌های موبایل، تبلت و لپ‌تاپ را فراهم می‌کند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetInternalStoragesRequest
@@ -1022,10 +1030,13 @@ func (r ApiAssetsGetOAuthScopesRequest) Execute() (*AssetsGetOAuthScopesResponse
 }
 
 /*
-AssetsGetOAuthScopes دریافت دامنه‌های OAuth کنار دیوار
+AssetsGetOAuthScopes لیست دامنه‌های OAuth
 
-اینها دامنه‌های موجود برای OAuth2.0 کنار دیوار هستند.
-از دامنه‌ها در جریان OAuth برای درخواست دسترسی به داده‌های کاربر یا انجام اقدامات از طرف آنها استفاده کنید.
+این API لیست OAuth اسکوپ‌های موجود برای کنار دیوار را برمی‌گرداند. از این اسکوپ‌ها در جریان OAuth برای درخواست دسترسی به داده‌های کاربر استفاده کنید.
+
+**نکات مهم**:
+- هر اسکوپ شامل وضعیت چرخه حیات است (آزمایشی، فعال، در حال منسوخ شدن، منسوخ شده)
+- برخی اسکوپ‌ها نیاز به resource id دارند (مثلاً توکن آگهی، شناسه مکالمه)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetOAuthScopesRequest
@@ -1144,10 +1155,13 @@ func (r ApiAssetsGetPermissionsRequest) Execute() (*AssetsGetPermissionsResponse
 }
 
 /*
-AssetsGetPermissions دریافت مجوزهای کنار دیوار
+AssetsGetPermissions لیست مجوزهای کنار دیوار
 
-این مجوزها برای کنترل دسترسی در اپلیکیشن‌های کنار دیوار استفاده می‌شوند. آنها را با دامنه‌های OAuth اشتباه نگیرید.
-انتظار می‌رود اپلیکیشن‌ها نسبت به این مجوزها کور باشند. اینها فقط برای استفاده‌های داخلی ایجاد شده‌اند، اما در صورت نیاز آزادانه درخواست فعال‌سازی برای اپلیکیشن خود را ارائه دهید.
+این API امکان دریافت مجوزهای موجود کنار دیوار را فراهم می‌کند. این مجوزها برای کنترل دسترسی در اپلیکیشن‌های کنار دیوار استفاده می‌شوند و با دامنه‌های OAuth متفاوت هستند.
+
+**نکات مهم**:
+- مجوزها برای استفاده داخلی هستند و اپلیکیشن‌ها نباید مستقیماً به آنها وابسته باشند
+- هر مجوز شامل وضعیت چرخه حیات آن است (آزمایشی، فعال، در حال منسوخ شدن، منسوخ شده)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetPermissionsRequest
@@ -1266,9 +1280,9 @@ func (r ApiAssetsGetRamMemoriesRequest) Execute() (*AssetsGetRamMemoriesResponse
 }
 
 /*
-AssetsGetRamMemories دریافت گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار
+AssetsGetRamMemories لیست گزینه‌های حافظه RAM
 
-دریافت تمام گزینه‌های حافظه رم موجود در دسته‌بندی‌های موبایل/تبلت/لپ‌تاپ دیوار. این ترجمه فارسی برای هر گزینه حافظه رم که در آگهی‌ها استفاده می‌شود، ارائه می‌دهد.
+این API امکان دریافت گزینه‌های حافظه RAM موجود برای دسته‌بندی‌های موبایل، تبلت و لپ‌تاپ را فراهم می‌کند.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetRamMemoriesRequest
@@ -1387,10 +1401,12 @@ func (r ApiAssetsGetServiceTypesRequest) Execute() (*AssetsGetServiceTypesRespon
 }
 
 /*
-AssetsGetServiceTypes دریافت انواع سرویس موجود در کنار دیوار
+AssetsGetServiceTypes لیست انواع سرویس
 
-این انواع سرویس برای گروه‌بندی سرویس‌های مشابه در کنار دیوار استفاده می‌شود.
-هر ایده جدید با انواع سرویس جدید خوشامد است. در صورت نیاز آزادانه درخواست دهید.
+این API امکان دریافت انواع سرویس موجود در کنار دیوار را فراهم می‌کند. انواع سرویس برای گروه‌بندی سرویس‌های مشابه استفاده می‌شوند.
+
+**نکات مهم**:
+- می‌توان انواع سرویس جدید را در صورت نیاز درخواست داد
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAssetsGetServiceTypesRequest
@@ -1510,7 +1526,7 @@ func (r ApiAssetsGetSubmitSchemaRequest) Execute() (*AssetsGetSubmitSchemaRespon
 }
 
 /*
-AssetsGetSubmitSchema دریافت قالب ثبت
+AssetsGetSubmitSchema دریافت schema ثبت آگهی
 
 این API به شما امکان دریافت قالب ثبت آگهی برای یک دسته‌بندی مشخص را می‌دهد. پاسخ در قالب JSON Schema است.
 
