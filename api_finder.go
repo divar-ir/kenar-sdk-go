@@ -459,6 +459,10 @@ FinderGetUserBusinesses دریافت کسب‌وکارهای کاربر
 
 #### دسترسی‌ها:
 
+##### مجوزهای API Key مورد نیاز:
+
+- `GET_USER_BUSINESSES`
+
 ##### OAuth اسکوپ موردنیاز:
 
 - `USER_BUSINESSES_READ`

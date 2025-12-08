@@ -2446,6 +2446,10 @@ paths:
 
         #### دسترسی‌ها:
 
+        ##### مجوزهای API Key مورد نیاز:
+
+        - `GET_USER_BUSINESSES`
+
         ##### OAuth اسکوپ موردنیاز:
 
         - `USER_BUSINESSES_READ`
@@ -7857,6 +7861,7 @@ components:
             SUBMIT_USER_PAYMENT: SUBMIT_USER_PAYMENT
             SUBMIT_USER_POST: SUBMIT_USER_POST
             USER_ADDON_CREATE: USER_ADDON_CREATE
+            USER_BUSINESSES_READ: USER_BUSINESSES_READ
             USER_ID: USER_ID
             USER_PHONE: USER_PHONE
             USER_POSTS_ADDON_CREATE: USER_POSTS_ADDON_CREATE
